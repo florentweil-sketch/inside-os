@@ -1,0 +1,28 @@
+DB_ID: 8572adf5-e57d-49a2-abe4-54505b449f46
+----------------------------
+projects_chantiers
+DB_ID: 1eec3cd0-add0-4611-8efa-82329760813d
+----------------------------
+projects_strategic
+DB_ID: 6ed8559d-6358-4450-b97e-6c940a96782a
+----------------------------
+decisions_structural
+DB_ID: 1054c068-9b91-4215-af70-4c1a3945a83a
+----------------------------
+capital_performance
+DB_ID: d28b5770-ba14-4d77-9171-060a303cc69a
+----------------------------
+admin_architecture
+DB_ID: 56ecc31c-ba79-4f38-97d2-b5b05ad5bdae
+----------------------------
+lessons_learnings
+DB_ID: dabb137f-28b1-4e59-9290-03a21a7694de
+----------------------------
+digital_assets
+DB_ID: 6ea73372-9458-4ad3-a659-a5bb8ddc7aa8
+----------------------------
+thread_dump
+DB_ID: 3155e503-b0ac-818d-b293-d47fee14a1d0
+----------------------------
+data_cemetery
+DB_ID: 3155e503-b0ac-80e0-aeca-cf99d9038fa6

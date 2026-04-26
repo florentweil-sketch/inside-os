@@ -1,0 +1,74 @@
+THREAD HISTORIQUE - BLOC 99 - T04 / 2026-04-18 / État réel INSIDE OS
+
+CONTEXTE OFFICIEL = INSIDE_OS_CONTEXT_v05
+README = README_v02
+
+État réel du projet à date :
+
+- INSIDE OS dispose désormais d'une mémoire conversationnelle vivante en beta V0
+- cette mémoire est connectée à Notion
+- elle lit les bases DECISIONS et LESSONS
+- elle est capable de répondre à partir de la mémoire récupérée
+
+Ce qui a été validé :
+
+- le pipeline ingest fonctionne
+- le pipeline extract fonctionne
+- le pipeline inject fonctionne
+- un thread récent peut entrer dans la mémoire et ressortir dans la conversation
+- le présent peut être injecté dans la mémoire via B99
+
+Décisions structurantes actées :
+
+- B99 représente le présent vivant du système
+- B01 et B02 représentent l'historique et la mémoire longue
+- le système doit lire tout l'historique mais privilégier fortement B99 pour répondre sur l'état actuel
+- la priorité n'est pas encore une beta V1 solide
+- la priorité est d'abord une mémoire conversationnelle vivante, utile et fiable
+
+Règles de fonctionnement validées :
+
+- extract = composant déterministe
+- inject = logique métier
+- chat = lecture mémoire et réponse
+- la boucle conversationnelle ne doit pas écrire directement dans la mémoire
+- le LLM doit utiliser la mémoire récupérée en priorité
+- le LLM doit distinguer ce que la mémoire dit, ce qu'il infère, et ce qui manque
+- le LLM ne doit pas inventer une décision absente
+
+Durcissements techniques déjà réalisés :
+
+- ajout de injection_status = pending dans ingest
+- ajout du mode --only dans ingest
+- ajout du mode --only dans extract
+- ajout du mode --only dans inject
+- amélioration du ranking du chat pour favoriser B99
+- le présent passe désormais avant les vieux threads génériques
+
+Problème structurel identifié :
+
+- le pipeline dépend d'une cohérence stricte entre extraction_status et injection_status
+- toute incohérence de statuts peut bloquer silencieusement la chaîne
+- ce point a été identifié comme un vrai bug structurel du système
+
+État honnête à date :
+
+- la mémoire conversationnelle V0 est réelle et fonctionnelle
+- elle n'est pas encore suffisamment dense pour répondre à tout avec précision
+- elle reste encore partiellement "réglementaire" dans sa façon de répondre
+- la qualité du système dépend maintenant surtout de la qualité des objets mémoire injectés dans le présent
+
+Priorités immédiates :
+
+- continuer à alimenter B99 avec les décisions réellement importantes
+- améliorer progressivement la qualité des réponses du chat
+- renforcer la densité mémoire sur l'état réel des projets
+- fiabiliser encore les transitions de statuts du pipeline
+- préparer plus tard une beta V1 solide, mais pas maintenant
+
+Conclusion :
+
+- INSIDE OS n'est plus une idée abstraite
+- INSIDE OS est désormais un système vivant, utilisable, testable, et relié à une mémoire Notion
+- le chantier actuel n'est plus la possibilité du système
+- le chantier actuel est sa fiabilisation et son enrichissement

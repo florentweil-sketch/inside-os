@@ -1,0 +1,170 @@
+THREAD HISTORIQUE — B01 — T08 — Sujet Rachat LOA par entreprise vs personnel 
+Date approximative : 01.07.2024
+Source : ChatGPT
+
+mon LOA enteprise arrive à echeance pour le racchat de mon vehicule utilitaire master renault. Pour des questions d'optimisations fiscales vaut il mieux le raccheter via l'entreprise ou en personnel ?
+
+Le choix entre racheter un véhicule utilitaire en fin de LOA (Location avec Option d’Achat) via votre entreprise ou à titre personnel dépend de plusieurs critères, notamment l’optimisation fiscale, votre usage futur du véhicule, et votre situation patrimoniale. Voici un comparatif détaillé pour vous aider à décider :
+
+🚗 1. Rachat via l’entreprise
+✅ Avantages fiscaux
+	•	Amortissement : Le véhicule peut être amorti comptablement sur 5 ans (en général), ce qui diminue le résultat imposable.
+	•	Déduction des frais : Vous pouvez déduire :
+	◦	Les frais d'entretien
+	◦	Le carburant (entièrement si le véhicule est un utilitaire)
+	◦	L’assurance
+	•	Récupération de TVA : Si le véhicule est bien un utilitaire (comme le Renault Master), vous pouvez récupérer la TVA sur :
+	◦	Le prix de rachat
+	◦	Le carburant (gazole : 100% déductible si usage pro)
+❌ Inconvénients
+	•	Utilisation privée encadrée : Si vous utilisez le véhicule à titre personnel, cela génère un avantage en nature imposable.
+	•	Vente taxée : En cas de revente ultérieure, la plus-value est soumise à l’impôt sur les sociétés.
+	•	Engagement comptable : Le véhicule figure à l’actif, donc impact sur le bilan.
+
+🧍‍♂️ 2. Rachat à titre personnel
+✅ Avantages
+	•	Liberté d’usage : Pas de formalités si vous utilisez le véhicule pour des trajets mixtes pro/perso.
+	•	Aucune taxation à la revente : Vous ne payez pas d’impôt sur la revente future (sauf cas particuliers).
+	•	Simplicité administrative : Aucune imputation comptable ni suivi spécifique.
+❌ Inconvénients
+	•	Pas de récupération de TVA.
+	•	Pas de déduction de charges : Vous ne pouvez pas amortir le véhicule ni déduire son coût, sauf si vous passez des indemnités kilométriques.
+
+🔍 Points clés à considérer
+Critère
+Rachat par l’entreprise
+Rachat personnel
+TVA récupérable
+✅ Oui (véhicule utilitaire)
+❌ Non
+Amortissement
+✅ Oui
+❌ Non
+Déduction des frais
+✅ Oui
+❌ Non
+Liberté d’usage
+⚠️ Encadrée
+✅ Oui
+Avantage en nature
+⚠️ Oui (si usage perso)
+❌ Non
+Revente
+Taxée
+Non taxée
+
+✅ Recommandation
+Si vous continuez à utiliser le véhicule à des fins professionnelles régulières, et surtout si vous récupérez la TVA et souhaitez optimiser votre IS, le rachat via l’entreprise est plus avantageux fiscalement.
+👉 Mais si :
+	•	Le véhicule va avoir un usage principalement personnel,
+	•	Vous ne voulez pas gérer l'avantage en nature,
+	•	Vous envisagez de le revendre sous peu,
+... alors le rachat personnel est souvent plus simple et souple.
+
+Souhaitez-vous que je vous aide à simuler les deux options avec les chiffres précis (montant de l’option d’achat, valeur résiduelle, usage prévu, etc.) ?
+
+oui
+
+Parfait ! Pour vous proposer une simulation précise et comparative entre les deux options (rachat via l’entreprise ou à titre personnel), j’ai besoin des informations suivantes :
+
+📋 Informations à me fournir
+1. Montant de l’option d’achat
+	•	Combien devez-vous payer pour racheter le véhicule à la fin de la LOA ? (TTC et si possible HT)
+2. TVA sur l’option
+	•	Est-ce que la TVA est récupérable sur cette option (le véhicule est bien un utilitaire sans aménagements particuliers) ?
+3. Usage prévu
+	•	Le véhicule sera-t-il utilisé à :
+	◦	100% pour l’entreprise ?
+	◦	Mixte (pro/perso) ?
+	◦	Principalement personnel ?
+4. Kilométrage et état
+	•	Kilométrage actuel du véhicule ?
+	•	Bon état général ou nécessité de travaux ?
+5. Durée de détention prévue
+	•	Envisagez-vous de garder ce véhicule encore longtemps (plus de 3 ans) ou de le revendre bientôt ?
+6. Montant estimé de revente
+	•	Si vous pensez le revendre à moyen terme : quelle pourrait être sa valeur de revente approximative ?
+7. Taux d’imposition de votre société
+	•	Taux d’IS (souvent 15% jusqu’à 42 500 € de bénéfices, puis 25%)
+	•	Êtes-vous en régime réel d’imposition ou micro ?
+
+Une fois que vous m’avez donné ces éléments, je vous fournirai :
+	•	📊 Une simulation chiffrée des deux scénarios
+	•	✅ La meilleure option fiscalement dans votre situation
+	•	💡 Des conseils personnalisés selon vos objectifs
+N'hésitez pas à me transmettre ces infos ici !
+
+1. 278 euros TTC 2. Je ne sais pas 3. Personnel 4. 40 000 km / Etat moyen 5. le revendre bientot 6. 22000 euros ht 7. IS / Réel
+
+Merci pour toutes ces précisions, Florent. Voici une analyse détaillée et personnalisée de votre situation avec une simulation chiffrée des deux scénarios : rachat du véhicule par votre entreprise ou à titre personnel.
+
+🚗 Détail de la situation
+	•	Véhicule : Renault Master utilitaire
+	•	Option d’achat : 278 € TTC (≈ 231,67 € HT + 46,33 € de TVA si récupérable)
+	•	Usage prévu : personnel
+	•	Revente prochaine pour : 22 000 € HT
+	•	Kilométrage : 40 000 km, état moyen
+	•	Société : Imposée à l’IS, régime réel
+
+🧮 1. Rachat par l’entreprise
+✔️ Ce que cela permet :
+	•	TVA récupérable sur le rachat (probable si le Master est bien un utilitaire : VU carte grise, 2 places).
+	•	Revente du véhicule = produit imposable à l’IS.
+	•	Attention : usage personnel = avantage en nature imposable (environ 10 à 12 % de la valeur du véhicule par an).
+💰 Simulation
+Poste
+Montant
+Coût de rachat HT
+231,67 €
+TVA récupérée
+–46,33 €
+Revente HT
+22 000 €
+Plus-value imposable
+22 000 – 231,67 = 21 768,33 €
+Impôt IS (25%)
+5 442 €
+⚠️ À noter :
+	•	L’entreprise paie l’IS sur la plus-value.
+	•	Si vous utilisez le véhicule à titre perso, un avantage en nature est à intégrer à votre revenu imposable ou bulletin de paie.
+	•	Peu d’intérêt si le véhicule est ensuite utilisé en dehors du cadre pro.
+
+🧍‍♂️ 2. Rachat à titre personnel
+✔️ Ce que cela permet :
+	•	Aucune imposition à la revente.
+	•	Pas d’avantage en nature à déclarer.
+	•	Aucun amortissement ou récupération de TVA, mais vous achetez le véhicule à bas prix (278 € TTC) et le revendez à 22 000 € net de taxes.
+💰 Simulation
+Poste
+Montant
+Coût d’achat
+278 € TTC
+Revente
+22 000 €
+Plus-value
+Non imposable (personne physique)
+Bénéfice net
+≈ 21 700 € dans votre poche
+
+✅ Conclusion : Rachat personnel nettement plus avantageux
+Critère
+Rachat par l’entreprise
+Rachat personnel
+Coût rachat
+231,67 € HT
+278 € TTC
+TVA récupérable
+✅ Oui (si utilitaire)
+❌ Non
+Revente
+Imposée à l’IS (≈ 5 442 €)
+Non imposée
+Avantage en nature
+⚠️ Oui
+❌ Non
+Gain net après impôts
+≈ 16 500 €
+≈ 21 700 €
+🔍 Avec un usage exclusivement personnel, un prix de revente élevé, et une option d'achat minime, le rachat personnel est clairement plus rentable dans votre situation.
+
+Souhaitez-vous un modèle de facture de revente ou une lettre de cession entreprise → personnel si vous passez par une cession formelle ?

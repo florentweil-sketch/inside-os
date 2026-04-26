@@ -1,0 +1,588 @@
+{
+  "collected_at": "2026-04-26T14:07:26.461Z",
+  "env": {
+    "THREAD_DUMP_DB_ID": "3155e503-b0ac-819f-9a69-000b1c28aaf9",
+    "DECISIONS_DB_ID": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+    "LESSONS_DB_ID": "0137b375-fe52-48fa-affc-d7885f2412cb",
+    "DATA_CEMETERY_DB_ID": "3155e503b0ac80e0aecacf99d9038fa6",
+    "ROOT_PAGE_ID": "3155e503b0ac801a9841e5ffc98cc35f"
+  },
+  "all_pages": [
+    {
+      "id": "34e5e503-b0ac-8161-a5af-e9c8ad5afd7c",
+      "title": "B99-T99-TEST-DENSE-NOCHUNK",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3155e503-b0ac-819f-9a69-000b1c28aaf9",
+        "database_id": "3155e503-b0ac-818d-b293-d47fee14a1d0"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-810b-b857-ce61c7e95e68",
+      "title": "Facturer des prix préférentiels en interne entre entités du groupe compromet la viabilité économique de l'entité fournisseuse",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "0137b375-fe52-48fa-affc-d7885f2412cb",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8188-b382-d5cd0d821d95",
+      "title": "Un atelier menuiserie doit être géré comme une entité économique autonome avec ses propres seuils de rentabilité et scénarios de sortie préparés",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "0137b375-fe52-48fa-affc-d7885f2412cb",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8106-b84d-fd5ed60454cf",
+      "title": "Les contentieux clients peuvent résulter de défaillances de sous-traitants et nécessitent une gestion juridique proactive avec proposition transactionnelle",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "0137b375-fe52-48fa-affc-d7885f2412cb",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-811e-9244-cbe6306171b0",
+      "title": "Le départ d'un chef de chantier senior peut créer un vide opérationnel critique qui nécessite un recrutement stratégique de niveau supérieur",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "0137b375-fe52-48fa-affc-d7885f2412cb",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8194-ac5a-ec3562321170",
+      "title": "INSIDE OS est la source de vérité décisionnelle, aucune décision au-dessus de 10 000 euros ou impliquant un recrutement sans interroger INSIDE OS",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81b4-98de-df88ffe97139",
+      "title": "Installer serveur NAS Synology DS923+ avec RAID 1 sur 2 disques 4 To pour sauvegarde documents et accès distant via VPN Tailscale",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81a9-90d5-dc2370a281a3",
+      "title": "Mettre en veille la SCI familiale, pas de création d'actif immobilier avant que le groupe génère 150 000 euros de résultat net consolidé annuel",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8185-ad9b-db239763bff3",
+      "title": "Ouvrir un PEA au nom de Florent Weil avec versement initial de 5 000 euros, objectif saturation progressive sur 5 ans via ETF World MSCI",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8180-ac50-fc03ad5a2f24",
+      "title": "Souscrire LOA véhicule utilitaire Renault Master au nom d'INSIDE SAS, loyer mensuel 780 euros HT",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8158-a158-dbcd358a63cd",
+      "title": "Si CA moyen atelier inférieur à 8 000 euros sur 6 mois consécutifs, activer un des trois scénarios de sortie documentés",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-813e-a3f2-f694a197825b",
+      "title": "Marge brute minimale atelier : 45%, en dessous refus du devis sans exception",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:06:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-812d-b05b-dcaadc8a40f2",
+      "title": "Seuil d'alerte Atelier : CA mensuel inférieur à 8 000 euros HT pendant 2 mois consécutifs déclenche une revue stratégique",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-810a-a3c5-f3c8e2faf977",
+      "title": "L'atelier facture INSIDE SAS comme un client externe, aucun prix interne préférentiel",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81a1-bf04-c32e348e04ca",
+      "title": "Proposer transaction à Madame Prost : prise en charge finitions restantes (3 200 euros HT) + geste commercial 2 000 euros TTC, refus indemnisation préjudice moral",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8143-b15e-f79895fe16f7",
+      "title": "Mandater Maitre Celine Aubert pour défendre INSIDE SAS dans le contentieux Prost avec honoraires de 4 800 euros HT forfait audience",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-819b-9fb2-fbe570b3afa6",
+      "title": "Florent sort du quotidien opérationnel et conserve uniquement validation créative projets premium, réunions clients stratégiques, arbitrages financiers au-dessus de 15 000 euros HT",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81d7-a28a-eaf7bd8fd230",
+      "title": "Recruter un RAF en prestation temps partagé pour 1 500 euros par mois, 2 jours par semaine",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-8198-bf01-ffe5127a80fa",
+      "title": "Recruter un Directeur de Travaux salarié senior avec salaire cible entre 55 000 et 65 000 euros bruts annuels",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81c3-9b0e-d1cd76594d3b",
+      "title": "L'EURL personnelle de Florent sera créée hors holding, uniquement quand le groupe atteint un CA consolidé de 800 000 euros HT",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81a7-9866-f6ac563de5cc",
+      "title": "INSIDE ARCHI est mise en veille stratégique jusqu'à ce que la capacité d'emprunt du groupe soit reconstituée",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81bd-9421-c0ab9477580d",
+      "title": "Florent rachète les 250 actions de Clemence Porret dans INSIDE ARCHI au prix de 1 euro par action, soit 250 euros au total",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81e7-b509-e922ff4ad58a",
+      "title": "Structurer F&A CAPITAL comme holding de tête du groupe avec INSIDE SAS (rénovation haut de gamme) et INSIDE ARCHI (foncière) comme filiales actives",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "96c009f7-757c-4e1b-a46b-cf8415ed2f3d",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T12:05:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81c4-b4dc-efd2b47f45af",
+      "title": "B09-T23-Notion-Dev-011",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3155e503-b0ac-819f-9a69-000b1c28aaf9",
+        "database_id": "3155e503-b0ac-818d-b293-d47fee14a1d0"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T11:54:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-81cb-a438-e8b4f8d8d28c",
+      "title": "B06-T07-Contentieux-client-Prost",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3155e503-b0ac-819f-9a69-000b1c28aaf9",
+        "database_id": "3155e503-b0ac-818d-b293-d47fee14a1d0"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T11:54:00.000Z"
+    },
+    {
+      "id": "34e5e503-b0ac-817b-9176-fa51062879e7",
+      "title": "B03-T03-FA-Capital-V1.2",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3155e503-b0ac-819f-9a69-000b1c28aaf9",
+        "database_id": "3155e503-b0ac-818d-b293-d47fee14a1d0"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-04-26T11:54:00.000Z"
+    },
+    {
+      "id": "31d5e503-b0ac-800d-853d-f10f1e568292",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "26c3a3d4-58ae-4fb8-8da2-a66b7318b77d",
+        "database_id": "6ed8559d-6358-4450-b97e-6c940a96782a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-08T15:43:00.000Z"
+    },
+    {
+      "id": "3165e503-b0ac-8070-94e1-f463517bfd0a",
+      "title": "INSIDE_OS_DATABASES",
+      "parent": {
+        "type": "workspace",
+        "workspace": true
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-08T01:41:00.000Z"
+    },
+    {
+      "id": "31c5e503-b0ac-80ac-9e03-da6db1427f88",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "26c3a3d4-58ae-4fb8-8da2-a66b7318b77d",
+        "database_id": "6ed8559d-6358-4450-b97e-6c940a96782a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-07T22:30:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-803a-8798-fb88f3e5d67e",
+      "title": "\n\nErreur de rédaction contractuelle",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80e5-8b36-000b53842aca",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T17:32:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-80e1-a22e-e06e15c2907d",
+      "title": "Manque de validation écrite client",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80e5-8b36-000b53842aca",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T17:32:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-8017-b995-f7d8ee105052",
+      "title": "Sous-estimation du temps chantier",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80e5-8b36-000b53842aca",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T17:32:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-807e-94e5-dc79ed5e60f5",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-8036-8f0b-000b7aca5529",
+        "database_id": "1054c068-9b91-4215-af70-4c1a3945a83a"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T17:14:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-80ef-9508-c77d90f9548e",
+      "title": "Retard livraison fournisseur",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:56:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-808d-8d3e-ecb77d282c75",
+      "title": "Communication floue avec sous-traitant",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:55:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-8051-99bf-d254e2cb4238",
+      "title": "\n\nSous-estimation délai chantier\n",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:55:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-808b-9291-f181b73682a7",
+      "title": "Problème communication client",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:55:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-8016-aa91-c2da70ebe87d",
+      "title": "Mauvaise estimation devis",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:55:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-8069-ae1a-ce58e4e09a87",
+      "title": "Mauvaise rédaction contractuelle",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:54:00.000Z"
+    },
+    {
+      "id": "31a5e503-b0ac-800a-9f5c-ec38e4be9c9f",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "31a5e503-b0ac-80a3-86a4-000bf77fdce3",
+        "database_id": "dabb137f-28b1-4e59-9290-03a21a7694de"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-05T16:49:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-801a-9841-e5ffc98cc35f",
+      "title": "INSIDE_OS_ROOT",
+      "parent": {
+        "type": "workspace",
+        "workspace": true
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-01T19:31:00.000Z"
+    },
+    {
+      "id": "3165e503-b0ac-808c-8a6b-e5ded0c20d0f",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "b54439b1-9c2b-4ed9-9ba3-dba83dad4460",
+        "database_id": "56ecc31c-ba79-4f38-97d2-b5b05ad5bdae"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-01T19:27:00.000Z"
+    },
+    {
+      "id": "3165e503-b0ac-8055-9b8d-c8a98ab8b8c3",
+      "title": "",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3155e503-b0ac-8049-bc5e-000b3bb12d68",
+        "database_id": "3155e503-b0ac-80e0-aeca-cf99d9038fa6"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-03-01T17:03:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-812c-a4d4-f47e67aba5e9",
+      "title": "Cuisine CLIENT_B",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3a30c742-9e0a-4ff6-993b-83c24350c3ad",
+        "database_id": "1eec3cd0-add0-4611-8efa-82329760813d"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:55:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-8118-95c0-ec951e3c3f41",
+      "title": "Rénovation CLIENT_A",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "3a30c742-9e0a-4ff6-993b-83c24350c3ad",
+        "database_id": "1eec3cd0-add0-4611-8efa-82329760813d"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:55:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-8165-a894-d5a2c2a64229",
+      "title": "Facebook Page INSIDE",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "4562e511-c0f4-47e4-8749-32422c70c585",
+        "database_id": "6ea73372-9458-4ad3-a659-a5bb8ddc7aa8"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:15:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-81b5-bcce-f9b1d8ab819d",
+      "title": "Instagram INSIDE",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "4562e511-c0f4-47e4-8749-32422c70c585",
+        "database_id": "6ea73372-9458-4ad3-a659-a5bb8ddc7aa8"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:15:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-81ef-a8fb-cf5cb7e5ecc7",
+      "title": "Site web INSIDE",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "4562e511-c0f4-47e4-8749-32422c70c585",
+        "database_id": "6ea73372-9458-4ad3-a659-a5bb8ddc7aa8"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:15:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-81b7-848d-ca20a38e69af",
+      "title": "ATELIER DE LA COLOMBE",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "dd7c028d-b0e5-4cdb-b9e2-9c1cf4abc599",
+        "database_id": "8572adf5-e57d-49a2-abe4-54505b449f46"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:15:00.000Z"
+    },
+    {
+      "id": "3155e503-b0ac-8181-a8e4-fd5fa01c6027",
+      "title": "INSIDE SAS",
+      "parent": {
+        "type": "data_source_id",
+        "data_source_id": "dd7c028d-b0e5-4cdb-b9e2-9c1cf4abc599",
+        "database_id": "8572adf5-e57d-49a2-abe4-54505b449f46"
+      },
+      "in_trash": false,
+      "last_edited_time": "2026-02-28T21:15:00.000Z"
+    }
+  ],
+  "canonical_schemas": {
+    "thread_dump": {
+      "error": "404 GET /databases/3155e503b0ac819f9a69000b1c28aaf9: {\"object\":\"error\",\"status\":404,\"code\":\"object_not_found\",\"message\":\"Could not find database with ID: 3155e503-b0ac-819f-9a69-000b1c28aaf9. Make sure the relevant pages and databases are shared with your integration \\\"INSIDE_OS_API\\\".\",\"additional_data\":{\"integration_id\":\"3155e503-b0ac-816f-892c-00279c684f54\"},\"request_id\":\"e6a3fb85-778a-44ab-bcb8-6541f46f4c4d\"}"
+    },
+    "decisions_structural": {
+      "error": "404 GET /databases/96c009f7757c4e1ba46bcf8415ed2f3d: {\"object\":\"error\",\"status\":404,\"code\":\"object_not_found\",\"message\":\"Could not find database with ID: 96c009f7-757c-4e1b-a46b-cf8415ed2f3d. Make sure the relevant pages and databases are shared with your integration \\\"INSIDE_OS_API\\\".\",\"additional_data\":{\"integration_id\":\"3155e503-b0ac-816f-892c-00279c684f54\"},\"request_id\":\"79f02359-90e2-4fe1-a076-7107765f8e36\"}"
+    },
+    "lessons_learnings": {
+      "error": "404 GET /databases/0137b375fe5248faaffcd7885f2412cb: {\"object\":\"error\",\"status\":404,\"code\":\"object_not_found\",\"message\":\"Could not find database with ID: 0137b375-fe52-48fa-affc-d7885f2412cb. Make sure the relevant pages and databases are shared with your integration \\\"INSIDE_OS_API\\\".\",\"additional_data\":{\"integration_id\":\"3155e503-b0ac-816f-892c-00279c684f54\"},\"request_id\":\"695a23b7-67ab-4428-9773-5b8f5da61c1f\"}"
+    }
+  },
+  "all_databases": [
+    {
+      "key": "data_cemetery",
+      "id": "3155e503-b0ac-80e0-aeca-cf99d9038fa6",
+      "title": "data_cemetery",
+      "data_sources": [
+        {
+          "id": "3155e503-b0ac-8049-bc5e-000b3bb12d68",
+          "name": "data_cemetery"
+        }
+      ],
+      "in_trash": false
+    }
+  ],
+  "thread_dump_status": {
+    "error": "400 POST /databases/3155e503b0ac819f9a69000b1c28aaf9/query: {\"object\":\"error\",\"status\":400,\"code\":\"invalid_request_url\",\"message\":\"Invalid request URL.\",\"request_id\":\"e6185b41-75c0-4a4d-a3c8-d3795e6d1a8b\"}"
+  }
+}

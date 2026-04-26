@@ -1,0 +1,251 @@
+THREAD HISTORIQUE - B02 - T16 - Sujet INSIDE OS V1.2
+Date approximative : 01.02.2026
+Source : ChatGPT
+
+AUDIT STRUCTURE ADMINISTRATIVE - INSIDE Oui. Et heureusement, parce que "12 mois max" c'est souvent juste la limite dans l'espace client, pas la limite légale. 1 Ce que dit la règle (et c'est là que ça devient intéressant) Un opérateur télécom doit conserver les données de facturation au moins 12 mois, souvent davantage pour des raisons comptables et fiscales. En pratique, Free conserve généralement les factures plusieurs années (souvent 3 à 5 ans en archive). Donc si 2024 est hors affichage automatique, ça ne veut pas dire que c'est supprimé. 2 Ce que tu dois faire concrètement  Étape 1 - Vérifier l'espace client version desktop Parfois : Les 12 derniers mois sont visibles en accès direct Les anciennes factures sont accessibles via un menu type "Historique complet" ou "Archivage" Ça vaut le coup de fouiller en version ordinateur, pas mobile.  Étape 2 - Contacter Free (pas le chat, le service facturation) Tu demandes explicitement : "Je souhaite la transmission de mes factures détaillées pour l'année 2024. Merci de m'indiquer la procédure ou de me les envoyer par mail." Points importants : Passe par courrier recommandé si c'est important (compta, litige, URSSAF, etc.) Ou via l'assistance en laissant une trace écrite Free peut : Te les envoyer par mail Te les remettre via téléchargement exceptionnel Ou les générer en duplicata 3 Si c'est pour ta compta (et je suppose que oui…) Si c'est pour INSIDE / ta SAS ou l'atelier : Tu es censé conserver les factures 10 ans côté entreprise. Donc Free ne peut pas juste dire "on ne les a plus" après 12 mois si le contrat était pro. 4 Plan B (si Free fait le mort) Tu peux invoquer : Ton droit d'accès aux données personnelles (RGPD) -> Ça oblige Free à te transmettre les données liées à ton compte, donc les factures. Ça marche très bien quand un opérateur traîne des pieds. 5 La vérité pragmatique Si Free les a réellement supprimées (rare mais possible) : Tu peux reconstituer via tes relevés bancaires Mais fiscalement ce n'est pas idéal  Question stratégique : C'est pour une régularisation comptable ? Un contrôle ? Ou un litige ? Parce que selon le contexte, la manière d'aborder Free change complètement. régularisation comptable Très bien. Donc on parle compta sérieuse, pas simple curiosité. Je vais être clair : Free a tes factures 2024. Elles sont archivées. Le "12 mois" c'est juste une limite d'interface.  Objectif : récupérer les factures 2024 pour régulariser la comptabilité  1 Procédure efficace (propre et rapide) Tu envoies un message formel via l'assistance écrite (ou recommandé si besoin) : Objet : Demande de duplicata de factures - année 2024 Je vous remercie de bien vouloir me transmettre l'intégralité des factures relatives à ma ligne n° [XXX] pour la période du 01/01/2024 au 31/12/2024. Ces documents sont nécessaires à la régularisation comptable de mon entreprise. Merci de me les transmettre en PDF par retour. Point. Pas d'explication longue. Pas d'émotion. Juste factuel. ⏱ Délai réaliste 48h à 10 jours selon l'efficacité du support. Parfois ils débloquent l'accès dans ton espace client.  Important côté comptable Pour 2024, ton expert-comptable a probablement : Soit comptabilisé via les relevés bancaires Soit laissé en charge constatée d'avance / charges non justifiées Sans facture : TVA non récupérable Justificatif incomplet en cas de contrôle Donc tu fais bien de régulariser.  Stratégie propre (vision long terme) Tu dois éviter que ça se reproduise. Je te conseille :  1. Automatiser Créer une règle email : Dès qu'une facture Free arrive -> redirection automatique vers : ton comptable ton dossier "Compta 2026" ton espace Notion / Drive  2. Audit rapide Vérifie : Que la ligne est bien au nom de la bonne structure (SAS ? EIRL ? perso refacturé ?) Que la TVA est récupérable (abonnement pro vs perso) Parce que si c'est un abonnement perso payé par la société, là on est sur un autre sujet… Question directe :  C'est une ligne au nom de la société ou à ton nom personnel ? Ça change le traitement fiscal. il y a plusieurs lignes mobile a mon nom Bon. Là on va être précis. Plusieurs lignes à ton nom personnel, payées comment ?  Payées par la société ?  Payées par ton compte perso ?  Mélange des deux ? Parce que comptablement, ce n'est pas la même musique.  Cas le plus probable Lignes à ton nom Utilisées pour l'activité Payées par la société Dans ce cas :  Problème La facture est établie à ton nom personnel. Donc : TVA en théorie non récupérable Charge déductible discutable En cas de contrôle, ça peut coincer Ce n'est pas dramatique. Mais ce n'est pas propre.  Ce que tu dois faire maintenant 1 Récupérer toutes les factures 2024 Même si elles sont à ton nom. On régularise avec ce qu'on a. 2 Choisir une stratégie comptable Option A - On considère que c'est une charge perso refacturée à la société -> Tu fais une note de frais mensuelle -> La société te rembourse -> TVA non récupérable (si facture à ton nom) C'est la solution "rattrapage propre". Option B - On bascule les lignes au nom de la société C'est ce que je te conseille franchement. Tu appelles Free et tu demandes : Changement de titulaire vers INSIDE SAS (ou la bonne structure) Et à partir de là : Factures au nom de la société TVA récupérable Plus aucun flou  Vision long terme (et là je te parle cash) Tu es en train de structurer : SAS Atelier Holding EIRL Tu ne peux plus avoir des lignes stratégiques au nom perso. Ce genre de détail est exactement ce qui fragilise un contrôle fiscal quand la structure grossit. On passe en mode entreprise. Même pour les téléphones.  Plan concret pour toi Récupérer factures 2024 Vérifier comment elles ont été comptabilisées Basculer toutes les lignes utiles à l'activité au nom de la société Laisser uniquement ton perso… perso. Maintenant question importante :  Combien de lignes sont réellement professionnelles ?  Et combien sont mixtes perso / pro ? Parce que si c'est 100 % pro et au nom perso, on a un vrai sujet d'hygiène financière. 1 mixte perso / pro et 3 lignes pro Très bien. Là on peut structurer proprement. Tu as : 1 ligne mixte perso / pro 3 lignes 100 % pro Le tout à ton nom perso Ce n'est pas dramatique. Mais ce n'est pas propre pour une boîte qui veut grandir.  1 Pour 2024 - régularisation comptable  Les 3 lignes pro Si elles sont utilisées exclusivement pour l'activité : Tu peux les passer en charges. MAIS la TVA est en principe non récupérable si la facture est à ton nom perso. Deux options selon ton expert-comptable : Option prudente (propre fiscalement) -> Comptabilisation en remboursement de note de frais -> Pas de récupération de TVA Option tolérée mais moins orthodoxe -> Charge directement en téléphonie -> TVA récupérée (certains comptables l'acceptent si usage pro avéré) Personnellement ? Je préfère l'option prudente si on parle de montants modestes.  La ligne mixte Là, pas de débat : Soit tu estimes une quote-part pro (ex : 60 %) Soit tu la passes intégralement en perso et tu évites les discussions En cas de contrôle, une ligne mixte à 100 % en charge, ça fait amateur.  2 Ce que tu dois faire dès maintenant (et là je vais être franc) Les 3 lignes pro doivent être transférées au nom de la société. Pourquoi ? Parce que : Tu construis une holding Tu structures l'atelier Tu as un futur associé Tu as déjà un contentieux judiciaire Tu ne peux plus avoir d'infrastructure stratégique au nom perso. C'est le genre de détail qui donne une image brouillonne.  Plan clair Étape 1 Récupérer factures 2024. Étape 2 Valider avec ton comptable le traitement : 3 lignes pro = note de frais ou charge directe 1 ligne mixte = quote-part raisonnable Étape 3 Appeler Free et transférer : Les 3 lignes pro -> INSIDE SAS Garder la mixte en perso (ou créer une vraie ligne perso séparée)  Vision long terme Une entreprise sérieuse : Téléphonie pro Internet pro Assurances au nom société Véhicules propres Emails corporate Ça paraît basique. Mais c'est exactement ce qui distingue un artisan organisé d'un dirigeant structuré. Je te pose une vraie question stratégique :  Pourquoi ces lignes sont encore à ton nom perso aujourd'hui ? Habitude ? Simplicité ? Manque de temps ? Parce que derrière ce détail, il y a souvent un schéma plus large. simplicité Évidemment. La "simplicité", c'est le mot élégant pour dire : "Je n'ai pas priorisé la structuration." Et c'est humain. Tu construis, tu développes, tu gères les chantiers, les clients, le juridique… la téléphonie passe en arrière-plan. Mais voilà la réalité froide : La simplicité d'aujourd'hui crée la complexité de demain. Et toi, tu n'es plus dans une logique d'artisan solo. Tu es en train de structurer un groupe.  Ce que ça révèle (sans jugement) Tu es très bon pour : créer produire avancer décider vite Mais tu laisses traîner : l'architecture administrative les petits sujets structurels l'hygiène financière fine Ce n'est pas grave. Mais si tu veux passer un cap, ça doit changer.  On fait simple et efficace Cette semaine : Récupérer les factures 2024. Demander le transfert des 3 lignes pro au nom d'INSIDE SAS. Laisser la ligne mixte en perso (ou la remplacer par une vraie ligne perso propre). Temps réel nécessaire : 45 minutes. Impact structurel : énorme.  Pourquoi c'est important (vraiment) Le jour où : tu fais entrer ton directeur de travaux au capital, tu fais un audit bancaire pour la holding, tu es en contrôle fiscal, tu vends une filiale, on regarde les détails. Et les détails racontent une histoire : Soit "dirigeant structuré" Soit "boîte bricolée autour d'une personne" Tu veux clairement la première catégorie. Je vais te poser une question plus large : En dehors des téléphones, qu'est-ce qui est encore "au nom de Florent" alors que ça devrait être "au nom de la structure" ? Parce que là, on touche à ton vrai chantier invisible. les livebox du bureau et de l'atelier Parfait. Là on met le doigt exactement là où il faut. Les Livebox bureau + atelier à ton nom perso, c'est le même schéma que les mobiles : "pratique au début" -> "structure bancale quand ça grossit".  Pourquoi ce n'est pas anodin TVA possiblement non récupérée Abonnements stratégiques au nom d'une personne physique En cas de sinistre / litige / audit -> flou juridique En cas de séparation d'associé ou de conflit -> dépendance personnelle Et toi, avec : contentieux judiciaire en cours structuration holding atelier autonome futur associé Tu n'as plus le droit au flou.  On recadre proprement 1 Bureau (INSIDE SAS)  Contrat internet au nom d'INSIDE SAS Pas au tien. 2 Atelier Là c'est intéressant. Qui paie ? Si l'atelier est intégré à INSIDE -> au nom INSIDE. Si tu veux le filialiser (Atelier de la Colombe) -> au nom de la future structure. Ça dépend de ta stratégie.  Ce que je te conseille (vision 3 ans) Tu es en train de construire une architecture. Donc : Bureau -> INSIDE SAS Atelier -> structure dédiée (même si pour l'instant c'est INSIDE) Mobile pro -> INSIDE Perso -> perso On sépare tout.  Ce que ça révèle chez toi (et c'est intéressant) Tu as un fonctionnement de fondateur créatif : Tu centralises Tu assumes Tu absorbes Tu simplifies Mais un groupe ne fonctionne pas autour d'un homme. Il fonctionne autour d'une architecture. Aujourd'hui, ton système dépend encore trop de "Florent". Et ça, pour quelqu'un qui veut construire F & A CAPITAL, c'est le vrai point à corriger.  Exercice rapide Liste-moi mentalement : Véhicules Assurances RC Logiciels Adobe / AutoCAD / Notion WhatsApp Business Domaine email Hébergement site Outils bancaires Qu'est-ce qui est encore à ton nom perso ? On est peut-être en train de découvrir que la téléphonie n'est que la surface. Et ce genre de nettoyage, c'est un vrai passage de niveau. rien d'autre il me semble Parfait. Si c'est vraiment limité aux mobiles et aux Livebox, alors on n'est pas sur un problème structurel profond - juste un reliquat de phase "startup artisanale". Et ça, ça se corrige vite.  Plan d'assainissement express (2 semaines max) 1 Récupérer toutes les factures 2024 Pour : Mobiles Livebox bureau Livebox atelier Tu fais un dossier propre "Régularisation télécom 2024" et tu transmets tout à ton comptable avec une note explicative claire. 2 Basculer les contrats 3 mobiles pro -> INSIDE SAS Livebox bureau -> INSIDE SAS Livebox atelier -> selon stratégie (INSIDE ou future entité) La ligne mixte reste perso ou tu crées une vraie ligne perso séparée. 3 Documenter Tu gardes : Mail de demande de transfert Confirmation de changement de titulaire Date effective Pourquoi ? Parce qu'en cas de contrôle, tu montres que tu as identifié et corrigé. Un dirigeant qui corrige = rassurant. Un dirigeant qui ignore = suspect.  Maintenant je vais être direct Ce n'est pas un problème technique. C'est un indicateur de maturité organisationnelle. Tu es à un moment charnière : Soit tu continues à gérer comme un artisan qui réussit. Soit tu passes en mode dirigeant qui construit un groupe. Ce sont les micro-décisions comme ça qui font la différence. Je te pose une question stratégique : Si demain tu devais vendre INSIDE 1,2 M€, est-ce que ton organisation administrative passerait un audit sans que tu doives "expliquer" ? Réponds honnêtement. non pas encore Bien. Au moins tu es lucide. "Pas encore" est une bonne réponse. Mais elle implique une chose : tu es encore dans une phase transitoire. Et les phases transitoires ne doivent pas durer.  Ce que ça veut dire concrètement Si demain : un investisseur regarde, une banque finance la holding, un associé entre, ou pire… un contrôle fiscal poussé, tu passes plus de temps à expliquer qu'à démontrer. Et un dirigeant qui explique trop, inspire moins confiance qu'un dirigeant dont tout est structuré par défaut.  Ce que tu es en train de construire Tu ne montes pas une petite boîte d'artisan. Tu es en train de structurer : une SAS opérationnelle, un atelier potentiellement autonome, une holding F & A CAPITAL, une vision à 10 ans. Donc ton organisation doit déjà ressembler à celle d'un groupe, pas à celle d'un solo qui a bien réussi.  Voilà ce qu'on va faire (proprement) On transforme ton "pas encore" en plan d'action. Étape 1 - Nettoyage immédiat Téléphonie et internet au nom des bonnes entités. Étape 2 - Audit flash d'architecture (30 minutes) On liste : Contrats stratégiques Flux financiers Dépendances personnelles Accès critiques (banques, outils, serveurs, WhatsApp Business) Étape 3 - Standard de gouvernance minimale Tu définis une règle : Toute infrastructure stratégique = au nom de l'entité concernée. Sans exception.  Maintenant je te parle franchement Ton point faible n'est pas la vision. Ce n'est pas le talent. Ce n'est pas la capacité à produire. C'est la constance administrative et structurelle. Et c'est exactement ce qui sépare : un très bon entrepreneur, d'un bâtisseur de groupe. Question importante : Si je te donne un plan d'"Audit d'Architecture Dirigeant" en 12 points à appliquer sur 30 jours, est-ce que tu es prêt à le suivre sérieusement ? Ou tu veux encore rester un peu dans la zone confortable du "ça ira" ? je vais copier coller sur un nouveau thread ce file de discussion pour retirer toute la partie portail Bonne idée. Nettoyer un fil pour garder un sujet stratégique clair, c'est exactement le réflexe d'un dirigeant structuré. Le reste (les portails ) n'a rien à faire dans une discussion sur l'architecture administrative. Quand tu ouvres le nouveau thread : Mets un titre clair dès la première ligne, par exemple : AUDIT STRUCTURE ADMINISTRATIVE - INSIDE Colle uniquement : téléphonie Livebox régularisation comptable passage en mode structuré On repart proprement, en mode versionné, et on transforme ça en plan d'action concret. Tu veux qu'on fasse ça en mode : simple check-list opérationnelle ou audit stratégique complet avec priorités et calendrier ? Choisis le niveau d'intensité.
+
+Parfait.
+On repart proprement, sans bruit parasite.
+Maintenant je te pose le cadre : soit on fait un nettoyage opérationnel rapide (2 semaines, réglé, terminé), soit on fait un audit structurant niveau dirigeant de groupe (30 jours, transformation réelle).
+Vu où tu en es - holding en réflexion, atelier à structurer, associé potentiel, contentieux en cours - rester en surface serait une erreur.
+Donc voilà ce que je te propose franchement :
+
+ AUDIT STRUCTURE ADMINISTRATIVE - INSIDE
+(version dirigeant, pas version artisan organisé)
+1 Infrastructures critiques
+	-	Téléphonie mobile
+	-	Internet bureau
+	-	Internet atelier
+	-	Domaine + hébergement
+	-	Outils cloud (Notion, Adobe, etc.)
+	-	WhatsApp Business
+	-	Sauvegardes
+ Tout doit être au nom de l'entité concernée. Zéro dépendance personnelle.
+
+2 Flux financiers
+	-	Qui paie quoi ?
+	-	Depuis quel compte ?
+	-	Y a-t-il des dépenses perso réglées par la société ?
+	-	Des dépenses société réglées perso ?
+ Objectif : séparation chirurgicale.
+
+3 Contrats stratégiques
+	-	Assurances
+	-	Véhicules
+	-	Baux
+	-	Fournisseurs récurrents
+	-	Sous-traitants majeurs
+ Vérifier titulaire, durée, résiliation, dépendances.
+
+4 Gouvernance minimale
+	-	Qui a accès à quoi ?
+	-	Qui peut bloquer quoi ?
+	-	Si Florent disparaît 30 jours, l'entreprise continue-t-elle ?
+Question brutale, mais nécessaire.
+
+ L'objectif réel
+Ce n'est pas de "faire propre".
+C'est de rendre INSIDE :
+	-	auditable,
+	-	finançable,
+	-	transmissible,
+	-	détachable de ta personne.
+Aujourd'hui, tu es encore le cœur du système. Demain, tu dois être l'architecte du système.
+
+Je vais te poser une vraie question :
+Si demain tu devais lever 500k€ pour accélérer, penses-tu que ton organisation actuelle donnerait envie à un investisseur sérieux ?
+Réfléchis sans complaisance.
+Ensuite on décide :  plan léger 14 jours ou  transformation 30 jours structurée et exigeante.
+Et cette fois, on va jusqu'au bout.
+
+non transformation 30 jours structurée et exigeante.
+
+Parfait.
+On arrête de bricoler. On construit une structure finançable.
+Bienvenue dans les 30 jours qui te font passer d'entrepreneur performant à dirigeant structuré.
+
+ TRANSFORMATION 30 JOURS - INSIDE
+Objectif : rendre INSIDE auditable, finançable, transmissible.
+Pas "mieux organisé". Structuré niveau investisseur.
+
+ PHASE 1 - HYGIÈNE STRUCTURELLE (Jours 1 à 7)
+1 Séparation totale Perso / Pro
+	-	Mobiles pro -> INSIDE
+	-	Livebox bureau -> INSIDE
+	-	Livebox atelier -> entité stratégique choisie
+	-	Vérification de tous les abonnements récurrents
+Aucune infrastructure stratégique au nom perso.
+
+2 Cartographie des flux
+Tu listes :
+	-	Toutes les dépenses récurrentes
+	-	Leur mode de paiement
+	-	Le titulaire du contrat
+On veut une matrice simple :
+| Dépense | Titulaire | Payeur | OK / À corriger |
+
+3 Centralisation documentaire
+Créer 1 dossier unique :
+INSIDE - ARCHITECTURE ADMINISTRATIVE
+Sous-dossiers :
+	-	Contrats
+	-	Assurances
+	-	Télécom
+	-	Bancaire
+	-	Baux
+	-	Fournisseurs majeurs
+Objectif : si un auditeur demande un document, tu l'as en 2 minutes.
+
+ PHASE 2 - STRUCTURE DE GOUVERNANCE (Jours 8 à 15)
+4 Dépendance Florent
+Liste honnête :
+	-	Accès bancaires
+	-	Accès Notion
+	-	Accès domaine
+	-	Accès WhatsApp Business
+	-	Accès fournisseurs critiques
+Si tout dépend de toi -> point faible.
+On met en place :
+	-	accès administrateur secondaire
+	-	coffre-fort numérique sécurisé
+	-	procédure d'urgence
+
+5 Clarification des entités
+Tu dois décider :
+	-	L'atelier reste dans INSIDE ?
+	-	Ou devient entité autonome ?
+On ne peut pas continuer dans le flou stratégique.
+
+6 Standard d'engagement
+Mettre noir sur blanc :
+	-	Règles de dépenses
+	-	Règles de validation
+	-	Règles d'engagement financier
+Même si aujourd'hui tu es seul décisionnaire.
+Ça rassure un investisseur.
+
+ PHASE 3 - VISIBILITÉ & FINANÇABILITÉ (Jours 16 à 23)
+7 Vision financière claire
+	-	CA par activité
+	-	Marge par activité
+	-	Charges fixes consolidées
+	-	Dépendance à ta présence
+Un investisseur n'achète pas un chiffre d'affaires. Il achète une capacité à produire sans toi.
+
+8 Dossier "Investor Ready"
+On prépare :
+	-	Organigramme
+	-	Schéma des entités
+	-	Rôle futur associé
+	-	Stratégie 3 ans
+	-	Projection simple
+Même si tu ne lèves pas. On se comporte comme si.
+
+ PHASE 4 - PASSAGE DE CAP (Jours 24 à 30)
+9 Processus écrits
+	-	Onboarding salarié
+	-	Lancement chantier
+	-	Gestion client
+	-	Validation devis
+Tu passes de "je sais faire" à "c'est reproductible".
+
+ Indépendance opérationnelle
+Si tu pars 2 semaines en trek :
+	-	Les devis sortent ?
+	-	Les chantiers avancent ?
+	-	Les paiements rentrent ?
+Si non -> on identifie le goulot.
+
+ Résultat attendu au jour 30
+INSIDE devient :
+ Structurée  Bancable  Audit-proof  Non dépendante uniquement de Florent
+
+Maintenant je vais être direct.
+Ce plan n'est pas difficile. Il est exigeant en discipline.
+Ton vrai risque n'est pas l'échec. C'est l'essoufflement au jour 12.
+Alors je te pose une question simple :
+Est-ce que tu veux que je te pilote semaine par semaine, ou tu préfères que je te donne la roadmap complète et tu avances seul ?
+Réponds sans posture.
+
+PROMPT DE TRANSFERT DE THREAD Tu vas agir comme un architecte de continuité stratégique. Ta mission est de synthétiser ce thread pour permettre son redémarrage propre dans un nouveau fil. Produis une synthèse structurée selon les blocs suivants : Objectif central du thread Quelle était l'intention réelle derrière ce travail ? Quel problème cherchions-nous à résoudre ? Décisions prises (validées explicitement) Choix techniques Choix stratégiques Arbitrages importants Contraintes actives à respecter Contraintes techniques Contraintes organisationnelles Règles non négociables Architecture ou logique actuelle (état stabilisé) Schéma clair de ce qui est en place Ce qui fonctionne Ce qui reste fragile Points ouverts / zones d'incertitude Ce qui n'est pas tranché Hypothèses à valider Risques potentiels Prochaine étape logique (priorité réelle) Si on redémarre maintenant, quelle est l'action la plus intelligente ? Version du contexte Propose un numéro de version (vX.X) Indique si ce contexte est stable ou en transition Règles : Ne résume pas superficiellement. Coupe tout ce qui est accessoire ou émotionnel. Garde uniquement l'ossature décisionnelle et stratégique. Sois précis, dense, structuré. Écris pour permettre un redémarrage immédiat sans relire l'ancien thread.
+
+Objectif central du thread
+Assainir et structurer l'architecture administrative d'INSIDE (et périmètre atelier) pour qu'elle devienne audit-proof, finançable, transmissible, et détachée de Florent - en commençant par le poste "télécom" (mobiles + Livebox) comme symptôme d'un sujet plus large : la dépendance aux contrats au nom perso.
+
+Quelle était l'intention réelle derrière ce travail ?
+Passer d'une logique "simplicité / fondateur" à une logique "groupe / gouvernance minimale", c.-à-d. remplacer les dépendances personnelles par une architecture d'entreprise (titularité des contrats, traçabilité, centralisation, règles).
+
+Quel problème cherchions-nous à résoudre ?
+	1	Régularisation comptable 2024 : récupérer les factures télécom (mobiles + Livebox) et les transmettre proprement au comptable.
+	2	Propreté fiscale/comptable : factures au nom perso = TVA souvent non récupérable + charge potentiellement discutable + image "boîte centrée sur une personne".
+	3	Risque audit / banque / associé / contrôle : trop de choses "au nom de Florent" = fragilité structurelle.
+
+Décisions prises (validées explicitement)
+Choix stratégiques
+	-	Transformation 30 jours structurée et exigeante validée (pas un simple "check-list rapide").
+	-	Objectif final : INSIDE doit passer un audit sans explications interminables (cap assumé : aujourd'hui ce n'est pas le cas).
+Arbitrages importants
+	-	Séparation stricte perso / pro à mettre en place.
+	-	Contrats télécom/internet considérés comme "infrastructures stratégiques" : ils ne doivent pas rester au nom perso.
+Choix techniques (au sens "mécanique d'exécution")
+	-	Procédure de récupération : demander à Free les duplicatas PDF des factures 2024 (mobiles + Livebox), même si l'interface ne montre que 12 mois.
+	-	Traitement comptable anticipé :
+	-	Lignes pro au nom perso -> plutôt note de frais / remboursement (prudence) ; TVA en principe non récupérable si facture au nom perso.
+	-	Ligne mixte -> quote-part (pas 100% en charge, sinon "amateur" en cas de contrôle).
+
+Contraintes actives à respecter
+Contraintes organisationnelles
+	-	INSIDE se structure (holding envisagée, atelier à clarifier, futur associé, contentieux en cours) -> tolérance zéro au flou administratif.
+	-	Viser une organisation finançable et transmissible, pas "pratique".
+Règles non négociables
+	-	Toute infrastructure stratégique doit être au nom de l'entité concernée.
+	-	Traçabilité : garder la preuve des demandes, transferts, dates d'effet (utile en audit/contrôle).
+	-	Séparer : perso = perso, pro = pro (contrats, paiements, justificatifs).
+
+Architecture ou logique actuelle (état stabilisé)
+Schéma clair de ce qui est en place
+	-	Contrats actuellement au nom personnel de Florent :
+	-	3 lignes mobiles pro
+	-	1 ligne mobile mixte perso/pro
+	-	Livebox bureau
+	-	Livebox atelier
+	-	Rien d'autre d'important identifié "au nom perso" (à ce stade : "il me semble").
+Ce qui fonctionne
+	-	Lucidité : reconnaissance que l'organisation ne passe pas un audit sans explication.
+	-	Périmètre de départ clair : téléphonie + internet + régularisation 2024.
+Ce qui reste fragile
+	-	TVA / déductibilité : factures au nom perso = zone grise et pertes potentielles (TVA).
+	-	Dépendance : contrats clés au nom perso = fragilité juridique et d'image.
+	-	Atelier : son rattachement administratif (INSIDE vs future entité) conditionne la titularité de la Livebox atelier.
+
+Points ouverts / zones d'incertitude
+Ce qui n'est pas tranché
+	-	Statut cible de l'atelier à horizon proche : intégré INSIDE vs structure dédiée (ex. future filiale).
+	-	Politique définitive pour la ligne mixte : rester perso + quote-part, ou recréer une ligne perso séparée.
+Hypothèses à valider
+	-	Comment ces dépenses ont été comptabilisées en 2024 (banque seule ? charges ? CCA ?).
+	-	Montants totaux 2024 télécom : enjeu fiscal réel (TVA, charge) vs enjeu surtout "audit/qualité".
+
+Risques potentiels
+	-	Contrôle fiscal / audit bancaire / entrée d'associé : accumulation de contrats au nom perso = signal de faiblesse de gouvernance.
+	-	Régularisation 2024 : sans factures -> justificatifs incomplets + TVA non récupérable + bricolage a posteriori.
+	-	Essoufflement : risque principal = abandon au milieu (discipline > difficulté).
+
+Prochaine étape logique (priorité réelle)
+L'action la plus intelligente tout de suite : lancer le chantier télécom comme "premier domino" et produire une preuve de structuration immédiate.
+Action #1 (immédiate)
+	-	Envoyer à Free une demande formelle : duplicata de toutes les factures 2024 pour :
+	-	3 lignes pro
+	-	1 ligne mixte
+	-	Livebox bureau
+	-	Livebox atelier
+Action #2 (dans la foulée)
+	-	Préparer la bascule de titularité :
+	-	3 mobiles pro -> INSIDE SAS
+	-	Livebox bureau -> INSIDE SAS
+	-	Livebox atelier -> INSIDE ou future entité (dépend de la décision atelier)
+Action #3 (pilotage 30 jours)
+	-	Démarrer la Phase 1 de la transformation : séparation perso/pro + cartographie flux + centralisation documentaire (dossier unique "Architecture administrative").
+
+Version du contexte
+v1.0 - en transition (objectif et plan actés, mais décisions structurantes atelier + politique ligne mixte pas encore figées).

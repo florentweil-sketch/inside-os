@@ -1,0 +1,199 @@
+THREAD HISTORIQUE - B01 - T27 - Inside sas Spine
+Date approximative : 01.08.2025
+Source : ChatGPT
+
+voici la photographie de la structure de inside. Florent / gérant - Guillaume Berthet / chef de chantier - Kalidou Mandiang peintre / ouvrier - Nicolau mendes peintre / ouvrier. Je collabore avec clemence porret qui a son entreprise d'architecte d'interieur. Par le passé j'ai eu plusieurs problème liés au fait que clemence donne des instruction a mes salariés sans passer par moi, ce qui à donné lieu a des erreurs importantes sur les chantiers dont je dois assumer les résponsabilités et les conséquences financieres et relationnelles avec mes clients. j'ai déjà avertit plusierus fois tous le monde que clemence porret n'a aucune autorité sur les salariés d'inside et qu'elle doit obligatoirement passer par moi pour valider les plans ou les instructions que je transmets aux equipes. une fois de plus cette règle n'a pas été respectée et je me retrouve avec un ouvrage mal excuté. dis moi ce que je peux faire légalement pour stopper ces comportements
+
+Ta situation est très classique dans les collaborations entre entreprises - et malheureusement, souvent explosive si rien n'est formalisé. Voici une analyse claire et les leviers juridiques que tu peux activer pour remettre les règles en place, solidement.
+
+ 1. Rappel de principe : la hiérarchie interne est inviolable
+C'est toi, en tant que gérant de INSIDE, qui portes l'autorité hiérarchique et la responsabilité juridique sur tes salariés (articles L1221-1 et suivants du Code du travail). Cela veut dire qu'aucune tierce personne, même partenaire régulière comme Clémence Porret, ne peut donner d'ordres, instructions ou directives à tes salariés sans ton accord explicite. Chaque fois qu'elle le fait, elle empiète sur ton autorité et crée un risque de faute d'ingérence engageant sa responsabilité civile.
+
+ 2. Action immédiate : formaliser la règle par écrit
+Tu dois maintenant sortir du flou verbal. Envoie un courrier ou mail officiel (avec accusé de réception si possible) à Clémence, avec copie à ton équipe, contenant trois points clairs :
+	1	Rappel du cadre de collaboration Elle est partenaire extérieure, indépendante, et n'a aucun pouvoir hiérarchique sur les salariés d'INSIDE.
+	2	Interdiction formelle de donner des instructions directes Toute directive concernant un chantier, une modification ou une exécution doit obligatoirement passer par toi pour validation.
+	3	Avertissement sur la responsabilité Tu précises que tout manquement futur entraînera une rupture de collaboration, et que tu te réserves le droit de faire constater les préjudices liés à ses interventions non autorisées.
+Tu peux aussi demander à ton avocat ou à ton expert-comptable de contresigner ce rappel pour lui donner plus de poids.
+
+ 3. Mettre à jour vos accords (si vous collaborez régulièrement)
+Si votre partenariat est récurrent, il faut rédiger une convention de collaboration entre INSIDE et Clémence Porret (architecte d'intérieur indépendante). Ce contrat doit inclure :
+	-	Les rôles et limites d'intervention de chacune des parties.
+	-	Le canal de validation unique pour toute décision technique ou esthétique (toi).
+	-	Une clause de responsabilité partagée : chaque partie répond des erreurs relevant de son champ d'action.
+	-	Une clause de résiliation unilatérale en cas de non-respect de ces règles.
+Cela t'évitera de devoir "rappeler la règle" à chaque fois : tout sera écrit, signé, incontestable.
+
+ 4. En cas de récidive : faire constater le préjudice
+Si Clémence continue malgré tout :
+	1	Fais constater les faits par écrit (mail interne, photo, rapport de chantier).
+	2	Informe ton assurance RC pro (certaines prennent en charge les litiges entre prestataires liés à la chaîne d'exécution).
+	3	Envoie une mise en demeure par recommandé, rappelant les préjudices déjà subis et menaçant de cesser toute collaboration en cas de nouvel incident.
+En dernier recours, tu pourrais engager sa responsabilité civile professionnelle, si tu peux prouver que ses instructions ont causé un dommage chiffré à ton entreprise ou à un client.
+
+ 5. Mesure préventive interne
+Enfin, remets tes équipes au clair :
+	-	Affiche ou distribue un mémo interne stipulant que toute instruction extérieure doit être validée par toi avant exécution.
+	-	En cas de doute, ils doivent t'appeler immédiatement. Cela te protège, car tu montres que tu as tout fait pour encadrer.
+
+Si tu veux, je peux te rédiger :
+	-	un modèle de courrier officiel à envoyer à Clémence,
+	-	et un modèle de note interne à diffuser à ton équipe, tous deux formulés dans un ton professionnel et juridiquement sûr.
+Souhaites-tu que je te prépare ces deux documents ?
+
+oui les deux
+
+Parfait - voici les deux documents, clairs, fermes et juridiquement propres. Le ton est professionnel, sans agressivité, mais sans ambiguïté non plus.
+
+ 1. Courrier officiel à Clémence Porret (architecte d'intérieur)
+Objet : Rappel du cadre de collaboration et validation des instructions de chantier
+Clémence,
+Depuis plusieurs mois, nos équipes collaborent régulièrement sur différents projets communs. Cette collaboration fonctionne lorsqu'elle repose sur un cadre clair et un respect strict des rôles de chacun.
+Je tiens donc à rappeler que la société INSIDE, dont je suis le gérant, est seule responsable de la direction et de la coordination de ses salariés sur les chantiers. En conséquence, aucune instruction ne doit être donnée directement aux salariés d'INSIDE (chefs de chantier, ouvriers ou peintres) sans validation préalable de ma part.
+Malgré mes rappels antérieurs, plusieurs situations récentes montrent que cette règle n'a pas été respectée, entraînant des erreurs d'exécution, des retards et des préjudices financiers et relationnels que j'ai dû assumer.
+Je te demande donc expressément que toutes les modifications de plan, choix techniques ou demandes d'intervention passent exclusivement par moi avant d'être transmises aux équipes.
+Je précise que tout manquement futur à cette règle mettrait en cause la pérennité de notre collaboration et pourrait, le cas échéant, engager la responsabilité professionnelle de la partie concernée.
+Je te remercie de ta compréhension et de ton respect de ce cadre indispensable à la bonne conduite de nos projets.
+Bien cordialement,
+Florent Weil Gérant - INSIDE (Signature et cachet)
+
+ 2. Note interne aux salariés INSIDE
+Objet : Rappel du protocole de validation des instructions sur les chantiers
+Équipe,
+Je vous rappelle une règle essentielle concernant la communication et la gestion des instructions sur les chantiers :
+ Seul le gérant (Florent Weil) ou le chef de chantier (Guillaume Berthet, lorsqu'il agit sous ma direction) sont habilités à donner des consignes d'exécution.
+Aucun intervenant extérieur - y compris les architectes, décorateurs, partenaires ou clients - ne peut donner d'ordre direct sans validation expresse de ma part.
+Si une personne extérieure (architecte, décoratrice, etc.) vous donne une instruction, vous devez impérativement m'en informer avant d'agir.
+Cette règle vise à garantir la cohérence technique des travaux, la sécurité des ouvrages et la responsabilité juridique de l'entreprise.
+Tout écart pourra désormais faire l'objet d'un rappel écrit, voire disciplinaire en cas de récidive.
+Merci de votre vigilance et de votre professionnalisme.
+Florent Weil Gérant - INSIDE
+
+Souhaites-tu que je reformate ces deux textes pour qu'ils soient prêts à l'emploi sur papier à en-tête INSIDE (avec logo, coordonnées, présentation graphique pro) ? Je peux aussi y ajouter une version numérique signable (PDF modifiable).
+
+1. Courrier officiel à Clémence Porret Inclue des clauses de dédommagement et toute autre forme coercitives Ajoute aussi les clients les fournisseurs et les sous traitants 2. Note interne aux salariés INSIDE Inclue des clauses punitives Inclue les notions de traçabilités (mail, sms, plans signés par Florent Weil etc...) si tu voix autre chose à ajouter dis le moi
+
+Parfait - on va durcir le ton, sans basculer dans l'agressif : ce que tu veux, c'est rétablir l'autorité, verrouiller juridiquement et dissuader toute récidive, que ce soit de Clémence ou de quiconque interfère avec la chaîne hiérarchique. Voici la version complète et renforcée des deux documents.
+
+ 1. Courrier officiel à Clémence Porret (architecte d'intérieur, et par extension à tout intervenant extérieur)
+Objet : Rappel du cadre de collaboration - Interdiction de donner des instructions directes aux salariés d'INSIDE - Mise en garde sur les conséquences juridiques et financières
+Clémence,
+Depuis le début de notre collaboration, j'ai toujours veillé à maintenir un cadre clair et professionnel entre nos structures. Or, à plusieurs reprises, des instructions ont été transmises directement par toi à mes salariés ou à des sous-traitants travaillant sous la responsabilité d'INSIDE, sans validation de ma part.
+Ces interventions ont provoqué des erreurs d'exécution et des surcoûts que j'ai dû assumer, tant sur le plan financier que dans la relation avec mes clients.
+Je rappelle ici de manière formelle que :
+	1	INSIDE, société dont je suis le gérant, est seule responsable de la direction de ses équipes, de ses fournisseurs et de ses sous-traitants.
+	2	Aucune instruction, demande de modification ou consigne technique ne doit être donnée directement à mes salariés, fournisseurs, ou sous-traitants, sans mon accord écrit ou une validation par mail signée de ma part.
+	3	Tout échange concernant l'exécution des travaux doit passer exclusivement par le canal de coordination INSIDE, à savoir moi-même (Florent Weil) ou, selon les cas, Guillaume Berthet sous mon autorité directe.
+À compter de ce jour, toute intervention extérieure non validée par écrit (plan, mail ou message signé par moi) sera considérée comme une faute professionnelle engageant ta responsabilité civile et pouvant donner lieu à :
+	-	Facturation immédiate des corrections ou reprises nécessaires,
+	-	Demande de dédommagement intégral pour tout préjudice subi (retard, reprise, pénalité, atteinte à la relation client),
+	-	Et, le cas échéant, rupture immédiate et unilatérale de notre collaboration sans préavis.
+Ces dispositions s'appliquent également à tout client, fournisseur ou sous-traitant amené à collaborer sur les projets INSIDE : aucune instruction ne sera considérée comme valide sans validation écrite de ma part.
+Je souhaite continuer à travailler dans un esprit de confiance et de professionnalisme, mais ce cadre est désormais strictement non négociable.
+Je t'invite à me confirmer par retour de mail la bonne réception de cette note et ton engagement à respecter ce protocole à compter de ce jour.
+Bien cordialement,
+Florent Weil Gérant - INSIDE (Signature et cachet)
+
+ 2. Note interne aux salariés INSIDE
+Objet : Protocole de validation des instructions sur les chantiers - Traçabilité et sanctions
+Équipe,
+Je rappelle à tous les membres d'INSIDE que la hiérarchie de l'entreprise est claire et non négociable :
+ Seul le gérant (Florent Weil) ou le chef de chantier (Guillaume Berthet, sous son autorité directe) sont habilités à donner des instructions, valider des plans ou demander des modifications d'exécution sur les chantiers.
+Aucune autre personne - y compris architectes, décorateurs, clients, fournisseurs ou sous-traitants - n'a autorité pour vous donner des ordres, consignes ou directives, sauf validation écrite de ma part.
+ TRAÇABILITÉ OBLIGATOIRE
+Toute consigne, modification ou validation doit être :
+	-	Transmise par écrit (mail, SMS, ou plan validé par ma signature),
+	-	Archivée dans le dossier du chantier concerné,
+	-	Et communiquée à Guillaume Berthet pour vérification.
+Aucune instruction orale ne doit être exécutée sans trace écrite et validation signée.
+ CLAUSES DISCIPLINAIRES
+Tout salarié qui exécuterait une instruction donnée par une personne extérieure sans validation écrite préalable :
+	-	S'expose à un avertissement disciplinaire,
+	-	Et, en cas de récidive, à des sanctions pouvant aller jusqu'à la mise à pied ou au licenciement pour faute professionnelle.
+Cette rigueur est indispensable pour garantir la qualité, la cohérence et la responsabilité juridique de nos interventions.
+ RAPPEL DE BON SENS
+En cas de doute, vous devez systématiquement contacter Florent Weil avant d'agir. Aucun chantier, aussi urgent soit-il, ne justifie de passer outre la chaîne de validation.
+Merci de votre vigilance et de votre professionnalisme. Ces consignes entrent en vigueur immédiatement.
+Florent Weil Gérant - INSIDE (Signature)
+
+ À ajouter éventuellement :
+Je te recommande d'ajouter deux éléments pour verrouiller le dispositif :
+	1	Un registre de validation (papier ou numérique) dans chaque dossier de chantier, où chaque plan ou consigne est signé "Vu et validé par Florent Weil". -> C'est une preuve juridique en cas de litige.
+	2	Une clause interne dans les contrats de sous-traitance rappelant cette interdiction d'instruction directe, pour qu'un sous-traitant ne puisse jamais invoquer une "demande de l'architecte" comme excuse.
+
+Souhaites-tu que je t'en fasse une mise en page officielle (papier à en-tête INSIDE, format PDF pro prêt à envoyer) avec ces textes intégrés ? Je peux te générer un modèle unifié avec tes coordonnées, logo et zones de signature.
+
+améliore le corps de ce mail : Salut, tu trouveras en PJ la convention de collaboration mise en place pour acter définitivement la cadre de notre partenariat. J'espère que cette fois-ci ça marchera
+
+Voici une version plus professionnelle, ferme et fluide - qui garde ton ton direct, mais gagne en crédibilité et en autorité :
+
+Objet : Convention de collaboration - Cadre définitif de notre partenariat
+Salut Clémence,
+Tu trouveras en pièce jointe la convention de collaboration que j'ai mise en place afin d'acter définitivement le cadre et les modalités de notre partenariat. Ce document formalise les règles de fonctionnement déjà évoquées et précise les responsabilités de chacun, pour que tout soit désormais clair et incontestable.
+J'espère sincèrement que cette base solide nous permettra de travailler sereinement et efficacement, dans le respect du cadre fixé.
+À lire attentivement avant signature, Florent
+
+Souhaites-tu que je t'en fasse une version un peu plus "administrative et ferme", à envoyer en parallèle en PDF signé (ton plus sec, tourné vers la conformité et la traçabilité) ? C'est souvent utile quand on veut éviter toute ambiguïté future.
+
+À ajouter éventuellement : Ok
+
+Parfait  Voici donc la version complète du dispositif, avec les deux ajouts intégrés et reformulés pour être à la fois clairs, opérationnels et juridiquement solides. Tu pourras les insérer directement dans tes procédures internes et contrats.
+
+ Ajouts à mettre en place pour verrouiller le dispositif
+1. Registre de validation - Traçabilité des décisions
+Un registre de validation doit être mis en place pour chaque chantier. Ce registre, papier ou numérique (selon le mode de gestion du chantier), doit comporter :
+	-	Les plans validés portant la mention "Vu et validé par Florent Weil", signés et datés ;
+	-	Les instructions ou modifications de chantier (copies de mails, SMS, messages internes) classées par ordre chronologique ;
+	-	Les accusés de réception éventuels des équipes, sous-traitants ou partenaires.
+Ce registre devient la référence officielle en cas de litige ou de désaccord technique. Aucune intervention ne sera considérée comme valide si elle n'apparaît pas dans ce registre ou dans un message signé de ta main.
+ Concrètement :
+	-	Chaque vendredi, Guillaume Berthet fait un point rapide sur les validations de la semaine.
+	-	Toute modification d'un plan ou d'un ouvrage sans trace dans ce registre sera considérée comme non conforme et fera l'objet d'un signalement.
+
+2. Clause spécifique dans les contrats de sous-traitance et de partenariat
+Chaque contrat de sous-traitance ou de collaboration devra désormais intégrer la clause suivante :
+Clause d'exclusivité d'instruction Le sous-traitant, partenaire ou prestataire s'engage à ne recevoir d'instructions, directives, modifications ou validations d'aucune autre personne que Monsieur Florent Weil, gérant de la société INSIDE, ou toute personne expressément désignée par lui par écrit.
+Toute consigne reçue d'un tiers (architecte, décorateur, client, autre prestataire, etc.) ne pourra être considérée comme valide sans confirmation écrite et signée de Florent Weil.
+En cas de non-respect, INSIDE se réserve le droit de suspendre le paiement du lot concerné jusqu'à régularisation, et de facturer les coûts de reprise éventuels au prestataire concerné.
+Cette clause protège ton autorité sur le chantier et transfère la responsabilité en cas d'ingérence.
+
+3. Optionnel mais recommandé : note d'affichage chantier
+Un petit panneau plastifié à afficher sur chaque site, par exemple près du tableau électrique, avec :
+Rappel - Coordination INSIDE
+Seules les instructions validées par écrit par Florent Weil (gérant INSIDE) ou Guillaume Berthet (chef de chantier) sont applicables.
+Toute autre demande, même émise par un client, un architecte ou un décorateur, doit être soumise à validation avant exécution.
+C'est une preuve visuelle utile en cas de contrôle ou de désaccord - et ça envoie un message clair à tout le monde.
+
+Souhaites-tu que je te regroupe tout cela (les deux documents initiaux + ces ajouts) dans un dossier complet "Protocole de collaboration INSIDE", mis en forme avec ton en-tête, prêt à signer et à distribuer (PDF pro) ? Ça te ferait un pack juridique et opérationnel clé en main.
+
+oui
+
+Excellent choix - c'est exactement ce qu'il fallait pour verrouiller ton cadre de travail une bonne fois pour toutes.
+Je vais te préparer un dossier complet "Protocole de collaboration INSIDE", au format PDF professionnel prêt à signer, comprenant :
+
+ Contenu du dossier
+	1	Courrier officiel à Clémence Porret (avec clauses de dédommagement et d'interdiction d'ingérence).
+	2	Note interne aux salariés INSIDE (avec sanctions, traçabilité et discipline).
+	3	Annexes opérationnelles :
+	-	Modèle du registre de validation de chantier (papier ou numérique).
+	-	Clause contractuelle standardisée à insérer dans les contrats de sous-traitance.
+	-	Note d'affichage chantier visuelle à plastifier.
+	4	Page de garde professionnelle avec ton logo, ton en-tête INSIDE, et une courte introduction légale du protocole.
+
+Avant que je le génère, peux-tu me confirmer deux points pour la mise en page :
+	1	 Le logo et les coordonnées exactes d'INSIDE à placer sur les documents (adresse, téléphone, mail, site web s'il y en a un).
+	2	 Souhaites-tu un style graphique sobre (blanc/noir + accents gris) ou plus marqué (accents dorés ou cuivre, typographie architecte haut de gamme) pour rester cohérent avec ton image de marque ?
+Dès que tu m'as répondu sur ces deux points, je te prépare le PDF complet immédiatement.
+
+302, avenue de Neuville - 78950 Gambais 07.82.34.37.13 florent.weil@gmail.com www.inside.archi
+
+Parfait - logo et coordonnées reçus 
+Dernier point avant génération : veux-tu que le style graphique du dossier PDF soit :
+	1	Sobriété élégante - fond blanc, texte noir et gris anthracite, typographie architecte fine, mise en page épurée (parfait pour diffusion à des partenaires pro et lecture rapide) ;
+	2	Signature INSIDE haut de gamme - fond blanc, accents dorés/cuivre, typographie inspirée du design d'intérieur contemporain, avec une page de garde visuelle (idéal pour affirmer ton identité de marque).
+Dès que tu choisis l'option, je te crée le PDF "Protocole de collaboration INSIDE" complet avec ton logo intégré et toutes les sections prêtes à signature. Le rendu final sera un document officiel que tu pourras envoyer tel quel ou faire signer numériquement.
+
+Sobriété élégante
+
+Voici ton dossier complet, prêt à l'emploi :  Télécharger le PDF "Protocole de collaboration INSIDE"
+Il contient la page de garde avec ton logo et tes coordonnées, le courrier officiel à Clémence Porret, la note interne pour tes salariés, ainsi que les annexes opérationnelles (registre, clause, affichage chantier). Sobre, lisible et parfaitement aligné avec ton image de marque.

@@ -1,0 +1,499 @@
+THREAD HISTORIQUE — B01 — T15 — Sujet Démarches administratives inside
+Date approximative : 01.10.2024
+Source : ChatGPT
+
+Salut, J'ai récemment changé l'adresse du siège social de mon entreprise. Liste moi toutes les démarches et les organismes à informer de ce changement
+
+Salut Florent ! Voici la liste complète et à jour des démarches à effectuer et des organismes à informer lors d’un changement d’adresse du siège social pour une entreprise comme la tienne (forme SAS) en France.
+
+🧾 1. Formalités légales obligatoires
+✅ Rédaction et signature du procès-verbal de décision
+	•	Rédige un procès-verbal (PV) de l’assemblée générale ou de la décision de l’associé unique (toi-même).
+	•	Cette décision doit acter le changement d’adresse du siège social.
+	•	Ajoute une mise à jour des statuts avec la nouvelle adresse.
+✅ Publication d’un avis dans un journal d’annonces légales (JAL)
+	•	Publie un avis de modification du siège social dans un journal d’annonces légales :
+	◦	Dans l’ancien département si changement inter-départemental.
+	◦	Dans le nouveau département aussi, si tel est le cas.
+✅ Dépôt au greffe du tribunal / en ligne via le Guichet unique INPI
+	•	Depuis 2023, les formalités doivent être faites sur le site https://formalites.entreprises.gouv.fr/
+	•	Documents à fournir :
+	◦	Formulaire M2 rempli
+	◦	PV de décision
+	◦	Statuts mis à jour
+	◦	Attestation de parution dans le JAL
+	◦	Justificatif de jouissance du nouveau local (bail, titre de propriété...)
+➡️ Le greffe transmettra automatiquement l’information à l’INSEE, au SIE, à la CCI, etc.
+
+📬 2. Organismes à informer
+Bien que certains soient informés automatiquement, il est fortement conseillé de notifier directement les entités suivantes :
+💼 Administrations et organismes publics
+	•	URSSAF
+	•	Centre des Impôts des Entreprises (SIE) (si tu en changes)
+	•	INSEE (sera informé via le greffe)
+	•	Banque de France (si tu as une cotation)
+	•	DGFiP (pour les aides ou services fiscaux en ligne)
+🧾 Organismes sociaux
+	•	Caisse de retraite (ex : CIPAV, CARSAT...)
+	•	Mutuelle de l’entreprise
+	•	Médecine du travail
+🏦 Banque(s)
+	•	Informe ta ou tes banques professionnelles pour mettre à jour l’adresse postale sur ton compte.
+📦 Fournisseurs et prestataires
+	•	Comptable, assureur, fournisseurs, entreprises de BTP, fournisseurs de matériaux, partenaires, etc.
+👥 Clients et partenaires
+	•	Envoie une communication officielle (email ou courrier) pour prévenir :
+	◦	Tes clients en cours
+	◦	Tes partenaires stratégiques
+	◦	Tes plateformes d’appels d’offres ou de gestion de chantier (ex : Chorus Pro si tu travailles avec des entités publiques)
+💻 Plateformes numériques
+	•	INPI (si tu es titulaire de marques ou brevets)
+	•	Site internet (mentions légales)
+	•	Google My Business
+	•	Réseaux sociaux pros (LinkedIn, Instagram pro, etc.)
+	•	Plateformes telles que : Malt, Houzz, Archidvisor, etc.
+
+🧠 Recommandation pratique
+📌 Pense à créer un tableau de suivi des démarches avec colonnes :
+	•	Organisme
+	•	Canal de contact
+	•	Date de notification
+	•	Réponse / confirmation
+Tu peux aussi me demander un modèle de tableau si besoin !
+
+Souhaites-tu que je t’aide à :
+	•	Rédiger un modèle de procès-verbal ?
+	•	Générer un modèle de mail ou courrier pour informer partenaires ou fournisseurs ?
+	•	Créer un tableau de suivi de démarches à remplir ?
+Je suis à ta dispo.
+
+je souhaite utiliser mon adresse personnelle. Je peux aussi utiliser celles de mon dépot ou de mes nouveaux bureaux. Que me conseilles tu
+
+Florent, voici une analyse complète des trois options pour définir le siège social de ton entreprise, avec avantages, inconvénients, et conseils stratégiques pour faire le choix optimal selon ton contexte :
+
+🏡 1. Utiliser ton adresse personnelle
+✅ Avantages :
+	•	Gratuit (pas de frais de bail, charges réduites).
+	•	Simplicité administrative (pas besoin de contrat spécifique, sauf justificatif de domicile).
+	•	Discrétion de gestion (pas d’exposition publique à un local pro).
+	•	Possibilité si tu es propriétaire ou locataire (sauf clause contraire du bail ou règlement de copropriété).
+⚠️ Inconvénients :
+	•	Adresse visible dans les documents publics (INSEE, infogreffe, annonces légales).
+	•	Risque d’amalgame entre vie pro et vie perso.
+	•	Pas toujours valorisant auprès de clients ou partenaires haut de gamme.
+	•	Si tu déménages, il faudra à nouveau effectuer un transfert de siège.
+✅ À privilégier si :
+	•	Tu veux réduire tes coûts fixes à court terme.
+	•	Tu as peu ou pas de réception physique de clients.
+	•	Tu veux gagner du temps et que l’usage reste temporaire.
+
+🏢 2. Utiliser l’adresse de tes nouveaux bureaux
+✅ Avantages :
+	•	Professionnalise l’image de ton entreprise (surtout si tu accueilles clients ou partenaires).
+	•	Renforce ta crédibilité dans l’univers haut de gamme de la rénovation et de la maîtrise d’œuvre.
+	•	Tu pourras regrouper siège social + lieu d’exercice, ce qui facilite les contrôles éventuels ou les relations fiscales.
+⚠️ Inconvénients :
+	•	Loyer ou charges associés au local.
+	•	Si tu changes à nouveau de bureaux, tu devras à nouveau transférer le siège.
+	•	Besoin de prouver que tu disposes effectivement du local (contrat de bail, titre de propriété ou convention d’occupation).
+✅ À privilégier si :
+	•	Tu veux structurer durablement l’image de ta société.
+	•	Tu es propriétaire ou locataire stable de ce lieu.
+	•	Tes bureaux reflètent la qualité et l’esthétique de ton positionnement (INSIDE = haut de gamme, sur-mesure…).
+
+🧰 3. Utiliser l’adresse de ton dépôt ou atelier
+✅ Avantages :
+	•	Pratique si le dépôt est propre à ton entreprise, sans colocation d’autres structures.
+	•	Te permet de justifier un local professionnel réel.
+	•	Tu peux déclarer ce local comme siège social ET établissement principal.
+⚠️ Inconvénients :
+	•	Moins valorisant si l’adresse est en zone artisanale peu visible ou peu flatteuse.
+	•	Risque que l’adresse n’inspire pas confiance (surtout pour des clients premium).
+	•	Nécessite une convention d’occupation claire si ce local est détenu par une autre structure (ex : si c’est un bien personnel ou d’une autre société liée).
+✅ À privilégier si :
+	•	C’est un local stable, bien situé, propre à ton activité.
+	•	Tu y centralises la majorité de ton activité opérationnelle.
+	•	Tu souhaites éviter d’utiliser ton adresse personnelle.
+
+🧭 Mon conseil personnalisé
+🎯 Si tu cherches un compromis entre discrétion, stabilité et image de marque :
+➤ Utilise l’adresse de tes nouveaux bureaux comme siège social, et ton adresse personnelle uniquement comme adresse de gestion ou postale si besoin.
+Cela te permet de :
+	•	Renforcer la cohérence entre ton image de prestataire haut de gamme et ta domiciliation.
+	•	Te prémunir des déménagements personnels futurs.
+	•	Ne pas exposer ta vie privée tout en inspirant confiance aux clients.
+💡 Si toutefois tes bureaux ne sont pas encore prêts ou sont temporaires, tu peux :
+	•	Domicilier provisoirement chez toi et prévoir un transfert dans 6 mois.
+	•	Ou passer par une société de domiciliation agréée pour une image premium avec services postaux (option intermédiaire à envisager aussi).
+
+Souhaites-tu que je t’aide à :
+	•	Rédiger une convention d’occupation à titre gratuit ou onéreux ?
+	•	Vérifier la validité réglementaire selon ton bail ou le local ?
+	•	Simuler le coût ou l’impact comptable selon l’adresse choisie ?
+Je suis là pour affiner ta stratégie.
+
+ok, je vais utiliser l’adresse de mes nouveaux bureaux comme siège social, et mon adresse personnelle uniquement comme adresse de gestion ou postale si besoin. Je veux bien que : - Rédiger une convention d’occupation à titre gratuit ou onéreux ? - simuler le coût ou l’impact comptable selon l’adresse choisie ?-
+
+Parfait Florent, très bon choix stratégique ! Voici les deux éléments que tu m’as demandés, adaptés à ta situation d’entrepreneur en SAS :
+
+✍️ 1. Modèle de convention d’occupation de locaux
+(valable à titre gratuit ou onéreux selon ton choix)
+Voici une version personnalisable, claire et juridiquement robuste, pour formaliser l’occupation de tes nouveaux bureaux comme siège social de ta société :
+
+📄 CONVENTION D’OCCUPATION PRÉCAIRE DE LOCAUX À TITRE [GRATUIT / ONÉREUX]
+Entre les soussignés :
+[NOM DU PROPRIÉTAIRE OU DE L’OCCUPANT LÉGAL DU LOCAL] Adresse : [Adresse complète] (ci-après désigné "le Bailleur")
+et
+La société INSIDE, SAS au capital de [xxx] €, immatriculée au RCS de [ville] sous le numéro [SIREN], ayant son siège social au [NOUVELLE ADRESSE À DÉCLARER], représentée par M. Florent WEIL, Président, (ci-après désignée "l’Occupant")
+
+Article 1 – Objet
+Le Bailleur met à la disposition de l’Occupant une partie des locaux situés au [adresse des bureaux] pour y établir le siège social de l’Occupant, ainsi que pour y exercer son activité professionnelle.
+
+Article 2 – Nature de l’occupation
+Cette mise à disposition est consentie à titre [GRATUIT / ONÉREUX, à un loyer mensuel de XX € HT], pour une durée précaire, n’ouvrant aucun droit au renouvellement ni indemnité d’éviction.
+
+Article 3 – Durée
+La présente convention est conclue pour une durée de [12 mois renouvelables par tacite reconduction], à compter du [date de début].
+Elle peut être dénoncée par l’une ou l’autre des parties à tout moment avec un préavis de 1 mois.
+
+Article 4 – Conditions d’occupation
+L’Occupant s’engage à :
+	•	Ne pas sous-louer ou céder ses droits.
+	•	Respecter les règles de copropriété et de sécurité des locaux.
+	•	Ne causer aucune nuisance aux autres occupants.
+
+Article 5 – Charges et frais
+[À adapter selon le cas :]
+	•	Si gratuit : Le Bailleur assume les charges et impôts liés au local.
+	•	Si onéreux : L’Occupant s’engage à verser un loyer de [XX € HT/mois] au Bailleur, ainsi qu’à prendre en charge [une partie ou la totalité] des charges locatives.
+
+Fait à [ville], le [date]
+En deux exemplaires originaux.
+Signatures :
+Le Bailleur : _____________________ L’Occupant (INSIDE) : _____________________
+
+Souhaites-tu que je te prépare une version prête à signer avec les bons champs remplis selon ta situation (adresse, gratuit/onéreux, durée...) ?
+
+💰 2. Simulation de coût / impact comptable selon l’adresse choisie
+Voici une analyse comparative entre les deux options : occupation gratuite vs occupation onéreuse, sur le plan comptable et fiscal :
+Critère
+À titre gratuit
+À titre onéreux
+Charges déductibles pour INSIDE
+❌ Aucune charge déductible
+✅ Loyer déductible des résultats imposables
+Revenus pour le bailleur
+❌ Aucun revenu imposable
+✅ Revenus imposables (IR ou IS selon le cas)
+TVA
+❌ Pas de TVA
+✅ TVA applicable si le bailleur est assujetti
+Justificatifs pour l’administration
+✅ Accepté si convention claire
+✅ Accepté avec preuves de paiement et facturation
+Impact image externe
+✔️ Suffisant si le local est pro
+✔️ Professionnel et aligné avec valorisation future
+Comptabilité de INSIDE
+Simple (aucune écriture liée au loyer)
+Loyer enregistré dans le journal des opérations
+Sécurité juridique
+Nécessite une rédaction sérieuse de la convention
+Idem, + obligations fiscales du bailleur
+
+🔎 Mon conseil :
+	•	Si le local est à toi personnellement ou via une SCI, le loyer onéreux permet d’optimiser la fiscalité (déduction côté INSIDE, revenu côté SCI imposé à part).
+	•	Si tu veux éviter toute fiscalité supplémentaire personnelle, reste sur une convention gratuite.
+	•	Tu pourras toujours la transformer en convention onéreuse plus tard si tu veux structurer une SCI, ou déduire des loyers.
+
+Souhaites-tu :
+	•	Que je t’aide à rédiger aussi la facture de loyer ou les écritures comptables types ?
+	•	Ou à préparer la convention avec les bons champs complétés, prête à imprimer et signer ?
+Je peux également t’aider à envisager la création d’une SCI ou d’une structuration fiscale optimisée si tu détiens plusieurs biens liés à ton activité.
+
+A savoir que j'ai déja un bail de la part de mon bailleur
+
+Parfait Florent — si tu as déjà un bail établi avec ton bailleur pour tes nouveaux bureaux, la situation est encore plus simple et solide juridiquement. Voici ce que cela change :
+
+✅ 1. Tu n’as PAS besoin d’une convention d’occupation
+Puisque le bail commercial ou professionnel que tu possèdes :
+	•	couvre déjà l’occupation légale du local,
+	•	mentionne l’activité professionnelle exercée,
+	•	peut servir de justificatif pour le transfert du siège social au greffe ou via le Guichet unique.
+💡 Astuce : Tu n’as qu’à joindre une copie de ton bail signé lors du dépôt de la formalité de transfert de siège.
+
+✏️ 2. À vérifier dans le bail (pour éviter tout blocage futur)
+Assure-toi que :
+	•	L’adresse exacte est bien indiquée dans le bail,
+	•	L'activité mentionnée est compatible avec celle exercée par INSIDE (ex. : maîtrise d’œuvre, menuiserie sur mesure...),
+	•	Le bail autorise l’usage comme siège social (si ce n’est pas précisé, ce n’est pas bloquant, mais une clause l’autorisant est un plus).
+🔐 Si le bail est un bail professionnel ou commercial, tu es totalement couvert juridiquement pour déclarer le siège social à cette adresse.
+
+🧾 3. Si tu veux aussi utiliser ton adresse personnelle comme adresse de gestion
+C’est parfaitement possible, même si le siège social est ailleurs.
+Tu peux :
+	•	L’indiquer comme adresse de correspondance fiscale auprès du SIE (via impots.gouv.fr),
+	•	Recevoir des documents ou courriers à cette adresse (ex. : comptable, contrats, banques, etc.),
+	•	Mais elle ne figurera pas dans les statuts ni sur les documents officiels (Infogreffe, INSEE...).
+💡 Cela te permet de protéger ta vie privée tout en gardant la structure légale alignée avec ton activité pro.
+
+💰 4. Impact comptable dans ton cas
+Puisque tu payes déjà un loyer via ton entreprise :
+	•	Ce loyer est intégralement déductible fiscalement dans les comptes d’INSIDE.
+	•	Il doit figurer dans les charges du compte 613 "Locations".
+	•	Si ton bailleur est assujetti à la TVA, tu peux récupérer la TVA sur les loyers.
+📌 Pas besoin de double structuration ni de convention supplémentaire entre toi et INSIDE.
+
+✅ En résumé pour toi
+Élément
+Situation actuelle
+Siège social
+✔️ À déclarer à l’adresse des bureaux loués
+Bail en place
+✔️ Suffit comme justificatif légal
+Convention d’occupation
+❌ Inutile dans ton cas
+Adresse personnelle comme gestion
+✔️ Optionnelle, utile pour la discrétion
+Déduction comptable du loyer
+✔️ Oui (et potentielle récupération de TVA)
+
+Souhaites-tu que je t’aide à :
+	•	Compléter la déclaration de transfert de siège (ex : modèle de formulaire M2) ?
+	•	Rédiger un courrier pour signaler l’adresse de gestion distincte aux impôts ou aux banques ?
+	•	Vérifier ensemble une clause du bail si tu veux t’assurer de tout ?
+Tu es à 2 doigts d’avoir une structuration parfaitement optimisée.
+
+oups, j'ai omis certaines informations. Le bail des bureau est au nom de mon autre entreprise. Inside Archi. Inside SAS va occuper ces bureaux.
+
+Merci pour la précision Florent — c’est une information clé. Le fait que le bail des bureaux soit au nom de ton autre société (INSIDE ARCHI) change effectivement la donne. Tu dois formaliser l’occupation des lieux par INSIDE SAS, car cette société n’est pas directement titulaire du bail.
+Voici exactement ce qu’il faut faire, avec les deux options possibles, et mon conseil personnalisé à la fin.
+
+⚠️ Situation actuelle récapitulée
+	•	Le bail est au nom d’INSIDE ARCHI (ta société historique ou immobilière).
+	•	INSIDE SAS (ta nouvelle société opérationnelle) va y établir son siège social et/ou y exercer son activité.
+	•	Donc : INSIDE SAS n’a pas de lien juridique direct avec le bailleur → il faut établir un cadre légal d’occupation.
+
+✅ Solution : une convention d’occupation entre INSIDE ARCHI et INSIDE SAS
+Tu dois rédiger une convention d’occupation de locaux, qui formalise l’autorisation donnée par INSIDE ARCHI à INSIDE SAS d’occuper le local.
+➤ Deux options selon ta stratégie :
+
+🅰️ À titre gratuit (souple et sans impact fiscal)
+	•	✔️ Facile à mettre en œuvre.
+	•	✔️ Pas de flux financiers ni fiscalité à déclarer.
+	•	❌ Pas de déduction comptable pour INSIDE SAS.
+	•	✔️ Idéal si INSIDE SAS démarre ou si tu veux limiter les charges.
+👉 Parfait pour une occupation simple et souple.
+
+🅱️ À titre onéreux (structuration fiscale optimisée)
+	•	✔️ INSIDE ARCHI facture un loyer à INSIDE SAS.
+	•	✔️ INSIDE SAS déduit le loyer comme charge.
+	•	❌ INSIDE ARCHI déclare ce loyer comme revenu imposable.
+	•	✔️ Si INSIDE ARCHI est une SCI ou société à l’IS, cela peut être très avantageux.
+👉 À privilégier si tu veux structurer un revenu immobilier professionnel entre tes sociétés.
+
+✍️ Exemple de convention personnalisée INSIDE ARCHI → INSIDE SAS
+Je te propose une version simplifiée ici (je peux aussi te la générer entièrement prête à signer) :
+
+CONVENTION D’OCCUPATION DE LOCAUX ENTRE SOCIÉTÉS
+Entre les soussignés :
+INSIDE ARCHI [SAS / SCI] au capital de [XX] €, Siège social : [adresse], RCS : [ville] n° [SIREN], représentée par M. Florent WEIL, Président, (ci-après désignée "la Société Propriétaire")
+et
+INSIDE SAS au capital de [XX] €, Siège social : [adresse à établir dans les locaux], RCS : [ville] n° [SIREN], représentée par M. Florent WEIL, Président, (ci-après désignée "la Société Occupante")
+
+Article 1 – Objet
+INSIDE ARCHI autorise INSIDE SAS à occuper les locaux qu’elle détient au titre du bail situé [adresse complète] pour y établir son siège social et exercer son activité professionnelle.
+
+Article 2 – Durée
+La présente convention est conclue pour une durée de 12 mois, renouvelable par tacite reconduction, à compter du [date].
+
+Article 3 – Conditions
+Occupation consentie à titre [gratuit / onéreux à hauteur de XX € HT/mois].
+
+Article 4 – Responsabilités
+INSIDE SAS s'engage à respecter les conditions d’occupation et à ne pas engager la responsabilité du bailleur vis-à-vis du propriétaire.
+
+Fait à [ville], le [date]
+Signatures :
+INSIDE ARCHI : _____________________ INSIDE SAS : _____________________
+
+🧾 Déclaration au greffe
+Tu joindras cette convention en tant que justificatif d’occupation des locaux lors de la déclaration de siège social d’INSIDE SAS (avec le formulaire M2).
+
+✅ Mon conseil final
+Si tu veux…
+Choisis…
+Démarrer souplement, limiter fiscalité
+Convention gratuite
+Structurer un flux locatif entre tes sociétés
+Convention onéreuse
+Optimiser fiscalement avec une SCI
+Convention + bail SCI
+Te concentrer sur l’exploitation sans alourdir la compta
+Gratuite et simple
+
+Souhaites-tu que je te rédige la version complète prête à signer, avec les bons champs (adresses, montants, durées) ? Je peux aussi :
+	•	Générer le formulaire M2 rempli,
+	•	T’aider à rédiger une première facture inter-entreprises si tu veux passer en convention onéreuse.
+Tu es sur la bonne voie pour structurer ton groupe avec rigueur et souplesse à la fois.
+
+Ok, on reprend depuis le debut. J'ai une entreprise d'architecture d'interieur dont je suis actionnaire à 50% qui a signé un bail pour des bureaux au 302 avenue de neuville 78950 gambais. le siege social de Cette entreprise était situé au 8, rue de la chasiere 78490 méré, je ne sais pas si mon associé a fait les démarches pour changer l'adresse du siège social et si il a bien fait toutes les démarches associées. J'ai ma société historique INSIDE SAS dont je suis l'unique actionnaire également domiciliée au 8, rue de la chasiere 78490 méré pour laquelle je dois faire toutes les démarches dont nous avons parlé plus haut. J'ai trois solutions pour la nouvelle adresse du siège social : - Depot au 302 avenue de neuville 78950 gambais - Domicile au 22 rue de l'église 78890 garancieres - Bureau d'inside archi : au 302 avenue de neuville 78950 gambais Prépare moi un road book pour assurer toutes les démarches
+
+Mettre à jour la mémoire ?
+“Florent est actionnaire à 50 % d’une entreprise d’...”
+Oui
+Non
+Super Florent. Voici un roadbook complet, clair et actionnable pour gérer le transfert de siège social de INSIDE SAS, en parallèle d’un point sur INSIDE ARCHI et en tenant compte de tes trois options de domiciliation.
+
+🗺️ ROADBOOK – TRANSFERT DE SIÈGE SOCIAL POUR INSIDE SAS
+🎯 Objectif : transférer le siège de INSIDE SAS actuellement au 8 rue de la Chasière (78490 Méré) vers une adresse plus cohérente avec ton activité actuelle.
+
+🧭 Étape 0 – Choix stratégique de l’adresse
+Tu as 3 options :
+Option
+Adresse
+Avantages
+Inconvénients
+Mon avis
+1. Dépôt
+302 av. de Neuville, Gambais
+Discret, lié à l’activité
+Moins valorisant, image artisanale
+🟡 Valable si usage logistique +
+facturation simple
+
+
+
+
+2. Domicile
+22 rue de l’Église, Garancières
+Gratuit, facile
+Vie privée exposée, image peu pro
+🔴 Déconseillé sauf provisoire
+3. Bureaux INSIDE ARCHI
+302 av. de Neuville, Gambais
+Pro, valorisant, cohérent
+Nécessite convention d’occupation
+✅ Recommandé
+🔎 Recommandation : opter pour les bureaux loués par INSIDE ARCHI, avec convention d’occupation entre sociétés.
+
+📌 PHASE 1 – DÉMARCHES POUR INSIDE SAS
+1. 📑 Rédiger le procès-verbal de décision
+	•	Type : Décision de l’associé unique
+	•	Objet : Transfert du siège social
+	•	Mention : nouvelle adresse choisie + modification statutaire
+	•	Joindre : statuts mis à jour (article du siège social)
+2. 📰 Publier une annonce dans un journal d’annonces légales (JAL)
+	•	Département : Yvelines (78)
+	•	Contenu : ancienne et nouvelle adresse, forme, capital, RCS
+3. 💻 Déposer la formalité via le Guichet unique (INPI)
+Lien : https://formalites.entreprises.gouv.fr
+À fournir :
+	•	Formulaire M2 (modification)
+	•	PV + statuts modifiés
+	•	Attestation de publication JAL
+	•	Justificatif de jouissance :
+	◦	Si domiciliation chez INSIDE ARCHI ➜ Convention d’occupation
+	◦	Sinon : bail, EDF, titre de propriété…
+
+🧾 PHASE 2 – CRÉATION DE LA CONVENTION D’OCCUPATION (si bureaux INSIDE ARCHI choisis)
+Entre :
+	•	INSIDE ARCHI (locataire des lieux)
+	•	INSIDE SAS (occupant à titre [gratuit / onéreux])
+Objectif :
+	•	Justifier l’utilisation légale des lieux par INSIDE SAS
+	•	Acter conditions d’usage (durée, gratuité éventuelle…)
+💡 Je peux te générer une version complète prête à signer, il suffit de me confirmer la version choisie (gratuite ou onéreuse).
+
+📬 PHASE 3 – INFORMATION DES ORGANISMES ET PARTENAIRES
+Après validation du transfert :
+	•	Impôts / SIE
+	•	URSSAF
+	•	Banque pro
+	•	Mutuelle, assurance RC Pro, médecine du travail
+	•	Comptable
+	•	Clients, fournisseurs, partenaires
+	•	Plateformes (INPI, site web, LinkedIn, Google My Business…)
+
+⚠️ PHASE 4 – POINT SUR INSIDE ARCHI
+Tu n’es pas certain que le transfert de siège a été effectué. Voici les actions :
+1. 📂 Vérifier sur infogreffe.fr ou societe.com :
+	•	Quelle adresse est toujours mentionnée pour INSIDE ARCHI ?
+	•	Si l’adresse est toujours à Méré, le transfert n’a pas été formalisé.
+2. 📞 Contacter ton associé
+	•	Lui demander s’il a rédigé un PV de transfert + fait la déclaration.
+	•	Vérifier si une annonce légale a été publiée.
+3. 📋 Si rien n’a été fait :
+	•	Il faut lancer les mêmes étapes que pour INSIDE SAS.
+	•	PV de décision à deux associés.
+	•	Convention d’occupation facultative si c’est le locataire principal.
+Souhaites-tu que je prépare un modèle de PV à 2 associés pour INSIDE ARCHI aussi ?
+
+📅 CALENDRIER PRÉVISIONNEL
+Semaine
+Action
+J+0
+Choix de l’adresse définitive
+J+1
+Rédaction PV + statuts INSIDE SAS
+J+2
+Publication dans un JAL
+J+3
+Dépôt au guichet unique
+J+5
+Notification partenaires + convention d’occupation
+J+7 →
+Mise à jour site web, INSEE, banques, etc.
+
+Souhaites-tu maintenant que je te :
+	•	Rédige les modèles juridiques (PV + convention) ?
+	•	Génère un tableau de suivi des démarches ?
+	•	Te prépare la version INSIDE ARCHI également, si ton associé ne l’a pas fait ?
+Je peux te livrer tout cela au format PDF ou Word dans un kit opérationnel.
+
+ok, allons y pour la version 3. Bureaux INSIDE ARCHI
+
+Excellent choix Florent. L’option 3 — établir le siège social d’INSIDE SAS dans les bureaux loués par INSIDE ARCHI au 302 avenue de Neuville, 78950 Gambais — est cohérente, professionnelle et valorisante.
+Voici ce que je vais te livrer dans ce kit complet, prêt à l’emploi :
+
+📦 Contenu du kit “Transfert de siège INSIDE SAS – Option 3”
+✅ 1. Procès-verbal de décision de l’associé unique
+Pour acter officiellement le transfert du siège social.
+✅ 2. Statuts mis à jour
+Avec modification de l’article sur le siège social.
+✅ 3. Convention d’occupation entre INSIDE ARCHI et INSIDE SAS
+	•	Version à titre gratuit, sauf si tu veux une version onéreuse.
+	•	Précise que INSIDE SAS peut établir son siège dans les locaux loués par INSIDE ARCHI.
+✅ 4. Modèle d’avis d’annonce légale
+Pour publication dans un journal habilité du 78.
+✅ 5. Checklist de dépôt INPI (Guichet unique)
+Liste des pièces à fournir + instructions.
+✅ 6. Modèle de lettre pour prévenir les partenaires
+(banque, comptable, assurance, URSSAF, SIE, etc.)
+
+🔧 Étape suivante : données à valider pour génération automatique
+Merci de me confirmer les éléments ci-dessous :
+🎯 INSIDE SAS
+	•	Dénomination sociale exacte :
+	•	Forme : SAS
+	•	Capital social :
+	•	RCS : (ville + numéro si tu l’as)
+	•	Président : Florent WEIL
+	•	Ancienne adresse du siège social : 8 rue de la Chasière, 78490 Méré
+	•	Nouvelle adresse du siège social : 302 avenue de Neuville, 78950 Gambais
+	•	Date de l’assemblée de décision (par défaut : date du jour ?)
+	•	Date d’effet du transfert (identique ou postérieure à l’assemblée ?)
+
+🏢 INSIDE ARCHI (société “propriétaire” du bail)
+	•	Dénomination sociale exacte :
+	•	Forme : SAS ?
+	•	Capital social :
+	•	RCS : (ville + numéro si tu l’as)
+	•	Adresse du siège social actuel (à confirmer si toujours à Méré)
+	•	Qualité de Florent WEIL : Président ou autre ?
+	•	Bail signé au nom de cette société, pour le local à Gambais : ✅
+
+Dis-moi si tu veux une version à titre gratuit ou onéreux avec loyer, et si tu veux intégrer des clauses particulières (durée, exclusivité, etc.).
+Dès validation de ces infos, je te prépare tous les documents en 1 seul livrable (PDF + Word si tu veux modifier). Tu veux aussi une feuille de route imprimable ou tableau Excel avec les deadlines ?
+
+

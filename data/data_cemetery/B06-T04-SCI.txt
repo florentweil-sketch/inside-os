@@ -1,0 +1,317 @@
+THREAD HISTORIQUE - B01 - T14 - Sujet SCI
+Date approximative : 01.10.2024
+Source : ChatGPT
+
+J'ai acheter une maison avec un credit bancaire à mon nom.est ce que je peux transferer le credit sur une sci ?.
+
+Transférer un crédit immobilier personnel sur une SCI (Société Civile Immobilière) n'est pas possible directement, car le prêt est lié à votre personne physique. En revanche, voici les solutions alternatives envisageables :
+
+ 1. Rachat du bien par la SCI
+Principe : Vous vendez le bien à la SCI, qui contracte un nouveau prêt à son nom (ou à celui des associés cautionnaires).
+Conditions :
+	-	La banque doit accepter d'accorder un prêt à la SCI, ce qui est souvent plus complexe, surtout si elle est récente et sans revenus.
+	-	Vous devrez passer devant un notaire pour la vente, avec paiement de frais de notaire (environ 7-8 % du prix).
+	-	Une éventuelle plus-value immobilière peut être imposable si ce n'est pas votre résidence principale.
+
+ 2. Apport du bien à la SCI
+Principe : Vous apportez le bien en nature à la SCI en échange de parts sociales.
+Mais attention :
+	-	Vous restez personnellement responsable du crédit, car il n'est pas transféré. La SCI devient propriétaire mais ne reprend pas le prêt.
+	-	Il faut obtenir l'accord écrit de la banque, car elle peut s'opposer à l'apport si cela met en péril la garantie ou modifie l'équilibre du prêt.
+	-	Cette opération nécessite aussi un passage devant notaire et peut générer des droits d'enregistrement.
+
+ 3. Délégation ou caution solidaire
+Une autre solution consiste à faire adhérer la SCI au prêt existant via une caution solidaire ou une co-empruntabilité, mais cela nécessite aussi l'accord explicite de la banque, et ce mécanisme est rarement utilisé pour transférer un prêt personnel vers une SCI.
+
+ Conseils pratiques
+	-	Prenez contact avec votre banquier avant toute démarche : sans son accord, vous ne pourrez ni apporter le bien, ni faire racheter le prêt.
+	-	Il peut être judicieux de créer la SCI d'abord, puis de faire un nouvel achat directement au nom de la SCI si vous souhaitez éviter les coûts et la complexité du transfert.
+	-	Demandez conseil à un notaire ou expert-comptable, surtout en cas d'apport ou de rachat, pour maîtriser les implications fiscales et juridiques.
+
+Souhaitez-vous que je vous aide à rédiger un courrier ou une demande à adresser à votre banque ?
+
+Cas N°2 : Si la sci prend 100% des parts, c'est donc à elle de rembourser le credit via mon compte personnel ?
+
+Dans le cas n°2 - apport du bien immobilier à une SCI en échange de 100 % des parts sociales - il est essentiel de comprendre que le crédit bancaire reste attaché à votre personne, même si la SCI devient propriétaire du bien. Voici une explication détaillée du fonctionnement et des implications :
+
+ Rappel du mécanisme : apport à la SCI
+	-	Vous créez une SCI et lui apportez le bien immobilier en nature (en échange de parts sociales).
+	-	La SCI devient juridiquement propriétaire du bien.
+	-	Mais le prêt reste à votre nom, car il a été contracté avant, en votre nom propre.
+
+ Qui rembourse le crédit ?
+ C'est vous, en tant que personne physique, qui restez seul redevable du prêt vis-à-vis de la banque. La SCI n'a aucune obligation légale de rembourser ce crédit puisque elle n'est pas emprunteuse.
+
+ Comment organiser le remboursement via la SCI ?
+Il est possible de mettre en place un mécanisme de remboursement indirect, mais cela ne change rien au regard de la banque :
+Option 1 : Loyer versé par la SCI à l'associé (vous)
+	-	La SCI peut vous verser un loyer ou une indemnité d'occupation (si vous occupez le bien).
+	-	Avec cette somme, vous remboursez ensuite votre crédit personnel.
+	-	C'est légalement faisable, mais attention à l'imposition sur les revenus fonciers que cela peut générer.
+Option 2 : Vous laissez la SCI utiliser gratuitement le bien
+	-	Dans ce cas, vous assumez seul le remboursement du crédit avec vos fonds personnels.
+	-	Cela peut être cohérent si vous utilisez la SCI comme véhicule patrimonial à long terme, mais cela signifie que vous vous appauvrissez personnellement pour enrichir une société (même si vous en détenez 100 %).
+
+ Risques et contraintes
+	-	Fiscalité : La SCI pourrait être imposée si elle tire un revenu du bien (loyers, mise à disposition payante).
+	-	Transmission : Si vous cédez ou transmettez une partie des parts plus tard, vous aurez financé personnellement un actif qui appartient partiellement à d'autres.
+	-	Crédit : En cas de défaut de remboursement, la banque se retournera contre vous, et pas contre la SCI.
+
+ En résumé
+Élément
+Conséquence
+Propriété du bien
+SCI
+Crédit
+À votre nom personnel
+Remboursement légal
+Par vous, obligatoirement
+Remboursement indirect possible ?
+Oui, via loyer ou indemnité versée par la SCI
+Accord de la banque requis ?
+Oui, pour l'apport du bien à la SCI (modification de garantie)
+
+Souhaitez-vous un modèle de convention entre vous et la SCI pour formaliser un mécanisme de remboursement indirect ou de mise à disposition du bien ?
+
+si je choisi cette option, quels seront les cout suplémentaires
+
+Choisir l'option d'apport du bien immobilier à une SCI (cas n°2) entraîne plusieurs coûts supplémentaires à anticiper. Voici une vue d'ensemble, poste par poste :
+
+ 1. Frais de notaire (obligatoires)
+Pourquoi ?
+L'apport d'un bien immobilier à une SCI nécessite un acte notarié.
+Montant :
+	-	Environ 7 à 8 % de la valeur du bien apporté.
+	-	5,8 % de droits d'enregistrement (sauf exonération, voir ci-dessous).
+	-	Frais de notaire (émoluments).
+	-	Frais annexes (publicité foncière, débours, etc.).
+Possibilité de réduction :
+	-	Exonération partielle des droits d'enregistrement si l'apport est réalisé à une SCI soumise à l'IS et que le bien est destiné à l'activité de location professionnelle (pas de jouissance gratuite ou usage personnel).
+	-	Nécessite d'être bien structuré avec un comptable et un notaire.
+
+ 2. Frais d'acte de création et apport en nature
+Pourquoi ?
+L'apport en nature doit être décrit et intégré dans les statuts de la SCI.
+Montant :
+	-	Rédaction statuts : entre 500 € et 1 500 € selon le professionnel (notaire ou avocat).
+	-	Enregistrement de la SCI (si non encore créée) : environ 250 à 300 € (frais greffe, annonces légales, etc.).
+	-	Frais d'évaluation du bien : optionnel, mais recommandé (par un expert ou notaire), surtout si plusieurs associés.
+
+ 3. Frais bancaires éventuels
+Accord de la banque :
+	-	Si la banque accepte l'apport, elle peut demander une mainlevée partielle de garantie, une nouvelle hypothèque, ou une modification du contrat.
+	-	Cela peut engendrer :
+	-	Frais de mainlevée : entre 150 € et 300 €.
+	-	Frais de réaménagement du prêt : variables selon l'établissement (500 à 1 000 € typiquement).
+
+ 4. Conséquences fiscales potentielles
+A. Droits d'enregistrement :
+	-	Voir point 1 : 5,8 % sauf exonération.
+B. Plus-value immobilière :
+	-	Si ce n'est pas votre résidence principale, l'apport peut entraîner une imposition sur la plus-value (calculée entre prix d'achat et valeur d'apport).
+	-	Exonération après 22 ans pour l'impôt + 30 ans pour les prélèvements sociaux.
+
+ 5. Frais de fonctionnement ultérieurs de la SCI
+Si vous remboursez le crédit vous-même :
+	-	Aucun coût direct pour la SCI, mais vous perdez du pouvoir d'achat personnel.
+Si la SCI vous verse un loyer :
+	-	Vous devrez déclarer ces loyers dans votre impôt sur le revenu.
+	-	La SCI (soumise à l'IR ou à l'IS) devra tenir une comptabilité rigoureuse, impliquant :
+	-	Frais de comptable annuel : 800 à 1 500 € / an.
+
+ En résumé des principaux coûts initiaux :
+Poste
+Montant estimatif
+Frais de notaire
+7 à 8 % de la valeur du bien
+Rédaction statuts et apport
+500 à 1 500 €
+Frais greffe et annonce légale
+250 à 300 €
+Éventuels frais bancaires
+500 à 1 000 €
+Expertise ou évaluation du bien
+500 à 1 000 € (si réalisée)
+Fiscalité sur plus-value (si applicable)
+Variable, potentiellement élevé
+
+Souhaitez-vous que je vous calcule une simulation chiffrée complète avec un exemple (montant du bien, ancienneté, crédit restant, etc.) ?
+
+Ok, Le montant du credit s'eleve à 400 000 €. j'ai contracté ce crédit avec deux personnes, ma mère qui à fait l'apport de 50 000 € et qui ne paye aucun loyer ni remboursement de credit, ma femme (Nous sommes marié maispas sous le régime de la communauté de bien). Ma femme ne paye pas son credit mensuel, je paye tout. comment sortir de cette situation
+
+Florent, votre situation combine plusieurs enjeux juridiques, financiers et familiaux. Voici une analyse structurée de votre problématique et des solutions envisageables pour sortir de cette configuration bancale et risquée, en tenant compte des éléments suivants :
+	-	Crédit immobilier de 400 000 € contracté à 3 personnes (vous, votre mère, votre épouse).
+	-	Apport initial de 50 000 € par votre mère.
+	-	Vous seul remboursez l'intégralité du crédit.
+	-	Votre mère n'habite pas dans le bien, ne paye rien.
+	-	Votre femme ne contribue pas au remboursement, bien que co-emprunteuse.
+	-	Vous êtes marié hors communauté de biens (donc patrimoine personnel séparé).
+
+ Problèmes actuels
+	1	Déséquilibre financier : vous assumez seul une dette contractée à trois.
+	2	Risques juridiques et successoraux :
+	-	Votre mère reste copropriétaire (via l'acte d'achat ou le prêt).
+	-	En cas de décès ou conflit, les héritiers peuvent revendiquer leur part.
+	3	Absence de cadre clair :
+	-	Pas de convention entre coemprunteurs ou copropriétaires.
+	-	Vous enrichissez potentiellement les autres sans contrepartie.
+
+ Objectifs
+	-	Reprendre la maîtrise complète du bien (et du crédit).
+	-	Isoler votre patrimoine de celui de votre mère et de votre épouse.
+	-	Éventuellement loger le bien dans une SCI ou rester en nom propre.
+	-	Équilibrer les engagements et responsabilités de chacun.
+
+ 3 scénarios possibles pour en sortir
+ Scénario 1 : Rachat des parts des coemprunteurs et mise en place d'un prêt à votre nom seul
+Étapes :
+	1	Faire estimer le bien à sa valeur actuelle.
+	2	Évaluer la part de chacun selon l'acte notarié (si vous êtes propriétaires à parts égales, ou autrement).
+	3	Racheter leurs parts (notamment celles de votre mère et de votre épouse).
+	4	Faire un rachat de crédit à votre nom seul.
+	5	Modifier le titre de propriété chez le notaire (frais à prévoir).
+Avantages :
+	-	Vous devenez pleinement propriétaire.
+	-	Vous reprenez le contrôle du crédit et du bien.
+	-	Clarifie les situations de propriété et d'héritage.
+Coûts :
+	-	Frais de notaire (environ 7 % de la valeur rachetée).
+	-	Indemnisation éventuelle de votre mère (si elle veut récupérer son apport).
+	-	Frais bancaires de rachat de crédit.
+
+ Scénario 2 : Création d'une SCI et apport du bien en nature
+Objectif :
+Sortir le bien du giron personnel et le loger dans une société contrôlée à 100 % par vous.
+Étapes :
+	1	Créer une SCI soumise à l'IS (ou à l'IR selon vos objectifs).
+	2	Apporter le bien à la SCI (acte notarié).
+	3	Vous remboursez le crédit via une convention avec la SCI.
+À noter :
+	-	Le crédit reste à vos noms personnels : ce montage ne supprime pas le problème, mais le masque juridiquement.
+	-	Il faudra obtenir l'accord de la banque pour l'apport du bien.
+Inconvénients :
+	-	Ne règle pas le problème du crédit partagé à 3.
+	-	Ne vous libère pas du passif bancaire de votre mère et votre épouse.
+
+ Scénario 3 : Revente du bien et réinvestissement via une structure claire
+Quand envisager ?
+Si les blocages familiaux sont trop importants ou si vous ne souhaitez pas supporter une dette aussi mal répartie.
+Étapes :
+	1	Vente du bien.
+	2	Remboursement du prêt.
+	3	Création d'une SCI ou achat personnel avec un nouveau crédit, en votre nom seul.
+Avantages :
+	-	Solution radicale mais propre.
+	-	Vous repartez sur une base saine.
+	-	Aucune dette vis-à-vis d'autres coemprunteurs.
+
+ Recommandations concrètes
+	1	Récupérer l'acte de propriété et le contrat de prêt pour vérifier la répartition.
+	2	Rencontrer un notaire pour chiffrer le rachat de parts et sécuriser l'apport de votre mère.
+	3	Faire une simulation de rachat de crédit à votre nom seul.
+	4	Si vous gardez la maison : rédiger une convention de répartition des charges entre coemprunteurs (valable même hors SCI).
+	5	Clarifier votre projet patrimonial : usage personnel ? location ? revente ? transmission ?
+
+Souhaitez-vous que je vous prépare :
+	-	 une lettre de proposition de rachat de parts pour votre mère ou votre épouse ?
+	-	 un modèle de convention entre coemprunteurs ?
+	-	 ou une simulation patrimoniale sur 10 ans, selon vos choix (SCI ou non) ?
+
+ma femme qui n'a jamais payé un seul loyer pour le remboursement du credit veut me rendre les parts. est ce possible ?
+
+Oui, il est tout à fait possible que votre femme vous cède ses parts dans le bien immobilier, mais cela dépend du mode de détention du bien (qui est distinct du prêt). Voici ce qu'il faut comprendre et comment procéder concrètement.
+
+ 1. Distinguer propriété et emprunt
+	-	Le contrat de crédit engage solidairement tous les coemprunteurs (vous, votre mère, votre femme), peu importe qui paie réellement.
+	-	Le titre de propriété détermine qui détient quelles parts du bien. Ce sont ces parts que votre femme peut vous "rendre".
+ Céder ses parts = vous transférer la pleine propriété ou l'usufruit de sa quote-part du bien immobilier.  Cela ne l'efface pas du crédit automatiquement.
+
+ 2. Modalités de la cession de parts
+A. Vérifier la répartition actuelle
+	-	Que dit l'acte de vente notarié ? (Souvent : 1/3 chacun, ou répartition selon l'apport.)
+	-	Même si elle n'a rien payé, si elle figure à l'achat, elle est copropriétaire légalement.
+B. Comment peut-elle vous transférer ses parts ?
+ Deux options principales :
+1. Donation ou cession à titre gratuit
+	-	Elle vous donne sa part (donation entre époux possible même hors communauté).
+	-	Frais notariés à prévoir (droits de donation potentiellement réduits entre époux).
+	-	Fiscalité avantageuse si c'est votre résidence principale.
+2. Vente à l'euro symbolique
+	-	Elle vous vend sa part pour un montant faible (par exemple 1 €).
+	-	Cela peut être contesté par l'administration fiscale (risque de requalification en donation déguisée).
+	-	Moins adapté entre époux.
+
+ 3. Ce que cela ne changera pas automatiquement
+Même si votre femme vous cède ses parts dans le bien, elle restera :
+	-	Solidairement engagée sur le prêt bancaire, sauf :
+	-	Si vous effectuez un rachat de crédit à votre seul nom, ou
+	-	Si la banque accepte un désengagement partiel (rare, mais possible si vous avez la capacité financière suffisante et si vous le demandez formellement).
+Donc, il faut distinguer deux choses à traiter en parallèle :
+Sujet
+Action requise
+Propriété du bien
+Passage chez le notaire pour cession/donation
+Engagement sur le crédit
+Accord de la banque pour un désengagement ou un rachat
+
+ Recommandations
+	1	Consultez un notaire pour encadrer juridiquement la cession de parts (et éviter des erreurs coûteuses).
+	2	Prenez contact avec votre banque pour demander un désengagement de coemprunteur ou simuler un rachat de crédit à votre nom seul.
+	3	Faites acter la cession de parts avec une clause expresse de renoncement à tout droit futur (notamment en cas de divorce ou de décès).
+	4	Si le bien est votre résidence principale, des abattements ou exonérations peuvent s'appliquer pour les frais de donation.
+
+Souhaitez-vous que je vous rédige un modèle de lettre à adresser à la banque ou un modèle de cession de part entre époux à remettre au notaire ?
+
+peux tu me faire u
+
+Bien sûr Florent. Voici un modèle de lettre à adresser à votre banque pour demander le désengagement de votre épouse du prêt immobilier (à adapter selon votre situation précise). En parallèle, je vous proposerai ensuite un modèle de déclaration de cession gratuite de parts que vous pourrez utiliser avec votre notaire.
+
+ Modèle de lettre à la banque - Demande de désolidarisation
+
+[Votre nom complet]  
+[Adresse]  
+[Téléphone]  
+[Email]  
+
+[Nom de la banque]  
+À l'attention du service des crédits immobiliers  
+[Adresse de l'agence ou siège]  
+
+[Ville], le [date]
+
+Objet : Demande de désengagement de coemprunteur - Crédit immobilier n° [référence du prêt]
+
+Madame, Monsieur,
+
+Je suis actuellement coemprunteur, avec Mme [Nom complet de votre épouse] et Mme [Nom de votre mère, si elle est aussi coemprunteuse], d'un prêt immobilier souscrit auprès de votre établissement le [date de signature], pour un montant de [400 000 €], destiné à l'acquisition du bien situé [adresse complète du bien].
+
+Je vous informe que Mme [Nom de votre épouse] souhaite se désengager du prêt en tant que coemprunteuse. En effet, elle ne participe pas au remboursement du crédit depuis l'origine, et souhaite par ailleurs me céder à titre gratuit la totalité de ses droits sur le bien immobilier en question.
+
+En tant que coemprunteur principal et payeur exclusif des mensualités, je vous sollicite pour :
+1. Étudier la possibilité d'un **désengagement de Mme [Nom épouse]** du prêt,
+2. Ou à défaut, la mise en place d'un **rachat de crédit à mon seul nom**, selon mes capacités de remboursement actuelles.
+
+Je suis prêt à fournir tous les justificatifs nécessaires (bulletins de salaire, avis d'imposition, situation patrimoniale, etc.) pour permettre l'étude de cette demande dans les meilleurs délais.
+
+Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+[Signature]
+
+ Modèle simple de cession gratuite de parts entre époux (à remettre au notaire)
+
+DÉCLARATION DE CESSION DE DROITS IMMOBILIERS À TITRE GRATUIT
+
+Je soussignée, Mme [Nom, prénom de votre épouse], née le [date], épouse de M. Florent Weil, mariée sous le régime de la séparation de biens, déclare par la présente céder à titre gratuit à mon époux M. Florent Weil, né le [date], la totalité de ma quote-part dans la propriété du bien immobilier situé au [adresse du bien], acquis le [date d'acquisition] et actuellement détenu en indivision.
+
+Cette cession est faite **à titre gratuit, sans contrepartie financière**, avec effet à compter de la signature de l'acte authentique devant notaire.
+
+Je reconnais renoncer à tout droit futur sur le bien précité, que ce soit en cas de divorce, décès, ou autre situation.
+
+Fait à [ville], le [date].
+
+[Signature de l'épouse]  
+[Signature de Florent (pour acceptation)]  
+
+ À remettre à un notaire pour en faire un acte authentique de cession de parts. Il pourra vous conseiller sur la fiscalité applicable.
+
+Souhaitez-vous que je vous rédige aussi une version notariale complète de l'acte de cession, ou que je vous aide à préparer le dossier à transmettre à votre notaire et votre banque ?

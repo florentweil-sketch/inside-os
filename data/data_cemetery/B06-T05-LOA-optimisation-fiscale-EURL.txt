@@ -1,0 +1,914 @@
+THREAD HISTORIQUE - B01 - T18 - Sujet LOA optimisation fiscal eurl
+Date approximative : 01.02.2025
+Source : ChatGPT
+
+donne moi toutes les demarches et documents a fourn ir pour cha nger l'assurance de mon vehicule aupres de mon assureur. Inside vient de vendre a moi meme un master
+
+Voici toutes les démarches à effectuer et les documents à fournir pour changer l'assurance de ton véhicule (le Master vendu par INSIDE à toi-même) auprès de ton nouvel assureur.
+
+ 1. Résilier l'ancienne assurance (si existante)
+Si le Master était déjà assuré par INSIDE, tu dois faire une demande de résiliation :
+	-	Lettre recommandée (ou via l'espace client en ligne) à l'ancien assureur.
+	-	Motif : "changement de titulaire du certificat d'immatriculation"
+	-	Joindre une copie du certificat de cession ou nouvelle carte grise.
+⏱ Délais : résiliation immédiate dès que la vente est enregistrée, selon l'article L121-11 du Code des assurances.
+
+ 2. Documents à fournir au nouvel assureur
+Pour souscrire une nouvelle assurance à ton nom, tu devras fournir :
+	1	Carte grise (certificat d'immatriculation) à ton nom (ou preuve d'une demande en cours avec le récépissé ANTS).
+	2	Permis de conduire (valide, correspondant à la catégorie du véhicule).
+	3	Relevé d'information (si tu es déjà assuré ailleurs, pour connaître ton bonus/malus).
+	4	Carte d'identité ou justificatif d'identité.
+	5	RIB pour le prélèvement des cotisations.
+	6	Justificatif de domicile de moins de 6 mois.
+	7	Certificat de cession du Master entre INSIDE et toi (utile pour justifier la vente récente).
+
+ 3. Caractéristiques du véhicule à indiquer
+Tu devras aussi fournir ou confirmer auprès de l'assureur les éléments suivants :
+	-	Marque, modèle, année de mise en circulation.
+	-	Puissance fiscale (CV).
+	-	Numéro d'immatriculation.
+	-	Kilométrage actuel.
+	-	Usage du véhicule : privé, professionnel ou mixte.
+	-	Stationnement (lieu, type de parking…).
+
+ 4. Options et garanties à choisir
+Selon l'usage (pro/perso, outil de travail), pense à comparer les garanties :
+	-	Responsabilité civile (obligatoire).
+	-	Tous risques, tiers + vol/incendie, bris de glace, etc.
+	-	Assistance 0 km, véhicule de remplacement.
+	-	Protection juridique (souvent recommandée en cas de litige).
+
+ 5. Après souscription
+Une fois l'assurance validée :
+	-	Tu recevras une attestation d'assurance (à conserver dans le véhicule).
+	-	Et une carte verte (vignette à coller sur le pare-brise).
+	-	Ton contrat pourra être activé immédiatement ou à une date choisie.
+
+Souhaites-tu un modèle de lettre de résiliation ou un comparatif d'assurance pour véhicule utilitaire / usage professionnel ?
+
+comment connaitre l'année de moin véhicule master
+
+Pour connaître l'année de ton véhicule Renault Master, tu as plusieurs méthodes simples et fiables. Voici les principales :
+
+ 1. Regarder sur la carte grise (certificat d'immatriculation)
+C'est la méthode la plus fiable.
+	-	Consulte la case B de la carte grise : -> Elle indique la date de première immatriculation du véhicule.  L'année du véhicule est celle de cette première mise en circulation.
+Exemple : si la case B indique "15/06/2019", ton Master est un modèle 2019.
+
+ 2. Utiliser le numéro VIN (numéro de série)
+	-	Le VIN (Vehicle Identification Number) est un code de 17 caractères (lettres et chiffres) unique à chaque véhicule.
+	-	Il figure sur la carte grise (case E), sur le châssis du véhicule, et parfois en bas du pare-brise côté conducteur.
+Tu peux :
+	-	Soit déchiffrer toi-même le VIN : le 10e caractère donne une indication de l'année (ex. "K" = 2019, "L" = 2020, etc.).
+	-	Soit entrer ton VIN sur un site comme :  https://histovec.interieur.gouv.fr  Ou un décodeur VIN comme https://vindecoderz.com
+
+ 3. Consulter les factures ou le carnet d'entretien
+	-	Si tu as des documents d'entretien ou une facture d'achat, l'année y est souvent précisée.
+	-	Certains garages indiquent aussi le modèle exact et l'année.
+
+ 4. Avec l'immatriculation uniquement
+Si tu n'as pas la carte grise sous la main, tu peux :
+	-	Utiliser un simulateur d'assurance ou de valeur Argus en ligne.
+	-	Entres-y le numéro d'immatriculation, et ils t'indiquent modèle, année, motorisation, etc.
+Exemples de sites :
+	-	https://www.lacentrale.fr
+	-	https://www.cartegrise.com
+	-	https://www.autovisual.com
+
+Si tu veux, je peux t'aider à décrypter ton VIN ou analyser ton immatriculation - il suffit de me l'envoyer ici (tu peux masquer les derniers chiffres si besoin).
+
+en tant que particulier, si je vends me master a un professionnel, peut il recuperer la tva?
+
+En règle générale, non, un professionnel ne pourra pas récupérer la TVA si le vendeur est un particulier, même s'il achète le véhicule pour son activité professionnelle. Voici une explication claire et détaillée selon les cas :
+
+ 1. Règle de base : pas de récupération de TVA si le vendeur est un particulier
+	-	Les particuliers ne facturent pas la TVA, car ils ne sont pas assujettis à la TVA.
+	-	En conséquence, l'acheteur professionnel ne peut pas déduire de TVA sur ce type d'achat, car la TVA n'est tout simplement pas présente dans la transaction.
+Exemple : Tu vends ton Renault Master 12 000 € à une entreprise -> elle paie 12 000 € TTC, mais sans pouvoir récupérer une TVA, car aucune TVA n'a été collectée.
+
+ 2. Exception : véhicule acheté initialement par une entreprise assujettie à la TVA
+Si le véhicule a été :
+	-	acheté neuf ou d'occasion par INSIDE (ton entreprise),
+	-	avec récupération partielle ou totale de TVA à l'achat (possible dans certains cas pour véhicules utilitaires),
+	-	et que le véhicule figure à l'actif de l'entreprise,
+alors la revente devrait normalement être soumise à la TVA (c'est la règle pour les entreprises). Dans ce cas, l'entreprise doit facturer la TVA, et l'acheteur professionnel pourra la récupérer.
+ Mais attention : ce n'est pas compatible avec une revente à ton nom en tant que particulier. Si INSIDE t'a vendu le véhicule, alors cette vente aurait dû être soumise à la TVA (si elle y était assujettie à l'origine), et la TVA aurait dû être mentionnée sur la facture.
+
+ 3. Ce que peut faire l'acheteur professionnel dans ton cas
+Si tu vends en tant que particulier, l'acheteur paiera le véhicule TTC, et :
+	-	Il pourra le comptabiliser comme une immobilisation ou une charge selon le montant.
+	-	Mais il ne pourra pas récupérer de TVA, même s'il est une entreprise.
+
+ Résumé
+Statut du vendeur
+Facture avec TVA ?
+Acheteur peut récupérer la TVA ?
+Particulier
+Non
+ Non
+Entreprise (assujettie TVA)
+Oui (si véhicule TVA récupérable à l'achat)
+ Oui
+
+Souhaites-tu que je t'aide à reconstituer la revente proprement de INSIDE vers toi (Florent) avec ou sans TVA, en fonction de l'historique du véhicule ?
+
+la tva a du etre soumise sur la derniere facture du LOA. Cela change t'il quelque chose ?
+
+Oui, cela change potentiellement les choses, car si INSIDE a levé l'option d'achat d'une LOA (Location avec Option d'Achat), la facture finale de rachat a probablement inclus de la TVA. Voici ce que cela implique concrètement pour la revente à toi-même ou à un tiers professionnel :
+
+ 1. TVA sur la dernière facture de LOA = actif d'entreprise acquis avec TVA
+Lorsqu'une entreprise comme INSIDE rachète un véhicule en LOA à la fin du contrat, elle :
+	-	reçoit une facture d'acquisition du véhicule, émise par la société de financement.
+	-	Cette facture inclut de la TVA, entièrement récupérable si le véhicule est un véhicule utilitaire (comme un Renault Master).
+ Résultat : Le véhicule entre dans le patrimoine de l'entreprise avec un prix d'achat TTC, et la TVA est déductible pour INSIDE.
+
+ 2. Conséquence : la revente par INSIDE doit être soumise à la TVA
+Puisque INSIDE :
+	-	est une entreprise assujettie à la TVA,
+	-	a récupéré la TVA sur l'achat final du Master,
+ Elle doit obligatoirement facturer la TVA lors de la revente, que ce soit à un particulier ou à un professionnel.
+ Cela signifie que :
+	-	Le prix de revente doit être TTC, avec mention de la TVA sur la facture (ex. : 10 000 € HT + 2 000 € TVA = 12 000 € TTC).
+	-	Le professionnel acheteur pourra alors récupérer la TVA (2 000 € dans cet exemple).
+
+ 3. Cas d'une vente à toi-même (Florent en tant que particulier)
+Dans ton cas, si INSIDE t'a vendu le Master :
+	-	L'entreprise aurait dû facturer la TVA, car elle vend un bien inscrit à l'actif avec récupération antérieure de TVA.
+	-	Même si l'acheteur est un particulier, la TVA est due et doit apparaître sur la facture.
+ Sinon, l'administration fiscale pourrait considérer qu'INSIDE a dissimulé une TVA exigible, ce qui entraîne des risques en cas de contrôle.
+
+ 4. Que faire si tu veux revendre ensuite le véhicule à un professionnel ?
+Tu l'as acheté en tant que particulier, donc tu n'es pas assujetti à la TVA. Résultat :
+	-	Tu ne peux pas facturer la TVA.
+	-	Le professionnel acheteur ne pourra donc pas la récupérer, même si INSIDE avait, elle, récupéré la TVA à l'achat.
+
+ Synthèse selon ton cas
+Vente du Master par INSIDE -> Florent
+Vente avec TVA requise ?
+Revente possible avec TVA ?
+INSIDE a récupéré la TVA sur la LOA
+ OUI
+ NON (car Florent = particulier)
+
+ Que faire maintenant ?
+	-	Tu peux émettre une facture de revente d'INSIDE vers toi-même, avec TVA mentionnée clairement.
+	-	Cela officialisera une transaction propre fiscalement et permettra à INSIDE de justifier la sortie d'actif.
+	-	À l'avenir, si tu veux revendre à un pro qui récupère la TVA, il faudrait que la vente se fasse directement par INSIDE, pas par toi.
+Souhaites-tu que je t'aide à générer cette facture propre INSIDE -> Florent avec les mentions obligatoires et TVA calculée ?
+
+le dernier loyer a ete payé par florent weil
+le dernier loyer a ete payé par florent weil
+
+Merci pour la précision. Le fait que le dernier loyer (option d'achat de la LOA) ait été payé par toi, Florent Weil (particulier) - et non par INSIDE (l'entreprise titulaire du contrat de LOA) - change significativement les choses, notamment sur le plan fiscal et juridique.
+
+ 1. Problème potentiel : le véhicule appartient à INSIDE… pas à Florent
+Même si Florent a payé le dernier loyer, le contrat de LOA est au nom d'INSIDE. Par conséquent :
+	-	Le droit de propriété à la levée d'option revient légalement à INSIDE, pas à Florent.
+	-	Le paiement par un tiers (Florent) ne transfère pas automatiquement la propriété.
+	-	L'administration fiscale et la société de leasing considèrent INSIDE comme l'acheteur du véhicule, pas Florent.
+
+ 2. Facturation obligatoire avec TVA par INSIDE à Florent
+Si INSIDE est considérée comme ayant levé l'option, même si le paiement vient de toi :
+	-	Le véhicule est entré à l'actif de l'entreprise.
+	-	Donc, la revente d'INSIDE vers Florent (même si elle est immédiate ou symbolique) doit être formalisée par une facture TTC, avec TVA affichée (puisqu'INSIDE peut/dévait récupérer la TVA).
+ Ce qui est fiscalement exigé :
+	-	INSIDE achète le Master (via levée d'option).
+	-	Puis INSIDE vend le Master à Florent avec TVA (vente soumise à TVA sur prix total).
+	-	Florent ne peut pas récupérer la TVA, car c'est une acquisition en tant que particulier.
+
+ 3. Si aucune facture n'a été émise entre INSIDE et Florent : régularisation nécessaire
+Tu es dans une situation où :
+	-	Tu es propriétaire apparent du véhicule (car tu l'utilises, tu as payé l'option, etc.)
+	-	Mais aucun transfert formel ni comptable n'a été fait d'INSIDE vers Florent.
+ Solution recommandée :
+	-	INSIDE émet une facture de cession à Florent, avec :
+	-	Le prix de revente TTC (même si symbolique).
+	-	La TVA clairement affichée.
+	-	La date et toutes mentions légales.
+	-	Le paiement du véhicule peut être justifié par le fait que Florent a déjà réglé l'option.
+
+ Exemple concret de facture INSIDE -> Florent
+Véhicule : Renault Master Prix de cession HT : 8 000 € TVA 20 % : 1 600 € Prix TTC : 9 600 € Date de cession : [date réelle ou alignée sur levée d'option] Mention : " Véhicule cédé après levée d'option LOA - TVA sur marge non applicable. "
+ Cela officialise la transaction, protège INSIDE fiscalement en cas de contrôle, et donne à Florent un document de propriété en bonne et due forme.
+
+ Résumé de ta situation
+Éléments
+Conséquences
+LOA au nom d'INSIDE
+Légalement, INSIDE est le propriétaire
+Dernier loyer payé par Florent
+Ne suffit pas à transférer la propriété
+TVA sur levée d'option
+Revente obligatoirement avec TVA
+Solution saine
+INSIDE doit établir une facture de vente TTC à Florent
+
+Souhaites-tu que je te génère un modèle de facture complète entre INSIDE et Florent pour cette cession, avec TVA incluse, mentions légales, etc. ?
+
+la societe de leasing m'a appeler pour me proposer de lever l'option d'achat en mon nom propre pour tansferer la propriete du véhicule vers moi
+
+Merci pour cette précision importante, Florent. Le fait que la société de leasing t'ait proposé de lever l'option d'achat en ton nom propre, directement, change complètement le cadre juridique et fiscal de la situation. Voici l'analyse complète :
+
+ 1. Levée d'option en ton nom personnel = acquisition directe sans passage par INSIDE
+ Conséquences juridiques :
+	-	Tu deviens directement propriétaire du véhicule auprès du bailleur (la société de leasing).
+	-	Le véhicule n'est jamais entré dans le patrimoine d'INSIDE, donc pas besoin de revente INSIDE -> Florent.
+	-	Tu es considéré comme acquéreur final.
+ Conséquences fiscales :
+	-	La société de leasing va te facturer le montant de l'option d'achat TTC, avec TVA incluse.
+	-	Tu ne pourras pas récupérer la TVA, puisque tu achètes en tant que particulier.
+
+ 2. Ce que cela signifie pour INSIDE
+	-	INSIDE ne devient jamais propriétaire du véhicule.
+	-	Elle n'a donc rien à inscrire à son actif, ni de TVA à collecter ou reverser.
+	-	Elle ne peut pas faire de facture de vente vers toi, ce serait juridiquement infondé.
+ Attention : si INSIDE a payé certains loyers, ces montants sont considérés comme des charges de location, non comme un investissement.
+
+ 3. Ce que tu dois obtenir de la société de leasing
+	-	Une facture à ton nom (Florent Weil), avec :
+	-	Le montant TTC de l'option.
+	-	La TVA clairement indiquée.
+	-	Le numéro d'immatriculation du véhicule.
+	-	Les mentions classiques d'une facture (date, vendeur, acheteur, etc.).
+Cela te permettra :
+	-	De prouver la propriété du véhicule.
+	-	De faire la carte grise à ton nom.
+	-	D'assurer le véhicule sans blocage administratif.
+
+ 4. Ce que tu peux répondre à la société de leasing
+Tu peux dire :
+"Je confirme que je souhaite lever l'option d'achat en mon nom propre, Florent Weil, à titre personnel, et non au nom de l'entreprise INSIDE. Merci de m'émettre la facture finale à mon nom, avec TVA, pour finaliser la cession et permettre l'immatriculation à mon nom."
+
+ Résumé
+Situation
+Conséquence
+Option levée par Florent
+Tu es directement propriétaire
+TVA sur facture finale
+Incluse, mais non récupérable
+INSIDE n'intervient plus
+Pas de revente, pas de TVA collectée
+Statut du Master
+Véhicule hors patrimoine de l'entreprise
+
+Souhaites-tu que je t'aide à rédiger un modèle d'email clair à envoyer à la société de leasing pour officialiser ta demande ?
+
+oui mais le vehicule à été acheté par inside (LOA) puis, dernier loyer (levé d'optiion) payé par moi
+
+Merci Florent, c'est maintenant parfaitement clair :
+	-	Le contrat de LOA a bien été souscrit au nom d'INSIDE,
+	-	Tous les loyers, sauf le dernier, ont été payés par INSIDE,
+	-	Le dernier loyer (levée d'option) a été payé par toi personnellement (Florent Weil).
+ Cette configuration soulève une zone grise fiscale et juridique qu'il est crucial de bien encadrer pour éviter tout risque fiscal ou comptable. Voici une réponse complète et structurée :
+
+ 1. La propriété du véhicule revient à INSIDE, pas à Florent
+Même si tu as payé le dernier loyer, ce n'est pas suffisant pour devenir légalement propriétaire du Master. Pourquoi ?
+	-	En droit, le titulaire du contrat de LOA est seul habilité à lever l'option d'achat.
+	-	Le paiement par un tiers ne modifie pas le bénéficiaire du contrat.
+	-	La facture de levée d'option sera donc émise au nom d'INSIDE, même si c'est Florent qui a payé.
+ Conséquence : Le véhicule est considéré comme acheté par INSIDE. Il entre donc dans le patrimoine de la société, et pas dans le tien directement.
+
+ 2. INSIDE doit revendre officiellement le véhicule à Florent
+Puisque INSIDE est devenue propriétaire juridique et fiscal du Master, elle doit :
+	-	Émettre une facture de vente TTC à Florent,
+	-	Mentionner la TVA collectée, car INSIDE a probablement récupéré la TVA sur l'achat (à vérifier),
+	-	Comptabiliser la sortie de l'actif dans sa comptabilité,
+	-	Et reverser la TVA à l'administration.
+ Cela régularise la situation et éteint tout risque de redressement en cas de contrôle fiscal.
+
+ 3. Modalités de cette revente : valeur et TVA
+Tu peux fixer :
+	-	Un prix de revente TTC cohérent (ex. : montant de l'option ou valeur résiduelle).
+	-	Exemple : option d'achat 9 000 € TTC -> revente possible au même prix, en justifiant le paiement direct.
+ La facture INSIDE -> Florent devra comporter :
+Élément
+Exemple
+Prix HT
+7 500 €
+TVA 20%
+1 500 €
+Prix TTC
+9 000 €
+Mention
+" Véhicule Renault Master, cédé après levée d'option LOA, facturé TTC "
+
+ 4. Régularisation du paiement déjà effectué par Florent
+Même si Florent a déjà réglé l'option directement, il faut documenter ce paiement :
+	-	Soit via une note interne ou mail indiquant que " Florent Weil a avancé le paiement de l'option d'achat au bénéfice d'INSIDE, montant de 9 000 € TTC ".
+	-	Soit via un remboursement par INSIDE à Florent.
+	-	Soit via une compensation comptable (ex. : inscription en compte courant d'associé ou écriture de régularisation).
+
+ 5. Modèle d'email à la société de leasing (pour archivage ou suivi)
+Tu peux écrire :
+
+Objet : Confirmation de paiement de l'option d'achat - Renault Master
+Bonjour [Nom du conseiller],
+Je vous confirme que le dernier loyer correspondant à la levée d'option d'achat du véhicule Renault Master [immatriculation], dont le contrat de LOA est au nom de la société INSIDE, a été réglé par mes soins à titre personnel, à la demande de l'entreprise.
+Je comprends que, conformément aux conditions du contrat, la propriété du véhicule est transférée à INSIDE, seule titulaire du contrat.
+Je vous remercie de bien vouloir émettre la facture de levée d'option au nom d'INSIDE, afin que nous puissions ensuite formaliser une cession en bonne et due forme entre INSIDE et moi-même.
+Bien cordialement, Florent Weil
+
+Souhaites-tu maintenant un modèle de facture INSIDE -> Florent complet avec tous les champs remplis ?
+
+la levée de l'option était de 278 euros ttc. Mais alors pourquoi la societe de leasing m'a proposer de lever l'option en mon nom propre et m'a fournis un certificat de cession ?
+
+Merci pour cette précision capitale, Florent.
+Le fait que la levée d'option d'achat ne soit que de 278 € TTC indique clairement que tu es à la toute fin d'une LOA classique, où la valeur résiduelle du véhicule est très faible (souvent symbolique).
+Mais surtout, si la société de leasing t'a proposé de lever l'option en ton nom propre et t'a fourni un certificat de cession à ton nom, alors il faut revoir complètement l'analyse précédente : il s'agit d'une exception opérationnelle que la société de leasing a volontairement actée.
+
+ Ce que cela signifie réellement : la société de leasing a dérogé à la procédure normale
+Même si le contrat de LOA est au nom d'INSIDE, certains loueurs (notamment ALD, Arval, LeasePlan…) acceptent exceptionnellement de transférer directement la propriété du véhicule à un tiers (associé, gérant, salarié…) si l'entreprise cliente le demande, ou si le dernier loyer est réglé par ce tiers.
+Dans ce cas :
+	-	Le loueur ne transfère pas le véhicule à INSIDE, mais directement à Florent Weil, qui devient acquéreur final.
+	-	Il émet la facture de cession ou le certificat de cession au nom de Florent, avec TVA comprise.
+	-	L'entreprise INSIDE n'entre jamais juridiquement en possession du véhicule, même si elle a payé tous les autres loyers.
+ C'est une tolérance commerciale, pas une obligation légale. Le loueur reste seul juge de cette possibilité.
+
+ La preuve décisive : le certificat de cession à ton nom
+Si tu as reçu :
+	-	un certificat de cession Cerfa n°15776*01 au nom de Florent Weil,
+	-	une facture de vente émise par la société de leasing à ton nom personnel, même avec TVA,
+ Alors tu es reconnu officiellement comme propriétaire du véhicule, et INSIDE n'est pas intervenue dans le transfert de propriété.
+ Résultat :
+	-	Tu peux faire la carte grise à ton nom sans passage par INSIDE.
+	-	Il n'y a pas de revente à enregistrer, ni de TVA à reverser côté INSIDE.
+	-	Tu as acheté personnellement le véhicule pour 278 € TTC, sans incidence fiscale pour l'entreprise.
+
+ Pourquoi la TVA est tout de même présente dans cette facture
+Même si tu es un particulier, la société de leasing est :
+	-	Une entreprise assujettie à la TVA.
+	-	Donc toutes ses ventes (même aux particuliers) sont soumises à la TVA, sauf exceptions (vente de véhicules d'occasion soumis au régime de la TVA sur marge, par exemple).
+ Tu as donc payé un montant TTC, mais tu ne peux pas récupérer la TVA, car tu n'es pas un professionnel assujetti.
+
+ Résumé final de ton cas
+Élément
+Statut
+Contrat LOA au nom d'INSIDE
+Oui
+Dernier loyer payé par Florent
+Oui
+Levée d'option au nom de Florent
+ Oui (exception validée par le loueur)
+Facture ou certificat de cession à ton nom
+ Oui
+Véhicule propriété de Florent ?
+ Oui
+INSIDE concernée fiscalement ?
+ Non
+TVA récupérable ?
+ Non, car particulier
+
+Souhaites-tu que je t'aide à vérifier la conformité du certificat de cession que tu as reçu, ou à formuler une réponse d'archivage ou de justification en cas de contrôle ?
+
+oui plus tard. En revanche je reviens a ma premiere question, et avec cette derniere configuration, si je revends le master a une societe, l'acquereur peut il recuperer la tva?
+
+Merci pour ton retour, Florent. Avec toutes les informations désormais claires, ta situation est stabilisée fiscalement : tu es propriétaire en tant que particulier d'un Renault Master acquis directement auprès de la société de leasing, avec facture TTC à ton nom, pour un montant de 278 € TTC.
+Voyons maintenant ce que cela implique si tu revends le Master à une société.
+
+ 1. Tu es un particulier : tu ne factures pas la TVA
+Même si le véhicule a été :
+	-	initialement utilisé par une entreprise (INSIDE),
+	-	acheté auprès d'une société de leasing avec TVA incluse,
+ Le fait que la facture d'achat soit à ton nom propre, Florent Weil, fait que tu es un vendeur non assujetti à la TVA.
+ En clair : tu ne peux pas facturer la TVA, car tu n'es pas une entreprise enregistrée à la TVA.
+
+ 2. Donc : l'acheteur professionnel ne pourra pas récupérer de TVA
+Même si :
+	-	le véhicule est un utilitaire (Renault Master),
+	-	et qu'il est destiné à un usage professionnel,
+ La société acheteuse ne pourra pas récupérer la TVA sur la vente, car :
+	-	Il n'y a pas de TVA collectée à l'achat (vente hors champ TVA),
+	-	Le vendeur (toi) n'est pas assujetti.
+
+ 3. Ce que tu peux/dois fournir lors de la vente
+Tu dois :
+	-	Rédiger une facture de vente ou un certificat de cession sans mention de TVA.
+	-	Mentionner sur la facture :  " Vente effectuée par un particulier, TVA non applicable - article 293 B du CGI. "
+Ex : Prix de vente : 9 000 € TTC (tout compris) TVA : non applicable
+
+ Cas particuliers à ne pas confondre
+Cas
+TVA récupérable ?
+Vente d'un utilitaire par une société à un pro
+ Oui, si TVA sur marge ou TVA normale
+Revente par un particulier à un pro
+ Non
+Achat en tant qu'auto-entrepreneur ou société
+ Oui (sous conditions), mais ce n'est pas ton cas
+
+ Résumé clair
+Situation
+Réponse
+Florent vend un Master acquis à titre perso
+
+L'acheteur est une société assujettie à la TVA
+
+Peut-elle récupérer la TVA sur l'achat ?
+ NON, car Florent ne facture pas de TVA
+Doit-on le préciser sur la facture ?
+ Oui : "TVA non applicable - art. 293 B du CGI"
+
+Souhaites-tu un modèle simple de facture ou de certificat de vente entre toi (particulier) et une société acheteuse, avec les mentions correctes ?
+
+si je monte une EURL, et que je reprends la meme configuration, est ce que l'acqueur pro pourra recuper la tva ?
+
+Très bonne question Florent - et elle touche un point technique clé du droit fiscal français.
+ Si tu crées une EURL (Entreprise Unipersonnelle à Responsabilité Limitée), et que tu reprends le même scénario (acquisition d'un véhicule auprès d'un loueur), alors le traitement de la TVA dépend entièrement de deux éléments :
+	1	L'identité juridique de l'acquéreur du véhicule (toi ou ton EURL),
+	2	Le statut fiscal de l'EURL (assujettie ou non à la TVA).
+
+ CAS 1 : Le véhicule est acquis par l'EURL directement
+ 1.1 Tu demandes au loueur de faire la facture finale au nom de l'EURL
+	-	Dans ce cas, l'EURL est l'acquéreur juridique du véhicule.
+	-	La société de leasing te facturera le véhicule avec TVA (ex : 278 € TTC).
+	-	L'EURL, si elle est assujettie à la TVA (régime réel), pourra récupérer cette TVA.
+ Ensuite, si l'EURL revend le véhicule à une société :
+	-	Elle facture avec TVA (à 20 % sauf si TVA sur marge s'applique),
+	-	Et l'acheteur professionnel pourra récupérer la TVA normalement.
+ Conclusion : OUI, l'acquéreur pro pourra récupérer la TVA.
+
+ CAS 2 : Le véhicule reste au nom de Florent Weil (particulier), même après création de l'EURL
+Même si :
+	-	Tu es gérant unique de l'EURL,
+	-	Tu mets le véhicule à disposition de la société,
+ Le véhicule appartient toujours à toi personnellement, donc :
+	-	La revente par l'EURL ne peut pas légalement avoir lieu, car la société n'est pas propriétaire.
+	-	Une revente par toi, Florent, resterait une vente hors champ de TVA, et l'acheteur ne pourrait pas la récupérer.
+ Conclusion : NON, l'acquéreur pro ne pourra pas récupérer la TVA si le véhicule n'a jamais été inscrit à l'actif de l'EURL.
+
+ En résumé
+Configuration
+Revente avec TVA ?
+Acheteur pro peut récupérer la TVA ?
+Véhicule acheté par Florent (perso)
+ Non
+ Non
+Véhicule acheté par EURL (assujettie TVA)
+ Oui
+ Oui
+
+ Astuce : comment transférer un véhicule perso à l'EURL si déjà acheté ?
+Si tu veux inscrire le Master à l'actif de ton EURL après coup :
+	-	Tu dois faire une vente de Florent -> EURL, avec facture sans TVA (tu n'es pas assujetti).
+	-	Ensuite, l'EURL peut revendre le véhicule, mais elle ne pourra pas facturer de TVA sur marge ni récupérer de TVA, car aucune TVA n'a été déduite à l'entrée.
+C'est donc beaucoup plus avantageux que le véhicule soit acheté directement par l'EURL.
+
+Souhaites-tu que je t'aide à :
+	-	Rédiger un modèle de facture de cession entre toi et l'EURL, ou
+	-	T'indiquer comment faire acheter le véhicule par l'EURL dès le départ dans un prochain cas ?
+
+pour la creation d'une eurl, quel est le meilleur statut fiscal ?
+
+Très bonne question, Florent. Le choix du statut fiscal d'une EURL (Entreprise Unipersonnelle à Responsabilité Limitée) est déterminant pour optimiser la fiscalité, la rémunération du dirigeant, la gestion de la TVA, et la stratégie patrimoniale à moyen/long terme.
+Voici une analyse complète, précise et personnalisée pour t'aider à choisir le meilleur régime fiscal pour ton EURL.
+
+ 1. Les deux statuts fiscaux possibles pour une EURL
+Option
+Impôt sur le Revenu (IR)
+Impôt sur les Sociétés (IS)
+EURL à l'IR (par défaut si personne physique associée)
+Les bénéfices sont intégrés à ton revenu personnel
+ Pas de société distincte fiscalement
+EURL à l'IS (option volontaire)
+ Non
+La société paie l'impôt sur ses bénéfices, tu es imposé seulement sur ce que tu te verses
+
+ 2. Comparaison détaillée IR vs IS
+Critères
+EURL à l'IR
+EURL à l'IS
+Traitement du bénéfice
+Ajouté directement à ton revenu (soumis au barème progressif)
+Imposé au taux d'IS : 15 % jusqu'à 42 500 €, 25 % au-delà
+Cotisations sociales
+Sur la totalité du bénéfice, même si tu ne te verses rien
+Sur la rémunération uniquement (les dividendes sont moins chargés)
+Souplesse de gestion
+Simplicité, transparence fiscale
+Optimisation possible (salaire vs dividendes)
+TVA
+Compatible avec tous les régimes de TVA
+Idem
+Intérêt patrimonial
+Revenu direct, pas de capitalisation dans la société
+Possibilité de faire grossir la trésorerie dans la société, différer l'imposition perso
+Transmission ou revente
+Patrimoine personnel mélangé
+Meilleure distinction et valorisation de la société
+
+ 3. Quel est le meilleur statut pour toi, Florent ?
+Au vu de ton profil (expérimenté, déjà chef d'entreprise, projets de structuration/filialisation, volonté de maîtrise, capacité d'arbitrage sur tes rémunérations), l'option à l'IS est clairement recommandée, car elle te permet :
+ Avantages concrets de l'EURL à l'IS :
+	-	Maîtrise totale de ta rémunération -> tu décides quand et combien tu te verses.
+	-	Tu peux laisser des bénéfices en société pour investir (ex. : acheter un véhicule, du matériel…).
+	-	Moins de cotisations sociales si tu ne te verses qu'un faible salaire.
+	-	Optimisation possible via les dividendes (avec PFU ou barème selon option).
+	-	Tu peux facilement faire évoluer vers une SASU plus tard (même IS), si besoin.
+
+ Cas où l'IR serait intéressant :
+	-	Si tu veux que tous les bénéfices soient versés directement à toi sans passer par des rémunérations.
+	-	Si tes revenus actuels sont très faibles et que tu veux profiter d'un taux d'imposition réduit ou nul.
+	-	Si tu vises une activité ponctuelle ou saisonnière sans investissement structurant.
+Mais dans ton cas (projet pro structuré, véhicule utilitaire, outil de facturation, stratégie d'actif), l'IR limite tes options et augmente ta pression fiscale et sociale.
+
+ Option de changement possible
+Tu peux :
+	-	Démarrer à l'IR (régime par défaut), puis opter pour l'IS plus tard (option possible dans les 5 ans),
+	-	Ou optez directement pour l'IS dès la création -> dans ton cas, c'est recommandé.
+
+ Conclusion : Meilleur choix pour toi
+Crée ton EURL avec option à l'IS. Cela te permet :
+	-	D'acheter un véhicule au nom de l'EURL avec récupération de la TVA,
+	-	De maîtriser ta rémunération et tes charges sociales,
+	-	De construire un outil souple, optimisable et évolutif,
+	-	De faire fructifier la trésorerie de la société.
+
+Souhaites-tu que je t'aide à :
+	-	Remplir les statuts d'EURL avec option à l'IS ?
+	-	Générer un formulaire M0 rempli avec cette option ?
+	-	Ou préparer une lettre d'option à l'IS pour le SIE ?
+
+oui aide moi sur toutes les etapes d'une creation d'eurl (si tant est si bien que ce soit la meilleure option pour moi)
+
+Éléments mémorisés mis à jour
+Parfait Florent, tu fais bien de vouloir tout cadrer proprement dès le départ. Voici une feuille de route complète et personnalisée pour créer une EURL optimisée, étape par étape, avec conseils à chaque phase.
+
+ ÉTAPE 1 : Vérifier que l'EURL est bien le meilleur choix
+ Pourquoi c'est adapté à toi :
+	-	Tu es seul associé -> l'EURL est faite pour ça.
+	-	Tu veux acheter du matériel ou un véhicule, et récupérer la TVA.
+	-	Tu souhaites garder le contrôle, mais bénéficier d'une structure professionnelle, crédible, évolutive.
+	-	Tu veux optimiser la fiscalité (arbitrage rémunération/dividendes).
+	-	Tu pourras plus tard basculer en SASU si besoin, ou accueillir un associé via transformation.
+ Conclusion : L'EURL à l'IS est bien la meilleure option pour toi.
+
+ ÉTAPE 2 : Préparation des statuts
+Contenu essentiel des statuts :
+	-	Dénomination sociale (nom de ta société).
+	-	Objet social (activité exacte, doit être rédigée précisément).
+	-	Siège social (peut être ton adresse perso ou un local).
+	-	Durée de vie : souvent 99 ans.
+	-	Montant du capital social (libre : dès 1 €, mais souvent 1 000 € ou plus).
+	-	Modalités de gestion : toi en tant que gérant.
+	-	Choix fiscal : option pour l'IS.
+ Je peux t'aider à générer un modèle de statuts personnalisé à ton nom, avec IS intégré.
+
+ ÉTAPE 3 : Dépôt du capital social
+Où ?
+	-	À la banque (compte pro dédié),
+	-	Chez un notaire,
+	-	Ou via une néobanque (Shine, Qonto…).
+Documents à fournir :
+	-	Statuts signés,
+	-	Pièce d'identité,
+	-	Justificatif de siège social.
+ Tu recevras une attestation de dépôt de capital nécessaire pour l'immatriculation.
+
+ ÉTAPE 4 : Immatriculation au greffe (via le guichet unique)
+À faire sur : https://procedures.inpi.fr
+Documents à fournir :
+	-	Statuts signés,
+	-	Attestation de dépôt de capital,
+	-	Justificatif de siège,
+	-	Formulaire M0 (je peux t'aider à le remplir),
+	-	Pièce d'identité + déclaration de non-condamnation,
+	-	Lettre d'option pour l'IS (voir plus bas).
+⏱ Délai : environ 48-72h.  Tu obtiens ton Kbis.
+
+ ÉTAPE 5 : Option pour l'Impôt sur les Sociétés (IS)
+ Très important : même si tu prévois l'IS dans les statuts, tu dois formellement notifier ton SIE.
+ Tu dois envoyer dans les 3 mois :
+	-	Une lettre d'option pour l'IS signée, datée, au Service des Impôts des Entreprises (SIE) dont tu dépends.
+ Je peux te fournir un modèle de cette lettre.
+
+ ÉTAPE 6 : TVA & obligations fiscales
+Une fois immatriculé :
+	-	Ton EURL sera assujettie à la TVA, par défaut.
+	-	Tu choisis ton régime de TVA :  Régime réel simplifié (déclaration annuelle, acomptes)  Régime réel normal (déclaration mensuelle ou trimestrielle)
+ En général, réel normal trimestriel est bien pour démarrer.
+Je peux t'aider à rédiger ta demande de régime de TVA selon ton prévisionnel d'activité.
+
+‍ ÉTAPE 7 : Sécurité sociale du gérant
+Tu es gérant majoritaire d'EURL = Travailleur Non Salarié (TNS)
+	-	Tu cotises à l'URSSAF, à la SSI.
+	-	Charges sociales : environ 40 à 45 % de ta rémunération versée.
+	-	Pas de charges si tu ne te verses rien (utile pour gérer la trésorerie).
+ Tu pourras te verser :
+	-	Un salaire, ou
+	-	Des dividendes (moins chargés mais imposés via PFU ou IR).
+
+ ÉTAPE 8 : Comptabilité & obligations légales
+	-	Tenir une comptabilité complète (livre journal, grand-livre, bilan, liasse fiscale).
+	-	Tenir un registre des décisions.
+	-	Déposer tes comptes annuels chaque année.
+ Je peux t'aider à choisir une solution comptable adaptée (indépendant, cabinet, outil comme Indy ou Dougs).
+
+ Synthèse des documents que je peux te générer
+Document
+Utilité
+ Statuts EURL personnalisés
+Création légale
+ Formulaire M0 pré-rempli
+Immatriculation
+ Lettre d'option à l'IS
+À envoyer au SIE
+ Modèle de dépôt de capital
+Pour la banque
+ Modèle de facture sans TVA ou avec TVA
+Selon besoin
+ Modèle d'attestation de non-condamnation
+Obligatoire
+ Demande d'option TVA trimestrielle
+Facultatif mais utile
+
+Souhaites-tu que je t'accompagne pas à pas dans la création des statuts et du dossier d'immatriculation ? Et si tu veux, donne-moi :
+	-	le nom de ta future EURL,
+	-	l'activité précise (objet social),
+	-	le montant de capital souhaité,
+	-	l'adresse du siège social,
+Je te prépare tout.
+
+quelle est alors le model d'eurl ou de satut, la remunération est moi chargée
+
+Florent, ta question touche un point crucial : comment structurer une société unipersonnelle où la rémunération est le moins chargée possible ? Tu veux probablement :
+	-	Optimiser les charges sociales (souvent la plus grosse ponction),
+	-	Sans tomber dans une structure rigide ou fiscalement risquée.
+Voici une réponse claire, structurée, et parfaitement alignée avec ta situation.
+
+ Objectif : quelle structure unipersonnelle permet une rémunération la moins chargée ?
+Il existe 2 modèles possibles :
+Forme
+Statut du dirigeant
+Taux de charges sociales
+Fiscalité sur dividendes
+EURL à l'IS
+TNS (Travailleur Non Salarié)
+ ~45% sur rémunération versée uniquement
+30% (PFU) ou IR
+SASU à l'IS
+Assimilé salarié
+ ~65 à 75% sur rémunération
+30% (PFU) ou IR
+ Conclusion immédiate :  L'EURL à l'IS est de loin la plus intéressante si tu veux :
+	-	Ne pas te verser de rémunération dans un premier temps,
+	-	Ou te verser un montant très maîtrisé avec des charges sociales moins lourdes,
+	-	Tout en ayant la possibilité de distribuer des dividendes fiscalement optimisés.
+
+ Comparatif EURL à l'IS vs SASU à l'IS (ton vrai choix ici)
+Critère
+EURL à l'IS
+SASU à l'IS
+Charges si 0 rémunération
+0 €
+0 €
+Charges sur rémunération
+~45 % (TNS)
+~75 % (URSSAF, Retraite, mutuelle...)
+Dividendes
+Imposés à 30 % (PFU) ou IR
+Idem
+Protection sociale
+Moins complète mais acceptable
+Plus complète, mais très coûteuse
+Simplicité comptable
++
+-
+Idéal pour...
+ Se rémunérer faiblement  Laisser la trésorerie en société  Créer une holding ou structuration filiale
+ Salarié à haut revenu  Associé passif ou image d'entreprise plus "classique"
+ Tu veux te verser peu ou pas de rémunération au démarrage et conserver la trésorerie dans la boîte ?  EURL à l'IS = meilleur levier.
+
+ Exemples concrets de rémunération et charges
+Cas 1 : EURL à l'IS (TNS)
+	-	Rémunération brute : 1 000 €
+	-	Charges sociales : ~450 €
+	-	Coût total pour la société : 1 450 €
+	-	Montant net dans ta poche : ~850 €
+Cas 2 : SASU à l'IS (assimilé salarié)
+	-	Rémunération brute : 1 000 €
+	-	Charges patronales + salariales : ~750 €
+	-	Coût total : 1 750 €
+	-	Net : ~750 €
+ À rémunération équivalente, l'EURL coûte ~300 € de moins à la société.
+
+ En résumé
+Critère stratégique
+Meilleure forme
+Rémunération peu chargée
+ EURL à l'IS
+Possibilité de ne rien se verser
+ EURL à l'IS (0 charges)
+Arbitrage rémunération/dividende
+ EURL
+Image corporate, protection renforcée
+SASU (mais plus cher)
+
+ Recommandation claire pour toi, Florent :
+Crée une EURL à l'IS, reste non rémunéré au départ (ou très faiblement rémunéré), Laisse la trésorerie grandir dans la société, et arbitre entre :
+	-	Rémunération maîtrisée (faibles cotisations),
+	-	Dividendes en fin d'exercice (30 % PFU ou régime IR).
+Tu veux que je te prépare un modèle de statuts d'EURL à l'IS avec cette logique intégrée (rémunération variable, possibilité de rester non rémunéré, etc.) ?
+
+donc le salaire versé via l'eurl est moins taxé qu'un salaire versé par une sas
+
+Oui, exactement Florent. Le salaire versé par une EURL (à l'IS) est significativement moins taxé qu'un salaire versé par une SAS ou une SASU. C'est un levier d'optimisation majeur si tu veux maîtriser ta rémunération et réduire la pression sociale sur ta trésorerie.
+
+ Comparaison claire : EURL (TNS) vs SAS (assimilé salarié)
+Critère
+EURL à l'IS (TNS)
+SAS/SASU à l'IS (assimilé salarié)
+Statut du dirigeant
+Travailleur Non Salarié (TNS)
+Assimilé salarié
+Charges sociales
+~45 % du net (sur salaire versé uniquement)
+~65-75 % du brut
+Organismes collecteurs
+URSSAF + SSI
+URSSAF + caisses de retraite (AGIRC-ARRCO) + mutuelle obligatoire
+Protection sociale
+Moins complète (pas de chômage, couverture retraite moindre)
+Plus complète (proche salarié, mais très coûteux)
+Flexibilité
+ Tu peux ne pas te rémunérer sans payer de charges
+ Idem
+Coût d'un salaire de 1 500 € net
+Environ 2 175 €
+Environ 2 625 €
+ Pour une rémunération nette identique, l'EURL coûte entre 20 et 30 % de moins à la société.
+
+ Exemple concret
+Tu veux te verser 1 500 € nets/mois :
+Forme
+Salaire brut
+Charges sociales
+Coût total pour la société
+EURL à l'IS
+~2 175 €
+~675 €
+2 175 €
+SASU à l'IS
+~2 625 €
+~1 125 €
+2 625 €
+ Économie nette pour l'EURL : 450 €/mois, soit 5 400 €/an.
+
+ Mais pourquoi tout le monde ne choisit pas l'EURL alors ?
+Parce que :
+	-	La protection sociale est un peu plus faible (retraite, indemnités journalières).
+	-	Il n'y a pas d'assurance chômage possible (mais idem en SASU en pratique).
+	-	Certains préfèrent la souplesse des dividendes en SASU (traitement fiscal plus souple si tu gagnes beaucoup).
+	-	L'image SAS est parfois mieux perçue pour les startups ou les levées de fonds.
+Mais pour toi, Florent - artisan, entrepreneur expérimenté, structurant ton activité autour d'achats de matériel, de véhicule utilitaire, de prestations facturées - le modèle EURL à l'IS est nettement plus efficient fiscalement et socialement.
+
+ Conclusion
+Objectif
+Meilleur choix
+Se rémunérer à faible coût social
+ EURL à l'IS
+Garder la trésorerie dans la société
+ EURL à l'IS
+Maximiser la rentabilité nette
+ EURL à l'IS
+Se salarier avec protection maximale
+SASU (mais plus cher)
+
+Souhaites-tu que je t'aide à :
+	-	Calculer différents scénarios de rémunération nette/coût total selon EURL ou SASU ?
+	-	Rédiger une clause dans les statuts précisant que tu peux ne pas être rémunéré ou te rémunérer selon décision annuelle ?
+	-	Te fournir un modèle de statuts optimisé pour EURL à l'IS + TNS + faible rémunération ?
+
+quelles sont les options de facturations de ma sas a mon eurl pour rester dans la legalité
+
+Florent, tu poses ici une question centrale pour structurer légalement et efficacement tes activités si tu souhaites faire travailler ta SAS pour ton EURL, ou l'inverse. Il est tout à fait possible de facturer entre ta SAS et ton EURL, à condition de respecter strictement certaines règles juridiques, fiscales et comptables.
+Voici une analyse complète et détaillée des options qui s'offrent à toi, avec les limites à ne pas franchir pour rester dans la légalité et éviter tout redressement.
+
+ 1. CONTEXTE : relation entre deux sociétés que tu contrôles
+Tu es dans une situation de groupe interne :
+	-	Une SAS (peut-être la maison-mère ou structure principale),
+	-	Une EURL que tu détiens également.
+⏱ Ce montage peut être utilisé pour :
+	-	Séparer des activités (ex : maîtrise d'œuvre vs exécution),
+	-	Créer une structure de production ou de sous-traitance interne,
+	-	Organiser une facturation croisée (location, prestation, marque, etc.),
+	-	Optimiser la fiscalité via affectation des charges.
+
+ 2. CE QUI EST POSSIBLE : facturations autorisées entre SAS et EURL
+ a) Prestations de services (cas le plus courant)
+	-	La SAS peut facturer à l'EURL :
+	-	Honoraires de direction ou de conseil (ex. maîtrise d'œuvre),
+	-	Services administratifs, commerciaux, communication, etc.
+	-	L'EURL peut aussi facturer à la SAS :
+	-	Travaux, menuiserie, sous-traitance,
+	-	Mise à disposition de personnel (si encadré),
+	-	Fabrication, pose ou exécution de chantier.
+ Important : les prestations doivent être réelles, justifiées, à prix de marché.
+
+ b) Location de matériel ou de locaux
+	-	La SAS peut louer un local ou du matériel à l'EURL, ou l'inverse.
+	-	Il faut un contrat écrit et une juste valeur locative.
+
+ c) Refacturation de frais communs
+	-	Exemples : abonnements logiciels, téléphonie, assurance, véhicule.
+	-	La société A paie -> refacture à B la quote-part utilisée.
+	-	Attention : pas de marge, c'est de la refacturation au réel.
+
+ d) Redevances de marque ou de savoir-faire
+	-	Si l'une des sociétés détient un actif immatériel (marque, méthode, fichier client),
+	-	Elle peut le licencier ou le mettre à disposition via un contrat,
+	-	Redevance à déclarer et documenter fiscalement.
+
+ 3. CE QUI EST INTERDIT / RISQUÉ
+ a) Prestations fictives ou surévaluées
+	-	Tu ne peux pas "faire transiter de l'argent" via des fausses factures.
+	-	L'administration fiscale vérifie les flux intra-groupe : ils doivent être documentés, réels et justifiés.
+ b) Auto-facturation déguisée
+	-	Tu ne peux pas faire facturer à toi-même en tant que gérant une prestation que tu aurais faite de toute façon.
+	-	Exemple : faire facturer par l'EURL une mission que tu as faite toi-même en tant que dirigeant de la SAS -> interdit sauf si tu es rémunéré distinctement dans l'autre société.
+ c) Mise à disposition de personnel non déclarée
+	-	Tu ne peux pas "prêter" un salarié d'une structure à l'autre sans contrat de mise à disposition en bonne et due forme.
+
+ 4. ASTUCES POUR RESTER DANS LES CLous
+Bonnes pratiques
+Pourquoi
+Rédiger des contrats de prestation entre SAS et EURL
+Pour formaliser les missions, le prix, la durée
+Appliquer des tarifs de marché (pas symboliques)
+Pour éviter la requalification d'abus de droit
+Émettre des factures avec TVA si les deux sont assujetties
+Pas de problème de double imposition
+Justifier chaque flux dans la comptabilité
+Pour faire face à un éventuel contrôle
+Garder une cloison juridique claire entre les structures
+Séparer les responsabilités et activités
+
+ 5. EXEMPLES DE MONTAGES LÉGAUX
+ Exemple 1 :
+L'EURL (atelier de menuiserie) facture à la SAS (contractant général) la fabrication et pose sur mesure pour un projet.  Prestation claire, devis, facture, TVA, chantier réel.
+ Exemple 2 :
+La SAS détient la marque "INSIDE" et facture à l'EURL une redevance mensuelle de 150 € pour l'exploitation de l'image de marque.  Justifié, valeur modérée, contrat de licence.
+ Exemple 3 :
+La SAS refacture à l'EURL l'abonnement pro Canva (à 30 % du coût total partagé entre 3 structures).  Refacturation sans marge, au réel.
+
+ CONCLUSION
+Tu peux facturer entre ta SAS et ton EURL sans problème, tant que :
+	-	Les prestations sont réelles et justifiables,
+	-	Les prix sont normaux,
+	-	Tout est formalisé par contrat ou convention,
+	-	Et comptabilisé proprement.
+
+Souhaites-tu que je t'aide à :
+	-	Rédiger un modèle de contrat de prestation entre SAS et EURL ?
+	-	Mettre en place un cadre légal de facturation croisée pour ton activité ?
+	-	Évaluer les flux idéaux entre tes structures selon ton business réel ?
+
+ok, pour l'instant l'atelier de menuiserie apartient à inside SAS. nous reviendrons sur ce point plus tard. en revanche je peux : soit facturer directement via l'eurl mes prestations de maitre d'oeuvre. soit facturer de l'eurl à inside sas mes prestations de maitre d'oeuvre. dis moi ce que tu en penses
+
+Parfait Florent, ta réflexion est structurée et très pertinente. Tu envisages deux scénarios concrets pour facturer tes prestations de maître d'œuvre, maintenant que tu es en train de créer une EURL distincte d'INSIDE SAS, qui détient actuellement l'atelier de menuiserie. Voici une analyse stratégique, juridique et fiscale détaillée des deux options.
+
+ OPTION 1 : Tu factures directement via l'EURL tes prestations de maîtrise d'œuvre à des clients externes
+ Avantages :
+	-	Simplicité structurelle : l'EURL est autonome, tu la fais vivre directement par son chiffre d'affaires.
+	-	Tu es directement identifié comme maître d'œuvre, avec une entité juridique claire et indépendante d'INSIDE SAS.
+	-	Tu peux construire ta propre marge, ton positionnement, ta clientèle.
+	-	Tu restes hors TVA sur marge si tu n'agis pas comme contractant général.
+	-	Tu peux collaborer avec INSIDE SAS comme n'importe quel sous-traitant pour les lots de travaux.
+ Points de vigilance :
+	-	Tu perds l'effet "INSIDE" en front, si la marque est portée par la SAS.
+	-	Tu dois gérer tes propres assurances RC pro MOE, décennale éventuelle (si exigée).
+	-	Il faut éventuellement réorganiser la communication vis-à-vis des clients si INSIDE SAS est déjà perçue comme maître d'œuvre.
+ Recommandé si tu veux structurer une cellule maîtrise d'œuvre indépendante, agile, qui peut travailler avec INSIDE mais aussi avec d'autres entreprises du bâtiment.
+
+ OPTION 2 : Tu factures de l'EURL à INSIDE SAS tes prestations de maîtrise d'œuvre
+ Avantages :
+	-	Tu gardes INSIDE SAS comme entité visible vis-à-vis des clients, avec une offre intégrée (MOE + exécution).
+	-	Tu fais vivre ton EURL via des flux internes, plus simples à cadrer au début.
+	-	Tu peux structurer une logique de holding ou de facturation croisée si besoin plus tard.
+	-	L'EURL reste légère administrativement (moins de relation directe avec les clients, moins de risques juridiques liés à la MOE).
+ Points de vigilance :
+	-	Les flux internes doivent être contractualisés (prestations de direction de projet, maîtrise d'œuvre, etc.) -> éviter les facturations floues ou fictives.
+	-	Tu deviens un sous-traitant "interne" d'INSIDE SAS -> moins de marge de manœuvre stratégique à long terme.
+	-	Fiscalement, il faut justifier les montants (prix de marché, durée des missions).
+	-	Tu risques de mélanger les responsabilités contractuelles en cas de litige MOE.
+ Pertinent pour une transition douce, ou pour conserver l'image commerciale unique de l'entreprise INSIDE vis-à-vis des clients.
+
+ MON CONSEIL (stratégique + pragmatique)
+Tu peux parfaitement combiner les deux approches intelligemment :
+ Phase 1 : Tu factures à INSIDE SAS tes prestations de MOE
+	-	Le temps de faire monter l'EURL, de structurer les contrats internes, de sécuriser ton régime social.
+	-	Tu maîtrises tes flux internes sans risquer une charge immédiate en prospection.
+ Phase 2 (progressive) : Tu ouvres l'EURL vers l'extérieur
+	-	Tu factures certains chantiers en direct en maîtrise d'œuvre, avec ton propre portefeuille.
+	-	Tu fais évoluer INSIDE SAS en contractant général ou exécuteur d'ouvrage, en mode prestataire de l'EURL si besoin.
+ Tu crées une séparation fonctionnelle saine : INSIDE SAS = exécution / production / menuiserie EURL = conception / MOE / direction de projet
+
+ À faire maintenant si tu vas dans ce sens :
+	1	Rédiger une convention de prestation EURL -> SAS, avec :
+	-	Description des missions,
+	-	Durée ou chantier par chantier,
+	-	Conditions tarifaires (au réel ou au forfait).
+	2	Organiser la comptabilité des flux croisés pour rester transparent.
+	3	Préparer une transition de l'image de maître d'œuvre si l'EURL prend l'autonomie commerciale plus tard.
+
+Souhaites-tu que je te rédige un modèle de contrat de prestation de maîtrise d'œuvre entre ton EURL et INSIDE SAS ? Ou un schéma visuel de répartition des flux entre les deux ?

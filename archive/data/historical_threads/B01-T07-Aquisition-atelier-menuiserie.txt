@@ -1,0 +1,253 @@
+THREAD HISTORIQUE — B01 — T07 — Sujet Aquisition atelier de menuiserie 
+Date approximative : 01.06.2024
+Source : ChatGPT
+
+je suis gérant d'une entreprise générale du batiment détenant des machines à bois. je souhaite créer une entreprise de menuiserie et racheter les machines à cette premiere entreprise. que dois je faire
+
+
+
+Raisonnement terminé pendant quelques secondes
+
+Je ne suis pas avocat et ne peux fournir de conseil juridique au sens strict. Les éléments ci-dessous sont de simples informations générales. Pour valider votre projet et vous assurer de respecter la réglementation en vigueur, il est recommandé de consulter un professionnel du droit (avocat, notaire ou expert-comptable).
+Voici les grandes étapes et considérations pour votre projet :
+
+1. Choisir la forme juridique de la nouvelle entreprise de menuiserie
+	1	Identifier le statut approprié : vous pouvez opter pour une société (SARL, SAS, EURL, SASU, etc.) ou un statut d’entreprise individuelle (EI, micro-entrepreneur).
+	2	Considérer l’aspect fiscal et social : chaque forme juridique a des conséquences différentes sur l’imposition et la protection sociale du dirigeant.
+
+2. Créer la nouvelle structure
+	1	Rédaction des statuts (dans le cas d’une société) :
+	◦	Définir la dénomination sociale, le siège, l’objet social (ex. « menuiserie, ébénisterie, etc. ») et le capital social.
+	2	Évaluation des apports :
+	◦	Si vous réalisez des apports en nature (machines, équipements…), vous devez estimer ou faire estimer (par un commissaire aux apports dans certains cas) la valeur des biens pour qu’ils soient inscrits au capital de la nouvelle société.
+	◦	Si vous préférez acheter officiellement les machines, alors on sera plus sur un contrat de cession ou de vente et non un apport en nature.
+	3	Immatriculation au Registre du commerce et des sociétés (RCS).
+
+3. Organiser la cession ou l’apport des machines
+A. Vente des machines (cession d’actifs)
+	•	Contrat de vente : établir un contrat de cession entre votre première entreprise (vendeur) et la nouvelle (acheteur).
+	•	Prix de cession : fixer un prix justifié (valeur de marché) pour ne pas risquer de requalification par l’administration fiscale (en cas de prix trop bas ou trop élevé).
+	•	Facturation et comptabilisation :
+	◦	Votre première entreprise facturera la nouvelle.
+	◦	Attention aux incidences de TVA (si la première société y est assujettie) et à la comptabilisation de la vente comme une plus-value éventuelle dans la première structure.
+B. Apport en nature
+	•	Dans le cadre de la constitution de la nouvelle société :
+	◦	Les machines peuvent constituer un apport en nature au capital.
+	◦	Un commissaire aux apports peut être obligatoire (exigé par la loi au-delà d’un certain montant ou dans certaines formes de sociétés) pour évaluer la valeur des biens apportés.
+	◦	L’apport en nature est ensuite rémunéré par des parts sociales (SARL) ou des actions (SAS).
+	•	Conséquences fiscales et comptables :
+	◦	L’entreprise d’origine cède un bien, ce qui peut générer une plus-value.
+	◦	Dans le bilan de la nouvelle société, ces machines apparaissent à l’actif pour leur valeur d’apport.
+
+4. Respecter la réglementation (transfert d’actifs intra-groupes ou entre sociétés liées)
+	•	Dès lors que vous êtes le gérant des deux entités, vous devez veiller à la transparence des opérations, pour éviter toute remise en cause (abus de biens sociaux, prix de cession fictif, etc.).
+	•	Il peut être préférable de passer par un professionnel (expert-comptable, avocat) pour s’assurer que le montage juridique est solide et conforme.
+
+5. Gérer les aspects sociaux et contractuels
+	1	Salariés : si votre première entreprise emploie des menuisiers ou du personnel affecté à cette activité, il peut être nécessaire d’organiser le transfert de ces salariés dans la nouvelle structure (loi du 14 juin 2013, transfert de contrat de travail, etc.).
+	2	Contrats clients ou fournisseurs : analyser s’il faut procéder à un transfert ou négocier de nouveaux contrats dans la nouvelle entité.
+
+6. Financer la nouvelle société
+	•	Augmenter le capital de la nouvelle entreprise : via les apports (espèces et/ou nature).
+	•	Souscrire un prêt pour régler la facture d’achat des machines si c’est une cession payante.
+	•	Prévoyance et assurance : vérifier que les assurances (responsabilité civile professionnelle, multirisque, etc.) correspondent à votre nouvelle activité de menuiserie.
+
+7. Obligations comptables et fiscales post-cession
+	•	Dans votre première entreprise :
+	◦	Comptabiliser la vente : sortie de l’actif et enregistrement de la plus-value.
+	◦	Déclarer la plus-value éventuelle (et payer l’impôt correspondant s’il y a lieu).
+	•	Dans la nouvelle société :
+	◦	Intégrer les machines à l’actif (valeur d’achat ou valeur d’apport).
+	◦	Calculer et déduire les amortissements adéquats.
+
+Conclusion
+	1	Créer la nouvelle structure juridique (SARL, SAS ou autre) en définissant clairement l’objet social (menuiserie).
+	2	Organiser la cession ou l’apport des machines, en vous assurant que le prix ou la valeur d’apport soit déterminé de façon objective.
+	3	Sécuriser l’opération avec l’aide d’un expert-comptable ou d’un avocat pour éviter tout contentieux fiscal ou social.
+	4	Gérer les conséquences comptables, fiscales et sociales dans la première entreprise (vendre ou sortir l’actif) et dans la nouvelle (acquérir ou apporter l’actif).
+Vous aurez ainsi un montage juridique et fiscal conforme, tout en respectant vos obligations légales en tant que dirigeant des deux sociétés.
+
+Si je veux créer une entreprise de menuiserie sur mesure, que dois je faire
+
+
+
+Raisonnement terminé pendant 4 secondes
+
+Je ne suis pas avocat ni expert-comptable et ne peux fournir de conseil juridique au sens strict. Les informations ci-dessous sont générales et doivent être complétées par l’avis de professionnels compétents (avocat, notaire, expert-comptable, chambre de métiers et de l’artisanat).
+Créer une entreprise de menuiserie sur mesure implique plusieurs étapes : de la définition de votre offre jusqu’à l’immatriculation officielle, en passant par la recherche de financements et la mise en conformité avec les réglementations applicables.
+
+1. Définir et valider le projet
+	1	Réaliser une étude de marché
+	◦	Identifier les besoins de votre clientèle cible (particuliers, professionnels, architectes, etc.).
+	◦	Analyser la concurrence locale (autres menuisiers, grandes surfaces de bricolage, etc.).
+	◦	Repérer les tendances (écoconception, matériaux nobles, ameublement sur mesure, etc.).
+	2	Établir un business plan
+	◦	Présenter votre offre : spécialisation (ébénisterie haut de gamme, mobilier, agencement intérieur, etc.).
+	◦	Chiffrer les investissements nécessaires (machines, outils, local, matériel informatique, véhicule de transport, etc.).
+	◦	Définir un prévisionnel financier (chiffre d’affaires, charges, rentabilité).
+	◦	Prévoir un plan de financement (apport personnel, prêt bancaire, aides publiques, etc.).
+	3	Vérifier la faisabilité technique
+	◦	Confirmer vos compétences et qualifications (CAP/BEP/Bac pro menuiserie, expérience professionnelle, etc.).
+	◦	Réfléchir à la formation continue (pour vous ou vos salariés) si besoin d’actualiser vos compétences.
+
+2. Choisir la forme juridique et le régime fiscal
+	1	Entrepreneur individuel (EI)
+	◦	Statut simple, obligations comptables réduites.
+	◦	Responsabilité sur le patrimoine personnel (possibilité d’opter pour l’EIRL, qui protège le patrimoine personnel dédié à l’activité).
+	2	Micro-entreprise (auto-entrepreneur)
+	◦	Régime simplifié de déclaration et de paiement des cotisations sociales et de l’impôt.
+	◦	Plafonds de chiffre d’affaires limités (ex.: 2023, plafond annuel de 188 700 € pour les activités d’achat-vente, 77 700 € pour les prestations de services artisanales [ces seuils peuvent varier]).
+	◦	Attention aux contraintes de la menuiserie (investissements, charges, TVA, etc.) qui peuvent vite dépasser les plafonds.
+	3	Sociétés commerciales
+	◦	SARL (ou EURL si associé unique)
+	◦	SAS (ou SASU si associé unique)
+	◦	Responsabilité limitée au montant des apports.
+	◦	Statuts à rédiger, comptabilité plus rigoureuse, mais flexibilité et sécurisation du patrimoine personnel.
+	4	Régime fiscal (IR ou IS)
+	◦	Entreprise individuelle : généralement imposé à l’Impôt sur le Revenu (IR).
+	◦	Sociétés (SARL/EURL, SAS/SASU) : choix entre l’IS (impôt sur les sociétés) ou l’IR (sous conditions).
+	◦	L’IS peut être plus avantageux si vous prévoyez de réinvestir les bénéfices ou si votre revenu est élevé.
+
+3. Effectuer les formalités administratives
+	1	Immatriculation
+	◦	Les activités artisanales de menuiserie se déclarent à la Chambre de Métiers et de l’Artisanat (CMA).
+	◦	Pour les sociétés : dépôt des statuts, inscription au Registre du Commerce et des Sociétés (RCS).
+	◦	Pour un entrepreneur individuel (ou micro-entreprise), inscription au Répertoire des Métiers (RM).
+	2	Stage de Préparation à l’Installation (SPI)
+	◦	Obligatoire pour certains artisans (ce stage a connu des évolutions législatives ; renseignez-vous auprès de la CMA de votre région).
+	◦	But : se former à la gestion d’une entreprise artisanale.
+	3	Assurances
+	◦	Assurance Responsabilité Civile Professionnelle (RC Pro) pour couvrir les dommages causés dans le cadre de votre activité.
+	◦	Garantie décennale (travaux touchant la solidité de l’ouvrage ou les éléments indissociables du bâtiment). En menuiserie, cela peut être nécessaire, surtout pour des travaux qui s’intègrent de manière durable à la construction (escaliers, portes, fenêtres, etc.).
+	◦	Assurance multirisque professionnelle (local, machines, stocks, etc.).
+	4	Compte bancaire professionnel
+	◦	Ouvrir un compte dédié pour séparer les opérations professionnelles des opérations personnelles.
+
+4. Respecter les normes et réglementations
+	1	Normes et certifications
+	◦	Vérifier les réglementations applicables (sécurité, normes de construction, incendie, accessibilité, etc.).
+	◦	Certaines certifications (Qualibat, Label Bois de France, PEFC, FSC pour l’approvisionnement en bois) peuvent valoriser votre savoir-faire.
+	2	Hygiène, sécurité, environnement
+	◦	Respecter la législation du travail et les règles de sécurité des ateliers (prévention des risques, port des EPI, ventilation, évacuation des sciures, traitement des déchets, etc.).
+	3	Obligations en matière de devis et facturation
+	◦	Mentionner les informations légales obligatoires sur les devis (taux de TVA, SIRET, etc.).
+	◦	Respecter les délais de rétractation pour les consommateurs si applicable (travail hors établissement).
+
+5. S’équiper et organiser l’activité
+	1	Local et atelier
+	◦	Choisir un atelier adapté (surface suffisante, respect des normes de sécurité, stockage des matériaux).
+	◦	Vérifier le règlement d’urbanisme local (zonage, nuisances sonores, etc.).
+	2	Matériel et machines
+	◦	Scie à format, toupie, raboteuse-dégauchisseuse, ponceuse, etc.
+	◦	Évaluer le coût d’achat ou de location.
+	◦	Prévoir l’entretien et le renouvellement du matériel.
+	3	Gestion des fournitures
+	◦	Identifier des fournisseurs fiables en bois, panneaux, quincaillerie, vernis, etc.
+	◦	Anticiper les délais de livraison.
+	4	Recrutement (si nécessaire)
+	◦	Prévoir la masse salariale, charges sociales et formalités d’embauche (DPAE, contrat de travail).
+
+6. Développer la clientèle et la notoriété
+	1	Communication et marketing
+	◦	Créer un site web ou un book en ligne pour présenter vos réalisations.
+	◦	Participer à des salons professionnels ou foires artisanales.
+	◦	Prospecter auprès des architectes, agenceurs d’intérieur, décorateurs.
+	2	Réseau professionnel
+	◦	Rejoindre des groupements d’artisans, syndicats professionnels (CAPEB, FFB, etc.).
+	◦	Nouer des partenariats avec d’autres corps de métier (électriciens, plombiers, peintres, etc.) pour proposer des offres globales.
+	3	Références et bouche à oreille
+	◦	Mettre en avant vos réalisations (photos, témoignages clients).
+	◦	Encourager vos clients satisfaits à vous recommander ou à laisser des avis positifs en ligne.
+
+7. Gérer la comptabilité et le suivi administratif
+	1	Tenir une comptabilité régulière
+	◦	Faire appel à un expert-comptable ou utiliser un logiciel de comptabilité adapté.
+	◦	Déclarer et payer régulièrement la TVA si votre statut y est assujetti.
+	2	Gestion des devis et factures
+	◦	Outil informatique pour un suivi efficace (relances, encaissements, etc.).
+	◦	Respecter les obligations légales de conservation.
+	3	Suivi des charges et trésorerie
+	◦	Calculer les coûts de revient, marges, rentabilité.
+	◦	Mettre à jour le prévisionnel financier en fonction de la réalité de l’activité.
+
+Conclusion
+Pour créer une entreprise de menuiserie sur mesure :
+	1	Analysez le marché et préparez un business plan solide.
+	2	Choisissez la forme juridique la mieux adaptée à votre projet (EI, micro, SARL/EURL, SAS/SASU…).
+	3	Immatriculez-vous auprès de la Chambre de Métiers et de l’Artisanat, souscrivez à vos assurances (RC Pro, décennale).
+	4	Respectez les normes (sécurité, devis-facturation, environnement, certifications éventuelles).
+	5	Équipez votre atelier, gérez vos stocks, mettez en place une organisation rigoureuse.
+	6	Développez votre clientèle via la communication, le réseau professionnel, et des réalisations de qualité.
+	7	Suivez de près la comptabilité, la trésorerie et vos obligations fiscales et sociales.
+Enfin, appuyez-vous sur un expert-comptable et n’hésitez pas à contacter la Chambre de Métiers et de l’Artisanat de votre région pour connaître toutes les aides et démarches spécifiques. De même, en cas de doute, un avocat ou un juriste pourra vous aider à sécuriser juridiquement votre projet.
+
+Vérifier la faisabilité technique : comment faire si je n'ai pas de diplome.
+
+
+
+Raisonnement terminé pendant 5 secondes
+
+Je ne suis pas avocat ni expert-comptable. Les informations ci-dessous sont des indications générales. Rapprochez-vous de votre Chambre de Métiers et de l’Artisanat (CMA) ou d’un professionnel du droit pour valider votre situation.
+En France, pour exercer une activité artisanale relevant de la menuiserie, vous devez justifier d’une qualification professionnelle (loi du 5 juillet 1996). Cela se fait généralement :
+	1	Soit par un diplôme (CAP, BEP, Bac pro, etc.) dans le domaine de la menuiserie ou de l’ébénisterie.
+	2	Soit par une expérience professionnelle avérée de 3 ans minimum dans un métier du secteur (menuisier, ébéniste, etc.).
+Si vous n’avez pas de diplôme :
+
+1. Faire valider son expérience professionnelle
+	•	Justifier de 3 ans d’expérience minimum :
+	◦	Vous avez travaillé comme salarié chez un artisan menuisier ?
+	◦	Vous avez exercé des fonctions techniques au sein d’une entreprise de menuiserie ?
+	•	Si vous pouvez prouver 3 ans d’expérience (fiches de paie, attestations d’employeurs, etc.), la CMA pourra reconnaître votre capacité professionnelle.
+	•	Validation des Acquis de l’Expérience (VAE) :
+	◦	Si vous avez acquis des compétences « sur le terrain », vous pouvez faire une VAE pour obtenir un diplôme (par exemple un CAP Menuisier).
+	◦	Il faut constituer un dossier, prouver que vos compétences couvrent le référentiel du diplôme, puis passer devant un jury.
+
+2. Embaucher ou s’associer avec une personne qualifiée
+	•	Recrutement d’un responsable technique :
+	◦	Vous pouvez créer l’entreprise en tant que dirigeant, sans avoir le diplôme vous-même, à condition de désigner au sein de votre société un salarié ou un associé qui détient la qualification requise (diplôme ou 3 ans d’expérience).
+	◦	Cette personne sera considérée comme le « responsable technique », garant de la compétence professionnelle vis-à-vis de la CMA.
+
+3. Obtenir une dérogation ou un avis de la CMA
+	•	Contacter la Chambre de Métiers et de l’Artisanat (CMA) :
+	◦	Expliquez votre situation, votre parcours, vos compétences.
+	◦	La CMA pourra valider directement votre inscription si elle estime que votre expérience et vos connaissances sont suffisantes.
+	◦	Au besoin, elle vous orientera vers un stage de mise à niveau ou une formation complémentaire.
+
+4. Poursuivre ou compléter une formation
+	•	Formations courtes (GRETA, AFPA, CFA, etc.) :
+	◦	Il existe des formations pour adultes permettant de préparer rapidement un CAP/BEP en menuiserie ou un titre professionnel.
+	◦	Ces formations peuvent être financées partiellement ou totalement (Pôle Emploi, CPF, etc.).
+	•	Stage de Préparation à l’Installation (SPI) :
+	◦	Obligation qui a évolué (ce stage est parfois facultatif, renseignez-vous auprès de votre CMA).
+	◦	Il aborde la gestion d’entreprise, l’administratif, la comptabilité, etc., mais ne remplace pas la qualification technique.
+
+5. Conseils pratiques
+	1	Faites un point sur vos acquis : décrivez précisément vos compétences (type de réalisations, maîtrise des machines, etc.).
+	2	Réunissez vos justificatifs d’expérience (contrats de travail, fiches de paie, attestations d’employeurs, etc.).
+	3	Contactez votre CMA pour expliquer votre projet et demander si votre expérience suffit pour l’inscription au Répertoire des Métiers.
+	4	Envisagez la VAE si vous avez déjà plusieurs années d’expérience et souhaitez obtenir un diplôme.
+	5	En dernier recours, recrutez ou associez-vous avec un professionnel diplômé pour remplir l’exigence légale.
+
+En résumé
+Même sans diplôme, vous pouvez créer votre entreprise de menuiserie si :
+	•	Vous pouvez justifier de 3 ans d’expérience dans la profession,
+	•	Ou vous embauchez un salarié/associé qualifié,
+	•	Ou vous obtenez un diplôme via une formation ou une VAE,
+	•	Et vous vous immatriculez correctement auprès de la CMA.
+L’important est de prouver que l’entreprise détient la compétence technique nécessaire pour exercer l’activité de menuiserie dans le respect de la réglementation.
+
+rédige un mail explicatif que je dois envoyer à la chambre des metiers et de l'artisanat. Je veux expliquer que j'ai une entreprise générale du bâtiment dans laquelle j'ai un atelier de menuiserie depuis 5 ans. je souhaite séparer les deux activités et faire valider mon experience professionnelle soit par mon experience.
+
+
+
+Raisonnement terminé pendant 15 secondes
+
+Objet : Demande de validation de mon expérience professionnelle en menuiserie
+Madame, Monsieur,
+Je me permets de vous contacter afin de solliciter votre accompagnement dans la création d’une entreprise de menuiserie distincte de mon activité actuelle. En effet, je suis gérant d’une entreprise générale du bâtiment depuis cinq ans, au sein de laquelle j’ai développé un atelier de menuiserie en interne.
+Aujourd’hui, je souhaite séparer ces deux activités pour des raisons à la fois organisationnelles et commerciales. Mon objectif est de procéder à l’immatriculation d’une nouvelle entité dédiée exclusivement à la menuiserie. Cependant, je ne dispose pas de diplôme formel dans ce domaine : je fonde ma demande sur ma pratique professionnelle de ces cinq dernières années, durant lesquelles j’ai exercé et encadré l’activité de menuiserie au sein de mon atelier.
+Je vous serais donc reconnaissant de bien vouloir m’indiquer les démarches à suivre afin de faire reconnaître mon expérience et obtenir l’autorisation d’exercer en tant que menuisier. Je suis prêt à fournir tous les justificatifs nécessaires (attestations, factures, références de chantiers, photos de réalisations, etc.).
+Je reste à votre disposition pour tout renseignement complémentaire ou pour convenir d’un rendez-vous, si nécessaire. Dans l’attente de votre retour, je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.
+[Votre Nom] Entreprise générale du bâtiment [Vos coordonnées] [Téléphone] – [E-mail]
+
+

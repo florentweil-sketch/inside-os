@@ -1,0 +1,62 @@
+THREAD HISTORIQUE - BLOC 99 - T02 / 2026-04-18 / Durcissement V1 et mémoire conversationnelle
+
+CONTEXTE OFFICIEL = INSIDE_OS_CONTEXT_v05
+README = README_v02
+
+Objectif validé :
+- durcissement V1 uniquement
+
+Décision stratégique :
+- ne pas viser immédiatement une beta v01 solide
+- finaliser d'abord une mémoire conversationnelle vivante fonctionnelle
+
+Règle architecturale explicitée :
+- extract = composant déterministe
+- inject = logique métier
+- chat = lecture mémoire et réponse
+- la boucle conversationnelle ne doit pas écrire directement dans la mémoire
+
+Clarification importante :
+- le README actuel couvre le contrat du pipeline
+- il ne couvre pas encore complètement le contrat de lecture conversationnelle de la mémoire
+
+Décisions techniques validées :
+- la mémoire conversationnelle V0 lit DECISIONS et LESSONS en priorité
+- THREAD_DUMP n'est pas prioritaire dans la lecture conversationnelle
+- le LLM doit utiliser la mémoire récupérée en priorité
+- le LLM doit distinguer ce qui vient de la mémoire, ce qui est inféré, et ce qui manque
+- le LLM ne doit pas inventer une décision absente
+- le LLM doit dire explicitement quand la mémoire est insuffisante
+
+État réel obtenu :
+- une boucle de chat mémoire branchée sur Notion fonctionne
+- le système lit bien DECISIONS et LESSONS
+- le système construit un contexte mémoire
+- le LLM répond à partir de ce contexte
+
+Constat critique :
+- le premier retrieval basé sur les derniers items était insuffisant
+- un ranking local par pertinence a été ajouté
+- la mémoire conversationnelle a montré qu'elle savait répondre honnêtement quand la mémoire était insuffisante
+
+Bug structurel identifié :
+- le pipeline dépend d'une cohérence stricte entre extraction_status et injection_status
+- un thread extrait peut rester non injecté si injection_status n'est pas à pending
+- ce point a été révélé pendant le test B99-T01
+
+Leçon système :
+- la première limite actuelle n'est plus l'infrastructure
+- la première limite est la qualité, la fraîcheur et la pertinence des objets mémoire présents dans Notion
+
+Décision méthodologique :
+- pour rendre la mémoire réellement utile, il faut faire passer le présent du projet par le pipeline officiel
+- la bonne logique est ingest -> extract -> inject, pas une rustine manuelle directe dans la mémoire
+
+État de validation :
+- INSIDE OS possède désormais une mémoire conversationnelle vivante en beta V0
+- cette beta V0 est fonctionnelle mais encore incomplète
+- la beta v01 solide viendra après amélioration de la qualité mémoire et durcissement du pipeline
+
+Conclusion :
+- la priorité immédiate est d'augmenter la densité et la qualité du présent dans la mémoire structurée
+- le durcissement V1 passe d'abord par la fiabilisation du contrat pipeline + lecture mémoire

@@ -1,0 +1,71 @@
+THREAD HISTORIQUE - BLOC 99 - T05 / 2026-04-18 / État opératoire INSIDE OS
+
+CONTEXTE OFFICIEL = INSIDE_OS_CONTEXT_v05
+README = README_v02
+
+État opératoire réel :
+
+- la mémoire conversationnelle V0 est fonctionnelle
+- le système est connecté à Notion
+- les bases DECISIONS et LESSONS sont lues correctement
+- le chat répond à partir de la mémoire récupérée
+
+Pipeline :
+
+- ingest fonctionne en mode global et en mode ciblé (--only)
+- extract fonctionne en mode global et en mode ciblé (--only)
+- inject fonctionne en mode global et en mode ciblé (--only)
+- le flux complet ingest -> extract -> inject est validé
+
+Améliorations récentes validées :
+
+- ajout de injection_status = pending dès ingest
+- correction du bug de blocage inject
+- ajout du mode --only sur les trois scripts
+- amélioration du ranking du chat (priorité forte sur B99)
+- distinction claire mémoire / inférence / manque dans les réponses
+
+Architecture mémoire validée :
+
+- B01 / B02 / suivants = mémoire longue (historique Florent / INSIDE)
+- B99 = présent vivant du système
+- le système lit tout mais privilégie B99 pour répondre sur l'état actuel
+
+Limites actuelles :
+
+- les réponses du chat restent encore trop "réglementaires"
+- manque de synthèse opérationnelle
+- manque de densité dans les objets mémoire du présent
+- le système sait répondre correctement mais pas encore de façon tranchante et directe
+
+Ce qui fonctionne vraiment :
+
+- injection du présent dans la mémoire via B99
+- remontée du présent dans les réponses du chat
+- cohérence globale du pipeline
+- capacité à tester rapidement via --only
+
+Ce qui reste fragile :
+
+- dépendance stricte aux statuts extraction_status / injection_status
+- qualité des réponses dépend directement de la qualité des threads B99
+- risque de réponses génériques si le présent n'est pas assez alimenté
+
+Priorité immédiate :
+
+- enrichir B99 avec des décisions et états réellement utiles
+- améliorer la qualité des réponses du chat (plus direct, plus opérationnel)
+- éviter d'ajouter du bruit inutile dans la mémoire
+
+Prochaine étape logique :
+
+- améliorer la couche de réponse (moins de règles, plus de synthèse)
+- continuer à injecter le présent de façon disciplinée
+- préparer plus tard le durcissement V1 une fois la mémoire suffisamment dense
+
+Conclusion :
+
+- INSIDE OS est désormais opérationnel en version V0
+- le système fonctionne de bout en bout
+- le problème n'est plus technique
+- le problème est maintenant la qualité et la pertinence de la mémoire vivante

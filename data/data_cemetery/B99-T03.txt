@@ -1,0 +1,20 @@
+THREAD HISTORIQUE - BLOC 99 - T03 / 2026-04-18 / Validation automatique des statuts pipeline
+
+Objectif :
+- valider que le pipeline fonctionne sans correction manuelle dans Notion
+
+Décision :
+- tester un nouveau thread après correction de ingest
+
+Attendu :
+- ingestion ciblée avec --only
+- extraction du thread
+- injection sans devoir passer injection_status à pending dans Notion
+
+Règle :
+- extract = déterministe
+- inject = logique métier
+- chat = lecture mémoire et réponse
+
+Conclusion attendue :
+- le correctif de statut est validé si B99-T03 traverse ingest, extract et inject automatiquement

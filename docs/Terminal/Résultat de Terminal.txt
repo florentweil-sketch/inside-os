@@ -1,0 +1,2274 @@
+Last login: Thu Apr 23 16:30:40 on ttys001
+admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "rupture conventionnelle", "mode": "pilotage"}'
+{"response":"ÉTAT :\n→ Rupture conventionnelle de Guillaume Berthet en cours, calendrier validé avec le cabinet social (convocation 12/01, entretien 19/01, signature 03/02, rupture 24/02/26)\n\nPROBLÈME :\n→ Aucun blocage identifié dans la mémoire, le process suit son cours\n\nACTION :\n→ Envoie la convocation d'entretien préalable à Guillaume Berthet pour le 12 janvier 2025","mode":"pilotage","debug":{"tokens":["rupture","conventionnelle"],"decisions_read":234,"lessons_read":178,"items_selected":12,"total_memory":412}}%    admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "dresse moi un portrait de Florent ses entreprises et ses projets", "mode": "synthese"}'
+{"response":"D'après la mémoire disponible, Florent dirige **INSIDE**, une entreprise disposant de salariés et intervenant sur des chantiers clients avec un savoir-faire et des références dans le haut de gamme. Il a pris une décision ferme concernant **Clémence Porret** : elle n'a aucune autorité sur les salariés d'INSIDE et doit obligatoirement passer par lui pour valider plans ou instructions, suite à des erreurs importantes sur chantiers dont il assume les responsabilités financières et relationnelles.\n\nSur le plan stratégique, Florent cible les **agences immobilières haut de gamme, architectes/prescripteurs et clients directs à fort budget** pour générer du chiffre rapidement et créer un flux de projets premium. Parallèlement, il développe **INSIDE OS**, un système de mémoire vivante qu'il utilise désormais comme **copilote réel** pour son pilotage personnel et business — le système est passé d'un simple outil mémoire à un véritable instrument de pilotage opérationnel de son activité.\n\nLa mémoire ne contient pas d'informations sur son parcours personnel, d'autres entreprises éventuelles, ou des projets en dehors d'INSIDE et INSIDE OS.","mode":"synthese","debug":{"tokens":["dresse","moi","portrait","florent","entreprises","projets"],"decisions_read":234,"lessons_read":178,"items_selected":12,"total_memory":412}}%                                     admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "toutes mes décisions sur la holding F&A Capital", "mode": "liste"}'
+{"response":"# Décisions sur la holding F&A Capital\n\n• **Création confirmée** : Holding de tête nommée F&A CAPITAL pour structurer les activités existantes et futures\n\n• **Statut juridique** : F&A Capital sera une holding animatrice\n\n• **Entités regroupées** : Maison mère de Inside SAS, L'atelier de menuiserie (Ateliers De La Colombe), et une EURL de prestations\n\n• **Rôle stratégique** : Centraliser la stratégie, la gouvernance et les flux financiers du groupe\n\n• **Gestion des risques** : Protéger et isoler les risques entre les différentes entités\n\n• **Facilitation du développement** : Permettre la création et le financement de nouvelles filiales spécialisées\n\n• **Vision long terme** : INSIDE comme entité opérationnelle phare, complétée par des filiales spécialisées de niche\n\n• **Arbitrage stratégique 2026** : La structuration de F&A Capital est l'OS stratégique, MAIS reste secondaire tant que la marge INSIDE n'est pas sécurisée\n\n• **Logique de construction** : Option B retenue = construire un groupe autonome (non optimiser INSIDE seul)","mode":"liste","debug":{"tokens":["toutes","decisions","holding","capital"],"decisions_read":234,"lessons_read":178,"items_selected":12,"total_memory":412}}%                                          admin@imacdeiac5admin inside-os % npm run os:reset-db
+
+> inside-os@1.0.0 os:reset-db
+> node os/scripts/reset-databases.mjs
+
+╔═══════════════════════════════════════╗
+║   INSIDE OS — RESET COMPLET DES BASES ║
+╚═══════════════════════════════════════╝
+
+⚠️  Cette opération archive toutes les entrées.
+    Les bases Notion restent intactes.
+
+
+→ THREAD_DUMP (3155e503-b0ac-819f-9a69-000b1c28aaf9)
+  archivé : 81/81
+  DONE — 81 entrées archivées
+
+→ DECISIONS (96c009f7-757c-4e1b-a46b-cf8415ed2f3d)
+  archivé : 234/234
+  DONE — 234 entrées archivées
+
+→ LESSONS (0137b375-fe52-48fa-affc-d7885f2412cb)
+  archivé : 88/100
+  ERREUR page 34b5e503-b0ac-8177-bd06-f3f53a780123: Archive failed for 34b5e503-b0ac-8177-bd06-f3f53a780123: <html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+</body>
+</html>
+
+  archivé : 177/178
+  DONE — 177 entrées archivées
+
+╔═══════════════════════════════╗
+║         RÉSUMÉ FINAL          ║
+╠═══════════════════════════════╣
+║  THREAD_DUMP : 81             ║
+║  DECISIONS   : 234            ║
+║  LESSONS     : 177            ║
+║  TOTAL       : 492            ║
+╚═══════════════════════════════╝
+
+✅ Bases prêtes pour la nouvelle ingestion.
+
+admin@imacdeiac5admin inside-os % npm run os:ingest -- --only B03-T05
+
+> inside-os@1.0.0 os:ingest
+> node os/ingest/ingest-thread-dump.mjs --only B03-T05
+
+INGEST historical_threads
+-------------------------
+[os:ingest] Mode ciblé --only B03-T05
+[created] B03-T05
+
+files scanned: 1
+created: 1
+updated: 0
+skipped: 0
+done.
+admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T05
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T05
+
+[os:extract] Mode: LIVE [ONLY B03-T05]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil pré-shrunk: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T05...
+[os:extract] B03-T05: decisions=0 lessons=4
+  OK
+
+admin@imacdeiac5admin inside-os % ls data/historical_threads/B03-T03*
+data/historical_threads/B03-T03-FA-Capital-V1.2.txt
+admin@imacdeiac5admin inside-os % npm run os:reset-db
+
+> inside-os@1.0.0 os:reset-db
+> node os/scripts/reset-databases.mjs
+
+╔═══════════════════════════════════════╗
+║   INSIDE OS — RESET COMPLET DES BASES ║
+╚═══════════════════════════════════════╝
+
+⚠️  Cette opération archive toutes les entrées.
+    Les bases Notion restent intactes.
+
+
+→ THREAD_DUMP (3155e503-b0ac-819f-9a69-000b1c28aaf9)
+  archivé : 1/1
+  DONE — 1 entrées archivées
+
+→ DECISIONS (96c009f7-757c-4e1b-a46b-cf8415ed2f3d)
+
+  DONE — 0 entrées archivées
+
+→ LESSONS (0137b375-fe52-48fa-affc-d7885f2412cb)
+  archivé : 1/1
+  DONE — 1 entrées archivées
+
+╔═══════════════════════════════╗
+║         RÉSUMÉ FINAL          ║
+╠═══════════════════════════════╣
+║  THREAD_DUMP : 1              ║
+║  DECISIONS   : 0              ║
+║  LESSONS     : 1              ║
+║  TOTAL       : 2              ║
+╚═══════════════════════════════╝
+
+✅ Bases prêtes pour la nouvelle ingestion.
+
+admin@imacdeiac5admin inside-os % npm run os:ingest -- --only B03-T03
+npm run os:extract -- --only B03-T03
+npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:ingest
+> node os/ingest/ingest-thread-dump.mjs --only B03-T03
+
+INGEST historical_threads
+-------------------------
+[os:ingest] Mode ciblé --only B03-T03
+[created] B03-T03
+
+files scanned: 1
+created: 1
+updated: 0
+skipped: 0
+done.
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03
+
+[os:extract] Mode: LIVE [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil pré-shrunk: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+[os:extract] B03-T03: decisions=4 lessons=3
+  OK
+
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Candidats: 1 (limit=50)   
+→ Processing id_dump=B03-T03...
+  OK
+admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "F&A Capital holding atelier menuiserie Colombe cession", "mode": "liste"}'
+{"response":"Désolé, mais je n'ai **aucune information dans la mémoire** concernant :\n\n- F&A Capital\n- Un holding\n- Un atelier de menuiserie\n- Colombe\n- Une cession\n\nLa mémoire actuelle contient uniquement des décisions et apprentissages sur :\n- La transition du rôle opérationnel vers propriétaire stratégique\n- La délégation à un directeur de travaux\n- Le renforcement de la marque INSIDE (haut de gamme)\n- La réduction de l'opérationnel à 20%\n\n**Je ne peux pas répondre à ta question sans données pertinentes dans la mémoire.**","mode":"liste","debug":{"tokens":["capital","holding","atelier","menuiserie","colombe","cession"],"decisions_read":4,"lessons_read":3,"items_selected":7,"total_memory":7}}%                        admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Guillaume Berthet rupture conventionnelle RAF directeur travaux recrutement", "mode": "liste"}'
+{"response":"Basé sur ta mémoire stratégique, voici ce qui est pertinent :\n\n• **Décision prise** : Déléguer l'exécution à un directeur de travaux ou un super conducteur pour te libérer de l'opérationnel\n\n• **Objectif** : Ne garder que 20% d'opérationnel stratégique (clients majeurs + validation créative)\n\n• **Transformation visée** : Passer de \"travaille DANS l'entreprise\" à \"travaille SUR l'entreprise\" en tant que propriétaire focalisé sur vision et structure\n\n• **Constat actuel** : Tu joues encore trop le pompier car les systèmes ne sont pas assez robustes\n\n• **Ton nouveau rôle** : Créer les systèmes et la machine, ne plus les opérer\n\n• **Enjeu** : 95% des dirigeants ne franchissent jamais ce point de bascule et restent en prison dorée\n\n---\n\n**Note** : Aucune information sur Guillaume Berthet, RAF ou un recrutement spécifique de directeur de travaux n'apparaît dans ta mémoire fournie.","mode":"liste","debug":{"tokens":["guillaume","berthet","rupture","conventionnelle","raf","directeur","travaux","recrutement"],"decisions_read":4,"lessons_read":3,"items_selected":7,"total_memory":7}}%                                            admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force
+npm run os:inject -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force
+
+file:///Users/admin/inside-os/os/extract/extract-thread-dump.mjs:402
+main().catch(e => { console.error(e); process.exit(1); });
+^
+
+ReferenceError: main is not defined
+    at file:///Users/admin/inside-os/os/extract/extract-thread-dump.mjs:402:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.22.0
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03 --force
+
+[os:inject] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force
+
+[os:extract] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+[os:extract] B03-T03: decisions=4 lessons=4
+  OK
+
+admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force --dry-run
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force --dry-run
+
+[os:extract] Mode: DRY_RUN [FORCE] [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+[os:extract] B03-T03: decisions=5 lessons=4
+  OK
+
+admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force
+
+[os:extract] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+  [extract] Thread long (137934 chars) — 5 chunk(s)
+  [extract] Chunk 1/5...
+  [extract] Chunk 1 erreur: JSON non fermé
+  [extract] Chunk 2/5...
+  [extract] Chunk 2: decisions=8 lessons=10
+  [extract] Chunk 3/5...
+  [extract] Chunk 3: decisions=6 lessons=5
+  [extract] Chunk 4/5...
+  [extract] Chunk 4 erreur: JSON non fermé
+  [extract] Chunk 5/5...
+  [extract] Chunk 5: decisions=6 lessons=8
+  [extract] Après fusion: decisions=20 lessons=23
+[os:extract] B03-T03: decisions=20 lessons=23
+  OK
+
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03 --force
+
+[os:inject] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % npm run os:audit
+
+> inside-os@1.0.0 os:audit
+> node os/scripts/audit-system.mjs
+
+
+INSIDE OS AUDIT
+---------------
+
+THREAD_DUMP
+total: 1
+extract_done: 1
+extract_pending: 0
+extract_error: 0
+inject_done: 1
+inject_pending: 0
+inject_error: 0
+
+DECISIONS
+total: 4
+
+LESSONS
+total: 3
+
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03 --force --overwrite
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03 --force --overwrite
+
+[os:inject] Mode: LIVE [FORCE] [OVERWRITE] [ONLY B03-T03]
+[os:inject] WARN DECISIONS: missing properties -> archived(checkbox), archived_at(date)
+[os:inject] Overwrite will still run, but archiving may fail if 'archived'/'archived_at' not present.
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Candidats: 1 (limit=50)   
+→ Processing id_dump=B03-T03...
+  OK
+admin@imacdeiac5admin inside-os % npm run os:audit
+
+> inside-os@1.0.0 os:audit
+> node os/scripts/audit-system.mjs
+
+
+INSIDE OS AUDIT
+---------------
+
+THREAD_DUMP
+total: 1
+extract_done: 1
+extract_pending: 0
+extract_error: 0
+inject_done: 1
+inject_pending: 0
+inject_error: 0
+
+DECISIONS
+total: 24
+
+LESSONS
+total: 26
+
+admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "F&A Capital holding atelier Colombe cession machines", "mode": "liste"}'
+{"response":"# Vue mémoire : F&A Capital, Ateliers de la Colombe et cession\n\n- **F&A CAPITAL** = holding créée pour regrouper toutes les activités (Inside SAS + Ateliers de la Colombe + future EURL)\n\n- **Ateliers de la Colombe** = entité autonome conçue pour être **vendable** si nécessaire (pas juste un pôle intégré)\n\n- **Seuil d'alerte : 8 000 € CA/mois** — en dessous = alerte orange, déclenchement possible du scénario de sortie\n\n- **Scénario de sortie activable après 6 mois** si CA moyen < 8 000 € — décision rapide, zéro acharnement\n\n- **Bail du local transféré d'Inside SAS vers Ateliers de la Colombe** pour que l'atelier supporte ses vraies charges\n\n- **Facturation externe obligatoire** : Ateliers de la Colombe facture Inside SAS comme un client normal, sans prix ami, **marge min. 45%**\n\n- **Cession des parts Inside Archi** : Clémence cède ses 50% à Florent pour **1€ par action**, Florent redevient actionnaire unique à 100%\n\n- **Taux de facturation cible ≥ 75%** (heures facturées/heures travaillées) pour détecter les fuites de marge\n\n- **L'atelier ne doit jamais dépendre du dirigeant** — autonomie obligatoire pour éviter de recréer ce que Florent cherche à quitter\n\n- **Remise en question sans état d'âme** si l'atelier génère pertes, tensions ou ralentissements — approche business stricte","mode":"liste","debug":{"tokens":["capital","holding","atelier","colombe","cession","machines"],"decisions_read":24,"lessons_read":26,"items_selected":12,"total_memory":50}}%                                                                                   admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Guillaume Berthet RAF directeur travaux recrutement", "mode": "liste"}'
+{"response":"# Guillaume Berthet, RAF, Directeur de travaux et recrutement\n\n**Guillaume Berthet et l'atelier :**\n- Guillaume Berthet travaille à l'atelier menuiserie et part mi-février, créant une situation critique pour les Ateliers de la Colombe qui commençait enfin à tourner\n\n**Recrutement - Leçons apprises :**\n- Florent reconnaît avoir \"manqué cruellement de savoir-faire sur le recrutement\" - il n'a pas trouvé de bon menuisier pendant 4-5 ans malgré sa persévérance\n\n**RAF (Responsable Administrative et Financière) :**\n- Recruter une RAF externalisée/temps partagé plutôt qu'en salariat : zéro rigidité sociale, montée en puissance rapide, regard extérieur moins complaisant, sortie facile si inadéquation\n- Rythme prévu : 2 jours/semaine au départ, ajustable à 1,5 jour une fois les processus stabilisés\n- Budget : 450 à 700 €/jour, soit 3 600 à 5 600 €/mois - cher mais moins qu'une erreur de trésorerie\n\n**Directeur de travaux :**\n- Déléguer l'exécution à un directeur de travaux ou super conducteur pour permettre au dirigeant de créer les systèmes plutôt que de les opérer\n- Le premier mois d'onboarding est LE plus important : raté = le dirigeant reprend tout ; réussi = le dirigeant n'est plus jamais indispensable\n- Profil recherché : un pilote capable de penser en marges/risques/anticipation et de dire NON, y compris au dirigeant","mode":"liste","debug":{"tokens":["guillaume","berthet","raf","directeur","travaux","recrutement"],"decisions_read":24,"lessons_read":26,"items_selected":12,"total_memory":50}}%                                            admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force
+
+[os:extract] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+  [extract] Thread long (154916 chars) — 8 chunk(s)
+  [extract] Chunk 1/8...
+  [extract] Chunk 1: decisions=7 lessons=8
+  [extract] Chunk 2/8...
+  [extract] Chunk 2: decisions=8 lessons=8
+  [extract] Chunk 3/8...
+  [extract] Chunk 3: decisions=8 lessons=11
+  [extract] Chunk 4/8...
+  [extract] Chunk 4: decisions=5 lessons=2
+  [extract] Chunk 5/8...
+  [extract] Chunk 5: decisions=8 lessons=5
+  [extract] Chunk 6/8...
+  [extract] Chunk 6: decisions=7 lessons=7
+  [extract] Chunk 7/8...
+  [extract] Chunk 7: decisions=13 lessons=8
+  [extract] Chunk 8/8...
+  [extract] Chunk 8 erreur: JSON non fermé
+  [extract] Après fusion: decisions=56 lessons=49
+[os:extract] B03-T03: decisions=56 lessons=49
+  OK
+
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+zsh: command not found: admin@imacdeiac5admin
+zsh: command not found: os:inject
+zsh: permission denied: os/inject/inject-decisions-lessons.mjs
+zsh: no matches found: [os:inject]
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Candidats: 1 (limit=50)   
+→ Processing id_dump=B03-T03...
+  ERROR: Notion 504: {"raw":"<html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n</body>\r\n</html>\r\n"}
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Aucun candidat pour --only B03-T03
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Candidats: 1 (limit=50)   
+→ Processing id_dump=B03-T03...
+  OK
+admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Guillaume Berthet RAF directeur travaux recrutement", "mode": "liste"}'
+{"response":"# Guillaume Berthet, RAF, Directeur de Travaux et Recrutement\n\n**Guillaume Berthet :**\n- Guillaume Berthet travaillait récemment à l'atelier menuiserie d'INSIDE\n- Il part mi-février (départ imminent au moment de la mémoire)\n\n**RAF (Responsable Administrative et Financière) :**\n- Recrutement en prestation/temps partagé plutôt qu'en salariat au démarrage\n- Avantages : zéro rigidité sociale, montée en puissance rapide, regard extérieur moins complaisant, sortie facile si inadéquation\n\n**Directeur de Travaux :**\n- Recrutement comme salarié senior (pas associé ni prestataire)\n- C'est le patron de la production avec autonomie complète : manager de managers, pilote de marges, garant des délais\n- **Ce n'est PAS** un super conducteur ou un ancien chef de chantier\n- Red flag immédiat : candidat qui parle beaucoup de technique et peu de chiffres\n- Un mauvais recrutement peut faire exploser INSIDE\n- Le premier mois d'onboarding est critique : s'il est raté, le dirigeant reprend tout sur le dos","mode":"liste","debug":{"tokens":["guillaume","berthet","raf","directeur","travaux","recrutement"],"decisions_read":79,"lessons_read":75,"items_selected":12,"total_memory":154}}%                                                                   admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "machines atelier cession credit vendeur montant", "mode": "liste"}'
+{"response":"# Machines atelier - Cession avec crédit vendeur\n\n**Montant et modalités :**\n- **Valeur de cession fixée : 50 000 € HT** (fourchette prudente 45-55k€, chiffre rond défendable)\n- **Crédit vendeur sur 48 mois** pour étalement sans tension de trésorerie\n- Cession simple des actifs (pas d'apport en nature) pour rester lisible comptablement\n\n**Contraintes d'amortissement :**\n- **Amortissement sur 5 ans maximum** chez Ateliers de la Colombe\n- Durée de crédit vendeur ne doit pas dépasser la durée d'amortissement restante (machines mises en service 2021)\n- Éviter l'erreur classique : vendre sur durée plus longue que l'amortissement = actif surévalué\n\n**Philosophie de la cession :**\n- **Cession prudente plutôt que haute** : priorité à la viabilité de l'atelier dès J1, pas à l'ego comptable d'Inside SAS\n- Machines SCM/CSM pro entretenues, valeur cohérente avec amortissement déjà terminé chez Inside SAS\n\n**Viabilité économique :**\n- Mensualité crédit vendeur absorbable si CA ≥ 8 000 €/mois et marge brute ≥ 45%\n- **Règle stricte** : incapacité à payer crédit vendeur = stop, aucun état d'âme","mode":"liste","debug":{"tokens":["machines","atelier","cession","credit","vendeur","montant"],"decisions_read":79,"lessons_read":75,"items_selected":12,"total_memory":154}}%                                                                            admin@imacdeiac5admin inside-os % npm run os:extract -- --only B03-T03 --force
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --only B03-T03 --force
+
+[os:extract] Mode: LIVE [FORCE] [ONLY B03-T03]
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 1
+
+→ Extracting id_dump=B03-T03...
+  [extract] Thread long (184425 chars) — 10 chunk(s)
+  [extract] Chunk 1/10...
+  [extract] Chunk 1: decisions=7 lessons=7
+  [extract] Chunk 2/10...
+  [extract] Chunk 2: decisions=8 lessons=8
+  [extract] Chunk 3/10...
+  [extract] Chunk 3: decisions=9 lessons=14
+  [extract] Chunk 4/10...
+  [extract] Chunk 4: decisions=5 lessons=3
+  [extract] Chunk 5/10...
+  [extract] Chunk 5: decisions=5 lessons=5
+  [extract] Chunk 6/10...
+  [extract] Chunk 6: decisions=7 lessons=8
+  [extract] Chunk 7/10...
+  [extract] Chunk 7: decisions=8 lessons=8
+  [extract] Chunk 8/10...
+  [extract] Chunk 8 tentative 1 échouée (JSON non fermé) — retry...
+  [extract] Chunk 8 retry OK
+  [extract] Chunk 8: decisions=31 lessons=0
+  [extract] Chunk 9/10...
+  [extract] Chunk 9 tentative 1 échouée (JSON non fermé) — retry...
+  [extract] Chunk 9 retry échoué (JSON non fermé) — chunk ignoré
+  [extract] Chunk 10/10...
+  [extract] Chunk 10: decisions=0 lessons=9
+  [extract] Après fusion: decisions=80 lessons=62
+[os:extract] B03-T03: decisions=80 lessons=62
+  OK
+
+admin@imacdeiac5admin inside-os % npm run os:inject -- --only B03-T03
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --only B03-T03
+
+[os:inject] Mode: LIVE [ONLY B03-T03]
+[os:inject] Candidats: 1 (limit=50)   
+→ Processing id_dump=B03-T03...
+  OK
+admin@imacdeiac5admin inside-os % npm run os:audit
+
+> inside-os@1.0.0 os:audit
+> node os/scripts/audit-system.mjs
+
+
+INSIDE OS AUDIT
+---------------
+
+THREAD_DUMP
+total: 1
+extract_done: 1
+extract_pending: 0
+extract_error: 0
+inject_done: 1
+inject_pending: 0
+inject_error: 0
+
+DECISIONS
+total: 129
+
+LESSONS
+total: 127
+
+admin@imacdeiac5admin inside-os % curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"question": "inside archi fonciere patrimoine immobilier Clemence", "mode": "liste"}'
+{"response":"# INSIDE ARCHI – Synthèse\n\n**Stratégie retenue :**\n- **Transformation d'INSIDE ARCHI en foncière dédiée** (scénario C) pour sécuriser le patrimoine immobilier distinct des activités à risque (bâtiment/travaux)\n\n**Opération de rachat en cours :**\n- **Clémence cède ses 50% à Florent** (250 actions à 1€/action = 250€ total) pour que Florent devienne associé unique à 100%\n- **Modification statutaire obligatoire** : les statuts du 20/11/2021 mentionnent nominativement Clémence comme associée fondatrice (page 2) → mise à jour requise\n- **INSIDE ARCHI deviendra une SASU** après dépôt au greffe (PV d'AGE + statuts consolidés + M2)\n\n**Protection patrimoniale :**\n- **Séparation immobilier/opérations** : l'immobilier logé dans INSIDE ARCHI reste à l'écart des sociétés de travaux à risque\n- **Rattachement futur à F&A CAPITAL** : INSIDE ARCHI deviendra la foncière du groupe avec déductibilité fiscale des loyers\n\n**Statut actuel :**\n- **Mise en veille** : absence de moyens actuels pour emprunter et investir\n- **Aucun apport immédiat** à la holding tant que les capacités d'investissement ne sont pas réunies","mode":"liste","debug":{"tokens":["inside","archi","fonciere","patrimoine","immobilier","clemence"],"decisions_read":129,"lessons_read":127,"items_selected":12,"total_memory":256}}%                                                         admin@imacdeiac5admin inside-os % npm run os:reset-db
+npm run os:ingest
+npm run os:extract -- --limit 100
+npm run os:inject -- --limit 100
+
+> inside-os@1.0.0 os:reset-db
+> node os/scripts/reset-databases.mjs
+
+╔═══════════════════════════════════════╗
+║   INSIDE OS — RESET COMPLET DES BASES ║
+╚═══════════════════════════════════════╝
+
+⚠️  Cette opération archive toutes les entrées.
+    Les bases Notion restent intactes.
+
+
+→ THREAD_DUMP (3155e503-b0ac-819f-9a69-000b1c28aaf9)
+  archivé : 1/1
+  DONE — 1 entrées archivées
+
+→ DECISIONS (96c009f7-757c-4e1b-a46b-cf8415ed2f3d)
+  archivé : 129/129
+  DONE — 129 entrées archivées
+
+→ LESSONS (0137b375-fe52-48fa-affc-d7885f2412cb)
+  archivé : 20/100
+  ERREUR page 34b5e503-b0ac-812a-a0d9-d81047be6889: Archive failed for 34b5e503-b0ac-812a-a0d9-d81047be6889: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title> | 502: Bad gateway</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Bad gateway</span>
+                <span class="code-label">Error code 502</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=api.notion.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2026-04-23 17:29:14 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=api.notion.com" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">Paris</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&utm_campaign=api.notion.com" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">api.notion.com</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>The web server reported a bad gateway error.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    <p class="mb-6">Please try again in a few minutes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">9f0e96d56b01036b</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">2a01:cb00:58b:f800:c591:aa73:590c:f3fb</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_502&#38;utm_campaign=api.notion.com" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html>
+  archivé : 126/127
+  DONE — 126 entrées archivées
+
+╔═══════════════════════════════╗
+║         RÉSUMÉ FINAL          ║
+╠═══════════════════════════════╣
+║  THREAD_DUMP : 1              ║
+║  DECISIONS   : 129            ║
+║  LESSONS     : 126            ║
+║  TOTAL       : 256            ║
+╚═══════════════════════════════╝
+
+✅ Bases prêtes pour la nouvelle ingestion.
+
+
+> inside-os@1.0.0 os:ingest
+> node os/ingest/ingest-thread-dump.mjs
+
+INGEST historical_threads
+-------------------------
+[created] B01-T01
+[created] B01-T02
+[created] B01-T03
+[created] B01-T04
+[created] B02-T01
+[created] B02-T02
+[created] B02-T03
+[created] B02-T04
+[created] B02-T05
+[created] B02-T06
+[created] B02-T07
+[created] B02-T08
+[created] B02-T09
+[created] B02-T10
+[created] B02-T11
+[created] B02-T12
+[created] B02-T13
+[created] B02-T14
+[created] B02-T15
+[created] B02-T16
+[created] B02-T17
+[created] B02-T18
+[created] B03-T01
+[created] B03-T02
+[created] B03-T03
+[created] B03-T04
+[created] B03-T05
+[created] B03-T06
+[created] B03-T07
+[created] B03-T08
+[created] B04-T01
+[created] B04-T02
+[created] B04-T03
+[created] B05-T01
+[created] B05-T02
+[created] B05-T03
+[created] B05-T04
+[created] B06-T01
+[created] B06-T02
+[created] B06-T03
+[created] B06-T04
+[created] B06-T05
+[created] B06-T06
+[created] B06-T07
+[created] B07-T01
+[created] B07-T02
+[created] B07-T03
+[created] B08-T01
+[created] B08-T02
+[created] B09-T01
+[created] B09-T02
+[created] B09-T03
+[created] B09-T04
+[created] B09-T05
+[created] B09-T06
+[created] B09-T07
+[created] B09-T08
+[created] B09-T09
+[created] B09-T10
+[created] B09-T11
+[created] B09-T12
+[created] B09-T13
+[created] B09-T14
+[created] B09-T15
+[created] B09-T16
+[created] B09-T17
+[created] B09-T18
+[created] B09-T19
+[created] B09-T20
+[created] B09-T21
+[created] B09-T22
+[created] B99-T01
+[created] B99-T02
+[created] B99-T03
+[created] B99-T04
+[created] B99-T05
+[created] B99-T06
+[created] B99-T07
+[created] B99-T08
+[created] B99-T09
+[created] B99-T10
+
+files scanned: 81
+created: 81
+updated: 0
+skipped: 0
+done.
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --limit 100
+
+[os:extract] Mode: LIVE
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 50
+
+→ Extracting id_dump=B01-T01...
+  [extract] Thread long (121989 chars) — 7 chunk(s)
+  [extract] Chunk 1/7...
+  [extract] Chunk 1: decisions=1 lessons=3
+  [extract] Chunk 2/7...
+  [extract] Chunk 2: decisions=9 lessons=5
+  [extract] Chunk 3/7...
+  [extract] Chunk 3: decisions=9 lessons=6
+  [extract] Chunk 4/7...
+  [extract] Chunk 4: decisions=5 lessons=4
+  [extract] Chunk 5/7...
+  [extract] Chunk 5: decisions=5 lessons=5
+  [extract] Chunk 6/7...
+  [extract] Chunk 6: decisions=7 lessons=4
+  [extract] Chunk 7/7...
+  [extract] Chunk 7: decisions=5 lessons=3
+  [extract] Après fusion: decisions=41 lessons=30
+[os:extract] B01-T01: decisions=41 lessons=30
+  OK
+
+→ Extracting id_dump=B01-T02...
+[os:extract] B01-T02: decisions=2 lessons=3
+  OK
+
+→ Extracting id_dump=B01-T03...
+[os:extract] B01-T03: decisions=0 lessons=5
+  OK
+
+→ Extracting id_dump=B01-T04...
+  [extract] Thread long (14449 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=4 lessons=6
+  [extract] Après fusion: decisions=4 lessons=6
+[os:extract] B01-T04: decisions=4 lessons=6
+  OK
+
+→ Extracting id_dump=B02-T01...
+  [extract] Thread long (21036 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=4 lessons=4
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=2 lessons=4
+  [extract] Après fusion: decisions=6 lessons=8
+[os:extract] B02-T01: decisions=6 lessons=8
+  OK
+
+→ Extracting id_dump=B02-T02...
+[os:extract] B02-T02: decisions=5 lessons=4
+  OK
+
+→ Extracting id_dump=B02-T03...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B02-T04...
+  [extract] Thread long (25820 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=6 lessons=7
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=3 lessons=3
+  [extract] Après fusion: decisions=9 lessons=10
+[os:extract] B02-T04: decisions=9 lessons=10
+  OK
+
+→ Extracting id_dump=B02-T05...
+[os:extract] B02-T05: decisions=3 lessons=4
+  OK
+
+→ Extracting id_dump=B02-T06...
+  [extract] Thread long (19525 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=2 lessons=7
+  [extract] Après fusion: decisions=2 lessons=7
+[os:extract] B02-T06: decisions=2 lessons=7
+  OK
+
+→ Extracting id_dump=B02-T07...
+  [extract] Thread long (13582 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=2 lessons=5
+  [extract] Après fusion: decisions=2 lessons=5
+[os:extract] B02-T07: decisions=2 lessons=5
+  OK
+
+→ Extracting id_dump=B02-T08...
+  [extract] Thread long (37244 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=7 lessons=5
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=7 lessons=6
+  [extract] Après fusion: decisions=14 lessons=11
+[os:extract] B02-T08: decisions=14 lessons=11
+  OK
+
+→ Extracting id_dump=B02-T09...
+  [extract] Thread long (42020 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=5 lessons=8
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=0 lessons=3
+  [extract] Après fusion: decisions=10 lessons=16
+[os:extract] B02-T09: decisions=10 lessons=16
+  OK
+
+→ Extracting id_dump=B02-T10...
+  [extract] Thread long (25784 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=2 lessons=4
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=2 lessons=4
+  [extract] Après fusion: decisions=4 lessons=8
+[os:extract] B02-T10: decisions=4 lessons=8
+  OK
+
+→ Extracting id_dump=B02-T11...
+[os:extract] B02-T11: decisions=5 lessons=3
+  OK
+
+→ Extracting id_dump=B02-T12...
+  [extract] Thread long (22427 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=7 lessons=9
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=4 lessons=3
+  [extract] Après fusion: decisions=11 lessons=12
+[os:extract] B02-T12: decisions=11 lessons=12
+  OK
+
+→ Extracting id_dump=B02-T13...
+  [extract] Thread long (18426 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=6 lessons=10
+  [extract] Après fusion: decisions=6 lessons=10
+[os:extract] B02-T13: decisions=6 lessons=10
+  OK
+
+→ Extracting id_dump=B02-T14...
+  [extract] Thread long (58505 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=4 lessons=7
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=2 lessons=4
+  [extract] Après fusion: decisions=11 lessons=16
+[os:extract] B02-T14: decisions=11 lessons=16
+  OK
+
+→ Extracting id_dump=B02-T15...
+  [extract] Thread long (20129 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=8 lessons=7
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=2 lessons=0
+  [extract] Après fusion: decisions=10 lessons=7
+[os:extract] B02-T15: decisions=10 lessons=7
+  OK
+
+→ Extracting id_dump=B02-T16...
+  [extract] Thread long (24861 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=3 lessons=5
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=1 lessons=2
+  [extract] Après fusion: decisions=4 lessons=7
+[os:extract] B02-T16: decisions=4 lessons=7
+  OK
+
+→ Extracting id_dump=B02-T17...
+  [extract] Thread long (107547 chars) — 6 chunk(s)
+  [extract] Chunk 1/6...
+  [extract] Chunk 1: decisions=8 lessons=8
+  [extract] Chunk 2/6...
+  [extract] Chunk 2: decisions=6 lessons=4
+  [extract] Chunk 3/6...
+  [extract] Chunk 3: decisions=5 lessons=5
+  [extract] Chunk 4/6...
+  [extract] Chunk 4: decisions=6 lessons=4
+  [extract] Chunk 5/6...
+  [extract] Chunk 5: decisions=7 lessons=6
+  [extract] Chunk 6/6...
+  [extract] Chunk 6: decisions=3 lessons=4
+  [extract] Après fusion: decisions=35 lessons=31
+[os:extract] B02-T17: decisions=35 lessons=31
+  OK
+
+→ Extracting id_dump=B02-T18...
+  [extract] Thread long (73492 chars) — 4 chunk(s)
+  [extract] Chunk 1/4...
+  [extract] Chunk 1: decisions=0 lessons=6
+  [extract] Chunk 2/4...
+  [extract] Chunk 2: decisions=4 lessons=4
+  [extract] Chunk 3/4...
+  [extract] Chunk 3: decisions=4 lessons=4
+  [extract] Chunk 4/4...
+  [extract] Chunk 4: decisions=0 lessons=4
+  [extract] Après fusion: decisions=8 lessons=18
+[os:extract] B02-T18: decisions=8 lessons=18
+  OK
+
+→ Extracting id_dump=B03-T01...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B03-T02...
+  ERROR: Notion 504: {"raw":"<html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n</body>\r\n</html>\r\n"} 
+
+[os:extract] WARN: Notion 504: {"raw":"<html>\r\n<head><title>504 Gateway Time-out</title></head>\r\n<body>\r\n<center><h1>504 Gateway Time-out</h1></center>\r\n</body>\r\n</html>\r\n"}
+→ Extracting id_dump=B03-T03...
+  [extract] Thread long (134643 chars) — 7 chunk(s)
+  [extract] Chunk 1/7...
+  [extract] Chunk 1: decisions=6 lessons=8
+  [extract] Chunk 2/7...
+  [extract] Chunk 2: decisions=9 lessons=9
+  [extract] Chunk 3/7...
+  [extract] Chunk 3: decisions=10 lessons=11
+  [extract] Chunk 4/7...
+  [extract] Chunk 4: decisions=6 lessons=5
+  [extract] Chunk 5/7...
+  [extract] Chunk 5: decisions=7 lessons=4
+  [extract] Chunk 6/7...
+  [extract] Chunk 6: decisions=7 lessons=8
+  [extract] Chunk 7/7...
+  [extract] Chunk 7: decisions=7 lessons=6
+  [extract] Après fusion: decisions=52 lessons=51
+[os:extract] B03-T03: decisions=52 lessons=51
+  OK
+
+→ Extracting id_dump=B03-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B03-T05...
+  [extract] Thread long (332141 chars) — 17 chunk(s)
+  [extract] Chunk 1/17...
+  [extract] Chunk 1: decisions=10 lessons=10
+  [extract] Chunk 2/17...
+  [extract] Chunk 2: decisions=12 lessons=9
+  [extract] Chunk 3/17...
+  [extract] Chunk 3: decisions=10 lessons=9
+  [extract] Chunk 4/17...
+  [extract] Chunk 4: decisions=6 lessons=6
+  [extract] Chunk 5/17...
+  [extract] Chunk 5: decisions=5 lessons=5
+  [extract] Chunk 6/17...
+  [extract] Chunk 6: decisions=5 lessons=5
+  [extract] Chunk 7/17...
+  [extract] Chunk 7: decisions=3 lessons=6
+  [extract] Chunk 8/17...
+  [extract] Chunk 8: decisions=7 lessons=10
+  [extract] Chunk 9/17...
+  [extract] Chunk 9: decisions=5 lessons=6
+  [extract] Chunk 10/17...
+  [extract] Chunk 10: decisions=4 lessons=7
+  [extract] Chunk 11/17...
+  [extract] Chunk 11: decisions=6 lessons=6
+  [extract] Chunk 12/17...
+  [extract] Chunk 12: decisions=6 lessons=7
+  [extract] Chunk 13/17...
+  [extract] Chunk 13: decisions=7 lessons=6
+  [extract] Chunk 14/17...
+  [extract] Chunk 14: decisions=7 lessons=5
+  [extract] Chunk 15/17...
+  [extract] Chunk 15: decisions=8 lessons=8
+  [extract] Chunk 16/17...
+  [extract] Chunk 16: decisions=4 lessons=7
+  [extract] Chunk 17/17...
+  [extract] Chunk 17: decisions=4 lessons=4
+  [extract] Après fusion: decisions=109 lessons=116
+[os:extract] B03-T05: decisions=109 lessons=116
+  OK
+
+→ Extracting id_dump=B03-T06...
+  [extract] Thread long (31037 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=7 lessons=8
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=4 lessons=4
+  [extract] Après fusion: decisions=11 lessons=12
+[os:extract] B03-T06: decisions=11 lessons=12
+  OK
+
+→ Extracting id_dump=B03-T07...
+  [extract] Thread long (182296 chars) — 10 chunk(s)
+  [extract] Chunk 1/10...
+  [extract] Chunk 1: decisions=3 lessons=6
+  [extract] Chunk 2/10...
+  [extract] Chunk 2: decisions=7 lessons=7
+  [extract] Chunk 3/10...
+  [extract] Chunk 3: decisions=3 lessons=5
+  [extract] Chunk 4/10...
+  [extract] Chunk 4: decisions=6 lessons=5
+  [extract] Chunk 5/10...
+  [extract] Chunk 5: decisions=13 lessons=10
+  [extract] Chunk 6/10...
+  [extract] Chunk 6: decisions=6 lessons=4
+  [extract] Chunk 7/10...
+  [extract] Chunk 7: decisions=13 lessons=5
+  [extract] Chunk 8/10...
+  [extract] Chunk 8: decisions=10 lessons=5
+  [extract] Chunk 9/10...
+  [extract] Chunk 9: decisions=15 lessons=7
+  [extract] Chunk 10/10...
+  [extract] Chunk 10: decisions=6 lessons=3
+  [extract] Après fusion: decisions=82 lessons=57
+[os:extract] B03-T07: decisions=82 lessons=57
+  OK
+
+→ Extracting id_dump=B03-T08...
+  [extract] Thread long (161960 chars) — 9 chunk(s)
+  [extract] Chunk 1/9...
+  [extract] Chunk 1: decisions=6 lessons=5
+  [extract] Chunk 2/9...
+  [extract] Chunk 2: decisions=12 lessons=6
+  [extract] Chunk 3/9...
+  [extract] Chunk 3: decisions=4 lessons=6
+  [extract] Chunk 4/9...
+  [extract] Chunk 4: decisions=16 lessons=10
+  [extract] Chunk 5/9...
+  [extract] Chunk 5: decisions=7 lessons=6
+  [extract] Chunk 6/9...
+  [extract] Chunk 6: decisions=6 lessons=6
+  [extract] Chunk 7/9...
+  [extract] Chunk 7: decisions=5 lessons=7
+  [extract] Chunk 8/9...
+  [extract] Chunk 8: decisions=3 lessons=5
+  [extract] Chunk 9/9...
+  [extract] Chunk 9: decisions=3 lessons=2
+  [extract] Après fusion: decisions=62 lessons=53
+[os:extract] B03-T08: decisions=62 lessons=53
+  OK
+
+→ Extracting id_dump=B04-T01...
+  [extract] Thread long (59877 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=3 lessons=2
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=3 lessons=7
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=6 lessons=5
+  [extract] Après fusion: decisions=12 lessons=14
+[os:extract] B04-T01: decisions=12 lessons=14
+  OK
+
+→ Extracting id_dump=B04-T02...
+  [extract] Thread long (140192 chars) — 8 chunk(s)
+  [extract] Chunk 1/8...
+  [extract] Chunk 1: decisions=4 lessons=2
+  [extract] Chunk 2/8...
+  [extract] Chunk 2: decisions=3 lessons=3
+  [extract] Chunk 3/8...
+  [extract] Chunk 3: decisions=7 lessons=4
+  [extract] Chunk 4/8...
+  [extract] Chunk 4: decisions=4 lessons=4
+  [extract] Chunk 5/8...
+  [extract] Chunk 5: decisions=4 lessons=9
+  [extract] Chunk 6/8...
+  [extract] Chunk 6: decisions=4 lessons=6
+  [extract] Chunk 7/8...
+  [extract] Chunk 7: decisions=5 lessons=6
+  [extract] Chunk 8/8...
+  [extract] Chunk 8: decisions=0 lessons=0
+  [extract] Après fusion: decisions=31 lessons=34
+[os:extract] B04-T02: decisions=31 lessons=34
+  OK
+
+→ Extracting id_dump=B04-T03...
+  [extract] Thread long (67094 chars) — 4 chunk(s)
+  [extract] Chunk 1/4...
+  [extract] Chunk 1: decisions=6 lessons=5
+  [extract] Chunk 2/4...
+  [extract] Chunk 2: decisions=4 lessons=4
+  [extract] Chunk 3/4...
+  [extract] Chunk 3: decisions=5 lessons=5
+  [extract] Chunk 4/4...
+  [extract] Chunk 4: decisions=1 lessons=3
+  [extract] Après fusion: decisions=16 lessons=17
+[os:extract] B04-T03: decisions=16 lessons=17
+  OK
+
+→ Extracting id_dump=B05-T01...
+  [extract] Thread long (22922 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=13 lessons=8
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=5 lessons=4
+  [extract] Après fusion: decisions=18 lessons=12
+[os:extract] B05-T01: decisions=18 lessons=12
+  OK
+
+→ Extracting id_dump=B05-T02...
+  [extract] Thread long (135986 chars) — 7 chunk(s)
+  [extract] Chunk 1/7...
+  [extract] Chunk 1: decisions=8 lessons=6
+  [extract] Chunk 2/7...
+  [extract] Chunk 2: decisions=8 lessons=5
+  [extract] Chunk 3/7...
+  [extract] Chunk 3: decisions=5 lessons=6
+  [extract] Chunk 4/7...
+  [extract] Chunk 4: decisions=6 lessons=5
+  [extract] Chunk 5/7...
+  [extract] Chunk 5: decisions=9 lessons=8
+  [extract] Chunk 6/7...
+  [extract] Chunk 6: decisions=5 lessons=5
+  [extract] Chunk 7/7...
+  [extract] Chunk 7: decisions=4 lessons=7
+  [extract] Après fusion: decisions=45 lessons=42
+[os:extract] B05-T02: decisions=45 lessons=42
+  OK
+
+→ Extracting id_dump=B05-T03...
+  [extract] Thread long (68069 chars) — 4 chunk(s)
+  [extract] Chunk 1/4...
+  [extract] Chunk 1: decisions=7 lessons=8
+  [extract] Chunk 2/4...
+  [extract] Chunk 2: decisions=6 lessons=8
+  [extract] Chunk 3/4...
+  [extract] Chunk 3: decisions=5 lessons=4
+  [extract] Chunk 4/4...
+  [extract] Chunk 4: decisions=6 lessons=6
+  [extract] Après fusion: decisions=24 lessons=26
+[os:extract] B05-T03: decisions=24 lessons=26
+  OK
+
+→ Extracting id_dump=B05-T04...
+  [extract] Thread long (40925 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=7 lessons=9
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=7 lessons=7
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=3 lessons=3
+  [extract] Après fusion: decisions=17 lessons=19
+[os:extract] B05-T04: decisions=17 lessons=19
+  OK
+
+→ Extracting id_dump=B06-T01...
+  [extract] Thread long (28100 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=5 lessons=9
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=4 lessons=5
+  [extract] Après fusion: decisions=9 lessons=14
+[os:extract] B06-T01: decisions=9 lessons=14
+  OK
+
+→ Extracting id_dump=B06-T02...
+[os:extract] B06-T02: decisions=1 lessons=2
+  OK
+
+→ Extracting id_dump=B06-T03...
+  [extract] Thread long (14063 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=3 lessons=6
+  [extract] Après fusion: decisions=3 lessons=6
+[os:extract] B06-T03: decisions=3 lessons=6
+  OK
+
+→ Extracting id_dump=B06-T04...
+  [extract] Thread long (18610 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=1 lessons=6
+  [extract] Après fusion: decisions=1 lessons=6
+[os:extract] B06-T04: decisions=1 lessons=6
+  OK
+
+→ Extracting id_dump=B06-T05...
+  [extract] Thread long (49129 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=1 lessons=3
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=3 lessons=4
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=2 lessons=5
+  [extract] Après fusion: decisions=6 lessons=12
+[os:extract] B06-T05: decisions=6 lessons=12
+  OK
+
+→ Extracting id_dump=B06-T06...
+  [extract] Thread long (41948 chars) — 3 chunk(s)
+  [extract] Chunk 1/3...
+  [extract] Chunk 1: decisions=4 lessons=6
+  [extract] Chunk 2/3...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/3...
+  [extract] Chunk 3: decisions=2 lessons=2
+  [extract] Après fusion: decisions=11 lessons=13
+[os:extract] B06-T06: decisions=11 lessons=13
+  OK
+
+→ Extracting id_dump=B06-T07...
+  [extract] Thread long (68520 chars) — 4 chunk(s)
+  [extract] Chunk 1/4...
+  [extract] Chunk 1: decisions=3 lessons=5
+  [extract] Chunk 2/4...
+  [extract] Chunk 2: decisions=3 lessons=5
+  [extract] Chunk 3/4...
+  [extract] Chunk 3: decisions=5 lessons=5
+  [extract] Chunk 4/4...
+  [extract] Chunk 4: decisions=2 lessons=4
+  [extract] Après fusion: decisions=13 lessons=19
+[os:extract] B06-T07: decisions=13 lessons=19
+  OK
+
+→ Extracting id_dump=B07-T01...
+  [extract] Thread long (31013 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=5 lessons=10
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=3 lessons=5
+  [extract] Après fusion: decisions=8 lessons=15
+[os:extract] B07-T01: decisions=8 lessons=15
+  OK
+
+→ Extracting id_dump=B07-T02...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B07-T03...
+  [extract] Thread long (25421 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=7 lessons=9
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=3 lessons=3
+  [extract] Après fusion: decisions=10 lessons=12
+[os:extract] B07-T03: decisions=10 lessons=12
+  OK
+
+→ Extracting id_dump=B08-T01...
+  [extract] Thread long (99400 chars) — 5 chunk(s)
+  [extract] Chunk 1/5...
+  [extract] Chunk 1: decisions=7 lessons=8
+  [extract] Chunk 2/5...
+  [extract] Chunk 2: decisions=6 lessons=7
+  [extract] Chunk 3/5...
+  [extract] Chunk 3: decisions=8 lessons=6
+  [extract] Chunk 4/5...
+  [extract] Chunk 4: decisions=4 lessons=6
+  [extract] Chunk 5/5...
+  [extract] Chunk 5: decisions=4 lessons=5
+  [extract] Après fusion: decisions=29 lessons=32
+[os:extract] B08-T01: decisions=29 lessons=32
+  OK
+
+→ Extracting id_dump=B08-T02...
+  [extract] Thread long (19550 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=4 lessons=6
+  [extract] Après fusion: decisions=4 lessons=6
+[os:extract] B08-T02: decisions=4 lessons=6
+  OK
+
+→ Extracting id_dump=B09-T01...
+  [extract] Thread long (219915 chars) — 11 chunk(s)
+  [extract] Chunk 1/11...
+  [extract] Chunk 1: decisions=2 lessons=3
+  [extract] Chunk 2/11...
+  [extract] Chunk 2: decisions=3 lessons=3
+  [extract] Chunk 3/11...
+  [extract] Chunk 3: decisions=3 lessons=5
+  [extract] Chunk 4/11...
+  [extract] Chunk 4: decisions=3 lessons=3
+  [extract] Chunk 5/11...
+  [extract] Chunk 5: decisions=3 lessons=5
+  [extract] Chunk 6/11...
+  [extract] Chunk 6: decisions=3 lessons=6
+  [extract] Chunk 7/11...
+  [extract] Chunk 7: decisions=3 lessons=4
+  [extract] Chunk 8/11...
+  [extract] Chunk 8: decisions=4 lessons=4
+  [extract] Chunk 9/11...
+  [extract] Chunk 9: decisions=3 lessons=4
+  [extract] Chunk 10/11...
+  [extract] Chunk 10: decisions=3 lessons=4
+  [extract] Chunk 11/11...
+  [extract] Chunk 11: decisions=2 lessons=5
+  [extract] Après fusion: decisions=32 lessons=46
+[os:extract] B09-T01: decisions=32 lessons=46
+  OK
+
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --limit 100
+
+[os:inject] Mode: LIVE
+[os:inject] Candidats: 45 (limit=100)   
+→ Processing id_dump=B01-T01...
+  OK
+→ Processing id_dump=B01-T02...
+  OK
+→ Processing id_dump=B01-T03...
+  OK
+→ Processing id_dump=B01-T04...
+  OK
+→ Processing id_dump=B02-T01...
+  OK
+→ Processing id_dump=B02-T02...
+  OK
+→ Processing id_dump=B02-T04...
+  OK
+→ Processing id_dump=B02-T05...
+  OK
+→ Processing id_dump=B02-T06...
+  OK
+→ Processing id_dump=B02-T07...
+  OK
+→ Processing id_dump=B02-T08...
+  OK
+→ Processing id_dump=B02-T09...
+  OK
+→ Processing id_dump=B02-T10...
+  OK
+→ Processing id_dump=B02-T11...
+  OK
+→ Processing id_dump=B02-T12...
+  OK
+→ Processing id_dump=B02-T13...
+  OK
+→ Processing id_dump=B02-T14...
+  OK
+→ Processing id_dump=B02-T15...
+  OK
+→ Processing id_dump=B02-T16...
+  OK
+→ Processing id_dump=B02-T17...
+  OK
+→ Processing id_dump=B02-T18...
+  OK
+→ Processing id_dump=B03-T03...
+  ERROR: Notion 502: {"raw":"<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n</body>\r\n</html>\r\n"}
+→ Processing id_dump=B03-T05...
+  OK
+→ Processing id_dump=B03-T06...
+  OK
+→ Processing id_dump=B03-T07...
+  OK
+→ Processing id_dump=B03-T08...
+  OK
+→ Processing id_dump=B04-T01...
+  OK
+→ Processing id_dump=B04-T02...
+  OK
+→ Processing id_dump=B04-T03...
+  OK
+→ Processing id_dump=B05-T01...
+  OK
+→ Processing id_dump=B05-T02...
+  OK
+→ Processing id_dump=B05-T03...
+  OK
+→ Processing id_dump=B05-T04...
+  OK
+→ Processing id_dump=B06-T01...
+  OK
+→ Processing id_dump=B06-T02...
+  OK
+→ Processing id_dump=B06-T03...
+  OK
+→ Processing id_dump=B06-T04...
+  OK
+→ Processing id_dump=B06-T05...
+  OK
+→ Processing id_dump=B06-T06...
+  OK
+→ Processing id_dump=B06-T07...
+  OK
+→ Processing id_dump=B07-T01...
+  OK
+→ Processing id_dump=B07-T03...
+  OK
+→ Processing id_dump=B08-T01...
+  OK
+→ Processing id_dump=B08-T02...
+  OK
+→ Processing id_dump=B09-T01...
+  OK
+admin@imacdeiac5admin inside-os % npm run os:extract -- --limit 100
+npm run os:inject -- --limit 100
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --limit 100
+
+[os:extract] Mode: LIVE
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 36
+
+→ Extracting id_dump=B02-T03...
+[os:extract] B02-T03: decisions=4 lessons=4
+  OK
+
+→ Extracting id_dump=B03-T01...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B03-T02...
+  [extract] Thread long (14894 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=9 lessons=7
+  [extract] Après fusion: decisions=9 lessons=7
+[os:extract] B03-T02: decisions=9 lessons=7
+  OK
+
+→ Extracting id_dump=B03-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B07-T02...
+[os:extract] B07-T02: decisions=5 lessons=5
+  OK
+
+→ Extracting id_dump=B09-T02...
+  [extract] Thread long (13621 chars) — 1 chunk(s)
+  [extract] Chunk 1/1...
+  [extract] Chunk 1: decisions=8 lessons=10
+  [extract] Après fusion: decisions=8 lessons=10
+[os:extract] B09-T02: decisions=8 lessons=10
+  OK
+
+→ Extracting id_dump=B09-T03...
+  [extract] Thread long (95112 chars) — 5 chunk(s)
+  [extract] Chunk 1/5...
+  [extract] Chunk 1: decisions=5 lessons=6
+  [extract] Chunk 2/5...
+  [extract] Chunk 2: decisions=11 lessons=7
+  [extract] Chunk 3/5...
+  [extract] Chunk 3: decisions=8 lessons=7
+  [extract] Chunk 4/5...
+  [extract] Chunk 4: decisions=4 lessons=7
+  [extract] Chunk 5/5...
+  [extract] Chunk 5: decisions=6 lessons=5
+  [extract] Après fusion: decisions=34 lessons=32
+[os:extract] B09-T03: decisions=34 lessons=32
+  OK
+
+→ Extracting id_dump=B09-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B09-T05...
+  [extract] Thread long (27478 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=6 lessons=9
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=6 lessons=6
+  [extract] Après fusion: decisions=12 lessons=15
+[os:extract] B09-T05: decisions=12 lessons=15
+  OK
+
+→ Extracting id_dump=B09-T06...
+  [extract] Thread long (169676 chars) — 9 chunk(s)
+  [extract] Chunk 1/9...
+  [extract] Chunk 1: decisions=11 lessons=10
+  [extract] Chunk 2/9...
+  [extract] Chunk 2: decisions=9 lessons=9
+  [extract] Chunk 3/9...
+  [extract] Chunk 3: decisions=8 lessons=8
+  [extract] Chunk 4/9...
+  [extract] Chunk 4: decisions=6 lessons=8
+  [extract] Chunk 5/9...
+  [extract] Chunk 5: decisions=6 lessons=5
+  [extract] Chunk 6/9...
+  [extract] Chunk 6: decisions=5 lessons=5
+  [extract] Chunk 7/9...
+  [extract] Chunk 7: decisions=5 lessons=5
+  [extract] Chunk 8/9...
+  [extract] Chunk 8: decisions=4 lessons=4
+  [extract] Chunk 9/9...
+  [extract] Chunk 9: decisions=6 lessons=4
+  [extract] Après fusion: decisions=60 lessons=58
+[os:extract] B09-T06: decisions=60 lessons=58
+  OK
+
+→ Extracting id_dump=B09-T07...
+  [extract] Thread long (245431 chars) — 13 chunk(s)
+  [extract] Chunk 1/13...
+  [extract] Chunk 1: decisions=10 lessons=7
+  [extract] Chunk 2/13...
+  [extract] Chunk 2: decisions=4 lessons=4
+  [extract] Chunk 3/13...
+  [extract] Chunk 3: decisions=4 lessons=5
+  [extract] Chunk 4/13...
+  [extract] Chunk 4: decisions=3 lessons=4
+  [extract] Chunk 5/13...
+  [extract] Chunk 5: decisions=4 lessons=5
+  [extract] Chunk 6/13...
+  [extract] Chunk 6: decisions=2 lessons=3
+  [extract] Chunk 7/13...
+  [extract] Chunk 7: decisions=3 lessons=3
+  [extract] Chunk 8/13...
+  [extract] Chunk 8: decisions=4 lessons=4
+  [extract] Chunk 9/13...
+  [extract] Chunk 9: decisions=0 lessons=3
+  [extract] Chunk 10/13...
+  [extract] Chunk 10: decisions=4 lessons=4
+  [extract] Chunk 11/13...
+  [extract] Chunk 11: decisions=3 lessons=3
+  [extract] Chunk 12/13...
+  [extract] Chunk 12: decisions=5 lessons=5
+  [extract] Chunk 13/13...
+  [extract] Chunk 13: decisions=5 lessons=5
+  [extract] Après fusion: decisions=51 lessons=55
+[os:extract] B09-T07: decisions=51 lessons=55
+  OK
+
+→ Extracting id_dump=B09-T08...
+  [extract] Thread long (383374 chars) — 20 chunk(s)
+  [extract] Chunk 1/20...
+  [extract] Chunk 1: decisions=7 lessons=6
+  [extract] Chunk 2/20...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/20...
+  [extract] Chunk 3: decisions=5 lessons=4
+  [extract] Chunk 4/20...
+  [extract] Chunk 4: decisions=0 lessons=2
+  [extract] Chunk 5/20...
+  [extract] Chunk 5: decisions=4 lessons=2
+  [extract] Chunk 6/20...
+  [extract] Chunk 6: decisions=3 lessons=4
+  [extract] Chunk 7/20...
+  [extract] Chunk 7: decisions=0 lessons=3
+  [extract] Chunk 8/20...
+  [extract] Chunk 8: decisions=4 lessons=3
+  [extract] Chunk 9/20...
+  [extract] Chunk 9: decisions=3 lessons=3
+  [extract] Chunk 10/20...
+  [extract] Chunk 10: decisions=7 lessons=5
+  [extract] Chunk 11/20...
+  [extract] Chunk 11: decisions=2 lessons=5
+  [extract] Chunk 12/20...
+  [extract] Chunk 12: decisions=4 lessons=5
+  [extract] Chunk 13/20...
+  [extract] Chunk 13: decisions=6 lessons=6
+  [extract] Chunk 14/20...
+  [extract] Chunk 14: decisions=5 lessons=7
+  [extract] Chunk 15/20...
+  [extract] Chunk 15 tentative 1 échouée (Expected ',' or '}' after property value in JSON at position 1063 (line 21 column 56)) — retry...
+  [extract] Chunk 15 retry OK
+  [extract] Chunk 15: decisions=5 lessons=3
+  [extract] Chunk 16/20...
+  [extract] Chunk 16: decisions=5 lessons=7
+  [extract] Chunk 17/20...
+  [extract] Chunk 17: decisions=0 lessons=0
+  [extract] Chunk 18/20...
+  [extract] Chunk 18: decisions=4 lessons=3
+  [extract] Chunk 19/20...
+  [extract] Chunk 19: decisions=5 lessons=5
+  [extract] Chunk 20/20...
+  [extract] Chunk 20: decisions=6 lessons=4
+  [extract] Après fusion: decisions=80 lessons=82
+  ERROR: Notion 403: {"raw":"<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!--<![endif]-->\n<head>\n<title>Attention Required! | Cloudflare</title>\n<meta charset=\"UTF-8\" />\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\n<meta name=\"robots\" content=\"noindex, nofollow\" />\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n<link rel=\"stylesheet\" id=\"cf_styles-css\" href=\"/cdn-cgi/styles/cf.errors.css\" />\n<!--[if lt IE 9]><link rel=\"stylesheet\" id='cf_styles-ie-css' href=\"/cdn-cgi/styles/cf.errors.ie.css\" /><![endif]-->\n<style>body{margin:0;padding:0}</style>\n\n\n<!--[if gte IE 10]><!-->\n<script>\n  if (!navigator.cookieEnabled) {\n    window.addEventListener('DOMContentLoaded', function () {\n      var cookieEl = document.getElementById('cookie-alert');\n      cookieEl.style.display = 'block';\n    })\n  }\n</script>\n<!--<![endif]-->\n\n</head>\n<body>\n  <div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-error-details-wrapper\">\n      <div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> notion.com</h2>\n      </div><!-- /.header -->\n\n      <div class=\"cf-section cf-highlight\">\n        <div class=\"cf-wrapper\">\n          <div class=\"cf-screenshot-container cf-screenshot-full\">\n            \n              <span class=\"cf-no-screenshot error\"></span>\n            \n          </div>\n        </div>\n      </div><!-- /.captcha-container -->\n\n      <div class=\"cf-section cf-wrapper\">\n        <div class=\"cf-columns two\">\n          <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_why_headline\">Why have I been blocked?</h2>\n\n            <p data-translate=\"blocked_why_detail\">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>\n          </div>\n\n          <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_resolve_headline\">What can I do to resolve this?</h2>\n\n            <p data-translate=\"blocked_resolve_detail\">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>\n          </div>\n        </div>\n      </div><!-- /.section -->\n\n      <div class=\"cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300\">\n    <p class=\"text-13\">\n      <span class=\"cf-footer-item sm:block sm:mb-1\">Cloudflare Ray ID: <strong class=\"font-semibold\">9f13b67d9dc9bb3a</strong></span>\n      <span class=\"cf-footer-separator sm:hidden\">&bull;</span>\n      <span id=\"cf-footer-item-ip\" class=\"cf-footer-item hidden sm:block sm:mb-1\">\n        Your IP:\n        <button type=\"button\" id=\"cf-footer-ip-reveal\" class=\"cf-footer-ip-reveal-btn\">Click to reveal</button>\n        <span class=\"hidden\" id=\"cf-footer-ip\">2a01:cb00:58b:f800:c591:aa73:590c:f3fb</span>\n        <span class=\"cf-footer-separator sm:hidden\">&bull;</span>\n      </span>\n      <span class=\"cf-footer-item sm:block sm:mb-1\"><span>Performance &amp; security by</span> <a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a></span>\n      \n    </p>\n    <script>(function(){function d(){var b=a.getElementById(\"cf-footer-item-ip\"),c=a.getElementById(\"cf-footer-ip-reveal\");b&&\"classList\"in b&&(b.classList.remove(\"hidden\"),c.addEventListener(\"click\",function(){c.classList.add(\"hidden\");a.getElementById(\"cf-footer-ip\").classList.remove(\"hidden\")}))}var a=document;document.addEventListener&&a.addEventListener(\"DOMContentLoaded\",d)})();</script>\n  </div><!-- /.error-footer -->\n\n    </div><!-- /#cf-error-details -->\n  </div><!-- /#cf-wrapper -->\n\n  <script>\n    window._cf_translation = {};\n    \n    \n  </script>\n</body>\n</html>"} 
+
+[os:extract] WARN: Notion 403: {"raw":"<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!--<![endif]-->\n<head>\n<title>Attention Required! | Cloudflare</title>\n<meta charset=\"UTF-8\" />\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\n<meta name=\"robots\" content=\"noindex, nofollow\" />\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n<link rel=\"stylesheet\" id=\"cf_styles-css\" href=\"/cdn-cgi/styles/cf.errors.css\" />\n<!--[if lt IE 9]><link rel=\"stylesheet\" id='cf_styles-ie-css' href=\"/cdn-cgi/styles/cf.errors.ie.css\" /><![endif]-->\n<style>body{margin:0;padding:0}</style>\n\n\n<!--[if gte IE 10]><!-->\n<script>\n  if (!navigator.cookieEnabled) {\n    window.addEventListener('DOMContentLoaded', function () {\n      var cookieEl = document.getElementById('cookie-alert');\n      cookieEl.style.display = 'block';\n    })\n  }\n</script>\n<!--<![endif]-->\n\n</head>\n<body>\n  <div id=\"cf-wrapper\">\n    <div class=\"cf-alert cf-alert-error cf-cookie-error\" id=\"cookie-alert\" data-translate=\"enable_cookies\">Please enable cookies.</div>\n    <div id=\"cf-error-details\" class=\"cf-error-details-wrapper\">\n      <div class=\"cf-wrapper cf-header cf-error-overview\">\n        <h1 data-translate=\"block_headline\">Sorry, you have been blocked</h1>\n        <h2 class=\"cf-subheadline\"><span data-translate=\"unable_to_access\">You are unable to access</span> notion.com</h2>\n      </div><!-- /.header -->\n\n      <div class=\"cf-section cf-highlight\">\n        <div class=\"cf-wrapper\">\n          <div class=\"cf-screenshot-container cf-screenshot-full\">\n            \n              <span class=\"cf-no-screenshot error\"></span>\n            \n          </div>\n        </div>\n      </div><!-- /.captcha-container -->\n\n      <div class=\"cf-section cf-wrapper\">\n        <div class=\"cf-columns two\">\n          <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_why_headline\">Why have I been blocked?</h2>\n\n            <p data-translate=\"blocked_why_detail\">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>\n          </div>\n\n          <div class=\"cf-column\">\n            <h2 data-translate=\"blocked_resolve_headline\">What can I do to resolve this?</h2>\n\n            <p data-translate=\"blocked_resolve_detail\">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>\n          </div>\n        </div>\n      </div><!-- /.section -->\n\n      <div class=\"cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300\">\n    <p class=\"text-13\">\n      <span class=\"cf-footer-item sm:block sm:mb-1\">Cloudflare Ray ID: <strong class=\"font-semibold\">9f13b67d9dc9bb3a</strong></span>\n      <span class=\"cf-footer-separator sm:hidden\">&bull;</span>\n      <span id=\"cf-footer-item-ip\" class=\"cf-footer-item hidden sm:block sm:mb-1\">\n        Your IP:\n        <button type=\"button\" id=\"cf-footer-ip-reveal\" class=\"cf-footer-ip-reveal-btn\">Click to reveal</button>\n        <span class=\"hidden\" id=\"cf-footer-ip\">2a01:cb00:58b:f800:c591:aa73:590c:f3fb</span>\n        <span class=\"cf-footer-separator sm:hidden\">&bull;</span>\n      </span>\n      <span class=\"cf-footer-item sm:block sm:mb-1\"><span>Performance &amp; security by</span> <a rel=\"noopener noreferrer\" href=\"https://www.cloudflare.com/5xx-error-landing\" id=\"brand_link\" target=\"_blank\">Cloudflare</a></span>\n      \n    </p>\n    <script>(function(){function d(){var b=a.getElementById(\"cf-footer-item-ip\"),c=a.getElementById(\"cf-footer-ip-reveal\");b&&\"classList\"in b&&(b.classList.remove(\"hidden\"),c.addEventListener(\"click\",function(){c.classList.add(\"hidden\");a.getElementById(\"cf-footer-ip\").classList.remove(\"hidden\")}))}var a=document;document.addEventListener&&a.addEventListener(\"DOMContentLoaded\",d)})();</script>\n  </div><!-- /.error-footer -->\n\n    </div><!-- /#cf-error-details -->\n  </div><!-- /#cf-wrapper -->\n\n  <script>\n    window._cf_translation = {};\n    \n    \n  </script>\n</body>\n</html>"}
+→ Extracting id_dump=B09-T09...
+  [extract] Thread long (184200 chars) — 10 chunk(s)
+  [extract] Chunk 1/10...
+  [extract] Chunk 1: decisions=9 lessons=8
+  [extract] Chunk 2/10...
+  [extract] Chunk 2: decisions=6 lessons=6
+  [extract] Chunk 3/10...
+  [extract] Chunk 3: decisions=5 lessons=6
+  [extract] Chunk 4/10...
+  [extract] Chunk 4: decisions=2 lessons=3
+  [extract] Chunk 5/10...
+  [extract] Chunk 5: decisions=2 lessons=5
+  [extract] Chunk 6/10...
+  [extract] Chunk 6: decisions=0 lessons=0
+  [extract] Chunk 7/10...
+  [extract] Chunk 7: decisions=0 lessons=0
+  [extract] Chunk 8/10...
+  [extract] Chunk 8: decisions=5 lessons=4
+  [extract] Chunk 9/10...
+  [extract] Chunk 9: decisions=8 lessons=6
+  [extract] Chunk 10/10...
+  [extract] Chunk 10: decisions=3 lessons=2
+  [extract] Après fusion: decisions=40 lessons=40
+[os:extract] B09-T09: decisions=40 lessons=40
+  OK
+
+→ Extracting id_dump=B09-T10...
+  [extract] Thread long (255597 chars) — 13 chunk(s)
+  [extract] Chunk 1/13...
+  [extract] Chunk 1: decisions=11 lessons=10
+  [extract] Chunk 2/13...
+  [extract] Chunk 2: decisions=6 lessons=6
+  [extract] Chunk 3/13...
+  [extract] Chunk 3: decisions=9 lessons=7
+  [extract] Chunk 4/13...
+  [extract] Chunk 4: decisions=9 lessons=7
+  [extract] Chunk 5/13...
+  [extract] Chunk 5: decisions=4 lessons=5
+  [extract] Chunk 6/13...
+  [extract] Chunk 6: decisions=2 lessons=3
+  [extract] Chunk 7/13...
+  [extract] Chunk 7: decisions=2 lessons=2
+  [extract] Chunk 8/13...
+  [extract] Chunk 8: decisions=4 lessons=2
+  [extract] Chunk 9/13...
+  [extract] Chunk 9: decisions=4 lessons=3
+  [extract] Chunk 10/13...
+  [extract] Chunk 10: decisions=3 lessons=2
+  [extract] Chunk 11/13...
+  [extract] Chunk 11: decisions=3 lessons=1
+  [extract] Chunk 12/13...
+  [extract] Chunk 12: decisions=3 lessons=2
+  [extract] Chunk 13/13...
+  [extract] Chunk 13: decisions=3 lessons=3
+  [extract] Après fusion: decisions=61 lessons=53
+[os:extract] B09-T10: decisions=61 lessons=53
+  OK
+
+→ Extracting id_dump=B09-T11...
+  [extract] Thread long (282361 chars) — 15 chunk(s)
+  [extract] Chunk 1/15...
+  [extract] Chunk 1: decisions=5 lessons=6
+  [extract] Chunk 2/15...
+  [extract] Chunk 2: decisions=6 lessons=4
+  [extract] Chunk 3/15...
+  [extract] Chunk 3: decisions=3 lessons=4
+  [extract] Chunk 4/15...
+  [extract] Chunk 4: decisions=2 lessons=4
+  [extract] Chunk 5/15...
+  [extract] Chunk 5: decisions=7 lessons=5
+  [extract] Chunk 6/15...
+  [extract] Chunk 6: decisions=3 lessons=4
+  [extract] Chunk 7/15...
+  [extract] Chunk 7: decisions=6 lessons=5
+  [extract] Chunk 8/15...
+  [extract] Chunk 8: decisions=4 lessons=4
+  [extract] Chunk 9/15...
+  [extract] Chunk 9: decisions=2 lessons=4
+  [extract] Chunk 10/15...
+  [extract] Chunk 10: decisions=4 lessons=7
+  [extract] Chunk 11/15...
+  [extract] Chunk 11: decisions=3 lessons=5
+  [extract] Chunk 12/15...
+  [extract] Chunk 12: decisions=4 lessons=7
+  [extract] Chunk 13/15...
+  [extract] Chunk 13: decisions=0 lessons=5
+  [extract] Chunk 14/15...
+  [extract] Chunk 14: decisions=9 lessons=7
+  [extract] Chunk 15/15...
+  [extract] Chunk 15: decisions=4 lessons=5
+  [extract] Après fusion: decisions=62 lessons=76
+[os:extract] B09-T11: decisions=62 lessons=76
+  OK
+
+→ Extracting id_dump=B09-T12...
+  [extract] Thread long (31575 chars) — 2 chunk(s)
+  [extract] Chunk 1/2...
+  [extract] Chunk 1: decisions=12 lessons=10
+  [extract] Chunk 2/2...
+  [extract] Chunk 2: decisions=6 lessons=6
+  [extract] Après fusion: decisions=18 lessons=16
+[os:extract] B09-T12: decisions=18 lessons=16
+  OK
+
+→ Extracting id_dump=B09-T13...
+  [extract] Thread long (649579 chars) — 33 chunk(s)
+  [extract] Chunk 1/33...
+  [extract] Chunk 1: decisions=9 lessons=9
+  [extract] Chunk 2/33...
+  [extract] Chunk 2: decisions=3 lessons=5
+  [extract] Chunk 3/33...
+  [extract] Chunk 3: decisions=4 lessons=6
+  [extract] Chunk 4/33...
+  [extract] Chunk 4: decisions=0 lessons=3
+  [extract] Chunk 5/33...
+  [extract] Chunk 5: decisions=5 lessons=6
+  [extract] Chunk 6/33...
+  [extract] Chunk 6: decisions=3 lessons=3
+  [extract] Chunk 7/33...
+  [extract] Chunk 7: decisions=3 lessons=3
+  [extract] Chunk 8/33...
+  [extract] Chunk 8: decisions=4 lessons=6
+  [extract] Chunk 9/33...
+  [extract] Chunk 9: decisions=2 lessons=2
+  [extract] Chunk 10/33...
+  [extract] Chunk 10: decisions=3 lessons=5
+  [extract] Chunk 11/33...
+  [extract] Chunk 11: decisions=4 lessons=4
+  [extract] Chunk 12/33...
+  [extract] Chunk 12: decisions=1 lessons=2
+  [extract] Chunk 13/33...
+  [extract] Chunk 13: decisions=2 lessons=5
+  [extract] Chunk 14/33...
+  [extract] Chunk 14: decisions=0 lessons=5
+  [extract] Chunk 15/33...
+  [extract] Chunk 15: decisions=4 lessons=5
+  [extract] Chunk 16/33...
+  [extract] Chunk 16: decisions=3 lessons=3
+  [extract] Chunk 17/33...
+  [extract] Chunk 17: decisions=3 lessons=6
+  [extract] Chunk 18/33...
+  [extract] Chunk 18: decisions=3 lessons=5
+  [extract] Chunk 19/33...
+  [extract] Chunk 19: decisions=4 lessons=6
+  [extract] Chunk 20/33...
+  [extract] Chunk 20: decisions=4 lessons=6
+  [extract] Chunk 21/33...
+  [extract] Chunk 21: decisions=5 lessons=4
+  [extract] Chunk 22/33...
+  [extract] Chunk 22: decisions=0 lessons=0
+  [extract] Chunk 23/33...
+  [extract] Chunk 23: decisions=0 lessons=5
+  [extract] Chunk 24/33...
+  [extract] Chunk 24: decisions=8 lessons=5
+  [extract] Chunk 25/33...
+  [extract] Chunk 25: decisions=4 lessons=4
+  [extract] Chunk 26/33...
+  [extract] Chunk 26: decisions=7 lessons=8
+  [extract] Chunk 27/33...
+  [extract] Chunk 27: decisions=4 lessons=5
+  [extract] Chunk 28/33...
+  [extract] Chunk 28: decisions=5 lessons=5
+  [extract] Chunk 29/33...
+  [extract] Chunk 29: decisions=9 lessons=8
+  [extract] Chunk 30/33...
+  [extract] Chunk 30: decisions=4 lessons=5
+  [extract] Chunk 31/33...
+  [extract] Chunk 31: decisions=5 lessons=6
+  [extract] Chunk 32/33...
+  [extract] Chunk 32: decisions=5 lessons=5
+  [extract] Chunk 33/33...
+  [extract] Chunk 33: decisions=5 lessons=5
+  [extract] Après fusion: decisions=124 lessons=160
+[os:extract] B09-T13: decisions=124 lessons=160
+  OK
+
+→ Extracting id_dump=B09-T14...
+  [extract] Thread long (201664 chars) — 11 chunk(s)
+  [extract] Chunk 1/11...
+  [extract] Chunk 1: decisions=8 lessons=7
+  [extract] Chunk 2/11...
+  [extract] Chunk 2: decisions=3 lessons=4
+  [extract] Chunk 3/11...
+  [extract] Chunk 3: decisions=3 lessons=5
+  [extract] Chunk 4/11...
+  [extract] Chunk 4: decisions=4 lessons=6
+  [extract] Chunk 5/11...
+  [extract] Chunk 5: decisions=12 lessons=10
+  [extract] Chunk 6/11...
+  [extract] Chunk 6: decisions=12 lessons=7
+  [extract] Chunk 7/11...
+  [extract] Chunk 7: decisions=5 lessons=7
+  [extract] Chunk 8/11...
+  [extract] Chunk 8: decisions=8 lessons=6
+  [extract] Chunk 9/11...
+  [extract] Chunk 9: decisions=7 lessons=4
+  [extract] Chunk 10/11...
+  [extract] Chunk 10: decisions=5 lessons=5
+  [extract] Chunk 11/11...
+  [extract] Chunk 11: decisions=2 lessons=1
+  [extract] Après fusion: decisions=69 lessons=62
+[os:extract] B09-T14: decisions=69 lessons=62
+  OK
+
+→ Extracting id_dump=B09-T15...
+  [extract] Thread long (377759 chars) — 19 chunk(s)
+  [extract] Chunk 1/19...
+  [extract] Chunk 1: decisions=9 lessons=6
+  [extract] Chunk 2/19...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/19...
+  [extract] Chunk 3: decisions=3 lessons=5
+  [extract] Chunk 4/19...
+  [extract] Chunk 4: decisions=4 lessons=4
+  [extract] Chunk 5/19...
+  [extract] Chunk 5: decisions=2 lessons=4
+  [extract] Chunk 6/19...
+  [extract] Chunk 6: decisions=12 lessons=12
+  [extract] Chunk 7/19...
+  [extract] Chunk 7: decisions=5 lessons=6
+  [extract] Chunk 8/19...
+  [extract] Chunk 8: decisions=4 lessons=5
+  [extract] Chunk 9/19...
+  [extract] Chunk 9: decisions=3 lessons=4
+  [extract] Chunk 10/19...
+  [extract] Chunk 10: decisions=6 lessons=6
+  [extract] Chunk 11/19...
+  [extract] Chunk 11: decisions=9 lessons=7
+  [extract] Chunk 12/19...
+  [extract] Chunk 12: decisions=0 lessons=3
+  [extract] Chunk 13/19...
+  [extract] Chunk 13: decisions=5 lessons=5
+  [extract] Chunk 14/19...
+  [extract] Chunk 14: decisions=4 lessons=4
+  [extract] Chunk 15/19...
+  [extract] Chunk 15: decisions=3 lessons=4
+  [extract] Chunk 16/19...
+  [extract] Chunk 16: decisions=6 lessons=5
+  [extract] Chunk 17/19...
+  [extract] Chunk 17: decisions=0 lessons=5
+  [extract] Chunk 18/19...
+  [extract] Chunk 18: decisions=7 lessons=4
+  [extract] Chunk 19/19...
+  [extract] Chunk 19: decisions=8 lessons=5
+  [extract] Après fusion: decisions=95 lessons=99
+[os:extract] B09-T15: decisions=95 lessons=99
+  OK
+
+→ Extracting id_dump=B09-T16...
+  [extract] Thread long (121850 chars) — 7 chunk(s)
+  [extract] Chunk 1/7...
+  [extract] Chunk 1: decisions=9 lessons=8
+  [extract] Chunk 2/7...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/7...
+  [extract] Chunk 3: decisions=6 lessons=9
+  [extract] Chunk 4/7...
+  [extract] Chunk 4: decisions=3 lessons=5
+  [extract] Chunk 5/7...
+  [extract] Chunk 5: decisions=5 lessons=5
+  [extract] Chunk 6/7...
+  [extract] Chunk 6: decisions=5 lessons=6
+  [extract] Chunk 7/7...
+  [extract] Chunk 7: decisions=6 lessons=3
+  [extract] Après fusion: decisions=39 lessons=41
+[os:extract] B09-T16: decisions=39 lessons=41
+  OK
+
+→ Extracting id_dump=B09-T17...
+  [extract] Thread long (110668 chars) — 6 chunk(s)
+  [extract] Chunk 1/6...
+  [extract] Chunk 1: decisions=7 lessons=7
+  [extract] Chunk 2/6...
+  [extract] Chunk 2: decisions=6 lessons=7
+  [extract] Chunk 3/6...
+  [extract] Chunk 3: decisions=9 lessons=9
+  [extract] Chunk 4/6...
+  [extract] Chunk 4: decisions=7 lessons=6
+  [extract] Chunk 5/6...
+  [extract] Chunk 5: decisions=7 lessons=7
+  [extract] Chunk 6/6...
+  [extract] Chunk 6: decisions=4 lessons=3
+  [extract] Après fusion: decisions=40 lessons=39
+[os:extract] B09-T17: decisions=40 lessons=39
+  OK
+
+→ Extracting id_dump=B09-T18...
+  [extract] Thread long (106279 chars) — 6 chunk(s)
+  [extract] Chunk 1/6...
+  [extract] Chunk 1: decisions=4 lessons=5
+  [extract] Chunk 2/6...
+  [extract] Chunk 2: decisions=5 lessons=5
+  [extract] Chunk 3/6...
+  [extract] Chunk 3: decisions=8 lessons=5
+  [extract] Chunk 4/6...
+  [extract] Chunk 4: decisions=6 lessons=3
+  [extract] Chunk 5/6...
+  [extract] Chunk 5: decisions=5 lessons=5
+  [extract] Chunk 6/6...
+  [extract] Chunk 6: decisions=4 lessons=6
+  [extract] Après fusion: decisions=32 lessons=29
+[os:extract] B09-T18: decisions=32 lessons=29
+  OK
+
+→ Extracting id_dump=B09-T19...
+  [extract] Thread long (227029 chars) — 12 chunk(s)
+  [extract] Chunk 1/12...
+  [extract] Chunk 1: decisions=4 lessons=6
+  [extract] Chunk 2/12...
+  [extract] Chunk 2: decisions=2 lessons=4
+  [extract] Chunk 3/12...
+  [extract] Chunk 3 tentative 1 échouée (Expected property name or '}' in JSON at position 2 (line 1 column 3)) — retry...
+  [extract] Chunk 3 retry OK
+  [extract] Chunk 3: decisions=6 lessons=5
+  [extract] Chunk 4/12...
+  [extract] Chunk 4: decisions=3 lessons=3
+  [extract] Chunk 5/12...
+  [extract] Chunk 5: decisions=6 lessons=4
+  [extract] Chunk 6/12...
+  [extract] Chunk 6: decisions=5 lessons=4
+  [extract] Chunk 7/12...
+  [extract] Chunk 7: decisions=5 lessons=6
+  [extract] Chunk 8/12...
+  [extract] Chunk 8: decisions=2 lessons=8
+  [extract] Chunk 9/12...
+  [extract] Chunk 9: decisions=8 lessons=6
+  [extract] Chunk 10/12...
+  [extract] Chunk 10: decisions=4 lessons=5
+  [extract] Chunk 11/12...
+  [extract] Chunk 11: decisions=6 lessons=5
+  [extract] Chunk 12/12...
+  [extract] Chunk 12: decisions=3 lessons=3
+  [extract] Après fusion: decisions=54 lessons=59
+[os:extract] B09-T19: decisions=54 lessons=59
+  OK
+
+→ Extracting id_dump=B09-T20...
+  [extract] Thread long (377077 chars) — 19 chunk(s)
+  [extract] Chunk 1/19...
+  [extract] Chunk 1: decisions=6 lessons=7
+  [extract] Chunk 2/19...
+  [extract] Chunk 2: decisions=4 lessons=3
+  [extract] Chunk 3/19...
+  [extract] Chunk 3: decisions=3 lessons=3
+  [extract] Chunk 4/19...
+  [extract] Chunk 4: decisions=4 lessons=3
+  [extract] Chunk 5/19...
+  [extract] Chunk 5: decisions=4 lessons=4
+  [extract] Chunk 6/19...
+  [extract] Chunk 6: decisions=3 lessons=4
+  [extract] Chunk 7/19...
+  [extract] Chunk 7: decisions=7 lessons=10
+  [extract] Chunk 8/19...
+  [extract] Chunk 8: decisions=4 lessons=4
+  [extract] Chunk 9/19...
+  [extract] Chunk 9: decisions=0 lessons=0
+  [extract] Chunk 10/19...
+  [extract] Chunk 10 tentative 1 échouée (Expected property name or '}' in JSON at position 4 (line 2 column 3)) — retry...
+  [extract] Chunk 10 retry OK
+  [extract] Chunk 10: decisions=0 lessons=0
+  [extract] Chunk 11/19...
+  [extract] Chunk 11: decisions=0 lessons=0
+  [extract] Chunk 12/19...
+  [extract] Chunk 12 tentative 1 échouée (Expected property name or '}' in JSON at position 2 (line 1 column 3)) — retry...
+  [extract] Chunk 12 retry OK
+  [extract] Chunk 12: decisions=0 lessons=4
+  [extract] Chunk 13/19...
+  [extract] Chunk 13: decisions=3 lessons=4
+  [extract] Chunk 14/19...
+  [extract] Chunk 14: decisions=4 lessons=5
+  [extract] Chunk 15/19...
+  [extract] Chunk 15: decisions=4 lessons=5
+  [extract] Chunk 16/19...
+  [extract] Chunk 16: decisions=7 lessons=7
+  [extract] Chunk 17/19...
+  [extract] Chunk 17: decisions=5 lessons=5
+  [extract] Chunk 18/19...
+  [extract] Chunk 18: decisions=5 lessons=6
+  [extract] Chunk 19/19...
+  [extract] Chunk 19: decisions=8 lessons=5
+  [extract] Après fusion: decisions=71 lessons=79
+[os:extract] B09-T20: decisions=71 lessons=79
+  OK
+
+→ Extracting id_dump=B09-T21...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B09-T22...
+  [extract] Thread long (525782 chars) — 27 chunk(s)
+  [extract] Chunk 1/27...
+  [extract] Chunk 1: decisions=6 lessons=5
+  [extract] Chunk 2/27...
+  [extract] Chunk 2: decisions=7 lessons=5
+  [extract] Chunk 3/27...
+  [extract] Chunk 3: decisions=5 lessons=4
+  [extract] Chunk 4/27...
+  [extract] Chunk 4: decisions=6 lessons=5
+  [extract] Chunk 5/27...
+  [extract] Chunk 5: decisions=4 lessons=2
+  [extract] Chunk 6/27...
+  [extract] Chunk 6: decisions=4 lessons=2
+  [extract] Chunk 7/27...
+  [extract] Chunk 7: decisions=1 lessons=3
+  [extract] Chunk 8/27...
+  [extract] Chunk 8: decisions=5 lessons=7
+  [extract] Chunk 9/27...
+  [extract] Chunk 9: decisions=3 lessons=3
+  [extract] Chunk 10/27...
+  [extract] Chunk 10: decisions=4 lessons=3
+  [extract] Chunk 11/27...
+  [extract] Chunk 11: decisions=5 lessons=4
+  [extract] Chunk 12/27...
+  [extract] Chunk 12: decisions=3 lessons=3
+  [extract] Chunk 13/27...
+  [extract] Chunk 13: decisions=2 lessons=3
+  [extract] Chunk 14/27...
+  [extract] Chunk 14: decisions=0 lessons=0
+  [extract] Chunk 15/27...
+  [extract] Chunk 15: decisions=2 lessons=1
+  [extract] Chunk 16/27...
+  [extract] Chunk 16: decisions=0 lessons=0
+  [extract] Chunk 17/27...
+  [extract] Chunk 17: decisions=8 lessons=2
+  [extract] Chunk 18/27...
+  [extract] Chunk 18: decisions=7 lessons=2
+  [extract] Chunk 19/27...
+  [extract] Chunk 19 tentative 1 échouée (Expected property name or '}' in JSON at position 2 (line 1 column 3)) — retry...
+  [extract] Chunk 19 retry OK
+  [extract] Chunk 19: decisions=8 lessons=3
+  [extract] Chunk 20/27...
+  [extract] Chunk 20: decisions=0 lessons=0
+  [extract] Chunk 21/27...
+  [extract] Chunk 21: decisions=6 lessons=0
+  [extract] Chunk 22/27...
+  [extract] Chunk 22: decisions=3 lessons=2
+  [extract] Chunk 23/27...
+  [extract] Chunk 23: decisions=2 lessons=3
+  [extract] Chunk 24/27...
+  [extract] Chunk 24: decisions=7 lessons=6
+  [extract] Chunk 25/27...
+  [extract] Chunk 25: decisions=4 lessons=5
+  [extract] Chunk 26/27...
+  [extract] Chunk 26: decisions=0 lessons=0
+  [extract] Chunk 27/27...
+  [extract] Chunk 27: decisions=6 lessons=6
+  [extract] Après fusion: decisions=97 lessons=79
+[os:extract] B09-T22: decisions=97 lessons=79
+  OK
+
+→ Extracting id_dump=B99-T01...
+[os:extract] B99-T01: decisions=3 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T02...
+[os:extract] B99-T02: decisions=6 lessons=5
+  OK
+
+→ Extracting id_dump=B99-T03...
+[os:extract] B99-T03: decisions=2 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B99-T05...
+[os:extract] B99-T05: decisions=4 lessons=4
+  OK
+
+→ Extracting id_dump=B99-T06...
+[os:extract] B99-T06: decisions=4 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T07...
+[os:extract] B99-T07: decisions=3 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T08...
+[os:extract] B99-T08: decisions=4 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T09...
+[os:extract] B99-T09: decisions=4 lessons=2
+  OK
+
+→ Extracting id_dump=B99-T10...
+[os:extract] B99-T10: decisions=3 lessons=1
+  OK
+
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --limit 100
+
+[os:inject] Mode: LIVE
+[os:inject] Candidats: 30 (limit=100)   
+→ Processing id_dump=B02-T03...
+  OK
+→ Processing id_dump=B03-T02...
+  OK
+→ Processing id_dump=B07-T02...
+  OK
+→ Processing id_dump=B09-T02...
+  OK
+→ Processing id_dump=B09-T03...
+  OK
+→ Processing id_dump=B09-T05...
+  OK
+→ Processing id_dump=B09-T06...
+  OK
+→ Processing id_dump=B09-T07...
+  OK
+→ Processing id_dump=B09-T09...
+  OK
+→ Processing id_dump=B09-T10...
+  OK
+→ Processing id_dump=B09-T11...
+  OK
+→ Processing id_dump=B09-T12...
+  OK
+→ Processing id_dump=B09-T13...
+  OK
+→ Processing id_dump=B09-T14...
+  OK
+→ Processing id_dump=B09-T15...
+  OK
+→ Processing id_dump=B09-T16...
+  OK
+→ Processing id_dump=B09-T17...
+  OK
+→ Processing id_dump=B09-T18...
+  OK
+→ Processing id_dump=B09-T19...
+  OK
+→ Processing id_dump=B09-T20...
+  OK
+→ Processing id_dump=B09-T22...
+  OK
+→ Processing id_dump=B99-T01...
+  OK
+→ Processing id_dump=B99-T02...
+  OK
+→ Processing id_dump=B99-T03...
+  OK
+→ Processing id_dump=B99-T05...
+  OK
+→ Processing id_dump=B99-T06...
+  OK
+→ Processing id_dump=B99-T07...
+  OK
+→ Processing id_dump=B99-T08...
+  OK
+→ Processing id_dump=B99-T09...
+  OK
+→ Processing id_dump=B99-T10...
+  OK
+admin@imacdeiac5admin inside-os % npm run os:audit
+
+> inside-os@1.0.0 os:audit
+> node os/scripts/audit-system.mjs
+
+
+INSIDE OS AUDIT
+---------------
+
+THREAD_DUMP
+total: 81
+extract_done: 75
+extract_pending: 0
+extract_error: 6
+inject_done: 74
+inject_pending: 6
+inject_error: 1
+
+DECISIONS
+total: 1768
+
+LESSONS
+total: 1707
+
+admin@imacdeiac5admin inside-os % npm run os:extract -- --limit 100
+npm run os:inject -- --limit 100
+
+> inside-os@1.0.0 os:extract
+> node os/extract/extract-thread-dump.mjs --limit 100
+
+[os:extract] Mode: LIVE
+[os:extract] Modèle: claude-sonnet-4-5
+[os:extract] Seuil extraction directe: 12000 chars
+
+[os:extract] Candidats: 6
+
+→ Extracting id_dump=B03-T01...
+[os:extract] B03-T01: decisions=4 lessons=5
+  OK
+
+→ Extracting id_dump=B03-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B09-T04...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B09-T08...
+  [extract] Thread long (383374 chars) — 20 chunk(s)
+  [extract] Chunk 1/20...
+  [extract] Chunk 1: decisions=5 lessons=5
+  [extract] Chunk 2/20...
+  [extract] Chunk 2: decisions=5 lessons=6
+  [extract] Chunk 3/20...
+  [extract] Chunk 3: decisions=6 lessons=5
+  [extract] Chunk 4/20...
+  [extract] Chunk 4: decisions=5 lessons=4
+  [extract] Chunk 5/20...
+  [extract] Chunk 5: decisions=5 lessons=3
+  [extract] Chunk 6/20...
+  [extract] Chunk 6: decisions=3 lessons=3
+  [extract] Chunk 7/20...
+  [extract] Chunk 7: decisions=3 lessons=4
+  [extract] Chunk 8/20...
+  [extract] Chunk 8: decisions=5 lessons=4
+  [extract] Chunk 9/20...
+  [extract] Chunk 9: decisions=3 lessons=3
+  [extract] Chunk 10/20...
+  [extract] Chunk 10: decisions=6 lessons=5
+  [extract] Chunk 11/20...
+  [extract] Chunk 11: decisions=3 lessons=5
+  [extract] Chunk 12/20...
+  [extract] Chunk 12: decisions=4 lessons=4
+  [extract] Chunk 13/20...
+  [extract] Chunk 13: decisions=4 lessons=6
+  [extract] Chunk 14/20...
+  [extract] Chunk 14: decisions=6 lessons=7
+  [extract] Chunk 15/20...
+  [extract] Chunk 15: decisions=6 lessons=4
+  [extract] Chunk 16/20...
+  [extract] Chunk 16: decisions=4 lessons=6
+  [extract] Chunk 17/20...
+  [extract] Chunk 17: decisions=0 lessons=0
+  [extract] Chunk 18/20...
+  [extract] Chunk 18: decisions=4 lessons=3
+  [extract] Chunk 19/20...
+  [extract] Chunk 19: decisions=4 lessons=3
+  [extract] Chunk 20/20...
+  [extract] Chunk 20: decisions=5 lessons=3
+  [extract] Après fusion: decisions=86 lessons=83
+[os:extract] B09-T08: decisions=86 lessons=83
+  OK
+
+→ Extracting id_dump=B09-T21...
+  ERROR: JSON non fermé 
+
+[os:extract] WARN: JSON non fermé
+→ Extracting id_dump=B99-T04...
+[os:extract] B99-T04: decisions=8 lessons=3
+  OK
+
+
+> inside-os@1.0.0 os:inject
+> node os/inject/inject-decisions-lessons.mjs --limit 100
+
+[os:inject] Mode: LIVE
+[os:inject] Candidats: 3 (limit=100)   
+→ Processing id_dump=B03-T01...
+  OK
+→ Processing id_dump=B09-T08...
+  OK
+→ Processing id_dump=B99-T04...
+  OK
+admin@imacdeiac5admin inside-os % 

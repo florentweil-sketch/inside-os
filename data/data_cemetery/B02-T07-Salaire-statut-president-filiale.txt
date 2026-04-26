@@ -1,0 +1,239 @@
+THREAD HISTORIQUE - B01 - T09 - Sujet Salaire et statut président filiale 
+Date approximative : 01.08.2024
+Source : ChatGPT
+
+est ce qu'etre menuisier releve de la convention collective du batiment (cadre)
+
+Oui, le métier de menuisier relève bien de la convention collective nationale du bâtiment, mais le statut "cadre" n'est pas automatique : cela dépend du poste occupé, du niveau de responsabilité, et de la classification professionnelle.
+Voici les points essentiels à comprendre :
+
+ Menuisier et convention collective du bâtiment
+Les menuisiers salariés (en atelier ou sur chantier) dépendent généralement de la Convention collective nationale des ouvriers du bâtiment, qui est ensuite divisée selon la taille de l'entreprise :
+	-	moins de 10 salariés (IDCC 1596)
+	-	plus de 10 salariés (IDCC 1597)
+Mais il existe aussi :
+	-	La convention collective des employés, techniciens et agents de maîtrise du bâtiment (ETAM) - IDCC 2609
+	-	Et la convention collective des cadres du bâtiment - IDCC 2420
+
+ Statut cadre pour un menuisier : possible mais spécifique
+Un menuisier en tant que tel (ouvrier ou technicien spécialisé) ne relève pas automatiquement du statut cadre. Pour être classé cadre, il faut :
+	-	Avoir des fonctions d'encadrement (direction d'équipe, gestion de projet, etc.)
+	-	Être responsable d'un atelier, d'un bureau d'études, ou d'un pôle technique
+	-	Être reconnu par l'employeur avec un contrat de travail de cadre
+	-	Relever du niveau hiérarchique et de classification correspondant dans la convention (ex. : ingénieur, responsable technique, chef de service...)
+
+ Exemple concret
+Un menuisier chef d'atelier, avec des responsabilités en gestion d'équipe, organisation du travail, et suivi de production, pourrait être intégré à la convention des cadres du bâtiment, mais cela devra être précisé dans le contrat de travail et reconnu par la grille de classification.
+
+ En résumé
+Fonction du menuisier
+Convention applicable
+Statut cadre possible
+Ouvrier qualifié (pose, fabrication)
+Ouvriers du bâtiment (< ou > 10 salariés)
+ Non
+Chef d'équipe / chef d'atelier
+ETAM ou Cadres (selon niveau)
+ Parfois
+Responsable technique ou de production
+Cadres du bâtiment (IDCC 2420)
+ Oui
+
+Si tu veux, je peux t'aider à vérifier dans la grille de classification à quel niveau pourrait correspondre un poste spécifique de menuisier dans ton entreprise (par exemple : chef d'atelier, chargé de projets, etc.).
+
+en tant que chef d'entreprise d'une societe dans le batiment, dois je avoir un contrat de travail ?
+
+En tant que chef d'entreprise dans le bâtiment (ou tout autre secteur), tu n'es pas obligé d'avoir un contrat de travail, et dans la plupart des cas, tu n'en as pas. Tout dépend de ta situation juridique au sein de ta société. Voici une explication claire selon les différents cas de figure :
+
+ Tu es dirigeant de société : SAS, SARL, EURL, etc.
+ 1. Tu es président d'une SAS ou SASU
+	-	Pas de contrat de travail nécessaire ni obligatoire.
+	-	Tu es considéré comme mandataire social, pas comme salarié.
+	-	Tu peux te verser une rémunération, décidée par toi-même (ou par décision collective).
+	-	Tu ne cotises pas à l'assurance chômage (sauf cas spécifique avec une assurance privée).
+	-	Tu peux cumuler un contrat de travail avec ton mandat uniquement si :
+	-	Tu as des fonctions techniques réelles, distinctes de ton mandat (ex. : directeur de travaux, chef de projet, etc.)
+	-	Tu es sous l'autorité d'un supérieur hiérarchique (peu crédible si tu es le seul associé)
+	-	Tu as une rémunération distincte de celle du mandat
+Mais dans une SAS unipersonnelle (SASU), ce cumul est pratiquement impossible si tu es l'unique associé et président.
+
+ 2. Tu es gérant de SARL ou EURL
+	-	Si tu es gérant majoritaire : tu es travailleur non salarié (TNS), sans contrat de travail possible, et tu relèves du régime social des indépendants.
+	-	Si tu es gérant minoritaire ou égalitaire, ou non associé, un contrat de travail peut exister si tu as des fonctions distinctes, comme ci-dessus.
+
+ Conclusion simple
+Statut du dirigeant
+Contrat de travail possible ?
+Remarques
+Président de SAS / SASU
+ Non (en général)
+Mandataire social
+Gérant majoritaire SARL
+ Non
+TNS, pas de lien de subordination
+Gérant minoritaire SARL
+ Oui, sous conditions
+Fonctions techniques, lien de subordination
+Salarié sans être dirigeant
+ Oui
+Classique contrat de travail
+
+ Et dans ton cas ?
+Puisque tu m'as indiqué précédemment que tu es seul actionnaire d'une entreprise du bâtiment sous forme de SAS, tu es président mandataire social, donc :
+	-	Tu n'as pas besoin de contrat de travail
+	-	Tu peux te verser une rémunération décidée en AG ou par décision de l'associé unique
+	-	Tu ne cotises pas à l'assurance chômage, sauf contrat spécifique d'assurance privée
+
+Si tu envisages d'avoir un rôle technique salarié dans une autre structure (ex. : dans une filiale ou société sœur), là un contrat de travail est envisageable, sous certaines conditions.
+Souhaites-tu que je t'aide à rédiger une décision d'associé unique concernant ta rémunération, ou un exemple de contrat de travail si tu crées une filiale ?
+
+j'ai une fonction technique réelle. que dois je faire
+
+Si tu exerces une fonction technique réelle dans ta propre entreprise, en plus de ton rôle de dirigeant (président de SAS, dans ton cas), et que tu envisages d'établir un contrat de travail pour cela, il faut absolument respecter des conditions très strictes, sinon le contrat pourra être requalifié ou annulé (notamment par l'URSSAF ou en cas de contrôle social).
+Voici un détail clair et pratique de ce que tu dois faire :
+
+ 1. Vérifier que le cumul est juridiquement possible
+En tant que président et associé unique d'une SAS (ou SASU), tu ne peux pas cumuler un contrat de travail avec ton mandat social car :
+	-	Il n'y a pas de lien de subordination possible (tu es ton propre supérieur).
+	-	Le pouvoir disciplinaire et de contrôle du contrat ne peut pas s'exercer.
+ Donc, si tu es seul associé et président, tu ne peux pas signer un contrat de travail dans ta propre société, même si tu as une fonction technique.
+
+ Solutions possibles
+ A. Créer une structure séparée (ex. : filiale)
+Tu peux créer une filiale (ex. : SAS détenue à 100% par ta société actuelle), et devenir salarié dans cette filiale :
+	-	Tu n'en es pas associé directement, donc lien de subordination possible.
+	-	Tu peux y exercer une fonction technique (ex. : directeur de production, chef de projet…).
+	-	Un contrat de travail en bonne et due forme est alors légalement possible.
+ B. Intégrer un autre associé dans ta société
+Si tu n'es plus associé unique, le cumul devient envisageable, mais :
+	-	Il faut que le contrat de travail soit réel : fonction technique, rémunération distincte, horaires, etc.
+	-	L'autre associé doit pouvoir exercer un pouvoir de contrôle sur ta fonction salariée.
+	-	Ce montage reste fragile si l'autre associé est " de complaisance ".
+
+ 2. Si le cumul est possible, les documents nécessaires sont :
+	-	Une décision d'assemblée générale (ou de l'associé unique ou du conseil d'administration) autorisant le cumul
+	-	Un contrat de travail en bonne et due forme précisant :
+	-	La fonction technique distincte du mandat
+	-	La rémunération spécifique
+	-	Les conditions de travail (durée, lieu, horaires…)
+	-	Une fiche de paie distincte pour la fonction salariée
+
+ Résumé
+Situation actuelle
+Cumul possible ?
+Que faire ?
+Président et associé unique d'une SAS
+ Non
+Créer une filiale ou faire entrer un autre associé
+Président non associé ou minoritaire dans une autre société
+ Oui
+Établir contrat et lien de subordination
+Salarié dans une filiale
+ Oui
+Cumul fonction technique + contrat de travail possible
+
+Souhaites-tu que je t'aide à :
+	-	Rédiger une structure juridique de filiale pour y exercer ta fonction technique ?
+	-	Élaborer un contrat de travail salarié dans le cadre d'une filiale ou d'une société sœur ?
+	-	Préparer une décision de l'associé unique pour formaliser une rémunération ou d'autres aspects ?
+Dis-moi ton projet, je peux te guider pas à pas.
+
+comment voir sa qualification proffessionnelle dans une fiche de paie
+
+Pour voir ta qualification professionnelle sur une fiche de paie, il faut savoir où chercher et comment la décrypter. Voici un guide pratique pour comprendre où cette information se situe et ce qu'elle signifie.
+
+ Où apparaît la qualification professionnelle sur une fiche de paie ?
+La qualification professionnelle figure généralement dans le bloc supérieur de la fiche de paie, dans la zone appelée "Informations sur le salarié" ou "Poste / Fonction". Elle peut apparaître sous plusieurs libellés :
+	-	Poste / Emploi
+	-	Coefficient
+	-	Niveau ou Position
+	-	Convention collective
+	-	Statut (ex : ouvrier, ETAM, cadre)
+	-	Classification (selon la convention collective applicable)
+Ces éléments te permettent de connaître ton niveau de classification professionnelle selon la convention collective de ton secteur (dans ton cas, probablement le bâtiment).
+
+ Exemple typique sur une fiche de paie
+Champ sur la fiche de paie
+Exemple
+Emploi ou Fonction
+Menuisier poseur qualifié
+Convention collective
+Convention collective Bâtiment
+Statut
+Ouvrier
+Coefficient
+210
+Niveau / Position (si ETAM ou cadre)
+Niveau III, Position 1
+
+ À quoi sert cette information ?
+La qualification professionnelle permet de déterminer :
+	-	Le niveau de salaire minimum conventionnel
+	-	Le statut du salarié (ouvrier, ETAM, cadre)
+	-	Le niveau de responsabilité et d'autonomie
+	-	L'accès à certains avantages (primes, congés, indemnités de trajet, etc.)
+
+ Comment vérifier la correspondance ?
+Tu peux consulter la grille de classification de ta convention collective (ex. : Convention collective nationale des ouvriers du bâtiment) pour :
+	-	Retrouver la correspondance entre le coefficient et le niveau de qualification
+	-	Vérifier si ta fiche de paie est conforme à ton poste réel
+ Exemple : un menuisier qualifié niveau III aura un coefficient autour de 210, tandis qu'un chef d'équipe ou chef d'atelier aura un coefficient plus élevé.
+
+Tu veux vérifier ta qualification actuelle ?
+Si tu veux, tu peux :
+	-	M'envoyer un extrait anonymisé de ta fiche de paie (haut de page),
+	-	Ou me donner ce qui est inscrit dans les rubriques emploi, statut, coefficient, etc.
+Je pourrai alors t'aider à interpréter ta classification et te dire si elle est cohérente avec ton rôle réel.
+
+en tant que president d'une sas dans le batiment puis je exercer en tant qu'ouvrier
+
+Tu poses une excellente question, et elle touche à la frontière entre le rôle de mandataire social (président de SAS) et celui de salarié technique (comme ouvrier). La réponse dépend d'un point clé : es-tu l'unique associé ou non ? Voici une explication complète adaptée à ton cas.
+
+‍ Président de SAS et ouvrier : est-ce possible ?
+ Tu es président et associé unique d'une SAS (SASU)
+Dans ce cas :
+	-	 Tu ne peux pas être ouvrier salarié dans ta propre société.
+	-	Il est juridiquement impossible de cumuler un contrat de travail avec ton mandat de président, car :
+	-	Il n'y a aucun lien de subordination possible envers toi-même.
+	-	Tu es à la fois employeur et employé, ce qui est incompatible.
+ Même si tu travailles manuellement sur les chantiers, tu es rémunéré uniquement au titre de ton mandat social, sans contrat de travail, ni bulletin de paie salarié.
+
+ Tu es président mais pas associé unique (ex. : un ou plusieurs associés)
+Dans ce cas, c'est parfois possible, mais sous conditions très strictes :
+	-	Tu dois avoir des fonctions techniques réelles (ex. : menuisier sur chantier).
+	-	Il faut que :
+	-	Ton contrat de travail soit distinct du mandat social.
+	-	Tu sois sous l'autorité effective d'un supérieur hiérarchique (ex. : un autre associé ou un conseil d'administration).
+	-	Tu sois rémunéré spécifiquement pour cette fonction technique.
+	-	Ce montage est souvent fragile juridiquement, et soumis à risque de redressement URSSAF en cas de contrôle.
+ Cela peut mieux fonctionner si tu es salarié dans une filiale de ta SAS, avec un poste ouvrier clairement distinct de ta fonction de direction dans la maison mère.
+
+ Que faire si tu veux exercer une fonction ouvrière de manière sécurisée ?
+ Option 1 : Rester président mandataire, sans contrat de travail
+	-	Tu fais les travaux toi-même,
+	-	Tu te verses une rémunération via ton mandat (ou pas, si tu veux différer la paie),
+	-	Tu n'as pas de bulletin de salaire, mais tu déclares tes revenus dans la catégorie des revenus de dirigeants assimilés salariés.
+ Option 2 : Créer une filiale
+	-	Ta SAS crée une SAS fille, juridiquement indépendante,
+	-	Tu y es salarié en tant qu'ouvrier (par exemple menuisier),
+	-	Tu peux donc y avoir un contrat de travail, une fiche de paie, et cotiser au chômage.
+
+ À éviter
+	-	Ne pas faire de fausse fiche de paie pour un président qui est aussi l'unique associé.
+	-	Ne pas se verser une rémunération d'ouvrier sans cadre légal clair (contrat + subordination + fonction distincte), cela peut être requalifié en abus de droit.
+
+ Conclusion
+Situation
+Peut-il être ouvrier salarié ?
+Conditions
+Président associé unique (SASU)
+ Non
+Interdit juridiquement
+Président avec autres associés
+ Très limité
+Doit avoir un lien de subordination réel
+Président d'une holding ou maison mère, salarié dans une filiale
+ Oui
+Cumul possible si fonctions distinctes et contrôle réel
+
+Souhaites-tu que je t'aide à envisager un montage (ex. : filiale, rémunération, organigramme) pour pouvoir exercer légalement une fonction technique dans ton entreprise ? Je peux te fournir un modèle simple pour commencer.

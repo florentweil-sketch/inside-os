@@ -1,0 +1,30 @@
+THREAD HISTORIQUE - BLOC 99 - T01 / 2026-04-17 / Mémoire conversationnelle vivante
+
+Objectif :
+- durcissement V1 uniquement
+
+Décision :
+- créer une mémoire conversationnelle vivante avant toute beta v01
+
+Principe :
+- extract = déterministe
+- inject = logique métier
+- chat = lecture seule
+
+Décisions techniques :
+- lire DECISIONS et LESSONS depuis Notion
+- utiliser un LLM pour répondre
+- ne pas écrire depuis le chat
+
+Résultat :
+- un script de chat mémoire fonctionne
+- la mémoire est vivante
+
+Problème :
+- la mémoire ne contient pas encore l'état actuel du projet
+
+Décision :
+- passer par ingest -> extract -> inject pour écrire le présent
+
+Conclusion :
+- la priorité est de remplir la mémoire avec le présent

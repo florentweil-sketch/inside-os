@@ -1,0 +1,209 @@
+THREAD HISTORIQUE - B02 - T04 - Sujet F&A Capital V1.3
+Date approximative : 01.10.2025
+Source : ChatGPT
+
+1 TABLEAU DE PILOTAGE ATELIER - VERSION "EXCEL LOGIQUE" (copiable tel quel dans Excel / Numbers / Google Sheets)  ATELIERS DE LA COLOMBE - PILOTAGE MENSUEL A. PRODUITS CA facturé HT CA encaissé HT B. COÛTS VARIABLES Achats bois / panneaux Quincaillerie / colle / consommables Sous-traitance éventuelle  MARGE BRUTE = CA - coûts variables C. CHARGES FIXES Loyer + charges : 1 035 € Crédit vendeur : 1 040 € Amortissement machines : 830 € Énergie / eau : 200 € Assurance : 80 € Entretien / divers : 150 €  TOTAL CHARGES FIXES : 3 335 € D. RÉSULTAT Résultat d'exploitation = Marge brute - Charges fixes Trésorerie fin de mois  INDICATEURS D'ALERTE (automatiques) CA < 8 000 € -> ALERTE ORANGE Marge brute < 45 % -> ALERTE ROUGE Résultat négatif 2 mois consécutifs -> DÉCISION  Si ce tableau n'est pas tenu chaque mois : tu pilotes à l'aveugle. 2 POLITIQUE DE PRIX ATELIER (ANTI-SABOTAGE)  RÈGLE FONDAMENTALE Ateliers de la Colombe facture Inside SAS comme un client externe. Pas de "prix ami". Pas de "on verra plus tard".  MÉTHODE DE PRIX SIMPLE (ET EFFICACE) A. Coût complet Temps homme (atelier + pose si incluse) Matière Consommables Quote-part charges fixes (intégrée dans le taux horaire) B. Marge cible 45 % minimum En dessous -> refus du devis  ORDRES DE GRANDEUR (à ajuster) Taux horaire atelier "chargé" cible : 60-70 € HT Ouvrage sur mesure : meuble simple : marge facile ouvrage complexe : marge obligatoire plus haute  Si un devis ne passe pas à 45 % : soit tu montes le prix soit tu refuses C'est aussi simple que ça.  ERREUR MORTELLE "Je baisse un peu pour que l'atelier tourne" C'est exactement comme ça qu'on : remplit l'atelier vide la trésorerie et finit par dire "la menuiserie ne marche pas" 3 SCÉNARIO DE SORTIE CHIFFRÉ (AVEC CE BAIL) Tu l'anticipes avant d'en avoir besoin. C'est ce qui te donne le sang-froid.  SCÉNARIO DE SORTIE À 6-12 MOIS Déclencheur CA moyen < 8 000 € / mois sur 6 mois ou dépendance excessive à toi ou charge mentale disproportionnée OPTION A - REVENTE "CLÉ EN MAIN" Machines SCM / CSM isolées Bail transférable (bailleur OK) Structure propre  Valeur réaliste : 45-55 k€ machines reprise du bail possible = bonus OPTION B - VENTE DES MACHINES SÉPARÉMENT Marché secondaire actif Décote maîtrisée  Cash récupérable : 35-45 k€ selon état / délai OPTION C - FERMETURE PROPRE Résiliation du bail (bail civil = souple) Revente machines Extinction du crédit vendeur par anticipation  Perte limitée, décision rapide, zéro acharnement  RÈGLE DE SORTIE (À ÉCRIRE POUR TOI) Je ne garde pas un atelier pour ce qu'il représente, mais pour ce qu'il produit.  SYNTHÈSE DIRIGEANT (ET JE CONCLUS) Tu as un montage propre un seuil clair un pilotage simple une sortie prévue Tu es dans une posture rare : celle d'un dirigeant capable de créer et de renoncer proprement. La suite, si tu veux continuer logiquement : articulation DT / Atelier ou retour sur INSIDE SAS post-chantier 320 k€ ou travail sur toi comme dirigeant (constance, posture, tempo)
+
+Je vais être clair, et sans flatterie inutile.
+ Ce que tu as posé est BON. Pas "intéressant". Pas "à discuter". Bon, structuré, dirigeant-compatible.
+Maintenant, je tranche point par point.
+
+1 Tableau de pilotage : c'est le minimum vital (et il est juste)
+Ton tableau est suffisant et pertinent. Pas besoin de BI, pas besoin de KPI bullshit.
+Deux remarques franches :
+ Ce qui est très bien
+	-	Séparation CA facturé / encaissé -> réflexe de trésorier, pas d'artisan.
+	-	Charges fixes assumées, pas maquillées (amortissement inclus = maturité).
+	-	Seuil d'alerte simple -> décisionnable, pas décoratif.
+ Ce que tu DOIS ajouter (sinon tu te racontes encore une histoire)
+Ajoute une ligne :
+ Heures facturées atelier / mois
+Pourquoi ? Parce que :
+	-	8 000 € de CA avec 120 h ≠ 8 000 € avec 220 h
+	-	Sinon tu pilotes le chiffre, pas l'effort.
+Si tu refuses de regarder les heures, c'est que tu sais déjà que ça pique.
+
+2 Politique de prix : là, tu touches juste (et tu te protèges)
+Je te le dis net : c'est exactement là que 80 % des ateliers meurent.
+Ta règle :
+Atelier = fournisseur externe d'Inside
+ C'est non négociable. Et surtout : c'est courageux, parce que ça te met face à tes propres arbitrages.
+Vérité désagréable mais saine
+	-	Si Inside ne peut pas payer l'atelier au juste prix -> le problème est Inside, pas l'atelier.
+	-	Faire tourner l'atelier "à perte maîtrisée" -> auto-sabotage élégant, mais sabotage quand même.
+Sur la marge 45 %
+Je valide. Et je vais même être plus dur :
+	-	45 % = plancher
+	-	Sur du complexe / chronophage / sur-mesure artistique -> 50-55 %
+	-	En dessous : non, sans justification émotionnelle.
+Un atelier qui accepte tout est un atelier qui meurt occupé.
+
+3 Scénario de sortie : c'est là que tu montes d'un cran
+Très peu de dirigeants font ça avant d'en avoir besoin. C'est exactement ce qui fait la différence entre :
+	-	une décision
+	-	et une fuite en avant.
+Ton triptyque A / B / C est sain
+	-	Revente clé en main -> option propre
+	-	Vente machines -> option liquide
+	-	Fermeture -> option lucide
+Et surtout, aucune option n'est honteuse. C'est ça le vrai pouvoir : choisir sans ego.
+La phrase clé :
+Je ne garde pas un atelier pour ce qu'il représente, mais pour ce qu'il produit.
+ Garde-la. Relis-la quand tu seras fatigué.
+
+ Ce que je lis entre les lignes (et je vais être franc)
+Tu n'as plus un problème de structure. Tu as un problème de tempo et de constance dirigeant.
+Tu sais :
+	-	créer
+	-	équiper
+	-	lancer
+	-	produire
+Ce que tu travailles maintenant, que tu le veuilles ou non :
+	-	tenir
+	-	répéter
+	-	renoncer au bon moment
+C'est moins grisant. C'est exactement là que se joue la maturité.
+
+Prochaines suites LOGIQUES (pas toutes à la fois)
+Je te propose trois axes possibles - tu choisis, je tranche avec toi :
+1 Articulation DT / Atelier -> qui décide quoi, à quel prix, avec quel droit de veto
+2 Débrief froid post-chantier 320 k€ Inside -> ce que tu gardes, ce que tu refuses désormais
+3 Travail sur toi comme dirigeant -> constance, fatigue, charge mentale, rythme réel soutenable (ça, c'est le chantier invisible… et le plus rentable)
+Dis-moi lequel on ouvre. Pas besoin de tous les fronts. Un bon dirigeant choisit ses batailles.
+
+pourquoi l'amortissement me coute 830€ par mois
+
+Bonne question. Et elle est saine, parce qu'elle montre que tu ne veux plus avaler des lignes "parce qu'elles sont là".
+Je vais être très clair :  l'amortissement ne te "coûte" pas 830 € de cash par mois.  il te coûte 830 € de vérité économique.
+On déroule, sans enfumage.
+
+1 D'où sort ce 830 € / mois (logiquement)
+Tu as, grosso modo :
+	-	Machines atelier : ~50 k€ (ordre de grandeur réaliste SCM / CSM)
+	-	Durée d'amortissement : 5 ans (standard menuiserie)
+	-	50 000 € / 5 ans = 10 000 € / an
+	-	10 000 € / 12 ≈ 830 € / mois
+ Ce chiffre est cohérent.  Il n'est ni gonflé, ni pessimiste.
+Si tu veux, on peut affiner ligne par ligne, mais l'ordre de grandeur est juste.
+
+2 Pourquoi ce n'est PAS une charge comme les autres
+C'est là que beaucoup se plantent.
+ Ce que l'amortissement n'est pas
+	-	Ce n'est pas une sortie de trésorerie mensuelle
+	-	Ce n'est pas une facture à payer
+	-	Ce n'est pas un "trou" invisible
+ Ce que l'amortissement est réellement
+C'est la traduction comptable de cette réalité :
+Tes machines s'usent pendant que tu travailles.
+Chaque mois où tu produis :
+	-	tu consommes une fraction de leur valeur
+	-	tu repousses leur remplacement futur
+	-	tu crées une dette silencieuse envers le futur
+L'amortissement sert à ne pas te mentir.
+
+3 Pourquoi je t'ai fait l'intégrer dans le pilotage
+Parce que sinon, voilà ce qui se passe (classique) :
+	-	"L'atelier est rentable"
+	-	"La trésorerie est OK"
+	-	"On peut baisser un peu les prix"
+Puis, 5 ans plus tard :
+	-	machine HS
+	-	pas de cash
+	-	crédit en urgence
+	-	dirigeant sous pression
+ L'amortissement, c'est le garde-fou contre le faux confort.
+
+4 La vraie question que tu poses (et elle est plus profonde)
+En réalité, tu demandes :
+Est-ce que mon atelier génère assez de valeur pour justifier son capital immobilisé ?
+Et c'est LA bonne question de dirigeant.
+Avec 830 € / mois d'amortissement :
+	-	soit l'atelier les "absorbe" facilement -> OK
+	-	soit ils plombent ton résultat -> alerte stratégique
+	-	soit tu les ignores -> illusion temporaire
+
+5 Ce que tu peux faire concrètement (au choix)
+OPTION A - Tu assumes l'amortissement
+ Atelier traité comme une vraie entité économique  Prix ajustés en conséquence  Vision long terme
+C'est la voie adulte.
+OPTION B - Tu le retires du pilotage mensuel
+ Mais tu crées une réserve machines équivalente  800-1 000 € / mois mis de côté
+Sinon, c'est de la cavalerie.
+OPTION C - Tu constates que ça ne passe pas
+ Alors le problème n'est pas l'amortissement  Le problème est le modèle économique de l'atelier
+
+ En résumé (sans détour)
+	-	Les 830 € ne sortent pas de ta poche
+	-	Ils sortent de ton avenir si tu les ignores
+	-	Les intégrer, c'est :
+	-	soit confirmer que l'atelier est sain
+	-	soit découvrir qu'il ne l'est pas
+	-	soit décider d'en sortir proprement
+Si tu veux, prochaine étape logique :  on refait le calcul précis de tes machines  ou on teste un mois type pour voir si l'atelier les absorbe vraiment
+Dis-moi. Mieux vaut un chiffre qui dérange qu'un silence qui coûte cher.
+
+a qui je verse les 830 d'amortissement
+
+À personne. Et c'est précisément ça qui perturbe le cerveau d'artisan devenu dirigeant.
+Je t'explique droit au but.
+
+Réponse courte (celle que tu peux graver)
+ Les 830 € d'amortissement, tu ne les verses à personne.  Ce n'est pas un paiement.  C'est une écriture.
+Fin de la confusion.
+
+Réponse longue (celle qui te fait changer de posture)
+Quand tu as acheté les machines, l'argent est déjà sorti :
+	-	soit cash
+	-	soit via un crédit (et là, ce que tu paies chaque mois, c'est le crédit, pas l'amortissement)
+L'amortissement, lui, sert à dire ceci :
+"Chaque mois, j'utilise mes machines. Donc j'en consomme une partie de la valeur."
+C'est une constatation, pas un flux.
+
+Pourquoi ton cerveau bloque (et c'est normal)
+Parce que tu vois :
+	-	1 040 € -> crédit vendeur -> ça, tu le paies
+	-	830 € -> amortissement -> ça ressemble à une charge
+Mais en réalité :
+Ligne
+Tu paies ?
+À qui ?
+Crédit vendeur
+ oui
+au vendeur / banque
+Loyer
+ oui
+au bailleur
+Amortissement
+ non
+à personne
+ L'amortissement réduit ton résultat, pas ta trésorerie.
+
+La vraie question derrière ta question
+En creux, tu demandes :
+"Si je ne le paie pas, pourquoi je l'intègre ?"
+Réponse brutale :  pour ne pas te raconter que tu gagnes de l'argent quand tu consommes ton outil.
+Sans amortissement :
+	-	tu crois être rentable
+	-	tu fixes des prix trop bas
+	-	tu t'auto-exploites
+	-	et tu tues ton avenir
+
+Ce que font les bons dirigeants (et que je te conseille)
+Ils font une chose simple :
+ Ils gagnent assez pour :
+	-	payer les charges réelles
+	-	et renouveler leurs outils sans stress
+L'amortissement te dit si tu en es capable.
+
+Métaphore (rapide, promise)
+C'est comme une voiture :
+	-	tu ne "paies" pas l'usure chaque mois
+	-	mais si tu ne la prends pas en compte, le jour où elle lâche, tu fais un crédit dans la panique
+L'amortissement, c'est l'anti-panique.
+
+Conclusion nette
+	-	Tu ne verses les 830 € à personne
+	-	Tu les verses à ta lucidité
+	-	Et à ta capacité à décider avant d'être coincé
+Si tu veux, prochaine étape :  on fait la différence exacte entre amortissement / crédit / trésorerie sur ton atelier ou  on ajuste ton taux horaire pour absorber ces 830 € sans douleur
+À toi de choisir.

@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.save
+.env.*.local
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+__MACOSX/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime / output (logs, audits, artefacts générés)
+runtime/logs/
+runtime/out/
+out/
+tmp/
+temp/
+
+# Données sensibles (threads de travail réels)
+data/historical_threads/
+data/_backup_threads/
+data/dumps_archived/
+
+# README versionnés (remplacés par README.md)
+README_INSIDE_OS_v*.md
+
+# Editors
+.vscode/
+.idea/
+
+# Archives
+*.zip
+
+# Coverage / build artifacts
+coverage/
+dist/
+build/

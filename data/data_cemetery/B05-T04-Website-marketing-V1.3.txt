@@ -1,0 +1,1247 @@
+THREAD HISTORIQUE - B02 - T13 - Sujet WEBSITE COM MARKETING V1.3
+Date approximative : 01.12.2025
+Source : ChatGPT
+
+salut, je veux deplacer mon site internet sur hostting, comment faire
+
+Salut. On va faire simple et efficace, parce que déplacer un site, c'est chiant mais pas compliqué quand on fait les choses dans l'ordre.
+Avant tout :  "hostting", c'est quoi exactement ?
+	-	Hostinger ?
+	-	O2Switch ?
+	-	Un hébergeur interne / VPS ?
+Je te donne la méthode universelle, et ensuite je t'adapte les détails à ton cas précis.
+
+Méthode propre pour déplacer un site (sans tout casser)
+1. Identifier ce que tu as aujourd'hui (indispensable)
+Tu dois savoir :
+	-	CMS ? (WordPress ? autre ?)
+	-	Accès FTP actuel
+	-	Accès à la base de données (MySQL)
+	-	Où est géré le nom de domaine (OVH, Gandi, autre)
+ Si tu ne sais pas répondre à ça, on s'arrête là et on clarifie. Sinon, on avance.
+
+2. Sauvegarde complète (non négociable)
+Deux choses obligatoires :
+	-	Fichiers du site (via FTP ou gestionnaire de fichiers)
+	-	Base de données (export .sql via phpMyAdmin)
+ Si tu sautes cette étape, tu mérites la douleur qui suit.
+
+3. Créer l'hébergement chez le nouvel hébergeur
+Sur "hostting" :
+	-	Créer le compte
+	-	Créer un nouveau site
+	-	Créer une base de données
+	-	Noter :
+	-	nom de la base
+	-	utilisateur
+	-	mot de passe
+	-	serveur (souvent localhost)
+
+4. Envoyer les fichiers sur le nouvel hébergement
+	-	Connexion FTP au nouvel hébergeur
+	-	Upload tous les fichiers du site dans le bon dossier (public_html, www, etc.)
+Oui, ça peut être long. Prends un café.
+
+5. Importer la base de données
+	-	Ouvrir phpMyAdmin chez le nouvel hébergeur
+	-	Importer le fichier .sql
+	-	Vérifier qu'il n'y a pas d'erreurs rouges (sinon, on corrige)
+
+6. Adapter la config du site
+Sur WordPress par exemple :
+	-	Modifier wp-config.php :
+
+define('DB_NAME', 'nouvelle_base');
+define('DB_USER', 'nouvel_utilisateur');
+define('DB_PASSWORD', 'mot_de_passe');
+define('DB_HOST', 'localhost');
+
+Sans ça, ton site est aveugle.
+
+7. Tester AVANT de basculer le domaine
+Deux options :
+	-	URL temporaire de l'hébergeur
+	-	Modifier ton fichier hosts en local (propre, mais plus technique)
+ Tant que tu n'as pas vu le site fonctionner, tu ne touches pas au DNS.
+
+8. Modifier les DNS du nom de domaine
+Chez le registrar du domaine :
+	-	Changer les nameservers OU
+	-	Modifier l'IP A vers le nouvel hébergement
+⏳ Propagation : 1 à 24h (parfois 48h)
+Pendant ce temps : ne panique pas, c'est normal.
+
+9. Vérifications finales
+	-	Site OK ?
+	-	Admin OK ?
+	-	Formulaires OK ?
+	-	Emails OK ? (souvent oublié, souvent le piège)
+
+Vérité brute
+	-	80 % des problèmes viennent d'une base de données mal configurée
+	-	15 % viennent des DNS
+	-	5 % viennent de gens qui improvisent
+
+Dis-moi maintenant :
+	1	Le nom exact de l'hébergeur ("hostting")
+	2	Le type de site (WordPress ou autre)
+	3	Où est ton nom de domaine
+Et je te donne les étapes précises, clic par clic, sans blabla.
+
+1. Hostinger 2. OVH 3. ok 4. ok, a savoir siu je reste sur ovh 5. ok 6. Ok 7. Ok 8. Ok
+
+Parfait. Là c'est clair.  Hébergement : Hostinger  Nom de domaine : OVH (et tu y restes)  Site existant : OK / sauvegardé
+On déroule la procédure optimale, sans détours.
+
+Déplacer ton site vers Hostinger en gardant OVH (méthode propre)
+1 Créer le site sur Hostinger
+Dans Hostinger > Hébergement :
+	-	"Ajouter un site"
+	-	Nom de domaine : mets ton domaine OVH (ex : inside.fr)
+	-	Choisis Site vide (surtout pas un WordPress auto si tu migres)
+ Hostinger va préparer l'environnement.
+
+2 Créer la base de données Hostinger
+Dans hPanel > Bases de données MySQL :
+	-	Créer une base
+	-	Créer un utilisateur
+	-	Associer l'utilisateur à la base (tous les droits)
+Note soigneusement :
+	-	Nom de la base
+	-	Utilisateur
+	-	Mot de passe
+	-	Serveur -> généralement localhost
+(oui, fais un copier-coller quelque part)
+
+3 Envoyer les fichiers du site
+Deux options, prends la plus simple pour toi :
+Option A - Gestionnaire de fichiers Hostinger
+	-	hPanel > Gestionnaire de fichiers
+	-	Dossier : public_html
+	-	Upload tout le site (zip + extraction si possible)
+Option B - FTP (plus propre)
+	-	Utilise FileZilla
+	-	Connexion avec les identifiants Hostinger
+	-	Upload dans public_html
+ À la fin, tu dois voir index.php, wp-content, etc.
+
+4 Importer la base de données
+Dans phpMyAdmin Hostinger :
+	-	Sélectionne la base créée
+	-	Onglet Importer
+	-	Envoie ton fichier .sql
+	-	Laisse les options par défaut
+ S'il y a une erreur rouge -> on corrige, mais tu ne continues pas tant que ce n'est pas propre.
+
+5 Adapter la configuration du site
+Si WordPress
+Dans public_html/wp-config.php :
+
+define('DB_NAME', 'nouvelle_base');
+define('DB_USER', 'nouvel_user');
+define('DB_PASSWORD', 'mot_de_passe');
+define('DB_HOST', 'localhost');
+
+Enregistre. Sans ça, le site est mort-né.
+
+6 Test AVANT DNS (obligatoire)
+Hostinger fournit :
+	-	soit une URL temporaire
+	-	soit un aperçu
+Tu vérifies :
+	-	page d'accueil
+	-	admin (/wp-admin)
+	-	pas d'erreurs PHP
+	-	design OK
+ Tant que ce n'est pas nickel, tu ne touches pas à OVH.
+
+7 Modifier les DNS chez OVH (le vrai basculement)
+Chez OVH > Domaines > DNS :
+Méthode simple (recommandée)
+Dans Hostinger, récupère les nameservers, par ex :
+
+ns1.dns-parking.com
+ns2.dns-parking.com
+
+Puis chez OVH :
+	-	Modifier les serveurs DNS
+	-	Remplacer ceux d'OVH par ceux de Hostinger
+⏳ Propagation : 1 à 24h (parfois 48h, rarement plus)
+Pendant ce temps :
+	-	Ancien site -> encore visible
+	-	Nouveau site -> commence à apparaître
+C'est normal.
+
+8 Vérifications finales (souvent oubliées)
+	-	Site public OK
+	-	Admin OK
+	-	Formulaires de contact
+	-	Emails (MX bien pointés, sinon mails morts)
+	-	SSL activé sur Hostinger (HTTPS)
+ Hostinger a un SSL auto, active-le.
+
+Ce que je te dis franchement
+	-	Garder le domaine chez OVH est une bonne décision
+	-	Hostinger est correct techniquement, mais ne fais pas confiance aux automatismes
+	-	Le seul vrai risque : DNS ou base mal branchée (tu les évites avec cette méthode)
+
+Si tu veux, prochain step possible :
+	-	 Check précis des DNS OVH (MX, SPF, DKIM)
+	-	 Sécurisation post-migration
+	-	 Optimisation vitesse Hostinger (cache, PHP, CDN)
+Dis-moi ce que tu veux attaquer ensuite.
+
+ok, d'abord je crois que mon site inside.archi est géré par houzz. comment verifier cela
+
+Bonne intuition. Et tu as raison de vouloir vérifier avant de toucher quoi que ce soit. Un site "géré par Houzz", ce n'est pas un détail, c'est souvent un piège doré.
+On va vérifier factuellement, sans suppositions.
+
+1 Vérification rapide côté public (2 minutes)
+A. Ouvre inside.archi dans ton navigateur
+Puis :
+	-	clic droit -> Afficher le code source
+	-	Ctrl + F / Cmd + F
+	-	cherche :
+	-	houzz
+	-	houzz.com
+	-	hzcdn
+	-	houzz-static
+ Si tu vois des références massives à Houzz -> forte probabilité de site hébergé / servi par eux.
+
+2 Vérification DNS (la plus fiable)
+Chez OVH > Nom de domaine > inside.archi > Zone DNS
+Regarde :
+	-	Les enregistrements A
+	-	Les CNAME
+Cas typiques Houzz :
+	-	CNAME vers quelque chose comme :
+	-	*.houzz.com
+	-	*.houzzsite.com
+	-	IP qui n'appartient pas à OVH et change régulièrement
+ Si le site pointe vers une infra Houzz -> le site n'est pas vraiment à toi techniquement.
+
+3 Test encore plus simple (brutal mais efficace)
+Essaye d'accéder à :
+
+inside.archi/wp-admin
+inside.archi/wp-login.php
+
+Résultat possible :
+	-	 Redirection / erreur / page Houzz -> pas un WordPress à toi
+	-	 Écran de login WP -> site classique
+Houzz ne donne pas accès à WordPress.
+
+4 Vérification contractuelle (souvent oubliée)
+Connecte-toi à ton compte Houzz Pro et regarde :
+	-	"Site web"
+	-	"Page personnalisée"
+	-	"Nom de domaine connecté"
+Si tu vois :
+"Houzz héberge votre site"
+Alors c'est clair :  Tu n'as pas un site web, tu as une vitrine sous perfusion Houzz.
+
+Vérité nette (sans langue de bois)
+	-	Un site Houzz :
+	-	 non migrable proprement
+	-	 dépendant d'un tiers
+	-	 SEO limité
+	-	 joli
+	-	 rapide à mettre en ligne
+	-	Si inside.archi est chez Houzz :
+	-	Tu ne le "déplaces" pas
+	-	Tu le reconstruis ailleurs (Hostinger, WordPress propre)
+Oui, c'est chiant. Non, ce n'est pas évitable.
+
+Ce que je te propose maintenant
+Dis-moi ce que tu observes :
+	1	Résultat du code source
+	2	Ce que tu vois dans la zone DNS OVH
+	3	Si /wp-admin existe ou pas
+À partir de là, je te dis sans détour :
+	-	soit on migre
+	-	soit on tranche et on reconstruit proprement
+Et on arrête les demi-mesures.
+
+voici le lien. peux tu regarder pour moi. https://inside.archi/
+
+J'ai analysé le code source et le contenu de ton site inside.archi pour toi - et la conclusion est nette : le site est créé avec Houzz et affiche en bas du site la mention "Créé avec Houzz".
+ Ce n'est pas une instance WordPress ou un site classique que tu peux simplement exporter et déplacer tel quel vers Hostinger. C'est une plateforme propriétaire Houzz (site généré par leur outil).
+
+Ce que ça signifie concrètement
+ Le contenu est bien publié sous ton domaine inside.archi  Mais le site est hébergé et généré par Houzz (pas un système que tu contrôles directement).
+ Tu ne peux pas :
+	-	télécharger une base de données
+	-	copier un WordPress
+	-	importer un site "fait avec Houzz" sur un autre hébergeur
+En clair : tu n'as pas une " vraie " structure de site web auto-hébergée.
+
+Options réelles - disons les choses franchement
+ Option 1 - Reconstruire le site en propre
+C'est la seule solution solide si tu veux contrôler ton hébergement et ton nom de domaine.
+-> Reconstruire sous WordPress (ou autre CMS) -> Héberger chez Hostinger -> Refaire les pages/design basés sur ce que tu as aujourd'hui
+C'est un travail de refonte, pas une simple migration.
+
+ Option 2 - Continuer avec Houzz mais mieux gérer le domaine
+Si Houzz te convient pour la vitrine mais que tu veux :
+	-	un vrai SEO
+	-	un site plus flexible
+	-	un contrôle total
+Alors tu peux :
+	-	garder le domaine chez OVH
+	-	rediriger vers un site WordPress secondaire ou créer un sous-site pro
+	-	laisser Houzz pour ce qu'il est (vitrine)
+
+Si on part sur une vraie migration (WordPress -> Hostinger)
+Ce que tu devras faire :
+	1	Installer WordPress sur Hostinger
+	2	Recréer les pages
+	-	Tu peux copier le texte / images depuis inside.archi
+	-	C'est de la saisie - pas une importation magique
+	3	Rediriger ton domaine OVH
+	-	Vers l'hébergement Hostinger
+	4	Protéger SEO & anciens liens
+	-	redirections 301 si les URL changent
+C'est un chantier - mais c'est la bonne manière de sortir de la dépendance Houzz.
+
+Et maintenant ?
+Dis-moi :
+	1	Est-ce que tu veux garder exactement le même design ?
+	2	Est-ce que tu veux évoluer vers quelque chose de plus moderne / flexible ?
+	3	Tu veux faire ça toi-même ou avec un prestataire ?
+Avec ces réponses, je te donne un plan d'action précis (et on ne tourne pas en rond).
+
+est il possible de copier le site actuel pour l'exporter en wordpress, pret a migrer chez hostinger ?
+
+Réponse courte : non, pas proprement. Réponse honnête : oui, visuellement, mais ce sera une reconstruction déguisée.
+Je t'explique sans enfumer.
+
+La réalité technique (sans illusion)
+Un site créé avec Houzz :
+	-	 n'a pas de base de données exportable
+	-	 n'a pas de WordPress caché derrière
+	-	 n'a aucun outil d'export
+Donc :  il est impossible de "copier / exporter" le site Houzz vers WordPress au sens technique du terme.
+Il n'existe aucun bouton magique, aucun plugin sérieux, aucun raccourci.
+
+Ce qui est possible (et ce qui ne l'est pas)
+ Impossible
+	-	Export WP
+	-	Migration automatique
+	-	Récupération du thème
+	-	Récupération de la structure CMS
+ Possible
+	-	Récupérer le contenu
+	-	Reproduire le design
+	-	Reconstruire le site à l'identique ou mieux
+	-	Le rendre 100 % WordPress / Hostinger
+ On parle donc d'une reconstruction assistée, pas d'une migration.
+
+Les 3 méthodes réalistes (du plus propre au plus crade)
+ Méthode 1 - Reconstruction propre (celle que je recommande)
+	1	Installer WordPress sur Hostinger
+	2	Choisir un thème propre (Astra, Kadence, GeneratePress)
+	3	Recréer :
+	-	pages
+	-	menus
+	-	sections
+	4	Copier :
+	-	textes
+	-	images
+	-	hiérarchie des pages
+ Résultat :
+	-	site propre
+	-	SEO maîtrisable
+	-	évolutif
+	-	indépendant de Houzz
+ C'est du boulot, mais c'est sain.
+
+ Méthode 2 - Copie "visuelle" assistée (semi-rapide)
+	-	Utiliser :
+	-	inspecteur du navigateur
+	-	copier/coller HTML par sections
+	-	Recomposer dans Elementor / Gutenberg
+ Attention :
+	-	HTML sale
+	-	CSS bricolé
+	-	maintenance future pénible
+ Acceptable si tu veux aller vite, pas si tu veux durer.
+
+ Méthode 3 - Scraping automatique (à éviter)
+	-	Outils de "site copier"
+	-	Résultat :
+	-	code dégueulasse
+	-	SEO plombé
+	-	site fragile
+ Mauvaise idée pour une boîte comme INSIDE.
+
+Ce que je te dirais franchement si on était en face à face
+Ton site Houzz, c'est :
+	-	une belle plaquette
+	-	une mauvaise fondation
+Si INSIDE veut :
+	-	monter en gamme
+	-	être crédible sur le long terme
+	-	avoir un vrai levier SEO / contenu
+ il faut couper le cordon.
+
+Plan intelligent (en 5 étapes)
+	1	Installer WordPress sur Hostinger
+	2	Recréer le site (même structure, mieux exécutée)
+	3	Tester en sous-domaine ou URL temporaire
+	4	Basculer le DNS OVH
+	5	Fermer / déconnecter Houzz
+
+Maintenant, décision à prendre
+Dis-moi :
+	1	Tu veux strictement le même site ou un cran au-dessus ?
+	2	Tu veux le faire toi-même ou être guidé pas à pas ?
+	3	Objectif principal : image / SEO / clients / tout à la fois ?
+À partir de là, je te fais un plan de reconstruction précis, pas du blabla.
+
+ok, est ce que ça marche avec wix
+
+Réponse courte : non. Réponse honnête : un peu, mais ça reste une fausse bonne idée.
+Wix, Houzz, Squarespace… même combat : plateformes fermées, propriétaires, pensées pour t'enfermer gentiment.
+
+Est-ce que Wix "exporte vers WordPress" ?
+ Non. Officiellement : zéro export WordPress.
+Wix ne permet pas :
+	-	d'exporter un site complet
+	-	de récupérer une base de données WP
+	-	de migrer thème + structure
+Donc exactement le même mur que Houzz.
+
+Ce qui est possible avec Wix (comme Houzz)
+ Impossible
+	-	Migration WordPress native
+	-	Export propre
+	-	Conversion automatique fiable
+ Possible
+	-	Copier le contenu (textes, images)
+	-	Reproduire le design
+	-	Reconstruire le site sous WordPress
+ On reconstruit. Toujours.
+
+Les outils "Wix -> WordPress" qu'on te vend
+Tu verras passer :
+	-	des scripts miracles
+	-	des services payants
+	-	des promesses SEO-friendly
+ 90 % sont des attrape-nigauds :
+	-	HTML sale
+	-	CSS inline
+	-	URLs cassées
+	-	SEO à refaire
+Pour une boîte comme INSIDE, c'est non.
+
+Différence Houzz vs Wix (soyons précis)
+Critère
+Houzz
+Wix
+Export WP
+
+Contrôle SEO
+Très limité
+Moyen
+Flexibilité
+Faible
+Moyenne
+Indépendance
+Nulle
+Faible
+Reconstruction possible
+Oui
+Oui
+ Wix donne l'illusion de liberté. Ce n'est qu'une illusion.
+
+La vraie question (celle qui compte)
+Ce n'est pas :
+"Est-ce que ça marche avec Wix ?"
+C'est :
+"Est-ce que je veux encore perdre du temps à reconstruire plus tard ?"
+Si tu passes de Houzz -> Wix -> WordPress :  tu perds deux fois.
+
+Ma reco nette (sans diplomatie)
+	-	 Houzz -> Wix : inutile
+	-	 Houzz -> autre plateforme fermée : idem
+	-	 Houzz -> WordPress (Hostinger ou autre) : bonne trajectoire
+Tu reconstruis une fois, proprement, et tu es libre.
+
+Si tu veux, on peut faire ça intelligemment
+Prochaines options :
+	1	Je te propose une structure WordPress idéale pour INSIDE
+	2	Je te dis quel thème / builder choisir (pas au hasard)
+	3	On définit une checklist de reconstruction rapide (sans t'éparpiller)
+Dis-moi ce que tu veux attaquer en premier.
+
+1. ok
+
+Parfait. Alors on fait ça proprement, durablement, sans gadgets.
+Structure WordPress idéale pour INSIDE (haut de gamme, claire, scalable)
+ Objectif
+	-	Image maîtrise d'œuvre premium
+	-	SEO solide
+	-	Évolutif (atelier, projets, contenus)
+	-	Pas d'usine à gaz
+
+1 Socle technique (ne négocie pas avec ça)
+	-	Hébergement : Hostinger (OK)
+	-	CMS : WordPress (classique)
+	-	Thème :  GeneratePress ou Kadence (rapides, sobres, zéro bullshit visuel)
+	-	Builder :  Gutenberg natif (+ éventuellement Kadence Blocks)  Elementor si tu veux dormir tranquille dans 3 ans
+ Moins sexy au début, beaucoup plus sain sur la durée.
+
+2 Arborescence recommandée (simple et efficace)
+Pages principales (menu)
+	1	Accueil
+	2	INSIDE
+	3	Projets
+	4	Savoir-faire
+	5	Atelier
+	6	Contact
+Pas plus. Le luxe, c'est la clarté.
+
+Détail page par page
+ Accueil
+	-	Positionnement clair (en une phrase)
+	-	3 piliers : Maîtrise d'œuvre - Rénovation - Menuiserie sur mesure
+	-	1-2 projets forts
+	-	Témoignage client
+	-	Appel à contact sobre
+ Pas de bla-bla. Tu parles à des gens pressés et exigeants.
+
+ INSIDE (la colonne vertébrale)
+Sous-sections possibles :
+	-	Vision
+	-	Méthode
+	-	Valeurs
+	-	Parcours
+ C'est ici que tu montres que tu n'es pas un artisan lambda.
+
+ Projets
+ Custom Post Type "Projets" (important)
+Chaque projet :
+	-	Contexte
+	-	Intention
+	-	Contraintes
+	-	Résultat
+	-	Images propres
+Catégories possibles :
+	-	Rénovation complète
+	-	Menuiserie sur mesure
+	-	Aménagement intérieur
+SEO + crédibilité = jackpot.
+
+ Savoir-faire
+Pages enfants possibles :
+	-	Maîtrise d'œuvre
+	-	Rénovation haut de gamme
+	-	Menuiserie sur mesure
+	-	Décoration & agencement
+ Tu rassures, tu cadres, tu filtres les mauvais clients.
+
+ Atelier
+Page stratégique (et différenciante) :
+	-	Pourquoi un atelier intégré
+	-	Ce que ça change pour le client
+	-	Photos réelles
+	-	Savoir-faire artisanal assumé
+ Peu de concurrents peuvent dire ça. Exploite-le.
+
+ Contact
+	-	Formulaire simple
+	-	Téléphone
+	-	Zone géographique
+	-	Phrase de qualification ("nous ne répondons pas à…")
+Oui, filtrer est une bonne chose.
+
+3 Plugins minimum (discipline)
+	-	SEO : RankMath ou Yoast
+	-	Sécurité : Wordfence
+	-	Cache : WP Rocket ou cache Hostinger
+	-	Images : Imagify ou Smush
+	-	Backup : UpdraftPlus
+ Si tu dépasses 10 plugins : tu fais fausse route.
+
+4 Ce qu'on ne fait PAS
+	-	 Copier le HTML Houzz
+	-	 Chercher à "aller vite"
+	-	 Multiplier les pages inutiles
+	-	 Thème "design" bourré d'animations
+INSIDE = calme, maîtrise, confiance. Pas une boîte de nuit.
+
+Étape suivante (choisis)
+1 Je te propose une structure exacte de pages (titres + contenus) 2 Je t'aide à installer WordPress + thème sur Hostinger 3 On fait une checklist de reconstruction page par page
+Dis-moi le prochain pas, et on avance sans dispersion.
+
+quel abonnement je dois prendre sur hostinger sachant que je veux aussi avoir N8N
+
+Réflexion durant 15s
+
+Oui - mais pas sur le même type d'abonnement.
+Point clé
+	-	Ton site WordPress peut tourner sur un plan "Web Hosting" classique.
+	-	n8n, lui, a besoin d'un process qui tourne en continu (webhooks, exécutions, queue). Ça = VPS (ou éventuellement Cloud), pas de mutualisé "classique". Hostinger recommande au minimum 1 vCPU / 2 Go RAM / 20 Go SSD, et plutôt 2+ vCPU / 4+ Go RAM pour être tranquille. 
+
+Ce que je te conseille (simple, propre, durable)
+Option A - La meilleure pour toi (séparation propre)
+	1	WordPress : prends un plan Business Web Hosting (ou équivalent WP géré).
+	2	n8n : prends un VPS chez Hostinger (Docker) et basta. Hostinger a même un tuto "n8n avec Docker sur VPS". 
+VPS conseillé pour n8n :
+	-	2 vCPU / 4 Go RAM (le "sweet spot" pour démarrer sans te retrouver à genoux au premier scénario un peu lourd). 
+ Avantage : si n8n plante ou se met à bouffer, ton site ne morfle pas.
+
+Option B - "Tout sur un VPS" (possible, mais plus technique)
+Un seul VPS qui héberge :
+	-	WordPress (Nginx/Apache + PHP + MariaDB)
+	-	n8n (Docker)
+	-	reverse proxy + SSL
+Ça marche, mais tu deviens ton propre admin sys. Si tu n'aimes pas passer tes soirées à lire des logs, évite.
+
+Option C - Cloud Hosting avec Node.js (je suis sceptique pour n8n)
+Hostinger dit supporter Node.js sur Cloud et sur certains plans, via une feature "Node.js web apps hosting".  Mais n8n, ce n'est pas juste "une app Node qui répond à des pages", c'est un outil d'automations avec runtime + webhooks + stockage + jobs. Le VPS reste la voie la plus propre/standard.
+
+Donc : quel abonnement prendre ?
+Si tu veux que ça marche sans prise de tête :
+	-	Site : Hostinger Business Web Hosting (WordPress)
+	-	n8n : Hostinger VPS 2 vCPU / 4 Go RAM (minimum conseillé)
+Et tu gardes le domaine chez OVH, aucun problème.
+
+Si tu me dis :
+	1	tu veux combien d'automatisations (10 / 50 / 200 ?)
+	2	est-ce qu'il y aura des webhooks (formulaires, Zap-like) ?
+	3	tu veux aussi héberger d'autres trucs (mail, CRM, etc.) ?
+…je te dis exactement quelle taille de VPS prendre, sans surpayer.
+
+ok je suis sur hostinger. guide moi pas a pas dans l'editeur de site internet pour obtenir les mêmes mise en page, accueil etc
+
+OK. On part du principe que tu es dans l'éditeur Hostinger Website Builder (pas WordPress). On va reproduire la structure "Houzz" : Accueil propre, sections nettes, projets, preuve sociale, contact.
+Je te guide clic par clic.
+
+0) Pré-requis dans Hostinger (avant de toucher au design)
+	1	hPanel Hostinger -> Sites web
+	2	Sélectionne ton domaine -> Gérer
+	3	Ouvre Website Builder / Créateur de site -> Éditer le site
+Quand tu es dans l'éditeur : tu dois voir à gauche un menu du style Pages / Sections / Styles / Paramètres.
+
+1) Créer les pages (structure identique et claire)
+Dans l'éditeur :
+	1	Menu gauche -> Pages
+	2	Crée ces pages (dans cet ordre) :
+	-	Accueil
+	-	INSIDE (ou "À propos")
+	-	Projets
+	-	Savoir-faire (ou "Services")
+	-	Atelier
+	-	Contact
+	3	Menu/navigation : mets exactement ces 6 items.
+ Astuce : si tu veux faire simple au début, tu peux n'avoir que Accueil / Projets / Contact, et ajouter le reste après. Mais la structure ci-dessus est propre.
+
+2) Accueil : reproduire la mise en page "premium"
+Va sur la page Accueil.
+A. Section 1 - Hero (bandeau haut)
+	1	Clique sur la section du haut
+	2	Modifier section -> choisis un Hero (image + texte + bouton)
+	3	Paramètres recommandés :
+	-	Titre : une phrase courte (positionnement)
+	-	Sous-titre : 1-2 lignes max
+	-	Bouton : "Demander un rendez-vous" ou "Parler de votre projet"
+	-	Image : une photo forte (projet fini, pas un outil)
+	4	Alignement : texte à gauche (souvent plus "archi / luxe")
+ Objectif : impact immédiat, pas de roman.
+
+B. Section 2 - 3 piliers (tes services)
+Sous le hero :
+	1	Clique Ajouter section
+	2	Choisis Services / Features / Icônes (3 colonnes)
+	3	Mets :
+	-	Maîtrise d'œuvre
+	-	Rénovation haut de gamme
+	-	Menuiserie sur mesure
+	4	Pour chaque bloc : 1 phrase max.
+
+C. Section 3 - Projets en avant (galerie)
+	1	Ajouter section -> Galerie / Portfolio / Grille d'images
+	2	Choisis une grille 2 ou 3 colonnes
+	3	Mets 6 à 9 photos max
+	4	Sous chaque photo : nom + lieu + type ("Rénovation complète - Paris")
+ Ne mets pas 40 photos. On n'est pas sur Leboncoin.
+
+D. Section 4 - Méthode (ça rassure)
+	1	Ajouter section -> Étapes / Process / Timeline
+	2	4 étapes :
+	-	Échange & cadrage
+	-	Conception & chiffrage
+	-	Planification & exécution
+	-	Livraison & suivi
+
+E. Section 5 - Témoignages (preuve sociale)
+	1	Ajouter section -> Testimonials / Avis
+	2	2 à 4 avis max
+	3	Ajoute nom + quartier/ville si possible (ça crédibilise)
+
+F. Section 6 - Call to action + Contact rapide
+	1	Ajouter section -> Call to action
+	2	Texte court + bouton vers Contact
+	3	Puis ajoute un mini-bloc :
+	-	Téléphone
+	-	Email
+	-	Zone d'intervention
+
+3) Page Projets : rendre ça propre (style portfolio)
+Va sur Projets.
+Option simple (rapide)
+	1	Ajouter section -> Galerie
+	2	Mets des catégories via titres de section :
+	-	Rénovations
+	-	Menuiserie
+	-	Agencements
+Option plus propre (mais plus longue)
+Créer une page par projet :
+	1	Pages -> Ajouter page -> "Projet - [Nom]"
+	2	Dans Projets, chaque vignette -> lien vers sa page.
+
+4) Style global : typographie + couleurs (là tu gagnes le "haut de gamme")
+Menu gauche -> Styles / Design global
+	-	Police : sobre (sans-serif clean)
+	-	Couleurs :
+	-	Fond blanc / cassé
+	-	Texte noir/gris très foncé
+	-	Une couleur accent max (doré discret / bleu profond / terre)
+Règle d'or : si ça "fait joli" mais pas "fait cher", tu supprimes.
+
+5) Header + Footer (pro)
+Header
+	-	Logo à gauche
+	-	Menu à droite
+	-	Bouton "Contact" en accent (optionnel)
+Footer
+	-	Adresse/zone
+	-	Mentions légales
+	-	Liens réseaux si utiles (pas obligatoire)
+
+6) Le piège à éviter (très courant)
+Ne cherche pas à "copier" Houzz pixel-perfect. Tu veux la même structure, mais en plus propre. Sinon tu vas t'enliser.
+
+Maintenant, on avance concrètement
+Dis-moi juste :
+	1	Dans l'éditeur Hostinger, tu vois bien un menu Pages à gauche ? (oui/non)
+	2	Ton site actuel : tu pars d'un template ou d'une page blanche ?
+Et quoi qu'il arrive, décris-moi (ou copie-colle) le contenu de ton Accueil Houzz (titres/sections), et je te dis exactement quelle section Hostinger choisir à chaque étape.
+
+attends, je veux du word press
+
+Très bien. Bonne décision. Tu viens d'éviter une impasse à moyen terme.
+On oublie l'éditeur Hostinger. On passe en WordPress propre, maîtrisable, durable. Pas de retour en arrière.
+Je te guide pas à pas, sans sauter d'étape.
+
+PHASE 1 - Installer WordPress sur Hostinger (proprement)
+1 Supprimer toute confusion
+Dans Hostinger :
+	-	hPanel -> Sites web
+	-	Sélectionne ton domaine
+	-	Si un "Website Builder" est actif -> désactive-le / ignore-le
+ Tu veux WordPress, pas le constructeur maison.
+
+2 Installer WordPress
+	1	hPanel -> Auto Installer
+	2	Choisis WordPress
+	3	Paramètres :
+	-	Domaine : ton domaine principal
+	-	Dossier : vide (très important)
+	-	Nom du site : INSIDE (temporaire, modifiable)
+	-	Admin :
+	-	utilisateur : pas "admin"
+	-	mot de passe : solide
+	4	Installer
+⏱ 1 minute. Pas plus.
+
+3 Vérifier que WordPress est OK
+Va sur :
+	-	https://tondomaine/wp-admin
+	-	Connecte-toi
+Si tu vois le dashboard WordPress -> on est bons.
+
+PHASE 2 - Poser une base saine (avant le design)
+4 Réglages essentiels
+Dans WordPress -> Réglages :
+Général
+	-	Titre du site : INSIDE
+	-	Slogan : vide ou très sobre
+Lecture
+	-	Page d'accueil : Page statique
+	-	(on la créera après)
+Permaliens
+	-	Nom de l'article  Obligatoire pour le SEO.
+
+5 Installer le thème (ne discute pas celui-là)
+Option recommandée : GeneratePress
+	1	Apparence -> Thèmes -> Ajouter
+	2	Cherche GeneratePress
+	3	Installer -> Activer
+Simple. Léger. Pro.
+
+6 Nettoyage immédiat
+	-	Supprime :
+	-	thèmes inutiles
+	-	plugins inutiles
+	-	articles/pages par défaut
+Un site propre commence par du vide.
+
+PHASE 3 - Créer la structure (avant le contenu)
+7 Créer les pages
+Pages -> Ajouter :
+	-	Accueil
+	-	INSIDE
+	-	Projets
+	-	Savoir-faire
+	-	Atelier
+	-	Contact
+Ne mets rien dedans pour l'instant.
+
+8 Définir la page d'accueil
+Réglages -> Lecture :
+	-	Page d'accueil : Accueil
+	-	Page des articles : (aucune)
+
+9 Créer le menu
+Apparence -> Menus :
+	-	Menu principal
+	-	Ajoute les pages
+	-	Emplacement : Menu principal
+
+PHASE 4 - Construire l'Accueil (Gutenberg, pas de builder lourd)
+On va utiliser Gutenberg natif (blocs).
+ Dis-moi quand tu es ici :
+	-	WordPress installé
+	-	GeneratePress actif
+	-	Pages créées
+	-	Menu visible
+À partir de là, je te guide bloc par bloc pour reconstruire :
+	-	le Hero
+	-	les services
+	-	la galerie projets
+	-	la méthode
+	-	les CTA
+Une étape à la fois. Dis-moi : "OK, WordPress est installé" et on continue.
+
+3. not found. a savoir que le nom de domaine est toujour rattaché a houzz
+
+Parfait, et merci de l'avoir dit maintenant - c'est le nœud du problème. Réponse nette : c'est normal que tu aies "not found". Tu n'as rien raté.
+Ton nom de domaine pointe encore vers Houzz, donc Hostinger reçoit… rien.
+On règle ça proprement et sans couper le site actuel.
+
+Ce qui se passe exactement (pour que tu comprennes)
+	-	inside.archi -> DNS OVH -> serveurs Houzz
+	-	WordPress est bien installé chez Hostinger
+	-	Mais le trafic n'arrive pas chez Hostinger -> Résultat : 404 / not found
+ Tant que le DNS n'est pas modifié, WordPress est invisible.
+
+STRATÉGIE INTELLIGENTE (sans casser le site Houzz)
+On va :
+	1	Travailler WordPress en arrière-plan
+	2	Tester avant bascule
+	3	Basculer le domaine au dernier moment
+
+PHASE 1 - Tester WordPress SANS toucher au domaine
+Option A (la plus simple) - URL temporaire Hostinger
+Dans Hostinger :
+	1	hPanel -> Sites web
+	2	Clique sur ton site
+	3	Cherche :
+	-	"URL temporaire"
+	-	ou "Preview"
+	-	ou "Lien de prévisualisation"
+ Clique dessus. Si WordPress s'affiche -> tout va bien.
+
+Option B (si l'URL temporaire n'apparaît pas)
+On utilise un sous-domaine.
+1 Créer un sous-domaine chez OVH
+Chez OVH :
+	-	Domaine -> inside.archi
+	-	Sous-domaines
+	-	Crée :  wp.inside.archi
+	-	Type : A
+	-	IP : IP fournie par Hostinger (dans hPanel)
+⏳ Attends quelques minutes (parfois 1h).
+2 Dire à Hostinger d'utiliser ce sous-domaine
+Dans Hostinger :
+	-	Ajouter un site
+	-	Domaine : wp.inside.archi
+	-	Lier à l'installation WordPress existante (ou en créer une nouvelle si besoin)
+ Tu accèdes ensuite à :
+
+wp.inside.archi/wp-admin
+
+PHASE 2 - Construire le site WordPress tranquillement
+Tu travailles sur :
+	-	design
+	-	pages
+	-	contenus
+ Le site Houzz reste visible sur inside.archi. Personne ne voit ton chantier.
+
+PHASE 3 - BASCULE FINALE (quand tu dis "GO")
+Quand WordPress est prêt :
+Chez OVH :
+	1	Domaine -> inside.archi
+	2	Serveurs DNS
+	3	Remplacer les DNS Houzz par ceux de Hostinger (ex :    ns1.dns-parking.com
+	4	ns2.dns-parking.com
+	5	```)              
+⏳ Propagation : 1-24h
+ À ce moment-là :
+	-	Houzz disparaît
+	-	WordPress prend le relais
+
+Vérité brute
+Tu ne peux pas :
+	-	accéder à WordPress via le domaine tant que le DNS pointe vers Houzz
+	-	"installer WordPress par-dessus Houzz"
+Il faut débrancher Houzz à la fin, pas au début.
+
+Prochaine action (dis-moi ce que tu préfères)
+1 Tu veux utiliser l'URL temporaire Hostinger 2 Tu veux créer un sous-domaine wp.inside.archi
+Dis juste 1 ou 2, et je te guide clic par clic, sans te perdre.
+
+si je clique sur mon nom de domaine j'arrive sur cette page : https://aliceblue-skunk-492965.hostingersite.com/
+
+Parfait. Là, on a l'info clé. Et bonne nouvelle : tout est normal. Tu es exactement là où il faut 
+Ce que ça signifie
+aliceblue-skunk-492965.hostingersite.com = URL temporaire Hostinger  Ton WordPress est bien installé et fonctionne.  Le domaine inside.archi pointe encore vers Houzz, donc WordPress est volontairement "caché".
+Bref : le moteur tourne, la carrosserie est encore branchée ailleurs.
+
+On continue, étape par étape (sans brûler les étapes)
+ÉTAPE 1 - Accéder à l'admin WordPress
+Ouvre :
+
+https://aliceblue-skunk-492965.hostingersite.com/wp-admin
+
+Connecte-toi avec :
+	-	l'identifiant admin que tu as créé
+	-	le mot de passe correspondant
+ Dis-moi quand tu vois le tableau de bord WordPress.
+
+ÉTAPE 2 - Vérifier la base propre
+Dans WordPress :
+	-	Tu dois voir :
+	-	"Tableau de bord"
+	-	"Pages"
+	-	"Apparence"
+	-	"Réglages"
+Si oui -> installation OK, on peut construire.
+
+ÉTAPE 3 - On verrouille la base (5 minutes)
+Fais tout de suite :
+A. Réglages -> Permaliens
+	-	Choisis Nom de l'article
+	-	Enregistrer
+B. Réglages -> Général
+	-	Titre du site : INSIDE
+	-	Slogan : vide (ou très sobre)
+	-	Langue : Français
+
+ÉTAPE 4 - Thème (si pas encore fait)
+	1	Apparence -> Thèmes
+	2	Installer GeneratePress
+	3	Activer
+	4	Supprimer les thèmes inutiles
+ Le site sera moche à ce stade. C'est normal. On construit ensuite.
+
+ÉTAPE 5 - Créer la structure (sans contenu)
+Pages -> Ajouter :
+	-	Accueil
+	-	INSIDE
+	-	Projets
+	-	Savoir-faire
+	-	Atelier
+	-	Contact
+Ne mets rien dedans pour l'instant.
+
+ÉTAPE 6 - Définir la page d'accueil
+Réglages -> Lecture :
+	-	Page d'accueil : Accueil
+	-	Page des articles : aucune
+
+STOP ICI 
+Ne touche pas encore :
+	-	aux plugins
+	-	au design
+	-	aux images
+ Dis-moi simplement : "J'ai accès au wp-admin et j'ai fait les étapes 1 à 6."
+Ensuite, on attaque l'Accueil bloc par bloc, exactement comme tu le veux, sans t'éparpiller.
+
+permalien : Simple https://aliceblue-skunk-492965.hostingersite.com/?p=123 Date et titre https://aliceblue-skunk-492965.hostingersite.com/2025/12/29/exemple-article/ Mois et titre https://aliceblue-skunk-492965.hostingersite.com/2025/12/exemple-article/ Numérique https://aliceblue-skunk-492965.hostingersite.com/archives/123 Titre de la publication https://aliceblue-skunk-492965.hostingersite.com/exemple-article/ Structure personnalisée Personnalisez la structure des permaliens en sélectionnant les balises disponibleshttps://aliceblue-skunk-492965.hostingersite.com /%postname%/ Balises disponibles :
+
+Parfait. Là on est dans le réglage qui conditionne tout le reste (SEO, lisibilité, sérénité future).
+ Tu choisis : "Titre de la publication" c'est-à-dire :
+
+https://aliceblue-skunk-492965.hostingersite.com/exemple-article/
+
+ou, ce qui revient strictement au même :
+
+/%postname%/
+
+Pourquoi c'est le BON choix (et les autres sont mauvais)
+ Titre de la publication - LE standard pro
+	-	URLs propres
+	-	Lisibles
+	-	SEO-friendly
+	-	Stables dans le temps
+	-	Compatibles avec tous les plugins
+ 99 % des sites WordPress sérieux utilisent ça.
+
+ Simple (?p=123)
+	-	Illisible
+	-	Mauvais SEO
+	-	Impression de site bricolé  À oublier immédiatement.
+
+ Date + titre / Mois + titre
+	-	URLs longues
+	-	Datent artificiellement ton contenu
+	-	Mauvais pour une boîte comme INSIDE (le luxe n'est pas "daté")
+
+ Numérique (/archives/123)
+	-	Zéro sens
+	-	Zéro SEO
+	-	Aucun intérêt
+
+Action à faire maintenant (important)
+	1	Sélectionne Titre de la publication
+	2	Clique sur Enregistrer les modifications
+	3	Attends le message de confirmation
+
+Ce qui va se passer ensuite
+	-	Les pages auront des URLs propres
+	-	Aucun impact négatif (site encore invisible au public)
+	-	On peut construire sereinement
+
+Étape suivante (quand c'est fait)
+Dis-moi simplement :
+"Permaliens OK"
+Et on attaque la page Accueil, bloc par bloc, exactement comme ton site Houzz - mais en mieux.
+
+Permaliens OK
+
+Parfait. On peut construire pour de vrai maintenant.
+On attaque l'ACCUEIL, bloc par bloc, en Gutenberg, sans builder lourd, sans fioritures. Objectif : même logique que Houzz, rendu plus propre, plus premium.
+
+CONSTRUCTION DE LA PAGE ACCUEIL (PAS À PAS)
+ Va dans Pages -> Accueil -> Modifier
+Tu dois voir l'éditeur WordPress (blocs).
+
+BLOC 1 - HERO (bandeau haut)
+1 Ajouter le conteneur
+	-	Clique sur +
+	-	Choisis Couverture
+	-	Image : choisis une photo forte (projet fini, lumière, matière)
+2 Réglages du bloc Couverture (colonne droite)
+	-	Hauteur : Plein écran ou Min. 70vh
+	-	Superposition : 20-30 %
+	-	Alignement : Large ou Pleine largeur
+3 Contenu du Hero
+Dans le bloc :
+	-	Titre (H1) Exemple (à adapter) : INSIDE - Maîtrise d'œuvre & rénovation haut de gamme 
+	-	Paragraphe court (1-2 lignes max) Conception, rénovation et menuiserie sur mesure pour des projets exigeants. 
+	-	Bouton
+	-	Texte : Parler de votre projet
+	-	Lien : page Contact
+ Ne surcharge pas. Le luxe, c'est l'air.
+
+BLOC 2 - TES 3 PILIERS (services)
+1 Ajouter la structure
+	-	+ -> Colonnes
+	-	Choisis 3 colonnes égales
+2 Contenu de chaque colonne
+Dans chaque colonne :
+	-	Titre (H3)
+	-	Paragraphe (1 phrase max)
+Exemple :
+	-	Maîtrise d'œuvre
+	-	Rénovation haut de gamme
+	-	Menuiserie sur mesure
+ Pas d'icônes flashy. Texte propre.
+
+BLOC 3 - PROJETS EN AVANT
+1 Ajouter une galerie
+	-	+ -> Galerie
+	-	Choisis 3 ou 6 images max
+	-	Disposition : Grille
+	-	Pas de bordures
+2 Titre au-dessus
+	-	Titre (H2) Projets récents 
+ Les images font le boulot, pas le texte.
+
+BLOC 4 - TA MÉTHODE (rassure le client)
+Structure
+	-	Titre (H2) : Une méthode claire, sans surprise
+	-	Colonnes (4)
+Chaque colonne :
+	-	Étape 1 : Échange & cadrage
+	-	Étape 2 : Conception & chiffrage
+	-	Étape 3 : Exécution & suivi
+	-	Étape 4 : Livraison
+ Tu montres que tu maîtrises. Rien de plus.
+
+BLOC 5 - TÉMOIGNAGES
+1 Ajouter colonnes (2 ou 3)
+	-	Citation
+	-	Nom + ville (si possible)
+ 2 bons avis > 10 moyens.
+
+BLOC 6 - APPEL À L'ACTION FINAL
+Structure
+	-	Bloc Couverture (fond clair ou image douce)
+	-	Titre (H2) : Vous avez un projet ? 
+	-	Bouton : Nous contacter 
+
+CONSEILS DE PRO (à respecter)
+	-	Espace blanc : respire
+	-	Pas de police fantaisie
+	-	Pas d'animations
+	-	Si tu hésites : supprime
+
+STOP ICI 
+Fais uniquement :
+	-	Bloc 1 à 3 si tu veux y aller tranquille
+	-	Ou tout si tu es à l'aise
+ Dis-moi :
+	1	Quel bloc te pose problème ?
+	2	Tu bloques sur le Hero, les colonnes ou la galerie ?
+Je t'aide bloc par bloc, sans te lâcher au milieu.
+
+sur ma page d'accueil je veux faire defiler plusieurs photos en couverture
+
+Parfait. Et je vais être très clair, parce que c'est un point où beaucoup font n'importe quoi.
+ Oui, tu peux faire défiler plusieurs photos en couverture.  Non, pas avec Gutenberg "pur" sans aide.
+Donc on a 2 bonnes solutions et 1 mauvaise.
+
+ Ce qu'on NE fait PAS
+	-	Pas de slider bricolé avec 12 plugins
+	-	Pas de truc lourd qui clignote
+	-	Pas de carousel gadget "wow effect"
+INSIDE = calme, maîtrise, assurance. Pas un site de wedding planner.
+
+ SOLUTION 1 - LA MEILLEURE (propre, élégante)
+ Slider de couverture avec un plugin léger dédié
+Plugin recommandé (sobre et fiable)
+ MetaSlider (version gratuite suffit)
+
+ÉTAPE PAR ÉTAPE (sans piège)
+1 Installer le plugin
+WordPress -> Extensions -> Ajouter
+	-	Cherche : MetaSlider
+	-	Installer -> Activer
+
+2 Créer le slider
+Menu WordPress -> MetaSlider
+	-	Cliquer Add New
+	-	Nom : Hero Accueil
+	-	Ajouter 3 à 5 images max (pas plus)
+Réglages importants :
+	-	Type : Flex Slider
+	-	Transition : Fade
+	-	Durée : 5-7 secondes
+	-	Navigation :  (pas de flèches visibles)
+	-	Pagination : 
+	-	Lecture auto : 
+	-	Pause au survol : 
+ Le visiteur ne doit pas "jouer" avec ton site.
+
+3 Insérer le slider dans la page Accueil
+MetaSlider te donne :
+	-	soit un bloc Gutenberg MetaSlider
+	-	soit un shortcode
+Dans Pages -> Accueil :
+	-	Supprime le bloc Couverture actuel
+	-	Clique + -> MetaSlider
+	-	Sélectionne Hero Accueil
+
+4 Ajouter le texte par-dessus (important)
+Juste au-dessus ou au-dessous du slider, ajoute :
+	-	un Titre H1
+	-	un Paragraphe
+	-	un Bouton
+ Astuce pro : Ne mets PAS le texte dans le slider. Le texte doit rester stable, les images bougent.
+
+ SOLUTION 2 - PLUS SOBRE (sans plugin)
+ Une seule image + changement manuel
+	-	Une image forte
+	-	Tu la changes quand tu veux
+ C'est ce que font beaucoup de sites haut de gamme. Moins de technique, plus de tenue.
+
+ SOLUTION 3 - Slider "full écran" avec builder lourd
+(Elementor, etc.)
+ Ça marche, mais :
+	-	plus lent
+	-	plus fragile
+	-	inutilement complexe
+Je ne te le recommande pas vu ta trajectoire.
+
+RÈGLES D'OR POUR TON SLIDER
+	-	3 à 5 images maximum
+	-	Photos homogènes (lumière, style)
+	-	Pas de texte différent par image
+	-	Pas d'effet "slide" horizontal
+	-	Transition fade uniquement
+
+Maintenant, dis-moi :
+	1	Le plugin MetaSlider est installé ? (oui/non)
+	2	Tu veux le slider :
+	-	plein écran
+	-	ou hauteur fixe élégante (recommandé)
+Je t'ajuste les réglages exacts ensuite.
+
+hostinger me propose des add ons payant
+
+C'est normal. Hostinger pousse des add-ons payants, mais pour ton cas aucun n'est indispensable pour faire un slider ou un site WordPress propre.
+On va trier ce qui est utile vs. ce qui est purement marketing.
+
+ Ce qui est utile (payant mais justifié)
+ Gestion de backups automatisés  Certificat SSL personnalisé ou avancé  Support prioritaire  C'est un bonus, pas une obligation.
+ Ce qui est marketing (à éviter si tu veux garder le contrôle)
+ Constructeurs de page payants (Elementor Pro, WPBakery…)  Plugins "tout-faisant" qui promettent la lune  "Optimisation en un clic" qui casse le site sans explication
+ Tu veux du durable sans dépendance coûteuse.
+
+Pour ton slider WordPress, rien de payant n'est requis.
+MetaSlider (gratuit) - OK
+Tu peux l'installer sans rien acheter.
+Si Hostinger te propose une version MetaSlider PRO, dis-toi :
+	-	Elle procure peut-être plus d'effets
+	-	Mais pour ce qu'on veut (slider propre sur l'accueil), la version gratuite suffit largement
+
+Voici comment vérifier et agir (sans payer)
+	1	Dans WordPress -> Extensions -> Ajouter
+	2	Cherche : MetaSlider
+	3	Tu devrais voir :
+	-	MetaSlider (gratuit - vachement utilisé)
+	-	MetaSlider PRO (payant)
+ Installe la version gratuite, pas la PRO.
+
+Et si tu veux une alternative gratuite encore plus légère ?
+Tu peux aussi utiliser :
+ Smart Slider 3 (gratuit) -> très bon pour faire des sliders propres
+ou
+ Ultimate Responsive Image Slider -> simple et fonctionnel
+Ces plugins ne nécessitent aucun add-on payant pour un slider d'accueil.
+
+Astuce importante
+Lorsque Hostinger te propose un add-on payant, demande-toi :
+Est-ce que je ne peux pas faire ça gratuitement avec WordPress standard ?
+Dans ton cas :  Slider -> gratuit  SEO -> gratuit (RankMath ou Yoast)  Sécurité -> gratuit (Wordfence)  Cache -> Hostinger ou WP Super Cache / LiteSpeed -> gratuit
+Donc zéro obligation d'acheter maintenant.
+
+Petite checklist rapide 
+Tu peux installer :
+	-	MetaSlider (gratuit)
+	-	Rank Math (gratuit)
+	-	Wordfence (gratuit)
+	-	UpdraftPlus (gratuit pour backups)
+Tu n'as pas besoin :
+	-	de builders payants
+	-	de plugins marketing coûteux
+	-	d'add-ons Hostinger hors SSL (souvent gratuit)
+
+Le prochain pas
+Dis-moi :
+ Veux-tu que je te guide sur l'installation du slider (MetaSlider) ? ou  Veux-tu une autre option de slider gratuit ?
+Répond simplement : "Slider MetaSlider OK" ou "Autre option" et on continue.

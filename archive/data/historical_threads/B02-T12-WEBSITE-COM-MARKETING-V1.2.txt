@@ -1,0 +1,1957 @@
+THREAD HISTORIQUE — B02 — T12 — Sujet WEBSITE COM MARKETING V1.2
+Date approximative : 01.12.2025
+Source : ChatGPT
+
+CONTEXTE PROJET – INSIDE WEBSITE (v1.0) 🎯 Objectif Construire le nouveau site INSIDE sur WordPress avec une architecture propre, durable, orientée production, en distinguant clairement : le contenu structuré (CPT + taxonomies + ACF), la présentation (Gutenberg / Kadence), le workflow éditorial (brouillon / publication / statut). Le site est développé sur un sous-domaine de staging : 👉 dev.inside.archi Le site public existant reste actif pendant toute la phase de construction. 🌐 Hébergement & DNS Hébergeur cible : Hostinger Domaine principal : inside.archi Staging déclaré via Hostinger : dev.inside.archi Le domaine est bien reconnu côté Hostinger (bloc “Domaine > Gérer”). 🧩 Stack WordPress validée Éditeur : Gutenberg Thème : Kadence Cache : LiteSpeed Cache SEO : Rank Math Champs personnalisés : Advanced Custom Fields (ACF) Types de contenus & taxonomies : Custom Post Type UI (CPT UI) Extensions inutiles nettoyées. Stack volontairement sobre. 📦 Custom Post Type : projet Créé via CPT UI Paramètres clés Slug : projet Public : ✅ UI admin : ✅ API REST : ✅ Archives : ✅ (/projets) Hiérarchique : ❌ Supports activés : Titre Éditeur Image mise en avant Extrait Le CPT apparaît bien dans l’admin : 👉 Projet > Tous les projets / Ajouter un nouveau 🏷️ Taxonomie : statut Créée via CPT UI, attachée exclusivement au CPT projet Paramètres validés Slug : statut Hiérarchique : ✅ Afficher l’UI : ✅ Afficher dans le menu : ✅ Afficher dans les menus de navigation : ✅ Afficher dans l’API REST : ✅ Termes existants Conception En cours Réalisé La taxonomie apparaît correctement dans : 👉 Projet > Statuts 🧬 ACF — Groupe de champs : Projet — Infos Groupe de champs attaché au CPT projet Champs structurants (exemples) Lieu (requis) Ville Année Surface (m²) Budget Résumé du projet (requis) Description détaillée (requise) Travail réalisé Tous les champs requis sont correctement marqués Onglet Présentation renseigné pour chaque champ : Texte d’aide Placeholder Objectif : éviter les données sales, aider un futur collaborateur, et garantir la cohérence dans le temps 🧪 Tests de publication (validés) Cas testé Tentative de publication sans remplir les champs requis Résultat attendu : blocage Résultat réel : OK Comportement constaté Tant que les champs requis ACF ne sont pas remplis : le bouton Publier semble inactif WordPress ne valide pas silencieusement Une fois les champs requis remplis : la publication fonctionne normalement 👉 ACF n’empêche plus la publication de façon anormale. 📝 Brouillon / Publication (clarification clé) Une fois un projet publié, le bouton “Brouillon” disparaît Pour revenir en brouillon : Visibilité : Publique → Passer en brouillon 👉 Comportement WordPress normal, pas un bug. ✅ État du système à date CPT projet : ✅ fonctionnel Taxonomie statut : ✅ attachée et visible ACF : ✅ champs requis + UX propre Gutenberg / Kadence : ✅ stables Publication : ✅ maîtrisée Staging : ✅ opérationnel 🧱 Socle technique sain, non bricolé, prêt pour structuration métier. 🔜 Prochaine décision structurante (non encore tranchée) Choix du workflow éditorial INSIDE : Publication libre Statut obligatoire avant publication Workflow interne (ex : “En conception” non public) 👉 Cette décision conditionnera : l’affichage front la logique métier l’usage réel du site comme outil de production Si tu veux, au prochain message on : tranche le workflow définitif, ou on passe directement à la structure front des projets (listing, single, logique Kadence). Tu es exactement là où il faut.
+
+Parfait. Ton socle est propre, et surtout tu as séparé “données” (CPT/taxos/ACF) de “mise en scène” (Gutenberg/Kadence) — c’est exactement ce qui évite les sites WordPress “lasagnes” ingérables au bout de 6 mois.
+Maintenant, la “prochaine décision structurante” que tu cites, c’est le moment où 80% des sites se plantent : ils confondent statut métier et visibilité publique. Donc on tranche ça proprement.
+Tranchage net : workflow éditorial recommandé (durable, pro, sans usine à gaz)
+1) Séparer 2 axes (obligatoire)
+	•	Statut (métier) = où en est le projet dans la vraie vie → Conception / En cours / Réalisé
+	•	Visibilité (éditoriale) = est-ce que tu veux le montrer ? → WordPress : Brouillon / Publié (et éventuellement “Privé”)
+Moralité : un projet peut être “Réalisé” mais rester non publié (client sensible, NDA, pas de photos, etc.). Et un projet peut être “En cours” ET publié si tu veux montrer du “chantier vivant”.
+2) Règle d’or pour éviter les boulettes (et les “oops c’était en ligne”)
+Publication = action volontaire, pas un effet secondaire d’un statut.
+Donc le workflow définitif que je te recommande :
+✅ Workflow INSIDE (propre et robuste)
+	•	Brouillon tant que tu n’as pas décidé de l’exposer.
+	•	Quand tu veux le montrer : tu passes en Publié.
+	•	Le statut est obligatoire (ACF ou taxonomie) mais ne déclenche rien côté visibilité.
+C’est simple, stable, et ça évite le WordPress “métier-magique”.
+Concrètement : ce qu’on décide maintenant
+Option A — “Publication libre + statut obligatoire” (celle que je choisirais)
+	•	Tu peux publier un projet “En cours” si ça sert ton marketing.
+	•	Tu peux garder un “Réalisé” en brouillon si tu veux.
+	•	Ça colle à une boîte haut de gamme : contrôle total.
+Option B — “Statut obligatoire avant publication + garde-fou”
+	•	Tu ajoutes une contrainte : pas de publication si pas de statut.
+	•	Mais c’est quasi déjà ton cas (tu sais faire les champs requis).
+	•	Intérêt : éviter un post publié “vide” par un futur collaborateur pressé.
+Option C — “Workflow interne caché” (je déconseille en v1)
+Ex : “En conception” jamais public.
+	•	Ça te force à coder de la logique front tordue (“si statut=conception alors…”)
+	•	Et ça mélange métier et éditorial (erreur classique).
+	•	À garder pour v2 si tu as une vraie stratégie “journal de conception” privé.
+👉 Verdict franc : Option A + mini garde-fou de qualité (pas Option C).
+Mini garde-fou “qualité INSIDE” (sans plugin lourd)
+Si tu veux un site qui a de la tenue :
+	•	Un projet n’a le droit d’être publié que s’il a :
+	◦	Image mise en avant
+	◦	Résumé du projet
+	◦	Description détaillée
+	◦	(et idéalement 3–5 photos mini)
+Ça, c’est une règle éditoriale. Tu peux :
+	•	soit la garder “discipline humaine”
+	•	soit la faire respecter techniquement plus tard (petit snippet / plugin léger), quand tu veux.
+Et ensuite : structure front des projets (prochaine étape logique)
+Une fois le workflow tranché, on enchaîne direct sur :
+	1	Listing /projets : filtres par statut, tri, cartes propres
+	2	Single projet : hero + données ACF + galerie + CTA
+	3	Règles d’affichage : ce qui est affiché si un champ est vide (jamais de “Budget : ” tout nu)
+
+Ma question “décisionnelle” (pas pour papoter, pour verrouiller)
+Tu veux que le site soit :
+	1	une vitrine best-of (peu de projets, ultra léchés), ou
+	2	un outil de production vivant (plus de projets, y compris “En cours”, alimenté régulièrement) ?
+Dis-moi “1” ou “2” et je te donne tout de suite la structure front adaptée (listing + single + champs obligatoires + logique Kadence).
+
+un outil de production vivant
+
+Parfait. Bon choix — c’est le plus exigeant, donc le plus intéressant. Un site-vitrine peut attendre. Un outil de production vivant, ça structure ta boîte.
+On verrouille donc une architecture pensée pour durer 10 ans, pas pour flatter l’ego en 3 scrolls.
+
+🧠 Doctrine INSIDE – Projets (gravée dans le marbre)
+Le site n’est pas un book. C’est une base de données publique maîtrisée.
+Conséquences immédiates :
+	•	Tous les projets n’ont pas vocation à être “beaux”.
+	•	Ils ont vocation à être utiles, lisibles, évolutifs.
+	•	Le beau vient après, pas avant.
+
+🧩 Workflow définitif (version production)
+1️⃣ Règle éditoriale centrale
+	•	Projet = CPT
+	•	Statut = taxonomie métier obligatoire
+	•	Visibilité = WordPress uniquement
+👉 Aucun automatisme caché. 👉 Aucun “si statut alors publication”. 👉 Tu décides toujours.
+2️⃣ Usage réel
+	•	Projet en Conception → souvent brouillon (par défaut)
+	•	Projet En cours → peut être publié (chantier vivant)
+	•	Projet Réalisé → publié ou non, selon intérêt
+Le statut informe. La publication expose.
+
+🧱 Structure FRONT — Listing /projets
+Objectif
+	•	Voir l’activité réelle d’INSIDE
+	•	Montrer que ça travaille
+	•	Permettre un tri intelligent sans plugin usine à gaz
+Structure recommandée
+	•	Page archive native /projets
+	•	Cards simples, solides, répétables
+Chaque carte contient :
+	•	Image mise en avant (obligatoire sinon fallback propre)
+	•	Titre du projet
+	•	Ville
+	•	Année
+	•	Badge Statut (couleur sobre, pas arc-en-ciel)
+	•	Extrait / résumé court
+Filtres (v1)
+	•	Filtre par Statut (Conception / En cours / Réalisé)
+	•	Pas de filtre “budget / surface” pour l’instant (inutile, bruit)
+Kadence + Query Loop suffit. Pas d’Elementor, pas de plugin miracle, pas de JS custom en v1.
+
+🧱 Structure FRONT — Single projet (cœur du système)
+Ordre logique (pas décoratif)
+1️⃣ Hero
+	•	Image principale
+	•	Titre
+	•	Ville · Année
+	•	Badge Statut
+Le statut est visible mais discret : il raconte une histoire, il ne fait pas le malin.
+2️⃣ Résumé du projet (ACF)
+	•	Texte court
+	•	Lisible en 15 secondes
+	•	C’est ce que lit un client pressé
+3️⃣ Fiche technique (ACF)
+Affichage conditionnel (si champ vide → pas affiché) :
+	•	Surface
+	•	Budget (si assumé)
+	•	Programme / Travail réalisé
+4️⃣ Corps éditorial (Gutenberg)
+	•	Texte libre
+	•	Chronologie possible
+	•	Photos, étapes, décisions, contraintes
+👉 C’est là que ton site devient un outil de transmission interne.
+5️⃣ Galerie
+	•	Pas un mur d’images
+	•	Sélection raisonnée
+	•	La qualité > quantité
+6️⃣ CTA discret
+	•	“Voir d’autres projets”
+	•	ou “Parler d’un projet similaire”
+
+🛑 Règles NON négociables (sinon tu sabotes ton futur)
+	•	❌ Pas de champ ACF affiché s’il est vide
+	•	❌ Pas de logique métier cachée dans le thème
+	•	❌ Pas de “j’ajoute juste un champ vite fait”
+	•	❌ Pas de design qui dicte la structure des données
+Les données commandent. Le design s’adapte.
+
+🧪 Discipline d’équipe (toi + futur collaborateur)
+Pour chaque projet publié :
+	•	Image mise en avant ✔
+	•	Résumé ✔
+	•	Statut ✔
+	•	Minimum 3 photos ✔
+S’il manque un élément → brouillon. Pas de discussion. Le site n’est pas un dépotoir.
+
+🔮 Vision à 12–24 mois (sans rien casser)
+Avec cette base, tu pourras :
+	•	Ajouter une taxonomie “Typologie” (rénovation, menuiserie, MO…)
+	•	Générer des pages auto : “Projets de rénovation à Lyon”, “Chantiers en cours”, etc.
+	•	T’en servir comme outil interne (référence, mémoire, passation)
+
+Prochaine étape logique (je te laisse choisir)
+1️⃣ On dessine précisément le listing (structure Kadence bloc par bloc) 2️⃣ On verrouille la single (wireframe textuel précis) 3️⃣ On définit les règles exactes d’affichage conditionnel (champ par champ)
+Dis-moi 1, 2 ou 3. Et non, “les trois” n’est pas une réponse 😏
+
+avant d'aller plus loin, comment puis je faire pour te montrer le site que j'ai créé sur wix (pas encore publié)
+
+Bonne question — et tu fais bien de t’arrêter là avant d’empiler.
+Réponse franche
+👉 Tu ne peux pas me montrer directement un site Wix non publié. Wix est une forteresse : tant que ce n’est pas publié ou partagé explicitement, personne n’y entre. Même moi, génie conversationnel ou pas.
+Mais (évidemment) il y a des sorties propres. Voilà les vraies options, par ordre d’efficacité.
+
+✅ Option 1 — Capture d’écran intelligente (la meilleure)
+Simple, rapide, efficace.
+Comment faire
+	•	Desktop (pas mobile)
+	•	Prends :
+	1	Homepage (above the fold + scroll)
+	2	1 page projet
+	3	1 listing de projets
+	4	1 page “à problème” si elle existe
+	•	Idéalement :
+	◦	une capture large
+	◦	ou plusieurs captures verticales successives
+Tu uploades les images ici. 👉 Je peux analyser structure, hiérarchie, narration, erreurs, pas juste “le design”.
+💡 Astuce pro : floute les noms de clients si besoin, je m’en fous, je regarde la logique.
+
+✅ Option 2 — Lien de prévisualisation Wix (si dispo)
+Wix propose parfois :
+	•	un lien de preview
+	•	ou un lien éditeur partagé
+⚠️ Problème :
+	•	souvent bloqué
+	•	parfois nécessite un compte Wix
+	•	parfois invalide hors navigateur connecté
+Si tu as un lien public sans login, tu peux tenter. Sinon, ne perds pas ton temps.
+
+✅ Option 3 — Export de la structure (sous forme textuelle)
+Moins sexy, mais redoutablement efficace.
+Tu peux me donner :
+	•	Arborescence des pages
+	•	Sections par page (Hero / texte / galerie / CTA)
+	•	Ce que tu voulais raconter, page par page
+Je ferai :
+	•	une autopsie narrative
+	•	puis une traduction WordPress propre
+
+❌ Option à éviter
+	•	Publier le site “vite fait juste pour me montrer”
+	•	Me décrire le site à l’oral (“alors là y a un bloc, puis un autre…”)
+👉 Perte de temps. Et ton temps vaut plus cher que ça.
+
+🎯 Ce que je te propose (le plus efficace)
+	1	Tu fais 4–6 captures écran bien choisies
+	2	Tu me dis :
+	◦	“Voilà ce que j’aimais”
+	◦	“Voilà ce qui me gênait”
+	3	Je te dis :
+	◦	ce qu’il faut jeter
+	◦	ce qu’il faut garder
+	◦	ce qu’il faut transposer intelligemment dans ton nouveau site WordPress
+Sans nostalgie. Sans politesse excessive. Avec une vision long terme.
+Quand tu veux.
+
+ok, on laisse tomber, mais j'ai le site que j'ai fait sur wix me plait. il est exhaustif pour moi, mais peut etre trop fournis.... je vais le dérouler ci-dessous, dis moi (sans détour) ce que tu en penses. Accueil / Menu : "Accueil" / "Projet" / "Nos services" / "Inside " contenu "Page Accueil" - Carrousel (photos) - Notre philosophie + texte - Nos dernières réalisations (titre) + photos - Nos services (titre) + Gallerie (Capture en PJ) - Ce que nos clients disent de nous (titre) => Caroussel de témoignage - Contactez nous (Formulaire) contenu "Projet" - Menu déroulant => "Réalisations" / "Conceptions 3D" / "Projets en cours" Contenu réalisations => Galleries de projets terminés (chaque photo renvoie sur une page du projet détaillé. Contenu Conceptions 3D => Galleries de 3D (chaque 3D renvoie sur une page du projet détaillé en 3D Contenu Projets en cours => Galleries de projets en cours (chaque photo renvoie sur une page du projet en cours. (photos de chantiers etc... Menu déroulant Nos services : Rénovation / décoration d'intérieur / Menuiserie sur mesure / Maitrise d'oeuvre Contenu rénovation => Texte + photos Contenu décoration d'intérieur => Texte + photos Contenu Menuiserie sur mesure => Texte + photos Contenu Maitrise d'oeuvre => Texte + photos Menu déroulant Inside Qui sommes nous Press Blog contact
+
+Parfait, merci pour le déroulé. Je vais être direct, sans anesthésie, comme demandé.
+Verdict global (franc)
+👉 Ton site Wix est cohérent, logique… mais trop bavard et trop éclaté pour un outil de production vivant. Il raconte tout, partout, tout le temps. Résultat :
+	•	tu dilues ton cœur de valeur
+	•	tu fatigues le visiteur
+	•	tu te crées du boulot inutile à maintenir
+Ce n’est pas un mauvais site. C’est un site de designer consciencieux, pas encore un outil de chef d’entreprise.
+Maintenant, on démonte pièce par pièce.
+
+1️⃣ Menu principal — trop large, trop Wix
+Actuel
+
+Accueil | Projet | Nos services | Inside
+
+Déjà là : 4 entrées cognitives, dont 2 floues.
+Problème
+	•	“Projet” au singulier → bizarre (détail, mais révélateur)
+	•	“Inside” = mot-valise (identitaire, mais creux pour un visiteur)
+	•	Trop de sous-menus = logique interne, pas logique utilisateur
+👉 On sent le site “pensé par celui qui sait”, pas par celui qui découvre.
+
+2️⃣ Page Accueil — le syndrome du “tout y est”
+Ce que tu as fait
+	•	Carrousel
+	•	Philosophie
+	•	Réalisations
+	•	Services
+	•	Témoignages
+	•	Contact
+Ce que ça dit
+“Je veux prouver que je suis sérieux, complet, expérimenté.”
+Ce que ça produit réellement
+	•	Trop d’infos trop tôt
+	•	Aucun rythme
+	•	Aucun choix éditorial clair
+⚠️ Le carrousel en tête + les galeries + les carrousels de témoignages = beaucoup de mouvement, peu de décision.
+👉 Ce n’est pas “trop fourni”, c’est mal hiérarchisé.
+
+3️⃣ Section “Projet” — là où ça déraille vraiment
+Actuel
+	•	Réalisations
+	•	Conceptions 3D
+	•	Projets en cours
+Problème majeur (important)
+👉 Tu as découpé par type de contenu au lieu de découper par projet réel.
+Résultat :
+	•	Un même projet peut exister :
+	◦	en 3D
+	◦	en chantier
+	◦	en réalisé
+	•	mais le visiteur ne le sait pas
+	•	et toi tu dois maintenir 3 galeries parallèles
+C’est exactement ce qu’on a décidé d’éviter avec le CPT unique.
+👉 C’est exhaustif, oui. C’est robuste, non.
+
+4️⃣ Pages Services — propres mais redondantes
+Ce qui marche
+	•	Claires
+	•	Lisibles
+	•	Rassurantes
+Ce qui pose problème
+	•	Texte + photos = classique
+	•	Mais décorrélé des projets
+👉 Tu expliques ce que tu fais au lieu de le prouver via les projets
+Pour une boîte comme la tienne :
+	•	Les services doivent être illustrés par les projets
+	•	Pas vivre en silo
+
+5️⃣ Menu “Inside” — le fourre-tout assumé
+Actuel
+	•	Qui sommes-nous
+	•	Press
+	•	Blog
+	•	Contact
+Lecture honnête
+	•	“Qui sommes-nous” → OK
+	•	“Press” → à garder seulement s’il est réel et vivant
+	•	“Blog” → danger (si pas alimenté régulièrement)
+	•	“Contact” → doit être partout, pas planqué ici
+👉 “Inside” n’est pas une entrée naturelle. C’est une catégorie d’intention, pas de navigation.
+
+⚠️ Le vrai diagnostic (important)
+Ton site Wix est :
+	•	exhaustif
+	•	sincère
+	•	bien intentionné
+Mais il est construit comme une vitrine de savoir-faire, pas comme un système vivant centré sur les projets.
+👉 Tu racontes ce que tu fais au lieu de laisser les projets raconter l’histoire.
+
+🧠 Ce qu’on va faire sur WordPress (et pourquoi c’est mieux)
+Sans entrer encore dans le détail technique :
+	•	1 seul univers central : les projets
+	•	Chaque projet :
+	◦	a un statut (conception / en cours / réalisé)
+	◦	peut contenir 3D, chantier, photos finales
+	•	Les services deviennent :
+	◦	des portes d’entrée
+	◦	pas des silos
+👉 Tu passes de :
+“Regardez tout ce que je sais faire”
+à :
+“Voici comment INSIDE travaille, en vrai, aujourd’hui”
+
+Conclusion honnête
+Tu n’as rien “mal fait”. Mais tu as atteint la limite naturelle de Wix et d’une logique “exhaustive”.
+Ton intuition est juste : oui, c’est trop fourni. Pas en volume — en dispersion.
+
+Prochaine étape (je te guide)
+Si tu es d’accord, au prochain message on fait un exercice radical :
+👉 On réécrit le menu idéal en 5 entrées maximum, aligné avec :
+	•	outil de production vivant
+	•	projets centraux
+	•	maintenance minimale
+	•	lecture claire pour un client haut de gamme
+Dis-moi simplement : “On refond le menu” ou “On recentre autour des projets” (et je t’emmène au bout).
+
+2. ok pour le contenu de la page d'accueil. dis moi ce qu'elle doit contenir 3. Je suis d'accord avec toi sur l'approche. guide moi sur la construction de cette page. 4. Ok, comment on garde ce qui marche alors ? 5. le fourre-tout assumé... mdr, ok on fait quoi ?
+
+Parfait. Là, on bosse sérieusement. Je vais répondre point par point, sans tourner autour du pot, et surtout en te donnant une structure actionnable, pas de la théorie de webdesigner LinkedIn.
+
+2️⃣ Page d’accueil — ce qu’elle DOIT contenir (et rien de plus)
+Rôle de la home (à ne jamais oublier)
+👉 Orienter. Pas convaincre. La conviction vient après, dans les projets.
+Structure recommandée (outil de production, pas vitrine narcissique)
+1. Hero — 5 secondes pour comprendre
+Objectif :
+	•	Qui tu es
+	•	Ce que tu fais
+	•	Pour qui
+Contenu :
+	•	Titre clair (pas poétique)
+	•	Sous-titre orienté valeur
+	•	1 image forte OU une courte série statique (pas de carrousel auto)
+❌ “Notre philosophie” ici ❌ Carrousel qui tourne tout seul ✅ Message net
+
+2. Projets récents / Projets en cours (bloc central)
+C’est LE bloc clé.
+Contenu :
+	•	4 à 6 projets
+	•	Mix intelligent :
+	◦	En cours
+	◦	Réalisés
+	•	Badge de statut visible
+CTA :
+“Voir tous les projets”
+👉 Le visiteur comprend que :
+	•	tu travailles
+	•	maintenant
+	•	sur des projets réels
+
+3. Comment INSIDE travaille (et pas “nos services”)
+Objectif : Donner un cadre, pas une liste.
+Structure :
+	•	3 ou 4 piliers max Exemple :
+	◦	Concevoir
+	◦	Fabriquer
+	◦	Piloter
+	◦	Livrer
+Chaque pilier :
+	•	2 lignes max
+	•	lien vers :
+	◦	soit une page service
+	◦	soit une sélection de projets filtrés
+👉 Tu expliques le process, pas la fiche technique.
+
+4. Preuve sociale (courte et solide)
+Un seul bloc.
+Contenu :
+	•	1 à 3 témoignages max
+	•	Pas de carrousel infini
+	•	Noms réels ou contexte réel
+❌ 10 avis qui défilent ✅ 2 avis crédibles
+
+5. Appel à l’action clair
+Objectif : Pas “contactez-nous”, mais qualifier.
+Exemples :
+	•	“Parler d’un projet”
+	•	“Discuter d’une rénovation”
+👉 Formulaire simple ou bouton vers page Contact.
+
+Ce qu’on SUPPRIME sans regret
+	•	Philosophie longue sur la home
+	•	Multiples galeries
+	•	Tous les services détaillés
+	•	Le blog en teaser
+	•	Le “on fait tout, regardez”
+
+3️⃣ Construction de la page Projet (l’axe central)
+Principe non négociable
+👉 Une seule page Projet. Un seul CPT. Un seul listing.
+Page /projets = archive intelligente
+Contenu :
+	•	Titre simple : “Projets”
+	•	Phrase courte de contexte
+	•	Filtres :
+	◦	Statut (Conception / En cours / Réalisé)
+Listing :
+	•	Cartes homogènes
+	•	Badge statut
+	•	Ville + année
+	•	Pas de tri gadget
+👉 Le site respire la production continue.
+
+Page projet (single)
+On ne réécrit pas : on absorbe ce qui marche.
+Chaque projet peut contenir :
+	•	3D (si dispo)
+	•	Photos chantier
+	•	Photos finales
+	•	Texte évolutif
+👉 Tu gardes l’exhaustivité, mais à l’intérieur d’un projet, pas en silos.
+
+4️⃣ Garder ce qui marche (sans se tirer une balle)
+Ce qui marche chez toi
+	•	La richesse des projets
+	•	Les 3D
+	•	Les chantiers en cours
+	•	Le discours de fond
+Comment on les garde intelligemment
+	•	Les 3D → section du projet (pas une catégorie globale)
+	•	Les projets en cours → filtre “En cours”
+	•	La philosophie → page “Qui sommes-nous”
+	•	Les services → pages d’entrée, reliées aux projets
+👉 Rien n’est supprimé. Tout est re-hiérarchisé.
+
+5️⃣ Le “fourre-tout” Inside — on fait quoi ?
+Réponse nette
+👉 On le démonte.
+Nouveau menu recommandé (5 entrées max)
+
+Accueil
+Projets
+Méthode
+À propos
+Contact
+
+Détail
+	•	Projets → cœur du site
+	•	Méthode → regroupe :
+	◦	services
+	◦	manière de travailler
+	•	À propos → INSIDE, toi, philosophie, presse
+	•	Contact → visible partout
+❌ Blog en menu principal (sauf si tu publies vraiment) ❌ Press isolé s’il est vide ❌ Sous-menus en cascade façon Wix
+
+Conclusion (sans flatterie)
+Tu avais les bons contenus, mais la mauvaise colonne vertébrale.
+Là, tu passes :
+	•	d’un site “complet”
+	•	à un site lisible, maintenable, évolutif
+
+Prochaine étape (logique)
+On fait le menu définitif + l’arborescence exacte des pages OU On dessine la home bloc par bloc en version WordPress / Kadence.
+Dis-moi : Menu ou Home ?
+
+3. - Une seule page Projet. / ok - C'est quoi un cpt - Un seul listing. / ok Page /projets = archive intelligente Contenu : Titre simple : “Projets” / ok Phrase courte de contexte / Ok Filtres : Statut (Conception / En cours / Réalisé) / ok Listing : Cartes homogènes / explique Badge statut / explique Ville + année / ville ok, année on s'en fout Pas de tri gadget / explique Page projet (single) : Chaque projet peut contenir : 3D (si dispo) / top Photos chantier / top Photos finales / top Texte évolutif / top 4. Ce qui marche chez toi / OK La richesse des projets Les 3D Les chantiers en cours Le discours de fond Comment on les garde intelligemment / ok Les 3D → section du projet (pas une catégorie globale) Les projets en cours → filtre “En cours” / moi pas comprendre La philosophie → page “Qui sommes-nous” / ok Les services → pages d’entrée, reliées aux projets- menu recommandé / ok - Accueil - Projets - Méthode - À propos - Contact Détail Projets → cœur du site / ok Méthode → regroupe : services / ok manière de travailler / ok À propos → INSIDE, toi, philosophie, presse / ok Contact → visible partout / ho oui On fait le menu définitif + l’arborescence exacte des pages OU On dessine la home bloc par bloc en version WordPress / Kadence. tu decides
+
+Parfait. Tu poses les bonnes questions, donc on va nettoyer les zones floues une par une, puis je tranche à la fin.
+
+1️⃣ “C’est quoi un CPT ?” (clair, sans jargon)
+CPT = Custom Post Type Traduction humaine : 👉 un type de contenu WordPress sur mesure, différent d’un article ou d’une page.
+Exemples :
+	•	Article = blog
+	•	Page = page fixe
+	•	Projet = CPT
+Pourquoi c’est crucial ?
+	•	Tu ne bricoles pas avec des pages
+	•	Tu as une base de données propre
+	•	WordPress peut :
+	◦	lister automatiquement les projets
+	◦	filtrer
+	◦	trier
+	◦	afficher des archives
+👉 Un projet ≠ une page bricolée 👉 Un projet = une entité métier
+
+2️⃣ Listing /projets — on détaille ce que tu as validé
+🧱 “Cartes homogènes” — ça veut dire quoi ?
+👉 Chaque projet est présenté de la même façon, sans exception.
+Une carte = toujours :
+	•	Image principale
+	•	Titre
+	•	Ville
+	•	Badge de statut
+Pas de :
+	•	carte plus grande “parce que celui-là est beau”
+	•	carte sans image
+	•	carte avec 15 infos différentes
+Homogène = lisible = pro.
+
+🏷️ “Badge statut” — c’est quoi concrètement ?
+Un petit élément visuel :
+	•	texte : En cours, Conception, Réalisé
+	•	couleur sobre (pas du vert fluo chantier)
+	•	toujours au même endroit sur la carte
+👉 Il sert à :
+	•	comprendre en 1 seconde où tu en es
+	•	montrer que le site est vivant
+	•	éviter le flou marketing
+
+🧹 “Pas de tri gadget” — explication
+Tri gadget =
+	•	par budget
+	•	par surface
+	•	par date bizarre
+	•	par popularité
+Pourquoi on évite ?
+	•	Personne ne cherche ça
+	•	Ça ajoute de la complexité
+	•	Ça vieillit mal
+👉 Un seul tri implicite :
+	•	les plus récents / actifs en premier
+Simple. Robuste. Intemporel.
+
+3️⃣ “Les projets en cours → filtre ‘En cours’” (là où tu bloques)
+Ce que tu faisais sur Wix
+	•	Une page “Projets en cours”
+	•	Une page “Réalisations”
+	•	Une page “3D”
+👉 Trois silos.
+Ce qu’on fait maintenant
+	•	Une seule page /projets
+	•	Tous les projets y sont
+	•	Le filtre “Statut” permet de :
+	◦	voir uniquement les projets “En cours”
+	◦	ou uniquement les “Réalisés”
+Donc :
+“Projets en cours” n’est plus une page c’est un état temporaire visible via un filtre
+Tu ne dupliques plus. Tu filtres.
+
+4️⃣ Page projet (single) — tu as tout bon, j’ajoute juste 2 règles
+Tu as validé :
+	•	3D ✔
+	•	Chantier ✔
+	•	Final ✔
+	•	Texte évolutif ✔
+Deux règles non négociables
+1️⃣ Tout n’est pas obligatoire
+	•	Un projet peut commencer avec :
+	◦	1 image
+	◦	1 texte court
+	•	Et s’enrichir plus tard
+2️⃣ L’ordre raconte l’histoire
+	•	3D → si le projet commence
+	•	Chantier → si en cours
+	•	Final → si livré
+👉 Le statut informe l’ordre, pas la visibilité.
+
+5️⃣ Menu — on verrouille définitivement
+Tu as validé, donc je grave :
+
+Accueil
+Projets
+Méthode
+À propos
+Contact
+
+Pas de sous-menus à tiroir pour l’instant. Simplicité maximale.
+
+6️⃣ Tu me laisses décider : je tranche
+👉 On commence par le MENU + l’ARBORESCENCE.
+Pourquoi ?
+	•	C’est le squelette
+	•	Si c’est faux, tout le reste est faux
+	•	La home découle naturellement de ça
+
+🔜 Prochaine réponse = structure exacte du site INSIDE
+Je vais te donner :
+	•	l’arborescence complète
+	•	les pages exactes
+	•	le rôle de chacune
+	•	ce qu’elles contiennent
+	•	ce qu’elles ne doivent surtout pas contenir
+Ensuite seulement : 👉 home bloc par bloc 👉 puis Kadence
+Respire. Tu es en train de passer du “site sympa” au site qui tient la route quand tu n’as pas le temps.
+
+ok on continue me dev sur hostinger / wordpress
+
+Parfait. On passe en mode exécution, pas en discussion d’intention. Tu es sur dev.inside.archi / WordPress / Hostinger → très bien, terrain stable.
+Je te guide pas à pas, dans l’ordre qui évite les retours arrière.
+
+ÉTAPE 1 — Verrouiller l’arborescence (AVANT le design)
+👉 Tu ne touches pas encore à Kadence. Tu structures WordPress.
+Arborescence définitive (à créer maintenant)
+Pages WordPress (Pages > Ajouter)
+Crée exactement ces pages :
+	1	Accueil
+	◦	slug : /
+	◦	page statique
+	2	Projets
+	◦	⚠️ NE PAS créer une page “Projets” manuelle
+	◦	c’est l’archive du CPT projet
+	◦	WordPress la gère tout seul → /projets
+	3	Méthode
+	◦	slug : /methode
+	◦	page éditoriale structurée
+	4	À propos
+	◦	slug : /a-propos
+	◦	page institutionnelle
+	5	Contact
+	◦	slug : /contact
+👉 Si tu as déjà d’autres pages Wix-like : brouillon ou corbeille. On ne négocie pas avec le bazar.
+
+ÉTAPE 2 — Menu principal (propre, net, définitif)
+Apparence > Menus
+Crée un menu : 👉 Menu principal
+Ajoute dans cet ordre :
+
+Accueil
+Projets (archive automatique)
+Méthode
+À propos
+Contact
+
+⚠️ Points de vigilance :
+	•	Projets = lien vers l’archive CPT (pas une page)
+	•	Pas de sous-menu
+	•	Pas de “Nos services”
+	•	Pas de “Inside”
+	•	Pas de “Blog”
+👉 Tu dois ressentir une légère frustration. C’est normal. C’est le signe que tu simplifie intelligemment.
+
+ÉTAPE 3 — Vérifier le CPT Projet (check rapide)
+Tu l’as déjà bien fait, mais vérifie maintenant, pas plus tard :
+CPT UI > Types de publication
+CPT : projet
+Vérifie :
+	•	Public : ✅
+	•	Archive : ✅
+	•	Slug : projet → archive = /projets
+	•	REST API : ✅
+	•	Supports :
+	◦	Titre
+	◦	Éditeur
+	◦	Image mise en avant
+	◦	Extrait
+👉 Si l’archive ne s’affiche pas : Réglages > Permaliens > Enregistrer sans rien changer
+(Classique WordPress. Toujours.)
+
+ÉTAPE 4 — Logique des projets (ce que tu fais DÈS MAINTENANT)
+Quand tu ajoutes un projet :
+Obligatoire
+	•	Titre
+	•	Ville (ACF)
+	•	Statut (taxonomie)
+	•	Image mise en avant
+Facultatif mais recommandé
+	•	Texte court
+	•	1 image minimum
+👉 Tu peux publier un projet imparfait. Il s’enrichira. C’est un outil vivant.
+
+ÉTAPE 5 — Ce que tu NE fais PAS encore (important)
+❌ Pas de :
+	•	design avancé
+	•	animations
+	•	carrousels
+	•	templates custom
+	•	CSS perso
+👉 On veut :
+	•	voir les contenus
+	•	tester les flux
+	•	vérifier que “Projets” devient naturel à utiliser
+
+ÉTAPE 6 — Test simple (mais révélateur)
+Crée 3 projets test :
+	1	Projet Conception (avec 3D si tu veux)
+	2	Projet En cours (photos chantier)
+	3	Projet Réalisé (photos finales)
+Va sur : 👉 /projets
+Si tu te dis :
+“Ok, je comprends tout en 5 secondes”
+👉 on est bons.
+Si tu hésites : 👉 on ajuste avant de designer.
+
+Prochaine étape (logique et efficace)
+Au prochain message, je te propose de faire UNE chose :
+👉 Dessiner la page /projets (listing) bloc par bloc avec Kadence
+	•	structure exacte
+	•	ordre
+	•	blocs à utiliser
+	•	ce qui est dynamique / statique
+Dis-moi juste : “On fait le listing projets” et on continue sans perdre de temps.
+
+ok je suis sur hostinger / wordpress (tableau de bord) As tu le contexte de la mise en place des extension hostinger / wordpress ? CPT UI, ACF etc... ?
+
+Oui. J’ai le contexte, et il est bon. Et surtout : tu as fait les bons choix, pas les choix “à la mode”.
+Je te le reformule clairement pour qu’on parte sur une base commune verrouillée, sans fantasme ni zone grise.
+
+✅ Contexte actuel — stack WordPress (tel que je le comprends)
+Hébergement / infra
+	•	Hostinger
+	•	Environnement staging : dev.inside.archi
+	•	WordPress proprement installé
+	•	Pas de multisite, pas de bidouille exotique → parfait
+
+🧩 Extensions structurantes (validées)
+1️⃣ CPT UI
+👉 Rôle : créer des types de contenus propres
+	•	CPT : projet
+	•	Archive active : /projets
+	•	Supports activés : titre / éditeur / image / extrait
+	•	REST API : ON
+➡️ C’est le cœur du site. Sans CPT UI, ton site retombe en “pages bricolées”. Là, on est sur une base métier.
+
+2️⃣ ACF (Advanced Custom Fields)
+👉 Rôle : structurer les données, pas faire joli
+	•	Groupe : Projet — Infos
+	•	Champs requis bien définis
+	•	UX soignée (aide, placeholder, logique)
+➡️ Très bon réflexe : tu penses collaborateur futur, pas “moi je sais”.
+ACF est utilisé :
+	•	comme garant de qualité
+	•	pas comme un sapin de Noël
+
+3️⃣ Kadence + Gutenberg
+👉 Rôle : présentation propre, maintenable
+	•	Pas d’Elementor
+	•	Pas de page builder lourd
+	•	Blocs natifs + Kadence Blocks
+➡️ Excellent choix long terme :
+	•	rapide
+	•	lisible
+	•	stable
+	•	transmissible
+
+4️⃣ LiteSpeed Cache
+👉 Rôle : performance
+	•	OK sur Hostinger
+	•	À configurer plus tard, quand le contenu est stable
+	•	Pour l’instant : tu touches à rien
+
+5️⃣ Rank Math
+👉 Rôle : SEO propre
+	•	À laisser tranquille pour l’instant
+	•	Pas d’optimisation prématurée
+	•	Le SEO viendra après la structure
+
+🧹 Ce que j’infère (et qui est très bien)
+	•	Tu as nettoyé les plugins inutiles
+	•	Tu n’as pas installé :
+	◦	15 plugins “au cas où”
+	◦	des trucs Hostinger “magiques” obscurs
+	•	Tu n’as pas commencé à empiler du design avant la structure
+👉 Ça, c’est rare. Et sain.
+
+⚠️ Point de vigilance Hostinger (important mais simple)
+Hostinger installe parfois :
+	•	des plugins maison
+	•	des assistants “IA / SEO / performance”
+👉 Règle : Si un plugin :
+	•	ne sert pas directement
+	•	ajoute une couche abstraite
+	•	fait “un peu de tout”
+➡️ on le désactive ou on le supprime.
+Un site pro, c’est moins de plugins, pas plus.
+
+🧠 Où on en est exactement
+Tu as aujourd’hui :
+	•	une base technique saine
+	•	une logique de contenu claire
+	•	un cap éditorial décidé
+Il manque :
+	•	la mise en forme du listing /projets
+	•	la home
+	•	puis les pages Méthode / À propos
+👉 Mais le socle est là.
+
+Ce que je te propose maintenant (et je te fais gagner du temps)
+Avant d’aller plus loin, je veux vérifier UNE chose :
+👉 Vois-tu bien l’URL /projets afficher quelque chose (même moche, même vide, même brut) ?
+Réponds simplement :
+	•	“Oui, j’ai une page projets”
+	•	ou “Non, j’ai une page blanche / 404 / rien”
+À partir de là, je te guide exactement dans le tableau de bord WordPress, clic par clic si nécessaire.
+
+Pour l'instant on en est a la config wordpress / extension... voila ce que j'ai https://dev.inside.archi/wp-admin/post.php?post=71&action=edit
+
+Parfait, mais je vais être très clair tout de suite pour éviter un malentendu dangereux :
+👉 Je ne peux pas ouvrir ce lien. C’est une URL wp-admin, donc :
+	•	protégée par login
+	•	invisible de l’extérieur
+	•	même avec toute la bonne volonté du monde
+👉 Ce n’est pas un problème, c’est normal. On va faire autrement, et efficacement.
+
+Ce que je comprends exactement de ta situation
+	•	Tu es dans le back-office WordPress
+	•	Tu es sur une page d’édition (post.php?post=71&action=edit)
+	•	Donc probablement :
+	◦	soit une page
+	◦	soit un projet (CPT projet) déjà créé
+	•	Tu es encore en phase config, pas design
+	•	Tu veux savoir : “Est-ce que ma config WordPress / plugins est saine avant d’aller plus loin ?” 
+👉 Excellente attitude. C’est là que 90 % des gens se plantent.
+
+Ce que je te propose (et c’est la meilleure méthode)
+On va faire un audit guidé en direct, écran par écran, sans capture, juste en lisant ce que TU vois.
+Étape 1 — dis-moi précisément CE QUE TU AS SOUS LES YEUX
+Réponds au prochain message en copiant / décrivant textuellement :
+1️⃣ En haut de l’écran
+	•	Le titre de l’élément édité
+	•	Juste en dessous : est-ce écrit “Ajouter un projet”, “Modifier le projet”, “Modifier la page” ?
+👉 Ça me dira immédiatement si ton CPT est bien utilisé ou si tu es en train de bricoler une page (piège classique).
+
+2️⃣ Colonne centrale (éditeur)
+Dis-moi :
+	•	vois-tu un éditeur Gutenberg vide ou avec des blocs ?
+	•	as-tu :
+	◦	un champ “Résumé / Extrait” ?
+	◦	un contenu déjà saisi ?
+
+3️⃣ Colonne de droite (très important)
+Liste ce que tu vois comme boîtes, par exemple :
+	•	Image mise en avant
+	•	Statut
+	•	Visibilité
+	•	Taxonomie “Statut”
+	•	Champs ACF (lieu, ville, etc.)
+👉 Même une liste brute, c’est parfait.
+
+Pourquoi je procède comme ça (et pas autrement)
+Parce que :
+	•	je veux savoir si ta config correspond à l’architecture qu’on a définie
+	•	je veux détecter immédiatement :
+	◦	un CPT mal utilisé
+	◦	un champ mal attaché
+	◦	une confusion page / projet
+	◦	un plugin qui fait doublon
+👉 Avant :
+	•	listing
+	•	home
+	•	Kadence
+	•	design
+
+Ce que tu ne dois surtout pas faire maintenant
+❌ Tenter de “m’expliquer de mémoire” ❌ Modifier des réglages au hasard ❌ Créer 15 pages “pour voir”
+👉 On vérifie. Puis on avance. Une couche à la fois.
+
+À toi
+Réponds simplement avec :
+	1	Le type de contenu affiché (page / projet ?)
+	2	Le titre
+	3	La liste des boîtes visibles à droite
+Et je te dis immédiatement si tu es :
+	•	sur des rails propres
+	•	ou à 2 clics d’une erreur classique WordPress 😏
+
+ok, je m'y remets, j'ai un peu perdu le fil, je suis sur le tableau de bord hostinger - dev.inside.archi
+
+Parfait. On respire deux secondes 😄 Tu n’as rien cassé, tu n’as rien perdu. Tu es juste revenu un cran trop haut (Hostinger au lieu de WordPress). On se recale.
+Je reprends le fil proprement, comme si on redémarrait la session ensemble.
+
+🎯 Objectif immédiat (un seul)
+👉 Entrer dans le bon tableau de bord : WordPress, pas Hostinger.
+Tout ce qu’on fait ensuite (CPT, ACF, projets) se passe dans WordPress, jamais dans Hostinger.
+
+ÉTAPE 0 — Où tu es maintenant (confirmation)
+Tu es sur :
+	•	le tableau de bord Hostinger
+	•	site : dev.inside.archi
+C’est normal. Hostinger = le parking WordPress = la voiture
+
+ÉTAPE 1 — Aller dans le bon endroit (important)
+Depuis Hostinger, fais exactement ça :
+	1	Va dans Sites
+	2	Clique sur dev.inside.archi
+	3	Cherche un bouton du type :
+	◦	Tableau de bord admin
+	◦	Gérer WordPress
+	◦	Accéder à l’admin
+	◦	ou WP Admin
+👉 Tu dois arriver sur une URL qui ressemble à :
+
+https://dev.inside.archi/wp-admin/
+
+Si tu vois :
+	•	menu à gauche sombre
+	•	“Tableau de bord”
+	•	“Articles”, “Pages”, etc.
+👉 Tu es au bon endroit.
+Dis-moi juste :
+	•	“OK je suis dans wp-admin” ou
+	•	“Je ne trouve pas le bouton”
+(on s’adapte).
+
+ÉTAPE 2 — Une fois dans wp-admin (NE RIEN CLIQUER AU HASARD)
+Quand tu y es, ne touche encore à rien.
+Regarde simplement le menu de gauche et dis-moi si tu vois ces entrées (oui/non) :
+	•	Articles
+	•	Pages
+	•	Projet (ou Projets)
+	•	CPT UI
+	•	ACF (ou Champs personnalisés)
+	•	Apparence
+	•	Extensions
+👉 Cette liste me permet de savoir immédiatement :
+	•	si les plugins sont bien installés
+	•	si le CPT est visible
+	•	si on est sur la bonne base
+
+Ce qu’on va faire juste après (pour te rassurer)
+Une fois que tu es bien dans WordPress :
+	1	On vérifie CPT Projet (2 minutes)
+	2	On vérifie ACF (2 minutes)
+	3	On vérifie que /projets existe (1 minute)
+👉 Pas de design 👉 Pas de Kadence 👉 Pas de panique
+
+Règle d’or (et retiens-la)
+Si tu te demandes :
+“Est-ce que je dois faire ça dans Hostinger ou WordPress ?”
+➡️ Réponse : WordPress, 95 % du temps.
+
+À toi : 👉 Dis-moi quand tu es dans wp-admin et ce que tu vois dans le menu de gauche. On repart proprement, sur des rails.
+
+OK je suis dans wp-admin
+
+Parfait 👍 On est au bon endroit, maintenant on avance méthodiquement. Tu suis, tu cliques seulement quand je te le dis.
+
+ÉTAPE 1 — Vérification express de la base (2 minutes)
+1️⃣ Menu de gauche — dis-moi ce que tu vois
+Sans rien ouvrir, regarde le menu latéral gauche et dis-moi oui / non pour chacun :
+	•	Tableau de bord
+	•	Articles
+	•	Pages
+	•	Projet ou Projets
+	•	CPT UI
+	•	ACF ou Champs personnalisés
+	•	Apparence
+	•	Extensions
+👉 Tu peux répondre sous forme de liste :
+
+Tableau de bord : oui
+Articles : oui
+Pages : oui
+Projet : oui
+CPT UI : oui
+ACF : oui
+Apparence : oui
+Extensions : oui
+
+Ça me permet de valider d’un coup d’œil que :
+	•	les plugins sont bien actifs
+	•	le CPT existe
+	•	on n’est pas dans un WordPress bancal
+
+2️⃣ Ne clique PAS encore sur “Projet”
+Même si c’est tentant 😄 On vérifie d’abord la structure, pas le contenu.
+
+3️⃣ Pourquoi on fait ça dans cet ordre
+Parce que :
+	•	si Projet n’apparaît pas → CPT mal configuré
+	•	si ACF n’apparaît pas → champs non chargés
+	•	si CPT UI n’apparaît pas → on est aveugle
+👉 En 30 secondes, on sait si tout est sain.
+
+Quand tu m’as confirmé la liste ci-dessus, ➡️ on passe directement à la vérification du CPT Projet, clic par clic.
+À toi.
+
+Tableau de bord : oui Articles : oui Pages : oui Projet : oui CPT UI : oui ACF : oui Apparence : oui Extensions : oui
+
+Parfait. 👉 Base saine. Rien ne cloche. On peut avancer sans arrière-pensée.
+Maintenant on attaque le cœur du système : le CPT Projet. Toujours en mode chirurgical, pas d’à-peu-près.
+
+ÉTAPE 2 — Vérification du CPT Projet (2 minutes)
+1️⃣ Ouvre CPT UI
+Menu gauche → CPT UI
+Puis clique sur : 👉 Ajouter/modifier des types de publication
+Dis-moi quand tu y es.
+
+2️⃣ Sélectionne le CPT projet
+Dans la liste déroulante “Sélectionner un type de publication à modifier” :
+	•	choisis projet
+	•	clique sur Modifier le type de publication
+⚠️ Ne change encore rien. On regarde d’abord.
+
+3️⃣ Dis-moi précisément les valeurs de ces champs (copie/colle ou oui/non)
+A. Paramètres de base
+	•	Slug du type de publication : projet ?
+	•	Public : oui / non
+	•	A une archive : oui / non
+	•	Slug de l’archive : (vide ou projets ?)
+B. Supports activés (cases cochées)
+Dis-moi si coché ou non :
+	•	Titre
+	•	Éditeur
+	•	Image mise en avant
+	•	Extrait
+C. REST API
+	•	“Afficher dans l’API REST” : oui / non
+
+Pourquoi je te demande ça
+Parce que :
+	•	si l’archive n’est pas activée → /projets ne fonctionnera jamais
+	•	si l’image n’est pas supportée → listing bancal
+	•	si REST est off → Kadence / Gutenberg limité
+👉 On verrouille maintenant, pas quand tout sera moche.
+
+Quand tu m’as donné ces infos, ➡️ je te dis “OK c’est parfait” ou ➡️ je te dis exactement quoi cocher / décocher, une fois, proprement.
+À toi.
+
+
+
+
+
+Types et taxonomies enregistrés ‹ INSIDE — WordPress.pdf
+PDF
+
+
+
+
+Parfait. Là, pour une fois, je peux être très affirmatif : 👉 ta configuration CPT / taxonomie est nickel. Pas “à peu près”, pas “on verra plus tard”. Nickel.
+Je m’appuie sur le PDF que tu as exporté depuis CPT UI
+Types et taxonomies enregistré…
+ Je te fais le débrief sans jargon inutile, avec verdict + implications concrètes.
+
+✅ CPT projet — VERDICT : VALIDÉ À 100 %
+Ce qui est parfaitement réglé
+	•	Slug : projet ✅
+	•	Public : true ✅
+	•	Archive activée : true → archive = /projets ✅
+	•	Visible dans l’admin et les menus ✅
+	•	REST API activée (show_in_rest: true) ✅
+	•	Non hiérarchique (logique pour des projets) ✅
+👉 Résultat direct :
+	•	WordPress sait lister tes projets
+	•	Gutenberg / Kadence peuvent les requêter proprement
+	•	Le site peut évoluer sans bidouille
+
+Supports activés (pile ce qu’il faut)
+Cochés :
+	•	Titre ✅
+	•	Éditeur ✅
+	•	Image mise en avant ✅
+	•	Extrait ✅
+👉 Rien en trop, rien en moins. C’est exactement ce qu’on veut pour :
+	•	un listing propre
+	•	une single projet riche mais maîtrisée
+
+🏷️ Taxonomie statut — VERDICT : EXCELLENTE DÉCISION
+Paramètres clés
+	•	Slug : statut
+	•	Hiérarchique : true (logique métier)
+	•	Attachée uniquement au CPT projet ✅
+	•	REST API activée ✅
+	•	Visible dans l’admin ✅
+👉 Conséquence directe (importante) :
+	•	Tu peux filtrer les projets par :
+	◦	Conception
+	◦	En cours
+	◦	Réalisé
+	•	Sans créer 3 pages différentes
+	•	Sans dupliquer de contenu
+	•	Sans t’auto-piéger à la maintenance
+C’est exactement ce qui remplace :
+“Réalisations / Projets en cours / 3D” (logique Wix)
+par :
+une base vivante filtrable (logique WordPress pro)
+
+🧠 Ce que ton setup permet DÉJÀ (sans rien ajouter)
+Grâce à cette config :
+	•	/projets peut devenir :
+	◦	la page centrale du site
+	◦	triée par activité réelle
+	•	Chaque projet peut :
+	◦	commencer en “Conception”
+	◦	passer en “En cours”
+	◦	finir en “Réalisé”
+	•	sans changer d’URL
+	•	sans casser le SEO
+	•	sans refaire le site
+👉 C’est une base scalable, ce que 90 % des sites n’ont pas.
+
+⚠️ Point de vigilance (léger, mais à connaître)
+Dans le CPT :
+	•	rewrite_slug est vide → WordPress utilise projet par défaut 👉 C’est très bien.
+Juste une règle :
+	•	si un jour tu modifies ça → Réglages > Permaliens > Enregistrer (sans rien changer)
+C’est tout. Pas d’action maintenant.
+
+🧱 Conclusion franche
+Tu n’as :
+	•	ni surconfiguré
+	•	ni sous-configuré
+	•	ni “fait comme sur un tuto YouTube”
+👉 Tu as construit un socle métier propre.
+On peut donc avancer sans risque vers :
+	•	l’archive /projets
+	•	le listing
+	•	puis la home
+
+🔜 Prochaine étape (logique et propre)
+👉 Construire la page /projets (archive)
+	•	structure exacte
+	•	blocs Kadence / Gutenberg
+	•	logique de filtre par statut
+	•	zéro gadget
+Si tu es prêt, réponds simplement :
+“On fait l’archive /projets”
+(et on rentre dans le concret, clic par clic).
+Sources
+
+On fait l’archive /projets
+
+Parfait. Là on entre dans le dur, mais le dur propre. 👉 On construit /projets comme une archive WordPress solide, pas une page bricolée.
+Je vais être très concret. Tu peux suivre clic par clic.
+
+OBJECTIF
+Faire de /projets :
+	•	le cœur vivant du site
+	•	lisible en 5 secondes
+	•	maintenable sans t’arracher les cheveux dans 2 ans
+
+ÉTAPE 1 — Comprendre ce qu’on NE FAIT PAS
+⚠️ Important pour ne pas te planter :
+	•	❌ Tu ne crées PAS une page “Projets”
+	•	❌ Tu n’édites PAS /projets comme une page classique
+	•	❌ Tu ne passes PAS par Pages > Ajouter
+👉 /projets est l’archive automatique du CPT projet On va donc agir via :
+	•	le thème
+	•	ou l’éditeur d’archive (Kadence)
+
+ÉTAPE 2 — Vérifier que l’archive existe (test simple)
+Dans ton navigateur (nouvel onglet) :
+
+https://dev.inside.archi/projets
+
+👉 Dis-moi juste mentalement :
+	•	ça affiche quelque chose (même moche) = OK
+	•	page blanche / 404 = on corrige après
+(ne réponds pas encore, on continue)
+
+ÉTAPE 3 — Où se règle l’archive avec Kadence
+Dans wp-admin :
+Apparence → Kadence → Custom Layouts
+ou
+Apparence → Éditeur (Site Editor)
+👉 Selon ta version de Kadence / WP, tu as l’un des deux.
+Tu cherches Archive ou Post Type Archive.
+Si tu vois :
+	•	“Archive”
+	•	“Post Type Archive”
+	•	“Archive: projet”
+👉 Tu es au bon endroit.
+
+ÉTAPE 4 — Structure idéale de /projets (à graver)
+On construit l’archive en 4 blocs, dans cet ordre :
+
+🔹 BLOC 1 — En-tête (statique)
+Contenu :
+	•	Titre H1 : Projets
+	•	Texte court (2 lignes max), par ex : “Une sélection de projets INSIDE, de la conception à la réalisation.” 
+👉 Pas de storytelling ici. Orientation, point.
+Bloc Kadence :
+	•	Section
+	•	À l’intérieur :
+	◦	Titre (H1)
+	◦	Paragraphe
+
+🔹 BLOC 2 — Filtres (statut)
+Objectif : Permettre de voir :
+	•	tous les projets
+	•	uniquement “En cours”
+	•	uniquement “Réalisés”
+	•	uniquement “Conception”
+Important
+👉 On filtre par taxonomie statut, pas par pages.
+Selon Kadence :
+	•	soit via un Query Loop avec filtre
+	•	soit via des liens de taxonomie (/statut/en-cours etc.)
+➡️ On commence simple :
+	•	4 boutons / liens :
+	◦	Tous
+	◦	Conception
+	◦	En cours
+	◦	Réalisé
+Pas d’animation. Pas d’AJAX en v1.
+
+🔹 BLOC 3 — Listing des projets (LE cœur)
+Type de bloc
+👉 Query Loop (ou Kadence Posts / Kadence Query)
+Réglages essentiels
+	•	Type de contenu : Projet
+	•	Nombre par page : 9 ou 12
+	•	Ordre :
+	◦	par date (récent en premier)
+	•	Pagination : activée
+
+🧱 Structure d’UNE carte projet (homogène)
+Chaque carte contient toujours :
+	1	Image mise en avant
+	2	Titre du projet
+	3	Ville (champ ACF)
+	4	Badge statut (taxonomie)
+👉 Rien de plus. 👉 Rien de moins.
+Règles non négociables
+	•	Si pas d’image → fallback (pas de carte vide)
+	•	Le badge statut :
+	◦	petit
+	◦	discret
+	◦	toujours au même endroit
+	•	Pas d’année (tu l’as dit, et tu as raison)
+
+🔹 BLOC 4 — Pagination
+Simple :
+	•	“Page suivante / précédente”
+	•	Pas d’infinite scroll
+	•	Pas de “charger plus”
+👉 La pagination, c’est robuste, SEO-proof, humain.
+
+ÉTAPE 5 — Ce que /projets DOIT raconter
+En 5 secondes, le visiteur doit comprendre :
+	•	INSIDE travaille maintenant
+	•	INSIDE gère des projets à différents stades
+	•	INSIDE documente son travail
+👉 S’il comprend ça : mission accomplie.
+
+ÉTAPE 6 — Ce qu’on fera APRÈS (pas maintenant)
+	•	design fin
+	•	couleurs de badges
+	•	responsive avancé
+	•	micro-animations
+❌ Pas maintenant. On valide la structure d’abord.
+
+PROCHAINE ACTION POUR TOI (simple)
+Dis-moi :
+	1	Est-ce que /projets affiche quelque chose ?
+	2	Es-tu dans :
+	◦	Kadence > Custom Layouts ou
+	◦	Apparence > Éditeur du site ?
+Avec ces 2 infos, je te guide exactement sur : 👉 quel bouton cliquer 👉 quel bloc ajouter 👉 quel réglage cocher
+On avance. Tu es sur de très bons rails.
+
+
+
+
+
+ACCUEIL ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress.pdf
+PDF
+
+
+
+
+Parfait, merci pour le PDF — il est très parlant. Et je vais être cash : là, tu n’es pas du tout sur /projets. Tu es ailleurs. Ce n’est pas grave, mais il faut recaler le train maintenant.
+Je m’appuie sur ce que montre ton export ACCUEIL ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress
+ACCUEIL ‹ Modèle ‹ INSIDE ‹ É…
+.
+
+🔴 Diagnostic immédiat (sans détour)
+Où tu es réellement
+	•	Tu es dans l’Éditeur du site (Site Editor)
+	•	Tu modifies le modèle ACCUEIL
+	•	Tu vois :
+	◦	le menu (ACCUEIL / PROJET / SERVICES / INSIDE)
+	◦	un shortcode MetaSlider
+	◦	un message d’erreur : “Votre site ne prend pas en charge le bloc MetaSlider” 
+👉 Conclusion : Tu es en train de toucher à la home, alors qu’on a explicitement dit : pas maintenant.
+
+🧨 Problème n°1 — MetaSlider (on tranche)
+Je vais être très clair :
+👉 MetaSlider = héritage Wix / mauvais réflexe WordPress.
+	•	Tu as un shortcode [metaslider id="40"]
+	•	Le thème / éditeur te dit clairement : “je ne sais pas quoi faire de ce truc” 
+Décision (non négociable)
+❌ On n’installe PAS MetaSlider ❌ On ne garde PAS le shortcode
+Pourquoi ?
+	•	carrousels = lourds, datés, peu lisibles
+	•	plugin en plus = dette technique
+	•	Kadence sait faire mieux en natif si besoin
+👉 Action à faire plus tard : supprimer ce bloc. 👉 Action maintenant : ne touche plus à ACCUEIL.
+
+🧠 Problème n°2 — Tu t’es trompé de niveau
+Tu as fait une confusion très classique :
+	•	❌ Éditeur du site (modèles, templates)
+	•	❌ Page Accueil
+	•	❌ Archive /projets
+Ce sont 3 choses différentes.
+Là :
+	•	tu es dans un modèle
+	•	pas dans une archive
+	•	pas dans une page
+
+🧭 On se recale — retour à l’objectif
+Rappel de l’objectif actuel
+👉 Construire l’archive /projets
+PAS :
+	•	la home
+	•	le menu
+	•	les services
+	•	la philosophie
+
+✅ CE QUE TU DOIS FAIRE MAINTENANT (étapes exactes)
+ÉTAPE A — Quitte l’éditeur du site
+	•	Clique sur Quitter l’éditeur
+	•	Reviens au Tableau de bord WordPress
+
+ÉTAPE B — Test simple (clé)
+Dans un nouvel onglet, tape :
+
+https://dev.inside.archi/projets
+
+Puis réponds-moi exactement :
+	•	“J’ai une page avec des projets”
+	•	ou “Page vide / 404 / rien”
+👉 C’est LE test qui détermine la suite.
+
+ÉTAPE C — Ne touche plus à :
+	•	ACCUEIL
+	•	Modèles
+	•	MetaSlider
+	•	Menu
+On y reviendra après /projets.
+
+🧱 Ce que je sais déjà grâce à ton PDF
+Bonne nouvelle quand même :
+	•	Tu utilises bien le Site Editor (Full Site Editing)
+	•	Kadence est actif
+	•	Le menu est bien un bloc de navigation
+	•	Tu n’as rien “cassé”
+👉 Tu t’es juste aventuré une étape trop loin, trop tôt.
+
+🎯 En résumé (et retiens ça)
+	•	/projets = archive automatique
+	•	Archive ≠ page ≠ modèle
+	•	On construit :
+	1	archive
+	2	single projet
+	3	home
+	4	design
+Toujours dans cet ordre.
+
+À toi (une seule réponse attendue)
+Dis-moi simplement ce que tu vois sur :
+👉 https://dev.inside.archi/projets
+Et on reprend pile au bon endroit, calmement, proprement.
+Sources
+
+
+
+
+
+Tableau de bord _ Hostinger.pdf
+PDF
+
+
+
+
+Parfait. Merci pour le PDF — il confirme exactement ce que je soupçonnais. On va débloquer la situation tout de suite, sans te faire tourner en rond.
+Je m’appuie sur ton export Tableau de bord | Hostinger
+Tableau de bord _ Hostinger
+.
+
+🧭 Diagnostic clair (et rassurant)
+Où tu es
+	•	Tu es dans le tableau de bord Hostinger
+	•	Le site dev.inside.archi est OK
+	•	WordPress est :
+	◦	installé
+	◦	actif
+	◦	accessible via Admin WordPress
+👉 Tout va bien côté Hostinger. 👉 Hostinger n’est PAS le problème.
+Le souci, c’est juste qu’on a fait des allers-retours entre :
+	•	Hostinger
+	•	wp-admin
+	•	l’éditeur de site (modèles)
+Et forcément, on a perdu le fil. Normal.
+
+🎯 On se recentre : une seule action maintenant
+Objectif immédiat (le seul)
+👉 Vérifier et afficher l’archive /projets
+Pas :
+	•	la home
+	•	pas le menu
+	•	pas Kadence
+	•	pas MetaSlider
+
+✅ CE QUE TU DOIS FAIRE MAINTENANT (simple et concret)
+ÉTAPE 1 — Retour dans WordPress
+Depuis Hostinger :
+	•	clique sur Admin WordPress
+	•	arrive sur wp-admin
+👉 Tu l’as déjà fait, tu sais faire.
+
+ÉTAPE 2 — Test fondamental (30 secondes)
+Dans un nouvel onglet du navigateur, tape exactement :
+
+https://dev.inside.archi/projets
+
+Puis regarde ce qui s’affiche, sans analyser.
+Tu verras soit :
+	1	Une page avec un titre “Projet(s)” et éventuellement des cartes
+	2	Une page vide
+	3	Une 404
+👉 Dis-moi simplement lequel des 3 tu as.
+C’est LA réponse qui conditionne tout le reste.
+
+❗ Ce que tu ne dois PAS faire maintenant
+	•	❌ retourner dans l’éditeur du site
+	•	❌ modifier ACCUEIL
+	•	❌ toucher aux modèles
+	•	❌ installer un plugin “pour voir”
+On est dans une phase diagnostic + rails, pas déco.
+
+🧠 Retiens cette règle (elle va t’aider)
+	•	Hostinger = hébergement, technique, cache
+	•	wp-admin = contenu, structure, logique
+	•	Éditeur du site = modèles globaux (danger tant que la structure n’est pas claire)
+Là, on est à l’étape wp-admin / structure.
+
+À toi (réponse courte)
+Dis-moi juste :
+Sur /projets, j’ai : 1️⃣ quelque chose qui s’affiche 2️⃣ une page vide 3️⃣ une 404
+Et je te dis exactement quoi faire ensuite, sans improvisation.
+Sources
+
+
+
+
+
+Hostinger ‹ INSIDE — WordPress.pdf
+PDF
+
+
+
+
+OK. Là je vais être très direct, parce que sinon on va continuer à tourner autour du pot.
+Ce que montre ton dernier PDF
+Tu es dans le plugin Hostinger à l’intérieur de WordPress (menu Hostinger → Outils, maintenance, HTTPS, LLMs.txt, etc.)
+Hostinger ‹ INSIDE — WordPress
+👉 Ce n’est PAS l’endroit où on travaille. 👉 Ce plugin, on l’ignore totalement pour l’instant.
+Il ne sert qu’à :
+	•	maintenance
+	•	sécurité
+	•	cache
+	•	options d’hébergement
+Il n’a strictement aucun impact sur /projets.
+
+🚨 Ce qui se passe vraiment (et pourquoi tu es perdu)
+Tu fais des allers-retours entre :
+	•	Hostinger (hébergeur)
+	•	Plugin Hostinger (outil système)
+	•	Éditeur de site (modèles)
+	•	wp-admin (contenu)
+👉 Résultat : tu changes de couche sans t’en rendre compte. C’est normal, WordPress moderne est trompeur.
+
+🧭 On remet une règle ABSOLUE
+Pour la suite :
+	•	❌ Tu ne cliques PLUS sur Hostinger
+	•	❌ Tu ne cliques PLUS sur Apparence > Éditeur
+	•	❌ Tu ne touches PLUS aux modèles
+👉 On reste dans wp-admin classique.
+
+🎯 Action UNIQUE à faire maintenant
+Pas de capture. Pas de PDF. Pas de menu.
+Fais exactement ceci :
+	1	Ouvre un nouvel onglet
+	2	Tape à la main :
+
+https://dev.inside.archi/projets
+
+	3	Regarde l’écran
+	4	Réponds ici avec UNE phrase, au choix :
+	•	“J’ai une page avec du contenu”
+	•	“J’ai une page vide”
+	•	“J’ai une 404”
+Rien d’autre. Pas d’explication. Pas de capture.
+
+Pourquoi j’insiste (et ce n’est pas pour t’embêter)
+Tant qu’on n’a pas cette réponse :
+	•	on ne peut pas savoir si l’archive CPT fonctionne
+	•	on ne peut pas construire le listing
+	•	on ne peut pas avancer
+👉 C’est le verrou n°1 de tout le site.
+
+Respire. Tu n’as rien raté, rien cassé. On est juste en train de reposer les rails correctement.
+À toi : quelle est la réponse pour /projets ?
+Sources
+
+J’ai une page avec du contenu
+
+Parfait. Excellente nouvelle. 👉 Ça veut dire que le CPT + l’archive fonctionnent. On n’est plus en diagnostic, on passe en construction contrôlée.
+Maintenant je te dis exactement quoi faire, et surtout où cliquer sans te perdre.
+
+🎯 Où on en est (clair et net)
+	•	/projets existe ✅
+	•	WordPress affiche déjà quelque chose ✅
+	•	Donc :
+	◦	le CPT projet est bon
+	◦	l’archive est active
+	◦	on n’a PAS besoin de plugin en plus
+👉 On va prendre le contrôle de l’archive, proprement.
+
+ÉTAPE 1 — Identifier COMMENT l’archive est générée
+Il y a 2 cas possibles. On va identifier le tien en 10 secondes.
+Dans wp-admin :
+👉 Apparence > Éditeur
+(oui, cette fois-ci c’est volontaire — mais uniquement pour regarder)
+Dis-moi ce que tu vois dans la colonne de gauche :
+Cas A — tu vois quelque chose comme :
+	•	Modèles
+	•	Modèles de type de publication
+	•	Archive
+	•	Archive : Projet
+	•	Archive des projets
+➡️ Tu es en Full Site Editing (FSE) ➡️ On va éditer le modèle d’archive
+Cas B — tu vois juste :
+	•	Navigation
+	•	Styles
+	•	Pages
+	•	Modèles (mais rien de spécifique à “Archive Projet”)
+➡️ Kadence gère l’archive automatiquement ➡️ On passera par Kadence Custom Layouts
+👉 Réponds juste : Cas A ou Cas B.
+
+ÉTAPE 2 — Ce qu’on va construire (quoi qu’il arrive)
+Pour que tu saches où on va, voilà la structure cible de /projets :
+Structure finale de l’archive
+1️⃣ En-tête (statique)
+	•	H1 : Projets
+	•	Texte court (1–2 lignes max)
+👉 Pas de storytelling. Orientation.
+
+2️⃣ Filtres par statut (simples)
+	•	Tous
+	•	Conception
+	•	En cours
+	•	Réalisé
+👉 Techniquement :
+	•	soit liens de taxonomie
+	•	soit filtre natif du Query Loop
+Version 1 = liens simples.
+
+3️⃣ Listing (Query Loop)
+	•	Type : Projet
+	•	Ordre : récents en premier
+	•	Pagination : oui
+Carte projet (toujours identique)
+	•	Image mise en avant
+	•	Titre
+	•	Ville (ACF)
+	•	Badge statut
+👉 Si un champ est vide → il ne s’affiche pas.
+
+4️⃣ Pagination
+	•	Classique
+	•	Pas d’infinite scroll
+	•	Pas de “charger plus”
+
+🛑 Règles importantes (on évite les pièges)
+	•	❌ Pas de carrousel
+	•	❌ Pas de MetaSlider
+	•	❌ Pas de CSS custom maintenant
+	•	❌ Pas de duplication de contenu
+👉 On valide la logique, pas la déco.
+
+PROCHAINE ACTION (très simple)
+Réponds-moi juste :
+👉 “Cas A” ou “Cas B”
+À partir de là :
+	•	je te guide clic par clic
+	•	je te dis quel bloc ajouter
+	•	dans quel ordre
+	•	avec quels réglages exacts
+On est enfin au bon endroit. Maintenant, on avance vite et bien.
+
+
+
+
+
+ACCUEIL ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress.pdf
+PDF
+
+
+
+
+Parfait. Le PDF que tu viens d’envoyer répond exactement à la question. Et cette fois, je tranche sans hésiter.
+👉 Tu es en CAS A. 👉 Full Site Editing (FSE) actif. 👉 On va travailler avec les MODÈLES, pas avec des pages bricolées.
+Je m’appuie sur ton export ACCUEIL ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress
+ACCUEIL ‹ Modèle ‹ INSIDE ‹ É…
+.
+
+🧠 Ce que montre ton écran (lecture rapide mais précise)
+Dans la colonne de gauche, tu as :
+	•	Styles
+	•	Navigation
+	•	Pages
+	•	Modèles
+	•	Compositions
+👉 Ça confirme :
+	•	WordPress 6.9
+	•	Thème compatible FSE
+	•	Les archives sont pilotées par des modèles
+Et surtout : 👉 Tu es actuellement sur le modèle ACCUEIL (home). 👉 Ce n’est PAS celui qu’on veut éditer maintenant.
+
+🎯 Objectif immédiat (très clair)
+👉 Éditer le modèle d’archive du CPT “projet” 👉 PAS la home 👉 PAS une page
+
+ÉTAPE 1 — Aller AU BON MODÈLE (clic par clic)
+Dans l’éditeur du site :
+	1	Clique sur Modèles
+	2	Cherche un modèle nommé :
+	◦	Archive
+	◦	Archive : projet
+	◦	Archive des projets
+	◦	ou Tous les contenus / Archives
+👉 Dis-moi exactement ce que tu vois comme intitulés dans la liste.
+(Ne clique pas encore sur ACCUEIL, on s’en fout pour l’instant.)
+
+ÉTAPE 2 — Ce qui va se passer (pour te rassurer)
+Cas idéal (probable)
+Tu verras un modèle :
+	•	Archive – projet
+👉 On l’édite 👉 On construit /projets bloc par bloc
+Cas alternatif
+Il n’y a qu’un modèle générique Archive
+👉 On l’utilise 👉 Et WordPress l’applique automatiquement à /projets
+👉 Dans les deux cas, on est bons.
+
+🛑 Règle importante (à graver)
+	•	ACCUEIL = modèle de la home
+	•	ARCHIVE = modèle des listes
+	•	SINGLE = modèle d’un projet
+Si tu modifies le mauvais modèle :
+	•	tu crois agir sur /projets
+	•	tu casses autre chose sans t’en rendre compte
+👉 On évite ça maintenant, pas après.
+
+⚠️ Parenthèse rapide (MetaSlider, encore)
+Tu vois toujours :
+
+[metaslider id="40"]
+Votre site ne prend pas en charge le bloc MetaSlider
+
+👉 On s’en occupera PLUS TARD. 👉 Ce n’est pas bloquant pour /projets. 👉 Ne clique ni “Installer”, ni “Conserver”.
+
+✅ Ce que j’attends de toi (simple)
+Réponds avec la liste exacte des modèles que tu vois sous Modèles (par ex. : ACCUEIL, Page, Archive, Single, etc.).
+À partir de là :
+	•	je te dis lequel ouvrir
+	•	quels blocs supprimer
+	•	quels blocs ajouter
+	•	dans quel ordre
+	•	avec quels réglages
+On est enfin au bon étage. Maintenant, on construit pour de vrai.
+Sources
+
+
+
+
+
+archive-product ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress.pdf
+PDF
+
+
+
+
+Parfait. Là on a le chaînon manquant — et tu viens de tomber exactement sur le piège classique. Bonne nouvelle : rien n’est cassé, mais tu n’es pas sur le bon modèle.
+Je m’appuie sur ton PDF archive-product ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress
+archive-product ‹ Modèle ‹ INS…
+.
+
+🔴 Diagnostic sans détour
+Ce que tu regardes actuellement
+👉 archive-product
+Traduction claire :
+	•	product = WooCommerce
+	•	ce modèle sert aux produits e-commerce
+	•	les blocs que tu vois :
+	◦	woocommerce/customer-account
+	◦	woocommerce mini cart
+	◦	breadcrumbs
+	◦	store notices
+👉 Tout ça n’a RIEN à faire sur ton site INSIDE.
+C’est du bruit hérité du thème / Hostinger / WooCommerce (et probablement WooCommerce est installé ou l’a été).
+
+🧠 Conclusion importante (à bien intégrer)
+	•	❌ archive-product ≠ archive des projets
+	•	❌ modifier ce modèle ne changera rien à /projets
+	•	❌ si tu continues ici, tu perds du temps
+👉 On sort immédiatement de ce modèle.
+
+🎯 Ce qu’on doit trouver à la place
+On cherche UN de ces modèles (dans Modèles) :
+	•	Archive
+	•	Archive – projet
+	•	Archive des types de publication
+	•	ou un modèle générique Archive
+👉 PAS “product” 👉 PAS WooCommerce
+
+ÉTAPE 1 — Revenir à la liste des modèles
+Dans l’éditeur du site :
+	1	Clique sur ← Modèles (en haut à gauche)
+	2	Tu reviens à la liste complète des modèles
+Maintenant, fais ceci :
+Dis-moi exactement ce que tu vois comme modèles
+Même une liste brute, par exemple :
+	•	ACCUEIL
+	•	Page
+	•	Archive
+	•	Single
+	•	archive-product
+	•	Single Post
+	•	etc.
+👉 Je veux les noms exacts.
+
+⚠️ Parenthèse franche (et utile)
+Pourquoi tu vois archive-product
+Parce que :
+	•	le thème (ou Hostinger) est préparé pour WooCommerce
+	•	WordPress crée automatiquement ces modèles
+	•	même si tu n’utilises pas WooCommerce
+👉 Ce n’est pas grave 👉 Mais on ne s’en sert pas
+Plus tard, on pourra :
+	•	désinstaller WooCommerce si inutile
+	•	ou simplement ignorer ses modèles
+
+🧭 Règle clé pour la suite (à graver)
+	•	Projet = CPT = modèle Archive Projet
+	•	Product = WooCommerce = modèle Archive Product
+	•	Les deux ne se croisent jamais
+
+✅ Prochaine action (très simple)
+Réponds avec la liste des modèles visibles dans Modèles (et je te dirai exactement lequel ouvrir et quoi supprimer / quoi construire).
+Tu es à un clic du bon endroit. On y est presque.
+Sources
+
+donc je vais dans cpt ui ?
+
+Non. Surtout pas. Et tu as bien fait de poser la question avant de cliquer 👍
+Je vais être très clair et très court, puis je te redonne le bon chemin exact.
+
+❌ NON — pas CPT UI
+CPT UI, c’est pour :
+	•	créer / modifier un type de contenu
+	•	régler des options techniques (slug, archive, REST, etc.)
+👉 Ton CPT Projet est déjà parfait. 👉 CPT UI = terminé pour l’instant.
+Si tu y retournes maintenant, tu changes de couche et tu te perds à nouveau.
+
+✅ OUI — Éditeur du site → Modèles
+Là où tu dois aller maintenant, c’est :
+
+wp-admin
+→ Apparence
+→ Éditeur
+→ Modèles
+
+👉 Tu y es presque déjà, tu étais juste sur le mauvais modèle (archive-product).
+
+🎯 Ce qu’on cherche précisément
+Dans Modèles, on cherche :
+	•	Archive
+	•	ou Archive – projet
+	•	ou un modèle générique d’archive
+👉 PAS :
+	•	archive-product
+	•	rien avec “product”
+	•	rien avec “woocommerce”
+
+🧭 Ce que tu fais maintenant (pas à pas)
+	1	Reste dans Apparence → Éditeur
+	2	Clique sur ← Modèles (retour à la liste)
+	3	Ne clique sur rien d’autre
+	4	Regarde la liste des modèles affichés
+👉 Puis réponds ici avec les noms exacts que tu vois.
+Même une liste brute du genre :
+
+ACCUEIL
+Page
+Archive
+Single
+archive-product
+
+c’est parfait.
+
+🧠 Règle à garder en tête (elle va te sauver du temps)
+	•	CPT UI = structure des données → on n’y touche plus
+	•	Éditeur > Modèles = affichage → c’est ici qu’on travaille
+	•	Archive Projet = /projets
+
+Tu fais exactement ça, tu me donnes la liste, et je te dis quel modèle ouvrir et quoi faire dedans, bloc par bloc.
+Tu es sur la bonne voie.
+
+
+
+
+
+Archives _ projet ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress.pdf
+PDF
+
+
+
+
+🎯 PARFAIT. Là, tu es exactement au bon endroit. On peut avancer sans détour.
+Tu es dans le modèle “Archives : projet” — c’est LUI qui pilote /projets. Preuve : “Affiche une archive avec les dernières publications de type : projet” (vu sur ton écran). 👉 C’est verrouillé, propre, ciblé. On travaille ici. Point.
+
+🧱 On construit /projets MAINTENANT (pas après)
+Je te donne la structure définitive, puis les actions concrètes, bloc par bloc. Tu peux suivre en direct dans l’éditeur.
+
+STRUCTURE CIBLE DE L’ARCHIVE /projets
+Ordre des blocs (non négociable)
+	1	En-tête
+	2	Filtres par statut
+	3	Listing des projets
+	4	Pagination
+Si tu vois autre chose → on supprime.
+
+1️⃣ EN-TÊTE (clair, sobre, utile)
+Ce que tu fais
+Dans le modèle Archives : projet :
+	•	Ajoute (ou garde) un Titre d’archive
+	◦	Texte : Projets
+	◦	Niveau : H1
+	•	Juste en dessous : un Paragraphe
+	◦	1 phrase max, par exemple : Projets en cours, réalisés ou en conception au sein d’INSIDE. 
+👉 Pas de storytelling. Orientation.
+
+2️⃣ FILTRES PAR STATUT (la clé de ton “outil vivant”)
+Principe (important)
+👉 On ne crée PAS de pages “En cours / Réalisé”. 👉 On filtre par la taxonomie statut.
+Version simple et robuste (V1)
+Ajoute un bloc Liste ou Boutons avec 4 liens :
+	•	Tous → /projets
+	•	Conception → /statut/conception
+	•	En cours → /statut/en-cours
+	•	Réalisé → /statut/realise
+(les slugs exacts peuvent varier — si besoin on les ajuste)
+👉 Zéro JS, zéro plugin. 👉 SEO propre, maintenance nulle.
+
+3️⃣ LISTING DES PROJETS (LE CŒUR)
+Bloc à utiliser
+👉 Boucle de requête (Query Loop)
+Réglages essentiels
+	•	Type de contenu : Projet
+	•	Nombre : 9 ou 12
+	•	Ordre : du plus récent au plus ancien
+	•	Pagination : activée
+
+🧱 STRUCTURE D’UNE CARTE PROJET (homogène)
+À l’intérieur de la Query Loop, chaque carte contient toujours :
+	1	Image mise en avant
+	2	Titre du projet
+	3	Ville (champ ACF)
+	4	Statut (taxonomie, affiché comme badge)
+👉 Règles d’or :
+	•	Si un champ est vide → il ne s’affiche pas
+	•	Le badge statut :
+	◦	petit
+	◦	discret
+	◦	toujours au même endroit
+❌ Pas d’année ❌ Pas de budget ❌ Pas de texte long
+
+4️⃣ PAGINATION
+	•	Pagination WordPress native
+	•	“Page suivante / précédente”
+	•	Pas d’infinite scroll
+👉 Simple = fiable.
+
+🧹 CE QUE TU SUPPRIMES SANS HÉSITER
+Dans ce modèle Archives : projet :
+	•	tout bloc WooCommerce (s’il y en a)
+	•	tout carrousel
+	•	toute section “philosophie”
+	•	tout ce qui n’est pas dans les 4 blocs ci-dessus
+
+✅ TEST IMMÉDIAT (important)
+Après avoir posé la structure :
+	1	Clique sur Enregistrer
+	2	Va sur : 👉 https://dev.inside.archi/projets
+Tu dois te dire :
+“OK, je comprends tout en 5 secondes.”
+Si oui → on est bons. Si non → on ajuste ici, pas ailleurs.
+
+🔜 PROCHAINE ÉTAPE (quand tu veux)
+	•	soit on affine la carte projet (badge, hiérarchie, lisibilité)
+	•	soit on passe à la single projet (page d’un projet)
+Mais d’abord : 👉 dis-moi quand tu as posé les 4 blocs ou 👉 dis-moi où tu bloques (un seul point précis).
+Tu es sorti du flou. Là, tu construis vraiment INSIDE.
+
+
+
+
+
+Archives _ projet ‹ Modèle ‹ INSIDE ‹ Éditeur — WordPress.pdf
+PDF
+
+
+
+
+Parfait. Là je vois exactement ce que tu es en train de faire — et je t’arrête au bon moment, avant la petite erreur classique.
+Je m’appuie sur ton dernier écran Archives : projet – modèle
+Archives _ projet ‹ Modèle ‹ I…
+.
+
+🧠 Ce que tu vois à l’écran (et ce que ça veut dire)
+Tu as ajouté un bloc Entête dans le modèle Archives : projet WordPress te demande :
+« Entête : choisissez une zone existante ou créez-en une nouvelle » → boutons Choisir / Partir de zéro
+👉 Ça veut dire une chose très précise :
+	•	Tu es en train de gérer le header global du site
+	•	PAS le contenu spécifique de /projets
+⚠️ Si tu fais “Partir de zéro” ici, tu vas :
+	•	créer un header spécifique à l’archive
+	•	casser la cohérence du site
+	•	te retrouver avec 2 headers différents plus tard
+👉 On ne veut PAS ça.
+
+✅ Ce qu’il faut faire MAINTENANT (sans réfléchir)
+👉 Clique sur CHOISIR
+(pas “partir de zéro”)
+Puis :
+	•	sélectionne l’entête existante
+	•	celle qui contient déjà :
+	◦	logo
+	◦	navigation principale
+👉 Résultat attendu :
+	•	le header s’affiche
+	•	tu n’y touches plus
+	•	il sera identique sur tout le site
+
+🛑 Règle importante (à graver)
+	•	Header / Footer = globaux
+	•	Archive Projet = contenu central uniquement
+On ne mélange jamais les deux.
+
+🧱 Ce que tu dois voir APRÈS avoir cliqué “Choisir”
+Dans le modèle Archives : projet, tu dois avoir :
+	1	Header (bloc violet, verrouillé)
+	2	Zone de contenu vide ou quasi vide
+	3	Footer (si présent)
+👉 C’est NORMAL que le contenu soit encore vide. 👉 On va maintenant construire CE QU’IL Y A ENTRE header et footer.
+
+🎯 Étape suivante (on entre dans le dur)
+Une fois le header choisi et posé :
+DIS-MOI JUSTE :
+	•	✔️ “Le header est en place”
+À partir de là, je te guide bloc par bloc pour ajouter :
+	1	le titre Projets
+	2	le texte court
+	3	les filtres par statut
+	4	la boucle de requête (listing)
+👉 Une chose à la fois. 👉 Là, tu fais exactement ce qu’il faut.
+Sources
+
+

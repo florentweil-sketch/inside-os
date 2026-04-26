@@ -1,0 +1,38 @@
+Last login: Fri Mar 13 20:02:27 on ttys000
+admin@imacdeiac5admin ~ % >....                                                 
+  try {
+    const db = await getDatabase(id);
+    console.log("[DATABASE] OK");
+    console.log("title:", (db.title || []).map(t => t.plain_text).join("") || "(no title)");
+    console.log("data_sources:", (db.data_sources || []).map(ds => ds.id).join(", ") || "(none)");
+  } catch (e) {
+    console.log("[DATABASE] FAIL");
+    console.log(e.message);
+  }
+
+  try {
+    const ds = await getDataSource(id);
+    console.log("[DATA_SOURCE] OK");
+    console.log("name:", ds.name || "(no name)");
+    console.log("parent_database_id:", ds.parent?.database_id || "(none)");
+  } catch (e) {
+    console.log("[DATA_SOURCE] FAIL");
+    console.log(e.message);
+  }
+}
+NODE
+
+===== DECISIONS_DB_ID = 96c009f7-757c-4e1b-a46b-cf8415ed2f3d =====
+[DATABASE] FAIL
+Notion 404: {"object":"error","status":404,"code":"object_not_found","message":"Could not find database with ID: 96c009f7-757c-4e1b-a46b-cf8415ed2f3d. Make sure the relevant pages and databases are shared with your integration.","request_id":"eb03940a-e035-473a-85a7-b363e8c9807c"}
+[DATA_SOURCE] OK
+name: (no name)
+parent_database_id: 1054c068-9b91-4215-af70-4c1a3945a83a
+
+===== LESSONS_DB_ID = 0137b375-fe52-48fa-affc-d7885f2412cb =====
+[DATABASE] FAIL
+Notion 404: {"object":"error","status":404,"code":"object_not_found","message":"Could not find database with ID: 0137b375-fe52-48fa-affc-d7885f2412cb. Make sure the relevant pages and databases are shared with your integration.","request_id":"df882ae3-d574-419b-9607-c02da13d950e"}
+[DATA_SOURCE] OK
+name: (no name)
+parent_database_id: dabb137f-28b1-4e59-9290-03a21a7694de
+admin@imacdeiac5admin inside-os % 

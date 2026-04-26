@@ -1,0 +1,192 @@
+1. Le problème structurel : Notion n’est pas une vraie base de données
+Notion est excellent pour :
+	•	visualiser
+	•	éditer
+	•	naviguer
+	•	organiser
+Mais techniquement ce n’est pas une base conçue pour un moteur de connaissance.
+Limitations importantes :
+1️⃣ requêtes limitées
+L’API Notion :
+	•	pas de requêtes complexes
+	•	pas de joins
+	•	filtrage limité
+	•	pagination obligatoire
+Donc quand ta base DECISIONS aura par exemple :
+
+5 000 décisions
+
+chaque requête va devoir :
+
+pagination
+→ filtrage
+→ retraitement côté Node
+
+Ça devient vite lourd.
+
+2️⃣ latence API
+Notion API est relativement lente.
+Typiquement :
+
+200ms à 500ms par requête
+
+Donc si ton système commence à faire :
+
+200 requêtes
+
+tu peux atteindre :
+
+30 à 60 secondes
+
+pour une simple analyse.
+
+3️⃣ relations limitées
+Ton système va naturellement vouloir faire :
+
+décision → décision liée
+décision → contradiction
+décision → évolution
+
+Donc tu vas créer :
+
+relations Notion
+
+Mais les relations Notion :
+	•	sont lourdes
+	•	difficiles à requêter
+	•	très limitées via API
+
+4️⃣ volume
+Quand tu atteins :
+
+10k / 20k pages
+
+les bases Notion deviennent :
+	•	lentes
+	•	difficiles à manipuler
+	•	lourdes à charger
+
+2. Ce qui se passe dans 90% des projets comme le tien
+Le système commence comme ça :
+
+pipeline → Notion
+
+Puis évolue vers :
+
+pipeline
++
+analyse
++
+liens
++
+recherche
+
+Et là Notion devient un goulot d’étranglement.
+
+3. La bonne architecture (quand le système grandit)
+Les systèmes sérieux finissent par faire ceci :
+
+Node
+↓
+base interne
+↓
+Notion (visualisation)
+
+Autrement dit :
+Notion devient une interface, pas la base principale.
+
+Architecture cible typique
+
+threads
+↓
+pipeline
+↓
+base interne (SQLite / Postgres)
+↓
+Notion (miroir lisible)
+
+La base interne sert pour :
+	•	recherche
+	•	relations
+	•	clustering
+	•	graphes de décisions
+Notion sert pour :
+	•	lecture humaine
+	•	navigation
+	•	édition
+
+4. Bonne nouvelle : ton projet est prêt pour ça
+Tu as déjà les bons éléments :
+
+uid
+source_thread
+source_dump_id
+
+Donc tu pourrais facilement créer un jour :
+
+decisions.db
+
+qui contiendrait :
+	•	décisions
+	•	relations
+	•	embeddings
+	•	métadonnées
+Et Notion resterait :
+
+interface humaine
+
+
+5. Mais ce n’est PAS urgent
+Et c’est très important.
+Aujourd’hui tu as :
+
+pipeline stable
+
+Donc la bonne stratégie est :
+
+1 stabiliser
+2 accumuler des données
+3 observer les limites
+4 seulement ensuite introduire une base interne
+
+Pas avant.
+
+6. Le vrai danger serait l’inverse
+Le vrai piège serait :
+
+complexifier trop tôt
+
+Par exemple :
+	•	graph database
+	•	embeddings partout
+	•	microservices
+	•	infra lourde
+Ton projet n’en a pas encore besoin.
+
+7. Le bon état mental pour la suite
+Ton système est dans la phase parfaite :
+
+pipeline simple
++
+structure propre
++
+logs
++
+validator
+
+Maintenant il faut :
+
+laisser le système vivre
+
+et voir ce qui apparaît naturellement.
+
+Conclusion
+Le plus grand risque futur pour INSIDE OS n’est pas :
+	•	Node
+	•	OpenAI
+	•	ton code
+C’est :
+
+Notion utilisé comme base centrale
+
+Mais pour l’instant, c’est le bon choix.

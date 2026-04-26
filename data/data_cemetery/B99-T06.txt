@@ -1,0 +1,53 @@
+THREAD HISTORIQUE - BLOC 99 - T06 / 2026-04-18 / Pilotage opérationnel INSIDE OS
+
+CONTEXTE OFFICIEL = INSIDE_OS_CONTEXT_v05
+
+Objectif du thread :
+- transformer la mémoire B99 en outil de pilotage opérationnel
+- sortir du mode descriptif pour entrer en mode décision/action
+
+État actuel validé :
+- le pipeline ingest -> extract -> inject fonctionne correctement
+- la mémoire conversationnelle V0 est active
+- le chat priorise correctement les données issues de B99
+- le ranking met bien en avant le présent vivant du système
+- le système est techniquement stable en usage manuel
+
+Constat critique :
+- les réponses restent trop descriptives et pas assez actionnables
+- le système manque d'un point de pilotage clair à un instant T
+- aucune décision unique prioritaire n'est clairement portée par la mémoire
+
+Blocage principal :
+- absence d'un "next step" explicite dans la mémoire
+- B99 contient des règles et des constats, mais pas assez de direction opérationnelle immédiate
+
+Décisions prises :
+- B99 doit devenir un poste de pilotage et non un journal
+- chaque nouveau thread B99 doit contenir une priorité claire
+- le système doit être capable de répondre : "voilà ce que tu dois faire maintenant"
+- limiter les décisions abstraites, privilégier les décisions actionnables
+- introduire une notion de priorité unique par cycle
+
+Décision opérationnelle prioritaire :
+- prochaine étape = rendre le chat plus direct, synthétique et orienté action
+
+Action immédiate :
+- ajuster le prompt du chat pour :
+  - réduire le texte inutile
+  - renforcer la clarté
+  - faire émerger une recommandation concrète
+
+Critère de succès :
+- à la question "où en est INSIDE OS ?"
+-> le système doit répondre en 3-5 lignes max
+-> avec une action claire à faire immédiatement
+-> sans dilution dans des constats génériques
+
+Leçon système :
+- une mémoire riche sans direction claire produit des réponses intelligentes mais inutiles
+- la valeur du système repose sur sa capacité à orienter l'action
+
+Conclusion :
+- INSIDE OS passe d'un système de mémoire à un système de pilotage
+- la prochaine étape est comportementale (réponse du LLM), plus technique

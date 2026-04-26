@@ -1,0 +1,225 @@
+THREAD HISTORIQUE - B01 - T05 - Sujet Création-entreprise-menuiserie-avec-associé
+Date approximative : 01.05.2024
+Source : ChatGPT
+
+je souhaites créer une entreprise de menuiserie sur mesure. il y aura deux associés. Florent Weil 85% et Guillaume Berthet 15%. décris toutes les étapes de la création et pose moi toutes les questions nécessaires pour que la structure juridique soit la plus optimisée pour l'actionnaire majoritaire.
+
+Thought about création d'entreprise de menuiserie pendant 6 secondes
+
+Voici un guide étape par étape pour créer votre entreprise de menuiserie sur mesure, ainsi qu'une liste de questions essentielles à vous poser pour optimiser la structure juridique au profit de l'associé majoritaire (Florent Weil, 85 %). Je vous propose une présentation en 3 grandes parties :
+	1	Préparation et cadrage du projet
+	2	Choix de la structure juridique et formalités de création
+	3	Organisation interne et questions spécifiques pour optimiser la situation de l'associé majoritaire
+
+1. Préparation et cadrage du projet
+a) Définir l'activité et les objectifs
+	-	Nature de l'activité : menuiserie sur mesure (pose, fabrication, restauration…).
+	-	Clientèle visée : particuliers, professionnels, marchés publics…
+	-	Zone d'implantation : localisation de l'atelier, zone de chalandise pour les installations…
+	-	Positionnement tarifaire : haut de gamme, milieu de gamme, sur-mesure…
+b) Étude de marché et plan financier
+	-	Étude de marché : identifier la concurrence, la demande, le potentiel de chiffre d'affaires.
+	-	Plan financier prévisionnel :
+	-	Chiffrage des besoins : investissement initial (matériel, local, véhicule, outillage…), fonds de roulement…
+	-	Plan de financement : apports personnels, emprunts bancaires, aides éventuelles…
+	-	Estimation du CA prévisionnel, calcul de la rentabilité.
+c) Répartition du capital et rôles respectifs
+	-	Florent Weil : 85 % du capital.
+	-	Guillaume Berthet : 15 % du capital.
+	-	Rôles : quel associé sera gérant / président ? Qui s'occupera de la partie commerciale, administrative, technique ?
+Questions à ce stade :
+	1	Quel est le montant d'apport prévu par chaque associé ?
+	2	Allez-vous solliciter un prêt bancaire ou des aides publiques (BPI, Région, etc.) ?
+	3	Souhaitez-vous protéger votre patrimoine personnel (maison, etc.) en optant pour une responsabilité limitée ?
+	4	Quel est l'objectif de développement à moyen/long terme (levée de fonds, embauches, partenariats…) ?
+
+2. Choix de la structure juridique et formalités de création
+En France, pour une entreprise à plusieurs associés, les formes les plus courantes sont la SARL (Société À Responsabilité Limitée) et la SAS (Société par Actions Simplifiée). Le choix dépend souvent de critères sociaux, fiscaux et de flexibilité dans la gouvernance.
+a) Comparaison des formes juridiques principales
+SARL
+	-	Gestion : un ou plusieurs gérants (associés ou non).
+	-	Régime social du gérant majoritaire : TNS (Travailleur Non Salarié), cotisations sociales généralement moins élevées mais moins de protection sociale qu'en régime " assimilé salarié ".
+	-	Statuts plus encadrés : règles plus rigides, bonne protection pour les associés minoritaires.
+SAS
+	-	Gestion : un président (et éventuellement un directeur général), liberté statutaire pour définir l'organisation.
+	-	Régime social du dirigeant : assimilé salarié (si rémunération), charges sociales plus élevées mais meilleure couverture.
+	-	Statuts plus flexibles : grande liberté dans la rédaction, notamment sur la répartition des pouvoirs et les conditions d'entrée et de sortie des associés.
+Quel impact pour l'associé majoritaire ?
+	-	SARL : si Florent Weil est gérant majoritaire, il sera soumis au régime TNS, avec un coût de protection sociale souvent plus faible mais aussi des droits moindres (comparé au régime général).
+	-	SAS : Florent Weil (président) aura le statut d'assimilé salarié, plus protecteur mais plus cher en cotisations.
+	-	Fiscalité : possibilité d'opter pour l'IS (Impôt sur les Sociétés) dans les deux cas, ou temporairement à l'IR (Impôt sur le Revenu) selon certaines conditions.
+b) Constitution de la société (étapes communes SARL / SAS)
+	1	Rédaction des statuts
+	-	Dénomination sociale, objet social, siège social, capital social, répartition des parts / actions, modalités de gouvernance, etc.
+	-	Clauses spécifiques à insérer (agrément, préemption, non-concurrence, etc.) pour protéger l'associé majoritaire si besoin.
+	2	Évaluation des apports
+	-	Apport en numéraire : dépôt sur le compte bancaire bloqué pour la création.
+	-	Apport en nature (machines, matériel…) : évaluation possible par un commissaire aux apports si la valeur est jugée significative.
+	3	Publication de l'annonce légale
+	-	Publication obligatoire dans un journal habilité du département du siège social.
+	4	Dépôt du dossier de création
+	-	Auprès du Centre de Formalités des Entreprises (CFE) ou via le guichet électronique.
+	-	Réception du K-bis.
+	5	Ouverture d'un compte bancaire professionnel
+	-	Permet de séparer les opérations personnelles et professionnelles.
+	-	Nécessaire pour déposer le capital social.
+Questions à ce stade :
+	1	Prévoyez-vous une évolution rapide du capital (nouveaux associés, etc.) qui imposerait des statuts très flexibles (SAS souvent privilégiée) ?
+	2	Quelles sont vos priorités en termes de protection sociale pour le dirigeant majoritaire (Florent Weil) ?
+	3	Avez-vous besoin d'un formalisme strict pour rassurer le minoritaire (Guillaume Berthet) ou d'une grande souplesse pour la gouvernance ?
+	4	Souhaitez-vous réduire autant que possible les charges sociales sur la rémunération du dirigeant (SARL TNS) ou avez-vous une préférence pour une meilleure couverture sociale (SAS) ?
+
+3. Organisation interne et questions spécifiques pour l'associé majoritaire
+a) Rémunération et statut social
+	-	Rémunération du dirigeant : salaire, dividendes, primes…
+	-	Optimisation fiscale : en SARL, le gérant majoritaire peut se verser des dividendes soumis à cotisations sociales au-delà d'un certain plafond (depuis la réforme de 2013). En SAS, les dividendes ne sont pas soumis aux cotisations sociales (uniquement à la CSG/CRDS + PFU de 30 %).
+	-	Protection sociale : plus développée en SAS qu'en SARL (pour le TNS).
+b) Pacte d'associés ou clauses statutaires
+	-	Clauses de protection : prévoir un pacte d'associés ou des clauses dans les statuts pour organiser la cession de parts, la gouvernance, la transmission, la sortie forcée éventuelle d'un associé minoritaire, etc.
+	-	Clause d'agrément : empêche l'entrée d'un nouvel associé sans l'accord de l'associé majoritaire.
+	-	Clause de préemption : permet à l'associé majoritaire d'être prioritaire pour racheter les parts d'un associé souhaitant vendre.
+c) Gestion quotidienne et obligations légales
+	-	Tenue de comptabilité (obligatoire pour SARL et SAS).
+	-	Assemblées générales (approbation des comptes, affectation du résultat…).
+	-	Responsabilité du dirigeant : veiller à respecter toutes les obligations légales, fiscales et sociales.
+d) Évolution à long terme
+	-	Augmentations de capital (facilitées ou non par les statuts).
+	-	Transmission, cession de parts : si Florent Weil souhaite un jour céder ou transmettre sa participation majoritaire, vérifier les conséquences fiscales et patrimoniales.
+Questions pour optimiser la situation de Florent Weil (majoritaire) :
+	1	Souhaitez-vous un contrôle total sur la gestion quotidienne et les décisions stratégiques (préférable en SARL avec vous comme gérant majoritaire, ou en SAS via des clauses statutaires très orientées) ?
+	2	Quelle est votre stratégie de rémunération : privilégier le versement de dividendes (moins de charges, mais soumission à la flat tax) ou un salaire pour accéder à une meilleure protection sociale ?
+	3	Êtes-vous prêt à accepter une gouvernance plus flexible qui bénéficie parfois au minoritaire (SAS) ou préférez-vous la structure plus cadrée de la SARL ?
+	4	Souhaitez-vous insérer un pacte d'associés pour verrouiller les décisions importantes et protéger votre majorité ?
+	5	Quels sont vos projets de développement (embauche de salariés, investissement dans de nouvelles machines…) et le besoin de faire entrer de nouveaux partenaires financiers ?
+	6	Avez-vous des biens personnels à protéger absolument, ce qui vous orienterait plus vers une structure à responsabilité limitée (indépendamment du choix SARL/SAS, les deux offrent une responsabilité limitée, mais attention à la caution personnelle pour les prêts bancaires) ?
+
+Récapitulatif
+	-	Étape 1 : Définir clairement le projet, faire une étude de marché, formaliser le plan de financement.
+	-	Étape 2 : Choisir entre SARL et SAS (ou autre forme, mais ces deux sont les plus adaptées), en comparant régime social du dirigeant, flexibilité statutaire, contraintes administratives.
+	-	Étape 3 : Rédiger les statuts (avec précisions sur la répartition du capital et le rôle de chaque associé), déposer le capital, publier l'annonce légale, et immatriculer la société.
+	-	Étape 4 : Organiser la gouvernance (rémunération, dividendes, clauses de protection, gestion quotidienne).
+	-	Étape 5 : Anticiper les évolutions futures (montée en capital, cession de parts, protection du patrimoine…).
+En répondant aux questions ci-dessus, vous pourrez affiner le choix entre SARL et SAS (ou toute autre solution envisageable), ainsi que rédiger des statuts et éventuels pactes d'associés parfaitement adaptés à la situation de Florent Weil, actionnaire majoritaire à 85 %.
+N'hésitez pas à préciser vos préférences ou à me demander davantage de détails sur la fiscalité, le statut social, ou les clauses statutaires pour que nous puissions valider la forme juridique la mieux adaptée à vos objectifs.
+
+1. Préparation et cadrage du projet a) Définir l'activité et les objectifs Nature de l'activité : menuiserie sur mesure : pose, fabrication, restauration. Clientèle visée : particuliers Zone d'implantation : Gambais - Les Yvelines Positionnement tarifaire : haut de gamme, sur-mesure b) Étude de marché et plan financier Étude de marché : chiffre d'affaires 100 000 euros / an Plan financier prévisionnel : Chiffrage des besoins : investissement initial : les machines et les véhicules sont détenues par une autre société. Le loyer du local est payé par une autre société. Plan de financement : INSIDE SAS est la société qui deviendra la société mère. Elle vendra le materiel et les véhicules à l'entreprise de menuiserie et cèdera le bail des locaux. Estimation du CA prévisionnel : 100 000 euros / an. calcul de la rentabilité : 15% c) Répartition du capital et rôles respectifs Florent Weil : 85 % du capital. Guillaume Berthet : 15 % du capital. Rôles : quel associé sera gérant / président : Florent Weil. Qui s'occupera de la partie commerciale, administrative : Florent Weil. technique : Guillaume Berthet Questions à ce stade : Quel est le montant d'apport prévu par chaque associé  : Florent Weil : Apport en numeraire et nature. Guillaume Berthet apport en industrie. Allez-vous solliciter un prêt bancaire ou des aides publiques (BPI, Région, etc.) : oui (Rachat des machines à une future entreprise mère Souhaitez-vous protéger votre patrimoine personnel (maison, etc.) en optant pour une responsabilité limitée : Oui Quel est l'objectif de développement à moyen/long terme : embauches 2. Choix de la structure juridique et formalités de création SAS Rédaction des statuts Dénomination sociale : Atelier De La Colombe. objet social : " La société a pour objet, en France et à l'étranger : - La conception, la fabrication, l'installation, la rénovation, la réparation et l'entretien de tous ouvrages et mobiliers en bois ou matériaux dérivés, tant intérieurs qu'extérieurs (portes, fenêtres, escaliers, cloisons, aménagements, etc.) ; - L'agencement et l'aménagement d'espaces, incluant la création de mobilier sur mesure ; - Le négoce, l'importation, l'exportation, la distribution et la commercialisation de tous produits, matières et fournitures liés à l'activité de menuiserie ; - La réalisation de toutes prestations de conseil, d'étude, de formation et d'accompagnement en lien avec les activités ci-dessus ; - Et, plus généralement, toutes opérations industrielles, commerciales, financières, mobilières ou immobilières, se rattachant directement ou indirectement à l'objet social ou susceptibles d'en faciliter l'extension ou le développement.** siège social, capital social, répartition des parts / actions, modalités de gouvernance, etc. Clauses spécifiques à insérer (agrément, préemption, non-concurrence, etc.) pour protéger l'associé majoritaire si besoin. Évaluation des apports Apport en numéraire : dépôt sur le compte bancaire bloqué pour la création. Apport en nature (machines, matériel…) : évaluation possible par un commissaire aux apports si la valeur est jugée significative. Publication de l'annonce légale Publication obligatoire dans un journal habilité du département du siège social. Dépôt du dossier de création Auprès du Centre de Formalités des Entreprises (CFE) ou via le guichet électronique. Réception du K-bis. Ouverture d'un compte bancaire professionnel Permet de séparer les opérations personnelles et professionnelles. Nécessaire pour déposer le capital social. Questions à ce stade : Prévoyez-vous une évolution rapide du capital (nouveaux associés, etc.) qui imposerait des statuts très flexibles (SAS souvent privilégiée) ? Quelles sont vos priorités en termes de protection sociale pour le dirigeant majoritaire (Florent Weil) ? Avez-vous besoin d'un formalisme strict pour rassurer le minoritaire (Guillaume Berthet) ou d'une grande souplesse pour la gouvernance ? Souhaitez-vous réduire autant que possible les charges sociales sur la rémunération du dirigeant (SARL TNS) ou avez-vous une préférence pour une meilleure couverture sociale (SAS) ? 3. Organisation interne et questions spécifiques pour l'associé majoritaire a) Rémunération et statut social Rémunération du dirigeant : salaire, dividendes, primes… Optimisation fiscale : en SARL, le gérant majoritaire peut se verser des dividendes soumis à cotisations sociales au-delà d'un certain plafond (depuis la réforme de 2013). En SAS, les dividendes ne sont pas soumis aux cotisations sociales (uniquement à la CSG/CRDS + PFU de 30 %). Protection sociale : plus développée en SAS qu'en SARL (pour le TNS). b) Pacte d'associés ou clauses statutaires Clauses de protection : prévoir un pacte d'associés ou des clauses dans les statuts pour organiser la cession de parts, la gouvernance, la transmission, la sortie forcée éventuelle d'un associé minoritaire, etc. Clause d'agrément : empêche l'entrée d'un nouvel associé sans l'accord de l'associé majoritaire. Clause de préemption : permet à l'associé majoritaire d'être prioritaire pour racheter les parts d'un associé souhaitant vendre. c) Gestion quotidienne et obligations légales Tenue de comptabilité (obligatoire pour SARL et SAS). Assemblées générales (approbation des comptes, affectation du résultat…). Responsabilité du dirigeant : veiller à respecter toutes les obligations légales, fiscales et sociales. d) Évolution à long terme Augmentations de capital (facilitées ou non par les statuts). Transmission, cession de parts : si Florent Weil souhaite un jour céder ou transmettre sa participation majoritaire, vérifier les conséquences fiscales et patrimoniales. Questions pour optimiser la situation de Florent Weil (majoritaire) : Souhaitez-vous un contrôle total sur la gestion quotidienne et les décisions stratégiques (préférable en SARL avec vous comme gérant majoritaire, ou en SAS via des clauses statutaires très orientées) ? Quelle est votre stratégie de rémunération : privilégier le versement de dividendes (moins de charges, mais soumission à la flat tax) ou un salaire pour accéder à une meilleure protection sociale ? Êtes-vous prêt à accepter une gouvernance plus flexible qui bénéficie parfois au minoritaire (SAS) ou préférez-vous la structure plus cadrée de la SARL ? Souhaitez-vous insérer un pacte d'associés pour verrouiller les décisions importantes et protéger votre majorité ? Quels sont vos projets de développement (embauche de salariés, investissement dans de nouvelles machines…) et le besoin de faire entrer de nouveaux partenaires financiers ? Avez-vous des biens personnels à protéger absolument, ce qui vous orienterait plus vers une structure à responsabilité limitée (indépendamment du choix SARL/SAS, les deux offrent une responsabilité limitée, mais attention à la caution personnelle pour les prêts bancaires) ?
+
+Thought about création entreprise de menuiserie pendant 14 secondes
+
+Voici une synthèse de votre projet avec les nouvelles informations intégrées, ainsi qu'une liste de points d'attention et questions complémentaires pour finaliser votre choix de structure et optimiser la situation de l'associé majoritaire (Florent Weil).
+
+1. Récapitulatif du projet
+	1	Activité principale : Menuiserie sur mesure (pose, fabrication, restauration).
+	2	Clientèle visée : Particuliers (haut de gamme, sur-mesure).
+	3	Zone d'implantation : Gambais (Yvelines).
+	4	Chiffre d'affaires prévisionnel : 100 000 €/an.
+	5	Rentabilité estimée : 15 %.
+	6	Société mère : INSIDE SAS (existe déjà).
+	-	Elle vendra le matériel et les véhicules à la nouvelle entité.
+	-	Elle cédera également le bail des locaux.
+Répartition des rôles et du capital
+	-	Florent Weil : 85 % du capital, Président de la SAS " Atelier De La Colombe ", chargé de la partie commerciale et administrative.
+	-	Guillaume Berthet : 15 % du capital, associé en charge de la partie technique.
+	-	Apports :
+	-	Florent Weil : Apport en numéraire (et éventuellement en nature si cession d'actifs depuis INSIDE SAS).
+	-	Guillaume Berthet : Apport en industrie (son savoir-faire et son travail).
+Besoin de financement
+	-	Rachat du matériel : machines, véhicules auprès de INSIDE SAS.
+	-	Cession du bail : reprise de la location des locaux occupés par INSIDE SAS (ou un nouveau bail au nom d'Atelier De La Colombe).
+	-	Protection du patrimoine personnel : vous souhaitez une responsabilité limitée.
+Objectif à moyen/long terme
+	-	Embauches et développement progressif de l'activité.
+
+2. Choix de la structure juridique
+Vous avez validé l'option "SAS" (Société par Actions Simplifiée). Voici les principaux impacts et avantages :
+	1	Statut social du dirigeant (Florent Weil)
+	-	Assimilé salarié, donc couverture sociale plus complète que le régime TNS, mais cotisations sociales plus élevées qu'en SARL (gérant TNS).
+	-	Possibilité de moduler la rémunération entre salaire et dividendes (ces derniers n'étant pas soumis aux charges sociales, mais à la flat tax de 30 %).
+	2	Flexibilité statutaire
+	-	Rédaction des statuts plus libres qu'en SARL.
+	-	Possibilité d'aménager la gouvernance (attributions spécifiques pour Guillaume Berthet, règles de majorité renforcée pour certaines décisions, etc.).
+	3	Protection du patrimoine personnel
+	-	La SAS offre une responsabilité limitée aux apports.
+	-	Attention toutefois, les banques peuvent exiger des cautions personnelles pour les prêts.
+	4	Facilité pour faire entrer de nouveaux associés
+	-	Idéale si, à l'avenir, vous souhaitez lever des fonds ou accueillir de nouveaux partenaires.
+
+3. Formalités de création
+	1	Rédaction des statuts de " Atelier De La Colombe "
+	-	Dénomination sociale : " Atelier De La Colombe ".
+	-	Objet social (déjà bien défini).
+	-	Siège social : préciser l'adresse à Gambais (bail cédé ou nouveau bail).
+	-	Capital social : répartition 85 % / 15 %.
+	-	Apports :
+	-	En numéraire pour Florent Weil (éventuellement couplé avec l'apport en nature si INSIDE SAS cède directement le matériel au capital).
+	-	En industrie pour Guillaume Berthet (attention à bien décrire l'apport en industrie et ses modalités dans les statuts).
+	-	Modalités de gouvernance : Président = Florent Weil, Directeur Général éventuel = (à déterminer si besoin), clauses de majorité dans les décisions importantes, etc.
+	2	Clauses spécifiques pour protéger l'associé majoritaire
+	-	Clause d'agrément : aucun nouvel associé n'entre sans accord de Florent Weil.
+	-	Clause de préemption : Florent Weil peut racheter en priorité les actions mises en vente par Guillaume Berthet ou d'autres actionnaires.
+	-	Clause de non-concurrence : pour éviter que l'associé minoritaire (ou tout autre futur associé) ne fasse concurrence à la société s'il la quitte.
+	-	Possibilité d'un pacte d'associés en complément des statuts, pour régler d'éventuels points confidentiels (modalités de sortie, dividendes, etc.).
+	3	Évaluation des apports
+	-	Apport en numéraire : déposé sur un compte bancaire bloqué.
+	-	Apport en nature : si vous décidez finalement que certains actifs (machines, véhicules) sont apportés directement au capital (au lieu de les vendre " classiquement "), un commissaire aux apports peut être nécessaire si la valeur est significative (ou si elle dépasse 30 000 € pour un seul apport, ou si le total des apports en nature représente plus de la moitié du capital).
+	-	Apport en industrie : guère valorisé pour le capital, mais confère des droits (actions) et des obligations (l'associé doit effectivement fournir son travail). À formaliser soigneusement dans les statuts (droits de vote, dividendes, etc.).
+	4	Publication d'un avis de constitution
+	-	Dans un journal d'annonces légales du département des Yvelines.
+	5	Dépôt du dossier de création
+	-	Auprès du Guichet unique électronique (procédure dématérialisée) ou du CFE compétent.
+	6	Obtention du K-Bis et ouverture du compte bancaire professionnel
+	-	Une fois ces étapes accomplies, la société est officiellement constituée.
+
+4. Points d'organisation interne
+	1	Rémunération du Président (Florent Weil)
+	-	Salaire : soumission à cotisations sociales plus élevées (régime assimilé salarié), mais meilleure protection en cas d'accident, maladie, retraite…
+	-	Dividendes : soumis à la flat tax de 30 % (IR + prélèvements sociaux), non soumis aux cotisations sociales.
+	-	Mix : un fixe (salaire) pour assurer un minimum de protection, puis un complément en dividendes en fin d'année selon les bénéfices.
+	2	Rémunération de l'associé minoritaire (Guillaume Berthet)
+	-	S'il a un statut de salarié (même à temps partiel) ou un contrat de prestation.
+	-	Ou seulement une quote-part de dividendes.
+	-	Attention aux règles de subordination (vrai contrat de travail ?).
+	3	Gestion quotidienne
+	-	Assemblées générales annuelles pour approbation des comptes.
+	-	Tenue d'une comptabilité stricte (SAS y est obligée).
+	-	Déclarations fiscales et sociales.
+	4	Évolution future
+	-	Embauches : s'assurer que la société dispose de la trésorerie nécessaire (fond de roulement).
+	-	Augmentations de capital : plus simples en SAS.
+	-	Transmission ou cession de parts : prévoir les clauses statutaires ou pacte d'associés si Florent Weil souhaite un jour réduire sa participation.
+
+5. Questions complémentaires à clarifier
+	1	Structuration avec la société mère (INSIDE SAS)
+	-	Comment se fera la cession du matériel et des véhicules ?
+	-	Vente au prix de marché (contrat de cession de matériel) ou apport en nature direct au capital d'Atelier De La Colombe ?
+	-	La société mère détiendra-t-elle une participation dans " Atelier De La Colombe " ou restera-t-elle extérieure à son capital ?
+	2	Montant précis des apports
+	-	Combien Florent Weil apporte-t-il en numéraire ?
+	-	La valeur de l'apport en industrie de Guillaume Berthet doit-elle être évaluée, même si légalement l'apport en industrie n'est pas inclus dans le capital, il conditionne néanmoins son pourcentage d'actions dans la SAS.
+	-	Si du matériel est apporté en nature (au lieu d'être vendu), quelle en est la valeur ? Y aura-t-il besoin d'un commissaire aux apports ?
+	3	Financement bancaire
+	-	Qui se porte caution ?
+	-	La banque exigera-t-elle des garanties sur les biens personnels de Florent Weil ?
+	-	Montant du prêt envisagé pour le rachat de matériel (et conditions de taux, durée…).
+	4	Protection du patrimoine personnel
+	-	Êtes-vous prêt à signer une caution personnelle, ou souhaitez-vous limiter au maximum ce risque ?
+	-	En cas d'exigence de la banque, négocier un cautionnement modéré ou progressif.
+	5	Statut social de Guillaume Berthet
+	-	Associé uniquement (apport en industrie) ou salarié (avec fiche de paie) ?
+	-	A-t-il besoin de couverture sociale par la société ou bénéficie-t-il d'une autre protection (pôle emploi, etc.) ?
+	6	Pacte d'associés
+	-	Souhaitez-vous formaliser la sortie du minoritaire (ou d'autres éventuels associés) dans certaines conditions ?
+	-	Précisions sur la répartition des dividendes, la clause de non-concurrence, la confidentialité, etc.
+
+Conclusion
+Vous avez déjà établi un cadre clair pour la création de la SAS " Atelier De La Colombe " :
+	-	Florent Weil majoritaire à 85 %, Président, chargé du développement commercial et administratif.
+	-	Guillaume Berthet à 15 %, apporteur en industrie, en charge de la technique.
+	-	Objectifs : rachat du matériel via un financement (ou apport en nature) depuis INSIDE SAS, cession du bail, et mise en place d'une structure souple et protectrice pour votre patrimoine.
+Il vous reste à finaliser :
+	1	Les montants exacts d'apport (numéraire, nature, industrie).
+	2	Les contrats de cession (matériel, véhicules) ou d'apport en nature.
+	3	L'éventuel pacte d'associés pour verrouiller la gouvernance (clauses d'agrément, préemption, etc.).
+	4	Les négociations bancaires (cautions, garanties).
+	5	Les formalités (rédaction définitive des statuts, annonce légale, dépôt au guichet, K-Bis).
+Si vous avez besoin d'accompagnement plus poussé sur la rédaction des statuts, l'optimisation fiscale, ou les démarches auprès de la banque, n'hésitez pas à préciser vos objectifs financiers et les contrats envisagés avec INSIDE SAS pour que l'ensemble soit parfaitement sécurisé pour vous (associé majoritaire) comme pour votre associé minoritaire.

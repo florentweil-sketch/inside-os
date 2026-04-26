@@ -1,0 +1,54 @@
+Bloc à graver : CHUNK
+
+RÈGLE STRUCTURELLE — EXTRACTION DES THREADS LONGS
+
+Ne jamais envoyer un thread long brut en une seule fois au modèle si le volume risque de dépasser la fenêtre de contexte ou de dégrader la qualité d’extraction.
+
+Stratégie obligatoire :
+
+1. chunking intelligent
+   - découper le thread en segments cohérents
+   - préserver les unités de sens
+   - éviter les coupures arbitraires au milieu d’un raisonnement, d’une décision ou d’une séquence opérationnelle
+
+2. résumé intermédiaire par segment
+   - produire pour chaque chunk un résumé structuré
+   - extraire les décisions, leçons, signaux faibles, hypothèses et points de tension locaux
+   - conserver les citations ou traces de contexte utiles si nécessaire
+
+3. fusion finale
+   - agréger les résumés intermédiaires
+   - dédupliquer
+   - résoudre les contradictions
+   - produire un JSON final propre pour injection dans Notion
+
+Principe :
+stabilité et traçabilité > extraction brute monolithique.
+
+Conséquence :
+tout thread volumineux doit passer par cette chaîne :
+chunking intelligent → résumé intermédiaire → fusion finale
+avant toute injection définitive dans les bases stratégiques.
+
+Version plus courte à mettre dans le contexte projet
+
+RÈGLE PIPELINE EXTRACTION :
+pour tout thread long, extraction obligatoire en 3 temps :
+chunking intelligent → résumé intermédiaire par chunk → fusion finale.
+Interdiction d’envoyer un raw_text massif brut au modèle.
+Objectif : éviter les dépassements de contexte, améliorer la qualité d’extraction, préserver la traçabilité.
+
+Formulation ultra-courte pour un header de transfert
+
+⚠️ EXTRACTION THREADS LONGS
+Toujours appliquer :
+chunking intelligent → résumé intermédiaire → fusion finale.
+Jamais d’extraction monolithique sur raw_text volumineux.
+
+Je te conseille de garder les trois versions :
+	•	la longue dans le contexte maître,
+	•	la moyenne dans le contexte projet,
+	•	la courte dans les prompts de transfert.
+
+
+

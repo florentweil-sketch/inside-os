@@ -1,0 +1,217 @@
+Last login: Sat Feb 28 20:23:55 on ttys000
+admin@imacdeiac5admin ~ % cd /Users/admin/inside-os
+admin@imacdeiac5admin inside-os % pwd
+/Users/admin/inside-os
+admin@imacdeiac5admin inside-os % cat > .env <<'EOF'
+NOTION_TOKEN=TON_TOKEN_ICI
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+EOF
+admin@imacdeiac5admin inside-os % cat .env
+NOTION_TOKEN=TON_TOKEN_ICI
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+admin@imacdeiac5admin inside-os % cat > .env <<'EOF'
+NOTION_TOKEN=COLLE_ICI_TON_VRAI_TOKEN
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+EOF
+admin@imacdeiac5admin inside-os % cat .env
+NOTION_TOKEN=COLLE_ICI_TON_VRAI_TOKEN
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+admin@imacdeiac5admin inside-os % node scripts/inspect-all-dbs.cjs
+[dotenv@17.3.1] injecting env (3) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+Notion API 401: {"object":"error","status":401,"code":"unauthorized","message":"API token is invalid.","request_id":"0fac796d-eda0-44b1-a13e-e5d6f8d7e82d"}
+admin@imacdeiac5admin inside-os % cat > .env <<'EOF'
+NOTION_TOKEN=COLLE_ICI_TON_VRAI_TOKEN
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+EOF
+admin@imacdeiac5admin inside-os % cat > .env <<'EOF'                                                 
+NOTION_TOKEN=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
+ROOT_PAGE_ID=3155e503b0ac801a9841e5ffc98cc35f
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+EOF
+admin@imacdeiac5admin inside-os % node scripts/inspect-all-dbs.cjs
+[dotenv@17.3.1] injecting env (3) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+entities | entities | props=16 | id=8572adf5-e57d-49a2-abe4-54505b449f46
+projects_chantiers | projects_chantiers | props=8 | id=1eec3cd0-add0-4611-8efa-82329760813d
+projects_strategic | projects_strategic | props=11 | id=6ed8559d-6358-4450-b97e-6c940a96782a
+decisions_structural | decisions_structural | props=10 | id=1054c068-9b91-4215-af70-4c1a3945a83a
+capital_performance | capital_performance | props=11 | id=d28b5770-ba14-4d77-9171-060a303cc69a
+admin_architecture | admin_architecture | props=9 | id=56ecc31c-ba79-4f38-97d2-b5b05ad5bdae
+lessons_learnings | lessons_learnings | props=10 | id=dabb137f-28b1-4e59-9290-03a21a7694de
+digital_assets | digital_assets | props=22 | id=6ea73372-9458-4ad3-a659-a5bb8ddc7aa8
+admin@imacdeiac5admin inside-os % node scripts/inspect-db-http.cjs 3155e503-b0ac-818d-b293-d47fee14a1d0
+[dotenv@17.3.1] injecting env (3) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+DB title: thread_dump
+DB id: 3155e503-b0ac-818d-b293-d47fee14a1d0
+Properties:
+- date_range_start: date
+- status: select
+- source: select
+- tags: multi_select
+- date_range_end: date
+- summary: rich_text
+- scope: select
+- confidence: select
+- id_dump: rich_text
+- Name: title
+admin@imacdeiac5admin inside-os % cat > scripts/patch-thread-dump-add-raw.cjs <<'EOF'
+require('dotenv').config();
+
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
+const DB_ID = process.env.THREAD_DUMP_DB_ID;
+
+if (!NOTION_TOKEN) { console.error("ERROR: NOTION_TOKEN missing"); process.exit(1); }
+if (!DB_ID) { console.error("ERROR: THREAD_DUMP_DB_ID missing"); process.exit(1); }
+
+async function notion(path, method='GET', body) {
+  const res = await fetch(`https://api.notion.com/v1${path}`, {
+    method,
+    headers: {
+      'Authorization': `Bearer ${NOTION_TOKEN}`,
+      'Notion-Version': '2022-06-28',
+      'Content-Type': 'application/json',
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const text = await res.text();
+  if (!res.ok) throw new Error(`Notion API ${res.status}: ${text}`);
+  return JSON.parse(text);
+}
+
+async function main() {
+  const payload = {
+    properties: {
+      raw_text: { rich_text: {} },
+      source_url: { url: {} }
+    }
+  };
+  const updated = await notion(`/databases/${DB_ID}`, 'PATCH', payload);
+  console.log("PATCH OK:", updated.title?.[0]?.plain_text, "props=", Object.keys(updated.properties||{}).length);
+}
+
+main().catch(e => { console.error(e.message); process.exit(1); });
+EOF
+admin@imacdeiac5admin inside-os % cat .env | grep THREAD_DUMP_DB_ID
+THREAD_DUMP_DB_ID=3155e503-b0ac-818d-b293-d47fee14a1d0
+admin@imacdeiac5admin inside-os % node scripts/patch-thread-dump-add-raw.cjs
+[dotenv@17.3.1] injecting env (3) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+PATCH OK: thread_dump props= 12
+admin@imacdeiac5admin inside-os % node scripts/inspect-db-http.cjs $THREAD_DUMP_DB_ID
+[dotenv@17.3.1] injecting env (3) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+Usage: node scripts/inspect-db-http.cjs <db_id>
+admin@imacdeiac5admin inside-os % node scripts/inspect-db-http.cjs 3155e503-b0ac-818d-b293-d47fee14a1d0
+[dotenv@17.3.1] injecting env (3) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+DB title: thread_dump
+DB id: 3155e503-b0ac-818d-b293-d47fee14a1d0
+Properties:
+- date_range_start: date
+- source_url: url
+- status: select
+- source: select
+- tags: multi_select
+- date_range_end: date
+- raw_text: rich_text
+- summary: rich_text
+- scope: select
+- confidence: select
+- id_dump: rich_text
+- Name: title
+admin@imacdeiac5admin inside-os % mkdir -p dumps                                                       
+admin@imacdeiac5admin inside-os % ls
+create-os.js				package-lock.json			scripts
+data					package.json				seed-os.js
+dumps					patch-digital-assets-http.js		seed-upsert.js
+inspect-db-http.js			patch-digital-assets-relation.js	test-notion.js
+inspect-db.js				patch-entities-http.js			upsert-lib.js
+node_modules				patch-entities.js
+admin@imacdeiac5admin inside-os % cat > dumps/thread_001_2026-02-28.txt <<'EOF'
+COLLE ICI UN GROS BLOC DE TEXTE (un thread entier, brut)
+EOF
+admin@imacdeiac5admin inside-os % textutil -convert txt TXT.rtf
+Error reading TXT.rtf.  The file doesn’t exist.
+admin@imacdeiac5admin inside-os % ls -la
+ls -la dumps
+total 168
+drwxr-xr-x  22 admin  staff    704 28 fév 23:38 .
+drwxr-x---+ 29 admin  staff    928 28 fév 23:17 ..
+-rw-r--r--@  1 admin  staff    165 28 fév 23:28 .env
+-rw-------   1 admin  staff    110 28 fév 23:17 .env.save
+-rw-r--r--   1 admin  staff      3 28 fév 22:46 .nvmrc
+-rw-r--r--@  1 admin  staff  14825 28 fév 20:43 create-os.js
+drwxr-xr-x   3 admin  staff     96 28 fév 22:52 data
+drwxr-xr-x   3 admin  staff     96 28 fév 23:40 dumps
+-rw-r--r--@  1 admin  staff    937 28 fév 21:01 inspect-db-http.js
+-rw-r--r--@  1 admin  staff    763 28 fév 20:56 inspect-db.js
+drwxr-xr-x   6 admin  staff    192 28 fév 22:54 node_modules
+-rw-r--r--   1 admin  staff   1376 28 fév 22:54 package-lock.json
+-rw-r--r--   1 admin  staff    356 28 fév 22:54 package.json
+-rw-r--r--@  1 admin  staff   2505 28 fév 21:23 patch-digital-assets-http.js
+-rw-r--r--@  1 admin  staff    802 28 fév 22:06 patch-digital-assets-relation.js
+-rw-r--r--@  1 admin  staff   2544 28 fév 21:12 patch-entities-http.js
+-rw-r--r--@  1 admin  staff   1854 28 fév 20:58 patch-entities.js
+drwxr-xr-x  10 admin  staff    320 28 fév 23:31 scripts
+-rw-r--r--@  1 admin  staff   6460 28 fév 21:26 seed-os.js
+-rw-r--r--@  1 admin  staff   7453 28 fév 22:14 seed-upsert.js
+-rw-r--r--@  1 admin  staff    721 28 fév 20:32 test-notion.js
+-rw-r--r--@  1 admin  staff   1708 28 fév 21:57 upsert-lib.js
+total 8
+drwxr-xr-x   3 admin  staff   96 28 fév 23:40 .
+drwxr-xr-x  22 admin  staff  704 28 fév 23:38 ..
+-rw-r--r--   1 admin  staff   57 28 fév 23:40 thread_001_2026-02-28.txt
+admin@imacdeiac5admin inside-os % ls -la ~/Downloads | grep -i txt
+ls -la ~/Downloads | grep -i rtf
+admin@imacdeiac5admin inside-os % mdfind -name "TXT.rtf"
+2026-02-28 23:50:41.390 mdfind[61196:2049319] [UserQueryParser] Loading keywords and predicates for locale "fr_FR"
+2026-02-28 23:50:41.391 mdfind[61196:2049319] [UserQueryParser] Loading keywords and predicates for locale "fr"
+admin@imacdeiac5admin inside-os % nano dumps/thread_001_2026-02-28.txt
+
+  UW PICO 5.09                                      File: dumps/thread_001_2026-02-28.txt                                      Modified  
+
+
+Absolument, on peut envisager plusieurs axes pour assurer la pérennité et la croissance de ton entreprise :
+        1       Digitalisation des processus : Mettre en place des outils de gestion de projet numériques, des plateformes de communicat$
+        2       Formation et montée en compétence : Investir dans la formation continue de tes collaborateurs pour qu’ils maîtrisent les$
+        3       Automatisation et robotisation : Bien que certains travaux manuels restent irremplaçables, tu peux intégrer des outils r$
+        4       Offre personnalisée et haut de gamme : Continuer à te concentrer sur la rénovation de biens exceptionnels et proposer de$
+        5       Expansion et partenariats : Explorer des partenariats avec des entreprises technologiques, des fournisseurs innovants, o$
+En adoptant ces approches, tu pourras non seulement moderniser ton entreprise, mais aussi la rendre plus résiliente et prête à relever l$
+
+“Ok. En février 2026, je suis gérant et propriétaire d'une entreprise du bâtiment Tout Corps d'État. J'ai un atelier de menuiserie, j'ai$
+00:58
+
+C’est une belle vision d’avenir ! Dans trois à quatre ans, en capitalisant sur ta position déjà établie et sur ta réputation dans les Yv$
+        1       Renforcer ta marque : Développer une image de marque forte, associée à l’excellence et à l’innovation, en mettant en ava$
+        2       Automatiser et déléguer : Mettre en place des systèmes automatisés pour la gestion des tâches répétitives et déléguer le$
+        3       Innover avec la technologie : Intégrer des solutions d’IA et de gestion intelligente pour optimiser les coûts et amélior$
+        4       Développer des partenariats stratégiques : Collaborer avec des entreprises technologiques ou des investisseurs pour élar$
+        5       Expansion géographique : Une fois que ton modèle est rodé, tu pourras envisager d’étendre tes activités à d’autres régio$
+En suivant ces axes, tu pourras non seulement sécuriser l’avenir de ton entreprise, mais aussi te préparer à une sortie en toute liberté$
+
+“Ok, merci pour toutes ces précisions. Le prochain topique, il faudra que ça s'inscrit dans un contexte de discussion et de développemen$
+00:54
+
+C’est une vision vraiment intéressante et ambitieuse ! En intégrant des outils comme n8n, Notion, Whisper, et d’autres technologies, tu $
+En développant cette approche, tu pourras non seulement moderniser tes méthodes de travail, mais aussi te positionner comme un pionnier $
+Je suis là pour t’accompagner et affiner ces idées au fur et à mesure !
+
+Transcription indisponible
+00:05
+
+Absolument, on peut travailler ensemble pour créer un environnement qui intègre ces outils et qui automatise les processus, tout en gard$
+
+Transcription indisponible
+00:00
+
+Avec plaisir ! N’hésite pas si tu as d’autres questions ou si tu veux approfondir certains aspects. Je suis là pour t'aider à chaque éta$
+
+
+
+EOFCOLLE ICI UN GROS BLOC DE TEXTE (un thread entier, brut)
+
+  
+^G Get Help           ^O WriteOut           ^R Read File          ^Y Prev Pg            ^K Cut Text           ^C Cur Pos            
+^X Exit               ^J Justify            ^W Where is           ^V Next Pg            ^U UnCut Text         ^T To Spell           

@@ -1,0 +1,51 @@
+THREAD HISTORIQUE - BLOC 99 - T08 / 2026-04-18 / Boucle de pilotage continue INSIDE OS
+
+Objectif :
+- transformer INSIDE OS en boucle de pilotage continue
+- faire en sorte que chaque réponse utile du chat puisse nourrir le présent vivant du système
+
+Constat :
+- la mémoire conversationnelle V0 fonctionne
+- le pipeline ciblé fonctionne
+- le chat sait désormais répondre en mode ÉTAT / PROBLÈME / ACTION
+- le point suivant est de rendre cette logique durable
+
+Décision principale :
+- chaque avancée importante du projet doit être gravée dans un nouveau thread B99
+- chaque thread B99 doit rester court, clair, actionnable
+- B99 ne doit pas devenir un journal diffus
+- B99 doit devenir une séquence disciplinée de pilotage
+
+Règle opératoire :
+- un thread B99 = un instant utile
+- un thread B99 contient :
+  - un état
+  - un problème principal
+  - une action prioritaire
+- éviter les listes floues et les réflexions trop générales
+
+Décision de fonctionnement :
+- après chaque étape structurante, produire un nouveau thread B99
+- injecter ce thread dans la mémoire
+- laisser le chat s'appuyer dessus pour répondre au présent
+
+Critère de succès :
+- le système doit pouvoir répondre à "où en est INSIDE OS aujourd'hui ?"
+- avec une réponse courte
+- juste
+- ancrée dans le présent
+- suivie d'une action réellement exécutable
+
+Leçon :
+- une mémoire vivante n'est pas seulement une archive active
+- c'est une chaîne de décisions présentes bien injectées
+- la qualité du système dépend de la discipline de cette boucle
+
+Prochaine action immédiate :
+- continuer à documenter uniquement les avancées structurantes
+- éviter de surcharger B99 avec du bruit
+- garder B99 comme poste de pilotage vivant
+
+Conclusion :
+- INSIDE OS entre dans une logique de boucle mémoire -> réponse -> action -> nouveau mémoire
+- le système devient un outil de pilotage continu

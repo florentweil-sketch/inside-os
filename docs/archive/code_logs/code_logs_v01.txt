@@ -1,0 +1,71 @@
+Last login: Fri Mar 13 16:54:08 on ttys000
+admin@imacdeiac5admin ~ % cd /inside-os
+cd: no such file or directory: /inside-os
+admin@imacdeiac5admin ~ % cd ~/inside-os
+
+node - <<'NODE'
+import "dotenv/config";
+import { getDataSource } from "./os/lib/notion.mjs";
+
+try {
+  const ds = await getDataSource(process.env.THREAD_DUMP_DB_ID);
+  console.log("OK data_source");
+  console.log("name:", ds.name || "(no name)");
+  console.log("parent_database_id:", ds.parent?.database_id || "(none)");
+} catch (e) {
+  console.log("FAIL data_source");
+  console.log(e.message);
+}
+NODE
+OK data_source
+name: (no name)
+parent_database_id: 3155e503-b0ac-818d-b293-d47fee14a1d0
+admin@imacdeiac5admin inside-os % cd ~/inside-os
+
+node - <<'NODE'
+import "dotenv/config";
+import { getDatabase } from "./os/lib/notion.mjs";
+
+try {
+  const db = await getDatabase(process.env.THREAD_DUMP_DB_ID);
+  console.log("OK database");
+  console.log("title:", (db.title || []).map(t => t.plain_text).join("") || "(no title)");
+  console.log("data_sources:", (db.data_sources || []).map(ds => ds.id));
+} catch (e) {
+  console.log("FAIL database");
+  console.log(e.message);
+}
+NODE
+FAIL database
+Notion 404: {"object":"error","status":404,"code":"object_not_found","message":"Could not find database with ID: 3155e503-b0ac-819f-9a69-000b1c28aaf9. Make sure the relevant pages and databases are shared with your integration.","request_id":"461e82ec-a761-4e40-bcb4-7960c5ba7d2c"}
+admin@imacdeiac5admin inside-os % >....                                         
+
+try {
+  const db = await getDatabase(id);
+  console.log("\n[DATABASE] OK");
+  console.log("title:", (db.title || []).map(t => t.plain_text).join("") || "(no title)");
+  console.log("data_sources:", (db.data_sources || []).map(ds => ds.id).join(", ") || "(none)");
+} catch (e) {
+  console.log("\n[DATABASE] FAIL");
+  console.log(e.message);
+}
+
+try {
+  const ds = await getDataSource(id);
+  console.log("\n[DATA_SOURCE] OK");
+  console.log("name:", ds.name || "(no name)");
+  console.log("parent_database_id:", ds.parent?.database_id || "(none)");
+} catch (e) {
+  console.log("\n[DATA_SOURCE] FAIL");
+  console.log(e.message);
+}
+NODE
+THREAD_DUMP_DB_ID = 3155e503-b0ac-819f-9a69-000b1c28aaf9
+
+[DATABASE] FAIL
+Notion 404: {"object":"error","status":404,"code":"object_not_found","message":"Could not find database with ID: 3155e503-b0ac-819f-9a69-000b1c28aaf9. Make sure the relevant pages and databases are shared with your integration.","request_id":"f5638385-8d92-4476-a637-ca3485984461"}
+
+[DATA_SOURCE] OK
+name: (no name)
+parent_database_id: 3155e503-b0ac-818d-b293-d47fee14a1d0
+admin@imacdeiac5admin inside-os % 

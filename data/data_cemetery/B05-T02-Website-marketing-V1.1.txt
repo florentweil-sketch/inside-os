@@ -1,0 +1,3528 @@
+THREAD HISTORIQUE - B02 - T11 - Sujet WEBSITE COM MARKETING V1.1
+Date approximative : 01.12.2025
+Source : ChatGPT
+
+je sais qu'il y a des sites internet qui proposent de copier un site internet (sa structure etc...) L'idée est de gagner du temps en copiant mon site internet (hébergé chez houzzz) pour le transformer en wordpress et ensuite partir chez un autre hébergeur.
+
+Tu as raison sur le principe, mais soyons clairs et efficaces :  on ne "copie" pas proprement un site Houzz vers WordPress.  on le reconstruit intelligemment. Et c'est très différent.
+La vérité crue (désolé Houzz)
+Houzz :
+	-	 pas de FTP
+	-	 pas de base de données exportable
+	-	 pas de CMS ouvert
+	-	 HTML généré / verrouillé Donc aucun outil sérieux ne peut cloner Houzz vers WordPress. Ceux qui te promettent ça te vendent du vent (ou du scraping dégueulasse).
+
+Ce qui est possible (et malin)
+1 Copier la structure visuelle et fonctionnelle (oui)
+On peut récupérer :
+	-	l'arborescence des pages
+	-	la hiérarchie des contenus
+	-	le style global (grilles, sections, rythme)
+	-	les textes et images (si tu en es propriétaire)
+ C'est légal si c'est TON site et TES contenus.  On ne copie pas le code, on copie le design logique.
+2 Les outils qui peuvent aider (pour gagner du temps)
+Ils ne font PAS un WordPress prêt à l'emploi, mais ils accélèrent :
+	-	HTTrack / SiteSucker  aspirent le site en HTML statique  utile comme plan de reconstruction, pas plus
+	-	Teleport Pro / Octoparse / WebScraper.io  pour extraire textes + images proprement
+	-	Figma import (via URL)  certains designers recréent la maquette directement depuis l'URL  très propre pour repartir sur une base saine
+ Résultat : jamais un WP clé en main, toujours une base de travail.
+
+La méthode intelligente (celle que je te recommande franchement)
+Étape 1 - Aspirer pour référence
+	-	aspirer ton site Houzz (structure + contenus)
+	-	faire un inventaire : pages, sections, blocs
+Étape 2 - Refaire proprement sur WordPress
+	-	WordPress + thème léger (Hello, GeneratePress, Kadence…)
+	-	Elementor / Bricks / Gutenberg bien structuré
+	-	SEO propre (URL, H1, méta, vitesse)
+Étape 3 - Changer d'hébergeur
+	-	hébergement sérieux (pas le moins cher)
+	-	performances, sauvegardes, liberté totale
+ Résultat :
+	-	même site en mieux
+	-	100 % maîtrisé
+	-	évolutif
+	-	valorisable (SEO, branding, crédibilité)
+
+Ce que je te déconseille fortement
+ Les "cloneurs automatiques Houzz -> WordPress"  Les scripts miracles  Les freelancers qui disent "je copie le site" en 24h
+Tu perdras :
+	-	du temps
+	-	du SEO
+	-	de la qualité
+	-	et souvent de l'argent
+
+Mon avis franc
+Si ton objectif est gagner du temps :  copie la logique, pas le site.
+Houzz t'a servi de vitrine de départ. WordPress doit devenir ton territoire, pas un clone bancal.
+Si tu veux, je peux :
+	-	te proposer une architecture WordPress idéale pour INSIDE
+	-	ou te dire si ton site actuel vaut le coup d'être "copié" ou repensé (parfois, repartir à zéro est plus rapide… oui, paradoxalement).
+
+et toi, peux tu récuperer la structure du site et on la bascule sur un word press
+
+Oui… mais pas directement depuis Houzz "comme un export", et pas tout seul dans le vide : il me faut l'URL et il faudra accepter une vérité : on va reconstruire, pas cloner.
+Ce que je peux faire pour toi (concrètement)
+	1	Récupérer la structure (sitemap "réel")
+	-	liste des pages
+	-	menus / navigation
+	-	sections types (hero, services, réalisations, témoignages, contact)
+	-	ordre, titres, CTA, blocs récurrents
+	2	Extraire les contenus
+	-	textes (titres, paragraphes)
+	-	images (liens, noms, emplacements)
+	-	éléments SEO visibles (titres de pages, H1)
+	3	Te livrer un plan WordPress prêt à construire
+	-	arborescence WP (pages + permaliens)
+	-	modèle de page (template)
+	-	recommandations thème/builder
+	-	checklist migration (SEO, redirections, performances)
+	4	Option "je te mâche tout le boulot" Je peux aussi te générer :
+	-	le wireframe page par page
+	-	la structure Gutenberg/Elementor (sections + colonnes)
+	-	les blocs à reproduire
+	-	et même les textes réorganisés si tu veux un truc plus premium
+Ce que je ne peux pas faire
+	-	Je ne peux pas me connecter à ton compte Houzz ni "aspirer" le site automatiquement depuis ici.
+	-	Je ne peux pas produire un WordPress "installé chez ton hébergeur" (je n'ai pas accès à ton serveur).
+	-	Et si le site est blindé côté rendu, certains éléments devront être recréés à la main (mais ça reste rapide si c'est bien cadré).
+
+Donne-moi ça, et je te fais la bascule "structure" propre
+	1	L'URL exacte de ton site Houzz
+	2	Tu veux WordPress avec :
+	-	Gutenberg (léger)
+	-	Elementor (rapide / visuel)
+	-	Bricks (plus "pro", plus propre)
+	3	Tu veux un site :
+	-	identique (copie fidèle)
+	-	identique mais amélioré (même structure, mais plus haut de gamme)
+Si tu me donnes juste l'URL, je pars sur une config par défaut "pro" :  WordPress + thème léger + Gutenberg (ou Bricks si tu veux du solide).
+Balance l'URL et je te sors :
+	-	l'arborescence complète
+	-	le blueprint WordPress
+	-	les templates de pages
+	-	la liste des contenus à migrer + priorités SEO.
+
+1. est ce que c'est bon ? https://inside.archi/
+
+Réflexion durant 15s
+
+Oui, c'est bon : https://inside.archi/ est bien l'URL de ton site, et surtout on voit clairement que c'est un site "Créé avec Houzz" (le footer l'affiche).
+La structure actuelle (ce que je peux "récupérer" pour basculer sur WordPress)
+Menu principal (visible sur les pages internes)
+	-	Accueil
+	-	Projets
+	-	Menuiserie sur mesure
+	-	Contact
+	-	Presse 
+Pages "piliers"
+	-	Accueil : / 
+	-	Projets (liste) : /projets 
+	-	Réalisations (liste) : /re-alisations 
+	-	Menuiserie : /menuiserie-sur-mesure 
+	-	Témoignages : /temoignages 
+	-	Contact : /contact 
+	-	Presse : /presse 
+	-	Conception : /conception 
+Contenus "type portfolio" (fiches projets)
+	-	Les projets individuels sont sur des URLs du type : /projects/<id>-<slug> (ex : "Nos Projets en 3D", "Menuiserie…"). 
+
+Comment je te le bascule proprement sur WordPress (sans perdre le SEO)
+Le bon mapping WordPress, c'est :
+	-	Pages : Accueil, Menuiserie, Témoignages, Contact, Presse, Conception
+	-	Portfolio "Projets" : un Custom Post Type "projet" (ou "réalisation")
+	-	catégories (ex : Rénovation, Menuiserie, 3D, Presse)
+	-	URLs : on garde au maximum les slugs actuels (/projets, /contact, etc.) et on met des redirections 301 pour tout ce qui change (notamment les /projects/...). 
+
+Prochaine étape (sans blabla)
+Dis-moi juste :
+	1	Tu veux construire le WP avec Gutenberg (propre/léger) ou Elementor (rapide/visuel) ?
+	2	Tu veux que les "Projets" restent en liste + fiche détaillée comme aujourd'hui (c'est ce que ton site fait déjà) ? 
+Et je te sors dans la foulée :
+	-	l'arbo complète "WP-ready"
+	-	la spec des templates (Accueil / Liste projets / Fiche projet / Contact…)
+	-	la stratégie d'URL + redirections (le truc qui évite de tuer Google, et accessoirement ton ego).
+
+Tu veux construire le WP (c'est quoi?) avec Gutenberg (propre/léger) ou Elementor (rapide/visuel) ? dis moi
+
+WordPress, c'est le moteur. Gutenberg et Elementor, c'est "avec quoi tu construis les pages" dans WordPress (le système de mise en page / édition).
+Gutenberg
+C'est l'éditeur natif de WordPress (blocs).
+ Avantages
+	-	Rapide (meilleur pour la vitesse et le SEO)
+	-	Stable, pérenne (moins de dépendances)
+	-	Propre à maintenir sur 5-10 ans
+	-	Moins de risques de "site qui casse" après mises à jour
+ Inconvénients
+	-	Moins "waouh" si tu veux des animations / layouts tordus sans mettre les mains dans le cambouis
+	-	Demande un peu plus de rigueur au départ (mais ça, toi tu sais faire)
+Elementor
+C'est un plugin "page builder" très visuel (drag & drop).
+ Avantages
+	-	Ultra rapide à produire
+	-	Très visuel, tu vois tout direct
+	-	Facile pour bricoler des mises en page complexes
+ Inconvénients
+	-	Plus lourd (vitesse/perf souvent moins bonnes)
+	-	Dépendance forte : si tu veux changer plus tard, c'est parfois la purge
+	-	Peut devenir un plat de spaghetti si on ne cadre pas (et ça arrive souvent)
+
+Mon avis franc pour INSIDE (vitrine premium, portfolio, SEO, long terme)
+ Gutenberg.
+Tu veux un site haut de gamme qui charge vite, qui vieillit bien, et qui ne t'oblige pas à "réparer Elementor" tous les 6 mois parce qu'un plugin a éternué.
+Elementor je le recommande seulement si :
+	-	tu veux toi-même "designer" au pixel près sans contrainte,
+	-	tu veux beaucoup d'effets/animations/sections complexes,
+	-	et tu acceptes un peu plus de poids et de maintenance.
+
+Si je tranche sans diplomatie
+Gutenberg = choix adulte. Elementor = choix dopamine. (efficace… mais parfois collant.)
+Tu veux que je parte sur Gutenberg pour te sortir une structure WordPress propre (pages + modèles + CPT Projets) ?
+
+ok pour gutenberg
+
+Parfait. Gutenberg, c'est le choix propre (et tu me remercieras quand ton site chargera vite au lieu de pousser de la fonte).
+Ce que je te propose comme "bascule" WordPress (version béton)
+1) Base technique (simple, solide)
+	-	WordPress
+	-	Thème léger compatible Gutenberg : GeneratePress ou Kadence (les deux font le job)
+	-	Un plugin de blocs Gutenberg "premium light" (au choix) :
+	-	Kadence Blocks (très bon)
+	-	ou GenerateBlocks (minimaliste, efficace)
+2) Structure WordPress (copie fonctionnelle de ton site actuel)
+Pages (WordPress > Pages)
+	-	Accueil (/)
+	-	Menuiserie sur mesure (/menuiserie-sur-mesure)
+	-	Conception (/conception)
+	-	Témoignages (/temoignages)
+	-	Presse (/presse)
+	-	Contact (/contact)
+Projets (WordPress > Projets)
+	-	On crée un Custom Post Type : projet
+	-	Page archive : /projets
+	-	Fiches : /projets/nom-du-projet/ (Et on gère les redirections depuis les URLs Houzz en /projects/...)
+3) Templates (ce que tu vas réellement "retrouver")
+	-	Accueil : hero + sections (services/positionnement) + 3-6 projets mis en avant + CTA contact
+	-	Archive Projets : grille filtrable (catégories) + image + titre + lieu (option)
+	-	Fiche Projet : galerie + texte + prestations + avant/après (si dispo) + CTA
+	-	Menuiserie : présentation + types de réalisations + galeries + process + CTA
+	-	Contact : formulaire + infos + zones d'intervention
+Migration (sans se tirer une balle dans le SEO)
+	-	On garde les slugs existants quand possible (/projets, /contact, etc.)
+	-	On fait des 301 pour toutes les anciennes URLs Houzz importantes (notamment /projects/...)
+	-	On refait : titles, meta descriptions, H1/H2 propres
+Ce dont j'ai besoin maintenant (2 infos, et je déroule)
+	1	Tu veux que "Projets" et "Réalisations" soient :
+	-	1 seul espace (plus simple)
+	-	ou 2 sections séparées (comme aujourd'hui, mais souvent inutile)
+	2	Tu veux un site WordPress :
+	-	identique (copie fidèle)
+	-	identique + amélioré (même structure, mais plus premium : typographie, espaces, cohérence, CTA)
+Si tu réponds à ces 2 points, je te sors une spec complète : arbo, CPT, champs "projet", catégories, templates bloc par bloc, et la liste des redirections à prévoir.
+
+Ce que je te propose comme "bascule" WordPress (version béton) 1) Base technique (simple, solide) WordPress Thème léger compatible Gutenberg : GeneratePress ou Kadence (les deux font le job) ok, tu choisis Un plugin de blocs Gutenberg "premium light" (au choix) : Kadence Blocks (très bon) ou GenerateBlocks (minimaliste, efficace) tu choisis 2) Structure WordPress (copie fonctionnelle de ton site actuel) ok Pages (WordPress > Pages) Accueil (/) Menuiserie sur mesure (/menuiserie-sur-mesure) Conception (/conception) Témoignages (/temoignages) Presse (/presse) Contact (/contact) Projets (WordPress > Projets) On crée un Custom Post Type : projet Page archive : /projets Fiches : /projets/nom-du-projet/ (Et on gère les redirections depuis les URLs Houzz en /projects/...) 3) Templates (ce que tu vas réellement "retrouver") Accueil : hero + sections (services/positionnement) + 3-6 projets mis en avant + CTA contact Archive Projets : grille filtrable (catégories) + image + titre + lieu (option) Fiche Projet : galerie + texte + prestations + avant/après (si dispo) + CTA Menuiserie : présentation + types de réalisations + galeries + process + CTA Contact : formulaire + infos + zones d'intervention Migration (sans se tirer une balle dans le SEO) On garde les slugs existants quand possible (/projets, /contact, etc.) On fait des 301 pour toutes les anciennes URLs Houzz importantes (notamment /projects/...) On refait : titles, meta descriptions, H1/H2 propres Ce dont j'ai besoin maintenant (2 infos, et je déroule) Tu veux que "Projets" et "Réalisations" soient : 1 seul espace (plus simple) ou 2 sections séparées (comme aujourd'hui, mais souvent inutile) Projet c'est juste le titre du menu déroulant qui propose "réalisation, conception, projets en cours Tu veux un site WordPress : identique (copie fidèle) identique + amélioré (même structure, mais plus premium : typographie, espaces, cohérence, CTA) identique + amélioré
+
+Parfait. Je choisis pour toi : Kadence (thème) + Kadence Blocks.
+Pourquoi ce duo ?
+	-	Cohérence : thème + blocs du même éditeur = moins de surprises.
+	-	Rapide : tu peux faire du premium sans coder.
+	-	Propre : ça reste "Gutenberg", pas une usine à gaz.
+
+1) Architecture WordPress calée sur TON menu (avec "Projet" en menu déroulant)
+Tu m'as dit : "Projet" = titre de menu qui déroule :
+	-	Réalisations
+	-	Conception
+	-	Projets en cours
+Donc on fait ça proprement :
+Pages (WordPress > Pages)
+	-	Accueil (/)
+	-	Menuiserie sur mesure (/menuiserie-sur-mesure)
+	-	Témoignages (/temoignages)
+	-	Presse (/presse)
+	-	Contact (/contact)
+Section "Projet" (menu parent, non cliquable)
+Sous-menu :
+	-	Réalisations -> page archive d'un CPT projet filtrée statut = realise URL : /realisations
+	-	Conception -> page archive filtrée statut = conception URL : /conception (tu l'as déjà, on garde)
+	-	Projets en cours -> page archive filtrée statut = en-cours URL : /projets-en-cours (ou /projets si tu préfères, mais ton wording dit "en cours")
+ Et si tu veux quand même un "hub" cliquable "Projet" :
+	-	"Projet" pointe vers /projets = une archive globale avec filtres (réalisé / conception / en cours)
+
+2) Le bon modèle de contenu (la clé : arrêter de bricoler en pages)
+On crée un Custom Post Type : projet
+Champs (simples, utiles, SEO-friendly)
+	-	Titre
+	-	Statut (taxonomie ou champ select) : réalisé / conception / en cours
+	-	Lieu (option)
+	-	Année (option)
+	-	Prestations (liste : MOE, rénovation, menuiserie, déco, 3D…)
+	-	Galerie (images)
+	-	Texte de présentation (bloc)
+	-	Avant/Après (option, si tu l'utilises)
+Taxonomies (catégories)
+	-	type : rénovation / menuiserie / 3D / … (si utile)
+	-	statut : réalisé / conception / en cours (ça c'est obligatoire vu ton menu)
+
+3) Templates à construire (Gutenberg + Kadence Blocks)
+A) Accueil
+	-	Hero (message + CTA Contact)
+	-	3 blocs "signature" (MOE / Rénovation / Menuiserie)
+	-	Sélection 3-6 projets (réalisés) en grille
+	-	Témoignage(s) court(s)
+	-	CTA final
+B) Archives (Réalisations / Conception / En cours)
+	-	Titre + intro courte
+	-	Filtres (au minimum : prestations / type)
+	-	Grille cartes : image + titre + lieu + statut discret
+C) Fiche Projet
+	-	Galerie en haut
+	-	Pitch court (2-3 lignes)
+	-	Prestations / lieu / année
+	-	Récit + photos
+	-	CTA "Parlons de votre projet"
+D) Menuiserie sur mesure
+	-	Positionnement (sur mesure / haut de gamme / process)
+	-	6-12 photos (galerie)
+	-	Process (brief -> conception -> fabrication -> pose)
+	-	CTA
+E) Contact
+	-	Formulaire (Fluent Forms ou WPForms)
+	-	Coordonnées / zone d'intervention
+	-	CTA WhatsApp / appel si tu veux
+
+4) Migration depuis Houzz (sans te saboter Google)
+Ce qu'on fait
+	-	On garde les URLs existantes quand elles ont du sens : /contact, /presse, /temoignages, /menuiserie-sur-mesure, etc.
+	-	On recrée les contenus proprement (textes + images)
+Redirections 301 (le point critique)
+	-	Toutes les anciennes URLs type /projects/... -> vers la nouvelle fiche projet correspondante (/realisations/xxx ou /projets/xxx)
+	-	/re-alisations -> /realisations (accent & slug propre)
+	-	Toute page supprimée -> redirection vers la page parent logique (pas vers l'accueil "au pif")
+
+5) Ce que je te donne maintenant comme plan d'exécution (clair, sans théâtre)
+	1	Installer WordPress + Kadence + Kadence Blocks
+	2	Créer CPT projet + taxonomie statut
+	3	Créer les pages archives :
+	-	/realisations (filtre statut=réalisé)
+	-	/conception (statut=conception)
+	-	/projets-en-cours (statut=en-cours)
+	4	Construire 1 template "Fiche Projet" + 1 template "Archive"
+	5	Migrer 5 projets pour valider le style
+	6	Migrer le reste
+	7	Poser redirections + SEO (titles/meta) + sitemap
+
+Next step (et là, j'ai besoin d'un truc très concret)
+Tu veux que les fiches projets aient quelle URL principale ?
+	-	Option A (très clean, alignée menu) /realisations/nom-du-projet pour les réalisés, /conception/nom-du-projet pour la conception, /projets-en-cours/nom-du-projet pour en cours.
+	-	Option B (plus simple techniquement) tout en /projets/nom-du-projet et les pages Réalisations/Conception/En-cours filtrent juste l'archive.
+Moi je préfère Option A (plus lisible, plus premium, plus "maîtrise d'œuvre" et moins "catalogue"). Dis-moi A ou B et je te donne ensuite la spec finale des slugs + la matrice de redirections (celle qui évite le crash SEO).
+
+1) Architecture WordPress calée sur TON menu (avec "Projet" en menu déroulant) Tu m'as dit : "Projet" = titre de menu qui déroule : Réalisations Conception Projets en cours Donc on fait ça proprement : Pages (WordPress > Pages) Accueil (/) Menuiserie sur mesure (/menuiserie-sur-mesure) Témoignages (/temoignages) Presse (/presse) Contact (/contact) Section "Projet" (menu parent, non cliquable) Sous-menu : Réalisations -> page archive d'un CPT projet filtrée statut = realise URL : /realisations Conception -> page archive filtrée statut = conception URL : /conception (tu l'as déjà, on garde) Projets en cours -> page archive filtrée statut = en-cours URL : /projets-en-cours (ou /projets si tu préfères, mais ton wording dit "en cours")  Et si tu veux quand même un "hub" cliquable "Projet" : "Projet" pointe vers /projets = une archive globale avec filtres (réalisé / conception / en cours) 2) Le bon modèle de contenu (la clé : arrêter de bricoler en pages) On crée un Custom Post Type : projet Champs (simples, utiles, SEO-friendly) Titre Statut (taxonomie ou champ select) : réalisé / conception / en cours Lieu (option) Année (option) Prestations (liste : MOE, rénovation, menuiserie, déco, 3D…) Galerie (images) Texte de présentation (bloc) Avant/Après (option, si tu l'utilises) Taxonomies (catégories) type : rénovation / menuiserie / 3D / … (si utile) statut : réalisé / conception / en cours (ça c'est obligatoire vu ton menu) 3) Templates à construire (Gutenberg + Kadence Blocks) A) Accueil Hero (message + CTA Contact) 3 blocs "signature" (MOE / Rénovation / Menuiserie) Sélection 3-6 projets (réalisés) en grille Témoignage(s) court(s) CTA final B) Archives (Réalisations / Conception / En cours) Titre + intro courte Filtres (au minimum : prestations / type) Grille cartes : image + titre + lieu + statut discret C) Fiche Projet Galerie en haut Pitch court (2-3 lignes) Prestations / lieu / année Récit + photos CTA "Parlons de votre projet" D) Menuiserie sur mesure Positionnement (sur mesure / haut de gamme / process) 6-12 photos (galerie) Process (brief -> conception -> fabrication -> pose) CTA E) Contact Formulaire (Fluent Forms ou WPForms) Coordonnées / zone d'intervention CTA WhatsApp / appel si tu veux 4) Migration depuis Houzz (sans te saboter Google) Ce qu'on fait On garde les URLs existantes quand elles ont du sens : /contact, /presse, /temoignages, /menuiserie-sur-mesure, etc. On recrée les contenus proprement (textes + images) Redirections 301 (le point critique) Toutes les anciennes URLs type /projects/... -> vers la nouvelle fiche projet correspondante (/realisations/xxx ou /projets/xxx) /re-alisations -> /realisations (accent & slug propre) Toute page supprimée -> redirection vers la page parent logique (pas vers l'accueil "au pif") 5) Ce que je te donne maintenant comme plan d'exécution (clair, sans théâtre) Installer WordPress + Kadence + Kadence Blocks Créer CPT projet + taxonomie statut Créer les pages archives : /realisations (filtre statut=réalisé) /conception (statut=conception) /projets-en-cours (statut=en-cours) Construire 1 template "Fiche Projet" + 1 template "Archive" Migrer 5 projets pour valider le style Migrer le reste Poser redirections + SEO (titles/meta) + sitemap Next step (et là, j'ai besoin d'un truc très concret) Tu veux que les fiches projets aient quelle URL principale ? Option A (très clean, alignée menu) /realisations/nom-du-projet pour les réalisés, /conception/nom-du-projet pour la conception, /projets-en-cours/nom-du-projet pour en cours. Option B (plus simple techniquement) tout en /projets/nom-du-projet et les pages Réalisations/Conception/En-cours filtrent juste l'archive.
+
+Nickel, tu as bien tout recopié. Maintenant je tranche (et je t'explique sans bla-bla).
+Je recommande Option B
+Tout en /projets/nom-du-projet et tes pages :
+	-	/realisations
+	-	/conception
+	-	/projets-en-cours
+…ne sont que des archives filtrées.
+Pourquoi B est le meilleur choix (dans la vraie vie
+
+1) Architecture WordPress calée sur TON menu (avec "Projet" en menu déroulant) Tu m'as dit : "Projet" = titre de menu qui déroule : Projets est sur la page d'accueil et déroule sur : =Réalisations =Conceptions =Projets en cours Donc on fait ça proprement : Pages (WordPress > Pages) Accueil (/) Réalisations Menuiserie sur mesure (/menuiserie-sur-mesure) Témoignages (/temoignages) Presse (/presse) Contact (/contact) Section "Projet" (menu parent, non cliquable) Sous-menu : Réalisations -> page archive d'un CPT projet filtrée statut = realise URL : /realisations Conception -> page archive filtrée statut = conception URL : /conception (tu l'as déjà, on garde) Projets en cours -> page archive filtrée statut = en-cours URL : /projets-en-cours (ou /projets si tu préfères, mais ton wording dit "en cours")  Et si tu veux quand même un "hub" cliquable "Projet" : "Projet" pointe vers /projets = une archive globale avec filtres (réalisé / conception / en cours) 2) Le bon modèle de contenu (la clé : arrêter de bricoler en pages) On crée un Custom Post Type : projet Champs (simples, utiles, SEO-friendly) Titre Statut (taxonomie ou champ select) : réalisé / conception / en cours Lieu (option) Année (option) Prestations (liste : MOE, rénovation, menuiserie, déco, 3D…) Galerie (images) Texte de présentation (bloc) Avant/Après (option, si tu l'utilises) Taxonomies (catégories) type : rénovation / menuiserie / 3D / … (si utile) statut : réalisé / conception / en cours (ça c'est obligatoire vu ton menu) 3) Templates à construire (Gutenberg + Kadence Blocks) A) Accueil Hero (message + CTA Contact) 3 blocs "signature" (MOE / Rénovation / Menuiserie) Sélection 3-6 projets (réalisés) en grille Témoignage(s) court(s) CTA final B) Archives (Réalisations / Conception / En cours) Titre + intro courte Filtres (au minimum : prestations / type) Grille cartes : image + titre + lieu + statut discret C) Fiche Projet Galerie en haut Pitch court (2-3 lignes) Prestations / lieu / année Récit + photos CTA "Parlons de votre projet" D) Menuiserie sur mesure Positionnement (sur mesure / haut de gamme / process) 6-12 photos (galerie) Process (brief -> conception -> fabrication -> pose) CTA E) Contact Formulaire (Fluent Forms ou WPForms) Coordonnées / zone d'intervention CTA WhatsApp / appel si tu veux 4) Migration depuis Houzz (sans te saboter Google) Ce qu'on fait On garde les URLs existantes quand elles ont du sens : /contact, /presse, /temoignages, /menuiserie-sur-mesure, etc. On recrée les contenus proprement (textes + images) Redirections 301 (le point critique) Toutes les anciennes URLs type /projects/... -> vers la nouvelle fiche projet correspondante (/realisations/xxx ou /projets/xxx) /re-alisations -> /realisations (accent & slug propre) Toute page supprimée -> redirection vers la page parent logique (pas vers l'accueil "au pif") 5) Ce que je te donne maintenant comme plan d'exécution (clair, sans théâtre) Installer WordPress + Kadence + Kadence Blocks Créer CPT projet + taxonomie statut Créer les pages archives : /realisations (filtre statut=réalisé) /conception (statut=conception) /projets-en-cours (statut=en-cours) Construire 1 template "Fiche Projet" + 1 template "Archive" Migrer 5 projets pour valider le style Migrer le reste Poser redirections + SEO (titles/meta) + sitemap Next step (et là, j'ai besoin d'un truc très concret) Tu veux que les fiches projets aient quelle URL principale ? Option A (très clean, alignée menu) /realisations/nom-du-projet pour les réalisés, /conception/nom-du-projet pour la conception, /projets-en-cours/nom-du-projet pour en cours. Option B (plus simple techniquement) tout en /projets/nom-du-projet et les pages Réalisations/Conception/En-cours filtrent juste l'archive. Moi je préfère Option A (plus lisible, plus premium, plus "maîtrise d'œuvre" et moins "catalogue"). Dis-moi A ou B et je te donne ensuite la spec finale des slugs + la matrice de redirections (celle qui évite le crash SEO).
+1) Architecture WordPress calée sur TON menu (avec "Projet" en menu déroulant) Tu m'as dit : "Projet" = titre de menu qui déroule : Projets est sur la page d'accueil et déroule sur : =Réalisations =Conceptions =Projets en cours Donc on fait ça proprement : Pages (WordPress > Pages) Accueil (/) Projet (avec menu déroulant Menuiserie sur mesure (/menuiserie-sur-mesure) Témoignages (/temoignages) pas sur accueil Presse (/presse) ok Contact (/contact) ok Sous-menu : Réalisations -> page archive d'un CPT projet filtrée statut = realise URL : /realisations Conception -> page archive filtrée statut = conception URL : /conception (tu l'as déjà, on garde) ok Projets en cours -> page archive filtrée statut = en-cours URL : /projets-en-cours (ou /projets si tu préfères, mais ton wording dit "en cours") ok "Projet" ne pointe sur rien,il ouvre le menu déroulant 2) Le bon modèle de contenu (la clé : arrêter de bricoler en pages) On crée un Custom Post Type : projet ok Champs (simples, utiles, SEO-friendly) ok Titre ok Statut (taxonomie ou champ select) : réalisé / conception / en cours ok Lieu (option) ok Année (option) non Prestations (liste : MOE, rénovation, menuiserie, déco, 3D…) ok Galerie (images) ok Texte de présentation (bloc) ok Avant/Après (option, si tu l'utilises) ok Taxonomies (catégories) ok type : rénovation / menuiserie / 3D / … (si utile) a voir statut : réalisé / conception / en cours (ça c'est obligatoire vu ton menu) ok 3) Templates à construire (Gutenberg + Kadence Blocks) ok A) Accueil Hero (message + CTA Contact) 3 blocs "signature" (MOE / Rénovation / Menuiserie) Sélection 3-6 projets (réalisés) en grille Témoignage(s) court(s) CTA final B) Archives (Réalisations / Conception / En cours) ok Titre + intro courte Filtres (au minimum : prestations / type) Grille cartes : image + titre + lieu + statut discret C) Fiche Projet ok Galerie en haut Pitch court (2-3 lignes) Prestations / lieu / année Récit + photos CTA "Parlons de votre projet" D) Menuiserie sur mesure ok Positionnement (sur mesure / haut de gamme / process) 6-12 photos (galerie) Process (brief -> conception -> fabrication -> pose) CTA E) Contact ok Formulaire (Fluent Forms ou WPForms) Coordonnées / zone d'intervention CTA WhatsApp / appel si tu veux 4) Migration depuis Houzz (sans te saboter Google) Ce qu'on fait On garde les URLs existantes quand elles ont du sens : /contact, /presse, /temoignages, /menuiserie-sur-mesure, etc. ok On recrée les contenus proprement (textes + images) ok Redirections 301 (le point critique) ok Toutes les anciennes URLs type /projects/... -> vers la nouvelle fiche projet correspondante (/realisations/xxx ou /projets/xxx) ok /re-alisations -> /realisations (accent & slug propre) ok Toute page supprimée -> redirection vers la page parent logique (pas vers l'accueil "au pif") ok 5) Ce que je te donne maintenant comme plan d'exécution (clair, sans théâtre) Installer WordPress + Kadence + Kadence Blocks. j'ai hostinger qui a wordpress intégré Créer CPT projet + taxonomie statut ok Créer les pages archives : ok /realisations (filtre statut=réalisé) /conception (statut=conception) /projets-en-cours (statut=en-cours) Construire 1 template "Fiche Projet" + 1 template "Archive" ok Migrer 5 projets pour valider le style Migrer le reste ok Poser redirections + SEO (titles/meta) + sitemap ok Next step (et là, j'ai besoin d'un truc très concret) Tu veux que les fiches projets aient quelle URL principale ? Option A (très clean, alignée menu) ok /realisations/nom-du-projet pour les réalisés, /conception/nom-du-projet pour la conception, /projets-en-cours/nom-du-projet pour en cours. Option B (plus simple techniquement) non tout en /projets/nom-du-projet et les pages Réalisations/Conception/En-cours filtrent juste l'archive.
+
+Parfait. Là on est alignés, propres, cohérents. Je valide 100 % ta version + Option A. C'est la bonne décision pour INSIDE. Pas la plus facile, mais la plus qualitative. 
+Je te fais maintenant le verrouillage définitif + les prochaines actions concrètes, sans blabla.
+
+ ARCHITECTURE VALIDÉE (version finale, gravée)
+Menu principal
+	-	Accueil /
+	-	Projet (non cliquable, ouvre le menu déroulant)
+	-	Réalisations -> /realisations
+	-	Conception -> /conception
+	-	Projets en cours -> /projets-en-cours
+	-	Menuiserie sur mesure -> /menuiserie-sur-mesure
+	-	Presse -> /presse
+	-	Contact -> /contact
+ Témoignages
+	-	PAS dans le menu principal
+	-	Intégré :
+	-	en sections sur l'accueil
+	-	éventuellement en bas des pages Projets / Menuiserie  Très bon choix : plus premium, moins "annuaire".
+
+ CONTENU / MODÈLE DE DONNÉES (CPT projet)
+Je verrouille aussi ça :
+Custom Post Type : projet
+Slug interne : projet (technique, invisible côté front)
+Taxonomie OBLIGATOIRE
+	-	statut :
+	-	réalisé
+	-	conception
+	-	en-cours
+ C'est elle qui pilote TOUT :
+	-	affichage menu
+	-	archives
+	-	URLs
+	-	filtres
+Champs conservés
+	-	Titre
+	-	Statut 
+	-	Lieu (option)
+	-	Prestations (MOE, rénovation, menuiserie, déco, 3D…)
+	-	Galerie
+	-	Texte
+	-	Avant / Après
+ Année supprimée -> bon réflexe (inutile, source d'oubli)
+ La taxonomie type (rénovation / menuiserie / 3D…) :  optionnelle, on la décidera après 5-6 projets migrés. Pas maintenant.
+
+ URLS FINALES (Option A - premium)
+C'est acté :
+	-	Réalisations : /realisations/nom-du-projet
+	-	Conception : /conception/nom-du-projet
+	-	Projets en cours : /projets-en-cours/nom-du-projet
+ Important : Techniquement, c'est le même CPT. La différence d'URL se fait via la taxonomie statut.
+ C'est plus élégant, plus lisible, plus "maîtrise d'œuvre".  Google aime. Les humains aussi.
+
+ HOSTING / TECHNIQUE
+Hostinger + WordPress intégré
+ OK, aucun problème.
+Checklist minimale côté Hostinger :
+	-	PHP ≥ 8.1
+	-	HTTPS activé
+	-	Cache activé (LiteSpeed si dispo)
+	-	Sauvegardes automatiques ON
+
+ NEXT STEPS CONCRETS (ce que tu fais MAINTENANT)
+Étape 1 - Installation propre
+	1	Installer WordPress
+	2	Installer :
+	-	Kadence Theme
+	-	Kadence Blocks
+	-	Plugin SEO (RankMath ou Yoast, peu importe)
+	-	Fluent Forms (ou WPForms)
+ Rien d'autre pour l'instant. Pas de plugins "jolis", pas de carrousel magique.
+
+Étape 2 - Structure avant design
+	1	Créer le CPT projet
+	2	Créer la taxonomie statut
+	3	Créer les pages :
+	-	/realisations
+	-	/conception
+	-	/projets-en-cours
+	4	Configurer le menu avec Projet non cliquable
+ ZÉRO design à ce stade. Juste la structure.
+
+Étape 3 - Templates Gutenberg
+	-	1 template Fiche Projet
+	-	1 template Archive Projet
+	-	1 page Accueil (structure, pas finition)
+
+Étape 4 - Migration test (clé)
+	-	Migrer 5 projets max
+	-	3 réalisés
+	-	1 conception
+	-	1 en cours
+	-	Ajuster :
+	-	lisibilité
+	-	hiérarchie
+	-	rythme
+ Tant que ces 5-là ne sont pas nickel, on ne migre pas le reste.
+
+ Prochaine question (la seule qui reste)
+Tu veux gérer le CPT projet :
+	-	sans code (plugin type CPT UI / Pods / ACF)
+	-	ou proprement en code (functions.php / plugin maison)
+Dis-moi A = sans code ou B = en code, et je te donne la configuration exacte (champs, réglages, pièges à éviter).
+Et oui : là, tu fais un site qui va durer. Pas une vitrine jetable.
+
+Étape 1 - Installation propre Installer WordPress en Application mac ou sur leur site directement Installer : Kadence Theme Sur le site wordpress il y a l'extension Gutenberg Blocks with AI by Kadence WP - Page Builder Features Kadence Blocks idem Plugin SEO (RankMath ou Yoast, peu importe) je fais comment Fluent Forms (ou WPForms) je fais comment ?
+
+Parfait, tu poses les bonnes questions au bon moment. On va faire ça simple, propre, sans folklore. Je te réponds point par point, et je tranche quand il faut.
+
+1 Installer WordPress
+ Application Mac -> NON
+Oublie. Ça sert à rien dans ton cas (c'est pour du local / dev, pas pour ton site public).
+ La bonne méthode (Hostinger)
+ Directement sur Hostinger (WordPress intégré)
+Pourquoi ?
+	-	SSL auto
+	-	config serveur correcte
+	-	pas de bidouille FTP inutile
+	-	tu bosses directement sur le vrai site
+ Donc :
+	-	Hostinger -> Sites -> Créer un site -> WordPress
+	-	Choisis installation vierge
+	-	Pas de thème exotique
+	-	Pas de plugin "recommandé" en bundle
+
+2 Thème Kadence (le bon)
+À faire
+	-	WordPress admin -> Apparence > Thèmes
+	-	"Ajouter" -> rechercher Kadence
+	-	Installer -> Activer
+ C'est le thème, pas un plugin.
+
+3 Plugins Kadence (attention au piège)
+ Important
+"Gutenberg Blocks with AI by Kadence WP"  Ignore la mention "AI", c'est du marketing.
+Ce qu'il te faut vraiment
+Installe UN SEUL plugin :
+	-	Kadence Blocks - Gutenberg Blocks for Page Builder Features
+ Il contient :
+	-	les blocs
+	-	les contrôles avancés
+	-	tu n'as PAS besoin d'un second plugin Kadence Blocks
+Comment
+	-	Extensions -> Ajouter
+	-	Recherche : Kadence Blocks
+	-	Installer -> Activer
+
+4 Plugin SEO (simple, sans débat)
+Je tranche : Rank Math
+Plus clair, plus moderne, plus complet que Yoast aujourd'hui.
+Installation
+	-	Extensions -> Ajouter
+	-	Recherche : Rank Math SEO
+	-	Installer -> Activer
+Configuration express (5 minutes)
+	-	Choisis : Mode facile
+	-	Site = entreprise
+	-	Titre du site = INSIDE
+	-	Pas de schéma avancé pour l'instant
+	-	Sitemap -> ON
+ Tu reviens dessus après la migration, pas maintenant.
+
+5 Formulaire (contact)
+Je recommande : Fluent Forms
+Plus léger, plus stable, très bien avec Gutenberg.
+Installation
+	-	Extensions -> Ajouter
+	-	Recherche : Fluent Forms
+	-	Installer -> Activer
+Création du formulaire
+	-	Fluent Forms -> New Form
+	-	Template "Contact Form"
+	-	Champs minimum :
+	-	Nom
+	-	Email
+	-	Téléphone
+	-	Message
+	-	Bouton : "Envoyer"
+ Tu l'intègres plus tard dans la page Contact avec un bloc Fluent Forms.
+
+ Récap - Ce que tu dois avoir à la fin de l'étape 1
+Dans Extensions > Installées :
+	-	Kadence Blocks
+	-	Rank Math SEO
+	-	Fluent Forms
+Dans Apparence > Thèmes :
+	-	Kadence (actif)
+ Rien d'autre. Si tu as plus de 5 plugins à ce stade, c'est qu'on a dérapé.
+
+ Prochaine étape (la vraie)
+Quand c'est fait, tu me dis juste :
+"Étape 1 OK"
+Et on passe à :
+Étape 2 - Création du CPT projet + taxonomie statut
+(là où 90 % des sites WordPress commencent à devenir bancals… sauf le tien).
+On continue.
+
+a chaque fois que je clique sur installer extension sur admin wordpress je tombe sur ça
+
+Ok. Là, on arrête tout de suite et on clarifie, parce que ce que tu vois est logique et réparable, mais à ne surtout pas ignorer.
+Ce qui se passe (sans bullshit)
+Tu es sur une URL du type :
+https://aliceblue-skunk-492965.hostingersite.com/wp-admin/plugins.php
+ C'est un domaine temporaire Hostinger  Ces domaines sont très souvent blacklistés par Google Safe Browsing  Ce n'est PAS ton site qui est piraté  C'est le domaine temporaire qui est considéré comme à risque
+Chrome fait son boulot. Il est chiant, mais il a raison.
+
+ Ce qu'il ne faut PAS faire
+	-	 Cliquer sur "continuer quand même"
+	-	 Installer des plugins tant que ça affiche ça
+	-	 Te dire "c'est rien, je verrai plus tard"
+Sinon tu te tires une balle dans le pied dès le départ (et Google s'en souviendra).
+
+ LA SOLUTION PROPRE (et la seule correcte)
+Étape 1 - Utiliser TON VRAI DOMAINE
+Tu ne dois pas travailler sur *.hostingersite.com.
+Tu dois travailler sur :  ton domaine final (ex : inside.archi ou dev.inside.archi)
+Dans Hostinger :
+	1	Va dans Sites
+	2	Sélectionne ton site WordPress
+	3	Connecte ton domaine (ou sous-domaine)
+	4	Force le HTTPS (SSL)
+Hostinger a un bouton du type :
+"Changer le domaine principal" ou "Connecter un domaine existant"
+ Fais-le avant toute autre action.
+
+Étape 2 - SSL obligatoire
+Une fois le domaine connecté :
+	-	Active le certificat SSL
+	-	Vérifie que l'admin est bien en :    https://ton-domaine/wp-admin              
+ Tant que tu vois :
+	-	domaine temporaire
+	-	http
+	-	avertissement rouge
+ STOP.
+
+Étape 3 - Re-test
+Une fois sur le vrai domaine sécurisé :
+	-	recharge /wp-admin
+	-	clique sur Extensions > Ajouter
+	-	l'alerte disparaît
+Si elle ne disparaît pas :
+	-	on vide le cache navigateur
+	-	on attend 10-30 minutes (propagation SSL)
+	-	au pire : on force la revalidation Google
+
+ Règle d'or (à graver)
+Un site WordPress ne se construit jamais sur un domaine temporaire. Jamais. Même pour "tester".
+Les pros font :
+	-	domaine final
+	-	ou sous-domaine dev. / staging.
+
+Ce que tu fais MAINTENANT
+	1	Dis-moi :
+	-	quel domaine tu veux utiliser (inside.archi ? autre ?)
+	2	Tu connectes ce domaine dans Hostinger
+	3	Tu reviens me dire :
+"Je suis bien sur https://MON-DOMAINE/wp-admin et l'alerte a disparu"
+Ensuite seulement, on reprend l'étape 1 (plugins) proprement.
+Bonne nouvelle :  rien n'est cassé  tu as juste évité une grosse connerie grâce à Chrome 
+
+Parfait, cette capture est exactement l'écran qu'on devait voir. On est au bon endroit. Maintenant je t'explique quoi faire, quoi ne pas faire, et ce que ça implique, sans flou.
+
+Ce que Hostinger te demande (en clair)
+Hostinger te dit :
+ "Pour que inside.archi pointe vers ce site WordPress, il faut que les serveurs DNS du domaine soient chez nous."
+Ils te demandent donc de changer les serveurs de noms (nameservers) de ton domaine inside.archi pour :
+	-	ns1.dns-parking.com
+	-	ns2.dns-parking.com
+ Ce sont les DNS Hostinger.
+
+LA question clé (avant d'agir)
+ Où est actuellement géré le domaine inside.archi ?
+En pratique, c'est souvent :
+	-	Gandi
+	-	OVH
+	-	Ionos
+	-	Infomaniak
+	-	ou autre registrar
+ Changer les DNS = confier la gestion DNS complète à Hostinger.
+Conséquence importante
+	-	 Le site web pointera bien vers Hostinger 
+	-	 Les emails peuvent casser si :
+	-	tu as des emails pro (contact@inside.archi, etc.)
+	-	ET que tu ne recrées pas les enregistrements MX chez Hostinger
+Hostinger le dit d'ailleurs (en petit, mais honnêtement).
+
+Ce que je te recommande (tranché)
+ Option recommandée (simple, propre)
+ Changer les DNS comme Hostinger le demande, PUIS :
+	-	vérifier / recréer les DNS email si besoin
+	-	activer SSL
+	-	bosser sereinement
+C'est la solution la plus stable si :
+	-	ton email est déjà chez Hostinger
+	-	ou tu utilises Google Workspace / autre (qu'on peut rebrancher)
+
+Ce que tu fais maintenant (pas à pas)
+Étape 1 - Va chez le fournisseur du domaine
+	-	Connecte-toi là où tu as acheté inside.archi
+	-	Va dans :
+	-	"Gestion du domaine"
+	-	"Serveurs de noms" / "Nameservers"
+Étape 2 - Remplace les DNS existants
+Supprime tout ce qu'il y a actuellement et mets EXACTEMENT :
+
+ns1.dns-parking.com
+ns2.dns-parking.com
+
+Enregistre.
+
+Étape 3 - Attendre (oui, vraiment)
+	-	⏱ Délai : 10 minutes à 24h
+	-	En pratique : souvent 30-60 min
+Pendant ce temps :
+	-	le site peut être inaccessible
+	-	ou afficher encore l'ancien site  NORMAL
+
+Étape 4 - Retour dans Hostinger
+Quand c'est propagé :
+	-	Hostinger détecte automatiquement le domaine
+	-	Le site passe sur https://inside.archi
+	-	Tu peux activer le SSL
+ À partir de là, l'alerte rouge Chrome disparaît.
+
+ Point critique : les emails
+Dis-moi clairement :
+	-	as-tu des emails du type @inside.archi ?
+	-	oui / non
+	-	si oui : chez qui ? (Google Workspace, autre)
+ Selon ta réponse, je te dirai exactement quels DNS MX ajouter pour ne rien casser.
+
+Résumé ultra-court
+	-	 L'écran Hostinger est normal
+	-	 Tu dois changer les DNS
+	-	 Attention aux emails
+	-	 Ne touche plus à WordPress tant que le domaine n'est pas actif en HTTPS
+ Prochaine action : Dis-moi chez qui est le domaine inside.archi et si tu as des emails pro. Ensuite on verrouille ça et on reprend WordPress là où on s'est arrêtés.
+
+attends on peut pas créer le site en wordpress et après on fait un import sur hostinger comme ça mon site reste actif en attendant
+
+Très bonne question. Et je te réponds franchement, sans mythe de "best practice" bidon.
+ Oui, on peut.  Mais pas comme tu l'imagines.  Et surtout : il faut choisir la bonne méthode, sinon tu te tires une balle dans le pied (encore).
+Je t'explique les 3 options possibles, et je tranche.
+
+OPTION 1 - Travailler sur le domaine temporaire Hostinger
+ NON
+Tu viens de voir pourquoi :
+	-	domaine blacklisté
+	-	Chrome bloque
+	-	plugins inaccessibles
+	-	SEO pollué
+ On oublie. Définitivement.
+
+OPTION 2 - Créer le site WordPress en local (Mac) puis l'importer
+ OUI, MAIS…
+Comment ça marche
+	-	WordPress en local (LocalWP, DevKinsta, etc.)
+	-	Tu construis tout
+	-	Puis export / import vers Hostinger
+Avantages
+	-	Ton site Houzz reste en ligne
+	-	Aucun impact public
+	-	Zéro stress DNS
+Inconvénients (importants)
+	-	Import parfois chiant (URLs, images, paths)
+	-	SSL / SEO à revalider
+	-	Plus technique
+	-	Tu perds le confort "je clique, ça marche"
+ Faisable, mais pas la plus fluide pour toi.
+
+OPTION 3 - LA BONNE SOLUTION PRO (celle que je recommande)
+ Créer un SOUS-DOMAINE de staging
+Exemple :
+	-	dev.inside.archi
+	-	ou wp.inside.archi
+Ton site Houzz reste sur :
+	-	inside.archi
+Le nouveau WordPress vit sur :
+	-	dev.inside.archi
+Pourquoi c'est la meilleure option
+	-	 Pas de coupure du site actuel
+	-	 Pas de domaine temporaire
+	-	 SSL propre
+	-	 Tu travailles en conditions réelles
+	-	 Migration finale = simple bascule DNS ou redirection
+ C'est exactement ce que font les agences sérieuses.
+
+Concrètement, comment on fait (simple)
+Étape 1
+	-	Tu crées dev.inside.archi chez ton registrar (ou DNS)
+	-	Tu le connectes à Hostinger
+	-	Tu actives SSL
+Étape 2
+	-	Tu installes WordPress sur dev.inside.archi
+	-	Tu construis tranquillement tout le site
+Étape 3 (le jour J)
+	-	Tu remplaces Houzz par WordPress
+	-	Redirections 301
+	-	SEO OK
+	-	Aucune coupure
+
+ Point important (et là je suis cash)
+Si tu veux un site pro, durable, SEO-safe, NE travaille PAS sur un domaine temporaire NE fais PAS d'export/import bancal UTILISE un sous-domaine propre
+
+Ce que je te propose maintenant
+Dis-moi :
+	1	Où est géré le DNS de inside.archi (OVH ? Gandi ? autre ?)
+	2	Tu préfères :
+	-	A -> sous-domaine dev.inside.archi (recommandé)
+	-	B -> WordPress local + import (possible mais plus technique)
+Je te guide pas à pas, sans casser ton site actuel.
+
+Créer un SOUS-DOMAINE de staging ok on fait comment... je suis hébergé actuellement sur OVH
+
+Parfait. Là tu fais le bon choix, et OVH est très bien pour ça. On va faire ça proprement, sans casser ton site Houzz, sans stress.
+Je te donne la procédure exacte, étape par étape. Tu peux la suivre les yeux fermés.
+
+OBJECTIF
+	-	Site actuel (Houzz) reste en ligne sur  inside.archi
+	-	Nouveau WordPress en construction sur  dev.inside.archi
+	-	SSL OK, aucun warning Chrome
+	-	Migration finale propre plus tard
+
+ÉTAPE 1 - Créer le sous-domaine chez OVH
+1 Connexion OVH
+	-	Va sur manager.ovh.com
+	-	Domaine -> inside.archi
+	-	Onglet Zone DNS
+2 Ajouter un enregistrement DNS
+Clique Ajouter une entrée
+Choisis :
+	-	Type : A
+	-	Sous-domaine : dev
+	-	Adresse IP :  l'IP de ton hébergement Hostinger
+Où trouver l'IP Hostinger
+	-	Hostinger -> Sites -> ton site WordPress
+	-	Infos du site / Détails
+	-	Copie l'IPv4
+ Exemple (fictif) :
+
+dev    A    185.xxx.xxx.xxx
+
+Enregistre.
+⏱ Propagation :
+	-	5 à 30 minutes en général
+	-	jusqu'à 1h max
+
+ÉTAPE 2 - Dire à Hostinger que dev.inside.archi existe
+Sur Hostinger
+	1	Sites -> Gérer
+	2	Ajouter un domaine ou Changer domaine
+	3	Entre :  dev.inside.archi
+	4	Choisis-le comme site WordPress
+Hostinger va :
+	-	reconnaître le sous-domaine
+	-	proposer SSL automatiquement
+ Active SSL (Let's Encrypt)
+
+ÉTAPE 3 - Vérification
+Dans ton navigateur, teste :
+
+https://dev.inside.archi
+https://dev.inside.archi/wp-admin
+
+Résultat attendu :
+	-	 Pas d'alerte rouge
+	-	 WordPress admin accessible
+	-	 HTTPS actif
+Si SSL met 5-10 minutes à arriver -> normal.
+
+ÉTAPE 4 - Installation WordPress (propre)
+Sur dev.inside.archi :
+	-	Installation WordPress vierge
+	-	Pas de thème exotique
+	-	Pas de plugins inutiles
+Puis on reprend exactement :
+	-	Kadence Theme
+	-	Kadence Blocks
+	-	Rank Math
+	-	Fluent Forms
+
+ ERREURS À NE PAS FAIRE
+	-	 Changer les DNS globaux chez OVH
+	-	 Toucher au domaine principal inside.archi
+	-	 Travailler sur le domaine temporaire Hostinger
+
+PROCHAINE ACTION IMMÉDIATE
+	1	Ajoute l'entrée DNS dev.inside.archi chez OVH
+	2	Dis-moi :
+	-	"DNS OK"
+	-	l'IP Hostinger utilisée
+Je te guiderai ensuite sur l'écran Hostinger exact pour lier le sous-domaine et activer SSL.
+On avance bien. Là, tu bosses comme un pro.
+
+Parfait. Tu es exactement au bon écran. Là, il n'y a qu'un seul champ à remplir correctement. On va le faire sans hésiter.
+
+Ce que tu dois mettre ICI (champ Cible)
+ La Cible = l'adresse IP de ton hébergement Hostinger  PAS une URL, PAS un nom de domaine, PAS http.
+Format attendu
+Un truc du genre :
+
+185.xxx.xxx.xxx
+
+Où trouver l'IP Hostinger (rapide)
+Dans un autre onglet :
+	1	Hostinger
+	2	Sites -> ton site WordPress
+	3	Infos du site / Détails / Serveur
+	4	Copie l'IPv4
+ Reviens sur OVH  Colle cette IP dans Cible
+
+Ce que tu laisses tel quel
+	-	Sous-domaine : dev 
+	-	TTL : Par défaut 
+
+Résultat final attendu (logique)
+OVH affichera quelque chose comme :
+
+dev.inside.archi   A   185.xxx.xxx.xxx
+
+ Clique Suivant  Puis Valider
+
+Ce qui se passe après
+	-	⏱ Propagation DNS : 5 à 30 min (parfois jusqu'à 1h)
+	-	Rien ne casse
+	-	Le site principal inside.archi reste intact
+	-	dev.inside.archi commence à pointer vers Hostinger
+
+Étape suivante (juste après)
+Dès que c'est validé chez OVH :
+	1	Va sur Hostinger
+	2	Ajoute / connecte le domaine dev.inside.archi au site WordPress
+	3	Active le SSL
+ Quand c'est fait, tu me dis simplement :
+"Entrée DNS créée + IP = xxx.xxx.xxx.xxx"
+Et je t'emmène pile au bon écran Hostinger pour la suite. Là, tu déroules nickel.
+
+Parfait. Là on est dans le piège Hostinger classique. Respire : tu n'as rien cassé, mais il ne faut surtout pas cliquer n'importe où maintenant.
+Je te guide clic par clic.
+
+CE QUE TU VOIS
+Bandeau jaune :
+"Domaine - Le domaine a besoin d'être configuré"
+ Normal : Hostinger attend que dev.inside.archi soit déclaré officiellement côté site.
+
+ CE QU'IL NE FAUT PAS FAIRE
+	-	 NE PAS cliquer sur "Créer un nouveau site"
+	-	 NE PAS lancer l'IA
+	-	 NE PAS remplir les sections Google / abonnés
+	-	 NE PAS toucher au contenu
+ Tout ça, c'est du marketing Hostinger. On s'en fout.
+
+ CE QU'IL FAUT FAIRE (dans le bon ordre)
+ÉTAPE 1 - Clique sur "Gérer" (dans le bloc Domaine)
+C'est le seul bouton qui nous intéresse.
+ Objectif : dire à Hostinger
+"Ce site doit répondre sur dev.inside.archi"
+
+ÉTAPE 2 - Ajouter le domaine
+Quand Hostinger te le demande :
+	-	Domaine :    dev.inside.archi              
+	-	Type : domaine externe / déjà existant
+	-	Valider
+Hostinger va :
+	-	vérifier le DNS
+	-	reconnaître ton entrée OVH
+	-	préparer le SSL
+ Si Hostinger te dit "DNS en cours de propagation" :  c'est normal  On attend 10-30 minutes  On recharge
+
+ÉTAPE 3 - Activer le SSL (obligatoire)
+Dès que Hostinger affiche le domaine comme connecté :
+	-	Clique Activer SSL
+	-	Attends la confirmation
+Résultat attendu :
+
+https://dev.inside.archi
+https://dev.inside.archi/wp-admin
+
+ sans alerte Chrome
+
+ Ce que tu DOIS répondre aux questions Hostinger
+Quand il te demande :
+"Souhaitez-vous créer un nouveau site avec l'IA ?"
+ Réponse : "Conserver le site actuel"
+Toujours.
+
+CHECKPOINT (très important)
+Quand tout est bon, tu dois pouvoir me dire :
+	-	 j'accède à https://dev.inside.archi
+	-	 j'accède à https://dev.inside.archi/wp-admin
+	-	 plus d'alerte rouge Chrome
+
+ET SEULEMENT APRÈS ÇA
+On reprend le plan :
+	1	Installer Kadence Theme
+	2	Installer Kadence Blocks
+	3	Installer Rank Math
+	4	Installer Fluent Forms
+Mais pas avant que le domaine + SSL soient verts.
+
+ Dis-moi exactement ce que Hostinger affiche après avoir cliqué sur "Gérer" (message d'erreur, validation, attente DNS, autre).
+Tu es à 2 clics d'avoir un environnement propre.
+
+la capture c 'est pour Où trouver l'IP Hostinger
+
+Parfait, merci pour la précision  Je vais être très concret : ta capture ne montre PAS l'IP. Elle montre l'onboarding WordPress, pas les infos serveur. Donc tu n'as rien raté : tu n'es juste pas au bon endroit.
+On va la trouver en 30 secondes.
+
+Où trouver l'IP Hostinger (le bon chemin)
+Méthode 1 - La plus fiable (Hostinger hPanel)
+	1	Connecte-toi à Hostinger
+	2	Menu Sites
+	3	Clique sur ton site WordPress (celui en question)
+	4	Va dans :  Avancé puis  Détails du site ou  Informations du site (selon la langue)
+Tu dois voir un bloc avec :
+	-	Adresse IP
+	-	souvent appelée IPv4
+ C'est une suite de chiffres du type :
+
+185.xxx.xxx.xxx
+
+ C'est CETTE valeur que tu mets dans OVH, dans le champ Cible du A record.
+
+Méthode 2 - Si l'interface Hostinger est pénible
+(parfois ils planquent l'info, oui…)
+	1	Hostinger -> Hébergement
+	2	Clique sur ton hébergement
+	3	Onglet Serveur / Server details
+	4	Cherche :
+	-	IP address
+	-	IPv4
+
+ Ce qu'il ne faut PAS confondre
+	-	 Nom de domaine temporaire (aliceblue-skunk-xxxx.hostingersite.com)
+	-	 URL du site
+	-	 Adresse FTP
+	-	 Nom du serveur
+ Uniquement l'IPv4.
+
+Une fois que tu as l'IP
+Tu retournes sur OVH, écran que tu m'as montré, et tu mets :
+	-	Sous-domaine : dev
+	-	Type : A
+	-	Cible : IP_HOSTINGER
+	-	TTL : par défaut
+Tu valides.
+
+Ce que tu fais maintenant
+ Dis-moi ce que tu vois exactement dans Hostinger :
+	-	le nom du menu où tu bloques
+	-	ou copie/colle l'IP ici (sans crainte, une IP seule n'est pas sensible)
+Et je te confirme immédiatement si c'est la bonne avant que tu valides chez OVH.
+Tu es à un seul champ de finir cette étape.
+
+Parfait. Là on a l'info clé.  L'IP Hostinger est : 147.93.93.187 C'est exactement ce qu'on cherchait. Bien joué.
+Maintenant on enchaîne sans réfléchir, c'est mécanique.
+
+CE QUE TU FAIS MAINTENANT (chez OVH)
+Sur l'écran OVH "Ajouter une entrée à la zone DNS" que tu m'as montré :
+	-	Type : A
+	-	Sous-domaine : dev
+	-	TTL : Par défaut
+	-	Cible :    147.93.93.187              
+ Clique Suivant -> Valider
+Résultat attendu dans la zone DNS :
+
+dev.inside.archi   A   147.93.93.187
+
+CE QUI SE PASSE ENSUITE
+	-	⏱ Propagation DNS : 5 à 30 min (parfois 1h)
+	-	Le site principal inside.archi ne bouge pas
+	-	dev.inside.archi commence à pointer vers Hostinger
+
+ÉTAPE SUIVANTE (chez Hostinger, après propagation)
+	1	Retourne dans Hostinger
+	2	Sites -> ton site
+	3	Clique Gérer dans le bloc Domaine
+	4	Ajoute :    dev.inside.archi              
+	5	Active le SSL
+Quand tout est OK, tu dois pouvoir accéder à :
+	-	 https://dev.inside.archi
+	-	 https://dev.inside.archi/wp-admin
+	-	 plus aucun avertissement Chrome
+
+CHECKPOINT
+Fais l'entrée DNS chez OVH maintenant. Quand c'est fait, dis-moi simplement :
+"DNS dev créé avec IP 147.93.93.187"
+Je te guiderai pile sur le bon écran Hostinger pour raccrocher le sous-domaine et activer SSL, puis on reprend WordPress proprement (Kadence, plugins, structure).
+On est exactement dans le bon tempo.
+
+Parfait. Là on voit exactement où tu bloques, et c'est normal : tu es au bon endroit, mais pas au bon niveau.
+Respire : on n'achète rien, on ne transfère rien.
+
+Ce que tu vois (et ce que ça veut dire)
+Dans Noms de domaine externes, on voit :
+	-	inside.archi
+	-	statut  "Site web" (rouge)
+ Ça veut juste dire :
+"Ce domaine existe chez nous, mais il n'est PAS encore relié correctement à un site Hostinger."
+C'est normal, et ça se corrige en 2 clics.
+
+ CE QU'IL NE FAUT PAS FAIRE
+	-	 NE PAS cliquer sur "Acheter un nouveau domaine"
+	-	 NE PAS cliquer sur "Transférer"
+	-	 NE PAS toucher aux DNS ici (ils restent chez OVH)
+
+ CE QUE TU DOIS FAIRE MAINTENANT
+ Clique sur "Gérer les DNS"
+(bouton à droite de inside.archi)
+ Même si les DNS sont chez OVH, Hostinger a quand même besoin de "voir" le domaine pour l'associer au site.
+
+ÉTAPE SUIVANTE (écran attendu)
+Après avoir cliqué sur Gérer les DNS, Hostinger va :
+	-	soit te montrer les enregistrements détectés
+	-	soit te proposer d'associer un sous-domaine à un site
+ C'est là qu'on va déclarer dev.inside.archi.
+
+Ce que tu feras juste après
+Quand Hostinger te demande :
+	-	"Ajouter un domaine"
+	-	ou "Associer à un site"
+	-	ou "Connecter un domaine existant"
+ Tu entres EXACTEMENT :
+
+dev.inside.archi
+
+Puis tu valides.
+
+Résultat attendu (checkpoint)
+À la fin :
+	-	dev.inside.archi apparaît comme connecté
+	-	le bouton SSL devient disponible
+	-	l'alerte rouge Chrome disparaît
+
+ Clique maintenant sur "Gérer les DNS" et dis-moi mot pour mot ce que Hostinger affiche à l'écran suivant (ou envoie la capture).
+Tu es littéralement à 1 écran de la réussite.
+
+Parfait. Et stop. Là je te coupe net : tu es dans l'écran qu'il ne faut PAS utiliser. Tu n'as rien fait de mal, Hostinger t'y a amené par un raccourci trompeur.
+Je t'explique calmement mais fermement.
+
+ CE QUE TU VOIS ICI
+Tu es dans :
+Noms de domaine -> DNS / Serveurs de noms
+ Cet écran sert à :
+	-	gérer les DNS SI le domaine est chez Hostinger
+	-	ou transférer le domaine chez Hostinger
+Or ton domaine est :
+ chez OVH  et il doit y rester
+Donc :
+	-	 NE RIEN AJOUTER ICI
+	-	 NE PAS cliquer sur "Réinitialiser les DNS"
+	-	 NE PAS ajouter de A record ici
+	-	 NE PAS transférer le domaine
+Si tu touches ici, tu risques :
+	-	de casser le site Houzz
+	-	de casser les emails
+	-	de perdre la logique propre qu'on a mise en place
+
+ OÙ TU DOIS ALLER (le bon chemin Hostinger)
+Tu dois associer le sous-domaine à un SITE, pas gérer le DNS du domaine.
+ Chemin exact :
+Hostinger -> Sites web -> ton site WordPress
+ PAS "Noms de domaine"  PAS "DNS / Serveurs de noms"
+
+CE QUE TU DOIS VOIR
+Sur la page du site WordPress :
+	-	un bloc Domaine
+	-	avec un bouton Gérer (tu l'as déjà vu avant)
+ C'est LÀ que tu déclares :
+
+dev.inside.archi
+
+Hostinger va alors :
+	-	vérifier que le DNS existe (OVH -> OK)
+	-	rattacher le sous-domaine au site
+	-	proposer le SSL
+
+POUR ÊTRE TRÈS CLAIR (à graver)
+	-	OVH = autorité DNS
+	-	Hostinger = hébergement
+	-	On ne mélange JAMAIS les deux interfaces
+
+CE QUE TU FAIS MAINTENANT (simple)
+	1	Quitte cet écran DNS Hostinger
+	2	Va dans Sites web
+	3	Clique sur Gérer sur ton site WordPress
+	4	Cherche le bloc Domaine
+	5	Clique Gérer
+	6	Ajoute dev.inside.archi
+ Fais exactement ça, sans détour.
+Ensuite tu me dis :
+	-	ce que Hostinger affiche
+	-	ou tu balances la capture
+Tu n'es pas perdu. Tu es juste passé une fois par la mauvaise porte. On te remet dans le bon couloir.
+
+Parfait. Là on est ENFIN au bon endroit. Tu es dans le wp-admin du site WordPress, propre, fonctionnel. On peut avancer. 
+Maintenant je te fais faire 3 actions immédiates, dans le bon ordre, sans te disperser.
+
+ ÉTAPE 1 - Vérification rapide (30 secondes)
+Dans la barre d'URL de ton navigateur, vérifie :
+	-	tu es bien sur https://dev.inside.archi/wp-admin
+	-	pas sur hostingersite.com
+Si c'est le cas -> OK, environnement validé.
+
+ ÉTAPE 2 - Nettoyage Hostinger (important)
+Dans le tableau de bord WordPress, tu vois :
+"Connecter Hostinger Reach…"
+ Clique sur  Ignorer (en haut à droite du bandeau).
+Pourquoi ?
+	-	c'est du marketing
+	-	ça pollue l'admin
+	-	ça n'apporte rien à INSIDE
+
+ ÉTAPE 3 - Vérifier / installer ce qu'il faut (et rien de plus)
+1 Thème
+Va dans : Apparence -> Thèmes
+	-	Si Kadence est déjà actif -> parfait
+	-	Sinon :
+	-	Ajouter -> chercher Kadence
+	-	Installer -> Activer
+
+2 Extensions
+Va dans : Extensions -> Extensions installées
+Tu dois avoir au minimum :
+	-	 Kadence Blocks
+	-	 Rank Math SEO
+	-	 Fluent Forms
+	-	(LiteSpeed Cache est normal chez Hostinger, on le garde)
+Si une manque :
+	-	Extensions -> Ajouter
+	-	Recherche le plugin
+	-	Installer -> Activer
+ Ignore tout ce qui parle d'IA, de templates, de "site en 1 clic".
+
+ CE QUE TU NE FAIS PAS ENCORE
+	-	 Pas de création de pages
+	-	 Pas de design
+	-	 Pas d'import Houzz
+	-	 Pas de réglages SEO avancés
+ On structure avant de décorer.
+
+ PROCHAINE ÉTAPE (la vraie fondation)
+Quand tu as confirmé :
+	-	thème OK
+	-	plugins OK
+On passe à :
+ÉTAPE 4 - Créer le Custom Post Type projet + taxonomie statut
+Et là, j'ai besoin que tu choisisses :
+	-	A - Sans code (plugin type CPT UI / Pods)
+	-	B - Propre en code (functions.php / mini-plugin)
+Dis-moi A ou B. Ensuite je te donne les réglages exacts, champ par champ.
+Tu as fait le plus chiant. Le reste va aller vite.
+
+je te montre cette capture pour trouver CE QUE TU DOIS VOIR Sur la page du site WordPress : un bloc Domaine avec un bouton Gérer (tu l'as déjà vu avant)  C'est LÀ que tu déclares : dev.inside.archi
+
+Parfait, je comprends exactement ce que tu cherches à voir - et je vais être très clair, parce que là il y a une confusion normale mais piégeuse entre WordPress et Hostinger.
+ Tu ne verras JAMAIS le bloc "Domaine / Gérer" dans le wp-admin WordPress. Ce bloc n'existe pas dans WordPress.
+Respire  ce n'est pas toi, c'est l'UX Hostinger.
+
+Où est réellement le bloc "Domaine -> Gérer"
+ UNIQUEMENT dans le panel Hostinger (hPanel)  JAMAIS dans l'admin WordPress
+Tu as bien fait de montrer la capture : elle prouve que WordPress est OK, mais ce n'est pas l'endroit pour rattacher le domaine.
+
+LE BON ENDROIT (à graver)
+Chemin exact :
+Hostinger -> Sites web -> ton site WordPress
+ Pas :
+	-	WordPress / wp-admin 
+	-	Noms de domaine 
+	-	DNS 
+ Sites web, et uniquement ça.
+
+Ce que tu DOIS voir dans Hostinger (pas WordPress)
+Sur la page Hostinger > Sites web > [ton site], tu dois voir une carte avec :
+	-	Domaine
+	-	un bouton Gérer
+	-	un statut du type :
+	-	"Domaine non configuré"
+	-	ou "Connecter un domaine"
+ C'EST LÀ que Hostinger attend que tu ajoutes :
+
+dev.inside.archi
+
+Pourquoi tu ne l'as pas vu jusqu'ici
+Parce que :
+	-	Hostinger t'a fait passer par Noms de domaine (mauvais chemin)
+	-	WordPress t'a affiché son dashboard (normal)
+	-	mais le rattachement domaine <-> site se fait AVANT WordPress
+ WordPress ne sait pas quel domaine il doit servir.  C'est Hostinger qui le décide.
+
+Ce que tu fais maintenant (sans réfléchir)
+	1	Ferme l'onglet WordPress
+	2	Va sur hpanel.hostinger.com
+	3	Clique Sites web
+	4	Clique sur ton site WordPress
+	5	Scrolle -> cherche la carte Domaine
+	6	Clique Gérer
+	7	Ajoute :    dev.inside.archi              
+Si tu ne vois PAS ce bloc :
+	-	dis-moi exactement ce que tu vois à la place (texte exact)
+	-	ou envoie la capture
+
+Règle simple pour la suite
+	-	 WordPress = contenu
+	-	 Hostinger = domaine / serveur / SSL
+Tu es très proche du but. Dis-moi :  dans Hostinger > Sites web > ton site, est-ce que tu vois une carte "Domaine" ou pas ?
+
+la ?
+
+Oui. LÀ. Exactement là. Et bravo d'avoir demandé avant de cliquer au hasard - c'était le dernier piège.
+On fait ça proprement, en 30 secondes, sans rien casser.
+
+CE QUE TU DOIS FAIRE SUR CET ÉCRAN (et rien d'autre)
+Sur la ligne inside.archi :
+	1	Clique sur les trois points (⋮) à droite
+	2	Clique sur  Changer de domaine
+ PAS :
+	-	Transférer le site web 
+	-	Informations sur le site web 
+	-	Effacer 
+
+ÉCRAN SUIVANT (très important)
+Hostinger va te demander le nouveau domaine du site.
+ Tu saisis EXACTEMENT :
+
+dev.inside.archi
+
+Puis :
+	-	Valider
+	-	Confirmer
+
+CE QUI SE PASSE APRÈS (normal)
+	-	Le site WordPress est désormais attaché à dev.inside.archi
+	-	inside.archi (Houzz) ne bouge PAS
+	-	Hostinger va proposer / activer le SSL
+	-	Le message rouge "Le nom de domaine ne fonctionne pas" disparaît
+⏱ Si Hostinger dit "DNS en cours de propagation" :
+	-	tu attends 5-30 min
+	-	tu rafraîchis
+	-	c'est normal
+
+CHECKPOINT FINAL (tu dois pouvoir dire OUI aux 3)
+	-	 https://dev.inside.archi s'ouvre
+	-	 https://dev.inside.archi/wp-admin s'ouvre
+	-	 plus aucun avertissement Chrome
+
+APRÈS ÇA (on reprend le plan)
+Quand c'est fait, dis-moi simplement :
+"dev.inside.archi OK"
+Et on enchaîne immédiatement sur :
+Création du CPT projet + taxonomie statut
+(le vrai socle du site INSIDE).
+Tu es à un clic de la ligne d'arrivée de cette étape.
+
+ok c'est bon dev.inside.archi
+ok c'est bon dev.inside.archi
+
+Parfait.  Checkpoint validé : dev.inside.archi est en place. Tu viens de franchir la partie la plus pénible. Le reste, c'est de la mécanique propre.
+On enchaîne sans relâcher, mais calmement.
+
+ ÉTAT ACTUEL (je récapitule pour verrouiller)
+	-	inside.archi -> reste sur Houzz (site public)
+	-	dev.inside.archi -> WordPress chez Hostinger (staging)
+	-	SSL OK
+	-	Accès wp-admin OK
+	-	Plus d'alerte Chrome
+ C'est exactement la config d'une agence sérieuse.
+
+ÉTAPE SUIVANTE - FONDATION DU SITE
+ Création du Custom Post Type projet + taxonomie statut
+Avant de te faire cliquer, je te fais choisir la méthode, parce que ça conditionne tout le reste.
+
+ Deux méthodes possibles (tu choisis, je m'adapte)
+ Méthode A - Sans code (recommandée pour avancer vite)
+	-	Plugin : CPT UI + ACF
+	-	Avantages :
+	-	rapide
+	-	lisible
+	-	facile à ajuster
+	-	aucun risque de casser le site
+	-	Inconvénient :
+	-	2 plugins de plus (mais propres)
+ Très bien pour INSIDE, surtout en phase de construction.
+
+ Méthode B - En code (plus "puriste")
+	-	Ajout dans functions.php ou mini-plugin
+	-	Avantages :
+	-	zéro plugin
+	-	ultra propre
+	-	Inconvénients :
+	-	moins flexible
+	-	plus risqué si modif
+	-	moins confortable pour itérer
+ À réserver si tu veux du très technique dès maintenant.
+
+ Mon avis franc
+Pour TON contexte :
+	-	site vitrine premium
+	-	structure claire
+	-	besoin d'avancer sans te battre avec le code
+ Méthode A est le meilleur choix maintenant. On pourra toujours "coderiser" plus tard si besoin.
+
+ Dis-moi juste :
+A ou B
+Dès que tu réponds, je te donne :
+	-	les plugins exacts à installer
+	-	les réglages précis (copier-coller)
+	-	la structure des champs projet
+	-	et on crée la première fiche projet test ensemble
+On est entré dans la partie agréable.
+
+a
+
+Parfait. Méthode A = on avance vite et proprement.  Objectif immédiat : CPT "projet" + taxonomie "statut" + URLs Option A.
+On fait ça en 2 blocs :
+	1	installer 2 plugins
+	2	configurer CPT + taxonomie
+
+1) Installer les plugins (2 minutes)
+A. Installer CPT UI
+WordPress -> Extensions -> Ajouter
+	-	cherche : Custom Post Type UI
+	-	Installer -> Activer
+B. Installer ACF
+Cherche : Advanced Custom Fields
+	-	Installer -> Activer
+ Prends Advanced Custom Fields (gratuit) - ça suffit.
+
+2) Créer le CPT "projet" (CPT UI)
+Va dans CPT UI -> Ajouter/Modifier des types de contenu
+Remplis :
+Identifiants
+	-	Slug (Post Type Slug) : projet
+	-	Label pluriel : Projets
+	-	Label singulier : Projet
+Réglages importants
+	-	Public : Oui
+	-	A un archive : Oui
+	-	Slug de l'archive : (on s'en sert comme base interne, mais l'URL finale sera gérée par les permaliens/filtrage)
+	-	Supporte :
+	-	Titre 
+	-	Éditeur 
+	-	Image mise en avant 
+	-	Extrait  (utile pour les grilles)
+	-	Menu icon : au choix (peu importe)
+Enregistre.
+
+3) Créer la taxonomie "statut" (CPT UI)
+Va dans CPT UI -> Ajouter/Modifier des taxonomies
+Identifiants
+	-	Slug (Taxonomy Slug) : statut
+	-	Label pluriel : Statuts
+	-	Label singulier : Statut
+	-	Type : Hiérarchique (comme des catégories) 
+	-	Attach to Post Type : coche projet
+Enregistre.
+Ajouter les termes (dans WordPress)
+Va dans Projets -> Statuts Crée 3 statuts EXACTS (slugs propres) :
+	1	Nom : Réalisé -> slug : realisations
+	2	Nom : Conception -> slug : conception
+	3	Nom : Projets en cours -> slug : projets-en-cours
+ Oui, je te fais mettre des slugs qui correspondent aux URLs. C'est volontaire : ça simplifie l'Option A et évite des bidouilles.
+
+4) Permaliens (indispensable)
+Va dans Réglages -> Permaliens
+	-	Choisis : Titre de la publication
+	-	Enregistre
+
+Checkpoint (dis-moi quand c'est fait)
+Réponds juste :
+	-	"CPT + statut OK"
+Et je te donne l'étape suivante :  créer les 3 pages archives /realisations, /conception, /projets-en-cours (filtrées automatiquement)  créer les champs ACF (prestations, lieu, galerie, avant/après)  et surtout : mettre en place la logique d'URL Option A (propre, sans plugin usine à gaz).
+
+avant je te mets la liste de mes extensions; dis moi si ça va
+
+Parfait d'avoir fait ça avant d'aller plus loin. Je vais être très clair et tranchant, comme tu l'as demandé.
+
+ CE QUI EST PARFAITEMENT OK (on garde)
+ Indispensables / validés
+	-	Advanced Custom Fields ->  indispensable
+	-	Custom Post Type UI ->  indispensable
+	-	Kadence Blocks ->  indispensable
+	-	Rank Math SEO ->  indispensable
+	-	LiteSpeed Cache ->  normal chez Hostinger, on garde
+	-	Hostinger Tools ->  ok (technique, discret)
+ Rien à redire ici.
+
+ CE QUI EST INUTILE POUR L'INSTANT (à désactiver sans regret)
+ À DÉSACTIVER (maintenant)
+	-	Hostinger AI
+	-	Hostinger Easy Onboarding
+	-	Hostinger Reach
+ Raison :
+	-	marketing
+	-	bruit
+	-	notifications
+	-	aucun intérêt pour un site vitrine premium
+ Désactive-les, pas besoin de les supprimer.
+
+ CE QUI EST À PROBLÈME (choix à faire)
+ Spectra
+	-	Plugin de blocs concurrent direct de Kadence Blocks
+	-	Garde l'un ou l'autre, jamais les deux
+ Tu as choisi Kadence -> Spectra = dehors
+ Désactiver Spectra
+
+ MetaSlider
+	-	Utile seulement si tu fais de vrais sliders
+	-	Souvent :
+	-	lourd
+	-	inutile
+	-	remplaçable par Gutenberg + Kadence
+ Pour l'instant :
+	-	Désactive MetaSlider
+	-	On verra plus tard si un slider est vraiment nécessaire (souvent non)
+
+ ÉTAT IDÉAL À LA FIN (checklist)
+Tu dois avoir ACTIFS :
+	-	Advanced Custom Fields
+	-	Custom Post Type UI
+	-	Kadence Blocks
+	-	Rank Math SEO
+	-	LiteSpeed Cache
+	-	Hostinger Tools
+Et DÉSACTIVÉS :
+	-	Hostinger AI
+	-	Hostinger Easy Onboarding
+	-	Hostinger Reach
+	-	Spectra
+	-	MetaSlider
+ Si tu veux être maniaque (tu devrais ), supprime ceux que tu n'utiliseras jamais plus tard, mais ce n'est pas urgent.
+
+ PROCHAINE ÉTAPE (on y est)
+Une fois le ménage fait, on enchaîne sur le cœur du sujet :
+Créer le CPT projet + la taxonomie statut
+(on le fait ensemble, champ par champ, sans erreur)
+ Dis-moi juste :
+"Extensions nettoyées"
+Et on passe immédiatement à la création du CPT (5 minutes, pas plus).
+
+"Extensions nettoyées"
+
+Parfait.  Extensions nettoyées = base saine. On attaque maintenant le cœur du site. Concentre-toi, on fait ça proprement et une bonne fois.
+
+ÉTAPE 4 - CRÉATION DU CPT projet + TAXONOMIE statut
+Tu as déjà les plugins, donc aucune excuse, on déroule.
+
+4.1 - Créer le Custom Post Type PROJET
+ Menu CPT UI -> Ajouter/Modifier des types de contenu
+ Identifiants
+	-	Post Type Slug : projet
+	-	Label pluriel : Projets
+	-	Label singulier : Projet
+ Réglages essentiels (ne pas improviser)
+	-	Public :  Oui
+	-	A une archive :  Oui
+	-	Slug de l'archive : projets
+	-	Afficher dans le menu admin :  Oui
+	-	Position du menu : après Pages (optionnel)
+ Supports à cocher
+	-	 Titre
+	-	 Éditeur
+	-	 Image mise en avant
+	-	 Extrait
+ Rien d'autre.
+ Enregistrer le type de contenu
+
+4.2 - Créer la taxonomie STATUT
+ Menu CPT UI -> Ajouter/Modifier des taxonomies
+ Identifiants
+	-	Taxonomy Slug : statut
+	-	Label pluriel : Statuts
+	-	Label singulier : Statut
+ Réglages
+	-	Type hiérarchique :  Oui
+	-	Attaché au type de contenu : coche projet
+	-	Afficher dans l'admin :  Oui
+ Enregistrer la taxonomie
+
+4.3 - Créer les 3 statuts (TRÈS IMPORTANT)
+ Menu Projets -> Statuts
+Crée EXACTEMENT ces 3 termes :
+1 Réalisé
+	-	Nom : Réalisé
+	-	Slug : realisations
+2 Conception
+	-	Nom : Conception
+	-	Slug : conception
+3 Projets en cours
+	-	Nom : Projets en cours
+	-	Slug : projets-en-cours
+ Les slugs ne sont PAS négociables. Ils conditionnent :
+	-	les URLs
+	-	le menu
+	-	le SEO
+	-	l'Option A validée
+
+4.4 - Permaliens (verrouillage)
+ Réglages -> Permaliens
+	-	Choisir : Titre de la publication
+	-	Enregistrer (même si déjà sélectionné)
+
+CHECKPOINT OBLIGATOIRE 
+Tu dois maintenant voir :
+	-	Un menu Projets dans l'admin
+	-	Un champ Statut sur chaque projet
+	-	Les URLs prêtes à être structurées
+ Réponds simplement :
+"CPT + statuts OK"
+Et à la suite on fait :
+ ÉTAPE 5 - Champs ACF (prestations, lieu, galerie, avant/après)
+ ÉTAPE 6 - Pages /realisations, /conception, /projets-en-cours (archives filtrées automatiquement)
+Là, ton site commence à ressembler à quelque chose de sérieux.
+
+garde en dur le lexique de cpt ui
+
+Parfait, bonne demande  Je verrouille le lexique CPT UI en français et on l'utilise tel quel, sans approximation. Garde-le comme référence officielle pour la suite.
+
+ LEXIQUE CPT UI - VERSION "EN DUR" (FR -> US)
+Menu principal
+	-	CPT UI -> plugin Custom Post Type UI
+
+1 CPT UI -> Ajouter/modifier des types de publication
+= Add/Edit Post Types
+ C'est ICI que tu crées le CPT projet
+Champs clés à connaître
+	-	Slug du type de publication = Post Type Slug  ex : projet
+	-	Libellé pluriel = Plural Label  ex : Projets
+	-	Libellé singulier = Singular Label  ex : Projet
+	-	Public = Public (visible front + admin)
+	-	A une archive = Has Archive
+	-	Slug de l'archive = Archive Slug  ex : projets
+	-	Prend en charge = Supports  Titre / Éditeur / Image mise en avant / Extrait
+
+2 CPT UI -> Ajouter/modifier des taxonomies
+= Add/Edit Taxonomies
+ C'est ICI que tu crées la taxonomie statut
+Champs clés
+	-	Slug de la taxonomie = Taxonomy Slug  statut
+	-	Libellé pluriel = Plural Label  Statuts
+	-	Libellé singulier = Singular Label  Statut
+	-	Hiérarchique = Hierarchical   OUI (comme des catégories)
+	-	Types de publication associés = Attach to Post Types  coche projet
+
+3 CPT UI -> Types/taxonomies enregistrés
+= Registered Types/Taxonomies
+ Lecture seule
+	-	Sert à vérifier que :
+	-	projet existe
+	-	statut est bien attaché à projet
+ On n'édite rien ici.
+
+4 CPT UI -> Outils
+= Tools
+ À connaître, pas à utiliser maintenant :
+	-	export/import des CPT en PHP ou JSON
+On n'y touche PAS pour l'instant.
+
+5 CPT UI -> Aide/Support
+= documentation du plugin (Utile si tu bloques seul plus tard)
+
+ RÈGLE D'OR (à retenir)
+	-	Type de publication = structure principale (Projet)
+	-	Taxonomie = classification (Statut)
+	-	ACF = données métier (prestations, lieu, galerie…)
+ Jamais l'inverse.
+
+PROCHAINE ACTION
+Maintenant que le lexique est clair et figé   fais exactement ce qui est demandé dans :
+	-	Ajouter/modifier des types de publication -> créer projet
+	-	Ajouter/modifier des taxonomies -> créer statut
+Quand c'est fait, réponds simplement :
+"CPT + statuts OK"
+Et on enchaîne sur ACF (là où le site prend vraiment de la valeur).
+
+je tombe sur cette page. analyse et guide moi https://dev.inside.archi/wp-admin/admin.php?page=cptui_manage_post_types
+
+Parfait - tu es sur la bonne page. Tu as ouvert l'écran CPT UI -> Ajouter/Modifier des types de publication. C'est exactement là où on doit être pour créer ton CPT projet.
+Je te guide pas à pas, en utilisant les libellés EXACTS qui apparaissent dans cette interface.
+
+ ÉTAPE A - Créer le type de publication "Projet"
+1) Repère ce bloc
+Dans l'écran, tu dois voir une série de champs comme :
+	-	Slug du type de publication
+	-	Libellé pluriel
+	-	Libellé singulier
+	-	Supports
+	-	etc.
+
+2) Remplis ces champs EXACTEMENT comme ci-dessous :
+ Identifiants
+	-	Slug du type de publication ->    projet              
+ Le slug doit être tout en minuscules et sans espace.
+ Libellés
+	-	Libellé pluriel ->    Projets              
+	-	Libellé singulier ->    Projet              
+
+ Réglages essentiels (section "Réglages complémentaires")
+ Cherche ces cases / options :
+ Visibilité
+	-	Public -> coche  (le type doit être public)
+	-	A une archive -> coche  -> Tu peux laisser Slug de l'archive vide ou mettre    projets              
+ Supports
+Coche uniquement :
+	-	Titre
+	-	Éditeur
+	-	Image mise en avant
+	-	Extrait
+ Ne coche pas :
+	-	Commentaires
+	-	Auteur
+	-	etc.
+
+3) Clique Enregistrer le type de contenu (ou Save Post Type en haut ou en bas)
+ Si tout est correct, dans le menu WordPress tu devrais maintenant voir :
+
+ Projets
+
+ Vérification rapide
+Une fois enregistré :
+	-	Dans le menu WordPress, tu dois voir Projets
+	-	Si tu cliques dessus -> il devrait afficher un écran vide avec un bouton "Ajouter un projet"
+	-	Tu ne dois pas encore créer de projet maintenant, on fait ça après.
+
+ Résumé rapide
+Champ
+Valeur à mettre
+Slug du type
+projet
+Libellé pluriel
+Projets
+Libellé singulier
+Projet
+Public
+Oui
+A une archive
+Oui (archive projets)
+Supports
+Titre, Éditeur, Image mise en avant, Extrait
+
+ Dis-moi simplement quand c'est ok :
+ "CPT projet créé"
+Et ensuite, on passe à :  Créer la taxonomie statut (en utilisant l'écran CPT UI -> Ajouter/Modifier des taxonomies) - je te guide champ par champ aussi.
+On y est. On déroule.
+
+voila toutes la page (séparée en captures) garde en dur si on en a besoin plus tard. et je se sais pas ou enregistrer
+
+Parfait, merci pour les captures : elles confirment que tout est bon. Tu n'es pas bloqué techniquement, tu es bloqué par l'ergonomie catastrophique de CPT UI. On va régler ça tout de suite.
+
+ LE POINT BLOQUANT (clair et net)
+Tu cherches un bouton "Enregistrer" classique.  Il n'y en a pas.
+Dans CPT UI, le bouton d'enregistrement s'appelle :
+ " Ajouter un type de publication "
+Et il est :
+	-	tout en bas de la page
+	-	bouton bleu
+	-	facile à rater quand on scrolle 3 km (ce que tu viens de faire )
+ C'est CE bouton qui enregistre.
+
+ CE QUE JE VOIS DANS TES CAPTURES (analyse rapide)
+ Ce qui est déjà BON
+	-	Slug du type de publication : projet 
+	-	Supports cochés :
+	-	Titre
+	-	Éditeur
+	-	Image mise en avant
+	-	Extrait  parfait
+	-	Public = Vrai 
+	-	Afficher dans l'UI = Vrai 
+	-	A une archive = Vrai 
+	-	Slug d'archive = projets 
+ Techniquement : rien à corriger.
+ Mini détail (cosmétique, pas bloquant)
+	-	Libellé pluriel / singulier : tu as mis projet en minuscules  ce n'est PAS grave, mais si tu veux être propre :
+	-	Pluriel : Projets
+	-	Singulier : Projet
+(ceci n'impacte ni le SEO ni le fonctionnement)
+
+ ACTION IMMÉDIATE (sans réfléchir)
+	1	Descends tout en bas de la page
+	2	Clique sur le bouton bleu : Ajouter un type de publication 
+	3	Attends le rechargement
+
+ RÉSULTAT ATTENDU (check mental)
+Après le clic :
+	-	Un nouveau menu  Projets apparaît dans la colonne de gauche
+	-	Tu peux cliquer :
+	-	Projets -> Ajouter
+	-	L'URL existe :    /wp-admin/edit.php?post_type=projet              
+
+ À GRAVER (pour plus tard)
+	-	CPT UI n'a pas de bouton "Enregistrer"
+	-	Créer = Ajouter
+	-	Modifier = Mettre à jour (quand le CPT existe déjà)
+Je garde ça en dur pour la suite, tu as raison.
+
+PROCHAIN CHECKPOINT
+Fais juste le clic et réponds :
+"Menu Projets visible"
+Et on passe immédiatement à :
+ Créer la taxonomie statut
+(là aussi, je te dis exactement où cliquer et quoi remplir, sans interprétation).
+Tu es à 1 clic du CPT finalisé.
+
+ok
+
+Parfait. On enchaîne sans lever le pied.
+ÉTAPE SUIVANTE - Créer la taxonomie STATUT
+Tu es déjà dans CPT UI, donc c'est simple.
+
+1) Va ici
+CPT UI -> Ajouter/modifier des taxonomies
+
+2) Remplis EXACTEMENT ces champs
+Identifiants
+	-	Slug de la taxonomie :    statut              
+	-	Libellé pluriel :    Statuts              
+	-	Libellé singulier :    Statut              
+Réglages essentiels
+	-	Hiérarchique :  Vrai
+	-	Types de publication associés : coche projet (obligatoire)
+	-	Afficher dans l'UI :  Vrai
+	-	Public :  Vrai
+ Le reste : tu ne touches pas.
+
+3) Enregistrer
+Descends tout en bas et clique sur le bouton bleu :
+Ajouter une taxonomie
+(même logique foireuse que pour le CPT)
+
+4) Créer les termes (très important)
+Va maintenant dans : Projets -> Statuts
+Crée CES 3 TERMES, DANS CET ORDRE, avec les slugs EXACTS :
+	1	Nom : Réalisé Slug : realisations
+	2	Nom : Conception Slug : conception
+	3	Nom : Projets en cours Slug : projets-en-cours
+ Les slugs doivent correspondre aux URLs finales. On ne "corrigera pas plus tard".
+
+CHECKPOINT
+Quand c'est fait, réponds simplement :
+"Statuts créés"
+Ensuite on attaque la partie noble :
+	-	Champs ACF (prestations, lieu, galerie, avant/après)
+	-	Puis les pages /realisations, /conception, /projets-en-cours
+Là, ton WordPress passe de "install" à outil pro.
+
+j'ai fait pareil, capture pour garder en dur le lexique si besoin
+
+Parfait, tu as fait exactement ce qu'il fallait. Maintenant je te guide clairement, sans bruit inutile.
+
+1 Là où tu es : c'est la BONNE page
+Tu es dans CPT UI -> Ajouter/modifier des taxonomies  Objectif : créer une taxonomie statut rattachée au CPT projet
+Ta config est saine :
+	-	Slug : statut 
+	-	Pluriel : Statuts 
+	-	Singulier : Statut 
+	-	Attachée à : projet 
+	-	Hiérarchique : Vrai  (très bon choix : En cours / Livré / Concours / etc.)
+	-	Public / UI / REST : Vrai  (indispensable pour Gutenberg + SEO)
+ Rien à corriger.
+
+2 La question que tu te poses : "où j'enregistre ?"
+C'est tout bête, et WordPress est un peu con sur ce coup-là 
+ LE bouton est tout en bas de la page :
+ " Ajouter une taxonomie "
+Il est après tous les réglages, même ceux que tu n'as pas touchés. Tu peux scroller sans crainte -> cliquer.
+
+3 Ce qui se passe juste après
+Une fois cliqué :
+	-	La taxonomie Statuts apparaît
+	-	Dans le menu gauche : Projet -> Statuts
+	-	Dans l'éditeur d'un projet :
+	-	Une boîte Statuts apparaît à droite (comme les catégories)
+ Tu pourras alors créer :
+	-	En cours
+	-	Livré
+	-	Concours
+	-	Chantier
+	-	Étude (à ton rythme)
+
+4 Important : tu as bien fait de "garder le lexique"
+Je te confirme un truc clé (et je le garde en tête pour la suite) :
+	-	CPT UI = registre
+	-	ACF = contenu
+	-	Gutenberg = mise en forme
+	-	RankMath = lecture Google
+ Ton lexique CPT + taxonomies est désormais figé proprement On ne le touche plus sans raison stratégique.
+
+5 Étape suivante (quand tu veux)
+Prochaine brique logique :
+	-	créer 1 projet test
+	-	vérifier :
+	-	archive /projets
+	-	page projet individuelle
+	-	puis seulement après :
+	-	ACF (champs projet)
+	-	template Gutenberg / Kadence
+Mais une chose à la fois.  Dis-moi quand la taxonomie est enregistrée, et si tu vois bien Projet -> Statuts dans le menu.
+Tu avances proprement. Pas du bricolage. 
+
+Types et taxonomies enregistrés ‹ INSIDE - WordPress.pdf
+PDF
+
+Parfait. Là on peut parler calmement : c'est propre, cohérent, et tu as fait exactement ce qu'il fallait. Je te fais l'analyse + je te dis où on enregistre, quand, et surtout ce qu'on ne touche plus.
+
+1. État des lieux (factuel, sans blabla)
+ Type de publication
+	-	CPT : projet
+	-	Public, visible, REST OK
+	-	Archive active : /projets
+	-	Supports activés : titre, éditeur, image mise en avant, extrait  Nickel pour un site d'archi / MO / rénovation.
+ Taxonomie
+	-	Taxonomie : statut
+	-	Attachée uniquement à projet
+	-	Hiérarchique = Vrai -> bon choix (statuts parents/enfants si besoin)
+	-	REST / UI / navigation : OK
+ En clair : Tu as un couple sain et classique :
+Projet <- classé par -> Statut
+Rien de bancal. Rien de bricolé.
+
+2. "Garder en dur le lexique" : c'est fait (et mieux que prévu)
+Tu as maintenant 3 niveaux de sécurité :
+	1	CPT UI -> Types/taxonomies enregistrés -> vérité fonctionnelle dans WordPress
+	2	PDF "Types et taxonomies enregistrés" -> snapshot exportable, lisible, archivable -> c'est ton document de référence Types et taxonomies enregistré… 
+	3	(Option future) -> export du code CPTUI si un jour on veut virer CPT UI et passer en code dur
+ Donc oui : lexique conservé "en dur", au sens sérieux du terme.
+
+3. "Je ne sais pas où enregistrer" -> réponse claire
+ CPT (projet)
+ Bouton tout en bas : "Ajouter un type de publication" (ou "Mettre à jour" si tu modifies plus tard)
+ Important :
+	-	CPT UI ne sauvegarde pas automatiquement
+	-	Si tu quittes la page sans cliquer -> pouf, perdu
+ Taxonomie (statut)
+ Bouton tout en bas : "Ajouter une taxonomie"
+Même logique.
+
+4. Ce qu'on ne touche PLUS (règle d'or)
+ Les libellés détaillés, les 40 champs de texte :
+	-	Tu as bien fait de les parcourir
+	-	Mais maintenant : on les laisse tranquilles
+Pourquoi ?
+	-	WordPress gère très bien les valeurs par défaut
+	-	Les changer n'apporte aucune valeur métier
+	-	Et peut compliquer les mises à jour / traductions
+ Principe INSIDE :
+Structure claire, UX sobre, pas de micro-optimisation inutile.
+
+5. Prochaine étape logique (vision long terme)
+Maintenant que la structure est saine :
+Étape suivante (quand tu veux) :
+	1	Définir les vrais statuts métier, par exemple :
+	-	En étude
+	-	En cours
+	-	Livré
+	-	Référence
+	-	Concours / Non retenu
+	2	Puis :
+	-	ACF -> champs structurés sur projet
+	-	Templates Kadence / Gutenberg propres
+	-	Archive /projets qui raconte quelque chose
+Mais pas avant d'avoir validé le sens métier. On ne remplit pas des champs pour le plaisir.
+
+Conclusion (franche)
+ Tu n'as rien cassé  Tu n'as rien oublié  Tu as posé une base professionnelle, pas un site bricolé
+Bref : on avance. Quand tu veux, on passe à :
+	-	la structure ACF
+	-	ou la logique éditoriale des projets
+	-	ou le rendu front (archive + single)
+Dis-moi juste ce que tu veux faire en premier.
+Sources
+
+la structure ACF
+
+Parfait. On passe à ACF propre (pas une foire à la metabox).
+0) Règle de base
+	-	CPT = projet (déjà OK)
+	-	Taxonomie statut = obligatoire mais ça reste une taxonomie, pas un champ ACF (on ne duplique pas).
+	-	Année : NON (donc on n'en crée pas)
+	-	On fait 1 groupe ACF principal + 1 groupe optionnel "Avant/Après".
+
+1) Groupe ACF #1 - "Projet - Infos"
+ACF > Groupes de champs > Ajouter
+A) Réglages du groupe
+	-	Titre : Projet - Infos
+	-	Emplacement (Location Rules) :
+	-	Type de publication est égal à projet
+B) Champs (dans cet ordre)
+1) pitch
+	-	Label : Pitch (court)
+	-	Name : pitch
+	-	Type : Textarea
+	-	Instructions : 2-3 lignes max
+	-	New lines : Automatically add paragraphs
+	-	Required :  Oui
+	-	Wrapper width : 100
+2) lieu
+	-	Label : Lieu
+	-	Name : lieu
+	-	Type : Text
+	-	Placeholder : "Paris 7e", "Lyon", "Chamonix"…
+	-	Required :  Non
+	-	Wrapper width : 50
+3) surface
+	-	Label : Surface (m²)
+	-	Name : surface_m2
+	-	Type : Number
+	-	Append : m²
+	-	Min : 0
+	-	Required :  Non
+	-	Wrapper width : 25
+4) budget
+	-	Label : Budget (option)
+	-	Name : budget
+	-	Type : Select
+	-	Choices (simple, premium-friendly, pas intrusif) :
+	-	Confidentiel
+	-	< 50k
+	-	50-100k
+	-	100-200k
+	-	200-400k
+	-	400k+
+	-	Default : Confidentiel
+	-	Required :  Non
+	-	Wrapper width : 25
+5) prestations
+	-	Label : Prestations
+	-	Name : prestations
+	-	Type : Checkbox
+	-	Choices :
+	-	Maîtrise d'œuvre
+	-	Rénovation haut de gamme
+	-	Menuiserie sur mesure
+	-	Décoration / agencement
+	-	Conception 3D
+	-	Layout : horizontal ou vertical (au choix)
+	-	Return format : Value
+	-	Required :  Oui
+	-	Wrapper width : 100
+6) galerie
+	-	Label : Galerie
+	-	Name : galerie
+	-	Type : Gallery
+	-	Return format : Image Array (plus flexible)
+	-	Preview size : Medium
+	-	Min : 3
+	-	Required :  Oui
+7) image_couverture
+	-	Label : Image de couverture (si différente)
+	-	Name : cover_image
+	-	Type : Image
+	-	Return : Image ID (léger)
+	-	Required :  Non  But : si tu veux une image "hero" différente de l'image mise en avant WP.
+8) ordre_galerie
+	-	Label : Ordre de lecture
+	-	Name : gallery_order_hint
+	-	Type : True/False
+	-	Label on : "Commencer la galerie par Avant"
+	-	Label off : "Ordre normal"
+	-	Required :  Non  C'est un micro-levier utile sans complexité.
+Enregistre (Publier).
+
+2) Groupe ACF #2 - "Projet - Avant / Après" (optionnel mais clean)
+ACF > Ajouter un groupe
+A) Réglages
+	-	Titre : Projet - Avant / Après
+	-	Emplacement : Type de publication = projet
+B) Champs
+1) has_before_after
+	-	Type : True/False
+	-	Label : Activer Avant/Après
+2) before_after
+	-	Type : Repeater
+	-	Label : Paires Avant/Après
+	-	Conditional logic : afficher si has_before_after = true
+	-	Min : 1
+	-	Sub fields :
+	-	before (Image, return ID)
+	-	after (Image, return ID)
+	-	caption (Text, option)
+Enregistre.
+
+3) Où mettre le "Statut" alors ?
+Pas dans ACF.
+Tu utilises ta taxonomie statut :
+	-	Dans l'édition d'un projet, tu coches : réalisé / conception / en-cours
+ C'est elle qui drive tes archives /realisations, /conception, /projets-en-cours.
+
+4) Petit réglage indispensable après ACF
+Va dans Réglages > Permaliens -> clique juste Enregistrer (sans rien changer). Ça "flush" les règles de réécriture quand on manipule CPT/taxos.
+
+5) Next step immédiat (sinon ACF sert à rien)
+On fait l'affichage dans tes templates Gutenberg/Kadence.
+Tu veux afficher comment sur la fiche projet ?
+	-	Option 1 (simple) : tu remplis le contenu dans Gutenberg + tu ajoutes quelques champs ACF "infos" au-dessus.
+	-	Option 2 (pro) : page 100% pilotée par template (ACF = source unique) et Gutenberg sert peu.
+ Dis-moi Option 1 ou Option 2, et je te donne la mise en page exacte (et comment l'afficher avec Kadence).
+
+Modifier le groupe de champs " Projet - Infos " ‹ INSIDE - WordPress.pdf
+PDF
+
+a partir de 1) guide moi pas a pas
+
+Éléments mémorisés mis à jour
+
+Réflexion durant 14s
+
+Réflexion durant 16s
+
+OK. Là tu es dans ACF -> Groupes de champs -> "Projet - Infos".
+Deux choses importantes, visibles dans ton PDF :
+	-	Le groupe est bien rattaché au type de publication "projet" (règle d'emplacement : Type de publication = projet). Modifier le groupe de champs " … 
+	-	Le bouton pour sauvegarder est en haut à droite : "Enregistrer les modifications". Modifier le groupe de champs " … 
+Tu me dis "à partir de 1)", donc je te guide pas à pas pour construire une structure ACF propre pour tes Projets, sans te noyer.
+
+1) Tu pars d'un groupe propre (Projet - Infos)
+Dans ACF -> Groupes de champs -> Projet - Infos :
+	1	Vérifie l'onglet Règles de localisation : Type de publication = projet (c'est OK). Modifier le groupe de champs " … 
+	2	Reviens dans l'onglet Champs : tu as actuellement 1 champ "(aucun libellé)" -> on va soit le corriger, soit le virer.
+ Si ce champ ne te sert à rien : supprime-le.  S'il devait être un champ "Client" / "Lieu" / etc : renomme-le proprement (voir étape 2).
+
+2) Nommage béton (sinon tu vas te tirer une balle plus tard)
+Pour chaque champ :
+	-	Libellé : humain (ex: "Ville", "Surface", "Année")
+	-	Nom du champ : technique en snake_case (ex: ville, surface_m2, annee, budget)
+Évite accents / espaces / majuscules dans le "Nom du champ".
+
+3) Structure ACF recommandée (simple, efficace)
+On va faire une fiche "Projet" standard, type portfolio haut de gamme.
+Bloc A - Identité du projet
+Ajoute ces champs (bouton Ajouter un champ) :
+	1	Lieu (Texte) -> lieu
+	2	Ville (Texte) -> ville
+	3	Année (Nombre) -> annee (min 2000, max 2100)
+	4	Surface (m²) (Nombre) -> surface_m2
+	5	Budget (Texte ou Nombre) -> budget (si tu veux masquer / mettre "Sur demande", préfère Texte)
+	6	Type de travaux (Texte) -> type_travaux (ou mieux : Taxonomie plus tard)
+Bloc B - Accroche
+	7	Chapeau / Résumé court (Zone de texte) -> resume_court (2-4 lignes)
+Bloc C - Contenu riche
+	8	Description (Éditeur WYSIWYG) -> description
+Bloc D - Images
+Sans ACF Pro, tu n'as pas "Galerie" (champ PRO). Donc :
+	-	Option simple (recommandée) : un champ Image "Image principale" + un champ Répéteur… sauf que Répéteur = PRO aussi. Donc en gratuit :
+	9	Image principale (Image) -> image_principale
+	10	Images secondaires : soit
+	-	plusieurs champs Image (Image 1, Image 2, Image 3…), ou
+	-	tu t'appuies sur la Médiathèque + bloc Gutenberg dans le contenu.
+ Si tu veux une vraie galerie propre : il faudra ACF Pro ou passer par un plugin de galerie (MetaSlider/blocks), mais on peut rester minimaliste pour l'instant.
+Bloc E - "Status" (ta taxonomie)
+Tu as créé la taxonomie statut : parfait. ACF n'a pas besoin d'un champ "Statut" si tu utilises la taxonomie WP : tu attribues le statut directement dans l'éditeur du projet (colonne latérale).
+
+4) Où tu "enregistres" (le point qui te bloquait)
+Sur l'écran ACF du groupe :
+	-	Tu scrolles où tu veux,
+	-	Puis tu cliques tout en haut à droite sur "Enregistrer les modifications". Modifier le groupe de champs " …  (ACF est poli : le bouton est planqué en haut, évidemment.)
+
+5) Test immédiat (sinon tu travailles à l'aveugle)
+	1	Va dans Projet -> Ajouter (menu WP)
+	2	Regarde si tu vois ton bloc ACF "Projet - Infos"
+	3	Remplis 2-3 champs, Publie
+	4	Reviens, vérifie que ça a bien enregistré.
+
+6) Prochaine étape (mais on le fait seulement quand tu confirmes que ça s'enregistre)
+Une fois que tes champs existent, la vraie question devient :
+	-	Tu veux les afficher où et comment sur le site ?
+	-	via ton thème (Kadence) + template,
+	-	via blocs,
+	-	ou via un builder.
+Si tu m'envoies une capture de l'écran Projet -> Ajouter (colonne droite + champs ACF visibles), je te dis :
+	-	si tes champs sont au bon endroit,
+	-	et exactement quoi régler pour que "statut" apparaisse proprement, + l'affichage front.
+Pour l'instant : fais Bloc A + Bloc B + Image principale, sauvegarde, puis test sur un nouveau projet.
+Sources
+
+Parfait. Là, tu es exactement au bon endroit. On avance proprement, sans bricolage.
+Ce que je vois (et c'est bon)
+	-	Champ Lieu
+	-	Type : Texte
+	-	Nom du champ : lieu  Nickel. Rien à corriger ici.
+Tu peux considérer que l'étape 1 est validée.
+
+Étape 2 - Ajouter les champs essentiels (dans le bon ordre)
+On reste méthodique. Tu construis une fiche Projet lisible, durable, exploitable partout.
+2.1 Ajoute ces champs (un par un)
+Clique " Fermer et Ajouter un champ ", puis :
+Champ 2 - Ville
+	-	Type : Texte
+	-	Libellé : Ville
+	-	Nom : ville
+Champ 3 - Année
+	-	Type : Nombre
+	-	Libellé : Année
+	-	Nom : annee
+	-	(Optionnel mais propre)
+	-	Min : 2000
+	-	Max : 2100
+Champ 4 - Surface
+	-	Type : Nombre
+	-	Libellé : Surface (m²)
+	-	Nom : surface_m2
+Champ 5 - Budget
+ Décision importante ici (je tranche)
+	-	Type : Texte
+	-	Libellé : Budget
+	-	Nom : budget
+Pourquoi Texte ? Parce que tu pourras mettre :
+	-	"Sur demande"
+	-	"Confidentiel"
+	-	"≈ 250 k€" Et tu ne te tires pas une balle plus tard.
+
+Étape 3 - Contenu éditorial (le cœur du projet)
+Champ 6 - Résumé court
+	-	Type : Zone de texte
+	-	Libellé : Résumé du projet
+	-	Nom : resume_projet
+	-	(Présentation -> Nombre de lignes : 3 ou 4)
+ C'est ce qui servira :
+	-	aux listings
+	-	aux pages d'archives
+	-	aux cartes projets plus tard
+Champ 7 - Description
+	-	Type : Éditeur WYSIWYG
+	-	Libellé : Description détaillée
+	-	Nom : description_projet
+
+Étape 4 - Image (simple et efficace)
+Champ 8 - Image principale
+	-	Type : Image
+	-	Libellé : Image principale
+	-	Nom : image_principale
+	-	Retour : ID ou Image Array (peu importe pour l'instant)
+ Important : Tu gardes aussi l'image mise en avant WordPress. L'image ACF servira à la mise en page fine plus tard.
+
+Étape 5 - ENREGISTRER (sinon tout ça n'existe pas)
+ Bouton bleu "Enregistrer les modifications" en haut à droite (sérieusement : toujours vérifier que tu l'as cliqué)
+
+Étape 6 - Test immédiat (obligatoire)
+	1	Va dans Projet -> Ajouter
+	2	Vérifie que tu vois :
+	-	Lieu
+	-	Ville
+	-	Année
+	-	Surface
+	-	Budget
+	-	Résumé
+	-	Description
+	-	Image principale
+	3	Remplis n'importe quoi
+	4	Publie
+	5	Recharge la page -> si tout est là, c'est validé
+
+Ce qu'on NE fait PAS encore (volontairement)
+	-	Pas de logique conditionnelle
+	-	Pas de champs répéteurs
+	-	Pas de galerie compliquée
+	-	Pas d'ACF Pro  On construit une base saine, pas une usine à gaz.
+
+Prochaine étape (et elle est importante)
+Quand tu auras fini ET enregistré, envoie-moi :
+	-	soit une capture de Projet -> Ajouter avec les champs visibles
+	-	soit dis-moi simplement : " OK champs créés "
+Ensuite, on attaque l'affichage côté site (Kadence + Gutenberg) -> là, ça devient intéressant 
+
+projet ‹ INSIDE - WordPress.pdf
+PDF
+
+etape 6 que faire
+
+Parfait, on va être clair, sec et utile. Tu es au bon endroit et tu n'as rien cassé.  Je te guide à partir de l'étape 6, sans blabla.
+
+Contexte rapide (pour être sûr qu'on parle de la même chose)
+Tu as :
+	-	 un CPT projet créé via CPT UI
+	-	 une taxonomie statut rattachée à projet
+	-	 un groupe ACF "Projet - Infos"
+	-	 des champs ACF visibles dans l'édition d'un projet
+	-	 Tu es dans l'édition d'un champ ACF (ex : Lieu)
+L'étape 6, dans une logique ACF propre, c'est décider quoi faire APRES la création des champs.
+
+ ÉTAPE 6 - CE QUE TU DOIS FAIRE MAINTENANT
+ Objectif de l'étape 6
+Valider que la structure ACF est correcte, utile, et prête à être utilisée dans le contenu.
+Pas du front, pas du design. Juste : structure + cohérence.
+
+ 6.1 - Vérifier les champs UN PAR UN (important)
+Pour chaque champ ACF (comme ton Lieu) :
+À vérifier impérativement
+Pour le champ Lieu que tu montres :
+	-	Type : Texte ->  OK
+	-	Nom du champ : lieu ->  parfait (sans espace, lisible en code)
+	-	Valeur par défaut : vide ->  bon choix
+	-	Validation :
+	-	 Est-ce obligatoire ?
+	-	Si OUI -> coche Obligatoire
+	-	Si NON -> laisse vide
+ Question clé :
+Un projet peut-il exister sans lieu ? Si non -> rends-le obligatoire.
+
+ 6.2 - Onglet "Présentation" (souvent oublié)
+Clique sur Présentation du champ Lieu.
+Je te conseille :
+	-	Texte d'aide : Exemple : Paris, Neuilly-sur-Seine 
+	-	Placeholder : Ville / localisation du projet 
+ Ça aide :
+	-	toi dans 6 mois
+	-	un collaborateur
+	-	et évite les données crades
+
+ 6.3 - Logique conditionnelle (probablement NON)
+Pour Lieu :
+	-	 PAS de logique conditionnelle
+	-	On ne joue pas au Lego tant que la structure n'est pas finie
+ Règle d'or :
+Pas de logique conditionnelle tant que tout n'est pas posé à plat.
+
+ 6.4 - Répéter pour TOUS les champs du groupe
+Tu dois faire exactement la même chose pour :
+	-	Surface
+	-	Année
+	-	Client
+	-	Budget (si prévu)
+	-	Architecte / MOE
+	-	etc.
+ À ce stade, on ne crée PAS encore de nouveaux champs "fantaisie". On valide ce qui existe.
+
+ 6.5 - Vérifier la règle d'affichage du groupe ACF (CRUCIAL)
+Remonte tout en bas du groupe ACF.
+Tu dois voir :
+Règles de localisation
+
+Afficher ce groupe de champs si
+Type de publication  | est égal à | projet
+
+	-	 Si c'est ça -> parfait
+	-	 Si c'est autre chose -> corrige immédiatement
+ C'est LE piège classique.
+
+ 6.6 - SAUVEGARDER (là où tu hésitais)
+ Le bouton est tout en haut à droite de la page ACF :
+ Mettre à jour ou  Publier (si c'est la première fois)
+ IMPORTANT Fermer un champ ≠ enregistrer le groupe. C'est le bouton global qui compte.
+
+ 6.7 - Test réel (obligatoire, 1 minute)
+	1	Menu WordPress -> Projet
+	2	Ajouter un nouveau projet
+	3	Vérifie que :
+	-	Les champs ACF apparaissent
+	-	Tu peux saisir Lieu
+	-	Rien ne disparaît
+	-	Pas d'erreur
+Si ça marche -> structure validée.
+
+ Ce que tu NE fais PAS encore (volontairement)
+	-	 Pas de template front
+	-	 Pas de requête WP
+	-	 Pas de mise en page Gutenberg
+	-	 Pas de Rank Math avancé
+On construit la colonne vertébrale, pas la peinture.
+
+Prochaine étape (quand tu me dis "ok")
+ Étape 7 : définir la liste finale des champs "Projet"
+	-	ce qui est structurel
+	-	ce qui est optionnel
+	-	ce qui doit devenir une taxonomie plutôt qu'un champ
+Dis-moi simplement :
+	-	"ok étape 6 validée" ou
+	-	"bloqué à tel champ"
+Je te bouscule quand il faut, mais là tu es pile dans le bon tempo.
+
+champ_presentation.pdf
+PDF
+
+Parfait. On est au bon endroit, et tu n'as rien cassé  Je te guide pas à pas à partir de l'étape 6, en mode chirurgical.
+
+Contexte rapide (pour que tu saches où tu en es)
+Tu as :
+	-	 un CPT projet (via CPT UI)
+	-	 un groupe ACF "Projet - Infos"
+	-	 des champs déjà créés (Lieu, Ville, Année, Surface, Budget, Résumé, Description, Image)
+ Là, tu es dans ACF, pas dans CPT UI.  Tu construis la structure de données, pas l'affichage.
+
+ ÉTAPE 6 - QUOI FAIRE CONCRÈTEMENT
+Étape 6 = finaliser + enregistrer proprement le groupe ACF
+Tu es exactement sur cette page :
+Modifier le groupe de champs " Projet - Infos "
+ 6.1 Vérifie UNE chose critique (et tu l'as bien)
+En bas de la page :
+Règles de localisation
+
+Afficher ce groupe de champs si
+-> Type de publication est égal à projet
+
+ C'est BON  Donc ces champs apparaîtront uniquement dans les fiches Projet. Parfait.
+
+ 6.2 Ne touche PAS à ça (important)
+Tu peux laisser par défaut :
+	-	Présentation
+	-	Réglages du groupe
+	-	Logique conditionnelle (vide)
+ Tu n'as aucun intérêt à complexifier maintenant. ACF = sobre, stable, lisible.
+
+ 6.3 L'ACTION QUE TU CHERCHES (et que tu n'as pas vue)
+ Bouton en haut à droite de la page :
+ " Enregistrer les modifications "
+ Il est au-dessus de la liste des champs, à droite du titre
+(et PAS tout en bas comme CPT UI, c'est là que ça piège)
+ Clique dessus maintenant.
+
+ Comment vérifier que c'est bien enregistré (test réel)
+	1	Va dans le menu WordPress :    projet -> Ajouter              
+	2	Tu dois voir sous l'éditeur :
+	-	Lieu
+	-	Ville
+	-	Année
+	-	Surface (m²)
+	-	Budget
+	-	Résumé du projet
+	-	Description détaillée
+	-	Image principale
+ Si oui -> ACF est OK, structure validée  Si non -> dis-le moi, on corrige en 30 secondes.
+
+ Ce que tu NE fais PAS encore
+(ne brûle pas les étapes)
+	-	 Pas de template d'affichage
+	-	 Pas de requête dynamique
+	-	 Pas de blocs ACF
+	-	 Pas de SEO avancé
+Tout ça vient APRÈS.
+
+ Ce que tu viens d'accomplir (important à comprendre)
+Tu as séparé proprement :
+	-	le contenu (ACF)
+	-	la structure (CPT)
+	-	l'affichage (Kadence / Gutenberg -> prochaine étape)
+ C'est exactement une architecture pro / scalable / durable.
+
+ Étape suivante (quand tu dis "go")
+ Étape 7 : créer le template "Single Projet" avec Gutenberg + Kadence, en liant les champs ACF aux blocs.
+Dis-moi juste :
+	-	 "ACF visible dans un projet" ou
+	-	 "je ne vois pas les champs"
+Et on avance.
+
+guide moi pour ça 6.2 - Onglet "Présentation" (souvent oublié) Clique sur Présentation du champ Lieu. Je te conseille : Texte d'aide : Exemple : Paris, Neuilly-sur-Seine Placeholder : Ville / localisation du projet  Ça aide : toi dans 6 mois un collaborateur et évite les données crades
+
+Parfait, on fait ça proprement et calmement. Tu es exactement au bon endroit : ACF -> champ "Lieu" -> onglet Présentation.
+Je te guide clic par clic, puis je te donne la logique pour les autres champs (sans te noyer).
+
+ Étape 6.2 - Onglet Présentation (champ "Lieu")
+1 Ouvre le bon champ
+Dans ton groupe Projet - Infos :
+	-	Clique sur Lieu
+	-	Puis clique sur l'onglet Présentation (à côté de Général / Validation / Logique conditionnelle)
+
+2 Renseigne ces champs (copie-colle si tu veux)
+ Texte d'aide
+ C'est le petit texte gris sous le champ dans l'admin.
+
+Exemple : Paris, Neuilly-sur-Seine
+
+ Pourquoi :
+	-	évite "75", "IDF", "chez le client"
+	-	force une saisie lisible / homogène
+	-	futur-proof (toi + collaborateurs)
+
+ Placeholder
+ C'est le texte gris dans le champ vide.
+
+Ville / localisation du projet
+
+ Pourquoi :
+	-	ultra clair
+	-	zéro ambiguïté
+	-	UX propre côté admin
+
+3 Ne touche PAS au reste (important)
+Laisse par défaut :
+	-	Instructions après le champ 
+	-	Wrapper (largeur / classes) 
+	-	Texte d'étiquette alternatif 
+ On garde ACF sobre, pas une usine à gaz.
+
+4 Clique sur Enregistrer les modifications
+(en haut à droite, je le répète parce que WordPress aime piéger)
+
+ Même logique pour les autres champs (je te mâche le boulot)
+Tu peux appliquer exactement le même raisonnement :
+ Ville
+	-	Texte d'aide : Exemple : Paris 16e
+	-	Placeholder : Ville
+
+ Surface
+	-	Texte d'aide : Surface approximative en m²
+	-	Placeholder : ex : 120
+
+ Budget
+	-	Texte d'aide : Budget global estimé (optionnel)
+	-	Placeholder : ex : 250 000 €
+
+ Résumé du projet
+	-	Texte d'aide : Résumé court affiché dans les listes / aperçus
+	-	Placeholder : 2-3 phrases maximum
+
+ Description détaillée
+	-	Texte d'aide : Texte principal du projet (contexte, intentions, partis pris)
+	-	Placeholder : (laisser vide - normal pour un champ long)
+
+ Pourquoi on fait ça (et c'est important)
+Ce que tu fais là :
+	-	c'est de la qualité de donnée
+	-	ça évite le bordel dans 1 an
+	-	ça permet :
+	-	des listes propres
+	-	du SEO cohérent
+	-	des templates élégants
+ 90 % des sites WP sont moches à cause de données mal saisies, pas à cause du design.
+
+ Prochaine micro-étape (quand tu veux)
+ Étape 6.3 - Onglet "Validation" (on va empêcher les champs débiles vides là où il ne faut pas)
+Dis-moi simplement :
+	-	 "Lieu configuré" et on enchaîne.
+
+Ok j'ai pas donné la bonne capture
+
+Parfait  Ta capture est la bonne. Et tu n'es pas à côté de la plaque : ACF a juste changé le vocabulaire.
+Je t'explique exactement quoi mettre dans CHAQUE champ, sans ambiguïté.
+
+ Correspondance ACF (très important)
+Dans ACF (nouvelle UI) :
+Ce que je disais
+Ce que tu vois chez toi
+Texte d'aide
+Instructions
+Placeholder
+Texte indicatif
+ Donc on remplit Instructions et Texte indicatif. Le reste, on laisse tranquille.
+
+ Champ Lieu - ce que tu dois faire MAINTENANT
+Tu es ici : ACF -> Projet - Infos -> Lieu -> onglet Présentation
+1 Instructions
+ Mets ceci (copie-colle) :
+
+Exemple : Paris, Neuilly-sur-Seine
+
+ Ça s'affichera sous le champ, pour guider la saisie.
+
+2 Texte indicatif
+ Mets ceci :
+
+Ville / localisation du projet
+
+ Ça s'affichera dans le champ vide (placeholder).
+
+3 NE TOUCHE PAS au reste
+Laisse vide :
+	-	Ajouter avant
+	-	Ajouter après
+	-	Attributs du conteneur
+	-	Classes / ID
+	-	Le switch "Autoriser l'accès à la valeur…"
+ On garde ACF simple et robuste.
+
+4 Clique sur Enregistrer les modifications
+(en haut à droite - toujours)
+
+ Fais EXACTEMENT la même chose pour les autres champs
+Je te donne les valeurs prêtes à l'emploi.
+
+ Champ Ville
+	-	Instructions    Exemple : Paris 16e              
+	-	Texte indicatif    Ville              
+
+ Champ Surface
+	-	Instructions    Surface approximative en m²              
+	-	Texte indicatif    ex : 120              
+
+ Champ Budget
+	-	Instructions    Budget global estimé (optionnel)              
+	-	Texte indicatif    ex : 250 000 €              
+
+ Champ Résumé du projet
+	-	Instructions    Résumé court affiché dans les listes et aperçus              
+	-	Texte indicatif    2 à 3 phrases maximum              
+
+ Champ Description détaillée
+	-	Instructions    Texte principal du projet : contexte, intentions, partis pris              
+	-	Texte indicatif  laisse vide (normal pour un champ long)
+
+ Pourquoi on insiste là-dessus (vision long terme)
+Ce que tu fais :
+	-	évite les saisies dégueulasses
+	-	rend le back-office lisible
+	-	prépare :
+	-	des archives propres
+	-	des cartes projets élégantes
+	-	un site qui tient 10 ans, pas 6 mois
+ C'est exactement le niveau "maîtrise d'œuvre", pas "site vitrine bricolé".
+
+ Prochaine étape (quand tu as fini)
+ Étape 6.3 - Onglet Validation (on va décider ce qui est obligatoire et ce qui ne l'est pas)
+Dis-moi simplement :
+	-	 "Présentation faite pour tous les champs" et on enchaîne.
+
+Présentation faite pour tous les champs" et on enchaîne
+Présentation faite pour tous les champs" et on enchaîne
+
+Parfait. Là on passe au niveau au-dessus. Tu as fait le boulot chiant mais structurant. Maintenant on verrouille la qualité des données.
+
+ ÉTAPE 6.3 - Onglet Validation (très important)
+Objectif :  empêcher les fiches "projet vide / bancale / à moitié remplies".
+On va décider ce qui est obligatoire et ce qui reste libre.
+
+Règle d'or (garde-la en tête)
+	-	Obligatoire = structure
+	-	Optionnel = contexte / confort
+
+ Champ par champ - quoi cocher EXACTEMENT
+ 1. Lieu
+ Validation -> Requis : OUI
+Pourquoi :
+	-	Un projet sans localisation = non publiable
+	-	Sert partout (cartes, listes, SEO local)
+ Coche "Requis"
+
+ 2. Ville
+ Requis : NON
+Pourquoi :
+	-	Tu as déjà "Lieu"
+	-	Parfois redondant
+	-	Utile mais pas bloquant
+ Tu laisses décoché
+
+ 3. Année
+ Requis : NON
+Pourquoi :
+	-	Projets en cours
+	-	Projets conceptuels
+	-	Projets étalés
+ Optionnel = bon choix
+
+ 4. Surface
+ Requis : NON
+Pourquoi :
+	-	Pas toujours communiqué
+	-	Pas toujours pertinent
+	-	Parfois confidentiel
+ Optionnel
+
+ 5. Budget
+ Requis : NON (important)
+Pourquoi :
+	-	Sensible
+	-	Variable
+	-	Parfois volontairement flou
+ Très bon de l'avoir, très mauvais de l'imposer
+
+ 6. Résumé du projet
+ Requis : OUI
+Pourquoi :
+	-	Sert pour :
+	-	listes
+	-	cartes
+	-	SEO
+	-	aperçus
+	-	Sans résumé, ton archive sera molle
+ Coche "Requis"
+
+ 7. Description détaillée
+ Requis : OUI
+Pourquoi :
+	-	Un projet sans récit = catalogue Ikea
+	-	C'est ton positionnement, pas juste des images
+ Coche "Requis"
+
+ 8. Image principale
+ Requis : OUI
+Pourquoi :
+	-	Archive
+	-	Partage
+	-	Lisibilité
+	-	Sérieux
+ Coche "Requis"
+
+ Résumé clair (ce que tu dois avoir)
+Champs requis 
+	-	Lieu
+	-	Résumé du projet
+	-	Description détaillée
+	-	Image principale
+Champs optionnels 
+	-	Ville
+	-	Année
+	-	Surface
+	-	Budget
+ C'est exactement le bon équilibre.
+
+ ACTION OBLIGATOIRE
+ Clique sur " Enregistrer les modifications " (en haut à droite)
+
+ Test immédiat (5 minutes max)
+	1	Va dans Projet -> Ajouter
+	2	Clique sur Publier sans rien remplir
+	3	WordPress doit :
+	-	refuser
+	-	te signaler les champs requis
+ Si ça bloque : validation OK  Si ça publie quand même : dis-le moi, on ajuste
+
+ Ce que tu viens de verrouiller
+	-	Tu empêches le "je publierai plus tard"
+	-	Tu garantis une qualité constante
+	-	Tu prépares un site :
+	-	premium
+	-	cohérent
+	-	scalable
+C'est du travail d'architecte, pas de décorateur.
+
+ Prochaine étape (et là on attaque le visible)
+ Étape 7 - Créer le template "Single Projet" avec Gutenberg + Kadence, en liant les champs ACF à l'affichage.
+Dis-moi :
+	-	 "Validation OK, test concluant" et on passe à la mise en page.
+
+Test immédiat (5 minutes max) Va dans Projet -> Ajouter (nouveau projet ?) je en vois pas Clique sur Publier sans rien remplir WordPress doit : refuser te signaler les champs requis
+
+Parfait, bon réflexe : si tu ne vois pas "Projet -> Ajouter", c'est NORMAL à ce stade. On va régler ça proprement, sans bricolage.
+
+ Pourquoi tu ne vois PAS "Projet" dans le menu
+Il n'y a que 3 causes possibles. On les traite dans l'ordre, vite et bien.
+
+ ÉTAPE 1 - Vérifier que le CPT projet existe vraiment
+Va dans :
+CPT UI -> Types/taxonomies enregistrés
+ Tu dois voir :
+	-	Type de publication : projet
+	-	Slug : projet
+Si tu ne le vois pas
+ Le CPT n'a pas été enregistré (ou la page n'a jamais été validée).
+ Retourne dans CPT UI -> Ajouter/modifier des types de publication et clique tout en bas sur le bouton bleu :
+ " Ajouter un type de publication " (c'est LÀ que tout le monde se fait avoir)
+ Tant que ce bouton n'est pas cliqué = rien n'existe, même si tout est rempli.
+
+ ÉTAPE 2 - Vérifier l'affichage dans l'admin (le point clé)
+Dans le CPT projet, vérifie ces réglages (tu les as déjà vus, mais on confirme) :
+Dans Réglages du CPT :
+	-	Public -> Vrai
+	-	Afficher l'UI -> Vrai
+	-	Afficher dans le menu -> Vrai
+ Si Afficher l'UI = Faux  le CPT existe mais est invisible (fantôme )
+Corrige si besoin, puis enregistre.
+
+ ÉTAPE 3 - Rafraîchissement simple (souvent suffisant)
+Après enregistrement :
+	1	Recharge la page (⌘R / F5)
+	2	Regarde la colonne de gauche
+ Tu dois voir un menu :
+
+Projet
+ ├ Tous les projets
+ └ Ajouter
+
+ ÉTAPE 4 - Si ça n'apparaît TOUJOURS pas (rare)
+Va dans :
+Réglages -> Permaliens  Clique Enregistrer (sans rien changer)
+Pourquoi :
+	-	WordPress régénère les règles
+	-	Ça "réveille" les CPT
+Puis recharge.
+
+ Une fois "Projet" visible -> on fait le test
+	1	Projet -> Ajouter
+	2	Clique Publier sans rien remplir
+Résultat attendu :
+	-	 Publication refusée
+	-	 Messages sur les champs requis ACF
+ Si oui -> structure ACF validée  Si non -> dis-moi exactement ce qui se passe (message, publication quand même, etc.)
+
+ Ce que ça signifie (important)
+Si "Projet" n'apparaissait pas :
+	-	ce n'est PAS un bug
+	-	ce n'est PAS toi
+	-	c'est juste CPT UI qui n'exécute rien tant que le bouton final n'est pas cliqué
+Classique. Tu viens d'éviter une demi-journée de doute inutile.
+
+ Dis-moi maintenant :
+	-	"Projet visible" ou
+	-	"Toujours rien"
+et on ajuste en 30 secondes.
+
+importer champs.pdf
+PDF
+
+Types et taxonomies enregistrés ‹ INSIDE - WordPress.pdf
+PDF
+
+Types et taxonomies enregistrés ‹ INSIDE - WordPress.pdf
+PDF
+
+importer champs.pdf
+PDF
+
+Parfait. On reprend proprement, sans bruit, et on règle exactement ton point bloquant.
+
+ Problème constaté
+Tu ne vois pas "Projet -> Ajouter" donc impossible de tester les champs requis.
+Ce n'est pas un problème ACF. C'est 100 % lié au Custom Post Type (CPT).
+
+1 Vérification immédiate (30 secondes)
+Dans le menu de gauche de WordPress, tu dois voir exactement :
+
+Projet
+ ├─ Tous les projets
+ └─ Ajouter
+
+ Si "Projet" n'apparaît PAS
+-> le CPT n'est pas correctement enregistré ou affiché
+
+2 Va ici (impératif)
+CPT UI -> Types/taxonomies enregistrés
+ Dis-moi ce que tu vois :
+	-	 projet listé -> on continue
+	-	 rien -> CPT UI n'a pas enregistré ton type
+
+3 Si projet existe : corriger l'affichage
+Retourne dans CPT UI -> Ajouter/modifier des types de publication -> projet
+Vérifie ligne par ligne (c'est là que ça bloque 90 % du temps) :
+Réglages critiques (ne discute pas )
+Champ
+Valeur
+Public
+ Vrai
+Afficher l'UI
+ Vrai
+Afficher dans le menu
+ Vrai
+Afficher dans les menus de navigation
+ Vrai
+Position du menu
+vide (ou 5-20)
+Icône du menu
+optionnel
+ Bouton tout en bas :
+ Ajouter / Mettre à jour le type de publication
+ Beaucoup de gens remplissent… et oublient d'enregistrer.
+
+4 Recharge WordPress (important)
+	-	Recharge la page (⌘R / F5)
+	-	Si besoin : déconnexion / reconnexion
+ Le menu Projet doit apparaître.
+
+5 Test immédiat ACF (celui que tu voulais)
+	1	Projet -> Ajouter
+	2	Clique Publier sans rien remplir
+Résultat attendu
+	-	 Publication refusée
+	-	 Messages d'erreur ACF sur :
+	-	Résumé du projet *
+	-	Description détaillée *
+	-	Image principale *
+ Si ça arrive : ACF est parfaitement branché  Si ça n'arrive pas : on corrige la validation (étape suivante)
+
+6 Si WordPress publie quand même (plan B)
+Alors on passe à : ACF -> Validation des champs requis (force côté serveur) (c'est rare, mais on le fera si nécessaire)
+
+Ce que tu as déjà très bien fait
+Je te le dis franchement :
+	-	 CPT propre
+	-	 Taxonomie propre
+	-	 Groupe ACF cohérent
+	-	 Présentation remplie (propre, futur-proof)
+	-	 Champs requis bien placés
+Tu construis une base pro, pas un site jetable 
+
+ Action suivante maintenant : Dis-moi ce que tu vois dans le menu WordPress (et si "Projet" apparaît ou non).
+
+projet ‹ INSIDE - WordPress.pdf
+PDF
+
+Parfait, on a enfin le bon état réel  Je vais être très clair et on avance sans tourner autour.
+
+1 Pourquoi tu ne voyais pas "Projet -> Ajouter"
+Parce que jusqu'ici :
+	-	soit le CPT n'était pas enregistré
+	-	soit WordPress n'avait pas encore rafraîchi les règles
+ Là c'est OK : on voit Projet dans le menu + Ajouter un nouveau projet (le PDF que tu as envoyé le confirme).
+Donc structure CPT = VALIDÉE.
+
+2 Test immédiat - ce que TU dois faire maintenant
+Étape A - Ouvre un projet vierge
+ Menu gauche Projet -> Ajouter un nouveau
+
+Étape B - Ne remplis RIEN
+	-	Pas de titre
+	-	Aucun champ ACF
+	-	Rien
+Clique directement sur Publier
+
+3 Résultat attendu (et ce que ça veut dire)
+ Cas 1 - WordPress BLOQUE
+	-	Message du type :
+	-	"Veuillez remplir ce champ requis"
+	-	Champs ACF surlignés
+	-	Bouton publier refusé
+ Parfait Tes champs ACF sont :
+	-	bien attachés au CPT projet
+	-	bien marqués comme requis
+	-	exploitables proprement
+
+ Cas 2 - WordPress publie quand même
+ Ça veut dire UNE chose (et une seule) :
+Les champs ACF ne sont PAS définis comme requis ou le groupe de champs n'est pas correctement assigné.
+
+4 Si ça publie quand même -> correctif immédiat
+Vérifie dans ACF -> Groupe Projet - Infos
+Pour CHAQUE champ important :
+	1	Clique sur le champ
+	2	Onglet Validation
+	3	Mets :
+	-	Champ requis : OUI
+Champs à rendre requis au minimum :
+	-	Lieu
+	-	Année (si présent)
+	-	Type de prestation (si structurant)
+	-	Statut (si tu l'utilises pour filtrer)
+ Règle simple :
+si un champ sert à afficher / filtrer / structurer -> requis
+
+5 Vérifie l'assignation du groupe (CRITIQUE)
+Dans le groupe Projet - Infos, tout en bas :
+Règles de localisation
+	-	Type de publication
+	-	est égal à
+	-	projet
+ S'il manque ça : WordPress s'en fout de tes champs.
+
+6 Ce que tu as BIEN fait (et qu'on garde)
+	-	CPT propre (projet)
+	-	Taxonomies propres
+	-	ACF structuré (noms propres, lisibles)
+	-	Présentation des champs ( très pro, vraiment)
+Tu es exactement au niveau d'un socle pro maintenable.
+
+Étape suivante (quand tu confirmes le résultat du test)
+ Étape 7 - Structure d'affichage
+	-	ordre des champs
+	-	logique d'édition
+	-	puis templates Gutenberg / Kadence pour les projets
+Dis-moi simplement :
+	-	 "Ça bloque"
+	-	 "Ça publie quand même"
+Et je t'emmène à l'étape suivante sans perdre une minute.
+
+Bouton publier refusé
+
+Nickel. Là, t'as un socle propre. WordPress fait le videur à l'entrée, donc tes champs requis sont bien câblés. On enchaîne.
+Étape 7 - Créer les 3 "archives" qui correspondent à ton menu
+Objectif : avoir /realisations, /conception, /projets-en-cours qui affichent les projets filtrés par statut.
+Comme on est en Option A (URLs propres par statut), on fait ça comme suit :
+7.1 - Vérifie que ta taxonomie "statut" existe et est attachée à "projet"
+Tu l'as déjà créée dans CPT UI. Maintenant on vérifie côté WP :
+	1	Menu gauche Projet -> Statuts (ou "Statut")
+	-	Si tu vois ce sous-menu :  parfait.
+	-	Si tu ne le vois pas : dis-le moi, on ajuste le réglage "Afficher dans le menu" / attachement.
+	2	Dans Projet -> Statuts, crée 3 termes :
+	-	Réalisé (slug : realise)
+	-	Conception (slug : conception)
+	-	En cours (slug : en-cours)
+ Slugs sans accent, avec tirets. On veut du propre, pas du folklore.
+
+Étape 8 - Activer la bonne structure de permaliens (sinon tu vas te tirer une balle dans le pied)
+	1	Réglages -> Permaliens
+	2	Choisis : Titre de la publication
+	3	Enregistre
+Ça "flush" les règles, et ça évite les 404 bizarres plus tard.
+
+Étape 9 - Construire les URLs Option A (la partie un peu technique, mais faisable)
+WordPress, nativement, ne met pas automatiquement un préfixe différent par terme de taxonomie. Donc pour obtenir :
+	-	/realisations/nom-du-projet
+	-	/conception/nom-du-projet
+	-	/projets-en-cours/nom-du-projet
+… il faut un plugin de permaliens (sinon tu seras coincé en /projet/nom-du-projet ou /projets/nom-du-projet).
+Reco simple et fiable
+Installe Permalink Manager Lite (ou Pro si besoin plus tard).
+	-	Ça te permet de définir la route exacte de chaque projet, sans te battre.
+ Avantage : tu contrôles tes URLs au millimètre (SEO + premium).  Inconvénient : faut être rigoureux (mais toi, t'as l'air de l'être).
+
+Étape 10 - Mise en place "menu parent Projet non cliquable"
+	1	Apparence -> Menus
+	2	Crée un élément "Projet" :
+	-	soit un lien personnalisé avec URL # (ou vide si ton thème accepte)
+	-	libellé : Projet
+	3	Ajoute dessous :
+	-	Réalisations (page /realisations)
+	-	Conception (page /conception)
+	-	Projets en cours (page /projets-en-cours)
+	4	Glisse en sous-menu (indentation)
+
+Maintenant : dis-moi ce que tu vois dans le menu WordPress
+Dans la colonne de gauche, tu vois quoi exactement sous "Projet" ?
+	-	"Tous les projets"
+	-	"Ajouter"
+	-	"Statuts"
+	-	autre ?
+Si tu as bien Projet -> Statuts, on passe direct à la création des 3 termes + première archive visible (et après je te guide sur la grille Kadence).
+
+Statuts ‹ INSIDE - WordPress.pdf
+PDF
+
+Parfait. Là on est exactement au bon endroit, et ce que tu constates est normal. Je t'explique clairement, sans détour, puis je te dis quoi faire dans l'ordre.
+
+Pourquoi le bouton Publier est refusé (ce n'est PAS un bug)
+Tu as fait deux choses très bien :
+	-	 créé le CPT projet
+	-	 créé des champs ACF obligatoires
+	-	 coché des champs comme requis
+ Résultat logique : WordPress refuse de publier tant que tous les champs requis ne sont pas remplis.
+Mais il y a une condition préalable que tu n'as pas encore remplie 
+
+Le point bloquant précis (clé n°1)
+ La taxonomie statut est vide.
+D'après ce que tu montres (capture + PDF) :
+	-	la taxonomie Statuts existe 
+	-	MAIS aucun terme n'a été créé  "Aucune catégorie trouvée"
+Donc :
+	-	ton champ Statut est requis
+	-	mais WordPress n'a rien à sélectionner
+	-	donc la publication est bloquée
+C'est logique. Et sain.
+
+Ce que tu dois faire maintenant (pas à pas, 5 minutes)
+ Étape 1 - Créer les termes de la taxonomie statut
+Va ici :
+Projet -> Statuts
+Tu dois créer exactement ces 3 termes (ni plus, ni moins pour l'instant) :
+1 Statut : Réalisé
+	-	Nom : Réalisé
+	-	Slug : realise
+	-	Parent : aucun
+	-	Description : vide
+Clique Ajouter un nouveau statut
+2 Statut : Conception
+	-	Nom : Conception
+	-	Slug : conception
+	-	Parent : aucun
+Ajouter.
+3 Statut : En cours
+	-	Nom : En cours
+	-	Slug : en-cours
+	-	Parent : aucun
+Ajouter.
+ À la fin, tu dois voir 3 lignes dans la liste.
+
+ Étape 2 - Vérifier que le champ ACF "Statut" pointe bien dessus
+Dans ACF -> Groupe de champs -> Projet - Infos :
+	-	Champ : Statut
+	-	Type :
+	-	soit Taxonomie
+	-	soit Select (mais lié à la taxonomie statut)
+Vérifie :
+	-	 Taxonomie = statut
+	-	 Type d'affichage : Boutons radio ou Select
+	-	 Champ requis = OUI
+Enregistre le groupe de champs (bouton Mettre à jour).
+
+ Étape 3 - Test immédiat (le vrai test)
+Va dans :
+Projet -> Ajouter un nouveau
+Fais le test dans cet ordre :
+	1	Clique Publier sans rien remplir  WordPress doit refuser 
+	2	Remplis UNIQUEMENT :
+	-	Titre
+	-	Statut = Réalisé
+	3	Clique Publier
+ Ça doit passer.
+Si ça passe :  ton modèle est fonctionnel et sain.
+
+Ce que ça veut dire (vision long terme)
+Tu viens de mettre en place :
+	-	un CPT propre
+	-	des champs structurants
+	-	une validation métier
+	-	un back-office qui empêche les erreurs humaines
+ C'est exactement ce qu'on veut pour :
+	-	toi dans 6 mois
+	-	un collaborateur
+	-	une montée en charge propre
+
+Prochaine étape (si tu veux continuer)
+ Étape suivante logique :
+	-	vérifier l'ordre et la lisibilité des champs dans l'éditeur
+	-	puis attaquer le template Gutenberg de la fiche projet
+Dis-moi simplement :
+"ok statut créé, publication ok"
+et on enchaîne.
+
+Statuts_01.pdf
+PDF
+
+je n'ai pas de champ statuts
+
+Parfait, on met le doigt exactement sur le bon point. Réponse franche : c'est normal que tu n'aies pas de champ "Statut". Et c'est même sain. Mais tu as deux options selon ce que tu veux faire maintenant.
+
+Pourquoi tu n'as PAS de champ "Statut" (et pourquoi ce n'est pas un bug)
+Actuellement, ta structure est la suivante :
+	-	CPT : projet
+	-	ACF : groupe Projet - Infos -> uniquement des champs de contenu
+	-	Taxonomies : tu as créé (ou commencé à créer) statut, mais  une taxonomie ≠ un champ ACF
+Donc :
+	-	Un champ ACF = données internes au projet (lieu, surface, budget…)
+	-	Une taxonomie = classification (statut, type, catégorie…)
+ Normal que le champ "Statut" n'apparaisse pas dans ACF.
+
+Ce qui bloque ton test "Publier refusé"
+Tu dis :
+Bouton publier refusé
+ Ce n'est PAS lié au statut.  C'est lié à tes champs ACF obligatoires (*).
+Dans ton groupe Projet - Infos, tu as au minimum :
+	-	Lieu *
+	-	Résumé du projet *
+	-	Description détaillée *
+	-	Image principale *
+ Si tu cliques sur Publier sans rien remplir, WordPress doit refuser.  C'est exactement le comportement attendu.  Donc : ACF fonctionne correctement.
+ Test validé.
+
+Maintenant, le vrai choix stratégique à faire (important)
+OPTION A - Statut = TAXONOMIE (recommandé)
+ C'est ce que tu es en train de faire, et c'est le bon choix.
+Exemples de termes :
+	-	En cours
+	-	Livré
+	-	Concours
+	-	Étude
+	-	Archivé
+Avantages :
+	-	Filtrable
+	-	SEO-friendly
+	-	Exploitable plus tard (archives, filtres, vues)
+	-	Logique "métier"
+ Dans ce cas :
+	-	Pas de champ ACF "Statut"
+	-	Tu attribues le statut dans la colonne taxonomie du projet
+ Si tu ne le vois pas :
+	1	Vérifie que la taxonomie statut est bien attachée au CPT projet
+	2	Dans les réglages de la taxonomie :
+	-	Afficher l'UI = Vrai
+	-	Afficher dans le menu = Vrai
+	-	Afficher dans l'API REST = Vrai
+
+OPTION B - Statut = CHAMP ACF (moins propre, mais possible)
+À faire seulement si :
+	-	tu veux un statut purement interne
+	-	non filtrable
+	-	non indexé
+Dans ce cas :
+	1	ACF -> Groupe Projet - Infos
+	2	Ajouter un champ
+	3	Type : Sélection
+	4	Nom : statut
+	5	Choix :    en_cours : En cours
+	6	livre : Livré
+	7	concours : Concours              
+	8	Champ requis : Oui
+ Mais honnêtement : je ne te le conseille pas à ce stade.
+
+Ce que je te recommande de faire maintenant (ordre strict)
+	1	 Ne touche pas à ACF (il est bon)
+	2	Va dans Projet -> Ajouter
+	3	Remplis juste :
+	-	Lieu
+	-	Résumé
+	-	Description
+	-	Image
+	4	Attribue un statut via la taxonomie
+	5	Publie
+	6	Vérifie :
+	-	que le projet s'enregistre
+	-	que le statut est visible dans la liste des projets
+
+Verdict clair
+	-	 Tu n'as rien cassé
+	-	 ACF fonctionne
+	-	 Le refus de publication est normal
+	-	 Le "Statut" doit rester une taxonomie
+Quand tu veux, on enchaîne sur :
+	-	affichage propre côté front (Kadence)
+	-	ou liaison Statut -> design / badge / filtre
+Dis-moi juste : front ou back en priorité ?
+
+Vérifie que la taxonomie statut est bien attachée au CPT projet Dans les réglages de la taxonomie : Afficher l'UI = Vrai Afficher dans le menu = Vrai Afficher dans l'API REST = Vrai ouça ? dans acf, cpt ??? et ou
+
+C'est dans CPT UI, pas dans ACF. ACF = champs. CPT UI = types + taxonomies.
+Tu as 2 endroits à vérifier : (1) l'attache à "projet" et (2) les réglages UI/REST.
+
+1) Vérifier que "statut" est attachée au CPT "projet"
+WordPress Admin -> CPT UI -> Ajouter/modifier des taxonomies
+Tu dois être sur la page où tu as :
+	-	Slug de la taxonomie : statut
+	-	Libellé : Statut / Statuts
+Juste dessous tu as un bloc :
+ "Attacher au type de publication"
+Coche Projet (et seulement Projet).
+Puis clique le bouton bleu en bas : "Ajouter une taxonomie" (ou "Enregistrer la taxonomie" si elle existe déjà).
+ Si tu n'as pas coché "Projet", ta taxonomie existe mais n'apparaît jamais dans les fiches Projets.
+
+2) Vérifier les réglages (UI / Menu / REST)
+Toujours sur la même page (CPT UI -> taxonomies), tu descends dans le gros bloc :
+ "Réglages"
+Tu dois mettre :
+	-	Afficher l'UI = Vrai
+	-	Afficher dans le menu = Vrai
+	-	Afficher dans l'API REST = Vrai
+	-	(bonus utile) Hiérarchique = Vrai (comme des catégories, pas des tags)
+Puis enregistrer.
+Dans tes captures, "Afficher dans l'API REST" est déjà sur Vrai - donc tu es probablement bien. Le point qui piège le plus, c'est "Attacher au type de publication -> Projet".
+
+3) Où ça apparaît ensuite dans WordPress
+Une fois enregistré correctement :
+	1	Dans le menu à gauche, tu dois voir un menu : Projet
+	2	En dessous de Projet, tu dois voir un sous-menu : Statuts (ou "Statut")
+	3	Quand tu fais Projet -> Ajouter, dans la colonne de droite (ou sous l'éditeur), tu dois avoir un bloc : Statut avec des cases à cocher (comme Catégories)
+ Si tu ne vois pas "Statut" dans l'édition d'un projet : c'est soit pas attaché à projet, soit UI = Faux, soit tu as un écran WordPress en mode "Options de l'écran" qui masque la metabox (rare).
+
+Mini check en 30 secondes
+	-	CPT UI -> taxonomies -> statut
+	-	 coché : Projet
+	-	 UI : Vrai
+	-	 Menu : Vrai
+	-	 REST : Vrai
+	-	Enregistrer
+	-	Puis va : Projet -> Ajouter
+	-	Regarde si bloc Statut apparaît à droite
+Si tu me dis ce que tu vois dans Projet -> Ajouter (tu as "Statut" ou rien), je te dis exactement quoi corriger sans tourner autour.
+
+Parfait. Là, tout est en place  Je te dis franchement : ta taxonomie "Statuts" fonctionne correctement. Ce que tu vois à l'écran en est la preuve.
+On remet les pièces dans l'ordre et on enchaîne proprement.
+
+Ce que confirme ta capture (important)
+	-	Menu Projet -> Statuts visible 
+	-	Termes créés :
+	-	Conception
+	-	En cours
+	-	Réalisé
+	-	Slugs propres
+	-	Taxonomie attachée au CPT "projet" 
+	-	UI active (sinon tu ne serais pas sur cette page) 
+ Donc : le problème n'est PAS la taxonomie.
+
+Pourquoi "Publier" est refusé
+Ce blocage ne vient pas des statuts. Il vient d'ACF.
+Tu as au moins un champ ACF obligatoire (required = true) qui n'est pas rempli.
+WordPress fait exactement ce qu'on lui a demandé :
+"Tu ne publies pas tant que le projet n'est pas propre."
+C'est sain. C'est pro. C'est ce qu'on veut.
+
+Étape suivante (rapide, 2 minutes)
+1 Va dans
+Projet -> Ajouter
+2 Sans rien remplir, clique sur Publier
+3 Observe précisément :
+	-	Les champs entourés en rouge
+	-	Le message d'erreur ACF en haut (souvent discret)
+ Dis-moi quel(s) champ(s) bloque(nt) :
+	-	Lieu ?
+	-	Année ?
+	-	Surface ?
+	-	Budget ?
+	-	Autre ?
+
+Règle d'or (à garder en tête)
+	-	CPT UI -> structure (Projet, Statut)
+	-	ACF -> règles métier (ce qui est obligatoire)
+	-	Statut ≠ champ requis par défaut (sauf si toi tu l'as rendu obligatoire dans ACF, ce qui serait une erreur conceptuelle)
+
+Ce qu'on fera juste après
+Une fois le champ bloquant identifié :
+	-	soit on le rend obligatoire (si structurel)
+	-	soit on le rend optionnel (si éditorial)
+	-	soit on lui met une valeur par défaut intelligente
+Objectif :  Publier = possible  Publier de la merde = impossible
+Tu es exactement au bon endroit. Dis-moi quel champ bloque et on verrouille ça proprement.
+
+je ne peux pas publier... rien ne se passe
+
+Je vois pourquoi tu as l'impression que "rien ne se passe" : tu es en haut de l'éditeur Gutenberg, et tes champs ACF sont très probablement dans une meta box en bas ("Boîtes meta" / panneau ACF). Du coup, quand tu cliques Publier, WordPress essaie… puis ACF bloque, et l'erreur est hors écran.
+Et autre détail : à droite tu vois RankMath qui hurle, mais ça n'empêche pas de publier. RankMath c'est un chien qui aboie, pas le videur du club.
+Ce que tu fais maintenant (dans l'ordre, 60 secondes)
+	1	Clique "Publier" une fois (pas 12 fois, sinon il boude).
+	2	Descends tout en bas de la page (scroll violent).
+	-	Cherche un bloc "Projet - Infos" (ACF) ou une section "Boîtes meta".
+	3	Tu dois voir :
+	-	soit un message rouge "Ce champ est requis"
+	-	soit des champs entourés en rouge
+	4	Remonte ensuite tout en haut : parfois Gutenberg affiche un petit toast "Erreur" en haut, mais le détail est en bas.
+Si tu ne vois PAS tes champs ACF
+Ça arrive : l'éditeur masque les meta boxes.
+Fais ça :
+	1	En haut à droite : Options de l'écran
+	2	Coche tout ce qui ressemble à :
+	-	Champs personnalisés / Custom fields
+	-	ACF
+	-	Projet - Infos
+	-	Boîtes meta
+	3	Recharge la page si besoin.
+Le test "chirurgical"
+Pour savoir si c'est bien ACF qui bloque :
+	1	Mets juste un titre ("Test")
+	2	Clique Publier
+	3	Descends : tu verras exactement quel champ obligatoire bloque.
+
+Ce que j'ai besoin que tu me dises (et on corrige direct)
+Quand tu as scrollé en bas après avoir cliqué publier, tu vois quoi ?
+	-	A) des champs ACF en rouge ? lesquels ?
+	-	B) un message d'erreur ACF en haut/bas ? copie-colle
+	-	C) aucun champ ACF n'apparaît ? (dans ce cas c'est un souci d'affichage / emplacement des meta boxes)
+Si tu veux aller plus vite : fais une capture tout en bas, là où devraient être les champs ACF.
+
+Parfait, là on voit exactement ce qui se passe. Je te fais le diagnostic net, sans détour, puis les actions.
+
+ Diagnostic clair
+ WordPress n'est PAS bloqué  ACF fait exactement ce que tu lui as demandé
+Tu as créé un CPT projet avec un groupe de champs ACF dont certains sont obligatoires.
+Résultat logique :
+	-	Tant que tous les champs requis ne sont pas remplis
+	-	Le bouton Publier :
+	-	ne fait "rien"
+	-	ou boucle sur la confirmation
+	-	ou reste bloqué sans message clair (comportement ACF classique)
+Ce n'est ni un bug, ni Rank Math, ni Gutenberg.
+
+ Ce qui bloque concrètement chez toi
+Sur ta capture, je vois au moins 2 champs ACF obligatoires non remplis :
+1 Résumé du projet 
+Champ marqué *
+"2 à 3 phrases maximum"
+ Vide -> publication refusée
+
+2 Description détaillée 
+Champ marqué *
+"Texte principal du projet : contexte, …"
+ Vide -> publication refusée
+
+3 (Optionnel mais probable) Taxonomie Statut
+Même si elle existe :
+	-	si elle est requise dans ACF
+	-	et aucun terme n'est sélectionné
+ publication refusée aussi
+
+ Test de validation (fais-le maintenant)
+Dans Projet -> Ajouter :
+	1	Mets un titre (n'importe quoi)
+	2	Remplis TOUS les champs avec une étoile *, au minimum :
+	-	Lieu 
+	-	Résumé du projet 
+	-	Description détaillée 
+	3	(Si visible) sélectionne un Statut (ex : "En cours")
+	4	Clique Publier
+ Ça publiera. Sans débat.
+
+ Vérification rapide ACF (important)
+Va dans :
+ACF -> Groupes de champs -> Projet - Infos
+Pour chaque champ :
+	-	Onglet Validation
+	-	Regarde :
+	-	 "Champ requis" = OUI / NON
+ Si tu veux pouvoir publier un projet "vide" pour test :
+	-	mets temporairement Champ requis = NON
+	-	publie
+	-	puis remets à OUI
+
+ Point structure (tu as bien bossé)
+ CPT projet : OK  Taxonomie statut : OK (elle existe et est attachée)  ACF : OK  Blocage volontaire : OK
+ Tu es dans une logique pro, pas un WordPress bricolé.
+
+Étape suivante (quand tu veux)
+On peut enchaîner sur UNE de ces options :
+	1	 Rendre le Statut obligatoire proprement (ACF + UX clean)
+	2	 Définir un ordre logique de saisie des champs
+	3	 Commencer le template d'affichage du projet
+	4	 Mettre un mode "brouillon assisté" (champs requis différés)
+Dis-moi laquelle. Et oui : là, c'est propre. Tu n'as rien cassé.
+
+publier immediatement ou publique ,
+
+Bonne question - et tu fais bien de la poser maintenant, pas après 20 projets bancals.
+Réponse courte (et honnête)
+ Aucune différence fonctionnelle pour ton problème actuel. Les deux sont OK.
+Mais… il y a une bonne pratique à adopter.
+
+ Ce que ça veut dire concrètement
+Dans l'écran de publication WordPress :
+ Publier : Immédiatement
+	-	C'est le comportement par défaut
+	-	Le projet devient visible dès que tu cliques sur Publier
+	-	C'est ce que tu veux dans 90 % des cas
+ Visibilité : Publique
+	-	Ça veut juste dire : visible par tout le monde
+	-	Alternative possibles :
+	-	Privé
+	-	Protégé par mot de passe
+ Ces deux options ne bloquent PAS la publication  Elles n'ont aucun lien avec ton souci précédent
+
+ Ce qui BLOQUE vraiment (rappel utile)
+Ce ne sont pas ces réglages-là.
+Ce qui bloque :
+	-	un champ ACF requis vide
+	-	ou une taxonomie requise non sélectionnée
+WordPress te laisse cliquer, ACF dit non, et Gutenberg reste poli mais muet.
+
+ Ce que je te conseille (bonne pratique INSIDE)
+Pour ton usage :
+	-	 Visibilité : Publique
+	-	 Publier : Immédiatement
+	-	 Utilise Brouillon tant que :
+	-	le projet n'est pas complet
+	-	ou pas validé visuellement
+ Et ne touche plus à ces réglages sauf cas très précis (planning éditorial, pré-lancement, etc.)
+
+ Prochaine étape logique (je te guide)
+Maintenant que la publication est comprise et maîtrisée, le vrai sujet intéressant arrive :
+ Faut-il :
+	1	Forcer un Statut obligatoire dès la création ?
+	2	Ou autoriser un mode "brouillon libre" sans contrainte ?
+	3	Ou créer un statut interne invisible du public ?
+Dis-moi laquelle tu veux. Là, on est clairement en train de structurer une vraie machine, pas un site vitrine jetable.
+
+c'est publié... mais j'ai pas trouvé brouillon
+
+Parfait. Et ton observation est juste :  le bouton "Brouillon" n'est pas là où tu le cherches, parce que WordPress a déjà publié le contenu.
+On remet l'ordre mental correctement 
+
+ Pourquoi tu ne vois pas "Brouillon"
+Dans Gutenberg :
+	-	Avant publication
+	-	Boutons visibles :
+	-	Enregistrer le brouillon
+	-	Publier
+	-	Après publication
+	-	Le bouton "Brouillon" disparaît
+	-	Il est remplacé par :
+	-	Passer en brouillon (planqué dans un menu)
+	-	Mettre à jour
+ Ton projet est déjà publié, donc WordPress considère que le "brouillon" n'est plus l'état par défaut.
+
+ Où trouver "Repasser en brouillon" (là où WordPress le cache)
+Sur l'écran d'édition du projet :
+	1	Regarde en haut à droite
+	2	Clique sur Visibilité : Publique
+	3	Dans le panneau qui s'ouvre :
+	-	clique sur Passer en brouillon
+	4	Confirme
+ Le projet :
+	-	n'est plus public
+	-	redevient un brouillon
+	-	disparaît du site
+
+ Test rapide (30 secondes)
+Fais ça maintenant :
+	1	Clique Visibilité : Publique
+	2	-> Passer en brouillon
+	3	Recharge le site public
+ Le projet ne doit plus être visible
+
+ Ce que ça prouve (important)
+	-	 Ton CPT projet fonctionne
+	-	 ACF n'empêche plus la publication
+	-	 Les champs requis sont bien gérés
+	-	 La taxonomie statut n'empêche rien
+	-	 Gutenberg + Kadence = OK
+ Autrement dit : le socle est sain. Pas bricolé. Pas bancal.
+
+ Étape suivante (structurante, pas cosmétique)
+Maintenant on doit décider comment INSIDE travaille vraiment :
+Options possibles
+	1	Brouillon libre (mode créatif)
+	2	Statut obligatoire avant publication
+	3	Workflow interne (ex : "En conception" non public)
+ Dis-moi laquelle tu veux mettre en place. À partir de là, on passe du site à l'outil de production.
+
+Parfait. synthétise proprement le thread, mets à jour un CONTEXTE PROJET - INSIDE WEBSITE Garde bien toutes les infos importantes de ce thread. le qui suit est la vérité opérationnelle à date. À copier-coller en tête du nouveau thread.
+
+Parfait. Voilà une synthèse propre, opérationnelle et fidèle du thread, formulée comme un CONTEXTE PROJET - INSIDE WEBSITE prêt à être copié-collé en tête du prochain thread. C'est la vérité technique et décisionnelle à date.
+
+ CONTEXTE PROJET - INSIDE WEBSITE (v1.0)
+ Objectif
+Construire le nouveau site INSIDE sur WordPress avec une architecture propre, durable, orientée production, en distinguant clairement :
+	-	le contenu structuré (CPT + taxonomies + ACF),
+	-	la présentation (Gutenberg / Kadence),
+	-	le workflow éditorial (brouillon / publication / statut).
+Le site est développé sur un sous-domaine de staging :  dev.inside.archi Le site public existant reste actif pendant toute la phase de construction.
+
+ Hébergement & DNS
+	-	Hébergeur cible : Hostinger
+	-	Domaine principal : inside.archi
+	-	Staging déclaré via Hostinger : dev.inside.archi
+	-	Le domaine est bien reconnu côté Hostinger (bloc "Domaine > Gérer").
+
+ Stack WordPress validée
+	-	Éditeur : Gutenberg
+	-	Thème : Kadence
+	-	Cache : LiteSpeed Cache
+	-	SEO : Rank Math
+	-	Champs personnalisés : Advanced Custom Fields (ACF)
+	-	Types de contenus & taxonomies : Custom Post Type UI (CPT UI)
+Extensions inutiles nettoyées. Stack volontairement sobre.
+
+ Custom Post Type : projet
+Créé via CPT UI
+Paramètres clés
+	-	Slug : projet
+	-	Public : 
+	-	UI admin : 
+	-	API REST : 
+	-	Archives :  (/projets)
+	-	Hiérarchique : 
+	-	Supports activés :
+	-	Titre
+	-	Éditeur
+	-	Image mise en avant
+	-	Extrait
+Le CPT apparaît bien dans l'admin :  Projet > Tous les projets / Ajouter un nouveau
+
+ Taxonomie : statut
+Créée via CPT UI, attachée exclusivement au CPT projet
+Paramètres validés
+	-	Slug : statut
+	-	Hiérarchique : 
+	-	Afficher l'UI : 
+	-	Afficher dans le menu : 
+	-	Afficher dans les menus de navigation : 
+	-	Afficher dans l'API REST : 
+Termes existants
+	-	Conception
+	-	En cours
+	-	Réalisé
+La taxonomie apparaît correctement dans :  Projet > Statuts
+
+ ACF - Groupe de champs : Projet - Infos
+Groupe de champs attaché au CPT projet
+Champs structurants (exemples)
+	-	Lieu (requis)
+	-	Ville
+	-	Année
+	-	Surface (m²)
+	-	Budget
+	-	Résumé du projet (requis)
+	-	Description détaillée (requise)
+Travail réalisé
+	-	Tous les champs requis sont correctement marqués
+	-	Onglet Présentation renseigné pour chaque champ :
+	-	Texte d'aide
+	-	Placeholder
+	-	Objectif : éviter les données sales, aider un futur collaborateur, et garantir la cohérence dans le temps
+
+ Tests de publication (validés)
+Cas testé
+	-	Tentative de publication sans remplir les champs requis
+	-	Résultat attendu : blocage
+	-	Résultat réel : OK
+Comportement constaté
+	-	Tant que les champs requis ACF ne sont pas remplis :
+	-	le bouton Publier semble inactif
+	-	WordPress ne valide pas silencieusement
+	-	Une fois les champs requis remplis :
+	-	la publication fonctionne normalement
+ ACF n'empêche plus la publication de façon anormale.
+
+ Brouillon / Publication (clarification clé)
+	-	Une fois un projet publié, le bouton "Brouillon" disparaît
+	-	Pour revenir en brouillon :
+	-	Visibilité : Publique
+	-	-> Passer en brouillon
+ Comportement WordPress normal, pas un bug.
+
+ État du système à date
+	-	CPT projet :  fonctionnel
+	-	Taxonomie statut :  attachée et visible
+	-	ACF :  champs requis + UX propre
+	-	Gutenberg / Kadence :  stables
+	-	Publication :  maîtrisée
+	-	Staging :  opérationnel
+ Socle technique sain, non bricolé, prêt pour structuration métier.
+
+ Prochaine décision structurante (non encore tranchée)
+Choix du workflow éditorial INSIDE :
+	1	Publication libre
+	2	Statut obligatoire avant publication
+	3	Workflow interne (ex : "En conception" non public)
+ Cette décision conditionnera :
+	-	l'affichage front
+	-	la logique métier
+	-	l'usage réel du site comme outil de production
+
+Si tu veux, au prochain message on :
+	-	tranche le workflow définitif,
+	-	ou on passe directement à la structure front des projets (listing, single, logique Kadence).
+Tu es exactement là où il faut.

@@ -1,0 +1,92 @@
+Last login: Sun Apr 26 13:57:10 on ttys002
+admin@imacdeiac5admin inside-os % npm run os:chat -- "contentieux Prost tribunal Versailles"
+
+> inside-os@1.0.0 os:chat
+> node os/chat/notion-memory-chat.mjs contentieux Prost tribunal Versailles
+
+
+--- DEBUG ---
+
+Question: contentieux Prost tribunal Versailles
+Tokens: contentieux, prost, tribunal, versailles
+Decisions lues: 18
+Lessons lues: 4
+Items sélectionnés: 6
+
+--- MEMORY ITEMS ---
+
+[MEMORY_ITEM_1]
+type: lesson
+score: 46
+hits: contentieux, prost, tribunal, versailles, present:B99
+uid: lesson:54376092bb3df02d
+lesson: Les contentieux clients peuvent résulter de défaillances de sous-traitants et nécessitent une gestion juridique proactive avec proposition transactionnelle
+what_happened: Madame Prost a assigné INSIDE SAS pour travaux inachevés et malfaçons, le retard étant imputable à un sous-traitant carreleur qui a été liquidé
+evidence: Madame Isabelle Prost assigné INSIDE SAS devant le Tribunal de Proximité de Versailles. Retard imputable à un sous-traitant carreleur défaillant (société Ceramix, liquidée le 20 mai 2025).
+source_thread: 
+source_dump_id: B99-T99
+
+[MEMORY_ITEM_2]
+type: decision
+score: 44
+hits: contentieux, prost, versailles, present:B99
+uid: decision:31d5a88349eef3c1
+decision: Mandater Maitre Celine Aubert pour défendre INSIDE SAS dans le contentieux Prost avec honoraires de 4 800 euros HT forfait audience
+rationale: Assurer une défense juridique professionnelle dans le litige avec Madame Prost
+evidence: INSIDE SAS mandate Maitre Celine Aubert (cabinet Aubert et Associés, Versailles) pour assurer la défense. Honoraires : 4 800 euros HT forfait audience + 120 euros HT de l'heure en cas de prolongement.
+source_thread: 
+source_dump_id: B99-T99
+
+[MEMORY_ITEM_3]
+type: decision
+score: 40
+hits: contentieux, prost, present:B99
+uid: decision:4e551aba58ec6019
+decision: Proposer transaction à Madame Prost : prise en charge finitions restantes (3 200 euros HT) + geste commercial 2 000 euros TTC, refus indemnisation préjudice moral
+rationale: Tenter de résoudre le contentieux à l'amiable en limitant le coût pour l'entreprise
+evidence: Proposition transactionnelle adressée à Madame Prost avant audience : prise en charge des finitions restantes (3 200 euros HT) + geste commercial de 2 000 euros TTC. Total offre : 5 840 euros TTC.
+source_thread: 
+source_dump_id: B99-T99
+
+[MEMORY_ITEM_4]
+type: decision
+score: 24
+hits: present:B99
+uid: decision:abe21910ff511c3e
+decision: INSIDE OS est la source de vérité décisionnelle, aucune décision au-dessus de 10 000 euros ou impliquant un recrutement sans interroger INSIDE OS
+rationale: Centraliser la mémoire décisionnelle et garantir la cohérence des décisions avec l'historique
+evidence: INSIDE OS (pipeline mémoire Notion) est la source de vérité décisionnelle du groupe. Règle non négociable : aucune décision au-dessus de 10 000 euros ou impliquant un recrutement ne peut être prise sans avoir interrogé INSIDE OS au préalable.
+source_thread: 
+source_dump_id: B99-T99
+
+[MEMORY_ITEM_5]
+type: decision
+score: 24
+hits: present:B99
+uid: decision:ceecd9ff346356fd
+decision: Installer serveur NAS Synology DS923+ avec RAID 1 sur 2 disques 4 To pour sauvegarde documents et accès distant via VPN Tailscale
+rationale: Sécuriser les données critiques de l'entreprise avec redondance et accès distant
+evidence: Serveur NAS Synology DS923+ installé dans les bureaux de Jouars-Pontchartier. Usage : sauvegarde automatique des documents comptables, plans, devis, photos chantiers. RAID 1 sur 2 disques de 4 To.
+source_thread: 
+source_dump_id: B99-T99
+
+[MEMORY_ITEM_6]
+type: decision
+score: 24
+hits: present:B99
+uid: decision:0efb5a44a9d3f3ce
+decision: Mettre en veille la SCI familiale, pas de création d'actif immobilier avant que le groupe génère 150 000 euros de résultat net consolidé annuel
+rationale: Reporter les investissements immobiliers personnels jusqu'à ce que le groupe atteigne une rentabilité suffisante
+evidence: La SCI familiale (SCI Les Weil) est mise en veille. Pas de création d'actif immobilier avant que le groupe génère 150 000 euros de résultat net consolidé annuel.
+source_thread: 
+source_dump_id: B99-T99
+
+--- REPONSE ---
+
+ÉTAT : Madame Prost a assigné INSIDE SAS devant le Tribunal de Proximité de Versailles pour travaux inachevés et malfaçons, imputables au sous-traitant liquidé.  
+PROBLÈME : Le litige est en cours, avec risque financier pour INSIDE SAS lié aux retards et malfaçons du sous-traitant.  
+ACTION : Écrire et envoyer immédiatement à Maître Céline Aubert la confirmation de mandat pour défendre INSIDE SAS dans ce contentieux, en rappelant les honoraires convenus.
+
+--- LOG ---
+runtime/logs/chat/2026-04-26_14-07-35_chat_test1.txt
+admin@imacdeiac5admin inside-os % 

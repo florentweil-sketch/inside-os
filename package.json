@@ -1,0 +1,27 @@
+{
+  "name": "inside-os",
+  "version": "1.0.0",
+  "description": "INSIDE OS Notion pipeline",
+  "type": "module",
+  "scripts": {
+    "os:ingest": "node os/ingest/ingest-thread-dump.mjs",
+    "os:extract": "node os/extract/extract-thread-dump.mjs",
+    "os:inject": "node os/inject/inject-decisions-lessons.mjs",
+    "os:pipeline": "node os/pipeline.mjs",
+    "os:validate-schema": "node os/scripts/validate-schema.mjs",
+    "os:audit": "node os/scripts/audit-system.mjs",
+    "os:list-inject-errors": "node os/scripts/list-inject-errors.mjs",
+    "os:list-inject-error-details": "node os/scripts/list-inject-error-details.mjs",
+    "os:repair-extraction": "node os/repair/repair-extraction-json.mjs",
+    "os:list-inject-pending": "node os/scripts/list-inject-pending.mjs",
+    "os:chat": "node os/chat/notion-memory-chat.mjs",
+    "os:server": "node os/chat/notion-memory-server.mjs",
+    "os:reset-db": "node os/scripts/reset-databases.mjs"
+  },
+  "dependencies": {
+    "@notionhq/client": "^5.19.0",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.4.2",
+    "openai": "^6.34.0"
+  }
+}

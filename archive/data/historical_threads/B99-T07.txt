@@ -1,0 +1,44 @@
+THREAD HISTORIQUE — BLOC 99 — T07 / 2026-04-18 / Pilotage automatique décision → action
+
+Objectif :
+- faire passer INSIDE OS d’un système descriptif à un système de pilotage
+
+Constat :
+- la mémoire est bonne
+- le pipeline fonctionne
+- le ranking privilégie le présent
+- le point faible restant est le comportement du chat
+- le chat lit les décisions mais ne pousse pas encore assez une action immédiate
+
+Décision principale :
+- le chat doit devenir un copilote opérationnel
+- il ne doit plus seulement expliquer
+- il doit orienter l’action
+
+Règle de réponse validée :
+- réponse très courte
+- état actuel en une phrase
+- blocage principal en une phrase
+- action immédiate en une phrase
+- pas de texte inutile
+- pas de répétition
+- pas de ton administratif
+
+Décision opérationnelle :
+- le prompt du chat doit être durci pour imposer une sortie orientée action
+- la sortie doit rester basée uniquement sur la mémoire
+- le présent B99 doit être prioritaire
+
+Critère de succès :
+- à la question “où en est INSIDE OS aujourd’hui ?”
+- le système doit répondre en mode pilotage
+- le système doit donner une action claire à faire maintenant
+
+Leçon :
+- une mémoire vivante sans orientation d’action reste incomplète
+- la valeur du système dépend de sa capacité à transformer la mémoire en décision pratique
+
+Conclusion :
+- INSIDE OS entre dans une phase de pilotage opérationnel
+- la prochaine amélioration ne porte plus sur le stockage mémoire
+- elle porte sur la capacité du chat à transformer le présent en action

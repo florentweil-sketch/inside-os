@@ -1,0 +1,17 @@
+ÉTAT VALIDÉ — INSIDE OS / NOTION PIPELINE 08.03.26
+
+Le pipeline ciblé fonctionne en mode manuel contrôlé :
+
+thread_dump → extract → inject
+
+Validation réalisée sur B00-T00 :
+- extraction LLM OK
+- écriture extraction_json OK
+- injection decisions / lessons OK
+- compatibilité Notion data sources OK
+
+Limites actuelles :
+- ingest encore stub
+- pipeline global non fiabilisé pour gros threads
+- extraction longue doit passer par chunking intelligent + résumé intermédiaire + fusion finale
+- ne pas utiliser os:pipeline en production tant que propagation des arguments et gestion des longs contextes ne sont pas stabilisées

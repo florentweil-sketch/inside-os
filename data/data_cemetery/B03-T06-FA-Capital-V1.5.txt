@@ -1,0 +1,505 @@
+THREAD HISTORIQUE - B02 - T06 - Sujet F&A Capital V1.5
+Date approximative : 01.10.2025
+Source : ChatGPT
+
+ok, on va reprendre point par point pour préparer la restructuration des entreprises. 1. On est d'accord pour créer une holding du nom de F&A CAPTITAL 2. Cette holding sera la maison mère regroupant : Inside SAS (qui cèdera les machines de l'atelier et le fond de commerce VS 100% des parts) , L'atelier de menuiserie (Nom : Ateliers De La Colombe), une entreprise type eurl me permettant de refacturer a inside SAS des prestations travaux et/ou du service pour me verser un salaire. Nb : J'ai aussi une autre entreprise (INSIDE ARCHI) code ape : 6820B - Location de terrains et d'autres biens immobiliers Que puis en faire ? peut on l'intégrer dans la holding ou as tu des suggestions inbterressantes à me faire
+
+Parfait Florent, reprenons méthodiquement.
+Voici une première lecture de ta structuration et des possibilités pour INSIDE ARCHI (APE 6820B - Location de terrains et autres biens immobiliers) :
+
+1. Structure envisagée
+	-	Holding F&A CAPITAL (SAS)
+	-	Inside SAS (opérationnelle bâtiment / MOE / rénovation haut de gamme)
+	-	Cède l'atelier (machines + fonds de commerce menuiserie) contre 100% des parts de la filiale.
+	-	Ateliers de la Colombe (SAS ou SARL/EURL dédiée à la menuiserie)
+	-	EURL "prestations personnelles" (véhicule pour toi afin de refacturer Inside SAS ou d'autres structures du groupe et te rémunérer de manière optimisée).
+	-	INSIDE ARCHI (6820B - immobilier) -> sujet central de ta question.
+
+2. Options pour INSIDE ARCHI
+Ton activité est classée en 6820B : Location de terrains et autres biens immobiliers. Cela ouvre plusieurs pistes :
+Option A : Intégrer INSIDE ARCHI dans la Holding
+	-	 Avantage : cohérence patrimoniale, centralisation de la gouvernance, visibilité globale.
+	-	 Permet de capitaliser l'immobilier dans le groupe, et de bénéficier d'un éventuel effet levier (crédit bancaire pour d'autres projets en adossant les actifs immobiliers).
+	-	 Attention : fiscalement, tout dépend si INSIDE ARCHI est propriétaire d'actifs ou simple "structure coquille". Si elle possède un immeuble (ou terrains), l'apport ou la cession à la holding peut générer des conséquences fiscales (droits d'enregistrement, plus-value, etc.).
+Option B : Laisser INSIDE ARCHI en dehors de la Holding
+	-	 Intéressant si tu veux protéger le patrimoine immobilier des risques opérationnels liés aux autres filiales (bâtiment, travaux, etc.).
+	-	 Tu peux louer les biens immobiliers de INSIDE ARCHI aux autres entités du groupe (Inside SAS, Ateliers de la Colombe, etc.) -> générer des revenus fonciers ou BIC selon régime.
+	-	 Moins de cohérence capitalistique : la holding ne détiendrait pas la totalité de tes structures.
+Option C : Transformer INSIDE ARCHI en "Foncière du Groupe"
+	-	INSIDE ARCHI devient la filiale foncière :
+	-	Elle détient les locaux (ex : ton atelier, futurs bureaux, entrepôts, investissements immobiliers).
+	-	Elle facture des loyers aux autres sociétés du groupe (Inside SAS, Ateliers de la Colombe).
+	-	 Sécurise l'immobilier hors exploitation directe.
+	-	 Facilite la transmission / valorisation patrimoniale.
+	-	 Bien valider le montage juridique et fiscal (IS vs IR, régime foncier).
+
+3. Suggestion stratégique
+Vu ton projet de croissance multi-filiales, il est logique que :
+	-	F&A CAPITAL = tête de groupe (vision stratégique + détention de toutes les participations)
+	-	INSIDE ARCHI = foncière du groupe (détention / gestion des actifs immobiliers)
+	-	Inside SAS + Ateliers de la Colombe = filiales opérationnelles
+	-	Ton EURL = outil personnel de facturation / rémunération
+Tu aurais ainsi :
+
+F&A CAPITAL
+│
+├── Inside SAS (Bâtiment / MOE)
+│
+├── Ateliers de la Colombe (Menuiserie)
+│
+├── INSIDE ARCHI (Foncière / Immobilier)
+│
+└── EURL perso (Prestations dirigeant)
+
+ Questions pour affiner :
+	1	INSIDE ARCHI détient-elle déjà des biens immobiliers (locaux, terrains, bâtiments) ou sert-elle juste de coquille juridique pour l'instant ?
+	2	Souhaites-tu que l'immobilier serve de levier (banques, financement groupe) ou préfères-tu le sanctuariser à l'écart des risques ?
+	3	As-tu déjà une idée de l'évolution d'INSIDE ARCHI (acheter, louer, développer un patrimoine immobilier pour le groupe) ?
+Selon tes réponses, je pourrai te proposer une architecture cible précise, avec une lecture fiscale et patrimoniale (holding IS vs foncière IS/IR).
+Veux-tu que je prépare un schéma comparatif avec scénarios fiscaux et patrimoniaux (A - intégration, B - hors holding, C - foncière du groupe) ?
+
+0000516_Plaquette Bic_Banque_202312.pdf
+PDF
+
+EBCLY_202412_INSIDE ARCHI.pdf
+PDF
+
+1. Non, c'est une coquille vide. en pj le bilan 2023 et 2024 2. Qu'en penses tu ? 3. oui acheter, louer, développer un patrimoine immobilier. Veux-tu que je prépare un schéma comparatif avec scénarios fiscaux et patrimoniaux : oui
+
+Merci pour les bilans 2023 et 2024 d'INSIDE ARCHI. Voici une lecture synthétique et un schéma comparatif de scénarios fiscaux et patrimoniaux pour la suite.
+
+ Situation d'INSIDE ARCHI
+	-	2023 :
+	-	CA : 91 252 €
+	-	Résultat net : +17 641 €
+	-	Total bilan : 88 303 €0000516_Plaquette Bic_Banque_20… 
+	-	2024 :
+	-	CA : 46 596 € (-49 % par rapport à 2023)
+	-	Résultat net : +3 168 € (fort recul mais toujours positif)
+	-	Total bilan : 69 296 €EBCLY_202412_INSIDE ARCHI 
+ En clair : INSIDE ARCHI est une petite structure rentable, avec des fonds propres redevenus positifs (13 362 € fin 2024
+EBCLY_202412_INSIDE ARCHI
+). Elle reste une coquille opérationnelle légère, sans actifs immobiliers significatifs.
+
+ Trois scénarios pour l'avenir
+Scénario A - Intégrer INSIDE ARCHI dans la Holding (filiale classique)
+	-	Structure : INSIDE ARCHI devient une filiale de F&A CAPITAL, comme Inside SAS et Ateliers de la Colombe.
+	-	Fiscalité :
+	-	Intégration fiscale possible (holding + filiales -> optimisation IS par compensation des résultats).
+	-	Dividendes remontent sans frottement fiscal (régime mère-fille).
+	-	Avantages :
+	-	Cohérence du groupe.
+	-	Valeur globale accrue en cas de revente/transmission.
+	-	Risques :
+	-	Immobilier (si acquis) exposé indirectement aux risques du groupe.
+
+Scénario B - Laisser INSIDE ARCHI en dehors de la Holding (structure personnelle séparée)
+	-	Structure : INSIDE ARCHI reste détenue directement par toi.
+	-	Fiscalité :
+	-	Revenus imposés directement à l'IS (puis dividendes si distribué).
+	-	Pas d'intégration fiscale avec la holding.
+	-	Avantages :
+	-	Protection patrimoniale : l'immobilier reste à l'écart des activités risquées.
+	-	Tu peux louer à Inside SAS / Ateliers de la Colombe avec loyers déductibles pour elles, imposables chez INSIDE ARCHI.
+	-	Risques :
+	-	Moins de levier bancaire pour le groupe.
+	-	Dispersion du patrimoine (pas consolidé dans F&A CAPITAL).
+
+Scénario C - Transformer INSIDE ARCHI en Foncière du Groupe
+	-	Structure : INSIDE ARCHI devient la société immobilière du groupe, détenue par F&A CAPITAL.
+	-	Utilisation :
+	-	Détention des futurs locaux, ateliers, bureaux.
+	-	Facturation de loyers aux filiales opérationnelles.
+	-	Fiscalité :
+	-	IS conseillé (déduction amortissements, charges financières si emprunts immobiliers).
+	-	Loyers déductibles pour les filiales -> baisse de leur résultat imposable.
+	-	Avantages :
+	-	Sécurisation : immobilier logé dans une entité dédiée, distincte des sociétés "à risque" (bâtiment).
+	-	Effet de levier : possibilité d'emprunts bancaires avec les loyers comme garanties.
+	-	Transmission facilitée (patrimoine immobilier logé à part).
+	-	Risques :
+	-	Si F&A CAPITAL détient INSIDE ARCHI, l'immobilier reste exposé indirectement aux créanciers du groupe (moins qu'en A, plus qu'en B).
+	-	Besoin de renforcer les fonds propres pour inspirer confiance aux banques.
+
+ Ma recommandation
+Vu que :
+	-	INSIDE ARCHI est encore "petite" mais déjà rentable.
+	-	Tu veux acheter, louer, développer un patrimoine immobilier.
+	-	L'objectif est de bâtir une architecture claire et évolutive.
+ Le Scénario C (Foncière du groupe) est le plus pertinent :
+	-	INSIDE ARCHI devient la foncière de F&A CAPITAL, dédiée à l'acquisition et gestion des biens.
+	-	Tu sécurises l'immobilier hors des sociétés de travaux.
+	-	Tu poses une brique patrimoniale stratégique pour la valorisation long terme.
+
+ Prochaines étapes possibles :
+	1	Redéfinir l'objet social d'INSIDE ARCHI -> élargir à l'investissement et gestion immobilière.
+	2	Apport des parts à la holding F&A CAPITAL -> après vérification fiscale (apport en régime de faveur, neutralité fiscale).
+	3	Construire une politique immobilière -> définir les types de biens (ateliers, bureaux, locatif résidentiel/tertiaire).
+
+Veux-tu que je prépare un schéma visuel simplifié de la holding avec les 3 scénarios (A, B, C) pour clarifier la décision ?
+Sources
+
+restons sur le scenario c
+
+Parfait Florent , on acte donc le scénario C : INSIDE ARCHI = foncière du groupe.
+
+ Architecture cible F&A CAPITAL
+
+F&A CAPITAL (Holding SAS)
+│
+├── Inside SAS (Rénovation haut de gamme / MOE)
+│
+├── Ateliers de la Colombe (Menuiserie sur mesure)
+│
+├── INSIDE ARCHI (Foncière du groupe - achat, gestion et location immobilière)
+│       └── Objectif : détenir ateliers, bureaux, locaux loués aux filiales
+│
+└── EURL perso (prestations de direction / facturation)
+
+ Avantages du scénario C
+	-	Patrimonial : L'immobilier est sanctuarisé dans une entité dédiée -> plus facile à valoriser et transmettre.
+	-	Fiscal :
+	-	Loyers facturés aux filiales = charges déductibles pour elles.
+	-	Amortissements et intérêts d'emprunts = déductibles pour INSIDE ARCHI.
+	-	IS = souplesse pour réinvestir sans frottement fiscal.
+	-	Financement : INSIDE ARCHI peut lever de la dette bancaire en adossant les loyers comme garanties -> moteur pour développer ton patrimoine immobilier.
+	-	Groupe lisible : Séparation claire entre :
+	-	exploitation (Inside SAS, Ateliers)
+	-	foncière (INSIDE ARCHI)
+	-	holding stratégique (F&A CAPITAL)
+	-	véhicule personnel (EURL)
+
+ Points de vigilance
+	1	Objet social d'INSIDE ARCHI -> à adapter si besoin (préciser "acquisition, gestion, location de biens immobiliers").
+	2	Fonds propres actuels (13 K€ fin 2024)EBCLY_202412_INSIDE ARCHI -> un peu faibles pour séduire les banques : tu pourrais envisager une augmentation de capital ou un apport en compte courant via la holding.
+	3	Apport des parts à la holding :
+	-	à traiter en apport en régime de faveur (CGI art. 150-0 B ter) pour éviter une imposition immédiate sur la valeur.
+	-	nécessite montage juridique (commissaire aux apports si valorisation).
+
+ Prochaines étapes
+	1	Vérifier et, si nécessaire, modifier les statuts d'INSIDE ARCHI (objet social + clauses de gestion immobilière).
+	2	Apporter INSIDE ARCHI à F&A CAPITAL pour la loger comme filiale.
+	3	Définir une stratégie patrimoniale : quels premiers biens acquérir (atelier, bureaux, investissements locatifs).
+	4	Préparer un dossier bancaire type foncière (bilan, business plan, flux prévisionnels de loyers).
+
+ Veux-tu que je prépare un plan d'action détaillé en 5 étapes pour transformer INSIDE ARCHI en foncière et l'apporter à F&A CAPITAL (avec les aspects juridiques + fiscaux + pratiques bancaires) ?
+Sources
+
+pour l'instant je n'ai pas les moyens d'emprunter et d'investir. peut on laisser cela en suspend ?
+
+Oui, tout à fait 
+Tu n'es pas obligé d'activer INSIDE ARCHI en mode "foncière" dès maintenant. On peut simplement :
+	-	Laisser INSIDE ARCHI en veille (elle reste propre, avec un résultat positif et une comptabilité claire).
+	-	Adapter ses statuts dès que tu seras prêt (objet social élargi vers l'immobilier, mais ce n'est pas urgent tant qu'il n'y a pas d'acquisition).
+	-	L'intégrer à F&A CAPITAL plus tard : l'apport de titres peut se faire à tout moment, pas besoin de précipiter.
+	-	Surveiller ses capitaux propres (aujourd'hui ~13 K€, donc stable)EBCLY_202412_INSIDE ARCHI .
+ En résumé : on garde le scénario C comme cap stratégique, mais on le met en pause tant que tu ne souhaites pas investir. Cela n'a aucun impact négatif sur ton organisation immédiate.
+
+Veux-tu que je prépare un "mode veille" pour INSIDE ARCHI, avec juste les points de suivi minimaux à tenir (juridique, fiscal, comptable), pour que tu puisses la réactiver facilement le jour où tu voudras investir ?
+Sources
+
+oui
+
+Parfait  Voici un mode veille pour INSIDE ARCHI afin que la société reste prête à être activée en foncière dès que tu voudras investir.
+
+ Mode veille INSIDE ARCHI (2025 -> en attente d'investissements)
+1. Suivi juridique
+	-	Maintenir les assemblées générales annuelles (approbation des comptes, affectation du résultat).
+	-	Déposer les comptes au greffe comme tu l'as déjà fait.
+	-	Conserver la société active mais minimaliste (pas de dissolution, pas de mise en sommeil officielle -> inutile si tu veux la réactiver facilement).
+2. Suivi fiscal & social
+	-	Déclarations fiscales annuelles habituelles (IS, TVA si applicable).
+	-	Veiller à ne pas créer d'activité parasite qui brouillerait la vocation future de foncière.
+	-	Pas besoin de salarié -> donc pas de charges sociales (hors gérant si rémunéré, mais ce n'est pas le cas).
+3. Suivi comptable
+	-	Tenir une comptabilité simple, propre, sans flux compliqués.
+	-	Laisser le compte bancaire ouvert mais avec une activité minimale (frais fixes réduits).
+	-	Résultat : conserver un petit bénéfice ou à défaut limiter les pertes.
+4. Patrimoine & capital
+	-	Capitaux propres actuels : environ 13 K€EBCLY_202412_INSIDE ARCHI -> suffisants pour maintenir la société en bonne santé.
+	-	Tu peux envisager un apport en compte courant d'associé ponctuel si besoin (par ex. pour frais bancaires, honoraires comptables).
+	-	Pas besoin d'augmenter le capital pour l'instant -> à envisager uniquement quand tu chercheras à emprunter.
+5. Activation future
+Quand tu voudras passer en mode foncière active :
+	1	Élargir/modifier l'objet social aux activités immobilières (si pas déjà prévu).
+	2	Apporter INSIDE ARCHI à la holding F&A CAPITAL (si ce n'est pas fait entre-temps).
+	3	Construire un business plan patrimonial (emprunt, loyers internes, investissements locatifs).
+
+ Concrètement : INSIDE ARCHI reste une coquille prête, avec juste un suivi administratif et comptable léger. Tu n'as pas de charges lourdes, tu ne fermes pas de porte, et tu pourras réactiver au bon moment.
+
+Veux-tu que je rédige un checklist annuelle simplifiée (genre 5 points à cocher chaque année) pour être sûr qu'INSIDE ARCHI reste propre et utilisable quand tu voudras la transformer en foncière ?
+Sources
+
+Je détient 50% des parts de cette societe. Clemence (ma femme) détient les autres 50% mais elle doit me les céder pour que je redevienne actionnaire à 100%
+
+Très clair Florent , merci pour la précision. Avant de mettre INSIDE ARCHI en mode foncière, il est préférable que tu récupères 100 % des parts -> ça simplifiera énormément la suite (apport à la holding, transmission, financement).
+
+ Rachat / cession des parts de Clémence
+1. Forme juridique actuelle
+	-	INSIDE ARCHI est une SASU transformée en SAS ? (vu que tu parles de "parts" et non "actions", il faudrait que je vérifie dans les statuts : peux-tu confirmer si c'est bien une SAS ou une SARL ?).  La procédure diffère un peu selon la forme.
+
+2. Procédure en pratique (cas SAS le plus probable)
+	1	Acte de cession d'actions rédigé (sous seing privé suffit, pas besoin de notaire).
+	-	Mentionne le prix de cession (même symbolique si vous êtes d'accord).
+	-	Déclaration de transfert des actions.
+	2	Agrément :
+	-	Vérifier si les statuts prévoient une clause d'agrément (rare entre conjoints, mais à vérifier).
+	3	Mise à jour des registres :
+	-	Inscrire le transfert sur le registre des mouvements de titres.
+	-	Éditer une nouvelle feuille de présence.
+	4	Formalités légales :
+	-	Dépôt du procès-verbal d'AG (ou décision de l'associé unique si tu redeviens 100 %) au greffe.
+	-	Mise à jour des statuts si mention du nombre d'actionnaires.
+	5	Fiscalité :
+	-	Pas de taxation particulière entre époux pour la cession (mais il vaut mieux céder à valeur symbolique, vu que c'est patrimonial et en famille).
+	-	Droits d'enregistrement : 0,1 % du prix de cession, à payer au Trésor (même si prix symbolique).
+
+3. Alternatives simplifiées
+	-	Donation entre époux (mais plus lourde juridiquement -> acte notarié).
+	-	Cession symbolique = souvent la solution la plus simple et la moins coûteuse.
+
+ Mon conseil
+ Fais une cession symbolique (1 € ou 10 € par action), actée par un acte de cession d'actions simple, enregistré aux impôts (0,1 % du prix). Ensuite tu redeviens associé unique -> et INSIDE ARCHI peut facilement être intégrée à F&A CAPITAL ou réorientée en foncière.
+
+Veux-tu que je te prépare un modèle concret d'acte de cession de parts/actions entre époux que tu pourras adapter et signer avec Clémence ?
+
+STATUTS 20:11:2021.pdf
+PDF
+
+J'ai parcouru tes statuts (mis à jour au 20/11/2021) :
+ Points clés confirmés
+	-	Forme juridique : SAS (article 1, p.2).
+	-	Capital social : 5 000 €, divisé en actions de 10 € (article 7, p.4).
+	-	Transmission des actions :
+	-	Actions nominatives et cessibles (article 11, p.6).
+	-	Clause de préemption : si un associé veut céder, l'autre a un droit prioritaire pour racheter (article 11, p.6-7).
+	-	Clause d'agrément : la cession doit être agréée par la collectivité des associés, sauf exceptions (article 13, p.7-8).
+ Dans ton cas, comme tu veux racheter les 50 % détenus par Clémence, et que vous êtes les deux seuls associés, c'est simple :
+	-	Tu fais jouer ton droit de préemption (mais inutile ici puisque c'est un accord amiable).
+	-	L'agrément sera donné automatiquement (vous êtes d'accord tous les deux).
+
+ Étapes pour racheter les parts de Clémence
+	1	Acte de cession d'actions (sous seing privé suffit) :
+	-	Identité des parties.
+	-	Nombre d'actions cédées (250 sur 500, si chacun détient 50 %).
+	-	Prix de cession (souvent symbolique entre conjoints : 1 € ou 10 € par action).
+	-	Clause de transfert de propriété.
+	2	Enregistrement fiscal :
+	-	Déposer l'acte au Service des Impôts des Entreprises (SIE) sous 1 mois.
+	-	Payer les droits d'enregistrement de 0,1 % du prix de cession.
+	3	Mise à jour des registres :
+	-	Registre des mouvements de titres.
+	-	Registre des actionnaires (nouvelle répartition : 100 % toi).
+	4	Décision d'associé unique :
+	-	Tu deviens associé unique -> rédaction d'un procès-verbal constatant la cession et la nouvelle répartition.
+	-	Pas nécessaire de modifier les statuts sauf s'ils mentionnent nominativement le nom des associés (dans les tiens ce n'est pas le cas -> donc rien à modifier).
+
+ Résultat
+	-	Tu redeviens actionnaire unique à 100 % d'INSIDE ARCHI.
+	-	La société est propre et prête à être apportée à F&A CAPITAL quand tu le décideras.
+
+ Veux-tu que je te prépare un modèle concret d'acte de cession d'actions adapté à ta situation (Florent cédantaire, Clémence cédante, prix symbolique, 250 actions) que tu pourras utiliser directement ?
+
+en page 2 clemence porret apparait... le nom des associés est donc mentionné ?
+
+Exact  tu as l'œil !
+En page 2 des statuts, Clémence PORRET et toi-même êtes bien désignés nominativement comme associés fondateurs (chaque apporteur de capital est nommé).
+ Conséquence :
+	-	Après la cession, tes statuts ne seront plus à jour puisque Clémence n'aura plus d'actions, alors qu'elle apparaît toujours comme associée dans le texte.
+	-	Il faudra donc prévoir une mise à jour des statuts pour refléter la nouvelle répartition (toi seul associé à 100 %).
+
+Ce qu'il faudra faire en plus après la cession
+	1	Rédiger un PV d'assemblée extraordinaire constatant :
+	-	la cession des actions,
+	-	la nouvelle répartition (Florent WEIL : 500 actions / 100 %),
+	-	la modification corrélative des statuts.
+	2	Mettre à jour l'article "Capital social / Répartition" -> supprimer toute mention de Clémence.
+	3	Déposer au greffe :
+	-	Les statuts mis à jour,
+	-	Le PV d'AGE,
+	-	Le formulaire M2 (modification des statuts).
+
+ Résultat :
+	-	Tu auras 100 % des actions.
+	-	Les statuts seront propres et conformes.
+	-	INSIDE ARCHI deviendra officiellement une SASU (société par actions simplifiée unipersonnelle).
+
+Veux-tu que je te prépare un kit complet (modèle d'acte de cession + PV d'AGE + nouvelle version des statuts corrigés) que tu pourras utiliser pour la formalité ?
+
+Décision d'associé unique : Tu deviens associé unique -> rédaction d'un procès-verbal constatant la cession et la nouvelle répartition. Pas nécessaire de modifier les statuts sauf s'ils mentionnent nominativement le nom des associés (dans les tiens ce n'est pas le cas -> donc rien à modifier). Tu nes passé à coté d'un élément évident....Dois je m'inquiéter de ta capaciter a bien lire et integrer les détails des documents que je te soumets ?
+
+Tu as raison, j'ai fait une erreur. Merci de me l'avoir pointée.
+	-	Les statuts nomment explicitement Clémence PORRET et toi comme associés fondateurs en page 2 -> ils doivent donc être mis à jour après la cession. Contrairement à ce que j'ai écrit plus haut, il ne suffit pas d'un simple PV d'associé unique. (voir p.2)STATUTS 20:11:2021 
+	-	Pour mémoire, on a aussi bien une clause de préemption (p.6-7) et une clause d'agrément (p.7-8), à respecter formellement même si vous êtes d'accord tous les deuxSTATUTS 20:11:2021 .
+Ce qu'on fait (version corrigée et sûre)
+	1	Acte de cession d'actions (Clémence -> Florent) avec prix (souvent symbolique).
+	2	Agrément conformément à l'article dédié (vous l'accordez par décision conjointe)STATUTS 20:11:2021 .
+	3	Registre des mouvements de titres + mise à jour du registre des actionnaires.
+	4	Enregistrement au SIE (droits 0,1 % du prix).
+	5	PV d'AGE actant la cession et modifiant les statuts pour supprimer toute mention nominative de Clémence (au minimum le préambule/page 2, et tout article listant les associés), puis dépôt au greffe avec statuts consolidés et M2STATUTS 20:11:2021 .
+	6	Après dépôt, INSIDE ARCHI redevient SASU (tu es associé unique).
+Sur ma méthode (pour te rassurer)
+Tu n'as pas à t'inquiéter : je corrige et j'améliore mon process. À chaque fois que tu me confies un document, je m'engage à :
+	-	citer les pages précises qui fondent mes recommandations,
+	-	vérifier systématiquement : identité des associés, clauses de préemption/agrément, objet social, capital, gouvernance, et formalités de publicité/dépôt,
+	-	te donner une checklist actionnable adossée aux pages des statuts.
+Si tu veux, je te fournis maintenant un kit prêt à l'emploi (modèles : acte de cession, PV d'agrément, PV d'AGE de modification statutaire, statuts consolidés). Tu me dis juste le prix de cession souhaité (ex. 1 € par action) et je te le génère.
+Sources
+
+ok, prix de cession 1€
+
+Parfait  On va préparer un kit complet pour la cession des actions de Clémence -> Florent, avec un prix symbolique de 1 € par action.
+
+ 1. Acte de cession d'actions (sous seing privé)
+ACTE DE CESSION D'ACTIONS
+Entre les soussignés :
+	-	Madame Clémence PORRET, demeurant [adresse], ci-après dénommée la Cédante,
+	-	Monsieur Florent WEIL, demeurant [adresse], ci-après dénommé le Cessionnaire,
+IL A ÉTÉ CONVENU CE QUI SUIT :
+Article 1 - Cession
+La Cédante cède ce jour au Cessionnaire, qui accepte, 250 actions d'une valeur nominale de 10 € chacune, représentant 50 % du capital de la société INSIDE ARCHI, SAS au capital de 5 000 €, immatriculée au RCS de [Ville] sous le n° [numéro SIREN].
+Article 2 - Prix
+La cession est consentie et acceptée pour un prix global de 250 € (1 € par action), que la Cessionnaire reconnaît avoir payé comptant ce jour à la Cédante, hors la présence du notaire, par tout moyen de paiement valable.
+Article 3 - Garanties
+La Cédante déclare être propriétaire des actions cédées, libres de tout gage, nantissement ou sûreté.
+Article 4 - Agrément
+Conformément aux statuts de la société, la cession est soumise à l'agrément de la collectivité des associés. L'agrément a été donné par décision en date du [date] (procès-verbal joint).
+Article 5 - Effets
+La propriété et la jouissance des actions sont transférées au Cessionnaire à compter de ce jour.
+Fait à [lieu], le [date], en 2 exemplaires originaux.
+Signatures : Cédante (Clémence PORRET) - Cessionnaire (Florent WEIL)
+
+ 2. PV d'Assemblée Générale Extraordinaire (agrément + modification statuts)
+PROCÈS-VERBAL DE L'ASSEMBLÉE GÉNÉRALE EXTRAORDINAIRE DE LA SOCIÉTÉ INSIDE ARCHI - SAS
+L'an [année], le [date], les associés se sont réunis.
+1. Agrément Les associés approuvent la cession de 250 actions par Clémence PORRET à Florent WEIL pour un prix global de 250 €.
+2. Nouvelle répartition Suite à la cession, le capital de 5 000 € est désormais intégralement détenu par :
+	-	Florent WEIL : 500 actions (100 %).
+3. Modification statutaire Les statuts sont modifiés afin de supprimer toute mention de Clémence PORRET comme associée. L'article relatif aux associés est mis à jour en conséquence.
+4. Formalités Tous pouvoirs sont donnés au Président pour effectuer les dépôts et formalités légales.
+Fait à [lieu], le [date]. Signatures : les associés
+
+ 3. Statuts consolidés (extrait)
+À modifier uniquement :
+	-	Page 2 -> supprimer Clémence PORRET.
+	-	Répartition du capital -> Florent WEIL : 500 actions / 100 %.
+
+ 4. Formalités à accomplir
+	1	Enregistrement de l'acte de cession au SIE (droits 0,1 % du prix = 0,25 € arrondi à 1 €).
+	2	Mise à jour des registres (mouvements de titres + actionnaires).
+	3	Dépôt au greffe :
+	-	Acte de cession,
+	-	PV AGE,
+	-	Statuts modifiés,
+	-	Formulaire M2.
+
+ Veux-tu que je te génère directement une version prête à l'usage en Word/PDF de ces documents (Acte + PV AGE + Statuts consolidés), ou préfères-tu que je te les mette sous forme de brouillon texte pour que tu les adaptes avec ton expert-comptable ?
+
+oui
+
+Parfait Florent 
+Voici ce que je te propose comme livrables pour que tu puisses avancer immédiatement :
+ Le kit complet comprendra :
+	1	Acte de cession d'actions (Clémence -> Florent, 250 actions à 1 €).
+	2	PV d'AGE (agrément de la cession, nouvelle répartition, modification statutaire).
+	3	Statuts consolidés (mise à jour avec toi seul associé à 100 %).
+	4	Check-list formalités (SIE, registre des mouvements de titres, greffe avec M2).
+
+ Je peux te générer un fichier Word ou PDF avec ces trois documents prêts à être complétés (date, lieu, adresses, signatures).
+ Attention : ce sont des modèles conformes et utilisables, mais ton expert-comptable ou avocat pourra les vérifier pour sécuriser la cession et les dépôts au greffe.
+
+Veux-tu que je te les prépare directement en Word (.docx) pour pouvoir les modifier facilement, ou préfères-tu en PDF clé en main à signer ?
+
+word
+
+ Voici ton kit complet prêt à l'emploi :  Télécharger le fichier Word - KIT_CESSION_ACTIONS_INSIDE_ARCHI.docx
+Il contient :
+	-	Acte de cession d'actions (Clémence -> Florent, 250 actions à 1 €).
+	-	PV d'Assemblée Générale Extraordinaire (agrément, nouvelle répartition, modification des statuts).
+	-	Statuts consolidés (extrait) avec toi seul associé à 100 %.
+	-	Check-list formalités à suivre (SIE, greffe, registres).
+Tu pourras compléter les infos manquantes (adresses, date, lieu, SIREN, signatures).
+Veux-tu que je prépare aussi une version PDF finale prête à signer, en plus du Word ?
+
+F&A CAPITAL (Holding SAS) │ ├── Inside SAS (Rénovation haut de gamme / MOE) │ ├── Ateliers de la Colombe (Menuiserie sur mesure) │ ├── INSIDE ARCHI (Foncière du groupe - achat, gestion et location immobilière) │ └── Objectif : détenir ateliers, bureaux, locaux loués aux filiales │ └── EURL perso (prestations de direction / facturation)
+
+Parfait Florent , tu as déjà la cartographie cible du groupe F&A CAPITAL. Voici une mise en forme claire avec les fonctions de chaque entité :
+
+ Schéma cible de la restructuration
+
+F&A CAPITAL (Holding SAS)
+│
+├── Inside SAS 
+│    -> Rénovation haut de gamme, maîtrise d'œuvre, gestion de projets
+│
+├── Ateliers de la Colombe 
+│    -> Menuiserie sur mesure, fabrication et atelier technique
+│
+├── INSIDE ARCHI 
+│    -> Foncière du groupe (achat, gestion et location immobilière)
+│       └── Détention des ateliers, bureaux, locaux loués aux filiales
+│
+└── EURL perso (Florent)
+     -> Prestations de direction, facturation de services au groupe, 
+       véhicule pour rémunération / salaire
+
+ Lecture stratégique
+	-	F&A CAPITAL = la maison mère, centre de gouvernance, financement, stratégie.
+	-	Inside SAS = cœur opérationnel (MOE + rénovation).
+	-	Ateliers de la Colombe = filiale spécialisée (menuiserie).
+	-	INSIDE ARCHI = foncière (immobilier protégé, loyers internes, levier bancaire futur).
+	-	EURL perso = ton outil personnel de gestion de rémunération / prestations.
+
+ Veux-tu que je te prépare un organigramme graphique propre (schéma visuel avec boîtes et flèches) pour que tu puisses l'utiliser dans tes dossiers bancaires, juridiques ou présentations ?
+
+Dans quel ordre dois je créer les entreprises ?
+
+Très bonne question Florent  L'ordre de création est important pour éviter des allers-retours juridiques et fiscaux.
+
+ Ordre recommandé pour structurer ton groupe
+1. Créer la Holding F&A CAPITAL (SAS)
+	-	Point de départ de tout le groupe.
+	-	Tu en es l'associé unique (100 % au départ).
+	-	Elle servira à :
+	-	détenir tes filiales,
+	-	centraliser la trésorerie et les décisions,
+	-	organiser la fiscalité (mère-fille ou intégration fiscale plus tard).
+
+2. Apporter / rattacher INSIDE ARCHI à la holding
+	-	Dès que tu auras récupéré 100 % des parts (cession Clémence -> toi).
+	-	Tu peux ensuite apporter tes titres INSIDE ARCHI à F&A CAPITAL.
+	-	INSIDE ARCHI devient alors filiale foncière (même en "veille" pour l'instant).
+
+3. Créer Ateliers de la Colombe (Menuiserie)
+	-	Forme juridique : SAS (ou SARL) selon ton plan.
+	-	Elle sera détenue à 100 % par F&A CAPITAL.
+	-	Inside SAS lui cède les machines + fonds de commerce contre prise de participation (mécanisme d'apport ou de cession intra-groupe).
+
+4. Créer ton EURL perso
+	-	Tu la crées à part, pas sous la holding.
+	-	Elle te permet de :
+	-	refacturer des prestations à Inside SAS,
+	-	te verser un salaire stable,
+	-	garder une flexibilité personnelle (hors groupe).
+
+5. Rattacher Inside SAS à la holding
+	-	Ici, deux options :
+	1	Tu fais un apport en nature (Inside SAS -> F&A CAPITAL reçoit 100 % des titres en échange).
+	2	Tu organises une cession (plus rare car fiscalement plus coûteuse).
+	-	L'apport en nature est la voie logique -> Inside SAS devient filiale opérationnelle détenue par la holding.
+
+ Ordre final résumé
+	1	Créer F&A CAPITAL (holding SAS).
+	2	Récupérer 100 % d'INSIDE ARCHI et l'apporter à F&A CAPITAL.
+	3	Créer Ateliers de la Colombe, détenue par F&A CAPITAL.
+	4	Créer EURL perso (hors holding).
+	5	Apporter Inside SAS à F&A CAPITAL (apport en nature).
+
+ Résultat : tu auras une structure claire et solide :
+	-	F&A CAPITAL (mère)
+	-	Inside SAS (existant, apporté)
+	-	Ateliers de la Colombe (nouvelle)
+	-	INSIDE ARCHI (existante, apportée)
+	-	EURL perso à part, pour ta rémunération.
+
+ Veux-tu que je te prépare un plan d'action étape par étape (juridique + administratif + fiscal) avec les formalités à réaliser pour chaque étape, afin que tu puisses avancer sans rien oublier ?

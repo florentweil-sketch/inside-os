@@ -1,0 +1,142 @@
+THREAD HISTORIQUE - B01 - T03 - Sujet Création filiale Atelier de menuiserie - Atelier de la Colombe
+Date approximative : 01.03.2024
+Source : ChatGPT
+
+J'ai une entreprise (forme juridique sas) spécialisée dans le batiment, je veux creer une filliale (atlier de menuiserie) j'ai déjà le local et les machines. Je veux faire évaluer le prix des machines et que la fililale emprunte le montant du prix des machines pour l'acheter à la maison mère. dévoloppe un roadbook et la structure
+
+Éléments mémorisés mis à jour
+Voici un roadbook détaillé pour la création de la filiale et la mise en œuvre de la vente des machines :
+
+1. Analyse et préparation initiale
+Objectifs :
+	-	Valider la faisabilité juridique, fiscale et financière.
+	-	Évaluer le juste prix des machines.
+Étapes :
+	1	Consultation juridique et fiscale :
+	-	Vérifier les implications fiscales de la création de la filiale.
+	-	Valider les modalités de transfert d'actifs entre la maison mère et la filiale.
+	-	Prévoir l'impact de la filiale sur les comptes consolidés.
+	2	Évaluation des machines :
+	-	Faire appel à un expert indépendant ou à un cabinet spécialisé pour estimer la valeur des machines (prix marché ou valeur nette comptable).
+	-	Documenter l'évaluation pour assurer la transparence vis-à-vis des tiers (banques, administration fiscale).
+	3	Préparation du business plan de la filiale :
+	-	Détailler les activités de l'atelier (cibles clients, capacité de production, perspectives).
+	-	Inclure le coût des machines, les frais de fonctionnement et les prévisions de chiffre d'affaires.
+	-	Montrer la rentabilité projetée pour convaincre les investisseurs ou les banques.
+
+2. Création de la filiale
+Objectifs :
+	-	Formaliser l'existence juridique de la filiale.
+	-	Structurer ses relations avec la maison mère.
+Étapes :
+	1	Choix de la forme juridique :
+	-	Créer une SAS pour aligner la structure juridique sur celle de la maison mère.
+	-	Définir les statuts (capital social, gouvernance, répartition des actions).
+	2	Formalités administratives :
+	-	Enregistrer la filiale au RCS.
+	-	Ouvrir un compte bancaire au nom de la filiale.
+	-	Souscrire aux assurances obligatoires (RC pro, multirisques).
+	3	Capitalisation initiale :
+	-	Injecter un capital de démarrage suffisant pour couvrir les frais initiaux (hors machines).
+
+3. Transfert des machines
+Objectifs :
+	-	Mettre en place la vente des machines dans un cadre transparent et légal.
+	-	Financer l'achat via un emprunt contracté par la filiale.
+Étapes :
+	1	Élaboration du contrat de vente :
+	-	Rédiger un contrat clair entre la maison mère et la filiale.
+	-	Inclure les détails : liste des machines, prix, modalités de paiement.
+	2	Recherche de financement pour la filiale :
+	-	Présenter le business plan et l'évaluation des machines à des banques ou institutions financières.
+	-	Négocier les conditions de prêt (taux, durée, garanties).
+	3	Vente effective :
+	-	Effectuer la transaction via un transfert comptable entre la maison mère et la filiale.
+	-	Enregistrer la vente dans les comptes des deux entités.
+
+4. Mise en place opérationnelle
+Objectifs :
+	-	Lancer les activités de l'atelier de menuiserie.
+Étapes :
+	1	Organisation interne :
+	-	Recruter ou affecter du personnel qualifié à l'atelier.
+	-	Établir les processus de production et les outils de gestion.
+	2	Communication et marketing :
+	-	Lancer une campagne pour promouvoir les services de la filiale.
+	-	Identifier les synergies commerciales avec la maison mère (projets communs).
+	3	Suivi des performances :
+	-	Mettre en place des tableaux de bord pour surveiller la rentabilité.
+	-	Ajuster la stratégie en fonction des résultats.
+
+Structure juridique et comptable recommandée
+	1	Maison mère (SAS) :
+	-	Activité principale : rénovation, maîtrise d'œuvre, menuiserie sur mesure.
+	-	Facturation : Vente des machines à la filiale.
+	2	Filiale (SAS) :
+	-	Activité principale : production de menuiseries.
+	-	Relation avec la maison mère : acheteur des machines, sous-traitant potentiel pour des projets communs.
+	3	Comptabilité :
+	-	Comptes séparés pour assurer une transparence totale.
+	-	Consolidation des comptes si nécessaire (groupe).
+
+Ce plan garantit une gestion rigoureuse et une transition harmonieuse entre la maison mère et la filiale, tout en renforçant l'activité globale de votre groupe. Besoin d'approfondir un point ?
+
+pose moi toutes les questions necessaires pour Valider la faisabilité juridique, fiscale et financière
+
+Voici une liste de questions clés à poser pour valider la faisabilité juridique, fiscale et financière de la création de votre filiale et de la transaction concernant les machines :
+
+1. Questions juridiques
+Création de la filiale :
+	1	Forme juridique : Confirmez-vous que la filiale sera également une SAS ? Si non, quelle forme privilégiez-vous (SARL, EURL, etc.) et pourquoi ?
+	2	Statuts : Quels seront les statuts juridiques de la filiale ? (Composition du capital, gouvernance, relation avec la maison mère.)
+	3	Contrat entre maison mère et filiale :
+	-	Avez-vous envisagé un pacte d'actionnaires ou un accord spécifique pour organiser les relations entre la maison mère et la filiale ?
+	-	Souhaitez-vous inclure des clauses spécifiques pour protéger les intérêts de la maison mère ?
+	4	Exploitation du local :
+	-	Le local appartient-il à la maison mère ou est-il loué ?
+	-	En cas de propriété par la maison mère, souhaitez-vous louer ou céder le local à la filiale ?
+	-	Faut-il rédiger un bail ou un contrat de mise à disposition ?
+	5	Réglementation sectorielle :
+	-	L'activité de l'atelier de menuiserie est-elle soumise à des réglementations spécifiques ?
+	-	Les autorisations d'exploitation ou certifications nécessaires sont-elles déjà obtenues ou à prévoir ?
+
+2. Questions fiscales
+Fiscalité de la filiale :
+	1	Option fiscale : Souhaitez-vous que la filiale soit soumise à l'impôt sur les sociétés (IS) ou préférez-vous une autre option fiscale (ex. intégration fiscale avec la maison mère) ?
+	2	Impact fiscal de la vente des machines :
+	-	Les machines sont-elles inscrites au bilan de la maison mère ? Si oui, quelle est leur valeur nette comptable actuelle ?
+	-	Y aura-t-il des plus-values imposables pour la maison mère lors de la cession ? Si oui, avez-vous évalué leur impact fiscal ?
+	3	TVA :
+	-	Les deux sociétés seront-elles assujetties à la TVA ?
+	-	Faut-il prévoir une déclaration de TVA spécifique pour la vente des machines ?
+	4	Impact sur la fiscalité globale :
+	-	Prévoyez-vous une intégration fiscale entre la maison mère et la filiale pour optimiser la fiscalité globale ?
+	-	La nouvelle structure pourrait-elle entraîner des changements dans votre régime fiscal actuel ?
+
+3. Questions financières
+Évaluation des machines :
+	1	Méthode d'évaluation : Souhaitez-vous une évaluation basée sur la valeur de remplacement, la valeur résiduelle comptable ou la valeur marchande actuelle ?
+	2	Documentation de l'évaluation : Avez-vous un expert évaluateur en tête ou souhaitez-vous une recommandation pour en désigner un ?
+Financement de la filiale :
+	3	Montant du capital social initial : Quelle sera la proportion du capital social pour démarrer la filiale (hors emprunt) ?
+	4	Emprunt pour les machines :
+	-	Quelle banque ou institution financière ciblez-vous pour le prêt ?
+	-	Souhaitez-vous inclure des garanties (caution de la maison mère, nantissement des machines) ?
+	5	Rentabilité projetée :
+	-	Disposez-vous d'une estimation précise des revenus prévisionnels de l'atelier ?
+	-	Quel est le seuil de rentabilité attendu et en combien de temps prévoyez-vous de l'atteindre ?
+Relation financière avec la maison mère :
+	6	Flux financiers :
+	-	La maison mère sera-t-elle amenée à subventionner temporairement la filiale (avances de trésorerie, prêt intragroupe) ?
+	-	La filiale participera-t-elle aux projets existants de la maison mère (ex. sous-traitance) ?
+
+4. Questions stratégiques et organisationnelles
+	1	Impact sur l'organisation actuelle : La maison mère continuera-t-elle d'avoir une activité de menuiserie ou la transférera-t-elle entièrement à la filiale ?
+	2	Synergies entre entités :
+	-	Quelle part des commandes viendra directement des clients de la maison mère ?
+	-	Comment allez-vous éviter les conflits d'intérêts entre les deux entités ?
+	3	Risques et garanties :
+	-	Quels sont les principaux risques identifiés (juridiques, fiscaux, financiers) dans cette opération ?
+	-	Préférez-vous une structure "test" avec un contrat de prestation initial avant de formaliser la filiale ?
+
+Avec ces réponses, nous pourrons élaborer une stratégie sur mesure et ajuster le projet en fonction des contraintes identifiées. Avez-vous déjà des informations préliminaires sur certains points ?

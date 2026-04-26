@@ -1,0 +1,579 @@
+THREAD HISTORIQUE - B01 - T22 - Sujet Tableau trésorerie 2026 inside sas
+Date approximative : 01.05.2025
+Source : ChatGPT
+
+Salut, j'ai un tableau de tresorerie a soumettre à ton analyse. sous quel fichier préfères tu que je l'exporte pour que tu l annalyse ?
+
+Salut Florent,
+franchement : Excel ou CSV, et pas autre chose. Mais si tu veux un avis net et exploitable, voilà le verdict 
+ Meilleur choix : Excel (.xlsx)
+	-	Tu gardes plusieurs onglets (prévisionnel / réel / hypothèses / scénarios).
+	-	Les formules restent visibles -> je peux détecter les conneries, pas juste les chiffres.
+	-	Les dates, flux, cumuls sont propres.  C'est le format pro, celui qu'un banquier, un DAF ou un associé sérieux attend.
+ Acceptable mais limité : CSV
+	-	Bien si c'est un seul tableau simple.
+	-	Zéro formule, zéro mise en contexte.  Je peux analyser, mais je devrai interpréter tes intentions, et ça, c'est dangereux.
+ À éviter
+	-	PDF : mort cérébrale de la donnée.
+	-	Image : on n'est pas chez Nostradamus.
+	-	Google Sheets sans export : inutile ici.
+Ce que je te conseille (vision long terme)
+ Export Excel, bien structuré :
+	-	Colonnes : dates, entrées, sorties, soldes
+	-	Distinction claire : exploitation / exceptionnel / investissements
+	-	Si tu as des hypothèses (encaissement client à 30/60 jours, TVA, etc.) -> un onglet dédié
+Quand tu me l'envoies, je ne vais pas te flatter :
+	-	je traque les angles morts
+	-	je teste la résilience
+	-	je te dis si ta tréso est saine… ou juste " encore debout "
+Envoie le fichier. On regarde la vérité en face 
+
+TRESO 2026
+Impossible d'afficher la visualisation
+agis comme un expert en comptabilité, en gestion d'entreprise et en finance. fais moi une analyse détaillée des points positifs, negatifs et apporte moi les solutions pour améliorer les points positifs si c'est possible et corriger les points négatifs.
+
+Réflexion durant 3m 31s
+
+OK Florent. J'ai lu ton TRESO 2026 comme un banquier un peu parano + un DAF un peu chiant. Voilà l'analyse chiffrée, avec points positifs / négatifs et surtout solutions.
+
+1) Photo globale : ce que raconte ta trésorerie 2026
+Évolution du cash (solde compte courant)
+	-	Point haut : novembre ~ 54,9 k€
+	-	Point bas : juillet ~ 9,1 k€
+	-	Fin d'année : décembre ~ 29,9 k€
+ Tu survis toute l'année, mais tu frôles la glissade en été.
+Entrées / sorties (différence mensuelle)
+Mois "bons" :
+	-	janvier +18,8 k€, mars +44,6 k€, septembre +18,9 k€, octobre +15,2 k€
+Mois "mauvais" :
+	-	avril -38,9 k€, juin -11,3 k€, juillet -11,6 k€, décembre -25,0 k€
+ Ton risque n'est pas "structurel", il est calendaire : quelques mois te mettent à genoux si un encaissement glisse.
+
+2) Points positifs (et comment les amplifier)
+ A. Tu as une base de charges fixes assez lisible
+En excluant TVA + achats matériel + décaissements "clients/projets", ta base fixe tourne autour de :
+	-	~26 k€ à 35 k€/mois (moyenne ≈ 33,1 k€ / mois)
+Pourquoi c'est bien : c'est pilotable, prévisible, et donc finançable.
+Comment l'améliorer :
+	1	Fixe un plancher de trésorerie = 2 mois de fixes minimum -> objectif ~66 k€ (au lieu de tomber à 9 k€ en juillet… là c'est de la spéléo financière).
+	2	Mets une règle simple : si prévision < 50 k€, tu déclenches un "mode survie" (gel achats, décalage non essentiel, relance clients agressive).
+
+ B. Ton service de dette baisse fortement à partir d'août
+Tes remboursements "dette/LOA" sont environ :
+	-	~11-14 k€/mois de janvier à juillet
+	-	puis ~3,1 k€/mois d'août à décembre
+	-	Total annuel dette/LOA ≈ 97,7 k€
+Pourquoi c'est bien : ton deuxième semestre respire mécaniquement.
+Comment l'améliorer :
+	-	Utilise cette respiration pour reconstituer une réserve (pas pour te "récompenser" en mode nouveau jouet).
+	-	Objectif : septembre -> novembre = rebuild cash (tu y arrives déjà, mais tu pourrais viser 80-100 k€).
+
+ C. Tes projets principaux ont de la marge "cash brute" (avant structure)
+En cash-in vs cash-out "projet" (décaissements affectés aux clients), tu sors des marges brutes intéressantes :
+	-	CSM : 320 k€ encaissés / 88 k€ sortis -> marge brute cash ~ 232 k€ (~72,5%)
+	-	B1 BIS : 110 k€ / 49,7 k€ -> ~60,3 k€ (~54,8%)
+	-	B4 : 72,2 k€ / 4,5 k€ -> ~67,7 k€ (~93,8%)
+	-	BAZOCHES : 62 k€ / 20,0 k€ -> ~42,0 k€ (~67,7%)
+Pourquoi c'est bien : tes gros moteurs payent la structure.
+Comment amplifier :
+	-	Tu dois piloter chaque chantier avec 3 jalons d'encaissement minimum (acompte / situation / solde), sinon tu financeras les travaux à la place du client.
+	-	Mets un KPI : "cash cover" du chantier -> à tout moment, encaissements cumulés ≥ (décaissements cumulés + 20%). Si tu passes dessous : tu stoppes/ralentis ou tu exiges un paiement.
+
+3) Points négatifs (les vrais dangers) + remèdes
+ 1) Concentration client : tu joues à la roulette russe avec un chargeur plein
+Tes entrées sont ultra concentrées :
+	-	CSM = 320 k€, soit ~52% de toutes les entrées annuelles (~613,5 k€)
+	-	Top 3 (CSM + B1 BIS + B4) ≈ ~82% des encaissements
+Risque : un retard/litige sur CSM et tu passes de "tendu" à "coma" en 60 jours.
+Solutions :
+	1	Tu te fixes une cible : aucun client > 35% des entrées d'ici 12 mois.
+	2	Tu crées un "pipe" minimum : 2 nouveaux clients récurrents qui pèsent 10-15 k€/mois chacun (même si marge moindre).
+	3	Tu sécurises CSM contractuellement : délais de paiement, pénalités, jalons, et éventuellement garantie/assurance si possible.
+
+ 2) Avril est un gouffre : -38,9 k€ (et c'est un piège classique)
+En avril :
+	-	Entrées ~18,1 k€
+	-	Sorties ~57,0 k€
+	-	Δ = -38,9 k€
+Ce que ça veut dire : ton modèle marche… sauf quand la facturation n'est pas calée sur la production.
+Solutions :
+	-	Facturation au fil de l'eau (situation mensuelle) sur chantiers > X k€ (à définir, typiquement 15-20 k€).
+	-	Acompte obligatoire avant démarrage (10-30% selon chantier).
+	-	Décalage fournisseur : tu alignes les paiements "clients/projets" sur tes encaissements. Si tu sors 22 k€ sur CSM dès avril, alors CSM doit t'avoir payé avant / en même temps.
+
+ 3) Été fragile : point bas juillet ~9,1 k€ (c'est trop bas)
+Même si tu ne passes pas négatif, 9 k€, c'est : "un contrôle URSSAF + une panne + un client qui traîne" = rideau.
+Solutions :
+	1	Ligne de trésorerie / découvert autorisé (même petit) : objectif 30-50 k€. Pas pour consommer, pour dormir.
+	2	Réserve obligatoire : tu bloques un "compte tampon" (virtuel ou réel) et tu n'y touches pas.
+
+ 4) Décembre est quasi vide côté CA : entrées ~1,8 k€ pour ~26,8 k€ de sorties
+Décembre :
+	-	Entrées 1,8 k€
+	-	Sorties 26,8 k€
+	-	Δ = -25,0 k€
+Interprétation : soit tu prévois une fin d'année "à l'arrêt", soit tu as oublié de planifier la facturation.
+Solutions :
+	-	Tu planifies des situations jusqu'en décembre (même si chantier pas fini).
+	-	Tu mets une règle : aucun mois < 30 k€ d'encaissements si tu gardes une structure à 30 k€+.
+	-	Option tactique : factoring ponctuel ou cession Dailly sur une grosse facture de fin d'année (si client solide).
+
+ 5) Un signal gênant : un projet sort plus qu'il n'entre (VEA)
+	-	VEA : 937 € encaissés vs 1 000 € sortis -> marge brute cash négative.
+Ce n'est pas le montant qui fait peur, c'est le symptôme : dépenses affectées à un chantier sans couverture.
+Solution :
+	-	Interdiction de décaisser sans "couverture d'encaissement" (ou décision assumée : "investissement commercial" noté comme tel).
+
+4) Plan d'action concret (simple, brutal, efficace)
+Semaine 1 : sécurisation
+	-	Fixer trésorerie plancher : 66 k€ (2 mois de fixe).
+	-	Demander banque : découvert autorisé / ligne de trésorerie 30-50 k€.
+Semaine 2 : discipline de facturation
+	-	Mettre en place facturation en situations mensuelles sur gros chantiers.
+	-	Règle : acompte avant démarrage + jalons contractuels.
+Semaine 3 : pilotage chantier
+	-	Tableau chantier : encaissements cumulés / décaissements cumulés / marge brute / cash cover.
+	-	Si cash cover < 1,2 -> stop / renégociation / relance / avenant.
+Semaine 4 : anti-dépendance client
+	-	Objectif : réduire CSM à <35% sur 12 mois
+	-	2 clients récurrents nouveaux, même plus petits.
+
+5) La question qui tue (et qu'il faut trancher)
+Tu veux une boîte :
+	1	qui fait du chiffre mais subit la tréso ou
+	2	qui pilote le cash et choisit ses chantiers ?
+Parce que ton fichier montre un truc clair : tu as de la marge, mais tu laisses le calendrier te tenir par la gorge.
+Si tu veux, je peux te sortir :
+	-	les 3 leviers qui augmentent ton cash le plus vite (à effort égal),
+	-	et une version "stress test" : "si CSM paye avec 45 jours de retard, tu deviens quoi mois par mois ?" (ça calme toujours utilement).
+
+les 3 leviers
+
+Parfait. Pas de blabla, pas de poudre aux yeux. Voici les 3 leviers qui ont l'impact le plus fort, le plus rapide et le plus certain sur ta trésorerie, dans TON contexte (bâtiment / rénovation / MO / menuiserie).
+
+ LEVIER #1 - Facturation en situations + acompte renforcé
+ C'est LE levier n°1. Tout le reste est secondaire.
+Le problème actuel (sans détour)
+Tu finances une partie des chantiers :
+	-	tu paies salaires, charges, fournisseurs
+	-	avant d'avoir encaissé l'argent du client
+Même avec de la marge, c'est une erreur structurelle de cash.
+La règle à imposer (non négociable)
+	-	Acompte à la commande : 20-30 %
+	-	Facturation mensuelle en situation (ou par jalons clairs)
+	-	Aucun mois sans facture sur un chantier actif
+Impact concret (ordre de grandeur)
+Sur CSM + B1 BIS + BAZOCHES :
+	-	tu avances aujourd'hui ~40 à 60 k€ de cash à certains moments
+	-	en situations -> tu récupères 30 à 45 k€ plus tôt dans l'année
+ Effet immédiat :
+	-	juillet ne descend plus à 9 k€
+	-	avril ne devient plus un gouffre
+Mise en œuvre pragmatique
+	-	Même si le client râle -> c'est standard Ceux qui refusent sont souvent ceux qui paient mal.
+	-	Tu le présentes comme un outil de transparence, pas de défiance.
+
+ LEVIER #2 - Décaler les paiements fournisseurs (sans les braquer)
+ Le cash, c'est du timing. Tu encaisses à J+X, tu dois décaisser à J+X+Y.
+Ce que je vois dans ton tableau
+	-	achats "clients/projets" parfois payés avant encaissement
+	-	certains fournisseurs te coûtent du cash alors que le client ne t'a pas encore payé
+La règle simple
+Aucun paiement fournisseur AVANT encaissement client correspondant, sauf décision volontaire.
+Actions concrètes
+	1	Négocier :
+	-	30 jours fin de mois minimum
+	-	ou paiement "à réception situation client"
+	2	Prioriser :
+	-	fournisseurs stratégiques -> respect strict
+	-	fournisseurs opportunistes -> tu pilotes ton cash, pas eux
+Impact chiffré réaliste
+	-	Décalage moyen de 15-30 jours sur ~150-200 k€ d'achats annuels -> gain de trésorerie temporaire : 20 à 40 k€
+ C'est invisible pour le client, mais vital pour toi.
+
+ LEVIER #3 - Plancher de trésorerie + ligne bancaire (levier psychologique)
+ Ce levier ne crée pas du cash, il t'empêche de faire des conneries.
+Ton point faible actuel
+	-	tu acceptes de descendre à 9 k€
+	-	donc tu pilotes à l'instinct, sous stress
+Le stress = mauvaises décisions.
+La règle à instaurer
+	-	Trésorerie plancher : 66 k€ (2 mois de charges fixes)
+	-	Ligne de trésorerie / découvert autorisé : 30-50 k€ (que tu n'utilises presque jamais… mais qui te sauve)
+Effet réel
+	-	tu peux refuser un chantier mal payé
+	-	tu peux imposer tes règles de facturation
+	-	tu peux absorber un retard client sans paniquer
+ C'est un levier de pouvoir, pas de financement.
+
+ Résumé brutal (à afficher au mur)
+Levier
+Impact
+Délai
+Difficulté
+Facturation en situations
+
+immédiat
+discipline commerciale
+Décalage fournisseurs
+
+1-2 mois
+négociation
+Plancher + ligne tréso
+
+immédiat
+mental + bancaire
+
+La phrase que tu dois intégrer (et appliquer)
+" Une entreprise rentable qui manque de trésorerie est une entreprise mal pilotée. "
+Tu as la marge, le savoir-faire, les clients. Ce qu'il te manque, c'est une doctrine cash non négociable.
+Si tu veux, au prochain tour, je te fais :
+	-	soit une checklist opérationnelle chantier par chantier
+	-	soit un stress test violent (retard client, perte d'un gros projet, hausse charges).
+Dis-moi.
+
+est ce que tu vois des choses a ameliorer sur mon tableau ?
+
+Oui. Et je vais être clair : ton tableau est bon sur le fond, mais pas encore au niveau "outil de pilotage". Aujourd'hui, il décrit la trésorerie. Il ne commande pas les décisions.
+Voici ce que je vois à améliorer, par ordre d'impact.
+
+1 Mélange des natures de flux -> lisible, mais pas pilotable
+Ce que tu fais aujourd'hui
+Tu mets tout dans la même colonne "sorties" :
+	-	charges fixes
+	-	achats chantier
+	-	remboursements de dettes
+	-	TVA
+	-	sorties exceptionnelles
+ Résultat : tu sais combien sort, mais pas pourquoi tu es en danger un mois donné.
+Ce qu'il faut améliorer
+Séparer clairement les flux en 4 blocs :
+	1	Charges fixes structurelles
+	-	salaires
+	-	loyers
+	-	assurances
+	-	frais généraux
+	2	Charges variables chantiers
+	-	achats matériaux
+	-	sous-traitance
+	3	Flux financiers
+	-	remboursements d'emprunts
+	-	LOA
+	4	Flux fiscaux
+	-	TVA
+	-	IS / CFE si pertinent
+ Objectif : Pouvoir dire en 10 secondes :
+"Ce mois-ci je suis en tension à cause de la structure / d'un chantier / de la dette / de l'État."
+
+2 TVA : elle est là… mais elle n'est pas maîtrisée
+Problème
+La TVA apparaît comme une sortie parmi d'autres. Psychologiquement, tu la traites comme une charge. C'est une erreur.
+La TVA n'est pas ton argent.
+Amélioration clé
+Ajoute :
+	-	une ligne TVA collectée
+	-	une ligne TVA déductible
+	-	une ligne TVA nette à décaisser
+	-	idéalement : un solde TVA cumulé
+ Et surtout : une alerte visuelle quand la TVA cumulée devient dangereuse par rapport à la trésorerie disponible.
+
+3 Aucun indicateur d'alerte -> tu regardes dans le rétro
+Ton tableau dit :
+"Voilà ce qui va se passer."
+Il ne dit pas :
+"Attention, danger ici."
+À ajouter absolument
+ A. Trésorerie plancher
+	-	Ligne : Seuil d'alerte trésorerie (66 k€)
+	-	Mise en forme conditionnelle si solde < seuil
+ B. Couverture des charges fixes
+	-	Ratio : Trésorerie disponible / charges fixes mensuelles
+	-	Alerte si < 2
+ Ce sont des feux tricolores, pas des chiffres décoratifs.
+
+4 Les chantiers sont visibles… mais pas comparables
+Tu vois les flux par chantier, mais :
+	-	tu ne vois pas immédiatement leur efficacité cash
+	-	tu ne peux pas les classer
+Amélioration majeure
+Ajoute pour chaque chantier :
+	-	Encaissements totaux
+	-	Décaissements totaux
+	-	Marge brute cash
+	-	Cash cover = encaissements / décaissements
+ Avec une règle simple :
+	-	cash cover < 1,2 = chantier à risque
+	-	cash cover > 1,5 = chantier confortable
+Là, tu passes de "suivi" à arbitrage.
+
+5 Aucun scénario -> fragile par définition
+Ton tableau suppose que tout se passe comme prévu. Dans la vraie vie : non.
+Ce qu'il manque
+Au minimum :
+	-	Scénario retard client 30 jours (CSM)
+	-	Scénario -20 % encaissements sur un gros chantier
+	-	Scénario charges fixes +10 %
+Même simple, même moche. Mais il faut voir où ça casse.
+
+6 Vision mensuelle OK, mais aveugle à l'intérieur du mois
+Dans le bâtiment, le jour compte.
+Amélioration (si tu veux passer un cran au-dessus)
+	-	Découper les mois sensibles (avril, juillet, décembre) en :
+	-	début / milieu / fin de mois OU
+	-	Ajouter une note : "gros décaissement le X"
+ Ça évite le faux sentiment de sécurité.
+
+Verdict franc
+ Ce que ton tableau fait bien
+	-	Vision annuelle claire
+	-	Flux par client : très bon
+	-	Tu ne te racontes pas d'histoires (c'est rare)
+ Ce qu'il ne fait pas encore
+	-	Il n'alerte pas
+	-	Il ne hiérarchise pas
+	-	Il ne te protège pas
+ Ce qu'il doit devenir
+Un tableau qui te dit :
+"Florent, ce mois-ci tu peux y aller" ou "Florent, stop. Tu encaisses avant d'agir."
+
+Si tu veux, prochaine étape possible :
+	-	je te propose une structure cible de tableau (onglets + indicateurs)
+	-	ou je t'aide à transformer celui-ci sans tout casser
+À toi de choisir.
+
+aide à transformer celui-ci sans tout casser
+
+Parfait. On va faire évoluer ton tableau sans le démolir, comme une rénovation intelligente : on garde la structure porteuse, on améliore la circulation, on ajoute des alarmes incendie.
+Je te propose une transformation en 4 étapes, progressives. Tu peux t'arrêter à l'étape 2 si tu veux rester simple, ou aller jusqu'au bout pour avoir un vrai cockpit.
+
+ÉTAPE 1 - Clarifier les flux (sans changer les chiffres)
+ Objectif : comprendre pourquoi la trésorerie bouge, pas juste constater qu'elle bouge.
+Ce que tu fais concrètement
+Dans ton onglet principal actuel :
+	1	Tu gardes toutes les lignes existantes
+	2	Tu ajoutes une colonne "Nature du flux" (ou tu regroupes par blocs)
+Avec seulement 4 catégories :
+	-	STRUCTURE (salaires, loyers, assurances, frais généraux)
+	-	CHANTIER (achats matériaux, sous-traitance, dépenses affectées)
+	-	FINANCIER (emprunts, LOA)
+	-	FISCAL (TVA, IS, CFE)
+ Aucun recalcul, aucun risque. Mais soudain, tu peux filtrer et voir ce qui t'étrangle.
+ Humour sec mais vrai :
+Aujourd'hui tu sais que tu saignes. Là tu sauras qui tient le couteau.
+
+ÉTAPE 2 - Installer les alertes vitales (15 minutes, impact énorme)
+ Objectif : ne plus jamais tomber à 9 k€ sans le voir venir.
+À ajouter tout en haut ou tout à droite du tableau
+ A. Trésorerie plancher
+	-	Ligne fixe : Seuil d'alerte trésorerie = 66 000 €
+	-	Mise en forme conditionnelle :
+	-	vert : > 80 k€
+	-	orange : 66-80 k€
+	-	rouge : < 66 k€
+ Ton cerveau réagit mieux à la couleur qu'aux chiffres.
+
+ B. Couverture des charges fixes
+Ajoute une ligne calculée :
+
+Couverture charges fixes = Solde de trésorerie / Charges fixes mensuelles
+
+	-	Vert : ≥ 2
+	-	Orange : 1,5 à 2
+	-	Rouge : < 1,5
+ C'est ton altimètre. Sans ça, tu voles à vue.
+
+ÉTAPE 3 - Rendre les chantiers comparables (sans refaire tout le tableau)
+ Objectif : savoir quels chantiers t'aident et lesquels te mettent en danger.
+Ce que tu ajoutes (nouvel onglet simple)
+Onglet : "Synthèse chantiers"
+Pour chaque chantier (CSM, B1 BIS, etc.) :
+	-	Encaissements totaux
+	-	Décaissements totaux
+	-	Marge brute cash
+	-	Cash cover = Encaissements / Décaissements
+Avec une règle claire :
+	-	 Cash cover < 1,2 -> danger
+	-	 1,2 à 1,5 -> sous surveillance
+	-	 > 1,5 -> confortable
+ Tu ne touches pas aux données sources. Tu les lis intelligemment.
+
+ÉTAPE 4 - Dompter la TVA (sinon elle te mangera)
+ Objectif : ne plus jamais te faire surprendre par l'État.
+Modification minimale
+Ajoute un petit bloc (même sur le côté) avec :
+	-	TVA collectée mensuelle
+	-	TVA déductible mensuelle
+	-	TVA nette
+	-	TVA cumulée à décaisser
+Et une règle simple :
+TVA cumulée ≤ trésorerie disponible - trésorerie plancher
+Sinon -> alerte rouge.
+ Traduction cash :
+"L'argent de la TVA n'est pas à toi. Arrête de faire semblant."
+
+Ce que tu n'as PAS besoin de faire (pour l'instant)
+ Passer en hebdomadaire  Faire 12 scénarios Excel usine à gaz  Tout refaire dans un nouveau fichier
+On cherche efficacité, pas masturbation financière.
+
+Résumé express
+Étape
+Effort
+Gain
+Clarifier flux
+faible
+lisibilité
+Alertes
+très faible
+sécurité
+Synthèse chantiers
+moyen
+décisions
+TVA maîtrisée
+faible
+survie
+
+Proposition suivante (si tu veux)
+Je peux :
+	-	te donner la structure exacte des onglets (nom + contenu ligne par ligne),
+	-	ou t'aider à implémenter étape par étape ("tu ajoutes ça ici, cette formule là").
+Dis-moi comment tu veux avancer.
+
+liste mois toutes les correspondances lignes / Structure ou chantier ou financier ou fiscal
+
+Parfait. Je vais être précis et exploitable, pas conceptuel. Je pars de ce que tu as réellement dans ton tableau et je te donne la correspondance ligne -> nature de flux, mois par mois identique (la nature ne change pas selon le mois).
+ Tu peux littéralement copier-coller cette logique dans une colonne "Nature du flux".
+
+ RÈGLE GÉNÉRALE (à garder en tête)
+	-	STRUCTURE = existe même sans chantier
+	-	CHANTIER = n'existe que parce qu'un chantier existe
+	-	FINANCIER = dette, crédit, location financière
+	-	FISCAL = argent de l'État (jamais le tien)
+
+ CORRESPONDANCE LIGNES -> NATURE DE FLUX
+ STRUCTURE (charges fixes / exploitation)
+Ligne du tableau
+Nature
+Salaires
+STRUCTURE
+Charges sociales
+STRUCTURE
+Rémunération dirigeant
+STRUCTURE
+Loyer atelier / bureaux
+STRUCTURE
+Assurance (RC, décennale, etc.)
+STRUCTURE
+Téléphone / Internet
+STRUCTURE
+Électricité / Eau
+STRUCTURE
+Carburant (part non affectée chantier)
+STRUCTURE
+Entretien courant (hors chantier)
+STRUCTURE
+Frais administratifs
+STRUCTURE
+Honoraires comptables
+STRUCTURE
+Logiciels / abonnements
+STRUCTURE
+Frais bancaires
+STRUCTURE
+ Test simple :
+"Si je n'avais aucun chantier ce mois-ci, est-ce que ça sortirait quand même ?" Si oui -> STRUCTURE.
+
+ CHANTIER (directement lié à un projet)
+ Encaissements
+Ligne du tableau
+Nature
+Encaissement CSM
+CHANTIER
+Encaissement B1 BIS
+CHANTIER
+Encaissement B4
+CHANTIER
+Encaissement BAZOCHES
+CHANTIER
+Encaissement VEA
+CHANTIER
+Acomptes clients
+CHANTIER
+Soldes de chantiers
+CHANTIER
+ Décaissements
+Ligne du tableau
+Nature
+Achats matériaux CSM
+CHANTIER
+Achats matériaux B1 BIS
+CHANTIER
+Achats matériaux B4
+CHANTIER
+Achats matériaux BAZOCHES
+CHANTIER
+Sous-traitance chantier
+CHANTIER
+Location matériel chantier
+CHANTIER
+Transport spécifique chantier
+CHANTIER
+Dépenses diverses chantier
+CHANTIER
+ Règle d'or : Si tu peux écrire le nom du client à côté -> CHANTIER.
+
+ FINANCIER (dettes & engagements)
+Ligne du tableau
+Nature
+Remboursement emprunt
+FINANCIER
+LOA machines
+FINANCIER
+Crédit matériel
+FINANCIER
+Intérêts d'emprunt
+FINANCIER
+Frais de financement
+FINANCIER
+ Ces flux ne créent aucune valeur mais mangent du cash. Ils doivent être visibles à part, toujours.
+
+ FISCAL (argent non négociable)
+Ligne du tableau
+Nature
+TVA à décaisser
+FISCAL
+TVA collectée (si ligne visible)
+FISCAL
+TVA déductible (si ligne visible)
+FISCAL
+IS
+FISCAL
+CFE
+FISCAL
+Taxes diverses
+FISCAL
+ La TVA ne doit jamais être mélangée au reste. Sinon tu te racontes une histoire dangereuse.
+
+ CAS AMBIGUS (à trancher UNE FOIS)
+Carburant
+	-	déplacements commerciaux / structure -> STRUCTURE
+	-	déplacements affectés chantier -> CHANTIER
+Petit matériel
+	-	consommable générique -> STRUCTURE
+	-	spécifique chantier -> CHANTIER
+ Choisis une règle et applique-la toujours. L'incohérence est pire qu'une approximation.
+
+ CONSEIL FINAL (important)
+Ajoute une colonne "Nature du flux" avec une validation de données :
+	-	STRUCTURE
+	-	CHANTIER
+	-	FINANCIER
+	-	FISCAL
+Comme ça :
+	-	impossible de tricher
+	-	impossible d'oublier
+	-	ton tableau devient pilotable
+
+Si tu veux, au prochain message, je peux :
+	-	te dire quelles lignes méritent d'être éclatées (ex : salaires chantier vs structure),
+	-	ou t'aider à mettre les filtres et sous-totaux pour voir instantanément où ça dérape.
+Dis-moi.
