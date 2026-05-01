@@ -2,6 +2,7 @@ import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import readline from "node:readline";
 
 import { CFG } from "../lib/config.mjs";
 import {
@@ -22,6 +23,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
 const TEST_THREADS_DIR = path.join(REPO_ROOT, "data", "test_threads");
+const PROD_THREADS_DIR = path.join(REPO_ROOT, "data", "threads_to_process");
 
 function argValue(flag, fallback = "") {
   const idx = process.argv.indexOf(flag);
@@ -42,6 +44,41 @@ const SKIP_BUCKETS = SKIP_ARG === "__default__"
   : SKIP_ARG === ""
   ? []
   : SKIP_ARG.split(",").map(b => b.trim());
+
+// ─── SÉLECTION MODE ──────────────────────────────────────────────────────────
+
+async function selectIngestMode() {
+  const modeArg = argValue("--mode", "").toLowerCase();
+  if (modeArg === "batch") return PROD_THREADS_DIR;
+  if (modeArg === "test")  return TEST_THREADS_DIR;
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    console.log("");
+    console.log("Mode d'ingestion :");
+    console.log("  [1] Batch production  → threads_to_process/");
+    console.log("  [2] Test pipeline     → test_threads/");
+    console.log("");
+    rl.question("Choix (1 ou 2) : ", (answer) => {
+      rl.close();
+      const choice = answer.trim();
+      if (choice === "1") {
+        console.log("[os:ingest] Mode : Batch production (threads_to_process/)");
+        resolve(PROD_THREADS_DIR);
+      } else if (choice === "2") {
+        console.log("[os:ingest] Mode : Test pipeline (test_threads/)");
+        resolve(TEST_THREADS_DIR);
+      } else {
+        console.error("[os:ingest] Choix invalide — relancer le script et choisir 1 ou 2.");
+        process.exit(1);
+      }
+    });
+  });
+}
 
 // ─── NETTOYAGE ───────────────────────────────────────────────────────────────
 
@@ -71,8 +108,6 @@ function cleanText(text) {
 }
 
 // ─── RÉSUMÉ LLM ──────────────────────────────────────────────────────────────
-// Génère une ligne de résumé du thread via Claude.
-// Remplace le raw_text tronqué — utile pour naviguer dans Notion sans ouvrir la page.
 
 async function generateSummary(text, idDump) {
   if (!ANTHROPIC_API_KEY) {
@@ -139,11 +174,23 @@ function getDisplayNameFromFilename(filename) {
   return path.basename(filename, ".txt");
 }
 
-function buildThreadDumpProperties({ idDump, displayName, summary }) {
+// OPTION B — Propriétés pour UPDATE : ne pas écraser les statuts existants
+function buildUpdateProperties({ idDump, displayName, summary }) {
   return {
     Name: title(displayName),
     id_dump: rt(idDump),
-    raw_text: rt(summary), // résumé LLM une ligne — navigation Notion
+    raw_text: rt(summary),
+    // extraction_status et injection_status intentionnellement absents
+    // → préserve les statuts done existants, évite le bug d'écrasement
+  };
+}
+
+// Propriétés pour CRÉATION uniquement : statuts initialisés à pending
+function buildCreateProperties({ idDump, displayName, summary }) {
+  return {
+    Name: title(displayName),
+    id_dump: rt(idDump),
+    raw_text: rt(summary),
     extraction_status: { select: { name: "pending" } },
     injection_status:  { select: { name: "pending" } },
   };
@@ -229,8 +276,57 @@ async function findExistingThreadDumpPage(idDump) {
   return response.results?.[0] ?? null;
 }
 
-async function ingestOneFile(filename) {
-  const fullPath    = path.join(TEST_THREADS_DIR, filename);
+// ─── OPTION A — GUARD PRÉ-INGEST ─────────────────────────────────────────────
+// Vérifie dans Notion si des threads ont déjà un statut done.
+// Alerte et demande confirmation avant de continuer.
+
+async function guardCheckExistingDone(files) {
+  const warnings = [];
+
+  for (const filename of files) {
+    try {
+      const idDump = getIdDumpFromFilename(filename);
+      const page   = await findExistingThreadDumpPage(idDump);
+      if (!page) continue;
+
+      const extractStatus = page.properties?.extraction_status?.select?.name;
+      const injectStatus  = page.properties?.injection_status?.select?.name;
+
+      if (extractStatus === "done" || injectStatus === "done") {
+        warnings.push({ idDump, extractStatus, injectStatus });
+      }
+    } catch { /* skip fichiers invalides */ }
+  }
+
+  if (warnings.length === 0) return true;
+
+  console.log("");
+  console.log(`[os:ingest] WARN — ${warnings.length} thread(s) déjà traité(s) détectés :`);
+  for (const w of warnings) {
+    console.log(`  - ${w.idDump} : extraction=${w.extractStatus} / injection=${w.injectStatus}`);
+  }
+  console.log("");
+  console.log("  Le contenu sera mis à jour. Les statuts done seront PRÉSERVÉS (pas de régression).");
+  console.log("");
+
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question("Continuer ? (o/n) : ", (answer) => {
+      rl.close();
+      if (answer.trim().toLowerCase() === "o") {
+        resolve(true);
+      } else {
+        console.log("[os:ingest] Annulé.");
+        resolve(false);
+      }
+    });
+  });
+}
+
+// ─── INGEST ──────────────────────────────────────────────────────────────────
+
+async function ingestOneFile(filename, ingestDir) {
+  const fullPath    = path.join(ingestDir, filename);
   const idDump      = getIdDumpFromFilename(filename);
   const displayName = getDisplayNameFromFilename(filename);
   const rawText     = await fs.readFile(fullPath, "utf8");
@@ -242,37 +338,45 @@ async function ingestOneFile(filename) {
   // 1. Nettoyage systématique
   const cleanedText = cleanText(rawText);
 
-  // 2. Résumé LLM (remplace raw_text tronqué)
+  // 2. Résumé LLM
   process.stdout.write(`  [résumé] ${idDump}... `);
   const summary = await generateSummary(cleanedText, idDump);
   process.stdout.write(`OK\n`);
 
   // 3. Ingest dans Notion
   const existingPage = await findExistingThreadDumpPage(idDump);
-  const properties   = buildThreadDumpProperties({ idDump, displayName, summary });
 
   if (!existingPage) {
+    // CRÉATION — statuts initialisés à pending
+    const properties = buildCreateProperties({ idDump, displayName, summary });
     const page = await createPage(CFG.THREAD_DUMP_DS_ID, properties);
     await replacePageContent(page.id, cleanedText);
     return { status: "created", filename, idDump, summary };
   }
 
+  // UPDATE — OPTION B : statuts extraction/injection préservés
+  const existingExtract = existingPage.properties?.extraction_status?.select?.name ?? "?";
+  const existingInject  = existingPage.properties?.injection_status?.select?.name  ?? "?";
+  const properties = buildUpdateProperties({ idDump, displayName, summary });
   await updatePage(existingPage.id, properties);
   await replacePageContent(existingPage.id, cleanedText);
-  return { status: "updated", filename, idDump, summary };
+  return { status: "updated", filename, idDump, summary, existingExtract, existingInject };
 }
 
 // ─── MAIN ────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log("INGEST test_threads");
+  const INGEST_DIR = await selectIngestMode();
+  const modeName   = INGEST_DIR === PROD_THREADS_DIR ? "Batch production" : "Test pipeline";
+
+  console.log("");
+  console.log(`INGEST — ${modeName}`);
   console.log("-------------------------");
 
   if (ONLY_ID) {
     console.log(`[os:ingest] Mode cible --only ${ONLY_ID}`);
   }
 
-  // Fix bug __DEFAULT__ : affiche les vrais buckets exclus
   if (!ONLY_ID) {
     if (SKIP_BUCKETS.length > 0) {
       console.log(`[os:ingest] Buckets exclus : ${SKIP_BUCKETS.join(", ")} (--skip-buckets "" pour inclure)`);
@@ -289,7 +393,7 @@ async function main() {
     if (!CFG[k]) throw new Error(`Missing required config key: ${k}`);
   }
 
-  const allFiles = await listHistoricalThreadFiles(TEST_THREADS_DIR);
+  const allFiles = await listHistoricalThreadFiles(INGEST_DIR);
 
   const files = allFiles.filter((filename) => {
     try {
@@ -309,18 +413,34 @@ async function main() {
     throw new Error(`No historical thread file found for --only ${ONLY_ID}`);
   }
 
+  if (files.length === 0) {
+    console.log(`[os:ingest] Aucun fichier à ingérer dans ${path.basename(INGEST_DIR)}/`);
+    return;
+  }
+
+  console.log(`[os:ingest] ${files.length} fichier(s) à traiter`);
+
+  // OPTION A — Guard pré-ingest
+  const confirmed = await guardCheckExistingDone(files);
+  if (!confirmed) return;
+
+  console.log("");
+
   let created = 0;
   let updated = 0;
   let skipped = 0;
 
   for (const filename of files) {
-    const result = await ingestOneFile(filename);
+    const result = await ingestOneFile(filename, INGEST_DIR);
     if (result.status === "created") {
       created++;
       console.log(`[created] ${result.idDump} — "${result.summary}"`);
     } else if (result.status === "updated") {
       updated++;
-      console.log(`[updated] ${result.idDump} — "${result.summary}"`);
+      const preserved = result.existingExtract !== "pending" || result.existingInject !== "pending"
+        ? ` [statuts préservés: extract=${result.existingExtract} inject=${result.existingInject}]`
+        : "";
+      console.log(`[updated] ${result.idDump} — "${result.summary}"${preserved}`);
     } else if (result.status === "skipped") {
       skipped++;
       console.log(`[skipped] ${result.idDump} (${result.reason})`);
