@@ -44,3 +44,4 @@ README_INSIDE_OS_v*.md
 coverage/
 dist/
 build/
+docs/Terminal/
