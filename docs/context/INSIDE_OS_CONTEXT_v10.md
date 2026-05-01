@@ -3,7 +3,7 @@ Date : 2026-05-01
 
 ---
 
-## CONTEXTE DE TRANSFERT CRITIQUE — INSIDE OS / B09-T24-DS-Rename-Protocol
+## CONTEXTE DE TRANSFERT CRITIQUE — INSIDE OS / B09-T24-DS-Rename-Protocol-Tooling
 
 **Statut : Stable**
 **Version : v10**
@@ -13,214 +13,251 @@ Date : 2026-05-01
 
 ## 0. Signal de continuité
 
-Thread clôturé sur objectif atteint : validation complète du refactoring DS_ID sur pipeline réel. THREAD_DUMP montre 4 threads extract_done: 4 | inject_done: 4 | inject_error: 0. Tous les commits récents confirment l'application systématique du rename protocol. Aucun thread bloqué. Le système est prêt pour l'ingestion des 82 threads historiques.
+Thread clôturé sur objectif atteint : refactoring DS_ID complet + protocole de clôture de thread opérationnel. Pipeline propre : extract_done: 4, inject_done: 4, inject_error: 0. Git actif avec historique sémantique. Script `os-thread-close.mjs` v2 testé et validé. Ce document permet le redémarrage sans relire l'ancien thread.
 
-**Raison de l'arrêt :** Validation réussie du refactoring nomenclature + pipeline stabilisé. Pause naturelle avant ingestion massive.
+**Source du STOP :** seuil objectif — protocole de clôture validé, pipeline propre, documentation alignée.
 
 ---
 
 ## 1. Intention réelle du thread
 
-**Objectif :** Valider que le refactoring DB_ID → DS_ID tient sur un pipeline réel (extract + inject complet) sans régression.
+**Objectif réel :** Régler définitivement la confusion database_id / data_source_id qui revenait depuis le début du projet, et mettre en place un protocole automatisé de clôture de thread pour ne plus perdre de temps à chaque transfert.
 
-**Problème concret :** Le v09 montrait inject_error: 1. Ce thread devait soit résoudre cette erreur, soit confirmer que le refactoring n'en est pas la cause.
+**Problème concret :** Le codebase utilisait `queryDatabaseCompat` comme patch silencieux sur une confusion de nomenclature. Les variables s'appelaient `_DB_ID` mais contenaient des data source IDs. Chaque nouveau thread risquait de réintroduire la confusion. Parallèlement, les transferts de thread étaient manuels, lents, et sujets à oubli.
 
-**Dérive empêchée :** Ne pas lancer l'ingestion des 82 threads avec une nomenclature instable ou une erreur d'injection non diagnostiquée.
+**Dérive empêchée :** Lancer l'ingestion des 82 threads avec une nomenclature instable et sans protocole de clôture fiable.
 
 ---
 
-## 2. Acquis réels
+## 2. Acquis réels (validés, utilisables, non spéculatifs)
 
-**Pipeline validé**
-- 4 threads test traités : extract_done: 4, inject_done: 4, inject_error: 0 (erreur résiduelle du v09 résolue ou non reproductible).
-- Nomenclature DS_ID appliquée partout : code, config, docs, messages utilisateur.
-- `queryDatabaseCompat()` supprimée définitivement du codebase.
+**Refactoring DS_ID — définitif**
+- `THREAD_DUMP_DB_ID` → `THREAD_DUMP_DS_ID`, `DECISIONS_DB_ID` → `DECISIONS_DS_ID`, `LESSONS_DB_ID` → `LESSONS_DS_ID` dans tout le codebase.
+- `queryDatabaseCompat()` supprimée de `os/lib/notion.mjs` — remplacée par `queryDataSource()` directement.
+- `getDatabase()` et `resolveFirstDataSourceId()` supprimées — inutilisées en production, source de confusion.
+- DS_ID = Data Source ID (identifiant API Notion) — définition gravée et verrouillée.
+- 99 occurrences patchées en une passe via `patch-ds-rename.mjs`.
 
-**Refactoring commits**
-- `07a1298` : application du rename dans code et docs.
-- `215d8a1` : rename folders + os-thread-close v2.
-- `55231a6` : suppression des fichiers de session terminal du repo.
+**Structure dossiers data/ — clarifiée**
+- `data/threads_to_process/` : créé — zone de dépôt des threads exportés en attente d'ingest.
+- `data/test_threads/` : renommé depuis `historical_threads/` — 4 fichiers max, test uniquement.
+- `data/data_cemetery/` : inchangé — archive permanente, 82 threads.
+- `data/_backup_threads/`, `data/dumps_archived/`, `data/dumps_test/` : supprimés (vides ou doublons).
 
-**Git stable**
-- Repository initialisé et opérationnel.
-- `.gitignore` standard Node.js appliqué.
-- Historique de commits propre et sémantique (chore/refactor).
+**Git — initialisé et opérationnel**
+- Repository initialisé avec `.gitignore` standard Node.js.
+- Historique de commits propre : `refactor/chore/feat` sémantiques.
+- `docs/Terminal/` exclu du repo et déplacé vers `/Users/admin/terminal-sessions/`.
 
-**État Notion**
-- DECISIONS : 113 entrées.
-- LESSONS : 98 entrées.
-- Relations source_thread fonctionnelles.
+**Protocole de clôture de thread — `os-thread-close.mjs` v2**
+- Phase 1 : backup versionné automatique (10 derniers conservés).
+- Phase 2 : retry automatique inject_error (max 2, alerte si bloqué).
+- Phase 3 : snapshot Notion live (statuts pipeline, comptages).
+- Phase 4 : audit alignement (env, dossiers, divergences).
+- Phase 5 : git diff filtré (exclut docs/Terminal/).
+- Phase 6 : lecture du contenu du thread si disponible dans threads_to_process/ ou data_cemetery/.
+- Phase 7 : draft CONTEXT vXX généré par Claude (toutes sections remplies).
+- Phase 8 : détection README/PROMPT bump avec draft de section.
+- Phase 9 : injection B99 sur `--inject`.
+- Durée mesurée : ~90 secondes.
 
-**Fichier modifié identifié**
-- `data/test_threads/B09-T22-Notion-Dev-010.txt` : modification non documentée dans le thread dump. **Manque :** raison de la modification, contenu avant/après, impact sur inject_done.
+**Pipeline — état validé**
+- 4 threads test traités de bout en bout : extract_done: 4, inject_done: 4, inject_error: 0.
+- 113 décisions en mémoire, 98 lessons en mémoire.
+- `source_thread` bidirectionnel confirmé fonctionnel (relation Notion DECISIONS/LESSONS → THREAD_DUMP).
+
+**Règles de versionning — gravées**
+- README vXX : évolue sur décision majeure ou changement d'architecture.
+- PROMPT vXX : évolue quand un gap inter-thread révèle un angle mort ou dérive.
+- CONTEXT vXX : évolue à chaque thread B09 — automatique.
+- Les trois numéros sont indépendants.
 
 ---
 
 ## 3. Hypothèses, intentions, paris
 
-**Pari :** Le refactoring DS_ID n'introduit aucune régression fonctionnelle sur le pipeline d'ingestion complet.
-
-**Hypothèse non validée :** L'erreur inject_error: 1 du v09 était ponctuelle (race condition, timeout Notion, JSON malformé sur un thread spécifique). Le passage à inject_error: 0 dans ce thread ne prouve pas qu'elle ne reviendra pas sur les 82 threads historiques.
-
-**Intention implicite :** Préparer le terrain pour une ingestion en série sans intervention manuelle. Reste à prouver : robustesse sur threads longs (>10k tokens), chunks multiples, et diversité de formats réels (pas seulement test_threads/).
-
-**Paris organisationnel :** La discipline B09 (exclusion du pipeline auto + injection manuelle en B99) suffira à maintenir la cohérence du méta-système pendant l'ingestion massive.
+- Le retry automatique inject_error (max 2) couvrira les cas Notion 504/timeout sans intervention manuelle — non prouvé à grande échelle.
+- Le draft CONTEXT généré par le LLM sans contenu du thread (inférence depuis données système) est suffisamment utile pour accélérer la clôture — à valider sur les prochains threads.
+- La structure `threads_to_process/` → `test_threads/` → `data_cemetery/` tiendra sans ambiguïté sur les 82 threads à ingérer.
+- `notion-memory-chat.mjs` peut rester sur OpenAI GPT-4.1-mini pendant l'ingestion complète — migration Claude non bloquante.
 
 ---
 
 ## 4. Contraintes actives à respecter
 
+**Nomenclature verrouillée**
+- DS_ID = Data Source ID (identifiant API Notion) — aucune autre interprétation tolérée.
+- `DB_ID` banni du codebase — tout nouveau script doit utiliser `DS_ID`.
+- `queryDataSource()` uniquement — jamais `queryDatabaseCompat()`.
+
 **Protocole B09**
-- B09 exclu définitivement du pipeline automatique (ingest, extract, inject).
-- CONTEXT vXX injecté manuellement en B99 pour traçabilité.
-- Aucun fichier B09 dans threads_to_process/ ou test_threads/.
+- B09 strictement exclu de `threads_to_process/` et `test_threads/`.
+- Thread B09 terminé → `os-thread-close.mjs` → CONTEXT vXX → injection manuelle en B99.
+- Thread B09 brut → `data_cemetery/` uniquement.
 
-**Nettoyage irréversible**
-- `cleanText()` systématique à l'ingest : pas de rollback possible après nettoyage.
-- test_threads/ limité à 4-5 fichiers max.
-- data_cemetery/ = archive définitive, jamais retraité.
+**Structure dossiers**
+- `data/threads_to_process/` = dépôt threads à ingérer — vidé après ingest.
+- `data/test_threads/` = 4 fichiers max, jamais de vrais threads de production.
+- `data/data_cemetery/` = archive permanente après injection, n'en ressortent jamais.
 
-**Extraction LLM**
-- max_tokens tentative 1 : 4 000 (courts), 8 000 (chunks longs).
-- Retry progressif : `[4000, 6000, 8000, 10000]` avec prompt minimal dès tentative 2.
-- Parser JSON robuste obligatoire : 3 stratégies en cascade (JSON direct → regex → fallback).
-
-**Notion API**
-- Relations = `getRelationId()` exclusivement.
-- `source_thread` obligatoire dans DECISIONS et LESSONS.
-- `raw_text` remplacé par résumé LLM (20 mots max), fallback texte brut tronqué.
+**Pipeline**
+- Ne jamais lire `raw_text` pour l'extraction — toujours lire les blocs Notion.
+- `RETRY_TOKEN_STEPS = [4000, 6000, 8000, 10000]` — seule variable à modifier pour le retry.
+- Parser JSON 3 stratégies en cascade obligatoire.
+- Pagination Notion obligatoire — limite 100 résultats par requête.
 
 **Git**
-- Jamais commiter data_cemetery/ ni test_threads_clean/.
-- Messages de commit sémantiques (feat/fix/refactor/chore).
-- Pas de fichiers de session terminal (.txt de logs interactifs).
-
-**Nomenclature verrouillée**
-- DS_ID = Data Source ID (identifiant API Notion).
-- Aucune autre interprétation tolérée (pas Decision System ID, pas Database ID).
-- `DB_ID` banni du codebase.
+- Jamais commiter `data/data_cemetery/`, `data/test_threads_clean/`, `runtime/out/`.
+- Messages de commit sémantiques : feat/fix/refactor/chore.
+- Backup tar.gz automatique via `os-thread-close.mjs` — pas de backup manuel.
 
 ---
 
 ## 5. Architecture actuelle
 
-**Ce qui fonctionne**
-- Pipeline extract → inject sur threads test (4/4 validés).
-- API Notion unifiée : `lib/notion.mjs` avec nomenclature DS_ID cohérente.
-- `scripts/clean-threads.mjs` : nettoyage caractères spéciaux validé.
-- `scripts/ingest-thread.mjs` : ingest + création THREAD_DUMP opérationnels.
-- `scripts/os-thread-extract.mjs` : extraction LLM avec retry progressif.
-- `scripts/os-thread-inject.mjs` : injection DECISIONS/LESSONS dans Notion.
-- Git repository initialisé, commits sémantiques appliqués.
+**Ce qui fonctionne réellement**
+- Pipeline `os:ingest` → `os:extract` → `os:inject` de bout en bout sur 4 threads test.
+- `os/lib/notion.mjs` : API Notion unifiée, nomenclature DS_ID cohérente, fonctions obsolètes supprimées.
+- `os/ingest/ingest-thread-dump.mjs` : ingest + cleanText() + résumé LLM + protocole B09.
+- `os/extract/extract-thread-dump.mjs` : parser JSON robuste, retry progressif 4 paliers.
+- `os/inject/inject-decisions-lessons.mjs` : injection DECISIONS + LESSONS, source_thread relation.
+- `os-thread-close.mjs` v2 : protocole de clôture automatisé, testé sur ce thread.
+- Backup automatique versionné (10 derniers conservés).
 
-**En apparence stable**
-- Disparition de inject_error: 1 entre v09 et v10 sans explication formelle. Pas de log d'erreur analysé dans le thread dump.
-- Modification de `B09-T22-Notion-Dev-010.txt` non documentée : contenu, raison, impact inconnus.
+**Ce qui fonctionne seulement en apparence**
+- `notion-memory-chat.mjs` utilise OpenAI GPT-4.1-mini — deux LLMs différents selon le mode d'accès (CLI vs serveur HTTP Claude).
+- `os-thread-close.mjs` sans fichier de thread disponible : sections subjectives du CONTEXT basées sur inférence, pas sur le contenu réel.
 
-**Fragile**
-- Pas de test sur threads >10k tokens en conditions réelles (seulement test_threads/ contrôlés).
-- Pas de validation sur diversité de formats réels des 82 threads historiques.
-- Retry automatique sur inject_error non implémenté (prévu mais absent : retry_count dans THREAD_DUMP).
-- `notion-memory-chat.mjs` encore sur OpenAI GPT-4.1-mini, migration Claude prévue mais non faite.
+**Ce qui reste fragile**
+- Ingestion complète non validée — testé sur 4 threads uniquement.
+- Retry automatique inject_error non implémenté dans le pipeline (prévu dans `os-thread-close.mjs` uniquement, pas dans `os:inject`).
+- Propriété `retry_count` non encore créée dans THREAD_DUMP Notion.
+- Serveur HTTP local — s'arrête si le Mac dort.
+- B99 périmé — dernière mise à jour avril 2026.
 
-**Manque**
-- Logs structurés d'injection : pas de trace détaillée des échecs/succès par thread.
-- Monitoring pipeline : pas de dashboard ou script de suivi de l'ingestion en série.
-- Tests d'intégration automatisés : validation pipeline end-to-end sur threads variés.
-- Documentation utilisateur : pas de guide d'utilisation pour lancer une ingestion complète.
+**Ce qui manque pour parler d'un système robuste**
+- Ingestion des 82 threads de `data_cemetery/` validée.
+- `retry_count` dans THREAD_DUMP + retry automatique dans `os:inject`.
+- Déploiement cloud permanent.
+- B99 remis à jour avec le contexte actuel.
+- Remote Git configuré (backup externe).
 
 ---
 
 ## 6. Contradictions et incohérences détectées
 
-**inject_error : 1 → 0 sans explication**
-Le v09 indiquait inject_error: 1. Le v10 affiche inject_error: 0. Aucun commit, log ou modification de code documentée n'explique la résolution. Soit l'erreur était ponctuelle (timeout, race condition), soit elle est masquée par un retraitement silencieux. **Incohérence :** impossible de reproduire ou prévenir cette erreur sans diagnostic.
+**inject_error: 1 → 0 entre v09 et v10 sans explication documentée**
+Le v09 indiquait inject_error: 1. Ce thread a corrigé B09-T23 manuellement (remis en pending + relance). L'erreur était un 504 Notion sur gros volume. Résolu mais non prévenu : le même problème peut revenir sur les 82 threads. Pas de mécanisme de retry dans `os:inject` actuellement.
 
-**Modification de B09-T22-Notion-Dev-010.txt**
-Thread dump indique "Fichiers modifiés : data/test_threads/B09-T22-Notion-Dev-010.txt". **Contradiction :** B09 doit être exclu du pipeline automatique. Si ce fichier est dans test_threads/, il viole le protocole B09. Si modification manuelle, elle devrait être documentée. **Incohérence :** présence d'un B09 dans test_threads/ ou modification non tracée.
+**`notion-memory-chat.mjs` encore sur OpenAI**
+Le serveur HTTP utilise Claude, le CLI utilise OpenAI GPT-4.1-mini. Deux LLMs pour la même fonction selon le mode d'accès. Décision de migration reportée mais non datée.
 
-**DS_ID = Decision System ID dans v09, Data Source ID dans règles absolues**
-Le v09 mentionne "DS_ID (Decision System ID)" dans la documentation Terminal 2.txt. Les règles absolues de ce prompt imposent "DS_ID = Data Source ID (identifiant API Notion)". **Contradiction :** nomenclature instable entre versions, risque de confusion.
-
-**Roadmap : raw_text multi-lignes en V2, mais résumé LLM déjà actif**
-Roadmap dit "raw_text multi-lignes : à implémenter en V2". Section 4 dit "`raw_text` remplacé par résumé LLM (20 mots max), fallback texte brut tronqué". **Incohérence :** V2 concerne le stockage multi-lignes ou le remplacement par résumé ? Si résumé déjà actif, raw_text n'est plus stocké tel quel.
+**README v04 non mis à jour**
+Le README mentionne encore `historical_threads/` et ne documente pas `threads_to_process/`. README bump v05 détecté comme nécessaire — non encore produit.
 
 ---
 
 ## 7. Illusions à démonter
 
-**"Le pipeline est stable parce que inject_error: 0"**
-inject_error: 0 sur 4 threads test ne prouve rien sur 82 threads historiques variés. L'erreur du v09 a disparu sans diagnostic : elle peut revenir. **Illusion :** 4 threads test = validation suffisante.
+**"Le pipeline est prêt pour l'ingestion complète"**
+4 threads test validés ≠ 82 threads historiques variés. Formats inconnus, longueurs variables, threads potentiellement corrompus. Le retry automatique n'est pas encore dans `os:inject`. Une erreur sur 82 threads nécessite encore une intervention manuelle.
 
-**"Le refactoring DS_ID est complet"**
-Le refactoring touche code, config, docs. Mais : (1) DS_ID a 2 définitions contradictoires (Decision System vs Data Source), (2) aucun test automatisé ne valide l'absence de `DB_ID` résiduel dans les prompts LLM ou messages utilisateur. **Illusion :** grep + commits = preuve de complétude.
+**"Le protocole de clôture est complet"**
+`os-thread-close.mjs` fonctionne mais sans le fichier du thread, les sections subjectives du CONTEXT sont des inférences LLM. La qualité du CONTEXT dépend de l'export du thread — étape manuelle non automatisable.
 
-**"B09 est exclu du pipeline"**
-`B09-T22-Notion-Dev-010.txt` figure dans test_threads/ et a été modifié. Soit le protocole B09 est violé, soit ce fichier ne devrait pas être là. **Illusion :** discipline déclarative = discipline appliquée.
+**"Git = sécurité"**
+Repository local sans remote configuré. Perte du Mac = perte de tout l'historique git. Le backup tar.gz est là mais il ne remplace pas un remote.
 
-**"Git initialisé = historique protégé"**
-Git est initialisé, mais pas de stratégie de backup externe, pas de remote configuré, pas de tag sur versions stables. **Illusion :** .git/ local = sécurité des données.
-
-**"Prêt pour ingestion des 82 threads"**
-Pipeline validé sur 4 threads contrôlés, retry automatique non implémenté, monitoring absent, logs non structurés. **Illusion :** extract + inject fonctionnent = industrialisation prête.
+**"DS_ID est réglé"**
+Le renommage est fait dans le code. Mais les prompts LLM, commentaires inline et messages utilisateur peuvent encore introduire des interprétations erronées. Aucun test automatisé ne vérifie l'absence de `DB_ID` résiduel.
 
 ---
 
 ## 8. Risques structurants
 
-**Technique : Erreur d'injection non diagnostiquée**
-inject_error: 1 → 0 sans explication = erreur non comprise, donc non prévenue. Sur 82 threads, elle peut revenir de manière intermittente (timeout API, payload trop gros, relation manquante). **Impact :** blocage silencieux de l'ingestion, perte de données, debugging manuel coûteux.
+**Technique : inject_error non prévenu**
+Le mécanisme de retry est dans `os-thread-close.mjs` mais pas dans `os:inject`. Sur 82 threads, une erreur 504 Notion bloque silencieusement sans retry automatique. Impact : intervention manuelle requise à chaque erreur.
 
-**Technique : Pas de retry automatique sur inject_error**
-retry_count prévu dans THREAD_DUMP mais non implémenté. Une erreur d'injection nécessite intervention manuelle. Sur 82 threads, c'est ingérable. **Impact :** ingestion interrompue, threads perdus dans l'état inject_pending ou inject_error.
+**Technique : pas de remote Git**
+Repository local uniquement. Incident hardware = perte totale. Impact : catastrophique et irréversible.
 
-**Stratégique : Nomenclature DS_ID instable**
-2 définitions contradictoires (Decision System vs Data Source). Si les prompts LLM, docs utilisateurs ou commentaires code mélangent les deux, la cohérence se dégrade. **Impact :** confusion dans les décisions, perte de sens du refactoring, bugs liés à l'interprétation erronée de DS_ID.
+**Stratégique : B99 périmé**
+Mémoire vivante non mise à jour depuis le v08. Le chat répond sur une base incomplète et désynchronisée du présent réel. Impact : réponses déconnectées de l'état actuel du projet.
 
-**Organisationnel : Violation du protocole B09**
-`B09-T22-Notion-Dev-010.txt` dans test_threads/ viole la règle "B09 exclu du pipeline automatique". Si ce fichier est traité par extract/inject, il pollue les données ou crée des doublons. **Impact :** incohérence du méta-système, perte de traçabilité des CONTEXT vXX.
+**Stratégique : ingestion incomplète**
+113 décisions et 98 lessons sur 4 threads test. Les 82 threads de data_cemetery/ contiennent la mémoire réelle du groupe. Sans ingestion, le copilote ne pilote rien. Impact : système fonctionnel mais inutile en production.
 
-**Faux pilotage : THREAD_DUMP comme métrique de succès**
-extract_done: 4, inject_done: 4 ne dit rien sur la qualité des données injectées (DECISIONS/LESSONS pertinentes, relations correctes, résumés utilisables). **Impact :** illusion de progression sans validation de la valeur produite.
-
-**Stratégique : Pas de backup externe**
-Git local sans remote configuré. Perte machine = perte de tout l'historique. **Impact :** catastrophe irréversible sur incident hardware.
-
-**Technique : Dérive du raw_text**
-Résumé LLM remplace raw_text. Si LLM hallucine ou perd du contexte, pas de retour possible au texte brut après nettoyage. **Impact :** perte d'information irréversible, décisions basées sur résumés erronés.
+**Organisationnel : faux positif audit dossiers**
+`os-thread-close.mjs` signale `data/test_threads/` comme "ancien dossier à supprimer" — bug dans `checkFolders()`. À corriger dans la prochaine version du script.
 
 ---
 
 ## 9. Fichiers produits dans ce thread
 
-**Aucun fichier nouveau identifié dans le thread dump.**
-
-**Fichier modifié :**
-- `data/test_threads/B09-T22-Notion-Dev-010.txt` — **Statut :** Modification non documentée. **Manque :** contenu avant/après, raison de la modification, impact sur inject_done.
-
-**Commits produits (inférés) :**
-- `07a1298` : refactor: apply folder renames in code and docs — **Statut :** Intégré au codebase.
-- `215d8a1` : refactor: rename folders, os-thread-close v2 — **Statut :** Intégré au codebase.
-- `55231a6` : chore: remove terminal session files from repo — **Statut :** Intégré au codebase.
+| Fichier | Rôle | Statut |
+|---------|------|--------|
+| `os-thread-close.mjs` v2 | Protocole de clôture automatisé (backup + snapshot + audit + draft CONTEXT + injection B99) | En production |
+| `patch-ds-rename.mjs` | Patch renommage DB_ID → DS_ID sur 99 occurrences | Utilisé, archivable |
+| `patch-rename-folders.mjs` | Patch renommage historical_threads → test_threads dans code et docs | Utilisé, archivable |
+| `os/lib/notion.mjs` | Refactorisé : DS_ID unifié, fonctions obsolètes supprimées | En production |
+| `os/lib/config.mjs` | Mis à jour : variables DS_ID, commentaire explicatif | En production |
+| `snapshot.mjs` | Snapshot Notion live (diagnostic) | Utilitaire, garder |
+| `docs/context/INSIDE_OS_CONTEXT_v09.md` | Context précédent | Archivé |
+| `docs/context/INSIDE_OS_CONTEXT_v10.md` | Ce document | En production |
+| `VERSIONING_RULE.md` | Règle de versionning README/PROMPT/CONTEXT gravée | Référence |
 
 ---
 
 ## 10. Priorité réelle de redémarrage
 
-**1 action :** Diagnostiquer et documenter la résolution de inject_error: 1 → 0 entre v09 et v10.
+**Action prioritaire : README v05 + retry_count THREAD_DUMP + ingestion batch 10 threads**
 
-**1 livrable :** Log structuré ou post-mortem expliquant : thread concerné, erreur exacte (stack trace, API response), cause (timeout/payload/relation manquante), action corrective appliquée, test de non-régression.
+Séquence exacte :
+1. Produire README v05 (documenter threads_to_process/, test_threads/, data_cemetery/, os-thread-close.mjs, roadmap DS_ID)
+2. Ajouter propriété `retry_count` dans THREAD_DUMP Notion + implémenter retry automatique dans `os:inject`
+3. Corriger faux positif `checkFolders()` dans `os-thread-close.mjs`
+4. Configurer remote Git (GitHub ou équivalent)
+5. Déplacer 10 threads de `data_cemetery/` vers `threads_to_process/`, lancer `os:ingest && os:extract && os:inject`
+6. Valider : extract_error: 0, inject_error: 0 sur ce batch
+7. Répéter jusqu'à épuisement des 82 threads
+8. Mettre à jour B99 avec ce CONTEXT v10
 
-**1 critère de succès :** Capacité à reproduire ou prévenir l'erreur inject_error sur un thread test en forçant les conditions d'échec (timeout simulé, payload volontairement trop gros, relation manquante).
+Pourquoi dans cet ordre : README v05 et retry automatique doivent être en place avant l'ingestion massive. Sans retry, chaque erreur est manuelle. Sans README à jour, le prochain contributeur (ou Claude Code) ne comprend pas la structure.
+
+Critère de succès : lancer `os:ingest && os:extract && os:inject` sur 10 threads réels de data_cemetery/ et obtenir extract_error: 0, inject_error: 0 sans intervention manuelle.
 
 ---
 
 ## 11. Discipline pour le prochain thread
 
 **Socle verrouillé**
-- DS_ID = Data Source ID (identifiant API Notion) — aucune autre interprétation.
-- B09 strictement exclu de test_threads/ et threads_to_process/.
-- inject_error: 0 ne suffit pas : exiger logs détaillés par thread injecté.
+- DS_ID = Data Source ID — définition unique, non négociable
+- `queryDataSource()` uniquement dans tout nouveau code
+- Structure data/ : threads_to_process / test_threads / data_cemetery
+- Protocole B09 : exclu pipeline, CONTEXT en B99
+- `os-thread-close.mjs` obligatoire en fin de thread B09
+- raw_text multi-lignes : reporter à V2 (moteur recherche sémantique) — ne pas toucher avant
 
-**À clarifier**
-- Statut et raison de la modification de `B
+**À faire immédiatement**
+- README v05 : documenter architecture actuelle complète
+- `retry_count` dans THREAD_DUMP + retry dans `os:inject`
+- Corriger `checkFolders()` dans `os-thread-close.mjs` (faux positif test_threads)
+- Configurer remote Git
+
+**À tester avant ingestion complète**
+- Batch de 10 threads depuis data_cemetery/ : extract_error: 0, inject_error: 0 sans intervention
+- Comportement sur threads longs (>100k chars) et formats variés
+
+**À versionner**
+- Ce CONTEXT v10 → injecter en B99
+- README v05 : produire en début de prochain thread
+
+---
+
+## Point de redémarrage minimal
+
+- **Objectif** : README v05 + retry automatique inject + ingestion 82 threads + B99 à jour
+- **Acquis réels** : DS_ID unifié, pipeline 4/4 propre, os-thread-close v2 opérationnel, git actif, 113 décisions / 98 lessons
+- **Contraintes actives** : DS_ID = Data Source ID, B09 exclu pipeline, test_threads 4 max, data_cemetery permanente, raw_text multi-lignes = V2
+- **État actuel** : pipeline propre, ingestion complète non faite, B99 périmé, pas de remote git, retry inject non implémenté
+- **Prochaine étape** : README v05 → retry_count → batch 10 threads → ingestion complète → B99 → remote git
