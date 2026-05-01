@@ -1,7 +1,7 @@
 import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
-import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
 import { queryDataSource, getPropText } from "../lib/notion.mjs";
 
 // Lit le premier ID d'une propriete relation Notion.
@@ -12,7 +12,7 @@ function getRelationId(page, propName) {
   return prop.relation?.[0]?.id || "";
 }
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const FETCH_LIMIT = 80;
 const TOP_K = 6;
@@ -359,9 +359,10 @@ QUESTION
 ${question}
 `;
 
-  const response = await client.responses.create({
-    model: "gpt-4.1-mini",
-    input: prompt,
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: prompt }],
   });
 
   console.log("\n--- DEBUG ---\n");
@@ -375,13 +376,13 @@ ${question}
   console.log(memoryContext || "[aucune mémoire récupérée]");
 
   console.log("\n--- REPONSE ---\n");
-  console.log(response.output_text);
+  console.log(response.content[0].text);
 
   const logFile = writeLog({
     question,
     tokens,
     selectedItems,
-    responseText: response.output_text,
+    responseText: response.content[0].text,
   });
 
   console.log(`\n--- LOG ---\n${logFile}`);
