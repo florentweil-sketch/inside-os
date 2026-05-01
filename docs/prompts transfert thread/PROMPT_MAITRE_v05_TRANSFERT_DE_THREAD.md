@@ -150,22 +150,39 @@ Ne jamais supposer que README et PROMPT ont le même numéro. Ne jamais bumper p
 
 ### Vision agents INSIDE OS (roadmap V3)
 
-INSIDE OS évoluera vers un réseau d'agents spécialisés :
+INSIDE OS évoluera vers un réseau d'agents spécialisés. Chaque agent accède à toute la mémoire, contextualise dans son domaine, peut interroger d'autres agents (deep probing).
 
-**Agents pôle** — chaque agent accède à toute la mémoire, contextualise dans son domaine :
-- Agent Juridique (B06) — contentieux, contrats, conformité
-- Agent Financier (B03) — trésorerie, capital, investissements
-- Agent Bâtiment (B02/B07) — chantiers, maîtrise d'œuvre, techniques
-- Agent RH & Social (B01) — organisation, équipes, social
-- Agent Marketing (B05) — communication, positionnement, image
-- Agent Stratégie (B03/B01) — vision groupe, arbitrages, allocations
-- Agent Fiscal (B06) — optimisation, structuration, déclarations
+**Agents groupe F&A CAPITAL :**
+- Agent Juridique Opérationnel (B06) — contentieux, contrats chantiers, litiges clients
+- Agent Juridique Corporate (B06) — structure groupe, SCI, holding, pactes
+- Agent Financier (B03) — trésorerie, cash flow, investissements, arbitrages capital
+- Agent Fiscal (B06) — optimisation, TVA, IS, structuration, déclarations
+- Agent Bâtiment & MOE (B02) — maîtrise d'œuvre, techniques, normes, process rénovation
+- Agent Chantiers Terrain (B07) — suivi opérationnel, sous-traitants, planning, réception
+- Agent Menuiserie (B02) — Atelier de la Colombe, fabrication, devis, production
+- Agent RH & Social (B01) — organisation, équipes, contrats, paie, conflits
+- Agent Marketing & Com (B05) — positionnement, image, contenus, réseaux, prospection
+- Agent Stratégie Groupe (B03) — vision, arbitrages majeurs, allocations, développement
+- Agent Elior (B04) — projet corporate spécifique, relation grand compte
+- Agent Fournisseurs (B02/B07) — prestataires, négociations, évaluation, référencement
+- Agent Clients (B02) — historique relationnel, suivi projets, satisfaction
+- Agent Infrastructure & Tech (B08/B09) — outils internes, automatisation, systèmes, INSIDE OS
+
+**Agents personnels Florent (B01 — filtrage par tags) :**
+- Agent Développement Personnel — tag: développement_personnel
+- Agent Santé — tag: santé
+- Agent Vie Privée — tag: vie_privée
+- Agent Patrimoine — tag: patrimoine_perso
+
+Note architecture : B01 reste un seul bucket. Les agents personnels filtrent par tags (santé, développement_personnel, vie_privée, patrimoine_perso, famille). Un thread peut appartenir à plusieurs domaines simultanément — les tags sont plus flexibles que des sous-buckets.
+
+**Super-agents transversaux :**
+- L'Associé — copilote décisionnel PERMANENT, accessible en permanence. Accès mémoire complète. Prompt système fixe définissant son caractère et ses positions. Peut être en désaccord, challenger une décision, jouer un rôle dans les relations externes ("mon associé n'est pas d'accord"). Pas un mode ponctuel — une présence.
+- Agent Synthèse — croise plusieurs domaines pour une vue consolidée sur demande
 
 **Deep probing** — les agents peuvent s'interroger entre eux pour croiser les domaines.
 
-**L'Associé** — super-agent copilote décisionnel avec accès à toute la mémoire stratégique du groupe. Peut être en désaccord, challenger une décision, jouer un rôle dans les relations externes.
-
-**Règle : ne pas implémenter les agents avant que V1 (ingestion complète) soit finalisée.**
+**Règle absolue : ne pas implémenter les agents avant que V1 (ingestion complète 82 threads) soit finalisée.**
 
 ### Objectif global d'INSIDE OS
 

@@ -139,7 +139,7 @@ function gitInfo() {
 function findLatestDoc(dir, prefix) {
   try {
     const files = fs.readdirSync(dir)
-      .filter(f => f.startsWith(prefix) && (f.endsWith(".md") || f.endsWith(".txt")))
+      .filter(f => f.startsWith(prefix) && (f.endsWith(".md") || f.endsWith(".txt")) && !f.includes("_draft"))
       .sort().reverse();
     if (!files.length) return { version: "v00", content: "", path: "", filename: "" };
     const filePath = path.join(dir, files[0]);
