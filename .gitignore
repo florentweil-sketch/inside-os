@@ -45,3 +45,4 @@ coverage/
 dist/
 build/
 docs/Terminal/
+data/threads_to_process/
