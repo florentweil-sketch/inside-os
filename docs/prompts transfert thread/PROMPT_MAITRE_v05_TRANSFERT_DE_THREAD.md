@@ -144,9 +144,9 @@ Ne jamais supposer que README et PROMPT ont le même numéro. Ne jamais bumper p
 - Protocole B09 : threads de dev INSIDE OS exclus du pipeline automatique — CONTEXT vXX injecté en B99 à la place
 - `data/test_threads/` = test uniquement (4 fichiers max) — `data/data_cemetery/` = archive permanente
 - `data/threads_to_process/` = zone de dépôt threads à ingérer — vidée après ingest
-- Script canonique production : `notion-memory-server.mjs` (HTTP) — `notion-memory-chat.mjs` = test uniquement
+- Script canonique production : `notion-memory-server.mjs` (HTTP) — `notion-memory-chat.mjs` = test uniquement (migré sur Claude claude-haiku-4-5, dépendance OpenAI supprimée)
 - raw_text multi-lignes : réservé V2 (moteur recherche sémantique) — ne pas toucher avant
-- retry_count : propriété à ajouter dans THREAD_DUMP (max 2 retries auto sur inject_error)
+- retry_count : implémenté dans THREAD_DUMP et os:inject (max 2 retries auto, blocage BLOCKED au-delà — propriété number dans Notion)
 
 ### Vision agents INSIDE OS (roadmap V3)
 
