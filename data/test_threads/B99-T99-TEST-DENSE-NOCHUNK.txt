@@ -1,0 +1,87 @@
+THREAD HISTORIQUE - B99 - T99 - Sujet TEST-DENSE-NOCHUNK
+Date approximative : 26.04.2026
+Source : Synthèse test INSIDE OS
+
+---
+
+BLOC 1 - STRATÉGIE HOLDING F&A CAPITAL
+
+Florent Weil décide de structurer F&A CAPITAL comme holding de tête du groupe.
+INSIDE SAS (rénovation haut de gamme) et INSIDE ARCHI (foncière) sont les deux filiales actives.
+Atelier de la Colombe (menuiserie sur mesure) est rattaché à INSIDE SAS opérationnellement.
+
+Décision actée : Florent rachète les 250 actions de Clemence Porret dans INSIDE ARCHI au prix de 1 euro par action, soit 250 euros au total. Droits d'enregistrement : 0,1% = 1 euro arrondi. INSIDE ARCHI devient une SASU après modification statutaire et dépôt au greffe (PV AGE + statuts consolidés + formulaire M2).
+
+Décision actée : INSIDE ARCHI est mise en veille stratégique jusqu'à ce que la capacité d'emprunt du groupe soit reconstituée. Aucun apport immobilier à la holding avant 2027.
+
+Décision actée : L'EURL personnelle de Florent sera créée hors holding, uniquement quand le groupe atteint un CA consolidé de 800 000 euros HT. Rôle : facturation de prestations de direction et de stratégie. Rémunération cible : 60 000 euros nets annuels via dividendes + prestations EURL.
+
+---
+
+BLOC 2 - RECRUTEMENT ET ORGANISATION INSIDE SAS
+
+Guillaume Berthet, chef de chantier senior, quitte l'atelier menuiserie mi-février 2026. Son départ crée un vide opérationnel sur les chantiers Luray Construction et ATR.
+
+Décision actée : Recrutement d'un Directeur de Travaux salarié senior (pas associé, pas prestataire). Profil cible : manager de managers, pilote de marges, garant des délais. Salaire cible : 55 000 à 65 000 euros bruts annuels. Red flag éliminatoire : candidat qui parle technique sans parler chiffres.
+
+Décision actée : Le RAF (Responsable Administrative et Financière) sera recruté en prestation temps partagé dans un premier temps. Budget : 1 500 euros par mois pour 2 jours par semaine. Objectif : soulager Florent de la gestion administrative et du suivi trésorerie.
+
+Décision actée : Florent sort du quotidien opérationnel. Il conserve uniquement : validation créative sur les projets premium, réunions clients stratégiques, arbitrages financiers au-dessus de 15 000 euros HT.
+
+---
+
+BLOC 3 - CONTENTIEUX CLIENT PROST
+
+Madame Isabelle Prost, cliente résidant au 14 rue des Marronniers, 78 320 Le Mesnil-Saint-Denis, a assigné INSIDE SAS devant le Tribunal de Proximité de Versailles. Audience fixée au 4 septembre 2025.
+
+Motif : travaux de rénovation partielle inachevés et malfaçons sur cuisine et salle de bains. Montant réclamé : 28 500 euros TTC dont 12 000 euros de préjudice moral.
+
+Position INSIDE SAS : travaux réalisés à 87% selon planning validé par avenant signé le 12 mars 2025. Retard imputable à un sous-traitant carreleur défaillant (société Ceramix, liquidée le 20 mai 2025). Devis restant : 3 200 euros HT de finitions.
+
+Décision actée : INSIDE SAS mandate Maitre Celine Aubert (cabinet Aubert et Associés, Versailles) pour assurer la défense. Honoraires : 4 800 euros HT forfait audience + 120 euros HT de l'heure en cas de prolongement.
+
+Décision actée : Proposition transactionnelle adressée à Madame Prost avant audience : prise en charge des finitions restantes (3 200 euros HT) + geste commercial de 2 000 euros TTC. Total offre : 5 840 euros TTC. Refus de toute indemnisation pour préjudice moral.
+
+---
+
+BLOC 4 - ATELIER DE LA COLOMBE - PILOTAGE FINANCIER
+
+Charges fixes mensuelles Atelier de la Colombe :
+- Loyer + charges : 1 035 euros
+- Credit vendeur machines SCM/CSM : 1 040 euros (48 mois, démarrage janvier 2025)
+- Amortissement machines : 830 euros par mois (50 000 euros sur 5 ans)
+- Energie et eau : 200 euros
+- Assurance : 80 euros
+- Entretien et divers : 150 euros
+Total charges fixes : 3 335 euros par mois
+
+Seuil d'alerte : CA mensuel inférieur à 8 000 euros HT pendant 2 mois consécutifs déclenche une revue stratégique.
+Marge brute minimale : 45%. En dessous : refus du devis, sans exception.
+Taux horaire atelier cible : 65 euros HT.
+
+Décision actée : L'atelier facture INSIDE SAS comme un client externe. Aucun prix interne préférentiel. Si INSIDE SAS ne peut pas payer le juste prix, le problème est INSIDE SAS, pas l'atelier.
+
+Scénario de sortie documenté : si CA moyen inférieur à 8 000 euros sur 6 mois consécutifs, trois options :
+Option A : revente clé en main (machines + bail) - valeur estimée 45 000 à 55 000 euros.
+Option B : vente machines séparées - cash récupérable 35 000 à 45 000 euros selon état et délai.
+Option C : fermeture propre - résiliation bail civil, revente machines, extinction credit vendeur par anticipation.
+
+---
+
+BLOC 5 - FISCALITÉ ET OPTIMISATION
+
+Décision actée : LOA véhicule utilitaire Renault Master (valeur 38 000 euros TTC) souscrit au nom d'INSIDE SAS. Loyer mensuel : 780 euros HT. Déductibilité TVA : 100% sur utilitaire. Avantage fiscal estimé : 3 200 euros par an vs achat comptant.
+
+Décision actée : PEA ouvert au nom de Florent Weil en janvier 2026. Versement initial : 5 000 euros. Objectif : saturation progressive sur 5 ans (plafond 150 000 euros). Support initial : ETF World MSCI (Amundi CW8).
+
+Décision actée : La SCI familiale (SCI Les Weil) est mise en veille. Pas de création d'actif immobilier avant que le groupe génère 150 000 euros de résultat net consolidé annuel. La création d'une SCI IS sera réétudiée à ce seuil.
+
+---
+
+BLOC 6 - INFRASTRUCTURE ET OUTILS
+
+Décision actée : Serveur NAS Synology DS923+ installé dans les bureaux de Jouars-Pontchartrain. Usage : sauvegarde automatique des documents comptables, plans, devis, photos chantiers. RAID 1 sur 2 disques de 4 To. Accès distant via VPN Tailscale.
+
+Décision actée : INSIDE OS (pipeline mémoire Notion) est la source de vérité décisionnelle du groupe. Toutes les décisions structurantes sont injectées dans les bases DECISIONS et LESSONS. Le chat via notion-memory-server.mjs est le point d'entrée unique pour interroger la mémoire.
+
+Règle non négociable : aucune décision au-dessus de 10 000 euros ou impliquant un recrutement ne peut être prise sans avoir interrogé INSIDE OS au préalable.

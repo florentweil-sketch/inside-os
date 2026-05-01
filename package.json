@@ -16,7 +16,8 @@
     "os:list-inject-pending": "node os/scripts/list-inject-pending.mjs",
     "os:chat": "node os/chat/notion-memory-chat.mjs",
     "os:server": "node os/chat/notion-memory-server.mjs",
-    "os:reset-db": "node os/scripts/reset-databases.mjs"
+    "os:reset-db": "node os/scripts/reset-databases.mjs",
+    "os:close": "node os-thread-close.mjs"
   },
   "dependencies": {
     "@notionhq/client": "^5.19.0",
