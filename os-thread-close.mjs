@@ -184,7 +184,7 @@ function checkEnv() {
 function checkFolders() {
   const issues = [];
   const expected = ["data/threads_to_process", "data/test_threads", "data/data_cemetery"];
-  const legacy = ["data/test_threads", "data/dumps_test", "data/_backup_threads", "data/dumps_archived"];
+  const legacy = ["data/historical_threads", "data/dumps_test", "data/_backup_threads", "data/dumps_archived"];
   expected.forEach(d => { if (!fs.existsSync(path.join(ROOT, d))) issues.push(`Dossier manquant : ${d}`); });
   legacy.forEach(d => { if (fs.existsSync(path.join(ROOT, d))) issues.push(`Ancien dossier encore présent : ${d} — à supprimer`); });
   return issues;
@@ -437,19 +437,67 @@ async function main() {
   console.log();
 
   // PHASE 7 — DRAFT CONTEXT
+  // PHASE 7 — DRAFT CONTEXT
+  // Logique de versioning :
+  // - Mode DRAFT : génère CONTEXT_vXX_draft.md — jamais versionné définitivement avant validation
+  // - Mode INJECT : lit le draft existant, l'injecte en B99, le renomme en CONTEXT_vXX.md (version définitive)
+  // Une version définitive vXX ne peut exister que si elle a été validée par Florent
   console.log("━━━ PHASE 7 : DRAFT CONTEXT ━━━");
-  const nextCtxVersion = nextVersion(prevCtx.version);
-  console.log(`  Génération CONTEXT ${nextCtxVersion}...`);
-  const ctxDraft = await draftContext({ threadName: THREAD_NAME, notionStats: stats, git, prevContext: prevCtx.content, nextVersion: nextCtxVersion, threadContent, blocked: retryResult.blocked });
-  console.log("  ✓ Draft généré");
+
+  // Chercher un draft existant non encore validé
+  const existingDraftPath = path.join(docsCtx, `INSIDE_OS_CONTEXT_${nextVersion(prevCtx.version)}_draft.md`);
+  const draftVersion = nextVersion(prevCtx.version);
+  const draftPath = path.join(docsCtx, `INSIDE_OS_CONTEXT_${draftVersion}_draft.md`);
+  const finalPath = path.join(docsCtx, `INSIDE_OS_CONTEXT_${draftVersion}.md`);
+
+  let ctxDraft;
+  let ctxPath;
+  let ctxVersion;
+
+  if (INJECT) {
+    // Mode INJECT : cherche le draft à valider
+    if (fs.existsSync(draftPath)) {
+      ctxDraft = fs.readFileSync(draftPath, "utf-8");
+      ctxPath = draftPath;
+      ctxVersion = draftVersion;
+      console.log(`  ✓ Draft trouvé : INSIDE_OS_CONTEXT_${draftVersion}_draft.md`);
+      console.log("  → Sera renommé en version définitive après injection");
+    } else if (fs.existsSync(finalPath)) {
+      // Draft déjà validé et renommé — réinjection possible
+      ctxDraft = fs.readFileSync(finalPath, "utf-8");
+      ctxPath = finalPath;
+      ctxVersion = draftVersion;
+      console.log(`  ✓ Version validée trouvée : INSIDE_OS_CONTEXT_${draftVersion}.md`);
+      console.log("  → Réinjection du CONTEXT déjà validé");
+    } else {
+      console.log(`  ✗ Aucun draft trouvé pour CONTEXT ${draftVersion}`);
+      console.log("  → Lancer d'abord sans --inject pour générer le draft");
+      process.exit(1);
+    }
+  } else {
+    // Mode DRAFT : génère un nouveau draft
+    ctxVersion = draftVersion;
+    ctxPath = draftPath;
+    console.log(`  Génération CONTEXT ${draftVersion} draft...`);
+    ctxDraft = await draftContext({ threadName: THREAD_NAME, notionStats: stats, git, prevContext: prevCtx.content, nextVersion: draftVersion, threadContent, blocked: retryResult.blocked });
+    console.log(`  ✓ Draft généré : INSIDE_OS_CONTEXT_${draftVersion}_draft.md`);
+    console.log("  → À valider avec Florent avant injection");
+  }
   console.log();
 
-  // PHASE 8 — BUMPS
-  console.log("━━━ PHASE 8 : README / PROMPT BUMP ━━━");
-  const bumps = await detectBumps({ git, notionStats: stats, threadContent });
-  console.log(`  README : ${bumps.readme_bump ? "OUI — " + bumps.readme_reason : "non"}`);
-  console.log(`  PROMPT : ${bumps.prompt_bump ? "OUI — " + bumps.prompt_reason : "non"}`);
-  console.log();
+  // PHASE 8 — BUMPS (uniquement en mode draft)
+  let bumps = { readme_bump: false, prompt_bump: false };
+  if (!INJECT) {
+    console.log("━━━ PHASE 8 : README / PROMPT BUMP ━━━");
+    bumps = await detectBumps({ git, notionStats: stats, threadContent });
+    console.log(`  README : ${bumps.readme_bump ? "OUI — " + bumps.readme_reason : "non"}`);
+    console.log(`  PROMPT : ${bumps.prompt_bump ? "OUI — " + bumps.prompt_reason : "non"}`);
+    console.log();
+  } else {
+    console.log("━━━ PHASE 8 : README / PROMPT BUMP ━━━");
+    console.log("  Mode INJECT — bumps ignorés (traités au moment du draft)");
+    console.log();
+  }
 
   // ÉCRITURE FICHIERS
   const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
@@ -457,7 +505,6 @@ async function main() {
   const logDir = path.join(ROOT, "runtime/logs/thread-close");
   fs.mkdirSync(logDir, { recursive: true });
   const reportPath = path.join(logDir, `close-${dateStr}.md`);
-  const ctxPath = path.join(docsCtx, `INSIDE_OS_CONTEXT_${nextCtxVersion}.md`);
 
   const report = `# RAPPORT DE CLÔTURE — ${THREAD_NAME}
 Date : ${new Date().toISOString().slice(0, 10)} | Durée : ${elapsed}s
@@ -495,9 +542,9 @@ ${bumps.prompt_bump ? `**OUI** — ${bumps.prompt_reason}\n\n\`\`\`\n${bumps.pro
 
 ---
 
-## DRAFT CONTEXT ${nextCtxVersion}
-Fichier : ${ctxPath}
-Statut : ${INJECT ? "INJECTÉ en B99" : "À VALIDER — relancer avec --inject pour injecter"}
+## CONTEXT ${ctxVersion}
+Fichier draft : ${ctxPath}
+Statut : ${INJECT ? "INJECTÉ en B99 — version définitive créée" : "À VALIDER — relancer avec --inject pour injecter"}
 
 ---
 
@@ -506,7 +553,11 @@ ${modFiles.map(f => `- ${f}`).join("\n") || "Aucun"}
 `;
 
   fs.writeFileSync(reportPath, report);
-  fs.writeFileSync(ctxPath, ctxDraft);
+  // Mode DRAFT : écrire le draft (suffixe _draft)
+  // Mode INJECT : ne pas réécrire — le fichier existe déjà
+  if (!INJECT) {
+    fs.writeFileSync(ctxPath, ctxDraft);
+  }
 
   console.log("━━━ RÉSUMÉ ━━━");
   console.log(`  Rapport : ${reportPath}`);
@@ -520,7 +571,12 @@ ${modFiles.map(f => `- ${f}`).join("\n") || "Aucun"}
       const b99 = pages.sort((a, b) => new Date(b.last_edited_time) - new Date(a.last_edited_time))[0];
       if (b99) {
         await replacePageContent(b99.id, ctxDraft);
-        console.log(`  ✓ CONTEXT ${nextCtxVersion} injecté en B99`);
+        console.log(`  ✓ CONTEXT ${ctxVersion} injecté en B99`);
+        // Renommer le draft en version définitive
+        if (fs.existsSync(draftPath)) {
+          fs.renameSync(draftPath, finalPath);
+          console.log(`  ✓ Draft renommé : INSIDE_OS_CONTEXT_${ctxVersion}_draft.md → INSIDE_OS_CONTEXT_${ctxVersion}.md`);
+        }
       } else {
         console.log("  ⚠  Page B99 non trouvée dans THREAD_DUMP");
       }
