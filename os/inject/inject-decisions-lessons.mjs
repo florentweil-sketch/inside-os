@@ -186,12 +186,13 @@ async function getExtractionJsonFromBlocks(threadPageId) {
   return obj || "";
 }
 
-async function markThreadDump(pageId, { status, summary, error }) {
+async function markThreadDump(pageId, { status, summary, error, retryCount }) {
   const props = {
     injection_status:  { select: { name: status } },
     injection_summary: rt(summary || ""),
     injection_error:   rt(error   || ""),
   };
+  if (retryCount !== undefined) props.retry_count = { number: retryCount };
   if (!DRY_RUN) await updatePage(pageId, props);
 }
 
@@ -280,6 +281,11 @@ async function archiveByDumpId({ dataSourceId, dumpId }) {
 }
 
 async function processOne(page) {
+  const retryCount = page.properties?.retry_count?.number ?? 0;
+  if (retryCount >= 2) {
+    console.warn(`  [os:inject] BLOCKED: retry_count=${retryCount} >= 2 pour ${getPropText(page, "id_dump")} — intervention manuelle requise`);
+    return "blocked";
+  }
   const threadPageId  = page.id;
   const dumpId        = getPropText(page, "id_dump");
   const extractionProp = getPropText(page, "extraction_json");
@@ -294,6 +300,7 @@ async function processOne(page) {
       status:  "error",
       summary: "",
       error:   "extraction_json vide (prop+blocks)",
+      retryCount: retryCount + 1,
     });
     return "error";
   }
@@ -308,6 +315,7 @@ async function processOne(page) {
     await markThreadDump(threadPageId, {
       status:  "error",
       summary: "",
+      retryCount: retryCount + 1,
       error:   `extraction_json non-parseable: ${e.message} | head=${JSON.stringify(jsonObj.slice(0, 200))}`,
     });
     return "error";
@@ -374,7 +382,7 @@ async function processOne(page) {
     ` | overwrite=${OVERWRITE ? "yes" : "no"}` +
     ` | ${DRY_RUN ? "DRY_RUN" : "LIVE"}`;
 
-  await markThreadDump(threadPageId, { status: "done", summary, error: "" });
+  await markThreadDump(threadPageId, { status: "done", summary, error: "", retryCount: 0 });
   return "done";
 }
 
@@ -425,7 +433,8 @@ async function main() {
       else console.log(`  ${result}`);
     } catch (e) {
       console.error("  ERROR:", e.message);
-      await markThreadDump(page.id, { status: "error", summary: "", error: e.message });
+      const rc = page.properties?.retry_count?.number ?? 0;
+      await markThreadDump(page.id, { status: "error", summary: "", error: e.message, retryCount: rc + 1 });
     }
   }
 }
