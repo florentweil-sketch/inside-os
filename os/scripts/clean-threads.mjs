@@ -1,7 +1,7 @@
 // os/scripts/clean-threads.mjs
 // INSIDE OS — Nettoyage des threads historiques
 // Supprime les caractères spéciaux qui cassent l'extraction JSON
-// Produit des copies propres dans data/historical_threads_clean/
+// Produit des copies propres dans data/test_threads_clean/
 // Usage : node os/scripts/clean-threads.mjs
 //         node os/scripts/clean-threads.mjs --in-place  (écrase les originaux)
 
@@ -14,8 +14,8 @@ const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
 
 const IN_PLACE   = process.argv.includes("--in-place");
-const SOURCE_DIR = path.join(REPO_ROOT, "data", "historical_threads");
-const DEST_DIR   = IN_PLACE ? SOURCE_DIR : path.join(REPO_ROOT, "data", "historical_threads_clean");
+const SOURCE_DIR = path.join(REPO_ROOT, "data", "test_threads");
+const DEST_DIR   = IN_PLACE ? SOURCE_DIR : path.join(REPO_ROOT, "data", "test_threads_clean");
 
 // ─── NETTOYAGE ───────────────────────────────────────────────────────────────
 
@@ -98,7 +98,7 @@ function computeDiff(original, cleaned) {
 async function main() {
   console.log("INSIDE OS — NETTOYAGE DES THREADS");
   console.log("----------------------------------");
-  console.log(`Mode    : ${IN_PLACE ? "IN-PLACE (écrase les originaux)" : "COPIE (→ historical_threads_clean/)"}`);
+  console.log(`Mode    : ${IN_PLACE ? "IN-PLACE (écrase les originaux)" : "COPIE (→ test_threads_clean/)"}`);
   console.log(`Source  : ${SOURCE_DIR}`);
   console.log(`Dest    : ${DEST_DIR}`);
   console.log("");

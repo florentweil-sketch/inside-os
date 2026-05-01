@@ -21,7 +21,7 @@ const CLAUDE_MODEL      = "claude-sonnet-4-5";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
-const HISTORICAL_THREADS_DIR = path.join(REPO_ROOT, "data", "historical_threads");
+const TEST_THREADS_DIR = path.join(REPO_ROOT, "data", "test_threads");
 
 function argValue(flag, fallback = "") {
   const idx = process.argv.indexOf(flag);
@@ -230,7 +230,7 @@ async function findExistingThreadDumpPage(idDump) {
 }
 
 async function ingestOneFile(filename) {
-  const fullPath    = path.join(HISTORICAL_THREADS_DIR, filename);
+  const fullPath    = path.join(TEST_THREADS_DIR, filename);
   const idDump      = getIdDumpFromFilename(filename);
   const displayName = getDisplayNameFromFilename(filename);
   const rawText     = await fs.readFile(fullPath, "utf8");
@@ -265,7 +265,7 @@ async function ingestOneFile(filename) {
 // ─── MAIN ────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log("INGEST historical_threads");
+  console.log("INGEST test_threads");
   console.log("-------------------------");
 
   if (ONLY_ID) {
@@ -289,7 +289,7 @@ async function main() {
     if (!CFG[k]) throw new Error(`Missing required config key: ${k}`);
   }
 
-  const allFiles = await listHistoricalThreadFiles(HISTORICAL_THREADS_DIR);
+  const allFiles = await listHistoricalThreadFiles(TEST_THREADS_DIR);
 
   const files = allFiles.filter((filename) => {
     try {

@@ -184,7 +184,7 @@ function checkEnv() {
 function checkFolders() {
   const issues = [];
   const expected = ["data/threads_to_process", "data/test_threads", "data/data_cemetery"];
-  const legacy = ["data/historical_threads", "data/dumps_test", "data/_backup_threads", "data/dumps_archived"];
+  const legacy = ["data/test_threads", "data/dumps_test", "data/_backup_threads", "data/dumps_archived"];
   expected.forEach(d => { if (!fs.existsSync(path.join(ROOT, d))) issues.push(`Dossier manquant : ${d}`); });
   legacy.forEach(d => { if (fs.existsSync(path.join(ROOT, d))) issues.push(`Ancien dossier encore présent : ${d} — à supprimer`); });
   return issues;

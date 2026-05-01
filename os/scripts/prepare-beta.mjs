@@ -1,10 +1,10 @@
 // os/scripts/prepare-beta.mjs
-// INSIDE OS — Préparation historical_threads pour la beta v01
+// INSIDE OS — Préparation test_threads pour la beta v01
 //
 // Ce script :
 // 1. Crée data/data_cemetery/ si inexistant
 // 2. Déplace tous les threads vers data_cemetery/ SAUF ceux dans KEEP
-// 3. Supprime data/historical_threads_clean/ (dossier de vérification devenu inutile)
+// 3. Supprime data/test_threads_clean/ (dossier de vérification devenu inutile)
 //
 // Usage :
 //   node os/scripts/prepare-beta.mjs            → dry-run (affiche ce qui sera fait)
@@ -18,13 +18,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
 
-const SOURCE_DIR  = path.join(REPO_ROOT, "data", "historical_threads");
+const SOURCE_DIR  = path.join(REPO_ROOT, "data", "test_threads");
 const CEMETERY    = path.join(REPO_ROOT, "data", "data_cemetery");
-const CLEAN_DIR   = path.join(REPO_ROOT, "data", "historical_threads_clean");
+const CLEAN_DIR   = path.join(REPO_ROOT, "data", "test_threads_clean");
 
 const EXECUTE = process.argv.includes("--execute");
 
-// ─── THREADS À GARDER dans historical_threads ────────────────────────────────
+// ─── THREADS À GARDER dans test_threads ────────────────────────────────
 // Modifier cette liste si le thread de test change
 const KEEP = new Set([
   "B03-T03", // FA-Capital-V1.2 — thread de test beta
@@ -67,7 +67,7 @@ async function main() {
   console.log(`Mode : ${EXECUTE ? "EXECUTE (modifications réelles)" : "DRY-RUN (simulation)"}`);
   console.log("");
 
-  // Lister les fichiers dans historical_threads
+  // Lister les fichiers dans test_threads
   const entries = await fs.readdir(SOURCE_DIR, { withFileTypes: true });
   const files   = entries
     .filter(e => e.isFile() && e.name.toLowerCase().endsWith(".txt"))
@@ -84,7 +84,7 @@ async function main() {
   }
 
   // ── Affichage du plan ──
-  console.log(`Threads conservés dans historical_threads/ (${toKeep.length}) :`);
+  console.log(`Threads conservés dans test_threads/ (${toKeep.length}) :`);
   for (const f of toKeep) console.log(`  [garder]  ${f}`);
   console.log("");
 
@@ -94,7 +94,7 @@ async function main() {
 
   const cleanExists = await dirExists(CLEAN_DIR);
   if (cleanExists) {
-    console.log(`Dossier historical_threads_clean/ → sera supprimé`);
+    console.log(`Dossier test_threads_clean/ → sera supprimé`);
     console.log("");
   }
 
@@ -122,18 +122,18 @@ async function main() {
     console.log(`[déplacé] ${filename} → data_cemetery/`);
   }
 
-  // Supprimer historical_threads_clean
+  // Supprimer test_threads_clean
   if (cleanExists) {
     await removeDir(CLEAN_DIR);
-    console.log(`[supprimé] data/historical_threads_clean/`);
+    console.log(`[supprimé] data/test_threads_clean/`);
   }
 
   console.log("");
   console.log("─────────────────────────────────────────");
   console.log(`Threads déplacés vers data_cemetery/ : ${moved}`);
-  console.log(`Threads conservés dans historical_threads/ : ${toKeep.length}`);
+  console.log(`Threads conservés dans test_threads/ : ${toKeep.length}`);
   console.log("");
-  console.log("historical_threads/ contient maintenant :");
+  console.log("test_threads/ contient maintenant :");
   for (const f of toKeep) console.log(`  ${f}`);
   console.log("");
   console.log("Prochaine étape :");

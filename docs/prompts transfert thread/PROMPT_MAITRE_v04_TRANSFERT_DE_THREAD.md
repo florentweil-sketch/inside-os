@@ -122,7 +122,7 @@ THREAD → extraction → DECISIONS / LESSONS → capital stratégique
 - B99 = présent vivant — court, clair, actionnable — ne pas diluer
 - Le pipeline ne doit jamais écrire directement depuis le chat
 - Protocole B09 : threads de dev INSIDE OS exclus du pipeline automatique — CONTEXT vXX injecté en B99 à la place
-- `data/historical_threads/` = test uniquement — `data/data_cemetery/` = archive permanente des threads traités
+- `data/test_threads/` = test uniquement — `data/data_cemetery/` = archive permanente des threads traités
 - Script canonique production : `notion-memory-server.mjs` (HTTP) — `notion-memory-chat.mjs` = test uniquement
 
 ### Objectif global d'INSIDE OS

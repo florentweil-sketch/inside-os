@@ -26,7 +26,7 @@ tmp/
 temp/
 
 # Données sensibles (threads de travail réels)
-data/historical_threads/
+data/test_threads/
 data/_backup_threads/
 data/dumps_archived/
 

@@ -32,7 +32,7 @@ Thread clôturé sur objectif atteint : refactoring complet de la nomenclature `
 **Git**
 - Repository initialisé : `.git/` créé avec `.gitignore` standard Node.js.
 - Premier commit effectué : `9ed8567 refactor: rename DB_ID to DS_ID, remove queryDatabaseCompat`.
-- Tous les fichiers de travail sous contrôle de version, data_cemetery et historical_threads_clean exclus.
+- Tous les fichiers de travail sous contrôle de version, data_cemetery et test_threads_clean exclus.
 
 **Pipeline**
 - extract_done: 4, extract_error: 0 — extraction fonctionnelle sur threads test.
@@ -59,7 +59,7 @@ Thread clôturé sur objectif atteint : refactoring complet de la nomenclature `
 
 **Nettoyage irréversible**
 - `cleanText()` systématique à l'ingest : pas de retour possible sur texte brut si erreur après nettoyage.
-- `historical_threads/` = dossier de test uniquement (4 fichiers max).
+- `test_threads/` = dossier de test uniquement (4 fichiers max).
 - `data_cemetery/` = archive permanente, jamais traité par le pipeline.
 
 **Extraction**
@@ -90,7 +90,7 @@ Thread clôturé sur objectif atteint : refactoring complet de la nomenclature `
 - `LESSONS_DS_ID` : leçons extraites avec `source_thread`.
 
 **Dossiers**
-- `historical_threads/` : 4 threads test uniquement.
+- `test_threads/` : 4 threads test uniquement.
 - `data_cemetery/` : archive complète, exclus du pipeline.
 - `.git/` : contrôle de version actif.
 
@@ -119,7 +119,7 @@ Thread clôturé sur objectif atteint : refactoring complet de la nomenclature `
 
 **Créés**
 - `.git/` : repository Git initialisé.
-- `.gitignore` : exclusions standard Node.js + data_cemetery + historical_threads_clean.
+- `.gitignore` : exclusions standard Node.js + data_cemetery + test_threads_clean.
 
 **Commit**
 - `9ed8567` : refactor: rename DB_ID to DS_ID, remove queryDatabaseCompat.
