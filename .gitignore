@@ -46,3 +46,6 @@ dist/
 build/
 docs/Terminal/
 data/threads_to_process/
+data/thread_clean/
+data/thread_summarized/
+data/thread_chunked/
