@@ -23,6 +23,12 @@ const CLAUDE_MODEL      = "claude-sonnet-4-5";
 const VERIFY_PASS      = (process.env.VERIFY_PASS      || "always").toLowerCase();
 const VERIFY_THRESHOLD = parseInt(process.env.VERIFY_THRESHOLD || "12000", 10);
 
+// Chunking adaptatif — taille d'un chunk en chars (configurable via .env)
+// Tout thread est découpé en chunks, quelle que soit sa taille
+// Un thread court = 1 chunk = 1 appel LLM. Un thread long = N chunks = N appels.
+const CHUNK_SIZE    = parseInt(process.env.CHUNK_SIZE    || "20000", 10);
+const CHUNK_OVERLAP = parseInt(process.env.CHUNK_OVERLAP || "500",   10);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
@@ -117,7 +123,87 @@ async function loadPrompt(name) {
   return fs.readFile(promptPath, "utf8");
 }
 
-// ─── PASSE 1 LLM — résumé dense + extraction ─────────────────────────────────
+// ─── CHUNKING ADAPTATIF ──────────────────────────────────────────────────────
+// Découpe le texte en chunks de CHUNK_SIZE chars avec overlap.
+// Un thread court = 1 chunk. Un thread long = N chunks.
+// Pas de seuil, pas de branchement : même process quelle que soit la taille.
+
+function splitIntoChunks(text, chunkSize, overlap) {
+  const chunks = [];
+  let start = 0;
+  while (start < text.length) {
+    const end = Math.min(start + chunkSize, text.length);
+    chunks.push({ text: text.slice(start, end), index: chunks.length, start });
+    if (end === text.length) break;
+    start += chunkSize - overlap;
+  }
+  return chunks;
+}
+
+// ─── PASSE 1 LLM — résumé dense + extraction (chunking adaptatif) ─────────────
+
+async function runPass1OnChunk(chunkText, chunkIndex, totalChunks, idDump, promptTemplate) {
+  const isMultiChunk = totalChunks > 1;
+  const chunkLabel = isMultiChunk
+    ? `Thread ${idDump} — partie ${chunkIndex + 1}/${totalChunks}`
+    : `Thread ${idDump}`;
+
+  // Prompt légèrement différent si multi-chunk : le LLM sait qu'il lit une partie
+  const chunkNote = isMultiChunk
+    ? `\nNOTE : Tu lis la partie ${chunkIndex + 1} sur ${totalChunks} d'un thread plus long. Extrais toutes les décisions et lessons présentes dans CE fragment uniquement. Ne suppose pas ce qui est dans les autres parties.`
+    : "";
+
+  const userMessage = [
+    promptTemplate + chunkNote,
+    "",
+    "---",
+    "",
+    `${chunkLabel} :`,
+    '"""',
+    chunkText,
+    '"""',
+  ].join("\n");
+
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify({
+      model: CLAUDE_MODEL,
+      max_tokens: 8000,
+      messages: [{ role: "user", content: userMessage }],
+    }),
+  });
+
+  if (!res.ok) throw new Error(`Claude API ${res.status}`);
+  const data = await res.json();
+  const raw  = data.content?.[0]?.text?.trim() || "";
+  const parsed = parseJsonResponse(raw);
+  if (!parsed) throw new Error("JSON parse failed");
+  return parsed;
+}
+
+function mergeChunkResults(chunkResults) {
+  // Fusionne les résultats de tous les chunks
+  // Summary : concatène les short pour former le full final (passe 2 affinera)
+  const allDecisions = chunkResults.flatMap(r => r.decisions || []);
+  const allLessons   = chunkResults.flatMap(r => r.lessons   || []);
+  const summaryParts = chunkResults
+    .map(r => r.summary?.short || r.summary?.full || "")
+    .filter(Boolean);
+
+  return {
+    summary: {
+      short: summaryParts[0] || "",           // premier chunk = intro
+      full:  summaryParts.join(" "),           // passe 2 raffinera
+    },
+    decisions: allDecisions,
+    lessons:   allLessons,
+  };
+}
 
 async function runPass1(cleanedText, idDump) {
   if (!ANTHROPIC_API_KEY) {
@@ -125,7 +211,7 @@ async function runPass1(cleanedText, idDump) {
     return {
       summary: {
         short: cleanedText.slice(0, 200).replace(/\n/g, " ").trim(),
-        full: cleanedText.slice(0, 500).replace(/\n/g, " ").trim(),
+        full:  cleanedText.slice(0, 500).replace(/\n/g, " ").trim(),
       },
       decisions: [],
       lessons: [],
@@ -136,49 +222,32 @@ async function runPass1(cleanedText, idDump) {
     process.env.INGEST_PROMPT_PASS1 || "ingest-pass1-v01"
   );
 
-  const userMessage = [
-    promptTemplate,
-    "",
-    "---",
-    "",
-    `Thread ${idDump} :`,
-    '"""',
-    cleanedText,
-    '"""',
-  ].join("\n");
+  // Découpe adaptative — 1 chunk si thread court, N chunks si long
+  const chunks = splitIntoChunks(cleanedText, CHUNK_SIZE, CHUNK_OVERLAP);
+  const totalChunks = chunks.length;
 
-  const retryTokens = [4000, 6000, 8000, 10000];
-  let lastError;
+  if (totalChunks > 1) {
+    console.log(`  [passe 1] ${idDump} — ${cleanedText.length} chars → ${totalChunks} chunks de ${CHUNK_SIZE}`);
+  }
 
-  for (const maxTokens of retryTokens) {
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-        },
-        body: JSON.stringify({
-          model: CLAUDE_MODEL,
-          max_tokens: maxTokens,
-          messages: [{ role: "user", content: userMessage }],
-        }),
-      });
-
-      if (!res.ok) throw new Error(`Claude API ${res.status}`);
-      const data = await res.json();
-      const raw  = data.content?.[0]?.text?.trim() || "";
-      const parsed = parseJsonResponse(raw);
-      if (parsed) return parsed;
-      throw new Error("JSON parse failed");
-    } catch (e) {
-      lastError = e;
-      console.warn(`  [ingest] WARN passe 1 max_tokens=${maxTokens} échoué (${e.message}) — retry`);
+  const chunkResults = [];
+  for (const chunk of chunks) {
+    if (totalChunks > 1) {
+      process.stdout.write(`  [passe 1] chunk ${chunk.index + 1}/${totalChunks}... `);
+    }
+    const result = await runPass1OnChunk(chunk.text, chunk.index, totalChunks, idDump, promptTemplate);
+    chunkResults.push(result);
+    if (totalChunks > 1) {
+      process.stdout.write(`OK (${result.decisions?.length ?? 0}d / ${result.lessons?.length ?? 0}l)\n`);
     }
   }
 
-  throw new Error(`[ingest] Passe 1 échouée après tous les retries : ${lastError?.message}`);
+  if (totalChunks === 1) return chunkResults[0];
+
+  // Merge des chunks
+  const merged = mergeChunkResults(chunkResults);
+  console.log(`  [passe 1] merge → ${merged.decisions.length}d / ${merged.lessons.length}l`);
+  return merged;
 }
 
 // ─── PASSE 2 LLM — vérification delta ────────────────────────────────────────
@@ -332,6 +401,11 @@ async function archiveToCemetery(idDump, cleanedText) {
     await fs.writeFile(dest, cleanedText, "utf8");
     console.log(`  [cemetery] ${idDump}.txt archivé`);
   }
+  // Supprimer thread_clean/ après archivage — dossier temporaire, pas une archive
+  try {
+    const cleanPath = path.join(THREAD_CLEAN_DIR, `${idDump}.txt`);
+    await fs.unlink(cleanPath);
+  } catch { /* fichier absent = déjà supprimé, pas d'erreur */ }
 }
 
 async function saveSummarized(idDump, finalResult) {
