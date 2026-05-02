@@ -1,0 +1,53 @@
+Protocole de cloture de thread
+
+1. Florent dit "thread fini" 
+2. Claude génère PROMPT vXX+1 (si changements structurels) → fichier à télécharger 
+3. Florent lance : node os-thread-close.mjs --thread-name "B09-TXX-Sujet" 
+4. Florent valide le draft CONTEXT généré 
+5. Florent lance : node os-thread-close.mjs --inject --thread-name "B09-TXX-Sujet" 
+6. Florent copie PROMPT vXX+1 dans le repo (si bump) 
+7. git add -A && git commit -m "..." && git push
+
+
+RÈGLE FONDAMENTALE — Rôles des documents système
+
+README vXX — La référence technique permanente
+	•	Décrit ce qu'est INSIDE OS, comment ça marche, comment l'installer et l'utiliser
+	•	S'adresse à quelqu'un qui découvre le projet ou qui revient après une longue absence
+	•	Contient : architecture, pipeline, commandes, structure repo, contrats techniques
+	•	Ne contient pas : état actuel, décisions en cours, règles de travail inter-thread
+	•	Bump quand : changement structurel de l'architecture ou nouvelle commande majeure
+PROMPT vXX — Les règles de travail inter-thread
+	•	Définit comment Claude et Florent travaillent ensemble sur INSIDE OS
+	•	S'adresse à Claude au démarrage d'un nouveau thread
+	•	Contient : protocoles de travail, règles de comportement, pièges à éviter, séquences canoniques
+	•	Ne contient pas : état technique du système, architecture détaillée, commandes
+	•	Bump quand : nouvelle règle de travail identifiée, dérive constatée, protocole corrigé
+CONTEXT vXX — L'instantané vivant du système
+	•	Photographie l'état exact du système à la clôture d'un thread B09
+	•	S'adresse à Claude au démarrage du thread suivant
+	•	Contient : acquis réels, problèmes actifs, risques, fichiers produits, priorité de redémarrage
+	•	Ne contient pas : règles permanentes (README), règles de travail (PROMPT)
+	•	Bump : systématiquement à chaque thread B09, généré par os-thread-close.mjs
+
+
+Règle de lecture au démarrage d'un thread :
+	•	README = comprendre le système
+	•	PROMPT = comprendre comment travailler
+	•	CONTEXT = comprendre où on en est
+
+Les trois sont complémentaires, jamais redondants. Si une information est dans README, elle n'est pas dans PROMPT ni CONTEXT.
+
+DATA & THREAD RULES
+
+data/threads_to_process/ — Zone de dépôt des threads bruts
+Threads exportés depuis claude.ai en attente de traitement. Un thread y arrive quand Florent l'exporte manuellement. Vidé automatiquement après ingest. Non versionné dans Git.
+
+data/test_threads/ — Environnement de test pipeline
+4 fichiers max. Jamais de vrais threads de production. Sert à vérifier le bon fonctionnement du pipeline sans traiter toute la mémoire du groupe.
+
+data/threads_to_inject/ — File d'attente ingestion complète (nouveau)
+Threads réels validés en attente d'ingestion batch. C'est ici qu'on place les threads depuis data_cemetery quand on décide de les injecter en mémoire. Non versionné dans Git. Ce dossier remplace l'usage abusif de threads_to_process pour les batchs.
+
+data/data_cemetery/ — Archive permanente
+Tous les threads traités y entrent après injection. N'en ressortent jamais sauf cas de force majeure documenté (récupération de donnée manquante). Non versionné dans Git.

@@ -1,234 +1,0 @@
-THREAD HISTORIQUE - B02 - T02 - Sujet F&A Capital V1.1
-Date approximative : 01.10.2025
-Source : ChatGPT
-
-peux tu rechercher toutes nos discussion dans les chats concernant la création de la holding F&A CAPITAL et la vente des parts de l'atelier de menuiserie et regrouper ici toutes les instructions que nous avons validé ensemble avec un sommaire en préambule
-
-Florent, j'ai parcouru l'historique dont je dispose. Je te fais ci-dessous un document de synthèse regroupant toutes les informations, instructions et validations que tu m'as données concernant :
-	1	La création de la holding F&A CAPITAL
-	2	La filiale atelier de menuiserie et la vente de parts
-
- Sommaire
-	1	F&A CAPITAL - Vision et structure de la holding 1.1. Objectifs et rôle de la holding 1.2. Organisation envisagée 1.3. Stratégie de contrôle et gouvernance
-	2	Filiale Atelier de Menuiserie 2.1. Situation actuelle 2.2. Modalités de transfert des actifs (machines, local) 2.3. Financement et emprunt 2.4. Vente de parts / ouverture du capital
-	3	Lignes directrices validées 3.1. Priorités stratégiques 3.2. Principes financiers et juridiques 3.3. Points à approfondir
-
-1. F&A CAPITAL - Vision et structure de la holding
-1.1 Objectifs et rôle de la holding
-	-	But : structurer les activités existantes et futures dans une logique de groupe.
-	-	Vision long terme : INSIDE comme entité opérationnelle phare, complétée par des filiales spécialisées (menuiserie, autres activités de niche à venir).
-	-	F&A CAPITAL : holding de tête, destinée à :
-	-	Centraliser la stratégie, la gouvernance et les flux financiers.
-	-	Faciliter la création et le financement de nouvelles filiales.
-	-	Protéger et isoler les risques entre entités.
-1.2 Organisation envisagée
-	-	INSIDE reste une entité opérationnelle (maîtrise d'œuvre, rénovation haut de gamme, menuiserie sur mesure intégrée).
-	-	Filiale menuiserie : entité dédiée, filialisée pour isoler l'activité atelier.
-	-	Schéma général :
-	-	F&A CAPITAL (holding SAS)
-	-	INSIDE (SAS opérationnelle bâtiment/rénovation)
-	-	Atelier de Menuiserie (SAS ou SARL selon fiscalité, filiale détenue majoritairement)
-	-	Autres futures filiales
-1.3 Stratégie de contrôle et gouvernance
-	-	Florent conserve le contrôle absolu de la holding et des filiales.
-	-	Partage éventuel du capital uniquement avec des associés clés (compétences stratégiques) via augmentation de capital.
-	-	Lignes directrices :
-	-	Toujours conserver > 50 % (idéalement > 66 %) des droits de vote.
-	-	Gouvernance centralisée par la holding.
-
-2. Filiale Atelier de Menuiserie
-2.1 Situation actuelle
-	-	Local déjà en possession.
-	-	Machines déjà acquises par INSIDE.
-	-	Objectif : transférer ces actifs à la nouvelle filiale pour lui donner autonomie et valeur.
-2.2 Modalités de transfert des actifs
-	-	Évaluation des machines à réaliser.
-	-	La filiale empruntera un montant équivalent à la valeur des machines pour les acheter à INSIDE.
-	-	Avantages :
-	-	Permet à la filiale d'avoir un bilan structuré dès le départ.
-	-	Apporte de la trésorerie à INSIDE.
-	-	Crée un schéma de répartition clair en cas d'ouverture du capital.
-2.3 Financement et emprunt
-	-	L'emprunt sera contracté par la filiale auprès d'une banque.
-	-	L'achat des machines servira de base au financement.
-	-	INSIDE est remboursée du montant correspondant à la valeur des machines transférées.
-2.4 Vente de parts / ouverture du capital
-	-	Possibilité d'ouvrir une part minoritaire du capital à un futur associé clé (ex : directeur de travaux).
-	-	Apport sous forme de compétences et augmentation de capital.
-	-	Florent reste majoritaire et garde le contrôle stratégique.
-
-3. Lignes directrices validées
-3.1 Priorités stratégiques
-	-	Créer une holding solide (F&A CAPITAL) pour piloter INSIDE et ses futures filiales.
-	-	Donner une existence juridique autonome à l'atelier de menuiserie.
-	-	Séparer les activités pour isoler les risques et mieux gérer les capitaux.
-3.2 Principes financiers et juridiques
-	-	Les filiales doivent être financées par leurs propres actifs et emprunts, pas uniquement par la maison mère.
-	-	Les transferts d'actifs se font via vente valorisée, pas apport gratuit.
-	-	L'ouverture du capital se fait toujours par augmentation, jamais par cession directe des parts de Florent, afin de garder la main.
-3.3 Points à approfondir
-	-	Fiscalité comparée : SAS vs SARL pour la filiale menuiserie.
-	-	Modalités fiscales et comptables de l'apport/vente de machines (plus-value éventuelle, amortissements).
-	-	Rédaction d'un pacte d'associés pour encadrer l'entrée de futurs partenaires.
-	-	Organisation des flux financiers entre holding et filiales (dividendes, management fees, conventions intra-groupe).
-
- Voilà l'ensemble regroupé.
-Veux-tu que je formalise ça sous forme de document structuré type "mémo stratégique" (Word ou PDF) avec schéma organisationnel (holding / filiales), ou préfères-tu garder cette version brute ici comme base de travail ?
-
-garder cette version brute ici comme base de travail
-
-Parfait  On garde donc cette version brute ici comme socle de travail.
-On pourra la compléter ensemble au fur et à mesure, en ajoutant les validations futures (fiscalité, pacte d'associés, montage bancaire, etc.).
- Veux-tu que je commence à tracer un schéma visuel simplifié (holding -> filiales -> associés) pour accompagner ce socle, ou tu préfères rester uniquement sur du texte pour l'instant ?
-
-oui
-
-Schéma simplifié - Structure envisagée F&A CAPITAL
-
-Voici le schéma simplifié de la structure F&A CAPITAL avec INSIDE, l'atelier de menuiserie et l'éventuel futur associé minoritaire.
-Veux-tu que je le formalise aussi en version document PDF pour que tu puisses l'intégrer dans ton dossier de travail ?
-
-en tant que gérant de ces differentes entreprises est ce que j'ai l'obligation de me verser un salaire pour chaque entreprises?
-
-Très bonne question Florent 
-La réponse dépend de deux points : le statut juridique de chaque société et ton rôle effectif en tant que dirigeant.
-
-1. Holding F&A CAPITAL (SAS)
-	-	Président de SAS : tu n'as aucune obligation légale de te verser une rémunération.
-	-	Tu peux choisir :
-	-	Rémunération -> salaire soumis au régime général (cotisations sociales élevées).
-	-	Aucun salaire -> tu restes président non rémunéré, pas de cotisations sociales dues, mais pas de droits à la retraite ni protection sociale liés à ce mandat.
-	-	Dividendes via la holding (mais imposés à la flat tax 30 % ou barème après abattement de 40 %).
-
-2. INSIDE (SAS)
-	-	Même logique que pour la holding : aucune obligation de rémunération pour le président ou le dirigeant si c'est une SAS.
-	-	Tu peux te verser :
-	-	Un salaire unique depuis INSIDE (ta société opérationnelle principale).
-	-	Et rester non rémunéré dans la holding et les autres filiales.
-
-3. Atelier de Menuiserie (si SAS ou SARL)
-	-	Si SAS : idem -> pas d'obligation de rémunération du président.
-	-	Si SARL :
-	-	Gérant majoritaire -> régime TNS (travailleur non salarié).
-	-	Là, les cotisations minimales sont dues même sans rémunération (≈ 1 200 à 1 500 €/an minimum).
-	-	Gérant minoritaire/égalitaire -> assimilé salarié -> comme en SAS, pas d'obligation de rémunération, zéro cotisation si zéro salaire.
-
-4. En pratique (optimisation)
- Tu n'es pas obligé de prendre un salaire dans chaque société. Le plus courant :
-	-	Tu concentres ta rémunération dans une seule entité (généralement INSIDE, car c'est la société qui génère le plus de chiffre d'affaires).
-	-	Dans les autres entités, tu restes dirigeant non rémunéré.
-	-	La holding peut vivre via dividendes ou management fees facturés aux filiales si besoin.
-
- Conclusion :
-	-	Non, tu n'as pas l'obligation de te verser un salaire dans chaque société.
-	-	Tu peux être rémunéré uniquement dans INSIDE (ta principale SAS opérationnelle).
-	-	La holding et les autres filiales peuvent rester sans rémunération pour toi, tant qu'elles couvrent leurs propres frais.
-	-	Attention seulement en SARL avec gérant majoritaire -> cotisations minimales obligatoires même sans rémunération.
-
-Veux-tu que je te prépare un schéma comparatif (SAS vs SARL) avec les impacts de rémunération / cotisations pour clarifier les choix de forme juridique pour tes filiales ?
-
-et si je facture via l'eurl les autres entreprises pour me rémunérer ?
-
-Très bon réflexe Florent , tu touches là à une mécanique classique de "facturation de direction" ou "management fees".
-
-1. Principe
-	-	Ton EURL (dont tu es le gérant/associé unique) émet des factures aux autres sociétés du groupe (holding, INSIDE, menuiserie…).
-	-	Objet : prestation de direction / management / pilotage stratégique.
-	-	C'est alors l'EURL qui encaisse, et toi qui te rémunères via cette EURL (salaire si IS, ou bénéfice si IR).
-
-2. Avantages
- Souplesse : une seule "boîte" qui te rémunère, pas besoin de salaires multiples dans chaque société.  Optimisation :
-	-	Si ton EURL est à l'IS -> tu choisis entre salaire (cotisations sociales mais charges déductibles) ou dividendes (flat tax 30 %).
-	-	Si ton EURL est à l'IR -> bénéfices imposés directement à ton nom, sans double imposition.  Clarté comptable : les autres sociétés constatent une charge de gestion/direction (déductible fiscalement si justifiée).  Cohérence groupe : cela formalise ton rôle de "dirigeant multi-sociétés".
-
-3. Points d'attention
- Justification des prestations :
-	-	Les factures doivent correspondre à un travail réel (ex. suivi stratégique, coordination, gestion de projets).
-	-	Risque de redressement fiscal si l'administration juge que c'est une rémunération déguisée.
- Montants facturés :
-	-	Ils doivent être cohérents avec la taille et les capacités financières des filiales.
-	-	Pas question de facturer 100k€ de management fees à une filiale qui fait 200k€ de CA.
- Conventions réglementées :
-	-	Dans une SAS, ces conventions (entre sociétés liées et dirigeant) doivent être déclarées/validées par les associés (même si tu es seul associé).
-	-	Cela reste une formalité, mais à ne pas oublier.
- Protection sociale :
-	-	Si tu ne prends pas de salaires mais uniquement des dividendes via l'EURL -> pas de cotisations sociales -> donc pas de droits retraite/maladie (hors minimum TNS si tu es en SARL gérant majoritaire).
-	-	Si tu prends un salaire de gérant majoritaire en EURL à l'IS -> tu es TNS, avec cotisations sociales bien moindres que dans une SAS, mais couverture plus faible.
-
-4. Schéma résumé
-	-	Filiales (INSIDE, Menuiserie, Holding) -> paient des management fees à -> EURL Florent.
-	-	EURL Florent -> te rémunère (salaire + dividendes).
-
- Donc oui, tu peux parfaitement centraliser ta rémunération via ton EURL. C'est même un schéma très courant, à condition de :
-	1	Rédiger correctement les conventions (justification, montants).
-	2	Vérifier la fiscalité/cotisations sociales selon le régime choisi pour ton EURL (IS ou IR).
-
-Veux-tu que je te prépare une simulation chiffrée (ex : 100k€ de rémunération annuelle) comparant :
-	-	Salaire en SAS (INSIDE)
-	-	Salaire + dividendes via ton EURL à l'IS
-	-	Bénéfice via ton EURL à l'IR
- pour que tu voies l'impact net dans ta poche ?
-
-en prenant en compte l'ensemble des sociétés ci-dessus, quelle est la meilleure option fiscale pour me rémunérer ?
-
-Super question Florent  Là, on est au cœur de la stratégie patrimoniale du dirigeant multi-sociétés. Je vais te poser ça en comparatif clair pour que tu voies ce qui est optimal dans ton cas.
-
-1. Options de rémunération possibles
-Option A - Salaire en SAS (INSIDE ou Holding)
-	-	Statut : assimilé salarié (régime général).
-	-	Charges sociales : ~75-80 % du net (donc coût lourd pour la société).
-	-	Net perçu : faible après charges.
-	-	Avantages : bonne couverture retraite/maladie, simplicité.
-	-	Inconvénients : la plus chère en cotisations, peu optimisée fiscalement.
- À privilégier seulement si tu veux maximiser ta protection sociale et que tu as un CA qui "absorbe" les charges.
-
-Option B - Rémunération via EURL à l'IS (statut gérant majoritaire TNS)
-	-	Tu factures des management fees aux autres sociétés.
-	-	L'EURL paie ses charges sociales TNS (~45 % du revenu net).
-	-	Beaucoup moins lourd que la SAS (≈ 45 % vs 75 %).
-	-	Tu peux en plus te verser des dividendes (taxés à 30 % flat tax).
- C'est souvent la solution la plus équilibrée :
-	-	Moins de charges qu'en SAS.
-	-	Tu gardes une protection sociale correcte.
-	-	Tu centralises tout dans ton EURL -> plus simple à piloter.
-
-Option C - Rémunération via EURL à l'IR
-	-	Là, les bénéfices de l'EURL sont imposés directement à ton nom (barème IR).
-	-	Pas de salaire, donc pas de charges sociales (hors cotisations minimales si tu es gérant majoritaire).
-	-	Très avantageux si tes revenus restent "raisonnables" (≈ jusqu'à 50-60k€/an).
-	-	Mais si tes revenus sont élevés, tu grimpes vite dans les tranches IR (41 % puis 45 %).
- Solution intéressante si tu veux te verser peu et réinvestir dans tes sociétés. Moins adapté si tu veux sortir beaucoup de cash pour toi.
-
-Option D - Dividendes Holding
-	-	Tu laisses les filiales distribuer des dividendes à la holding.
-	-	Puis la holding te redistribue en dividendes.
-	-	Avec le régime mère-fille, la holding ne paie quasiment pas d'impôt sur les dividendes reçus.
-	-	Tu es taxé seulement quand tu sors du cash (flat tax 30 %).
- Intéressant si tu veux te payer par capitalisation (moins de charges, plus souple). Mais pas de protection sociale, et dépend fortement des résultats et distributions.
-
-2. Recommandation adaptée à ton cas
-Vu :
-	-	que tu veux garder le contrôle absolu
-	-	que tu as plusieurs sociétés (holding + INSIDE + menuiserie + ton EURL perso)
-	-	que tu souhaites une rémunération flexible et optimisée
- Le schéma optimal serait :
-	1	Centraliser ta rémunération via l'EURL à l'IS (gérant majoritaire TNS).
-	-	Facturation de management fees aux filiales (justifiés).
-	-	Tu te verses un revenu régulier (salaire TNS, charges ~45 %).
-	-	Tu peux compléter avec dividendes si besoin (flat tax 30 %).
-	2	Utiliser les dividendes de la holding F&A CAPITAL comme variable d'ajustement.
-	-	Tu capitalises dans la holding.
-	-	Tu ne sors du cash que quand nécessaire -> imposition uniquement à ce moment-là.
-	3	Garder zéro rémunération directe dans INSIDE et la menuiserie -> charges sociales évitées.
-
-3. Résumé simplifié
-	-	Meilleure option fiscale :  EURL à l'IS comme "boîte de rémunération" (TNS = charges sociales réduites, plus souple).  Holding pour capter et redistribuer les dividendes avec fiscalité adoucie.  Filiales : pas de salaire direct pour toi, juste charges déductibles via les management fees.
-
- Reste à simuler avec un niveau de revenus cible (ex. tu veux 60k€, 100k€, 150k€/an net pour toi). Ça permettrait de chiffrer l'impact dans ta poche entre chaque montage (SAS vs EURL IS vs IR).
-
- Veux-tu que je fasse une simulation chiffrée concrète (par ex. pour 100k€ de cash disponible dans les sociétés) en comparant :
-	-	Salaire direct en SAS
-	-	Rémunération via EURL IS
-	-	Rémunération via EURL IR
-	-	Dividendes via la holding
-?
