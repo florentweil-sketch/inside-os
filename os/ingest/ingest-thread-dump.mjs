@@ -19,11 +19,22 @@ const NOTION_VERSION    = "2025-09-03";
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const CLAUDE_MODEL      = "claude-sonnet-4-5";
 
+// Passe 2 : always | conditional | never
+const VERIFY_PASS      = (process.env.VERIFY_PASS      || "always").toLowerCase();
+const VERIFY_THRESHOLD = parseInt(process.env.VERIFY_THRESHOLD || "12000", 10);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 const REPO_ROOT  = path.resolve(__dirname, "../..");
-const TEST_THREADS_DIR = path.join(REPO_ROOT, "data", "test_threads");
-const PROD_THREADS_DIR = path.join(REPO_ROOT, "data", "threads_to_process");
+
+const TEST_THREADS_DIR    = path.join(REPO_ROOT, "data", "test_threads");
+const PROD_THREADS_DIR    = path.join(REPO_ROOT, "data", "threads_to_process");
+const THREAD_CLEAN_DIR    = path.join(REPO_ROOT, "data", "thread_clean");
+const DATA_CEMETERY_DIR   = path.join(REPO_ROOT, "data", "data_cemetery");
+const THREAD_SUMMARIZED_DIR = path.join(REPO_ROOT, "data", "thread_summarized");
+const THREAD_CHUNKED_DIR  = path.join(REPO_ROOT, "data", "thread_chunked");
+
+// ─── ARGS ────────────────────────────────────────────────────────────────────
 
 function argValue(flag, fallback = "") {
   const idx = process.argv.indexOf(flag);
@@ -33,10 +44,6 @@ function argValue(flag, fallback = "") {
 
 const ONLY_ID = String(argValue("--only", "")).trim().toUpperCase();
 
-// Buckets exclus par defaut de l'ingestion automatique
-// B09 = threads dev INSIDE OS - valeur dans CONTEXT vXX injectes en B99, pas dans les threads bruts
-// Override : npm run os:ingest -- --skip-buckets "" (vide = aucune exclusion)
-// Override : npm run os:ingest -- --skip-buckets B09,B08 (exclusion multiple)
 const DEFAULT_SKIP_BUCKETS = ["B09"];
 const SKIP_ARG    = argValue("--skip-buckets", "__default__").trim().toUpperCase();
 const SKIP_BUCKETS = SKIP_ARG === "__default__"
@@ -52,11 +59,7 @@ async function selectIngestMode() {
   if (modeArg === "batch") return PROD_THREADS_DIR;
   if (modeArg === "test")  return TEST_THREADS_DIR;
 
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => {
     console.log("");
     console.log("Mode d'ingestion :");
@@ -93,11 +96,11 @@ function cleanText(text) {
   t = t.replace(/[\u2018\u2019\u201A\u201B]/g, "'");
   t = t.replace(/[\u00AB\u00BB]/g, '"');
   t = t.replace(/[\u2013\u2014\u2015]/g, "-");
-  t = t.replace(/\u2192/g, "->"); // ->
-  t = t.replace(/\u2190/g, "<-"); // <-
-  t = t.replace(/\u2194/g, "<->"); // <->
-  t = t.replace(/\u21D2/g, "=>"); // =>
-  t = t.replace(/\u21D0/g, "<="); // <=
+  t = t.replace(/\u2192/g, "->");
+  t = t.replace(/\u2190/g, "<-");
+  t = t.replace(/\u2194/g, "<->");
+  t = t.replace(/\u21D2/g, "=>");
+  t = t.replace(/\u21D0/g, "<=");
   t = t.replace(/[\u2022\u2023\u2043\u204C\u204D\u2219\u25AA\u25AB\u25B8\u25CF\u25E6]/g, "-");
   t = t.replace(/^(\s*)[•·▸▪▫◦‣⁃]\s*/gm, "$1- ");
   t = t.replace(/[\u20E3]/g, "");
@@ -107,26 +110,114 @@ function cleanText(text) {
   return t.trim();
 }
 
-// ─── RÉSUMÉ LLM ──────────────────────────────────────────────────────────────
+// ─── LECTURE PROMPTS ─────────────────────────────────────────────────────────
 
-async function generateSummary(text, idDump) {
+async function loadPrompt(name) {
+  const promptPath = path.join(REPO_ROOT, "os", "prompts", `${name}.md`);
+  return fs.readFile(promptPath, "utf8");
+}
+
+// ─── PASSE 1 LLM — résumé dense + extraction ─────────────────────────────────
+
+async function runPass1(cleanedText, idDump) {
   if (!ANTHROPIC_API_KEY) {
-    return text.slice(0, 200).replace(/\n/g, " ").trim();
+    console.warn(`  [ingest] WARN: ANTHROPIC_API_KEY absent — passe 1 en fallback minimal`);
+    return {
+      summary: {
+        short: cleanedText.slice(0, 200).replace(/\n/g, " ").trim(),
+        full: cleanedText.slice(0, 500).replace(/\n/g, " ").trim(),
+      },
+      decisions: [],
+      lessons: [],
+    };
   }
 
-  const excerpt = text.slice(0, 3000);
-  const prompt  = [
-    "Tu résumes en UNE SEULE LIGNE (20 mots max) le sujet principal de ce thread de travail.",
-    "Regles :",
-    "- Une seule ligne, pas de ponctuation finale.",
-    "- Nomme les sujets réels : entités, personnes, projets, décisions.",
-    "- Pas de formule générique comme 'discussion sur' ou 'thread concernant'.",
-    "- Exemples : 'Stratégie holding F&A Capital, filiales, cession INSIDE ARCHI a Florent'",
-    "             'Recrutement Directeur Travaux, RAF, organisation Inside SAS'",
-    "             'Pipeline mémoire Notion, extraction chunk par chunk, injection'",
+  const promptTemplate = await loadPrompt(
+    process.env.INGEST_PROMPT_PASS1 || "ingest-pass1-v01"
+  );
+
+  const userMessage = [
+    promptTemplate,
     "",
-    `Thread ${idDump} (extrait) :`,
-    `"""${excerpt}"""`,
+    "---",
+    "",
+    `Thread ${idDump} :`,
+    '"""',
+    cleanedText,
+    '"""',
+  ].join("\n");
+
+  const retryTokens = [4000, 6000, 8000, 10000];
+  let lastError;
+
+  for (const maxTokens of retryTokens) {
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": ANTHROPIC_API_KEY,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: CLAUDE_MODEL,
+          max_tokens: maxTokens,
+          messages: [{ role: "user", content: userMessage }],
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Claude API ${res.status}`);
+      const data = await res.json();
+      const raw  = data.content?.[0]?.text?.trim() || "";
+      const parsed = parseJsonResponse(raw);
+      if (parsed) return parsed;
+      throw new Error("JSON parse failed");
+    } catch (e) {
+      lastError = e;
+      console.warn(`  [ingest] WARN passe 1 max_tokens=${maxTokens} échoué (${e.message}) — retry`);
+    }
+  }
+
+  throw new Error(`[ingest] Passe 1 échouée après tous les retries : ${lastError?.message}`);
+}
+
+// ─── PASSE 2 LLM — vérification delta ────────────────────────────────────────
+
+async function runPass2(cleanedText, pass1Result, idDump) {
+  const shouldRun =
+    VERIFY_PASS === "always" ||
+    (VERIFY_PASS === "conditional" && cleanedText.length > VERIFY_THRESHOLD);
+
+  if (!shouldRun) {
+    console.log(`  [passe 2] Skipped (VERIFY_PASS=${VERIFY_PASS})`);
+    return pass1Result;
+  }
+
+  if (!ANTHROPIC_API_KEY) {
+    console.warn(`  [ingest] WARN: ANTHROPIC_API_KEY absent — passe 2 ignorée`);
+    return pass1Result;
+  }
+
+  console.log(`  [passe 2] Vérification delta...`);
+
+  const promptTemplate = await loadPrompt(
+    process.env.INGEST_PROMPT_PASS2 || "ingest-pass2-v01"
+  );
+
+  const userMessage = [
+    promptTemplate,
+    "",
+    "---",
+    "",
+    "## THREAD ORIGINAL (thread_clean)",
+    '"""',
+    cleanedText,
+    '"""',
+    "",
+    "## JSON PASSE 1",
+    '"""',
+    JSON.stringify(pass1Result, null, 2),
+    '"""',
   ].join("\n");
 
   try {
@@ -139,22 +230,115 @@ async function generateSummary(text, idDump) {
       },
       body: JSON.stringify({
         model: CLAUDE_MODEL,
-        max_tokens: 60,
-        messages: [{ role: "user", content: prompt }],
+        max_tokens: 4000,
+        messages: [{ role: "user", content: userMessage }],
       }),
     });
 
     if (!res.ok) throw new Error(`Claude API ${res.status}`);
-    const data    = await res.json();
-    const summary = data.content?.[0]?.text?.trim() || "";
-    if (!summary || summary.length > 300) {
-      return text.slice(0, 200).replace(/\n/g, " ").trim();
+    const data  = await res.json();
+    const raw   = data.content?.[0]?.text?.trim() || "";
+    const delta = parseJsonResponse(raw);
+
+    if (!delta) {
+      console.warn(`  [ingest] WARN passe 2 JSON invalide — résultat passe 1 conservé`);
+      return pass1Result;
     }
-    return summary;
+
+    // Fusion delta dans pass1Result
+    const merged = { ...pass1Result };
+
+    if (delta.summary_additions && delta.summary_additions !== null) {
+      merged.summary = {
+        ...merged.summary,
+        full: (merged.summary.full || "") + "\n\n" + delta.summary_additions,
+      };
+      console.log(`  [passe 2] summary.full complété`);
+    }
+
+    if (Array.isArray(delta.decisions) && delta.decisions.length > 0) {
+      merged.decisions = [...(merged.decisions || []), ...delta.decisions];
+      console.log(`  [passe 2] +${delta.decisions.length} décision(s) ajoutée(s)`);
+    }
+
+    if (Array.isArray(delta.lessons) && delta.lessons.length > 0) {
+      merged.lessons = [...(merged.lessons || []), ...delta.lessons];
+      console.log(`  [passe 2] +${delta.lessons.length} lesson(s) ajoutée(s)`);
+    }
+
+    if (
+      !delta.summary_additions &&
+      (!delta.decisions || delta.decisions.length === 0) &&
+      (!delta.lessons   || delta.lessons.length   === 0)
+    ) {
+      console.log(`  [passe 2] Aucun manque détecté — JSON passe 1 validé`);
+    }
+
+    return merged;
   } catch (e) {
-    console.warn(`  [ingest] WARN résumé LLM échoué pour ${idDump} (${e.message}) — fallback`);
-    return text.slice(0, 200).replace(/\n/g, " ").trim();
+    console.warn(`  [ingest] WARN passe 2 échouée (${e.message}) — résultat passe 1 conservé`);
+    return pass1Result;
   }
+}
+
+// ─── PARSING JSON ─────────────────────────────────────────────────────────────
+
+function parseJsonResponse(raw) {
+  // Stratégie 1 : JSON direct
+  try { return JSON.parse(raw); } catch {}
+
+  // Stratégie 2 : extraction bloc ```json ... ```
+  const fenceMatch = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) {
+    try { return JSON.parse(fenceMatch[1].trim()); } catch {}
+  }
+
+  // Stratégie 3 : extraction premier { ... } équilibré
+  const start = raw.indexOf("{");
+  if (start !== -1) {
+    let depth = 0;
+    for (let i = start; i < raw.length; i++) {
+      if (raw[i] === "{") depth++;
+      else if (raw[i] === "}") {
+        depth--;
+        if (depth === 0) {
+          try { return JSON.parse(raw.slice(start, i + 1)); } catch {}
+          break;
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+// ─── SAUVEGARDE LOCALE ────────────────────────────────────────────────────────
+
+async function saveThreadClean(idDump, cleanedText) {
+  await fs.mkdir(THREAD_CLEAN_DIR, { recursive: true });
+  const dest = path.join(THREAD_CLEAN_DIR, `${idDump}.txt`);
+  await fs.writeFile(dest, cleanedText, "utf8");
+  return dest;
+}
+
+async function archiveToCemetery(idDump, cleanedText) {
+  await fs.mkdir(DATA_CEMETERY_DIR, { recursive: true });
+  const dest = path.join(DATA_CEMETERY_DIR, `${idDump}.txt`);
+  // Ne jamais écraser — vérifier existence d'abord
+  try {
+    await fs.access(dest);
+    console.log(`  [cemetery] ${idDump}.txt déjà présent — archive ignorée`);
+  } catch {
+    await fs.writeFile(dest, cleanedText, "utf8");
+    console.log(`  [cemetery] ${idDump}.txt archivé`);
+  }
+}
+
+async function saveSummarized(idDump, finalResult) {
+  await fs.mkdir(THREAD_SUMMARIZED_DIR, { recursive: true });
+  const dest = path.join(THREAD_SUMMARIZED_DIR, `${idDump}.json`);
+  await fs.writeFile(dest, JSON.stringify(finalResult, null, 2), "utf8");
+  return dest;
 }
 
 // ─── UTILITAIRES ─────────────────────────────────────────────────────────────
@@ -174,28 +358,6 @@ function getDisplayNameFromFilename(filename) {
   return path.basename(filename, ".txt");
 }
 
-// OPTION B — Propriétés pour UPDATE : ne pas écraser les statuts existants
-function buildUpdateProperties({ idDump, displayName, summary }) {
-  return {
-    Name: title(displayName),
-    id_dump: rt(idDump),
-    raw_text: rt(summary),
-    // extraction_status et injection_status intentionnellement absents
-    // → préserve les statuts done existants, évite le bug d'écrasement
-  };
-}
-
-// Propriétés pour CRÉATION uniquement : statuts initialisés à pending
-function buildCreateProperties({ idDump, displayName, summary }) {
-  return {
-    Name: title(displayName),
-    id_dump: rt(idDump),
-    raw_text: rt(summary),
-    extraction_status: { select: { name: "pending" } },
-    injection_status:  { select: { name: "pending" } },
-  };
-}
-
 function chunkText(text, size = 2000) {
   const normalized = String(text || "").replace(/\r\n/g, "\n");
   const chunks = [];
@@ -203,6 +365,32 @@ function chunkText(text, size = 2000) {
     chunks.push(normalized.slice(i, i + size));
   }
   return chunks.length ? chunks : [""];
+}
+
+// ─── PROPRIÉTÉS NOTION ───────────────────────────────────────────────────────
+
+function buildUpdateProperties({ idDump, displayName, summaryShort, summaryFull }) {
+  return {
+    Name:         title(displayName),
+    id_dump:      rt(idDump),
+    raw_text:     rt(summaryShort),   // raw_text = résumé court mono-ligne (V1 compat)
+    summary_short: rt(summaryShort),  // V2 : champ dédié
+    summary_full:  rt(summaryFull),   // V2 : résumé dense
+    // extraction_status et injection_status intentionnellement absents
+    // → préserve les statuts done existants
+  };
+}
+
+function buildCreateProperties({ idDump, displayName, summaryShort, summaryFull }) {
+  return {
+    Name:         title(displayName),
+    id_dump:      rt(idDump),
+    raw_text:     rt(summaryShort),
+    summary_short: rt(summaryShort),
+    summary_full:  rt(summaryFull),
+    extraction_status: { select: { name: "pending" } },
+    injection_status:  { select: { name: "pending" } },
+  };
 }
 
 // ─── NOTION ──────────────────────────────────────────────────────────────────
@@ -276,9 +464,7 @@ async function findExistingThreadDumpPage(idDump) {
   return response.results?.[0] ?? null;
 }
 
-// ─── OPTION A — GUARD PRÉ-INGEST ─────────────────────────────────────────────
-// Vérifie dans Notion si des threads ont déjà un statut done.
-// Alerte et demande confirmation avant de continuer.
+// ─── GUARD PRÉ-INGEST ────────────────────────────────────────────────────────
 
 async function guardCheckExistingDone(files) {
   const warnings = [];
@@ -323,7 +509,7 @@ async function guardCheckExistingDone(files) {
   });
 }
 
-// ─── INGEST ──────────────────────────────────────────────────────────────────
+// ─── INGEST ONE FILE ─────────────────────────────────────────────────────────
 
 async function ingestOneFile(filename, ingestDir) {
   const fullPath    = path.join(ingestDir, filename);
@@ -335,32 +521,77 @@ async function ingestOneFile(filename, ingestDir) {
     return { status: "skipped", filename, idDump, reason: "empty file" };
   }
 
-  // 1. Nettoyage systématique
+  // ── ÉTAPE 1 : CLEAN ──────────────────────────────────────────────────────
+  process.stdout.write(`  [clean] ${idDump}... `);
   const cleanedText = cleanText(rawText);
+  process.stdout.write(`OK (${cleanedText.length} chars)\n`);
 
-  // 2. Résumé LLM
-  process.stdout.write(`  [résumé] ${idDump}... `);
-  const summary = await generateSummary(cleanedText, idDump);
-  process.stdout.write(`OK\n`);
+  // ── ÉTAPE 2 : ARCHIVE thread_clean/ ──────────────────────────────────────
+  await saveThreadClean(idDump, cleanedText);
 
-  // 3. Ingest dans Notion
+  // ── ÉTAPE 3 : ARCHIVE data_cemetery/ (copie permanente) ──────────────────
+  await archiveToCemetery(idDump, cleanedText);
+
+  // ── ÉTAPE 4 : PASSE 1 LLM ────────────────────────────────────────────────
+  process.stdout.write(`  [passe 1] ${idDump}... `);
+  const pass1Result = await runPass1(cleanedText, idDump);
+  process.stdout.write(`OK (${pass1Result.decisions?.length ?? 0} décisions, ${pass1Result.lessons?.length ?? 0} lessons)\n`);
+
+  // ── ÉTAPE 5 : PASSE 2 LLM (vérification delta) ───────────────────────────
+  const finalResult = await runPass2(cleanedText, pass1Result, idDump);
+
+  // ── ÉTAPE 6 : SAUVEGARDE thread_summarized/ ───────────────────────────────
+  await saveSummarized(idDump, finalResult);
+  console.log(`  [summarized] ${idDump}.json sauvegardé`);
+
+  // ── ÉTAPE 7 : INGEST NOTION ───────────────────────────────────────────────
+  const summaryShort = finalResult.summary?.short || cleanedText.slice(0, 200).replace(/\n/g, " ").trim();
+  const summaryFull  = finalResult.summary?.full  || summaryShort;
+
+  // Stocker l'extraction JSON complète (decisions + lessons) dans extraction_json
+  const extractionJson = JSON.stringify({
+    decisions: finalResult.decisions || [],
+    lessons:   finalResult.lessons   || [],
+  });
+
   const existingPage = await findExistingThreadDumpPage(idDump);
 
   if (!existingPage) {
-    // CRÉATION — statuts initialisés à pending
-    const properties = buildCreateProperties({ idDump, displayName, summary });
+    const properties = {
+      ...buildCreateProperties({ idDump, displayName, summaryShort, summaryFull }),
+      extraction_json: rt(extractionJson),
+    };
     const page = await createPage(CFG.THREAD_DUMP_DS_ID, properties);
     await replacePageContent(page.id, cleanedText);
-    return { status: "created", filename, idDump, summary };
+    return {
+      status: "created",
+      filename,
+      idDump,
+      summaryShort,
+      decisionsCount: finalResult.decisions?.length ?? 0,
+      lessonsCount:   finalResult.lessons?.length   ?? 0,
+    };
   }
 
-  // UPDATE — OPTION B : statuts extraction/injection préservés
+  // UPDATE — statuts extraction/injection préservés
   const existingExtract = existingPage.properties?.extraction_status?.select?.name ?? "?";
   const existingInject  = existingPage.properties?.injection_status?.select?.name  ?? "?";
-  const properties = buildUpdateProperties({ idDump, displayName, summary });
+  const properties = {
+    ...buildUpdateProperties({ idDump, displayName, summaryShort, summaryFull }),
+    extraction_json: rt(extractionJson),
+  };
   await updatePage(existingPage.id, properties);
   await replacePageContent(existingPage.id, cleanedText);
-  return { status: "updated", filename, idDump, summary, existingExtract, existingInject };
+  return {
+    status: "updated",
+    filename,
+    idDump,
+    summaryShort,
+    decisionsCount: finalResult.decisions?.length ?? 0,
+    lessonsCount:   finalResult.lessons?.length   ?? 0,
+    existingExtract,
+    existingInject,
+  };
 }
 
 // ─── MAIN ────────────────────────────────────────────────────────────────────
@@ -370,7 +601,8 @@ async function main() {
   const modeName   = INGEST_DIR === PROD_THREADS_DIR ? "Batch production" : "Test pipeline";
 
   console.log("");
-  console.log(`INGEST — ${modeName}`);
+  console.log(`INGEST V2 — ${modeName}`);
+  console.log(`VERIFY_PASS=${VERIFY_PASS}${VERIFY_PASS === "conditional" ? ` (threshold=${VERIFY_THRESHOLD})` : ""}`);
   console.log("-------------------------");
 
   if (ONLY_ID) {
@@ -386,11 +618,16 @@ async function main() {
   }
 
   if (!ANTHROPIC_API_KEY) {
-    console.log(`[os:ingest] WARN: ANTHROPIC_API_KEY absent — résumés en fallback (texte brut tronqué)`);
+    console.log(`[os:ingest] WARN: ANTHROPIC_API_KEY absent — LLM désactivé, fallback minimal`);
   }
 
   for (const k of ["NOTION_API_KEY", "THREAD_DUMP_DS_ID"]) {
     if (!CFG[k]) throw new Error(`Missing required config key: ${k}`);
+  }
+
+  // S'assurer que les dossiers V2 existent
+  for (const dir of [THREAD_CLEAN_DIR, DATA_CEMETERY_DIR, THREAD_SUMMARIZED_DIR, THREAD_CHUNKED_DIR]) {
+    await fs.mkdir(dir, { recursive: true });
   }
 
   const allFiles = await listHistoricalThreadFiles(INGEST_DIR);
@@ -410,7 +647,7 @@ async function main() {
   });
 
   if (ONLY_ID && files.length === 0) {
-    throw new Error(`No historical thread file found for --only ${ONLY_ID}`);
+    throw new Error(`No thread file found for --only ${ONLY_ID}`);
   }
 
   if (files.length === 0) {
@@ -420,7 +657,6 @@ async function main() {
 
   console.log(`[os:ingest] ${files.length} fichier(s) à traiter`);
 
-  // OPTION A — Guard pré-ingest
   const confirmed = await guardCheckExistingDone(files);
   if (!confirmed) return;
 
@@ -429,29 +665,39 @@ async function main() {
   let created = 0;
   let updated = 0;
   let skipped = 0;
+  let errors  = 0;
 
   for (const filename of files) {
-    const result = await ingestOneFile(filename, INGEST_DIR);
-    if (result.status === "created") {
-      created++;
-      console.log(`[created] ${result.idDump} — "${result.summary}"`);
-    } else if (result.status === "updated") {
-      updated++;
-      const preserved = result.existingExtract !== "pending" || result.existingInject !== "pending"
-        ? ` [statuts préservés: extract=${result.existingExtract} inject=${result.existingInject}]`
-        : "";
-      console.log(`[updated] ${result.idDump} — "${result.summary}"${preserved}`);
-    } else if (result.status === "skipped") {
-      skipped++;
-      console.log(`[skipped] ${result.idDump} (${result.reason})`);
+    console.log(`\n── ${filename}`);
+    try {
+      const result = await ingestOneFile(filename, INGEST_DIR);
+
+      if (result.status === "created") {
+        created++;
+        console.log(`[created] ${result.idDump} — "${result.summaryShort}" (${result.decisionsCount}d / ${result.lessonsCount}l)`);
+      } else if (result.status === "updated") {
+        updated++;
+        const preserved = result.existingExtract !== "pending" || result.existingInject !== "pending"
+          ? ` [statuts préservés: extract=${result.existingExtract} inject=${result.existingInject}]`
+          : "";
+        console.log(`[updated] ${result.idDump} — "${result.summaryShort}" (${result.decisionsCount}d / ${result.lessonsCount}l)${preserved}`);
+      } else if (result.status === "skipped") {
+        skipped++;
+        console.log(`[skipped] ${result.idDump} (${result.reason})`);
+      }
+    } catch (e) {
+      errors++;
+      console.error(`[error] ${filename} : ${e.message}`);
     }
   }
 
   console.log("");
-  console.log(`files scanned: ${files.length}`);
-  console.log(`created: ${created}`);
-  console.log(`updated: ${updated}`);
-  console.log(`skipped: ${skipped}`);
+  console.log("─────────────────────────");
+  console.log(`files scanned : ${files.length}`);
+  console.log(`created       : ${created}`);
+  console.log(`updated       : ${updated}`);
+  console.log(`skipped       : ${skipped}`);
+  console.log(`errors        : ${errors}`);
   console.log("done.");
 }
 

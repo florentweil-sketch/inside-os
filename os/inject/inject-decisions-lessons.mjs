@@ -35,6 +35,9 @@ function cleanOptionalString(value) {
   return t.length > 0 ? t : undefined;
 }
 
+// ─── NORMALISATION V2 ────────────────────────────────────────────────────────
+// Préserve tous les champs V2 : bucket, impact, status, agents, agent_suggestions, type
+
 function normalizeExtractionPayload(data) {
   const rawDecisions = Array.isArray(data?.decisions) ? data.decisions : [];
   const rawLessons   = Array.isArray(data?.lessons)   ? data.lessons   : [];
@@ -45,8 +48,18 @@ function normalizeExtractionPayload(data) {
       const decision = cleanOptionalString(i.decision);
       if (!decision) return null;
       const obj = { decision };
+
+      // Champs V1
       const rationale = cleanOptionalString(i.rationale); if (rationale) obj.rationale = rationale;
       const evidence  = cleanOptionalString(i.evidence);  if (evidence)  obj.evidence  = evidence;
+
+      // Champs V2
+      if (Array.isArray(i.bucket) && i.bucket.length > 0)    obj.bucket = i.bucket.slice(0, 3); // max 3
+      if (cleanOptionalString(i.impact))                      obj.impact  = i.impact.trim();
+      if (cleanOptionalString(i.status))                      obj.status  = i.status.trim();
+      if (Array.isArray(i.agents) && i.agents.length > 0)    obj.agents  = i.agents;
+      if (Array.isArray(i.agent_suggestions))                 obj.agent_suggestions = i.agent_suggestions;
+
       return obj;
     })
     .filter(Boolean);
@@ -57,8 +70,17 @@ function normalizeExtractionPayload(data) {
       const lesson = cleanOptionalString(i.lesson);
       if (!lesson) return null;
       const obj = { lesson };
+
+      // Champs V1
       const whatHappened = cleanOptionalString(i.what_happened); if (whatHappened) obj.what_happened = whatHappened;
       const evidence     = cleanOptionalString(i.evidence);      if (evidence)     obj.evidence      = evidence;
+
+      // Champs V2
+      if (Array.isArray(i.bucket) && i.bucket.length > 0)    obj.bucket = i.bucket.slice(0, 3); // max 3
+      if (cleanOptionalString(i.type))                        obj.type    = i.type.trim();
+      if (Array.isArray(i.agents) && i.agents.length > 0)    obj.agents  = i.agents;
+      if (Array.isArray(i.agent_suggestions))                 obj.agent_suggestions = i.agent_suggestions;
+
       return obj;
     })
     .filter(Boolean);
@@ -66,19 +88,41 @@ function normalizeExtractionPayload(data) {
   return { decisions, lessons };
 }
 
-// ─── PROPRIÉTÉS ──────────────────────────────────────────────────────────────
-// source_thread : relation vers la page THREAD_DUMP (id Notion de la page)
-// source_dump_id : identifiant texte lisible (ex: "B03-T03")
-// Les deux sont renseignés — source_dump_id pour le scoring/chat, source_thread pour la navigation Notion
+// ─── PROPRIÉTÉS NOTION ───────────────────────────────────────────────────────
+//
+// MAPPINGS V2 (gravés — ne pas modifier sans mise à jour du schéma Notion) :
+//   json.status  → Notion: decision_status  (decisions_structural)
+//   json.type    → Notion: lesson_type      (lessons_learnings)
+//
+// Les champs agents et agent_suggestions sont stockés en JSON stringifié (RICH_TEXT)
+// car Notion ne supporte pas les arrays d'objets natifs.
+
+const VALID_BUCKETS = ["B01","B02","B03","B04","B05","B06","B07","B08","B09","B99"];
+const VALID_IMPACT  = ["critical","major","minor"];
+const VALID_STATUS  = ["validated","proposed","superseded","archived","draft","rejected"];
+const VALID_LESSON_TYPE = ["technical","strategic","operational","process","relational"];
+
+function sanitizeBucket(bucket) {
+  if (!Array.isArray(bucket)) return undefined;
+  const valid = bucket.filter(b => VALID_BUCKETS.includes(b));
+  return valid.length > 0 ? valid : undefined;
+}
 
 function decisionProps({ uid, dumpId, threadPageId, item }) {
-  return {
+  const props = {
     uid:             rt(uid),
     decision:        title(item.decision || item.title || "Decision"),
     rationale:       rt(item.rationale || ""),
     evidence:        rt(item.evidence  || ""),
     source_dump_id:  rt(dumpId || ""),
-    decision_status: { select: { name: "proposed" } },
+
+    // MAPPING V2 : json.status → decision_status
+    decision_status: {
+      select: {
+        name: VALID_STATUS.includes(item.status) ? item.status : "proposed"
+      }
+    },
+
     ...(threadPageId
       ? { source_thread: { relation: [{ id: threadPageId }] } }
       : {}),
@@ -86,15 +130,41 @@ function decisionProps({ uid, dumpId, threadPageId, item }) {
       ? { archived: { checkbox: false }, archived_at: { date: null } }
       : {}),
   };
+
+  // Champs V2 — ajout conditionnel
+
+  // impact
+  if (item.impact && VALID_IMPACT.includes(item.impact)) {
+    props.impact = { select: { name: item.impact } };
+  }
+
+  // bucket (multi_select)
+  const buckets = sanitizeBucket(item.bucket);
+  if (buckets) {
+    props.bucket = { multi_select: buckets.map(b => ({ name: b })) };
+  }
+
+  // agents (JSON stringifié → RICH_TEXT)
+  if (Array.isArray(item.agents) && item.agents.length > 0) {
+    props.agents = rt(JSON.stringify(item.agents));
+  }
+
+  // agent_suggestions (JSON stringifié → RICH_TEXT)
+  if (Array.isArray(item.agent_suggestions) && item.agent_suggestions.length > 0) {
+    props.agent_suggestions = rt(JSON.stringify(item.agent_suggestions));
+  }
+
+  return props;
 }
 
 function lessonProps({ uid, dumpId, threadPageId, item }) {
-  return {
+  const props = {
     uid:            rt(uid),
     lesson:         title(item.lesson || item.title || "Lesson"),
     what_happened:  rt(item.what_happened || ""),
     evidence:       rt(item.evidence     || ""),
     source_dump_id: rt(dumpId || ""),
+
     ...(threadPageId
       ? { source_thread: { relation: [{ id: threadPageId }] } }
       : {}),
@@ -102,7 +172,32 @@ function lessonProps({ uid, dumpId, threadPageId, item }) {
       ? { archived: { checkbox: false }, archived_at: { date: null } }
       : {}),
   };
+
+  // MAPPING V2 : json.type → lesson_type
+  if (item.type && VALID_LESSON_TYPE.includes(item.type)) {
+    props.lesson_type = { select: { name: item.type } };
+  }
+
+  // bucket (multi_select)
+  const buckets = sanitizeBucket(item.bucket);
+  if (buckets) {
+    props.bucket = { multi_select: buckets.map(b => ({ name: b })) };
+  }
+
+  // agents (JSON stringifié → RICH_TEXT)
+  if (Array.isArray(item.agents) && item.agents.length > 0) {
+    props.agents = rt(JSON.stringify(item.agents));
+  }
+
+  // agent_suggestions (JSON stringifié → RICH_TEXT)
+  if (Array.isArray(item.agent_suggestions) && item.agent_suggestions.length > 0) {
+    props.agent_suggestions = rt(JSON.stringify(item.agent_suggestions));
+  }
+
+  return props;
 }
+
+// ─── UPSERT ──────────────────────────────────────────────────────────────────
 
 async function findByUid(dataSourceId, uid) {
   const res = await queryDataSource(dataSourceId, {
@@ -126,6 +221,8 @@ async function upsert({ dataSourceId, uid, properties }) {
   if (!DRY_RUN) await updatePage(existing.id, cleanProps);
   return "updated";
 }
+
+// ─── PARSING JSON ─────────────────────────────────────────────────────────────
 
 function stripJsonComments(s) {
   return s
@@ -185,6 +282,8 @@ async function getExtractionJsonFromBlocks(threadPageId) {
   const obj     = extractFirstJsonObject(cleaned);
   return obj || "";
 }
+
+// ─── THREAD DUMP ─────────────────────────────────────────────────────────────
 
 async function markThreadDump(pageId, { status, summary, error, retryCount }) {
   const props = {
@@ -280,14 +379,17 @@ async function archiveByDumpId({ dataSourceId, dumpId }) {
   return archived;
 }
 
+// ─── PROCESS ONE ─────────────────────────────────────────────────────────────
+
 async function processOne(page) {
   const retryCount = page.properties?.retry_count?.number ?? 0;
   if (retryCount >= 2) {
     console.warn(`  [os:inject] BLOCKED: retry_count=${retryCount} >= 2 pour ${getPropText(page, "id_dump")} — intervention manuelle requise`);
     return "blocked";
   }
-  const threadPageId  = page.id;
-  const dumpId        = getPropText(page, "id_dump");
+
+  const threadPageId   = page.id;
+  const dumpId         = getPropText(page, "id_dump");
   const extractionProp = getPropText(page, "extraction_json");
 
   let extractionJsonText = extractionProp;
@@ -428,8 +530,8 @@ async function main() {
 
     try {
       const result = await processOne(page);
-      if (result === "done")  console.log("  OK");
-      else if (result === "error") console.log("  ERROR (handled)");
+      if (result === "done")    console.log("  OK");
+      else if (result === "error")   console.log("  ERROR (handled)");
       else console.log(`  ${result}`);
     } catch (e) {
       console.error("  ERROR:", e.message);
