@@ -30,9 +30,6 @@ data/test_threads/
 data/_backup_threads/
 data/dumps_archived/
 
-# README versionnés (remplacés par README.md)
-README_INSIDE_OS_v*.md
-
 # Editors
 .vscode/
 .idea/
