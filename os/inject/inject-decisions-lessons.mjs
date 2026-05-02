@@ -1,5 +1,8 @@
 // os/inject/inject-decisions-lessons.mjs
 import "dotenv/config";
+import fs   from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   queryDataSource,
   createPage,
@@ -11,6 +14,10 @@ import {
   getPropText,
 } from "../lib/notion.mjs";
 import { makeUid } from "../lib/uid.mjs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
+const REPO_ROOT  = path.resolve(__dirname, "../..");
 
 const THREAD_DUMP_DS_ID = process.env.THREAD_DUMP_DS_ID;
 const DECISIONS_DS_ID   = process.env.DECISIONS_DS_ID;
@@ -388,13 +395,28 @@ async function processOne(page) {
     return "blocked";
   }
 
-  const threadPageId   = page.id;
-  const dumpId         = getPropText(page, "id_dump");
-  const extractionProp = getPropText(page, "extraction_json");
+  const threadPageId = page.id;
+  const dumpId       = getPropText(page, "id_dump");
 
-  let extractionJsonText = extractionProp;
-  if (!extractionJsonText || extractionJsonText.startsWith("Stored in page blocks")) {
-    extractionJsonText = await getExtractionJsonFromBlocks(threadPageId);
+  // V2 : lire depuis thread_summarized/ en priorité (contient le JSON complet > 2000 chars)
+  const summarizedPath = path.join(REPO_ROOT, "data", "thread_summarized", `${dumpId}.json`);
+  let extractionJsonText = null;
+
+  try {
+    const raw = await fs.readFile(summarizedPath, "utf8");
+    const parsed = JSON.parse(raw);
+    extractionJsonText = JSON.stringify({
+      decisions: parsed.decisions || [],
+      lessons:   parsed.lessons   || [],
+    });
+    console.log(`  [inject] source: thread_summarized/${dumpId}.json`);
+  } catch {
+    // Fallback V1 : lire depuis la propriété Notion ou les blocs de page
+    const extractionProp = getPropText(page, "extraction_json");
+    extractionJsonText = extractionProp || null;
+    if (!extractionJsonText || extractionJsonText.startsWith("Stored in page blocks")) {
+      extractionJsonText = await getExtractionJsonFromBlocks(threadPageId);
+    }
   }
 
   if (!extractionJsonText) {
