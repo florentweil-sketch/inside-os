@@ -559,7 +559,9 @@ async function ingestOneFile(filename, ingestDir) {
   if (!existingPage) {
     const properties = {
       ...buildCreateProperties({ idDump, displayName, summaryShort, summaryFull }),
-      extraction_json: rt(extractionJson),
+      extraction_json:   rt(extractionJson),
+      // V2 : extraction terminée → done automatiquement
+      extraction_status: { select: { name: "done" } },
     };
     const page = await createPage(CFG.THREAD_DUMP_DS_ID, properties);
     await replacePageContent(page.id, cleanedText);
@@ -573,12 +575,14 @@ async function ingestOneFile(filename, ingestDir) {
     };
   }
 
-  // UPDATE — statuts extraction/injection préservés
+  // UPDATE — extraction_status → done, injection_status → pending (prêt pour inject)
   const existingExtract = existingPage.properties?.extraction_status?.select?.name ?? "?";
   const existingInject  = existingPage.properties?.injection_status?.select?.name  ?? "?";
   const properties = {
     ...buildUpdateProperties({ idDump, displayName, summaryShort, summaryFull }),
-    extraction_json: rt(extractionJson),
+    extraction_json:   rt(extractionJson),
+    extraction_status: { select: { name: "done" } },
+    injection_status:  { select: { name: "pending" } },
   };
   await updatePage(existingPage.id, properties);
   await replacePageContent(existingPage.id, cleanedText);
