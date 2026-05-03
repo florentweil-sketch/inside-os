@@ -43,6 +43,8 @@ dist/
 build/
 docs/Terminal/
 data/threads_to_process/
+data/threads_to_inject/
+data/data_cemetery/
 data/thread_clean/
 data/thread_summarized/
 data/thread_chunked/

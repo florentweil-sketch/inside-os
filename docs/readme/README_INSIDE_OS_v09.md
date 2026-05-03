@@ -1,4 +1,4 @@
-# INSIDE OS — v10
+# INSIDE OS — v09
 
 ## Ce qu'est INSIDE OS
 
@@ -81,41 +81,36 @@ ROOT_PAGE_ID
    → copie du thread clean → data/data_cemetery/ (archive permanente)
    → thread clean = référence définitive non chunké
 
-5. PASSE 1 LLM — résumé + extraction (chunking adaptatif)
+5. PASSE 1 LLM — résumé + extraction
    npm run os:ingest (étape LLM)
-   → calcul taille thread → découpe en chunks de CHUNK_SIZE chars (défaut 20 000)
-   → 1 thread court = 1 chunk = 1 appel LLM
-   → 1 thread long = N chunks = N appels séquentiels → merge
-   → produit en une passe par chunk : { summary_partial, decisions, lessons }
-   → merge des chunks → résultat unifié
-   → extraction_status=done + injection_status=pending écrits automatiquement
-   → résumé sauvegardé → data/thread_summarized/{id}.json (archive permanente)
+   → LLM lit le thread clean entier
+   → produit en une passe : { summary, decisions, lessons }
+   → summary → data/thread_summarized/ + blocs Notion THREAD_DUMP
+   → guard pré-ingest : alerte si thread déjà traité détecté
+   → sur update : statuts existants préservés
 
 6. PASSE 2 LLM — vérification (systématique)
-   → LLM compare thread_clean vs résultat merge
+   → LLM compare thread_clean vs summary
    → détecte les manques et oublis
    → complète si nécessaire, valide si exhaustif
    → résumé final vérifié → thread_summarized/ mis à jour
 
-7. INJECT NOTION
+7. CHUNK (si résumé > 12 000 chars)
+   → découpe du résumé → data/thread_chunked/ (temporaire)
+
+8. INJECT NOTION
    npm run os:inject
-   → lit data/thread_summarized/{id}.json en priorité (pas de limite taille)
-   → fallback V1 : propriété extraction_json Notion + blocs de page
-   → création/update pages DECISIONS + LESSONS dans Notion
-   → champs V2 injectés : bucket, impact, decision_status, lesson_type, agents
+   → création pages DECISIONS + LESSONS dans Notion
    → source_thread renseigné (relation bidirectionnelle)
    → retry_count : max 2 retries auto, blocage BLOCKED au-delà
    → statut : injection_status=done
+   → purge data/thread_chunked/
 ```
 
-**Configuration passe 1 et 2 (modifiable dans .env) :**
+**Configuration passe 2 (modifiable dans .env) :**
 ```
-INGEST_PROMPT_PASS1=ingest-pass1-v02   # prompt chunking adaptatif
-INGEST_PROMPT_PASS2=ingest-pass2-v01
 VERIFY_PASS=always      # always | conditional | never
 VERIFY_THRESHOLD=12000  # utilisé si VERIFY_PASS=conditional
-CHUNK_SIZE=20000        # taille d'un chunk en chars
-CHUNK_OVERLAP=500       # overlap entre chunks
 ```
 
 ---
@@ -188,19 +183,12 @@ data/
                           non versionné Git
                           purgé automatiquement après inject
 
-  threads_to_inject/    → file d'attente pour batch d'ingestion depuis cemetery
-                          threads validés à injecter en mémoire — remplace l'usage
-                          de threads_to_process/ pour les batchs de production
-                          Non versionné dans Git.
-
   test_threads/         → fichiers de test pipeline uniquement
                           4 fichiers max — jamais de vrais threads de production
                           versionné Git
 ```
 
 **Règle absolue data_cemetery :** les threads y entrent après archivage du clean. Ils n'en ressortent jamais. Toute extraction depuis data_cemetery pour retraitement est un cas de force majeure qui doit être documenté explicitement.
-
-**Règle threads_to_inject/ :** utiliser ce dossier pour tout batch de production depuis data_cemetery/. Ne jamais utiliser threads_to_process/ pour des batchs — ce dossier est réservé aux nouveaux threads exportés depuis claude.ai.
 
 ### Threads de test
 
@@ -348,19 +336,16 @@ Chaque thread produit un JSON structuré avec les champs suivants :
 
 ```
 os/prompts/
-  ingest-pass1-v01.md   → passe 1 v01 (legacy — remplacé par v02)
-  ingest-pass1-v02.md   → passe 1 v02 : chunking adaptatif (ACTIF)
-  ingest-pass2-v01.md   → passe 2 : vérification delta — manques uniquement (ACTIF)
+  ingest-pass1-v01.md   → passe 1 : résumé dense + extraction décisions + lessons
+  ingest-pass2-v01.md   → passe 2 : vérification delta — manques uniquement
 ```
 
 Configuration active dans `.env` :
 ```
-INGEST_PROMPT_PASS1=ingest-pass1-v02
+INGEST_PROMPT_PASS1=ingest-pass1-v01
 INGEST_PROMPT_PASS2=ingest-pass2-v01
 VERIFY_PASS=always
 VERIFY_THRESHOLD=12000
-CHUNK_SIZE=20000
-CHUNK_OVERLAP=500
 ```
 
 ### Mémoire relationnelle — ENTITIES (V3)
@@ -508,9 +493,8 @@ os/
   scripts/
 
 data/
-  threads_to_process/   → threads bruts exportés (non versionné)
-  threads_to_inject/    → batch d'ingestion depuis cemetery (non versionné)
-  test_threads/         → test uniquement (4 fichiers max)
+  threads_to_process/   → threads à ingérer (non versionné)
+  test_threads/         → test uniquement
   data_cemetery/        → archive permanente (non versionné)
 
 docs/
@@ -573,19 +557,15 @@ travail réel
 - protocole de clôture de thread automatisé ✅
 - batch 10 threads réels validé ✅
 
-### V2 — Pipeline distillation intelligente (IMPLÉMENTÉ ✅)
+### V2 — Pipeline distillation intelligente (ARCHITECTURE VALIDÉE)
 
-- clean automatique des threads bruts ✅
-- double passe LLM : résumé dense + vérification exhaustivité ✅
-- archive thread_clean permanente dans data_cemetery ✅
-- résumés LLM conservés dans thread_summarized/ (archive locale permanente) ✅
-- chunking adaptatif : tout thread découpé en chunks de CHUNK_SIZE chars ✅
-  → 1 thread court = 1 chunk, 1 thread long = N chunks → merge
-  → validé sur B03-T03 : 133 717 chars → 7 chunks → 50d/50l
-- schéma Notion enrichi : bucket, impact, decision_status, lesson_type, agents ✅
-- inject lit thread_summarized/ en priorité (pas de limite 2000 chars Notion) ✅
-- statuts extraction_status/injection_status automatiques ✅
-- paramètre VERIFY_PASS configurable (always / conditional / never) ✅
+- clean automatique des threads bruts
+- double passe LLM : résumé dense + vérification exhaustivité
+- archive thread_clean permanente dans data_cemetery
+- résumés LLM conservés dans thread_summarized/ + blocs Notion
+- raw_text multi-lignes (résumé dense remplace raw_text une ligne)
+- chunking sur résumé uniquement (exception si > 12 000 chars)
+- paramètre VERIFY_PASS configurable (always / conditional / never)
 
 ### V3 — Réseau d'agents spécialisés
 
@@ -631,6 +611,5 @@ travail réel
 - `.env` non versionné
 - `data/data_cemetery/` non versionné
 - `data/threads_to_process/` non versionné
-- `data/threads_to_inject/` non versionné
 - Remote Git GitHub opérationnel : `https://github.com/florentweil-sketch/inside-os.git`
 - Backup tar.gz automatique via `os-thread-close.mjs`

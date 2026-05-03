@@ -1,4 +1,4 @@
-# INSIDE OS — v10
+# INSIDE OS — v08
 
 ## Ce qu'est INSIDE OS
 
@@ -81,41 +81,36 @@ ROOT_PAGE_ID
    → copie du thread clean → data/data_cemetery/ (archive permanente)
    → thread clean = référence définitive non chunké
 
-5. PASSE 1 LLM — résumé + extraction (chunking adaptatif)
+5. PASSE 1 LLM — résumé + extraction
    npm run os:ingest (étape LLM)
-   → calcul taille thread → découpe en chunks de CHUNK_SIZE chars (défaut 20 000)
-   → 1 thread court = 1 chunk = 1 appel LLM
-   → 1 thread long = N chunks = N appels séquentiels → merge
-   → produit en une passe par chunk : { summary_partial, decisions, lessons }
-   → merge des chunks → résultat unifié
-   → extraction_status=done + injection_status=pending écrits automatiquement
-   → résumé sauvegardé → data/thread_summarized/{id}.json (archive permanente)
+   → LLM lit le thread clean entier
+   → produit en une passe : { summary, decisions, lessons }
+   → summary → data/thread_summarized/ + blocs Notion THREAD_DUMP
+   → guard pré-ingest : alerte si thread déjà traité détecté
+   → sur update : statuts existants préservés
 
 6. PASSE 2 LLM — vérification (systématique)
-   → LLM compare thread_clean vs résultat merge
+   → LLM compare thread_clean vs summary
    → détecte les manques et oublis
    → complète si nécessaire, valide si exhaustif
    → résumé final vérifié → thread_summarized/ mis à jour
 
-7. INJECT NOTION
+7. CHUNK (si résumé > 12 000 chars)
+   → découpe du résumé → data/thread_chunked/ (temporaire)
+
+8. INJECT NOTION
    npm run os:inject
-   → lit data/thread_summarized/{id}.json en priorité (pas de limite taille)
-   → fallback V1 : propriété extraction_json Notion + blocs de page
-   → création/update pages DECISIONS + LESSONS dans Notion
-   → champs V2 injectés : bucket, impact, decision_status, lesson_type, agents
+   → création pages DECISIONS + LESSONS dans Notion
    → source_thread renseigné (relation bidirectionnelle)
    → retry_count : max 2 retries auto, blocage BLOCKED au-delà
    → statut : injection_status=done
+   → purge data/thread_chunked/
 ```
 
-**Configuration passe 1 et 2 (modifiable dans .env) :**
+**Configuration passe 2 (modifiable dans .env) :**
 ```
-INGEST_PROMPT_PASS1=ingest-pass1-v02   # prompt chunking adaptatif
-INGEST_PROMPT_PASS2=ingest-pass2-v01
 VERIFY_PASS=always      # always | conditional | never
 VERIFY_THRESHOLD=12000  # utilisé si VERIFY_PASS=conditional
-CHUNK_SIZE=20000        # taille d'un chunk en chars
-CHUNK_OVERLAP=500       # overlap entre chunks
 ```
 
 ---
@@ -188,19 +183,12 @@ data/
                           non versionné Git
                           purgé automatiquement après inject
 
-  threads_to_inject/    → file d'attente pour batch d'ingestion depuis cemetery
-                          threads validés à injecter en mémoire — remplace l'usage
-                          de threads_to_process/ pour les batchs de production
-                          Non versionné dans Git.
-
   test_threads/         → fichiers de test pipeline uniquement
                           4 fichiers max — jamais de vrais threads de production
                           versionné Git
 ```
 
 **Règle absolue data_cemetery :** les threads y entrent après archivage du clean. Ils n'en ressortent jamais. Toute extraction depuis data_cemetery pour retraitement est un cas de force majeure qui doit être documenté explicitement.
-
-**Règle threads_to_inject/ :** utiliser ce dossier pour tout batch de production depuis data_cemetery/. Ne jamais utiliser threads_to_process/ pour des batchs — ce dossier est réservé aux nouveaux threads exportés depuis claude.ai.
 
 ### Threads de test
 
@@ -241,7 +229,7 @@ npm run os:ingest -- --skip-buckets ""
 | `PROMPT vXX` | Alignement inter-thread | Gap inter-thread révèle un angle mort ou dérive |
 | `CONTEXT vXX` | Instantané d'état | À chaque thread B09 — systématiquement |
 
-Les trois numéros sont indépendants. README v09 + PROMPT v10 + CONTEXT v15 = configuration valide.
+Les trois numéros sont indépendants. README v08 + PROMPT v09 + CONTEXT v15 = configuration valide.
 
 ---
 
@@ -301,75 +289,12 @@ INSIDE OS évoluera vers un réseau d'agents spécialisés. Chaque agent accède
 | Développement et mise en production | Validation Florent avant déploiement |
 | Engagements financiers | Jamais autonome |
 
-### Contrat JSON extraction (V2)
+### Principes communs à tous les agents
 
-Chaque thread produit un JSON structuré avec les champs suivants :
-
-```json
-{
-  "summary": {
-    "short": "2-3 phrases pour chat et agents",
-    "full": "prose dense 200-400 mots"
-  },
-  "decisions": [{
-    "decision": "énoncé actionnable",
-    "rationale": "pourquoi (optionnel)",
-    "evidence": "citation thread (optionnel)",
-    "bucket": ["B03", "B06"],
-    "impact": "critical | major | minor",
-    "status": "validated | proposed",
-    "agents": ["Agent Financier"],
-    "agent_suggestions": [{
-      "name": "Nom agent suggéré",
-      "rationale": "pourquoi il manque",
-      "type": "new | sub-agent",
-      "parent": "Agent parent (null si new)"
-    }]
-  }],
-  "lessons": [{
-    "lesson": "règle réutilisable",
-    "what_happened": "contexte (optionnel)",
-    "evidence": "citation (optionnel)",
-    "bucket": ["B09"],
-    "type": "technical | strategic | operational | process | relational",
-    "agents": ["Agent Infrastructure & Tech"],
-    "agent_suggestions": []
-  }]
-}
-```
-
-**Règles :**
-- `bucket` : maximum 3 par entrée
-- `agents` : liste exhaustive dans `os/prompts/` — jamais inventer
-- `agent_suggestions` : le LLM propose, Florent valide/adapte/rejette
-- `status=superseded` : ajouté manuellement ou par agent de maintenance — jamais à l'extraction
-
-### Prompts LLM
-
-```
-os/prompts/
-  ingest-pass1-v01.md   → passe 1 v01 (legacy — remplacé par v02)
-  ingest-pass1-v02.md   → passe 1 v02 : chunking adaptatif (ACTIF)
-  ingest-pass2-v01.md   → passe 2 : vérification delta — manques uniquement (ACTIF)
-```
-
-Configuration active dans `.env` :
-```
-INGEST_PROMPT_PASS1=ingest-pass1-v02
-INGEST_PROMPT_PASS2=ingest-pass2-v01
-VERIFY_PASS=always
-VERIFY_THRESHOLD=12000
-CHUNK_SIZE=20000
-CHUNK_OVERLAP=500
-```
-
-### Mémoire relationnelle — ENTITIES (V3)
-
-Chaque entité externe (client, fournisseur, collaborateur) a un profil dans la base ENTITIES qui s'enrichit au fil des threads :
-- **Extraction automatique** — décisions et lessons mentionnant l'entité liées à son profil
-- **Saisie manuelle Florent** — tags, notes, qualifications ("gentil", "problématique", "incertain")
-
-Les agents interrogent ENTITIES avant de répondre sur une entité — contexte relationnel complet disponible sans relire les threads.
+- Accès à toute la mémoire DECISIONS + LESSONS — pas de silo par bucket
+- Contextualise sa réponse dans son domaine de spécialité
+- Signale les manques et distingue mémoire / inférence / manque
+- Deep probing : peut interroger d'autres agents pour croiser les domaines
 
 ### Agents groupe F&A CAPITAL (V3)
 
@@ -508,9 +433,8 @@ os/
   scripts/
 
 data/
-  threads_to_process/   → threads bruts exportés (non versionné)
-  threads_to_inject/    → batch d'ingestion depuis cemetery (non versionné)
-  test_threads/         → test uniquement (4 fichiers max)
+  threads_to_process/   → threads à ingérer (non versionné)
+  test_threads/         → test uniquement
   data_cemetery/        → archive permanente (non versionné)
 
 docs/
@@ -573,19 +497,15 @@ travail réel
 - protocole de clôture de thread automatisé ✅
 - batch 10 threads réels validé ✅
 
-### V2 — Pipeline distillation intelligente (IMPLÉMENTÉ ✅)
+### V2 — Pipeline distillation intelligente (ARCHITECTURE VALIDÉE)
 
-- clean automatique des threads bruts ✅
-- double passe LLM : résumé dense + vérification exhaustivité ✅
-- archive thread_clean permanente dans data_cemetery ✅
-- résumés LLM conservés dans thread_summarized/ (archive locale permanente) ✅
-- chunking adaptatif : tout thread découpé en chunks de CHUNK_SIZE chars ✅
-  → 1 thread court = 1 chunk, 1 thread long = N chunks → merge
-  → validé sur B03-T03 : 133 717 chars → 7 chunks → 50d/50l
-- schéma Notion enrichi : bucket, impact, decision_status, lesson_type, agents ✅
-- inject lit thread_summarized/ en priorité (pas de limite 2000 chars Notion) ✅
-- statuts extraction_status/injection_status automatiques ✅
-- paramètre VERIFY_PASS configurable (always / conditional / never) ✅
+- clean automatique des threads bruts
+- double passe LLM : résumé dense + vérification exhaustivité
+- archive thread_clean permanente dans data_cemetery
+- résumés LLM conservés dans thread_summarized/ + blocs Notion
+- raw_text multi-lignes (résumé dense remplace raw_text une ligne)
+- chunking sur résumé uniquement (exception si > 12 000 chars)
+- paramètre VERIFY_PASS configurable (always / conditional / never)
 
 ### V3 — Réseau d'agents spécialisés
 
@@ -601,29 +521,6 @@ travail réel
 - intégration Claude Code pour évolution sans déconstruction
 - mémoire partagée multi-entités du groupe
 
-### Roadmap infrastructure — Migration base de données
-
-#### Court terme — Notion → Supabase
-- Remplacer Notion par Supabase (PostgreSQL managé + API REST auto-générée)
-- Supabase est open source, déployable en self-hosted, supporte les vraies requêtes SQL
-- Seul `os/lib/notion.mjs` est à remplacer par `os/lib/supabase.mjs` — pipeline Node intact
-- Élimine les timeouts API, les rate-limits, la dépendance propriétaire
-- Décision gravée dans decisions_structural — source B09-T29
-
-#### Moyen terme — PostgreSQL + pgvector
-- Ajouter pgvector à la base PostgreSQL pour stocker les embeddings des décisions et lessons
-- Les agents V3 interrogent la mémoire par recherche sémantique directement dans la base
-- Zéro dépendance externe (pas de Pinecone, pas de Weaviate) — tout dans un seul système
-- Prérequis : pipeline V2 stable + ingestion complète des 82 threads
-- Décision gravée dans decisions_structural — source B09-T29
-
-#### Long terme — Infrastructure propriétaire (V4)
-- PostgreSQL + pgvector + API Node maison sur Railway ou VPS
-- Zéro dépendance externe sur la couche données
-- Scalable : audio, transcriptions longues, multi-entités du groupe, agents proactifs
-- L'architecture actuelle (Node + scripts découplés) migre naturellement vers ce setup
-- Décision gravée dans decisions_structural — source B09-T29
-
 ---
 
 ## Sécurité
@@ -631,6 +528,5 @@ travail réel
 - `.env` non versionné
 - `data/data_cemetery/` non versionné
 - `data/threads_to_process/` non versionné
-- `data/threads_to_inject/` non versionné
 - Remote Git GitHub opérationnel : `https://github.com/florentweil-sketch/inside-os.git`
 - Backup tar.gz automatique via `os-thread-close.mjs`
