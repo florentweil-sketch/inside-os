@@ -17,7 +17,7 @@ import {
 
 const NOTION_VERSION    = "2025-09-03";
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const CLAUDE_MODEL      = "claude-sonnet-4-5";
+const CLAUDE_MODEL      = "claude-sonnet-4-6";
 
 // Passe 2 : always | conditional | never
 const VERIFY_PASS      = (process.env.VERIFY_PASS      || "always").toLowerCase();
