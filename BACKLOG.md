@@ -18,6 +18,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P5 | Checkpoint par chunk (sauvegarde partielle + reprise) | B09-T30 | [DONE] |
 | P6 | Fix data_cemetery/ — brut jamais archive, seulement le clean sous nom complet | B09-T32 | [DONE] |
 | P7 | Audit + nettoyage doublons existants dans data_cemetery/ | B09-T32 | [DONE] |
+| P8 | Boucle infinie auto-pagination sur thread BLOCKED (injection_status reste pending) — exclure les BLOCKED de la boucle | B09-T32 | [TODO] |
 
 ---
 
