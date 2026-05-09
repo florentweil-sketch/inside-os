@@ -15,7 +15,7 @@ const PORT = process.env.CHAT_PORT || 3000;
 const FETCH_LIMIT = 200;
 const TOP_K = 12;
 const LOG_DIR = "runtime/logs/chat";
-const CLAUDE_MODEL = "claude-sonnet-4-5";
+const CLAUDE_MODEL = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
 
 // ─── UTILS ───────────────────────────────────────────────────────────────────
 

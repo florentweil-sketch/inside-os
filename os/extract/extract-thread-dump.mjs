@@ -17,7 +17,7 @@ const NOTION_API_KEY    = process.env.NOTION_API_KEY;
 
 const NOTION_VERSION       = "2025-09-03";
 const NOTION_API           = "https://api.notion.com/v1";
-const CLAUDE_MODEL         = "claude-sonnet-4-5";
+const CLAUDE_MODEL         = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
 const JSON_PROP_SAFE_LIMIT = 1800;
 
 // Seuil a partir duquel on active l'extraction chunk par chunk (en caracteres)

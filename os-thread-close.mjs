@@ -26,6 +26,7 @@ const THREAD_NAME = (() => {
 
 const TOKEN = process.env.NOTION_API_KEY;
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
+const CLAUDE_MODEL = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
 const API = "https://api.notion.com/v1";
 const VER = "2025-09-03";
 const MAX_RETRIES = 2;
@@ -291,7 +292,7 @@ Date : ${new Date().toISOString().slice(0, 10)}
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify({ model: "claude-sonnet-4-5", max_tokens: 4000, messages: [{ role: "user", content: prompt }] }),
+    body: JSON.stringify({ model: CLAUDE_MODEL, max_tokens: 4000, messages: [{ role: "user", content: prompt }] }),
   });
   const data = await res.json();
   return data.content?.[0]?.text || "Erreur génération draft";
@@ -326,7 +327,7 @@ Réponds UNIQUEMENT en JSON valide :
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify({ model: "claude-sonnet-4-5", max_tokens: 1000, messages: [{ role: "user", content: prompt }] }),
+    body: JSON.stringify({ model: CLAUDE_MODEL, max_tokens: 1000, messages: [{ role: "user", content: prompt }] }),
   });
   const data = await res.json();
   try {
