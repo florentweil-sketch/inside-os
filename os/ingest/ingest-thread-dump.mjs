@@ -391,16 +391,16 @@ async function saveThreadClean(idDump, cleanedText) {
   return dest;
 }
 
-async function archiveToCemetery(idDump, cleanedText) {
+async function archiveToCemetery(idDump, filename, cleanedText) {
   await fs.mkdir(DATA_CEMETERY_DIR, { recursive: true });
-  const dest = path.join(DATA_CEMETERY_DIR, `${idDump}.txt`);
+  const dest = path.join(DATA_CEMETERY_DIR, filename);
   // Ne jamais écraser — vérifier existence d'abord
   try {
     await fs.access(dest);
-    console.log(`  [cemetery] ${idDump}.txt déjà présent — archive ignorée`);
+    console.log(`  [cemetery] ${filename} déjà présent — archive ignorée`);
   } catch {
     await fs.writeFile(dest, cleanedText, "utf8");
-    console.log(`  [cemetery] ${idDump}.txt archivé`);
+    console.log(`  [cemetery] ${filename} archivé`);
   }
   // Supprimer thread_clean/ après archivage — dossier temporaire, pas une archive
   try {
@@ -606,7 +606,7 @@ async function ingestOneFile(filename, ingestDir) {
   await saveThreadClean(idDump, cleanedText);
 
   // ── ÉTAPE 3 : ARCHIVE data_cemetery/ (copie permanente) ──────────────────
-  await archiveToCemetery(idDump, cleanedText);
+  await archiveToCemetery(idDump, filename, cleanedText);
 
   // ── ÉTAPE 4 : PASSE 1 LLM ────────────────────────────────────────────────
   process.stdout.write(`  [passe 1] ${idDump}... `);
