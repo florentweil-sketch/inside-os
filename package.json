@@ -17,7 +17,8 @@
     "os:chat": "node os/chat/notion-memory-chat.mjs",
     "os:server": "node os/chat/notion-memory-server.mjs",
     "os:reset-db": "node os/scripts/reset-databases.mjs",
-    "os:close": "node os-thread-close.mjs"
+    "os:close": "node os-thread-close.mjs",
+    "os:pre-thread": "node os/scripts/pre-thread.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
