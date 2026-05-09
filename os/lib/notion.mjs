@@ -16,31 +16,43 @@ export function getToken() {
   return mustEnv("NOTION_API_KEY");
 }
 
+const RETRY_STATUSES = new Set([502, 503, 504]);
+const RETRY_DELAYS = [1000, 5000, 30000];
+
 async function notionFetch(path, { method = "GET", body, token } = {}) {
-  const res = await fetch(API + path, {
-    method,
-    headers: {
-      Authorization: `Bearer ${token || getToken()}`,
-      "Notion-Version": NOTION_VERSION,
-      ...(body ? { "Content-Type": "application/json" } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  let attempt = 0;
+  while (true) {
+    const res = await fetch(API + path, {
+      method,
+      headers: {
+        Authorization: `Bearer ${token || getToken()}`,
+        "Notion-Version": NOTION_VERSION,
+        ...(body ? { "Content-Type": "application/json" } : {}),
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
 
-  const txt = await res.text();
-  let json;
-  try {
-    json = txt ? JSON.parse(txt) : {};
-  } catch {
-    json = { raw: txt };
+    const txt = await res.text();
+    let json;
+    try {
+      json = txt ? JSON.parse(txt) : {};
+    } catch {
+      json = { raw: txt };
+    }
+
+    if (!res.ok) {
+      if (RETRY_STATUSES.has(res.status) && attempt < RETRY_DELAYS.length) {
+        const delay = RETRY_DELAYS[attempt++];
+        console.warn(`  [notion] ${res.status} — retry ${attempt}/${RETRY_DELAYS.length} dans ${delay / 1000}s…`);
+        await new Promise((r) => setTimeout(r, delay));
+        continue;
+      }
+      const msg = typeof json === "object" ? JSON.stringify(json) : String(txt);
+      throw new Error(`Notion ${res.status}: ${msg}`);
+    }
+
+    return json;
   }
-
-  if (!res.ok) {
-    const msg = typeof json === "object" ? JSON.stringify(json) : String(txt);
-    throw new Error(`Notion ${res.status}: ${msg}`);
-  }
-
-  return json;
 }
 
 // Data source helpers (DS_ID = data_source_id Notion)
