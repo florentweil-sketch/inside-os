@@ -1,12 +1,25 @@
 Protocole de cloture de thread
 
-1. Florent dit "thread fini" 
-2. Claude génère PROMPT vXX+1 (si changements structurels) → fichier à télécharger 
-3. Florent lance : node os-thread-close.mjs --thread-name "B09-TXX-Sujet" 
-4. Florent valide le draft CONTEXT généré 
-5. Florent lance : node os-thread-close.mjs --inject --thread-name "B09-TXX-Sujet" 
-6. Florent copie PROMPT vXX+1 dans le repo (si bump) 
-7. git add -A && git commit -m "..." && git push
+Florent dit "thread fini" 
+
+PHASE 1 — Mémoire
+1. Export thread → threads_to_process/
+2. npm run os:ingest
+3. npm run os:inject
+
+PHASE 2 — Clôture
+4. node os-thread-close.mjs --thread-name "B09-TXX-Sujet"
+   → génère : draft CONTEXT + snapshot Notion + audit alignement automatique
+
+PHASE 3 — Validation LLM-assistée
+5. LLM valide alignement : draft CONTEXT ↔ thread réel ↔ BACKLOG ↔ README ↔ PROMPT
+   → corriger les divergences
+6. Remplacer drafts par versions définitives (CONTEXT, BACKLOG, README si bump, PROMPT si bump)
+7. git commit — tous les fichiers modifiés
+
+PHASE 4 — Injection B99
+8. node os-thread-close.mjs --inject
+9. Vérifier B99 dans Notion
 
 
 RÈGLE FONDAMENTALE — Rôles des documents système
