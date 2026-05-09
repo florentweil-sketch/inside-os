@@ -302,7 +302,7 @@ async function markThreadDump(pageId, { status, summary, error, retryCount }) {
   if (!DRY_RUN) await updatePage(pageId, props);
 }
 
-async function getCandidates(limit) {
+async function getCandidates() {
   const filterBase = {
     and: [
       { property: "extraction_status", select: { equals: "done" } },
@@ -330,7 +330,7 @@ async function getCandidates(limit) {
   };
 
   const res = await queryDataSource(THREAD_DUMP_DS_ID, {
-    page_size: Math.min(limit, 50),
+    page_size: 50,
     filter: FORCE ? filterForce : filterPending,
     sorts: [{ property: "id_dump", direction: "ascending" }],
   });
@@ -529,36 +529,55 @@ async function main() {
     await ensureArchivePropsExist(LESSONS_DS_ID,   "LESSONS");
   }
 
-  const candidates = await getCandidates(LIMIT);
+  const hasLimit = process.argv.includes("--limit");
+  let processed = 0;
 
-  if (!candidates.length) {
-    console.log(ONLY
-      ? `[os:inject] Aucun candidat pour --only ${ONLY}`
-      : "[os:inject] Aucun thread_dump a injecter."
+  while (true) {
+    const candidates = await getCandidates();
+
+    if (!candidates.length) {
+      if (processed === 0) {
+        console.log(ONLY
+          ? `[os:inject] Aucun candidat pour --only ${ONLY}`
+          : "[os:inject] Aucun thread_dump a injecter."
+        );
+      } else {
+        console.log(`[os:inject] Terminé — ${processed} thread(s) traité(s).`);
+      }
+      break;
+    }
+
+    console.log(
+      `[os:inject] Candidats: ${candidates.length}` +
+      (hasLimit ? ` (limit=${LIMIT})` : "") +
+      ` ${DRY_RUN ? "[DRY]" : ""}` +
+      ` ${FORCE ? "[FORCE]" : ""}` +
+      ` ${OVERWRITE ? "[OVERWRITE]" : ""}`
     );
-    return;
-  }
 
-  console.log(
-    `[os:inject] Candidats: ${candidates.length} (limit=${LIMIT})` +
-    ` ${DRY_RUN ? "[DRY]" : ""}` +
-    ` ${FORCE ? "[FORCE]" : ""}` +
-    ` ${OVERWRITE ? "[OVERWRITE]" : ""}`
-  );
+    for (const page of candidates) {
+      if (hasLimit && processed >= LIMIT) break;
 
-  for (const page of candidates) {
-    const dumpId = getPropText(page, "id_dump") || "(unknown)";
-    process.stdout.write(`-> Processing id_dump=${dumpId}...\n`);
+      const dumpId = getPropText(page, "id_dump") || "(unknown)";
+      process.stdout.write(`-> Processing id_dump=${dumpId}...\n`);
 
-    try {
-      const result = await processOne(page);
-      if (result === "done")    console.log("  OK");
-      else if (result === "error")   console.log("  ERROR (handled)");
-      else console.log(`  ${result}`);
-    } catch (e) {
-      console.error("  ERROR:", e.message);
-      const rc = page.properties?.retry_count?.number ?? 0;
-      await markThreadDump(page.id, { status: "error", summary: "", error: e.message, retryCount: rc + 1 });
+      try {
+        const result = await processOne(page);
+        if (result === "done")        console.log("  OK");
+        else if (result === "error")  console.log("  ERROR (handled)");
+        else console.log(`  ${result}`);
+      } catch (e) {
+        console.error("  ERROR:", e.message);
+        const rc = page.properties?.retry_count?.number ?? 0;
+        await markThreadDump(page.id, { status: "error", summary: "", error: e.message, retryCount: rc + 1 });
+      }
+
+      processed++;
+    }
+
+    if (hasLimit && processed >= LIMIT) {
+      console.log(`[os:inject] Limite atteinte (--limit ${LIMIT}) — ${processed} thread(s) traité(s).`);
+      break;
     }
   }
 }
