@@ -16,8 +16,8 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P3 | Retry LLM 529/500 automatique (3x backoff) | B09-T30 | [DONE] |
 | P4 | Inject auto-pagination (boucle jusqu'a 0 candidats) | B09-T30 | [DONE] |
 | P5 | Checkpoint par chunk (sauvegarde partielle + reprise) | B09-T30 | [DONE] |
-| P6 | Fix data_cemetery/ — brut jamais archive, seulement le clean sous nom complet | B09-T32 | [TODO] |
-| P7 | Audit + nettoyage doublons existants dans data_cemetery/ | B09-T32 | [TODO] |
+| P6 | Fix data_cemetery/ — brut jamais archive, seulement le clean sous nom complet | B09-T32 | [DONE] |
+| P7 | Audit + nettoyage doublons existants dans data_cemetery/ | B09-T32 | [DONE] |
 
 ---
 
