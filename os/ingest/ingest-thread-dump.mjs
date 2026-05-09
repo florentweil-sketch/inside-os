@@ -189,6 +189,28 @@ function mergeChunkResults(chunkResults) {
   };
 }
 
+function partialPath(idDump) {
+  return path.join(THREAD_SUMMARIZED_DIR, `${idDump}_partial.json`);
+}
+
+async function loadPartial(idDump) {
+  try {
+    const raw = await fs.readFile(partialPath(idDump), "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+async function savePartial(idDump, chunkResults) {
+  await fs.mkdir(THREAD_SUMMARIZED_DIR, { recursive: true });
+  await fs.writeFile(partialPath(idDump), JSON.stringify(chunkResults, null, 2), "utf8");
+}
+
+async function deletePartial(idDump) {
+  try { await fs.unlink(partialPath(idDump)); } catch { /* absent = OK */ }
+}
+
 async function runPass1(cleanedText, idDump) {
   if (!ANTHROPIC_API_KEY) {
     console.warn(`  [ingest] WARN: ANTHROPIC_API_KEY absent — passe 1 en fallback minimal`);
@@ -214,8 +236,18 @@ async function runPass1(cleanedText, idDump) {
     console.log(`  [passe 1] ${idDump} — ${cleanedText.length} chars → ${totalChunks} chunks de ${CHUNK_SIZE}`);
   }
 
-  const chunkResults = [];
+  // Reprise depuis checkpoint si disponible
+  const partial = totalChunks > 1 ? await loadPartial(idDump) : null;
+  const chunkResults = partial ?? [];
+  const startIndex = chunkResults.length;
+
+  if (partial && startIndex > 0) {
+    console.log(`  [passe 1] reprise depuis chunk ${startIndex + 1}/${totalChunks} (checkpoint trouvé)`);
+  }
+
   for (const chunk of chunks) {
+    if (chunk.index < startIndex) continue;
+
     if (totalChunks > 1) {
       process.stdout.write(`  [passe 1] chunk ${chunk.index + 1}/${totalChunks}... `);
     }
@@ -223,6 +255,7 @@ async function runPass1(cleanedText, idDump) {
     chunkResults.push(result);
     if (totalChunks > 1) {
       process.stdout.write(`OK (${result.decisions?.length ?? 0}d / ${result.lessons?.length ?? 0}l)\n`);
+      await savePartial(idDump, chunkResults);
     }
   }
 
@@ -380,6 +413,7 @@ async function saveSummarized(idDump, finalResult) {
   await fs.mkdir(THREAD_SUMMARIZED_DIR, { recursive: true });
   const dest = path.join(THREAD_SUMMARIZED_DIR, `${idDump}.json`);
   await fs.writeFile(dest, JSON.stringify(finalResult, null, 2), "utf8");
+  await deletePartial(idDump);
   return dest;
 }
 
