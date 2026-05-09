@@ -16,8 +16,9 @@ import {
 } from "../lib/notion.mjs";
 import { claudeFetch } from "../lib/claude.mjs";
 
-const NOTION_VERSION = "2025-09-03";
-const CLAUDE_MODEL   = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
+const NOTION_VERSION    = "2025-09-03";
+const CLAUDE_MODEL      = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 // Passe 2 : always | conditional | never
 const VERIFY_PASS      = (process.env.VERIFY_PASS      || "always").toLowerCase();
