@@ -1,6 +1,6 @@
 # INSIDE OS — BACKLOG
 
-Derniere mise a jour : 2026-05-09 (B09-T32)
+Derniere mise a jour : 2026-05-09 (B09-T33)
 
 Regle : ce fichier est mis a jour a chaque thread B09 via Claude Code.
 Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
@@ -18,7 +18,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P5 | Checkpoint par chunk (sauvegarde partielle + reprise) | B09-T30 | [DONE] |
 | P6 | Fix data_cemetery/ — brut jamais archive, seulement le clean sous nom complet | B09-T32 | [DONE] |
 | P7 | Audit + nettoyage doublons existants dans data_cemetery/ | B09-T32 | [DONE] |
-| P8 | Boucle infinie auto-pagination sur thread BLOCKED (injection_status reste pending) — exclure les BLOCKED de la boucle | B09-T32 | [TODO] |
+| P8 | Boucle infinie auto-pagination sur thread bloque (retry_count >= 2) — exclure les threads retry_count >= 2 de la boucle | B09-T33 | [DONE] |
 
 ---
 
@@ -29,6 +29,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P1 | Activer auto-recharge credits API Anthropic | B09-T30 | [DONE] |
 | P2 | Migration Notion -> Supabase | B09-T29 | [ROADMAP] |
 | P3 | pgvector pour recherche semantique agents V3 | B09-T29 | [ROADMAP] |
+| P4 | Remplir donnees financieres entities INSIDE_OS_DATABASES (CA, charges, marges) via agent dedie | B09-T33 | [ROADMAP] |
 
 ---
 
@@ -47,7 +48,9 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 |----------|------|--------|--------|
 | P1 | Verification automatique contenu B99 apres inject os-thread-close | B09-T31 | [TODO] |
 | P2 | Synchronisation BACKLOG.md <-> Notion a chaque cloture thread B09 | B09-T32 | [TODO] |
-| P3 | Upgrade Max 5x si sessions longues regulieres | B09-T30 | [ROADMAP] |
+| P3 | Corriger toute reference a injection_status=BLOCKED dans README/PROMPT — statut inexistant dans Notion, remplacer par : thread bloque = injection_status=error + retry_count >= 2 | B09-T33 | [TODO] |
+| P4 | Protocole de cloture canonique grave dans PROMPT v11 — ingest+inject thread avant close, validation LLM-assistee, commit avant --inject | B09-T33 | [DONE] |
+| P5 | Upgrade Max 5x si sessions longues regulieres | B09-T30 | [ROADMAP] |
 
 ---
 
