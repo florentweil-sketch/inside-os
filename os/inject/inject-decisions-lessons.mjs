@@ -303,9 +303,17 @@ async function markThreadDump(pageId, { status, summary, error, retryCount }) {
 }
 
 async function getCandidates() {
+  const notBlocked = {
+    or: [
+      { property: "retry_count", number: { is_empty: true } },
+      { property: "retry_count", number: { less_than: 2 } },
+    ],
+  };
+
   const filterBase = {
     and: [
       { property: "extraction_status", select: { equals: "done" } },
+      notBlocked,
       ...(ONLY ? [{ property: "id_dump", rich_text: { equals: ONLY } }] : []),
     ],
   };
