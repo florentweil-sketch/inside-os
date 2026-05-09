@@ -26,7 +26,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 
 | Priorite | Item | Source | Statut |
 |----------|------|--------|--------|
-| P1 | Activer auto-recharge credits API Anthropic | B09-T30 | [TODO] |
+| P1 | Activer auto-recharge credits API Anthropic | B09-T30 | [DONE] |
 | P2 | Migration Notion -> Supabase | B09-T29 | [ROADMAP] |
 | P3 | pgvector pour recherche semantique agents V3 | B09-T29 | [ROADMAP] |
 
