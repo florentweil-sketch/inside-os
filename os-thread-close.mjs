@@ -15,6 +15,7 @@ import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
 import { fileURLToPath } from "url";
+import { claudeFetch } from "./os/lib/claude.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
@@ -289,13 +290,12 @@ Date : ${new Date().toISOString().slice(0, 10)}
 ## Point de redémarrage minimal
 [5 lignes max : objectif / acquis / contraintes / état / prochaine étape]`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify({ model: CLAUDE_MODEL, max_tokens: 4000, messages: [{ role: "user", content: prompt }] }),
-  });
-  const data = await res.json();
-  return data.content?.[0]?.text || "Erreur génération draft";
+  try {
+    return await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 4000, messages: [{ role: "user", content: prompt }], apiKey: ANTHROPIC_KEY });
+  } catch (e) {
+    console.error(`  [thread-close] Échec génération draft après 3 retries : ${e.message}`);
+    return "Erreur génération draft";
+  }
 }
 
 // ─── LLM : bumps README/PROMPT ────────────────────────────────────────────────
@@ -324,16 +324,13 @@ Réponds UNIQUEMENT en JSON valide :
   "prompt_section_draft": "texte section à ajouter ou null"
 }`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-api-key": ANTHROPIC_KEY, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify({ model: CLAUDE_MODEL, max_tokens: 1000, messages: [{ role: "user", content: prompt }] }),
-  });
-  const data = await res.json();
   try {
-    const text = data.content?.[0]?.text || "{}";
+    const text = await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 1000, messages: [{ role: "user", content: prompt }], apiKey: ANTHROPIC_KEY });
     return JSON.parse(text.replace(/```json|```/g, "").trim());
-  } catch { return { readme_bump: false, prompt_bump: false }; }
+  } catch (e) {
+    console.error(`  [thread-close] Échec détection bumps après 3 retries : ${e.message}`);
+    return { readme_bump: false, prompt_bump: false };
+  }
 }
 
 // ─── Backup ───────────────────────────────────────────────────────────────────

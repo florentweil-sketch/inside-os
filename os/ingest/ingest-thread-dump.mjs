@@ -14,10 +14,10 @@ import {
   listAllBlockChildren,
   getToken,
 } from "../lib/notion.mjs";
+import { claudeFetch } from "../lib/claude.mjs";
 
-const NOTION_VERSION    = "2025-09-03";
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const CLAUDE_MODEL      = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
+const NOTION_VERSION = "2025-09-03";
+const CLAUDE_MODEL   = process.env.CLAUDE_MODEL ?? "claude-sonnet-4-6";
 
 // Passe 2 : always | conditional | never
 const VERIFY_PASS      = (process.env.VERIFY_PASS      || "always").toLowerCase();
@@ -164,23 +164,7 @@ async function runPass1OnChunk(chunkText, chunkIndex, totalChunks, idDump, promp
     '"""',
   ].join("\n");
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify({
-      model: CLAUDE_MODEL,
-      max_tokens: 8000,
-      messages: [{ role: "user", content: userMessage }],
-    }),
-  });
-
-  if (!res.ok) throw new Error(`Claude API ${res.status}`);
-  const data = await res.json();
-  const raw  = data.content?.[0]?.text?.trim() || "";
+  const raw = await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 8000, messages: [{ role: "user", content: userMessage }] });
   const parsed = parseJsonResponse(raw);
   if (!parsed) throw new Error("JSON parse failed");
   return parsed;
@@ -290,23 +274,7 @@ async function runPass2(cleanedText, pass1Result, idDump) {
   ].join("\n");
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: CLAUDE_MODEL,
-        max_tokens: 4000,
-        messages: [{ role: "user", content: userMessage }],
-      }),
-    });
-
-    if (!res.ok) throw new Error(`Claude API ${res.status}`);
-    const data  = await res.json();
-    const raw   = data.content?.[0]?.text?.trim() || "";
+    const raw   = await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 4000, messages: [{ role: "user", content: userMessage }] });
     const delta = parseJsonResponse(raw);
 
     if (!delta) {

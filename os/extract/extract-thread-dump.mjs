@@ -10,9 +10,9 @@ import {
   getPropText,
   rt,
 } from "../lib/notion.mjs";
+import { claudeFetch } from "../lib/claude.mjs";
 
 const THREAD_DUMP_DS_ID = process.env.THREAD_DUMP_DS_ID;
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const NOTION_API_KEY    = process.env.NOTION_API_KEY;
 
 const NOTION_VERSION       = "2025-09-03";
@@ -146,27 +146,7 @@ async function getPageText(page) {
 // ─── CLAUDE ──────────────────────────────────────────────────────────────────
 
 async function callClaude(prompt, maxTokens = 4000) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify({
-      model: CLAUDE_MODEL,
-      max_tokens: maxTokens,
-      messages: [{ role: "user", content: prompt }],
-    }),
-  });
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Claude API ${res.status}: ${err}`);
-  }
-
-  const data = await res.json();
-  return data.content?.[0]?.text?.trim() || "";
+  return claudeFetch({ model: CLAUDE_MODEL, max_tokens: maxTokens, messages: [{ role: "user", content: prompt }] });
 }
 
 // Retry progressif : tente l'extraction JSON avec des tokens croissants.
