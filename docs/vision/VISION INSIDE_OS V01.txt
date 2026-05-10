@@ -1,0 +1,9 @@
+VISION INSIDE_OS V01
+
+Chemin 1 — Inside OS dev (produit scalable) On construit un système générique, vendable, déployable dans n'importe quelle entreprise. Chaque amélioration technique (scripts, pipeline, agents) sert les deux chemins mais c'est ici qu'on pense architecture, scalabilité, sandbox, intégrité.
+Chemin 2 — Inside OS user (ton entreprise) La mémoire vivante de F&A Capital tourne déjà — 92 threads injectés, decisions_structural, lessons_learnings, B99 actif. C'est ton avantage concurrentiel immédiat. L'objectif : que chaque décision importante soit capturée, interrogeable, et que les agents puissent te challenger et exécuter.
+
+Certains threads seront dev — pipeline, scripts, architecture, sandbox. Résultat : un meilleur outil.
+Certains threads seront user — ingérer les vrais threads business (chantiers, juridique, financier, stratégie), alimenter la mémoire, commencer à cadrer L'Associé. Résultat : ton copilote qui grandit.
+Les deux se nourrissent mutuellement mais ne doivent pas être mélangés dans le même thread.
+
