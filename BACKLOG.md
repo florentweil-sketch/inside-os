@@ -57,6 +57,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P6 | Confronter docs/vision/ (vision-v01.txt + NOTION VS DECISIONS.txt) avec vision actuelle via LLM inside-os | B09-T34 | [TODO] |
 | P7 | Script de verification integrite systeme (schema Notion, DS_IDs, fichiers critiques, pipeline executable) | B09-T34 | [TODO] |
 | P8 | Script os:pre-thread — audit complet avant ouverture thread B09 : lecture versions actives (README/PROMPT/CONTEXT/BACKLOG) depuis repo, dernier thread B09 traite, snapshot Notion live, detection divergences entre docs. Produit PRE_THREAD_B09-TXX.md pret a uploader en debut de thread. A traiter avec P7 dans le meme thread B09 | B09-T34 | [TODO] |
+| P9 | Resoudre perte fin de thread — les echanges post-export (commits finaux, --inject, decisions terminales) ne sont pas captures en memoire Notion. Identifier et valider une sequence de cloture qui capture l'integralite du thread. Bumper PROMPT v12 quand sequence validee | B09-T34 | [TODO] |
 
 ---
 

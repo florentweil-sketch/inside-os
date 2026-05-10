@@ -158,6 +158,7 @@ Date : 2026-05-10
 - Synchronisation BACKLOG.md ↔ Notion manuelle
 - fix P8 jamais testé en conditions réelles
 - BACKLOG_DEV / BACKLOG_USER non encore créés
+- Fin de thread non capturée en mémoire Notion : les échanges post-export (commits finaux, --inject, décisions terminales) ne sont pas injectés — problème identifié, solution non validée, à traiter en B09-T35
 
 **Ce qui manque :**
 - Création BACKLOG_DEV.md + BACKLOG_USER.md (thread dédié)
@@ -206,6 +207,9 @@ Tant que BACKLOG_DEV / BACKLOG_USER ne sont pas créés, les priorités DEV et U
 **Purge threads_to_process/ manuelle :**
 Risque de retraitement inutile à chaque clôture si threads non purgés.
 
+**Fin de thread non capturée :**
+Les échanges post-export ne sont pas en mémoire Notion. Le CONTEXT v22 et os:pre-thread compensent partiellement mais ce n'est pas une solution validée.
+
 **Crédits API Anthropic :**
 Auto-recharge configurée, non testée en condition réelle d'épuisement.
 
@@ -231,7 +235,8 @@ Auto-recharge configurée, non testée en condition réelle d'épuisement.
 ## 10. Priorité réelle de redémarrage
 
 **Actions immédiates (B09-T35) :**
-1. Créer BACKLOG_DEV.md + BACKLOG_USER.md — restructuration depuis BACKLOG.md actuel
+1. Résoudre la perte de fin de thread — valider une séquence de clôture qui capture l'intégralité du thread en mémoire Notion (SYSTEME P9)
+2. Créer BACKLOG_DEV.md + BACKLOG_USER.md — restructuration depuis BACKLOG.md actuel
 2. Implémenter purge automatique threads_to_process/ après inject réussi
 3. Cadrage L'Associé — premier agent USER opérationnel
 
@@ -263,5 +268,5 @@ BACKLOG_DEV et BACKLOG_USER créés, purge automatique implémentée.
 - **Acquis** : pipeline V2 + P1-P8 stables, 93 inject_done, repo propre, README v11, os:pre-thread opérationnel, décisions DEV/USER gravées
 - **En attente** : BACKLOG_DEV/USER, purge auto, Notion sandbox, L'Associé, fix P8 test réel
 - **Contraintes** : DS_IDs stables, CLAUDE_MODEL dans .env, B09 exclu auto, injection_status = pending/done/error uniquement
-- **Fragilités** : purge threads_to_process/ manuelle, BACKLOG non encore splitté DEV/USER, fix P8 non testé réel
+- **Fragilités** : purge threads_to_process/ manuelle, fin de thread non capturée en mémoire Notion (problème identifié non résolu), BACKLOG non encore splitté DEV/USER, fix P8 non testé réel
 - **Prochaine étape** : lancer os:pre-thread → uploader PRE_THREAD_B09-T35.md → ouvrir B09-T35
