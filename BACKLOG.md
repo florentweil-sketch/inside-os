@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG
 
-Derniere mise a jour : 2026-05-10 (B09-T34)
-Version : v34
+Derniere mise a jour : 2026-05-15 (B09-T35)
+Version : v35
 Versions docs actifs : README v11 | PROMPT v11 | CONTEXT v22
 
 Regle : ce fichier est mis a jour a chaque thread B09 via Claude Code.
@@ -21,6 +21,8 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P6 | Fix data_cemetery/ — brut jamais archive, seulement le clean sous nom complet | B09-T32 | [DONE] |
 | P7 | Audit + nettoyage doublons existants dans data_cemetery/ | B09-T32 | [DONE] |
 | P8 | Boucle infinie auto-pagination sur thread bloque (retry_count >= 2) — exclure les threads retry_count >= 2 de la boucle | B09-T33 | [DONE] |
+| P9 | Score de pertinence minimum sur lessons_learnings — rejeter automatiquement les resultats hors perimetre de la question (1 residue technique sur 4 resultats RH detecte en test qualite DB) | B09-T35 | [TODO] |
+| P10 | Tag semantique "agent" sur entrees decisions_structural concernant L'Associe — distinguer au niveau donnees la collision lexicale "associe" (personne) vs "L'Associe" (agent IA) | B09-T35 | [TODO] |
 
 ---
 
@@ -56,8 +58,22 @@ Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
 | P5 | Upgrade Max 5x si sessions longues regulieres | B09-T30 | [ROADMAP] |
 | P6 | Confronter docs/vision/ (vision-v01.txt + NOTION VS DECISIONS.txt) avec vision actuelle via LLM inside-os | B09-T34 | [TODO] |
 | P7 | Script de verification integrite systeme (schema Notion, DS_IDs, fichiers critiques, pipeline executable) | B09-T34 | [TODO] |
-| P8 | Script os:pre-thread — audit complet avant ouverture thread B09 : lecture versions actives (README/PROMPT/CONTEXT/BACKLOG) depuis repo, dernier thread B09 traite, snapshot Notion live, detection divergences entre docs. Produit PRE_THREAD_B09-TXX.md pret a uploader en debut de thread. A traiter avec P7 dans le meme thread B09 | B09-T34 | [DONE] |
-| P9 | Resoudre perte fin de thread — les echanges post-export (commits finaux, --inject, decisions terminales) ne sont pas captures en memoire Notion. Identifier et valider une sequence de cloture qui capture l'integralite du thread. Bumper PROMPT v12 quand sequence validee | B09-T34 | [TODO] |
+| P8 | Script os:pre-thread — audit complet avant ouverture thread B09 | B09-T34 | [DONE] |
+| P9 | Resoudre perte fin de thread — les echanges post-export ne sont pas captures en memoire Notion. Identifier et valider une sequence de cloture complete. Bumper PROMPT v12 quand sequence validee | B09-T34 | [TODO] |
+| P10 | Statut sources externes L'Associe — trancher injection dans INSIDE OS vs consultation ponctuelle | B09-T35 | [TODO] |
+
+---
+
+## AGENTS
+
+| Priorite | Item | Source | Statut |
+|----------|------|--------|--------|
+| P1 | Cadrage L'Associe — PROMPT_ASSOCIE_v01.md produit et commite dans docs/prompts/ | B09-T35 | [DONE] |
+| P2 | Agent Integration IA — conception, deploiement et orchestration des agents IA dans INSIDE OS. Bucket B09. Relations privilegiees : L'Associe (coherence prompts) + Agent Infrastructure & Tech (coherence technique). Gardien de la coherence du reseau d'agents | B09-T35 | [TODO] |
+| P3 | Implementer sous-agents specialises F&A Capital (architecture V3) | B09-T35 | [ROADMAP] |
+| P4 | Deep probing inter-agents | B09-T35 | [ROADMAP] |
+| P5 | Memoire relationnelle ENTITIES — agent dedie | B09-T35 | [ROADMAP] |
+| P6 | Agents personnels Florent (Developpement Personnel, Sante, Vie Privee, Patrimoine) | B09-T35 | [ROADMAP] |
 
 ---
 
