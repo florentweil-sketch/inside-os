@@ -332,7 +332,8 @@ async function handleChat(question, mode = "pilotage") {
     .map((item) => scoreItem(item, tokens, boosts, question))
     .sort((a, b) => b._score - a._score);
 
-  const selectedItems = scored.slice(0, TOP_K);
+  const MIN_SCORE = 15;
+  const selectedItems = scored.filter(i => i._score >= MIN_SCORE).slice(0, TOP_K);
   const memoryContext = buildMemoryContext(selectedItems);
   const responseText  = await askClaude(question, memoryContext, mode);
 
