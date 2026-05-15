@@ -175,6 +175,18 @@ function scoreItem(item, tokens, boosts, question) {
     score -= 4; hits.push("old-history");
   }
 
+  // P10 — désambiguïsation 'associe' humain vs agent IA
+  const qNorm = normalizeText(question);
+  const qHasAssocie = qNorm.includes('associe');
+  const qHasAgent = qNorm.includes('agent') || qNorm.includes(' ia') || qNorm.includes('intelligence');
+  const isHumanAssocieQuery = qHasAssocie && !qHasAgent;
+  const itemIsAgentDecision = String(item.source_dump_id || '').toUpperCase().startsWith('B09-');
+  const hitOnAssocie = hits.includes('associe');
+  if (isHumanAssocieQuery && itemIsAgentDecision && hitOnAssocie) {
+    score -= 20;
+    hits.push('p10:agent-penalty');
+  }
+
   return { ...item, _score: score, _hits: Array.from(new Set(hits)) };
 }
 
