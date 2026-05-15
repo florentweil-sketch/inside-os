@@ -2,7 +2,7 @@
 
 Derniere mise a jour : 2026-05-15 (B09-T35)
 Version : v35
-Versions docs actifs : README v11 | PROMPT v11 | CONTEXT v22
+Versions docs actifs : README v11 | PROMPT v11 | CONTEXT v23
 
 Regle : ce fichier est mis a jour a chaque thread B09 via Claude Code.
 Miroir Notion : page INSIDE-OS-BACKLOG (meme contenu, pilotage visuel).
