@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG DEV
 
-Derniere mise a jour : 2026-05-16 (B09-T36)
-Version : v03
+Derniere mise a jour : 2026-05-16 (B09-T37)
+Version : v04
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
 Regle : ce fichier est mis a jour a chaque thread B09-Dev via Claude Code.
@@ -39,6 +39,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P5 | Sandbox Notion isolee pour tests pipeline — bloquee API deprecee, a reprendre apres migration Supabase | B09-T36 | [ROADMAP] |
 | P6 | Backup automatique regulier INSIDE OS — export Notion + repo + .env chiffre + data_cemetery/ + thread_summarized/ | B09-T37 | [TODO] |
 | P7 | Audit securite complet — verifier .gitignore (.env, .env.test, dossiers data), chiffrement .env au repos, audit historique git (pas de secrets exposes), restreindre perimetre integrations API Notion, anticiper auth admin/user/dev pour interfaces UI | B09-T37 | [TODO] |
+| P8 | Anticiper pivot Supabase avant lancement ingestion massive documents — Notion devient goulot si volume explose. A integrer dans planification INFRA P2 | B09-T37 | [TODO] |
 
 ---
 
@@ -61,6 +62,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P13 | Script tri repo — classement automatique deterministe des fichiers repo dans les bons dossiers cibles (complement de l'agent classifieur documents metier) | B09-T37 | [TODO] |
 | P14 | Politique archivage et versionnage fichiers critiques — automatiser pour : PROMPT_MAITRE, README, CONTEXT, PROMPT_ASSOCIE, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD, ingest-pass1-vXX, ingest-pass2-vXX, .env.example. Regle grave dans PROMPT MAITRE v13, implementation via script | B09-T36 | [TODO] |
 | P15 | IDEAS.md + commande os:idea — pense-bete inter-thread : ajouter une idee horodatee en [RAW], revue en fin de thread (BACKLOG / DROPPED / KEEP) | B09-T36 | [TODO] |
+| P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject | B09-T37 | [TODO] |
 
 ---
 

@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG USER
 
-Derniere mise a jour : 2026-05-16 (B09-T36)
-Version : v03
+Derniere mise a jour : 2026-05-16 (B09-T37)
+Version : v04
 Pilote : L'Associe + agents metier (B01-B08)
 Coordination technique : Agent Integration IA (B09)
 
