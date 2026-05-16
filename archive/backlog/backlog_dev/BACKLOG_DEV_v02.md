@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG DEV
 
-Derniere mise a jour : 2026-05-16 (B09-T36)
-Version : v03
+Derniere mise a jour : 2026-05-15 (B09-T37)
+Version : v02
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
 Regle : ce fichier est mis a jour a chaque thread B09-Dev via Claude Code.
@@ -24,7 +24,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P9 | Tokenizer diacritiques + MIN_SCORE=15 pertinence lessons_learnings | B09-T36 | [DONE] |
 | P10 | Desambiguisation tag semantique "associe" humain vs agent IA dans scoring | B09-T36 | [DONE] |
 | P11 | Purge automatique threads_to_process/ apres inject reussi | B09-T34 | [TODO] |
-| P12 | Verifier que VERIFY_PASS=always est la config par defaut dans .env.example et documenter explicitement — Passe 1 + Passe 2 deja en place | B09-T37 | [TODO] |
+| P12 | Double validation LLM resumes de thread — Passe 1 (extraction) + Passe 2 (verification exhaustivite) deja en place, verifier que VERIFY_PASS=always est la config par defaut recommandee et documenter explicitement | B09-T37 | [TODO] |
 
 ---
 
@@ -37,8 +37,8 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P3 | pgvector pour recherche semantique agents V3 | B09-T29 | [ROADMAP] |
 | P4 | Remplir donnees financieres entities INSIDE_OS_DATABASES via agent dedie | B09-T33 | [ROADMAP] |
 | P5 | Sandbox Notion isolee pour tests pipeline — bloquee API deprecee, a reprendre apres migration Supabase | B09-T36 | [ROADMAP] |
-| P6 | Backup automatique regulier INSIDE OS — export Notion + repo + .env chiffre + data_cemetery/ + thread_summarized/ | B09-T37 | [TODO] |
-| P7 | Audit securite complet — verifier .gitignore (.env, .env.test, dossiers data), chiffrement .env au repos, audit historique git (pas de secrets exposes), restreindre perimetre integrations API Notion, anticiper auth admin/user/dev pour interfaces UI | B09-T37 | [TODO] |
+| P6 | Backup automatique regulier INSIDE OS — export Notion + repo + .env chiffre | B09-T37 | [TODO] |
+| P7 | Audit securite complet — .env prod, credentials Notion API, acces repo, gitignore, failles exposition | B09-T37 | [TODO] |
 
 ---
 
@@ -47,20 +47,19 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | Priorite | Item | Source | Statut |
 |----------|------|--------|--------|
 | P1 | Verification automatique contenu B99 apres inject os-thread-close | B09-T31 | [TODO] |
-| P2 | Synchronisation BACKLOG DEV+USER -> Notion a chaque cloture thread B09 — mecanisme decide : Option A push one-way (fichiers .md = source de verite, Notion = miroir lecture seule). A integrer en phase 4 de la sequence canonique os-thread-close.mjs | B09-T32 | [TODO] |
+| P2 | Synchronisation BACKLOG.md <-> Notion a chaque cloture thread B09 — mecanisme a decider | B09-T32 | [TODO] |
 | P3 | Corriger toute reference a injection_status=BLOCKED dans README/PROMPT | B09-T33 | [DONE] |
 | P4 | Protocole de cloture canonique grave dans PROMPT v11 | B09-T33 | [DONE] |
 | P5 | Upgrade Max 5x si sessions longues regulieres | B09-T30 | [ROADMAP] |
 | P6 | Confronter docs/vision/ avec vision actuelle via LLM inside-os | B09-T34 | [TODO] |
-| P7 | Script de verification integrite systeme — schema Notion, DS_IDs, fichiers critiques, pipeline executable, .gitignore, etat dossiers non versionnés | B09-T34 | [TODO] |
+| P7 | Script de verification integrite systeme (schema Notion, DS_IDs, fichiers critiques, pipeline executable) | B09-T34 | [TODO] |
 | P8 | Script os:pre-thread — audit complet avant ouverture thread B09 | B09-T34 | [DONE] |
 | P9 | Resoudre perte fin de thread — sequence de cloture complete capturant les echanges post-export | B09-T34 | [TODO] |
 | P10 | Ameliorer os:pre-thread : audit alignement etendu — verifier BACKLOG_DEV.md, BACKLOG_USER.md, PROMPT_ASSOCIE_vXX.md, thread precedent inject_done en Notion, BACKLOG.md coherent comme index | B09-T36 | [TODO] |
 | P11 | os:pre-thread archive l'ancien PRE_THREAD dans docs/pre-threads/ avant de generer le nouveau — un seul PRE_THREAD actif a la racine, historique complet dans docs/pre-threads/ | B09-T36 | [TODO] |
 | P12 | Script alignement post-cloture — verifier coherence README / CONTEXT / PROMPT / PROMPT_ASSOCIE / BACKLOG_DEV / BACKLOG_USER apres chaque ingest+inject definitif | B09-T37 | [TODO] |
 | P13 | Script tri repo — classement automatique deterministe des fichiers repo dans les bons dossiers cibles (complement de l'agent classifieur documents metier) | B09-T37 | [TODO] |
-| P14 | Politique archivage et versionnage fichiers critiques — automatiser pour : PROMPT_MAITRE, README, CONTEXT, PROMPT_ASSOCIE, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD, ingest-pass1-vXX, ingest-pass2-vXX, .env.example. Regle grave dans PROMPT MAITRE v13, implementation via script | B09-T36 | [TODO] |
-| P15 | IDEAS.md + commande os:idea — pense-bete inter-thread : ajouter une idee horodatee en [RAW], revue en fin de thread (BACKLOG / DROPPED / KEEP) | B09-T36 | [TODO] |
+| P14 | Politique archivage et versionnage fichiers critiques — automatiser : PROMPT_ASSOCIE, README, CONTEXT, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD. Regle grave dans PROMPT MAITRE, implementation via script | B09-T37 | [TODO] |
 
 ---
 
