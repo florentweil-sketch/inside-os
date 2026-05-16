@@ -13,6 +13,7 @@
 import "dotenv/config";
 import fs from "fs";
 import path from "path";
+import readline from "readline";
 import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 import { claudeFetch } from "./os/lib/claude.mjs";
@@ -24,6 +25,22 @@ const THREAD_NAME = (() => {
   const i = process.argv.indexOf("--thread-name");
   return i !== -1 ? process.argv[i + 1] : "B09-T??";
 })();
+
+// Question de confirmation avant clôture
+if (!process.argv.includes('--inject')) {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  const answer = await new Promise(resolve => rl.question(
+    '\n⚠️  Le thread est-il définitif et ingesté dans Notion ? (o/n) : ',
+    resolve
+  ));
+  rl.close();
+  if (answer.trim().toLowerCase() !== 'o') {
+    console.log('\n→ Ingestez le thread d\'abord : npm run os:ingest -- --only BXX-TXX');
+    console.log('→ Puis injectez : npm run os:inject');
+    console.log('→ Puis relancez : npm run os:close\n');
+    process.exit(0);
+  }
+}
 
 const TOKEN = process.env.NOTION_API_KEY;
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
@@ -166,7 +183,19 @@ function findThreadFile(threadName) {
     const match = files.find(f => f.includes(threadName) || threadName.includes(f.replace(".txt", "")));
     if (match) return fs.readFileSync(path.join(dir, match), "utf-8").slice(0, 15000);
   }
-  return null;
+  // Fallback : lire le JSON summarized si le .txt n'est pas trouvé
+  const summarizedPath = path.join(ROOT, 'data/thread_summarized', `${threadName}.json`);
+  try {
+    const json = JSON.parse(fs.readFileSync(summarizedPath, 'utf8'));
+    const content = [
+      json.summary?.full || json.summary?.short || '',
+      (json.decisions || []).map(d => `DECISION: ${d.content}`).join('\n'),
+      (json.lessons || []).map(l => `LESSON: ${l.content}`).join('\n')
+    ].filter(Boolean).join('\n\n');
+    return content || null;
+  } catch {
+    return null;
+  }
 }
 
 // ─── Alignment checks ────────────────────────────────────────────────────────
