@@ -55,8 +55,8 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P7 | Script de verification integrite systeme — schema Notion, DS_IDs, fichiers critiques, pipeline executable, .gitignore, etat dossiers non versionnés | B09-T34 | [TODO] |
 | P8 | Script os:pre-thread — audit complet avant ouverture thread B09 | B09-T34 | [DONE] |
 | P9 | Resoudre perte fin de thread — sequence de cloture complete capturant les echanges post-export | B09-T34 | [TODO] |
-| P10 | Ameliorer os:pre-thread : audit alignement etendu — verifier BACKLOG_DEV.md, BACKLOG_USER.md, PROMPT_ASSOCIE_vXX.md, thread precedent inject_done en Notion, BACKLOG.md coherent comme index | B09-T36 | [TODO] |
-| P11 | os:pre-thread archive l'ancien PRE_THREAD dans docs/pre-threads/ avant de generer le nouveau — un seul PRE_THREAD actif a la racine, historique complet dans docs/pre-threads/ | B09-T36 | [TODO] |
+| P10 | Ameliorer os:pre-thread : audit alignement etendu — verifier BACKLOG_DEV.md, BACKLOG_USER.md, PROMPT_ASSOCIE_vXX.md, thread precedent inject_done en Notion, BACKLOG.md coherent comme index | B09-T36 | [DONE] |
+| P11 | os:pre-thread archive l'ancien PRE_THREAD dans docs/pre-threads/ avant de generer le nouveau — un seul PRE_THREAD actif a la racine, historique complet dans docs/pre-threads/ | B09-T36 | [DONE] |
 | P12 | Script alignement post-cloture — verifier coherence README / CONTEXT / PROMPT / PROMPT_ASSOCIE / BACKLOG_DEV / BACKLOG_USER apres chaque ingest+inject definitif | B09-T37 | [TODO] |
 | P13 | Script tri repo — classement automatique deterministe des fichiers repo dans les bons dossiers cibles (complement de l'agent classifieur documents metier) | B09-T37 | [TODO] |
 | P14 | Politique archivage et versionnage fichiers critiques — automatiser pour : PROMPT_MAITRE, README, CONTEXT, PROMPT_ASSOCIE, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD, ingest-pass1-vXX, ingest-pass2-vXX, .env.example. Regle grave dans PROMPT MAITRE v13, implementation via script | B09-T36 | [TODO] |

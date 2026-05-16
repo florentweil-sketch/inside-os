@@ -1,6 +1,7 @@
 # INSIDE OS — BACKLOG (INDEX)
 
 Derniere mise a jour : 2026-05-16 (B09-T36)
+Version : index
 
 Ce fichier est un index. Les backlogs operationnels sont desormais separes :
 

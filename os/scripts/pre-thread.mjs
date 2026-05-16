@@ -28,10 +28,13 @@ const REPO_ROOT  = path.resolve(__dirname, "../..");
 const THREAD_DUMP_DS = process.env.THREAD_DUMP_DS_ID;
 
 const DOCS = {
-  readme:  { dir: "docs/readme",                   prefix: "README_INSIDE_OS_v",  suffix: ".md",                    label: "README"  },
-  prompt:  { dir: "docs/prompts transfert thread", prefix: "PROMPT_MAITRE_v",     suffix: "_TRANSFERT_DE_THREAD.md", label: "PROMPT"  },
-  context: { dir: "docs/context",                  prefix: "INSIDE_OS_CONTEXT_v", suffix: ".md",                    label: "CONTEXT" },
-  backlog: { dir: ".",                              prefix: "BACKLOG",             suffix: "",                       label: "BACKLOG", single: true },
+  readme:         { dir: "docs/readme",                   prefix: "README_INSIDE_OS_v",  suffix: ".md",                    label: "README"         },
+  prompt:         { dir: "docs/prompts transfert thread", prefix: "PROMPT_MAITRE_v",     suffix: "_TRANSFERT_DE_THREAD.md", label: "PROMPT"         },
+  prompt_associe: { dir: "docs/prompts/associe",          prefix: "PROMPT_ASSOCIE_v",    suffix: ".md",                    label: "PROMPT ASSOCIE" },
+  context:        { dir: "docs/context",                  prefix: "INSIDE_OS_CONTEXT_v", suffix: ".md",                    label: "CONTEXT"        },
+  backlog:        { dir: ".", singleFile: "BACKLOG.md",      label: "BACKLOG",      single: true },
+  backlog_dev:    { dir: ".", singleFile: "BACKLOG_DEV.md",  label: "BACKLOG DEV",  single: true },
+  backlog_user:   { dir: ".", singleFile: "BACKLOG_USER.md", label: "BACKLOG USER", single: true },
 };
 
 // ─── UTILS ───────────────────────────────────────────────────────────────────
@@ -44,7 +47,7 @@ async function findActiveDoc(docConfig) {
   const dirPath = path.join(REPO_ROOT, docConfig.dir);
 
   if (docConfig.single) {
-    const filePath = path.join(dirPath, "BACKLOG.md");
+    const filePath = path.join(dirPath, docConfig.singleFile ?? "BACKLOG.md");
     try {
       const content = await fs.readFile(filePath, "utf8");
       const versionMatch = content.match(/^Version\s*:\s*v(\d+)/m);
@@ -221,10 +224,13 @@ Généré par : npm run os:pre-thread
 
 | Document | Version | Emplacement |
 |----------|---------|-------------|
-| README   | ${docs.readme.versionStr}  | docs/readme/ |
-| PROMPT   | ${docs.prompt.versionStr}  | docs/prompts transfert thread/ |
-| CONTEXT  | ${docs.context.versionStr} | docs/context/ |
-| BACKLOG  | ${docs.backlog.versionStr} | BACKLOG.md |
+| README          | ${docs.readme.versionStr}         | docs/readme/ |
+| PROMPT          | ${docs.prompt.versionStr}         | docs/prompts transfert thread/ |
+| PROMPT ASSOCIE  | ${docs.prompt_associe.versionStr} | docs/prompts/associe/ |
+| CONTEXT         | ${docs.context.versionStr}        | docs/context/ |
+| BACKLOG         | ${docs.backlog.versionStr}        | BACKLOG.md |
+| BACKLOG DEV     | ${docs.backlog_dev.versionStr}    | BACKLOG_DEV.md |
+| BACKLOG USER    | ${docs.backlog_user.versionStr}   | BACKLOG_USER.md |
 
 ---
 
@@ -305,7 +311,21 @@ async function main() {
     divergences.forEach(d => log(`  ${d}`));
   }
 
-  log("\n━━━ ÉTAPE 5 : Génération fichier ━━━");
+  log("\n━━━ ÉTAPE 5 : Archivage PRE_THREAD existants ━━━");
+  const rootFiles = await fs.readdir(REPO_ROOT);
+  const existingPT = rootFiles.filter(f => f.startsWith("PRE_THREAD_") && f.endsWith(".md"));
+  if (existingPT.length > 0) {
+    const archiveDir = path.join(REPO_ROOT, "docs/pre-threads");
+    await fs.mkdir(archiveDir, { recursive: true });
+    for (const file of existingPT) {
+      await fs.rename(path.join(REPO_ROOT, file), path.join(archiveDir, file));
+      log(`  Archivé : ${file}`);
+    }
+  } else {
+    log("  (aucun fichier PRE_THREAD à archiver)");
+  }
+
+  log("\n━━━ ÉTAPE 6 : Génération fichier ━━━");
   const threadLabel = nextThreadName || "B09-TXX";
   const outFilename = `PRE_THREAD_${threadLabel}.md`;
   const outPath = path.join(REPO_ROOT, outFilename);
@@ -314,7 +334,7 @@ async function main() {
   log(`  ✅ Fichier généré : ${outFilename}`);
 
   log("\n━━━ RÉSUMÉ ━━━");
-  log(`  Versions : README ${docs.readme.versionStr} | PROMPT ${docs.prompt.versionStr} | CONTEXT ${docs.context.versionStr} | BACKLOG ${docs.backlog.versionStr}`);
+  log(`  Versions : README ${docs.readme.versionStr} | PROMPT ${docs.prompt.versionStr} | PROMPT ASSOCIE ${docs.prompt_associe.versionStr} | CONTEXT ${docs.context.versionStr} | BACKLOG ${docs.backlog.versionStr} | BACKLOG DEV ${docs.backlog_dev.versionStr} | BACKLOG USER ${docs.backlog_user.versionStr}`);
   log(`  Divergences : ${divergences.length === 0 ? "aucune ✅" : `${divergences.length} détectée(s) ⚠️`}`);
   log(`  Fichier : ${outPath}`);
   log("\n  → Uploade ce fichier en début de thread B09 — le LLM a tout.\n");
