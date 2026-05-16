@@ -395,19 +395,27 @@ async function saveThreadClean(idDump, cleanedText) {
 async function archiveToCemetery(idDump, filename, cleanedText) {
   await fs.mkdir(DATA_CEMETERY_DIR, { recursive: true });
   const dest = path.join(DATA_CEMETERY_DIR, filename);
-  // Ne jamais écraser — vérifier existence d'abord
+
   try {
-    await fs.access(dest);
-    console.log(`  [cemetery] ${filename} déjà présent — archive ignorée`);
+    const existing = await fs.readFile(dest, "utf8");
+    const existingLen = existing.length;
+    const newLen = cleanedText.length;
+
+    if (newLen > existingLen) {
+      await fs.writeFile(dest, cleanedText, "utf8");
+      console.log(`  [cemetery] ${filename} enrichi — mis à jour (${existingLen} → ${newLen} chars)`);
+    } else {
+      console.log(`  [cemetery] WARNING — ${filename} version actuelle plus longue ou égale (${existingLen} → ${newLen} chars) — conservée`);
+    }
   } catch {
     await fs.writeFile(dest, cleanedText, "utf8");
     console.log(`  [cemetery] ${filename} archivé`);
   }
-  // Supprimer thread_clean/ après archivage — dossier temporaire, pas une archive
+
   try {
     const cleanPath = path.join(THREAD_CLEAN_DIR, `${idDump}.txt`);
     await fs.unlink(cleanPath);
-  } catch { /* fichier absent = déjà supprimé, pas d'erreur */ }
+  } catch { /* déjà supprimé ou absent */ }
 }
 
 async function saveSummarized(idDump, finalResult) {
