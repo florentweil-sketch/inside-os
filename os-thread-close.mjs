@@ -604,6 +604,25 @@ ${modFiles.map(f => `- ${f}`).join("\n") || "Aucun"}
           fs.renameSync(draftPath, finalPath);
           console.log(`  ✓ Draft renommé : INSIDE_OS_CONTEXT_${ctxVersion}_draft.md → INSIDE_OS_CONTEXT_${ctxVersion}.md`);
         }
+        // Vérification B99 (P1)
+        try {
+          const verifyBlocks = await getPageBlocks(b99.id);
+          const verifyText = verifyBlocks
+            .map(b => b.paragraph?.rich_text?.map(r => r.plain_text).join("") ?? "")
+            .join("");
+          const lengthOk = verifyText.length > 500;
+          const versionOk = verifyText.includes(ctxVersion);
+          if (lengthOk && versionOk) {
+            console.log(`  ✓ B99 vérifié (${verifyText.length} chars, ${ctxVersion} présent)`);
+          } else {
+            const reasons = [];
+            if (!lengthOk) reasons.push(`contenu trop court (${verifyText.length} chars)`);
+            if (!versionOk) reasons.push(`${ctxVersion} absent du texte`);
+            console.log(`  ⚠  B99 suspect — ${reasons.join(", ")}`);
+          }
+        } catch (e) {
+          console.log(`  ⚠  Vérification B99 échouée : ${e.message}`);
+        }
       } else {
         console.log("  ⚠  Page B99 non trouvée dans THREAD_DUMP");
       }
