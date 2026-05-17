@@ -24,7 +24,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P9 | Tokenizer diacritiques + MIN_SCORE=15 pertinence lessons_learnings | B09-T36 | [DONE] |
 | P10 | Desambiguisation tag semantique "associe" humain vs agent IA dans scoring | B09-T36 | [DONE] |
 | P11 | Purge automatique threads_to_process/ apres inject reussi | B09-T34 | [TODO] |
-| P12 | Verifier que VERIFY_PASS=always est la config par defaut dans .env.example et documenter explicitement — Passe 1 + Passe 2 deja en place | B09-T37 | [TODO] |
+| P12 | Verifier que VERIFY_PASS=always est la config par defaut dans .env.example et documenter explicitement — Passe 1 + Passe 2 deja en place | B09-T37 | [DONE] |
 
 ---
 
@@ -55,7 +55,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P6 | Confronter docs/vision/ avec vision actuelle via LLM inside-os | B09-T34 | [TODO] |
 | P7 | Script de verification integrite systeme — schema Notion, DS_IDs, fichiers critiques, pipeline executable, .gitignore, etat dossiers non versionnés | B09-T34 | [TODO] |
 | P8 | Script os:pre-thread — audit complet avant ouverture thread B09 | B09-T34 | [DONE] |
-| P9 | Resoudre perte fin de thread — sequence de cloture complete capturant les echanges post-export | B09-T34 | [TODO] |
+| P9 | P9 complet : os-thread-close extrait les echanges post-export non captures dans le dump (fixes, decisions, commits fin de session) et les inclut dans le rapport de cloture + dans le CONTEXT genere (sections Acquis reels + Fichiers produits). Critere : aucune decision prise apres export Notion ne disparait entre deux threads | B09-T34 | [TODO] |
 | P10 | Ameliorer os:pre-thread : audit alignement etendu — verifier BACKLOG_DEV.md, BACKLOG_USER.md, PROMPT_ASSOCIE_vXX.md, thread precedent inject_done en Notion, BACKLOG.md coherent comme index | B09-T36 | [DONE] |
 | P11 | os:pre-thread archive l'ancien PRE_THREAD dans docs/pre-threads/ avant de generer le nouveau — un seul PRE_THREAD actif a la racine, historique complet dans docs/pre-threads/ | B09-T36 | [DONE] |
 | P12 | Script alignement post-cloture — verifier coherence README / CONTEXT / PROMPT / PROMPT_ASSOCIE / BACKLOG_DEV / BACKLOG_USER apres chaque ingest+inject definitif | B09-T37 | [TODO] |
