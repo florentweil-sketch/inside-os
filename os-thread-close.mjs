@@ -377,6 +377,28 @@ function backup() {
   } catch (e) { return `ERREUR: ${e.message}`; }
 }
 
+// ─── Post-export capture (P9) ────────────────────────────────────────────────
+
+async function capturePostExport() {
+  process.stdout.write("\n━━━ PHASE 10 : ÉCHANGES POST-EXPORT ━━━\n");
+  process.stdout.write("  Colle le texte puis Ctrl+D, ou Entrée seule pour ignorer :\n\n");
+
+  return new Promise(resolve => {
+    const lines = [];
+    const rl = readline.createInterface({ input: process.stdin });
+
+    rl.on("line", line => {
+      if (lines.length === 0 && line.trim() === "") {
+        rl.close();
+      } else {
+        lines.push(line);
+      }
+    });
+
+    rl.on("close", () => resolve(lines.join("\n").trim()));
+  });
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -629,6 +651,20 @@ ${modFiles.map(f => `- ${f}`).join("\n") || "Aucun"}
     } catch (e) { console.log(`  ✗ Injection échouée : ${e.message}`); }
   } else {
     console.log(`\n  Valider le draft puis : node os-thread-close.mjs --inject --thread-name "${THREAD_NAME}"`);
+  }
+
+  // PHASE 10 — ÉCHANGES POST-EXPORT (P9)
+  if (INJECT) {
+    const postExport = await capturePostExport();
+    const postSection = postExport
+      ? `\n---\n\n## ÉCHANGES POST-EXPORT\n\n${postExport}\n`
+      : "\n---\n\n## ÉCHANGES POST-EXPORT\n\n(non fournis)\n";
+    fs.appendFileSync(reportPath, postSection);
+    if (postExport) {
+      console.log(`  ✓ ${postExport.length} chars capturés — ajoutés au rapport de clôture`);
+    } else {
+      console.log("  · Ignoré");
+    }
   }
 
   console.log(`\n✓ Clôture terminée en ${elapsed}s\n`);
