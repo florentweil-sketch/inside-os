@@ -66,6 +66,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject. NON PRIORITAIRE — enrichissement DB pour L Associe avant integration, pas avant migration Supabase | B09-T37 | [TODO] |
 | P17 | os:pre-thread — générer le PRE_THREAD avec le nom du thread SUIVANT (+1) et non du thread courant. Accepte déjà --next en argument mais doit incrémenter automatiquement sans argument | B09-T39 | [DONE] |
 | P18 | Infrastructure idle agent — scheduler, sandbox/, budget tokens, rapport session, file sujets idle | B09-T38 | [ROADMAP] |
+| P19 | os:pre-thread — diff automatique CONTEXT vXX vs snapshot Notion live au démarrage de chaque thread : comparer inject_done, DECISIONS, LESSONS, derniers commits connus. Toute divergence signalée clairement avant ouverture. Remplace la purge manuelle P11 comme solution architecturale à la boucle thread | B09-T38 | [TODO] |
 
 ---
 
