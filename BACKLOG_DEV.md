@@ -1,6 +1,6 @@
 # INSIDE OS — BACKLOG DEV
 
-Derniere mise a jour : 2026-05-16 (B09-T37)
+Derniere mise a jour : 2026-05-17 (B09-T38)
 Version : v04
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
@@ -64,6 +64,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P15 | IDEAS.md + commande os:idea — pense-bete inter-thread : ajouter une idee horodatee en [RAW], revue en fin de thread (BACKLOG / DROPPED / KEEP) | B09-T36 | [TODO] |
 | P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject | B09-T37 | [TODO] |
 | P17 | os:pre-thread — générer le PRE_THREAD avec le nom du thread SUIVANT (+1) et non du thread courant. Accepte déjà --next en argument mais doit incrémenter automatiquement sans argument | B09-T37 | [TODO] |
+| P18 | Infrastructure idle agent — scheduler, sandbox/, budget tokens, rapport session, file sujets idle | B09-T38 | [ROADMAP] |
 
 ---
 

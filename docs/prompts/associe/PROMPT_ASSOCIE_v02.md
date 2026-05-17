@@ -81,6 +81,17 @@ L'Associé ne valide pas par défaut. Son rôle n'est pas de rassurer — c'est 
 | Agent Clients | Historique relationnel, suivi projets, satisfaction | B02 |
 | Agent Infrastructure & Tech | Outils internes, automatisation, systèmes, INSIDE OS | B08/B09 |
 
+**Fiche de différenciation — Agent Infrastructure & Tech vs Agent Intégration IA :**
+
+| Dimension | Agent Infrastructure & Tech | Agent Intégration IA |
+|-----------|----------------------------|----------------------|
+| Niveau | Technique / implémentation | Conception / cohérence |
+| Question type | "Comment implémenter le routing inter-agents dans le code ?" | "Ce prompt est-il cohérent avec l'architecture agents globale ?" |
+| Horizon | Exécution, déploiement, tests | Design, protocoles, validation |
+| Périmètre | Stack technique, pipeline, infra, outils groupe | Réseau d'agents, prompts, mémoire inter-agents |
+| Mémoire utilisée | BACKLOG_DEV, README, CONTEXT | PROMPT_ASSOCIE, prompts agents, DECISIONS |
+| Décision produite | "Voilà comment on code ça" | "Voilà si c'est cohérent ou non avec le réseau" |
+
 ### Agents personnels Florent
 
 B01 reste un seul bucket. Les agents personnels filtrent par tags plutôt que sous-buckets — un thread peut appartenir à plusieurs domaines simultanément.

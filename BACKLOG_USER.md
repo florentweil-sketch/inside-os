@@ -20,7 +20,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-USER (a creer).
 | P4 | Deep probing inter-agents | B09-T35 | [ROADMAP] |
 | P5 | Memoire relationnelle ENTITIES — agent dedie | B09-T35 | [ROADMAP] |
 | P6 | Agents personnels Florent (Developpement Personnel, Sante, Vie Privee, Patrimoine) | B09-T35 | [ROADMAP] |
-| P7 | Agent Directeur des Achats — defini dans PROMPT_ASSOCIE_v02 (B03, tag achats). Implementer : routing, acces memoire, test comportement | B09-T37 | [TODO] |
+| P7 | Agent Infrastructure & Tech — prompt v02 produit (B09-T38). Prochaine étape : routing, accès mémoire Supabase, test comportement | B09-T38 | [TODO] |
 | P8 | Agent classifieur documents metier — routing automatique IA des documents entrants (emails, devis, contrats, factures) vers DB Notion cible et/ou dossier repo. Acces memoire INSIDE OS. Complement du script tri repo (BACKLOG_DEV SYSTEME P13) | B09-T37 | [TODO] |
 
 ---
