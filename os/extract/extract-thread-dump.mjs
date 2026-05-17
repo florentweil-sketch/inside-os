@@ -14,6 +14,7 @@ import { claudeFetch } from "../lib/claude.mjs";
 
 const THREAD_DUMP_DS_ID = process.env.THREAD_DUMP_DS_ID;
 const NOTION_API_KEY    = process.env.NOTION_API_KEY;
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 const NOTION_VERSION       = "2025-09-03";
 const NOTION_API           = "https://api.notion.com/v1";
