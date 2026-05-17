@@ -150,6 +150,17 @@ async function lastB09Thread() {
   }
 }
 
+// ─── Auto-incrément nom de thread ────────────────────────────────────────────
+
+function autoIncrementThreadName(lastName) {
+  const match = lastName.match(/^(B09-T)(\d+)-(.+)-(\d+)$/);
+  if (!match) return null;
+  const [, prefix, tNum, subject, sessionNum] = match;
+  const nextT = String(parseInt(tNum) + 1);
+  const nextSession = String(parseInt(sessionNum) + 1).padStart(sessionNum.length, "0");
+  return `${prefix}${nextT}-${subject}-${nextSession}`;
+}
+
 // ─── ÉTAPE 4 : Détection divergences ─────────────────────────────────────────
 
 function detectDivergences(docs, snapshot, lastB09) {
@@ -161,7 +172,7 @@ function detectDivergences(docs, snapshot, lastB09) {
     }
   }
 
-  if (docs.context.content && docs.context.content.includes("[À COMPLÉTER]")) {
+  if (docs.context.content && docs.context.content.split("\n").some(l => l.includes("[À COMPLÉTER]") && !l.includes("Aucun"))) {
     issues.push("🔴 CONTEXT actif contient des sections [À COMPLÉTER] — probablement un draft non validé");
   }
 
@@ -303,6 +314,13 @@ async function main() {
     log(`  ⚠️  Erreur : ${lastB09.error}`);
   }
 
+  const resolvedThreadName = nextThreadName
+    || (lastB09.ok && lastB09.name && lastB09.name !== "aucun" ? autoIncrementThreadName(lastB09.name) : null)
+    || "B09-TXX";
+  if (!nextThreadName && resolvedThreadName !== "B09-TXX") {
+    log(`  → Nom auto-calculé : ${resolvedThreadName}`);
+  }
+
   log("\n━━━ ÉTAPE 4 : Divergences ━━━");
   const divergences = detectDivergences(docs, snapshot, lastB09);
   if (divergences.length === 0) {
@@ -326,7 +344,7 @@ async function main() {
   }
 
   log("\n━━━ ÉTAPE 6 : Génération fichier ━━━");
-  const threadLabel = nextThreadName || "B09-TXX";
+  const threadLabel = resolvedThreadName;
   const outFilename = `PRE_THREAD_${threadLabel}.md`;
   const outPath = path.join(REPO_ROOT, outFilename);
   const content = buildPreThreadDoc(nextThreadName, docs, snapshot, lastB09, divergences);

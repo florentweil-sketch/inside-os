@@ -320,7 +320,7 @@ Date : ${new Date().toISOString().slice(0, 10)}
 [5 lignes max : objectif / acquis / contraintes / état / prochaine étape]`;
 
   try {
-    return await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 4000, messages: [{ role: "user", content: prompt }], apiKey: ANTHROPIC_KEY });
+    return await claudeFetch({ model: CLAUDE_MODEL, max_tokens: 6000, messages: [{ role: "user", content: prompt }], apiKey: ANTHROPIC_KEY });
   } catch (e) {
     console.error(`  [thread-close] Échec génération draft après 3 retries : ${e.message}`);
     return "Erreur génération draft";
