@@ -63,7 +63,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P14 | Politique archivage et versionnage fichiers critiques — automatiser pour : PROMPT_MAITRE, README, CONTEXT, PROMPT_ASSOCIE, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD, ingest-pass1-vXX, ingest-pass2-vXX, .env.example. Regle grave dans PROMPT MAITRE v13, implementation via script | B09-T36 | [TODO] |
 | P15 | IDEAS.md + commande os:idea — pense-bete inter-thread : ajouter une idee horodatee en [RAW], revue en fin de thread (BACKLOG / DROPPED / KEEP) | B09-T36 | [TODO] |
 | P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject | B09-T37 | [TODO] |
-| P17 | os:pre-thread — générer le PRE_THREAD avec le nom du thread SUIVANT (+1) et non du thread courant. Accepte déjà --next en argument mais doit incrémenter automatiquement sans argument | B09-T37 | [TODO] |
+| P17 | os:pre-thread — générer le PRE_THREAD avec le nom du thread SUIVANT (+1) et non du thread courant. Accepte déjà --next en argument mais doit incrémenter automatiquement sans argument | B09-T39 | [DONE] |
 | P18 | Infrastructure idle agent — scheduler, sandbox/, budget tokens, rapport session, file sujets idle | B09-T38 | [ROADMAP] |
 
 ---
