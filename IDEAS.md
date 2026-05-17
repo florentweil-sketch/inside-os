@@ -5,4 +5,4 @@ Format : [RAW] idee horodatee — revue en fin de thread (BACKLOG / DROPPED / KE
 
 ---
 
-- [RAW] 2026-05-16 19:15 — test idee inter-thread
+- [DROPPED] 2026-05-16 19:15 — test idee inter-thread (test fonctionnel os:idea, pas une vraie idée)
