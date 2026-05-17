@@ -1,11 +1,11 @@
-# PROMPT MAÎTRE V13 — TRANSFERT DE THREAD
+# PROMPT MAÎTRE V14 — TRANSFERT DE THREAD
 ## AUDIT DE CONTINUITÉ STRATÉGIQUE INSIDE OS
 ### VERSION SÉCURISÉE AVEC DÉCLENCHEUR DE SATURATION
 
-Version : v13
-Date : 2026-05-16
-Produit dans : B09-T36-Notion-Dev-024 (session étendue)
-Précédent : PROMPT_MAITRE_v12 (B09-T37-nul)
+Version : v14
+Date : 2026-05-17
+Produit dans : B09-T39-Notion-Dev-027
+Précédent : PROMPT_MAITRE_v13 (B09-T36-Notion-Dev-024)
 
 ---
 
@@ -196,6 +196,12 @@ VERIFY_THRESHOLD=12000  # utilisé si VERIFY_PASS=conditional
 ```
 
 **Règle critique :** toujours commiter (étape 7) avant d'injecter B99 (étape 8). Sans commit préalable, le CONTEXT commité et le B99 injecté peuvent diverger.
+
+### Discipline d'ouverture de thread
+
+**Règle de priorisation — points ouverts vs objectif déclaré**
+
+En ouverture de chaque thread, les points explicitement marqués "à clarifier" ou "à tester" dans le CONTEXT précédent sont traités en premier, avant d'attaquer l'objectif déclaré du thread. Exception : si Florent décide explicitement de les reporter, la raison est documentée dans le thread avant de passer à la suite. Un report sans raison documentée est une dérive, pas une décision.
 
 ### Pense-bête inter-thread IDEAS.md
 
