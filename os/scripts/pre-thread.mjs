@@ -26,6 +26,8 @@ const REPO_ROOT  = path.resolve(__dirname, "../..");
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 
 const THREAD_DUMP_DS = process.env.THREAD_DUMP_DS_ID;
+const DECISIONS_DS   = process.env.DECISIONS_DS_ID;
+const LESSONS_DS     = process.env.LESSONS_DS_ID;
 
 const DOCS = {
   readme:         { dir: "docs/readme",                   prefix: "README_INSIDE_OS_v",  suffix: ".md",                    label: "README"         },
@@ -165,50 +167,193 @@ function autoIncrementThreadName(lastName) {
   return `${prefix}${nextT}-${subject}-${nextSession}`;
 }
 
-// ─── ÉTAPE 4 : Détection divergences ─────────────────────────────────────────
+// ─── ÉTAPE 4 : Détection divergences sur 3 axes ──────────────────────────────
+//
+// Règle anti-hallucination (transverse) : « aligné » n'est JAMAIS l'état de repos.
+// C'est le résultat explicite de 3 axes qui ont (a) tourné et (b) passé.
+// Si un axe ne peut pas s'exécuter (Notion injoignable, donnée illisible) →
+// l'axe est INDÉTERMINÉ et le verdict global ne peut pas être « aligné ».
+//
+//   AXE A — Fraîcheur CONTEXT : le numéro extrait du nom de fichier (latest sur
+//           disque, garanti par findActiveDoc fail-loud) == le numéro déclaré
+//           DANS le contenu du CONTEXT.
+//   AXE B — Cohérence compteurs Notion : inject_pending == 0, inject_error == 0.
+//   AXE C — Cohérence CONTEXT ↔ Notion : les chiffres affirmés dans le CONTEXT
+//           (inject_done, DECISIONS, LESSONS) == ce que Notion montre live.
 
-function detectDivergences(docs, snapshot, lastB09) {
+async function countDataSource(dataSourceId, filter) {
+  let total = 0;
+  let cursor;
+  while (true) {
+    const res = await queryDataSource(dataSourceId, {
+      page_size: 100,
+      start_cursor: cursor,
+      ...(filter ? { filter } : {}),
+    });
+    total += res.results.length;
+    if (!res.has_more) break;
+    cursor = res.next_cursor;
+  }
+  return total;
+}
+
+function extractContextSelfVersion(content) {
+  if (!content) return null;
+  const m = content.match(/^#\s*INSIDE_OS_CONTEXT_v(\d+)/m)
+         || content.match(/^\*\*Version\s*:\s*v(\d+)\*\*/m)
+         || content.match(/^Version\s*:\s*v(\d+)/m);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+function extractContextClaims(content) {
+  if (!content) return {};
+  const num = re => {
+    const m = content.match(re);
+    return m ? parseInt(m[1].replace(/[\s,_.]/g, ""), 10) : null;
+  };
+  return {
+    inject_done: num(/inject_done\s*[=:]\s*(\d[\d\s,_.]*)/i),
+    decisions:   num(/DECISIONS[^\n]*?(\d[\d\s,_.]{2,})/i),
+    lessons:     num(/LESSONS[^\n]*?(\d[\d\s,_.]{2,})/i),
+  };
+}
+
+async function detectDivergences(docs, snapshot, lastB09) {
   const issues = [];
+  const axes = {
+    A: { name: "Fraîcheur CONTEXT",        status: null, detail: null },
+    B: { name: "Compteurs Notion",         status: null, detail: null },
+    C: { name: "CONTEXT ↔ Notion (live)",  status: null, detail: null },
+  };
 
-  if (docs.context.lastThread && docs.backlog.lastThread) {
-    if (docs.context.lastThread !== docs.backlog.lastThread) {
-      issues.push(`⚠️  Thread source divergent : CONTEXT dit ${docs.context.lastThread}, BACKLOG dit ${docs.backlog.lastThread}`);
+  // — AXE A — fraîcheur CONTEXT (file vs self-declared version) —
+  if (!docs.context || !docs.context.content || !docs.context.version) {
+    axes.A.status = "INDETERMINE";
+    axes.A.detail = "CONTEXT illisible ou non sélectionné";
+  } else {
+    const selfV = extractContextSelfVersion(docs.context.content);
+    if (selfV == null) {
+      axes.A.status = "INDETERMINE";
+      axes.A.detail = "version interne du CONTEXT non extractible (regex sans match)";
+    } else if (selfV !== docs.context.version) {
+      axes.A.status = "DIVERGENCE";
+      axes.A.detail = `fichier INSIDE_OS_CONTEXT_v${docs.context.version}.md mais contenu déclare v${selfV}`;
+      issues.push(`🔴 AXE A — fraîcheur CONTEXT : ${axes.A.detail}`);
+    } else {
+      axes.A.status = "OK";
+      axes.A.detail = `v${docs.context.version} (fichier == contenu)`;
     }
   }
 
-  if (docs.context.content && docs.context.content.split("\n").some(l => l.includes("[À COMPLÉTER]") && !l.includes("Aucun"))) {
-    issues.push("🔴 CONTEXT actif contient des sections [À COMPLÉTER] — probablement un draft non validé");
+  // — AXE B — compteurs Notion (pending == 0 && error == 0) —
+  if (!snapshot.ok) {
+    axes.B.status = "INDETERMINE";
+    axes.B.detail = `snapshot Notion KO : ${snapshot.error}`;
+  } else {
+    const probs = [];
+    if (snapshot.inject_pending > 0) probs.push(`inject_pending=${snapshot.inject_pending}`);
+    if (snapshot.inject_error   > 0) probs.push(`inject_error=${snapshot.inject_error}`);
+    if (probs.length > 0) {
+      axes.B.status = "DIVERGENCE";
+      axes.B.detail = probs.join(", ");
+      issues.push(`🔴 AXE B — compteurs Notion : ${axes.B.detail}`);
+    } else {
+      axes.B.status = "OK";
+      axes.B.detail = `inject_done=${snapshot.inject_done}, pending=0, error=0`;
+    }
   }
 
-  if (docs.backlog.content) {
+  // — AXE C — chiffres affirmés par le CONTEXT vs Notion live —
+  if (!docs.context?.content) {
+    axes.C.status = "INDETERMINE";
+    axes.C.detail = "CONTEXT illisible";
+  } else if (!snapshot.ok) {
+    axes.C.status = "INDETERMINE";
+    axes.C.detail = "snapshot Notion KO (impossible de comparer)";
+  } else if (!DECISIONS_DS || !LESSONS_DS) {
+    axes.C.status = "INDETERMINE";
+    axes.C.detail = "DECISIONS_DS_ID ou LESSONS_DS_ID manquant dans .env";
+  } else {
+    const claims = extractContextClaims(docs.context.content);
+    let liveDecisions, liveLessons;
+    try {
+      liveDecisions = await countDataSource(DECISIONS_DS);
+      liveLessons   = await countDataSource(LESSONS_DS);
+    } catch (e) {
+      axes.C.status = "INDETERMINE";
+      axes.C.detail = `query Notion DECISIONS/LESSONS KO : ${e.message}`;
+    }
+    if (axes.C.status !== "INDETERMINE") {
+      const diffs = [];
+      if (claims.inject_done != null && claims.inject_done !== snapshot.inject_done) {
+        diffs.push(`inject_done : CONTEXT dit ${claims.inject_done}, Notion live ${snapshot.inject_done}`);
+      }
+      if (claims.decisions != null && claims.decisions !== liveDecisions) {
+        diffs.push(`DECISIONS : CONTEXT dit ${claims.decisions}, Notion live ${liveDecisions}`);
+      }
+      if (claims.lessons != null && claims.lessons !== liveLessons) {
+        diffs.push(`LESSONS : CONTEXT dit ${claims.lessons}, Notion live ${liveLessons}`);
+      }
+      const missing = [];
+      if (claims.inject_done == null) missing.push("inject_done");
+      if (claims.decisions   == null) missing.push("DECISIONS");
+      if (claims.lessons     == null) missing.push("LESSONS");
+
+      if (diffs.length > 0) {
+        axes.C.status = "DIVERGENCE";
+        axes.C.detail = diffs.join(" | ");
+        diffs.forEach(d => issues.push(`🔴 AXE C — ${d}`));
+      } else if (missing.length === 3) {
+        axes.C.status = "INDETERMINE";
+        axes.C.detail = "aucun chiffre (inject_done/DECISIONS/LESSONS) extractible du CONTEXT";
+      } else {
+        axes.C.status = "OK";
+        axes.C.detail =
+          `inject_done=${snapshot.inject_done}, DECISIONS=${liveDecisions}, LESSONS=${liveLessons}` +
+          (missing.length > 0 ? ` (non vérifié : ${missing.join(", ")})` : "");
+      }
+    }
+  }
+
+  // — Avertissements complémentaires (non bloquants, hors verdict 3-axes) —
+  if (docs.context?.lastThread && docs.backlog?.lastThread
+      && docs.context.lastThread !== docs.backlog.lastThread) {
+    issues.push(`⚠️  Thread source divergent : CONTEXT dit ${docs.context.lastThread}, BACKLOG dit ${docs.backlog.lastThread}`);
+  }
+  if (docs.context?.content
+      && docs.context.content.split("\n").some(l => l.includes("[À COMPLÉTER]") && !l.includes("Aucun"))) {
+    issues.push("🔴 CONTEXT actif contient des sections [À COMPLÉTER] — probablement un draft non validé");
+  }
+  if (docs.backlog?.content) {
     const readmeMatch  = docs.backlog.content.match(/README v(\d+)/);
     const promptMatch  = docs.backlog.content.match(/PROMPT v(\d+)/);
     const contextMatch = docs.backlog.content.match(/CONTEXT v(\d+)/);
-
-    if (readmeMatch && parseInt(readmeMatch[1]) !== docs.readme.version) {
+    if (readmeMatch  && parseInt(readmeMatch[1], 10)  !== docs.readme.version)
       issues.push(`⚠️  BACKLOG référence README v${readmeMatch[1]} mais repo contient v${docs.readme.version}`);
-    }
-    if (promptMatch && parseInt(promptMatch[1]) !== docs.prompt.version) {
+    if (promptMatch  && parseInt(promptMatch[1], 10)  !== docs.prompt.version)
       issues.push(`⚠️  BACKLOG référence PROMPT v${promptMatch[1]} mais repo contient v${docs.prompt.version}`);
-    }
-    if (contextMatch && parseInt(contextMatch[1]) !== docs.context.version) {
+    if (contextMatch && parseInt(contextMatch[1], 10) !== docs.context.version)
       issues.push(`⚠️  BACKLOG référence CONTEXT v${contextMatch[1]} mais repo contient v${docs.context.version}`);
-    }
   }
 
-  if (snapshot.ok && snapshot.inject_pending > 0) {
-    issues.push(`⚠️  ${snapshot.inject_pending} thread(s) en inject_pending dans Notion — à traiter avant ouverture thread`);
-  }
-  if (snapshot.ok && snapshot.inject_error > 0) {
-    issues.push(`⚠️  ${snapshot.inject_error} thread(s) en inject_error dans Notion — vérifier retry_count`);
+  // — Verdict global : preuve positive ou INDÉTERMINÉ —
+  const allOk = axes.A.status === "OK" && axes.B.status === "OK" && axes.C.status === "OK";
+  const anyDiv = [axes.A, axes.B, axes.C].some(a => a.status === "DIVERGENCE");
+  let verdict;
+  if (allOk) {
+    verdict = "ALIGNE";
+  } else if (anyDiv) {
+    verdict = "DIVERGENCE";
+  } else {
+    verdict = "INDETERMINE";
   }
 
-  return issues;
+  return { axes, issues, verdict };
 }
 
 // ─── ÉTAPE 5 : Générer le fichier PRE_THREAD ─────────────────────────────────
 
-function buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergences) {
+function buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergenceReport) {
   if (!resolvedThreadName || /TXX|Sujet/.test(resolvedThreadName)) {
     throw new Error(`buildPreThreadDoc : nom de thread non résolu ("${resolvedThreadName}") — refus d'écrire un placeholder en clair`);
   }
@@ -228,9 +373,26 @@ function buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergen
 - Statut : ${lastB09.status}`
     : `- ERREUR : ${lastB09.error}`;
 
-  const divergencesSection = divergences.length === 0
-    ? "✅ Aucune divergence détectée — système aligné"
-    : divergences.join("\n");
+  const { axes, issues, verdict } = divergenceReport;
+  const axeLine = (k) => {
+    const a = axes[k];
+    const icon = a.status === "OK" ? "✅" : a.status === "DIVERGENCE" ? "🔴" : "🟡";
+    return `- ${icon} AXE ${k} — ${a.name} : ${a.status} (${a.detail})`;
+  };
+  const verdictLine =
+    verdict === "ALIGNE"      ? "✅ VERDICT : ALIGNÉ — les 3 axes ont tourné et passé."
+  : verdict === "DIVERGENCE"  ? "🔴 VERDICT : DIVERGENCE — au moins un axe a détecté un écart (voir détails ci-dessous)."
+  :                             "🟡 VERDICT : INDÉTERMINÉ — au moins un axe n'a pas pu s'exécuter. Pas d'affirmation « aligné » sans preuve positive.";
+  const detailsBlock = issues.length === 0 ? "(aucun détail)" : issues.join("\n");
+  const divergencesSection =
+`${verdictLine}
+
+${axeLine("A")}
+${axeLine("B")}
+${axeLine("C")}
+
+Détails :
+${detailsBlock}`;
 
   return `# PRE_THREAD — ${threadLabel}
 Date : ${now}
@@ -334,12 +496,24 @@ async function main() {
     log(`  → Nom auto-calculé : ${resolvedThreadName}`);
   }
 
-  log("\n━━━ ÉTAPE 4 : Divergences ━━━");
-  const divergences = detectDivergences(docs, snapshot, lastB09);
-  if (divergences.length === 0) {
-    log("  ✅ Aucune divergence détectée");
-  } else {
-    divergences.forEach(d => log(`  ${d}`));
+  log("\n━━━ ÉTAPE 4 : Divergences (3 axes) ━━━");
+  const divergenceReport = await detectDivergences(docs, snapshot, lastB09);
+  const { axes, issues, verdict } = divergenceReport;
+  for (const k of ["A", "B", "C"]) {
+    const a = axes[k];
+    const icon = a.status === "OK" ? "✅" : a.status === "DIVERGENCE" ? "🔴" : "🟡";
+    log(`  ${icon} AXE ${k} (${a.name}) : ${a.status} — ${a.detail}`);
+  }
+  log(
+    `  → VERDICT : ${
+      verdict === "ALIGNE"     ? "✅ ALIGNÉ"
+    : verdict === "DIVERGENCE" ? "🔴 DIVERGENCE"
+    :                            "🟡 INDÉTERMINÉ"
+    }`
+  );
+  if (issues.length > 0) {
+    log("  Détails :");
+    issues.forEach(d => log(`    ${d}`));
   }
 
   log("\n━━━ ÉTAPE 5 : Archivage PRE_THREAD existants ━━━");
@@ -360,13 +534,13 @@ async function main() {
   const threadLabel = resolvedThreadName;
   const outFilename = `PRE_THREAD_${threadLabel}.md`;
   const outPath = path.join(REPO_ROOT, outFilename);
-  const content = buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergences);
+  const content = buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergenceReport);
   await fs.writeFile(outPath, content, "utf8");
   log(`  ✅ Fichier généré : ${outFilename}`);
 
   log("\n━━━ RÉSUMÉ ━━━");
   log(`  Versions : README ${docs.readme.versionStr} | PROMPT ${docs.prompt.versionStr} | PROMPT ASSOCIE ${docs.prompt_associe.versionStr} | CONTEXT ${docs.context.versionStr} | BACKLOG ${docs.backlog.versionStr} | BACKLOG DEV ${docs.backlog_dev.versionStr} | BACKLOG USER ${docs.backlog_user.versionStr}`);
-  log(`  Divergences : ${divergences.length === 0 ? "aucune ✅" : `${divergences.length} détectée(s) ⚠️`}`);
+  log(`  Verdict divergence : ${verdict}${issues.length > 0 ? ` (${issues.length} détail(s))` : ""}`);
   log(`  Fichier : ${outPath}`);
   log("\n  → Uploade ce fichier en début de thread B09 — le LLM a tout.\n");
 }
