@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG USER
 
-Derniere mise a jour : 2026-05-16 (B09-T37)
-Version : v04
+Derniere mise a jour : 2026-05-25 (B09-T39)
+Version : v05
 Pilote : L'Associe + agents metier (B01-B08)
 Coordination technique : Agent Integration IA (B09)
 
@@ -22,6 +22,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-USER (a creer).
 | P6 | Agents personnels Florent (Developpement Personnel, Sante, Vie Privee, Patrimoine) | B09-T35 | [ROADMAP] |
 | P7 | Agent Infrastructure & Tech — prompt v02 produit (B09-T38). Prochaine étape : routing, accès mémoire Supabase, test comportement | B09-T38 | [TODO] |
 | P8 | Agent classifieur documents metier — routing automatique IA des documents entrants (emails, devis, contrats, factures) vers DB Notion cible et/ou dossier repo. Acces memoire INSIDE OS. Complement du script tri repo (BACKLOG_DEV SYSTEME P13) | B09-T37 | [TODO] |
+| P9 | MIGRATION PILOTAGE VERS CLAUDE — migrer notion-memory-chat.mjs de GPT-4.1-mini vers Claude/Opus 4.7. PRIORITÉ STRATÉGIQUE actée B09-T39 : premier pas concret vers la couche Action du but final (Mémoire -> Pilotage -> Action). La mémoire fonctionne (97/97), le pilotage tourne sur un modèle tiers qu'on veut quitter, l'Action est inexistante. Sortir le pilotage de la dépendance OpenAI et le poser sur Claude est le mouvement qui rapproche du copilote décisionnel réel. | B09-T39 | [TODO] |
 
 ---
 

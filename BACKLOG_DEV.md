@@ -33,7 +33,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | Priorite | Item | Source | Statut |
 |----------|------|--------|--------|
 | P1 | Activer auto-recharge credits API Anthropic | B09-T30 | [DONE] |
-| P2 | Migration Notion -> Supabase | B09-T29 | [ROADMAP] |
+| P2 | Migration Notion -> Supabase comme SOURCE D'ÉTAT UNIQUE (support de SYSTEME P20). Déclenchée APRÈS la migration du pilotage vers Claude (BACKLOG_USER AGENTS P9). Ne pas démarrer avant que le pilotage tourne et qu'on sache quel état il doit lire. | B09-T29 | [ROADMAP] |
 | P3 | pgvector pour recherche semantique agents V3 | B09-T29 | [ROADMAP] |
 | P4 | Remplir donnees financieres entities INSIDE_OS_DATABASES via agent dedie | B09-T33 | [ROADMAP] |
 | P5 | Sandbox Notion isolee pour tests pipeline — bloquee API deprecee, a reprendre apres migration Supabase | B09-T36 | [ROADMAP] |
