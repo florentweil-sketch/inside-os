@@ -78,6 +78,10 @@ Numéros indépendants : README v12 + PROMPT v15 + CONTEXT v30 = valide. Ne jama
 - `test_threads/` ne doit jamais être injecté en production.
 - `raw_text` Notion = résumé une ligne, ne pas lire pour extraction — toujours lire les blocs.
 - Script production = `notion-memory-server.mjs` ; `notion-memory-chat.mjs` = test uniquement.
+- **Distinction `os:pipeline` vs `os:close`** :
+  - `os/pipeline.mjs` (`npm run os:pipeline`) = orchestrateur du pipeline mémoire (chaîne ingest → extract → inject, délègue à 3 scripts enfants).
+  - `os-thread-close.mjs` à la racine (`npm run os:close`) = protocole de clôture de thread B09 (retry pending, draft CONTEXT, injection B99, capture post-export). N'injecte PAS dans DECISIONS/LESSONS — cible la page B99 de THREAD_DUMP.
+- **`os:close --inject`** : flow en 2 temps obligatoire — (1) `npm run os:close -- --thread-name X` produit un draft local, (2) `npm run os:close -- --inject --thread-name X` écrit en B99 et renomme le draft en définitif. Le mode `--inject` exit(1) si aucun draft ni version définitive n'existe (phase 7), et **demande une confirmation explicite** affichant thread / version / source / action avant écrasement B99 (garde de sûreté, post B09-T39).
 
 ## Doctrine — règles opérationnelles (à appliquer en codant)
 

@@ -534,6 +534,34 @@ async function main() {
   }
   console.log();
 
+  // GARDE DE SÛRETÉ — confirmation avant écrasement B99 (mode --inject)
+  // Le mode --inject écrit en Notion B99 + (potentiellement) renomme le draft
+  // en version définitive. Aligné sur la règle anti-hallucination (CLAUDE.md /
+  // PROMPT_MAITRE v15) : action destructive = preuve positive d'intention, pas
+  // un présupposé implicite.
+  if (INJECT) {
+    const willRename = ctxPath === draftPath;
+    const draftName = path.basename(draftPath);
+    const finalName = path.basename(finalPath);
+    console.log("━━━ GARDE DE SÛRETÉ — confirmation avant injection B99 ━━━");
+    console.log(`  Thread  : ${THREAD_NAME}`);
+    console.log(`  Version : ${ctxVersion}`);
+    console.log(`  Source  : ${ctxPath}`);
+    if (willRename) {
+      console.log(`  Action  : injection B99 (écrasement) + rename ${draftName} → ${finalName}`);
+    } else {
+      console.log(`  Action  : RÉINJECTION B99 (écrasement) — ${finalName} déjà définitif, pas de rename`);
+    }
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    const answer = await new Promise(resolve => rl.question("  Confirmer ? (o/n) : ", resolve));
+    rl.close();
+    if (answer.trim().toLowerCase() !== "o") {
+      console.log("\n→ Abandon — B99 non touché, aucun fichier renommé.\n");
+      process.exit(0);
+    }
+    console.log();
+  }
+
   // PHASE 8 — BUMPS (uniquement en mode draft)
   let bumps = { readme_bump: false, prompt_bump: false };
   if (!INJECT) {
