@@ -9,12 +9,12 @@ Généré par : npm run os:pre-thread
 | Document | Version | Emplacement |
 |----------|---------|-------------|
 | README          | v12         | docs/readme/ |
-| PROMPT          | v14         | docs/prompts transfert thread/ |
+| PROMPT          | v15         | docs/prompts transfert thread/ |
 | PROMPT ASSOCIE  | v2 | docs/prompts/associe/ |
 | CONTEXT         | v30        | docs/context/ |
 | BACKLOG         | inconnue        | BACKLOG.md |
-| BACKLOG DEV     | v4    | BACKLOG_DEV.md |
-| BACKLOG USER    | v4   | BACKLOG_USER.md |
+| BACKLOG DEV     | v5    | BACKLOG_DEV.md |
+| BACKLOG USER    | v5   | BACKLOG_USER.md |
 
 ---
 
