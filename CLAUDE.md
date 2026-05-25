@@ -109,7 +109,7 @@ Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage �
 |-----------|---------|
 | Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques, séquence de clôture) | `docs/prompts transfert thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v16) |
 | Doctrine agents (L'Associé, niveaux de confirmation, « DB prime toujours », routing datasource, fiches de différenciation) | `docs/prompts/associe/PROMPT_ASSOCIE_v<N>.md` (latest = v02) |
-| État courant du système (acquis, problèmes actifs, dernier thread traité) | `docs/context/INSIDE_OS_CONTEXT_v<N>.md` (latest = v30) |
+| État courant du système (acquis, problèmes actifs, dernier thread traité) | `docs/context/INSIDE_OS_CONTEXT_v<N>.md` (latest = v32) |
 | Priorités, statuts, items ouverts (qui fait quoi, quoi est `[DONE]` / `[TODO]` / `[DROPPED]`) | `BACKLOG_DEV.md` + `BACKLOG_USER.md` |
 | Pré-thread (PRE_THREAD généré par `os:pre-thread`) | racine du repo, archivés dans `docs/pre-threads/` |
 
