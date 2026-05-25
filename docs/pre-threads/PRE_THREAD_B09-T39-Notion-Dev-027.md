@@ -9,9 +9,9 @@ Généré par : npm run os:pre-thread
 | Document | Version | Emplacement |
 |----------|---------|-------------|
 | README          | v12         | docs/readme/ |
-| PROMPT          | v13         | docs/prompts transfert thread/ |
+| PROMPT          | v14         | docs/prompts transfert thread/ |
 | PROMPT ASSOCIE  | v2 | docs/prompts/associe/ |
-| CONTEXT         | v28        | docs/context/ |
+| CONTEXT         | v30        | docs/context/ |
 | BACKLOG         | inconnue        | BACKLOG.md |
 | BACKLOG DEV     | v4    | BACKLOG_DEV.md |
 | BACKLOG USER    | v4   | BACKLOG_USER.md |
@@ -41,9 +41,9 @@ Généré par : npm run os:pre-thread
 
 ---
 
-## CONTEXT ACTIF (v28)
+## CONTEXT ACTIF (v30)
 
-# INSIDE_OS_CONTEXT_v28
+# INSIDE_OS_CONTEXT_v30
 Date : 2026-05-17
 
 ---
@@ -51,193 +51,216 @@ Date : 2026-05-17
 ## CONTEXTE DE TRANSFERT CRITIQUE — INSIDE OS / B09-T38-Notion-Dev-026
 
 **Statut : Stable**
-**Version : v28**
+**Version : v30**
 **Niveau de confiance : Élevé**
 
 ---
 
 ## 0. Signal de continuité
 
-Clôture volontaire fin de session B09-T38. Thread centré sur la définition de l'Agent Infrastructure & Tech. Aucun blocage technique. P11 suspendu délibérément une deuxième session consécutive — décision assumée, pas une dérive.
+Troisième clôture du thread B09-T38 (v28 → v29 → v30). STOP volontaire pour production du CONTEXT v30 final. THREAD_DUMP confirmé : extract_done=97, inject_done=97, inject_pending=0, inject_error=0. Compteurs Notion : DECISIONS 4042, LESSONS 3434. Commits récents confirmés : 47e9361 (fix 3 bugs clôture), c572b41 (clôture B09-T38 + CONTEXT v28), b9513b5 (fix extract ANTHROPIC_API_KEY). Nouveaux commits du dernier segment : 2cdd67d (PROMPT_MAITRE v14 — règle priorisation points ouverts vs objectif thread), 590ab3a (P19 — diff CONTEXT vs snapshot Notion dans os:pre-thread), 8db0062 (SYSTEME P16 — non prioritaire, enrichissement DB Associé avant Supabase). PRE_THREAD B09-T39 déjà généré depuis v28 — à régénérer depuis v30.
 
 ---
 
 ## 1. Intention réelle du thread
 
-Objectif principal atteint : définir PROMPT_AGENT_INFRA_TECH_v02 — périmètre, prompt système, routing, fiche différenciation PROMPT_ASSOCIE. Commit b58a242 gravé.
+**Objectif principal atteint :** définir PROMPT_AGENT_INFRA_TECH_v02 — périmètre, prompt système, routing, fiche différenciation. Commit b58a242 gravé.
 
-Objectifs secondaires :
-- fix(extract) : ANTHROPIC_API_KEY déclarée depuis process.env en haut de fichier — commit b9513b5 ✅
-- IDEAS.md : idée [RAW] 2026-05-16 19:15 "test idee inter-thread" → DROPPED — commit db0f42b ✅
-- BACKLOG_DEV P18 ajouté, BACKLOG_USER P7 ajouté — intégrés dans commit b58a242 ✅
+**Objectifs secondaires atteints :**
+- fix(extract) ANTHROPIC_API_KEY depuis process.env — b9513b5 ✅
+- IDEAS.md idée [RAW] "test idee inter-thread" → DROPPED — db0f42b ✅
+- BACKLOG_DEV P18 (sous-pipeline 200 threads bruts) + BACKLOG_USER P7 (routing agent) — b58a242 ✅
+- 3 bugs clôture corrigés — 47e9361 ✅
+- PROMPT_MAITRE v14 — règle priorisation points ouverts vs objectif thread — 2cdd67d ✅
+- BACKLOG_DEV P19 — diff CONTEXT vs snapshot Notion dans os:pre-thread — 590ab3a ✅
+- BACKLOG_DEV P16 enrichissement DB Associé — statut non prioritaire acté — 8db0062 ✅
 
-Dérive empêchée : ne pas entrer dans l'implémentation du sous-pipeline 200 threads bruts sans que le prompt agent soit d'abord défini et commité. La définition précède l'exécution.
+**Objectif non atteint :** sous-pipeline 200 threads bruts (BACKLOG_DEV P18) — défini, non implémenté. Délibéré : la définition précède l'exécution.
+
+**Dérive empêchée :** implémenter le sous-pipeline avant que le prompt agent soit défini.
+**Dérive empêchée :** ouvrir un nouveau chantier en segment final au lieu de produire le CONTEXT proprement.
 
 ---
 
 ## 2. Acquis réels
 
-**Commits produits dans ce thread (git log confirmé) :**
+**Commits produits dans ce thread (ordre chronologique, confirmés) :**
 
-- `b9513b5` fix(extract) — ANTHROPIC_API_KEY déclarée depuis process.env en haut de fichier
-- `db0f42b` chore(ideas) — DROPPED test idee inter-thread — revue fin B09-T38
-- `b58a242` feat(agents) — PROMPT_AGENT_INFRA_TECH_v02 défini + BACKLOG_USER P7 + BACKLOG_DEV P18 + fiche différenciation PROMPT_ASSOCIE
-
-**État pipeline confirmé à la clôture :**
-- 97 threads | extract_done: 97 | inject_done: 97 | inject_pending: 0 | inject_error: 0
-- DECISIONS : 3943 | LESSONS : 3359
-- Différentiel vs v27 : +1 thread injecté, +21 DECISIONS, +16 LESSONS
-- Aucun thread bloqué
+| Hash | Libellé |
+|------|---------|
+| b9513b5 | fix(extract) — ANTHROPIC_API_KEY déclarée depuis process.env en haut de fichier |
+| db0f42b | chore(ideas) — DROPPED test idee inter-thread |
+| b58a242 | feat(agents) — PROMPT_AGENT_INFRA_TECH_v02 + BACKLOG_USER P7 + BACKLOG_DEV P18 + fiche différenciation |
+| c572b41 | chore(close) — clôture B09-T38, CONTEXT v28 injecté |
+| 47e9361 | fix(scripts) — 3 bugs clôture : auto-incrément thread, faux positif À COMPLÉTER, troncature CONTEXT |
+| 2cdd67d | feat(prompt) — PROMPT_MAITRE v14 : règle priorisation points ouverts vs objectif thread |
+| 590ab3a | chore(backlog) — P19 : diff CONTEXT vs snapshot Notion dans os:pre-thread |
+| 8db0062 | chore(backlog) — SYSTEME P16 : enrichissement DB Associé, non prioritaire, avant Supabase |
 
 **PROMPT_AGENT_INFRA_TECH_v02 — contenu gravé :**
 - Périmètre : infrastructure technique INSIDE OS, pipeline Node.js, scripts, environnement, dépendances, déploiement
-- Fiche différenciation PROMPT_ASSOCIE : distinction claire entre rôle Agent Infra (exécution technique, scripts, fix) et rôle Agent Intégration IA (stratégie, CONTEXT, décisions structurantes)
+- Distinction opérationnelle : Agent Infra = exécution technique, scripts, fix / Agent Intégration IA = stratégie, CONTEXT, décisions structurantes
 - BACKLOG_DEV P18 : sous-pipeline 200 threads bruts — défini, non implémenté
 - BACKLOG_USER P7 : routing agent — défini, non implémenté
 
-**Fix extract confirmé :**
-- ANTHROPIC_API_KEY était référencée sans déclaration explicite depuis process.env en haut de fichier
-- Correctif appliqué, commité b9513b5 — risque de régression silencieuse sur certains environnements éliminé
+**PROMPT_MAITRE v14 — règle ajoutée :**
+- Priorisation explicite : points ouverts du CONTEXT à fermer avant d'avancer sur l'objectif principal du thread, sauf décision contraire explicite de l'utilisateur
 
-**IDEAS.md — état après clôture :**
-- Idée [RAW] 2026-05-16 19:15 "test idee inter-thread" → DROPPED (test de fonctionnement, pas une idée réelle)
-- IDEAS.md vide de contenu actionnable — état propre
+**3 bugs clôture corrigés (47e9361) :**
+- Auto-incrément thread : numéro de thread suivant incorrect dans os:close
+- Faux positif À COMPLÉTER : détecteur signalait du contenu légitimement vide
+- Troncature CONTEXT : injection coupée au-delà d'une certaine taille
 
-**Acquis hérités stables, non modifiés dans ce thread :**
-- PROMPT_MAITRE v13, README v12, PROMPT_ASSOCIE v02 — en repo, non touchés
-- BACKLOG_DEV v04, BACKLOG_USER v04 — mis à jour dans b58a242
-- Tokenizer diacritiques corrigé, MIN_SCORE=15 actif
-- VERIFY_PASS=always dans .env.example — commit 62170f6, stable
-- Fix cemetery v29bdb37 — stable
-- Fix os:close 59a698a — stable, P9 partiel non rouvert ce thread
+**État pipeline à la clôture :**
+- 97 threads : extract_done=97, inject_done=97, inject_pending=0, inject_error=0
+- DECISIONS : 4042 | LESSONS : 3434
+- B09 exclu du pipeline automatique — règle active
+- threads_to_process/ : B09-T36 et B09-T37 présents — P11 suspendu délibérément
 
 ---
 
 ## 3. Hypothèses, intentions, paris
 
-**Hypothèse 1 — PROMPT_AGENT_INFRA_TECH_v02 est suffisant pour démarrer le sous-pipeline.**
-Non prouvé. Le prompt est défini et commité, mais il n'a pas encore été utilisé dans une session réelle de traitement de threads bruts. Le périmètre réel de l'agent se révélera à l'usage, pas à la définition.
-
-**Hypothèse 2 — Le fix ANTHROPIC_API_KEY (b9513b5) ne casse rien.**
-Non prouvé sur tous les environnements. Testé localement implicitement (pipeline à 97/97), mais aucun test explicite sur environnement vierge ou CI.
-
-**Hypothèse 3 — P18 (sous-pipeline 200 threads bruts) est la prochaine priorité d'implémentation.**
-Décision stratégique assumée dans b58a242. Mais les 200 threads bruts n'ont pas encore été caractérisés : format, qualité, homogénéité. L'implémentation pourrait révéler des cas non anticipés.
-
-**Pari architectural — Agent Infra & Tech comme entité distincte de l'Architecte Continuité.**
-Le pari est que la séparation des rôles (exécution technique vs stratégie de continuité) réduit les dérives de périmètre dans les sessions futures. Ce pari n'a pas encore été éprouvé sur la durée.
-
-**P11 — suspendu deux threads consécutifs.**
-Le risque n'est pas l'accumulation de fichiers (deux threads, non critique). Le risque est que la règle de conservation ne soit jamais tranchée parce qu'elle n'est jamais urgente. À surveiller : si threads_to_process/ dépasse 5 fichiers, P11 devient prioritaire par défaut.
+- **P18 sera implémentable sans refonte du pipeline** — hypothèse non testée. Le sous-pipeline 200 threads bruts suppose que le pipeline actuel est extensible sans modification structurelle. À prouver dès B09-T39.
+- **Le routing agent (P7) fonctionnera sans ambiguïté** — le périmètre Agent Infra vs Agent Intégration IA est défini en termes fonctionnels mais le routing utilisateur réel n'est pas encore testé. Des cas limites existent.
+- **PRE_THREAD B09-T39 généré depuis v28 est partiellement obsolète** — il ne contient pas les commits 2cdd67d, 590ab3a, 8db0062. À régénérer depuis v30 avant démarrage de B09-T39.
+- **Les 3 bugs clôture sont réellement corrigés** — les corrections sont commitées mais non testées sur un cycle complet de clôture réel depuis 47e9361. Validation effective : prochaine exécution de os:close.
 
 ---
 
 ## 4. Contraintes actives à respecter
 
 **Techniques :**
-- B09 exclu du pipeline automatique — ne jamais injecter les threads B09 via le pipeline standard
-- CONTEXT vXX injecté en B99 — ne pas modifier ce routing
-- raw_text multi-lignes : ne pas toucher avant V2 (moteur recherche sémantique) — contrainte gravée roadmap
-- MIN_SCORE=15 actif — ne pas baisser sans décision explicite
-- retry_count : propriété à ajouter dans THREAD_DUMP (max 2 retries auto sur inject_error) — non implémenté, ne pas oublier avant déploiement cloud
-- VERIFY_PASS=always dans .env.example — ne pas régresser sur ce point
+- B09 exclu du pipeline automatique — règle non négociable
+- CONTEXT vXX injecté en B99 uniquement
+- raw_text multi-lignes : ne pas toucher avant V2 (moteur recherche sémantique)
+- retry_count : propriété à ajouter dans THREAD_DUMP (max 2 retries auto sur inject_error) — non implémentée, ne pas oublier
+- DS_ID = Data Source ID (identifiant API Notion) — ne jamais interpréter autrement
 
 **Organisationnelles :**
-- Toute décision structurante = commit avant fin de thread — règle absolue
-- IDEAS.md : revue obligatoire en clôture de chaque thread — aucune idée [RAW] ne transite entre deux threads sans statut
-- PROMPT_MAITRE v13 : posture confrontation active — signaler les dérives, pas les lisser
+- Définition avant exécution : ne pas implémenter P18 avant que le périmètre soit validé
+- P11 (purge threads_to_process/) suspendu — ne pas rouvrir sans décision explicite sur la règle de rétention
+- P16 (enrichissement DB Associé) : non prioritaire, après Supabase — ne pas avancer avant
 
 **Règles non négociables :**
-- DS_ID = identifiant API Notion uniquement — ne jamais réinterpréter
-- Aucune invention d'acronyme technique
-- Aucun [À COMPLÉTER] dans les CONTEXT — si manque d'info, le nommer explicitement
+- PROMPT_MAITRE v14 : fermer les points ouverts du CONTEXT avant l'objectif principal, sauf instruction contraire explicite
+- Aucune section [À COMPLÉTER] dans les livrables de clôture
+- Zéro invention de signification pour les acronymes techniques
 
 ---
 
 ## 5. Architecture actuelle
 
 **Ce qui fonctionne :**
-- Pipeline THREAD_DUMP → EXTRACT → INJECT : 97/97, 0 erreur, 0 pending
-- Cemetery : mise à jour automatique si version enrichie, WARNING si régression
-- os:close : confirmation ingest + fallback thread_summarized opérationnel
-- os:idea : IDEAS.md alimenté depuis CLI, revue fin de thread opérationnelle
-- ANTHROPIC_API_KEY : déclaration corrigée, plus de risque de référence implicite
+- Pipeline THREAD_DUMP → EXTRACT → INJECT : stable, 97/97
+- os:close : 3 bugs corrigés, non encore testé sur cycle complet post-correction
+- os:idea : opérationnel, IDEAS.md présent
+- PROMPT_MAITRE v14 : committé, actif pour B09-T39
+- ANTHROPIC_API_KEY : déclarée correctement depuis process.env
 
-**En apparence fonctionnel, non éprouvé :**
-- PROMPT_AGENT_INFRA_TECH_v02 : défini, pas encore utilisé en session réelle
-- Routing agent (BACKLOG_USER P7) : spécifié, non implémenté
-- Sous-pipeline 200 threads bruts (BACKLOG_DEV P18) : backlogué, non démarré
+**En apparence fonctionnel, non validé :**
+- PRE_THREAD B09-T39 : existant mais basé sur v28, donc incomplet
+- os:close post-47e9361 : corrections commitées, validation sur cycle réel à faire
 
 **Fragile :**
-- P9 partiel (os:close) : fix commité 59a698a mais libellé "partiel" — périmètre exact de ce qui reste à faire non documenté dans le CONTEXT v27 ni v28. Manque : définir précisément ce qui constitue "P9 complet"
-- Fix ANTHROPIC_API_KEY : non testé sur environnement vierge
+- Routing agent (P7) : périmètre défini, implémentation absente — la distinction Infra/Intégration IA tient sur une définition textuelle, pas sur un mécanisme
+- P11 suspendu sans règle de rétention définie : threads_to_process/ grossit sans purge automatique
 
 **Manque :**
-- Caractérisation des 200 threads bruts (format, qualité, cas limites) — nécessaire avant implémentation P18
-- Définition de "P9 complet" — sans cette définition, P9 restera éternellement "partiel"
-- retry_count dans THREAD_DUMP — non implémenté, bloquant pour déploiement cloud robuste
-- Migration notion-memory-chat.mjs vers Claude (actuellement GPT-4.1-mini) — en roadmap, non adressé
+- Sous-pipeline 200 threads bruts (P18) : non implémenté
+- retry_count dans THREAD_DUMP : non implémenté
+- Migration notion-memory-chat.mjs vers Claude : non démarrée
+- Déploiement cloud : non démarré, conditionné à l'ingestion complète des 82 threads restants
 
 ---
 
 ## 6. Contradictions et incohérences détectées
 
-**Contradiction 1 — P9 "partiel" sans définition du complet.**
-Le commit 59a698a est libellé "P9 partiel". Le BACKLOG_DEV SYSTEME P9 est en [TODO]. Mais nulle part dans le CONTEXT v27 ni dans les commits il n'est écrit ce que serait "P9 complet". On a un fix partiel d'un objectif dont la définition de complétion n'existe pas. Risque : P9 reste en [TODO] indéfiniment parce que personne ne sait ce qu'il faut pour le fermer.
-
-**Contradiction 2 — Agent Infra défini avant que les threads bruts soient caractérisés.**
-BACKLOG_DEV P18 (sous-pipeline 200 threads bruts) est ajouté dans le même commit que PROMPT_AGENT_INFRA_TECH_v02. L'agent est censé traiter ces threads. Mais les threads bruts n'ont pas été ouverts, examinés, ni leurs cas limites inventoriés. On a défini l'outil avant de connaître le matériau.
-
-**Contradiction 3 — P11 suspendu pour "règle à définir", mais la règle n'a pas été tranchée ce thread.**
-Le CONTEXT v27 disait "règle du dernier thread conservé à définir avant implémentation". Ce thread n'a pas défini cette règle. Le CONTEXT v28 suspend à nouveau sans décision. Si la règle est triviale (supprimer après inject réussi, pas d'exception), le blocage est artificiel.
+- **PRE_THREAD B09-T39 vs CONTEXT v30** : le PRE_THREAD a été généré depuis v28. Il ne reflète pas les commits 2cdd67d, 590ab3a, 8db0062 ni les décisions du segment final. Utiliser ce PRE_THREAD sans régénération introduirait une incohérence d'état dès l'ouverture de B09-T39.
+- **P9 partiel non résolu** : commit 59a698a libellé "P9 partiel" — la question de si P9 est fermé ou partiellement rouvert sur un périmètre différent n'a pas été tranchée dans ce thread. Le BACKLOG_DEV SYSTEME P9 reste [TODO]. Aucun commit de clôture P9 dans ce thread.
+- **DECISIONS 4042 vs v29** : le CONTEXT v29 indiquait DECISIONS 3979. Le THREAD_DUMP final indique 4042. Différentiel de +63 sur le segment final — cohérent avec un thread actif prolongé, mais supérieur aux +36 du segment v28→v29. Pas d'anomalie détectée, mais à surveiller si le différentiel s'emballe.
 
 ---
 
 ## 7. Illusions à démonter
 
-**Illusion 1 — "L'agent est défini donc le sous-pipeline peut démarrer."**
-Définir un prompt n'est pas implémenter un pipeline. P18 nécessite du code, des tests, une gestion des cas limites sur 200 threads de qualité inconnue. Le commit b58a242 est un point de départ, pas une livraison.
-
-**Illusion 2 — "97/97 inject_done = système sain."**
-Le pipeline est stable sur le périmètre traité. Les 200 threads bruts non encore injectés représentent une masse inconnue. Le taux 97/97 ne dit rien sur ce qui arrive quand le volume double ou triple, ni sur les formats non encore vus.
-
-**Illusion 3 — "P9 partiel n'est pas urgent."**
-La perte de fin de thread (SYSTEME P9) touche directement la continuité entre sessions. Chaque thread clos sans résolution complète de P9 est un thread dont la clôture est partiellement défaillante. Ce n'est pas visible quand tout va bien. C'est visible quand une session se coupe mal.
-
-**Illusion 4 — "La séparation Agent Infra / Architecte Continuité est claire."**
-La fiche différenciation est écrite. Mais en pratique, dans une session réelle, la frontière entre "fix technique" et "décision structurante" est poreuse. Le test réel de cette séparation n'a pas encore eu lieu.
+- **"Le pipeline est stable donc tout va bien"** : 97/97 signifie que l'injection technique fonctionne. Cela ne dit rien sur la qualité des DECISIONS et LESSONS extraites, ni sur la couverture des 82 threads non encore ingérés.
+- **"PROMPT_AGENT_INFRA_TECH_v02 est opérationnel"** : le prompt est défini et commité. Il n'est pas testé sur des cas réels de routing. La distinction Infra/Intégration IA pourrait produire des ambiguïtés à l'usage.
+- **"B09-T38 est terminé"** : trois clôtures sur le même thread signalent soit une gestion de session contrainte, soit une tendance à rouvrir en fin de thread. Ce pattern est à surveiller en B09-T39.
+- **"P18 est prêt à implémenter"** : P18 est défini dans le BACKLOG. La définition du prompt agent ne garantit pas que le sous-pipeline est architecturalement prêt. Aucun schéma technique de P18 n'existe à ce stade.
 
 ---
 
 ## 8. Risques structurants
 
-**Risque 1 — P18 démarre sans caractérisation préalable des 200 threads bruts.**
-Impact : cas limites non anticipés, pipeline cassé en production, retravail coûteux. Mitigation : ouvrir et inventorier un échantillon de threads bruts (10-15) avant d'écrire une ligne de code pour P18.
+**Techniques :**
+- os:close non validé post-correction : si les 3 bugs ne sont pas réellement corrigés, la prochaine clôture produira un CONTEXT tronqué ou un numéro de thread incorrect — détectable immédiatement à l'exécution
+- threads_to_process/ sans purge : risque de collision ou de double-injection si P11 n'est pas implémenté avant une montée en charge (P18 — 200 threads bruts)
+- PRE_THREAD B09-T39 obsolète : démarrer B09-T39 sans régénération introduit un état de départ incorrect
 
-**Risque 2 — P9 "partiel" devient permanent par absence de définition de "complet".**
-Impact : clôture de thread structurellement dégradée, perte de continuité non détectée. Mitigation : définir en 3 lignes ce que "P9 complet" signifie — critères, comportement attendu, test de validation.
+**Stratégiques :**
+- Empilement de BACKLOG non priorisé : P7, P8, P11, P16, P18, P19 coexistent sans ordre d'exécution gravé. La règle PROMPT_MAITRE v14 aide, mais ne substitue pas une roadmap séquencée
+- Migration notion-memory-chat.mjs vers Claude : non planifiée, non datée — risque de dépendance prolongée à OpenAI GPT-4.1-mini sur un composant critique
 
-**Risque 3 — Accumulation silencieuse dans threads_to_process/.**
-Actuellement 2 fichiers. Si P11 n'est jamais adressé et le volume de threads actifs augmente, la détection de "ce qui reste à traiter" devient manuelle. Non critique aujourd'hui, potentiellement bloquant à 10+ fichiers.
-
-**Risque 4 — Migration notion-memory-chat.mjs vers Claude non planifiée.**
-L'outil tourne sur GPT-4.1-mini. Si OpenAI modifie son API, son pricing ou son comportement, la migration sera forcée en urgence. Planifier cette migration avant qu'elle soit contrainte.
-
-**Risque 5 — Déploiement cloud sans retry_count dans THREAD_DUMP.**
-En local, les inject_error sont gérés manuellement. En cloud, sans retry automatique, une erreur transitoire devient une perte silencieuse. retry_count est un prérequis bloquant pour le déploiement cloud, pas une option.
+**Faux pilotage :**
+- Compter les commits comme proxy de progression : 8 commits dans ce thread, mais P11, P9, P18, P7 restent ouverts. Le volume de commits ne mesure pas la réduction de dette technique
 
 ---
 
 ## 9. Fichiers produits dans ce thread
 
-| Fichier | Chemin | Statut |
-|---|---|---|
-| PROMPT_AGENT_INFRA_TECH_v02 | docs/prompts/agent/PROMPT_AGENT_INFRA_TECH_v02.md | Commité b58a242 ✅ |
-| BACKLOG_DEV.md | BACKLOG_DEV.md (racine repo) | Mis à jour b58a242 ✅ |
-| BACKLOG_USER.md | BACKLOG_USER.md (racine repo) | Mis à jour b58a242 ✅ |
-| IDEAS.md | IDEAS.md (racine repo) | Nettoyé db0f42b ✅ |
-| extract script | os/extract/extract-thread-dump.mjs | Fix b9513b5 ✅ |
-| PRE_
+| Chemin | Statut |
+|--------|--------|
+| docs/prompts/agent/PROMPT_AGENT_INFRA_TECH_v02.md | Créé, commité (b58a242) |
+| docs/prompts transfert thread/PROMPT_MAITRE_v14_TRANSFERT_DE_THREAD.md | Créé, commité (2cdd67d) |
+| IDEAS.md | Modifié — idée [RAW] DROPPED, commité (db0f42b) |
+| BACKLOG_DEV.md | Modifié — P18 + P19 ajoutés, P16 statut acté (b58a242, 590ab3a, 8db0062) |
+| BACKLOG_USER.md | Modifié — P7 ajouté (b58a242) |
+| INSIDE_OS_CONTEXT_v28.md | Produit, injecté (c572b41) |
+| INSIDE_OS_CONTEXT_v29.md | Produit, commité (051181b) |
+| INSIDE_OS_CONTEXT_v30.md | En cours de production — à commiter en clôture |
+| scripts/ (os:close) | Modifié — 3 bugs corrigés (47e9361) |
+| os/extract/extract-thread-dump.mjs | Modifié — ANTHROPIC_API_KEY fix (b9513b5) |
+
+---
+
+## 10. Priorité réelle de redémarrage
+
+**1 action :** régénérer le PRE_THREAD B09-T39 depuis le CONTEXT v30 (le PRE_THREAD existant est basé sur v28 — incomplet)
+
+**1 livrable :** PRE_THREAD B09-T39 valide, reflétant les commits 2cdd67d + 590ab3a + 8db0062 et l'état réel du BACKLOG à la clôture de B09-T38
+
+**1 critère de succès :** le PRE_THREAD B09-T39 liste correctement les points ouverts prioritaires (P9 partiel, P11 suspendu, P18 à implémenter) et ne contient aucune référence obsolète au CONTEXT v28
+
+---
+
+## 11. Discipline pour le prochain thread
+
+**Socle verrouillé :**
+- PROMPT_MAITRE v14 actif : fermer les points ouverts avant l'objectif principal
+- B09 exclu du pipeline automatique
+- raw_text multi-lignes : ne pas toucher
+- DS_ID = identifiant API Notion uniquement
+
+**À clarifier en ouverture de B09-T39 :**
+- Statut réel de P9 : fermé ou partiellement rouvert ? Trancher et mettre à jour le BACKLOG_DEV
+- Valider os:close post-47e9361 sur un cycle réel avant toute clôture
+
+**À tester :**
+- os:close : vérifier auto-incrément thread + absence faux positif À COMPLÉTER + taille CONTEXT non tronquée
+
+**À versionner :**
+- CONTEXT v30 à commiter en clôture de ce thread avant tout démarrage de B09-T39
+
+---
+
+## Point de redémarrage minimal
+
+**Objectif B09-T39 :** implémenter le sous-pipeline P18 (200 threads bruts) avec PROMPT_AGENT_INFRA_TECH_v02 comme prompt système.
+**Acquis :** pipeline 97/97 stable, PROMPT_AGENT_INFRA_TECH_v02 défini, PROMPT_MAITRE v14 actif, 3 bugs clôture corrigés.
+**Contraintes :** régénérer PRE_THREAD B09-T39 depuis v30 avant démarrage — le PRE_THREAD v28 est obsolète. Trancher P9 en ouverture.
+**État :** P11 suspendu, P7 non implémenté, retry_count absent, migration Claude non démarrée.
+**Prochaine étape :** `npm run os:close` → vérifier les 3 corrections → commiter CONTEXT v30 → régénérer PRE_THREAD B09-T39.
 
 ---
 

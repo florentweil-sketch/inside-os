@@ -51,7 +51,7 @@ async function findActiveDoc(docConfig) {
     try {
       const content = await fs.readFile(filePath, "utf8");
       const versionMatch = content.match(/^Version\s*:\s*v(\d+)/m);
-      const version = versionMatch ? parseInt(versionMatch[1]) : null;
+      const version = versionMatch ? parseInt(versionMatch[1], 10) : null;
       const threadMatch = content.match(/\(B09-T(\d+)\)/);
       const lastThread = threadMatch ? `B09-T${threadMatch[1]}` : "inconnu";
       return { version, versionStr: version ? `v${version}` : "inconnue", filePath, content, lastThread };
@@ -60,11 +60,12 @@ async function findActiveDoc(docConfig) {
     }
   }
 
+  // Doc versionné : sélection STRICTE par parsing numérique. Fail loud : pas de fallback silencieux.
   let files;
   try {
     files = await fs.readdir(dirPath);
-  } catch {
-    return { version: null, versionStr: "DOSSIER INTROUVABLE", filePath: null, content: null };
+  } catch (e) {
+    throw new Error(`findActiveDoc(${docConfig.label}) : dossier introuvable ${dirPath} — ${e.message}`);
   }
 
   const suffix = docConfig.suffix ?? ".md";
@@ -75,13 +76,16 @@ async function findActiveDoc(docConfig) {
   const matches = files
     .map(f => {
       const match = f.match(regex);
-      return match ? { file: f, version: parseInt(match[1]) } : null;
+      if (!match) return null;
+      const version = parseInt(match[1], 10);
+      if (!Number.isFinite(version)) return null;
+      return { file: f, version };
     })
     .filter(Boolean)
     .sort((a, b) => b.version - a.version);
 
   if (matches.length === 0) {
-    return { version: null, versionStr: "INTROUVABLE", filePath: null, content: null };
+    throw new Error(`findActiveDoc(${docConfig.label}) : aucun fichier ${docConfig.prefix}<N>${suffix} dans ${dirPath}`);
   }
 
   const active = matches[0];
@@ -204,9 +208,12 @@ function detectDivergences(docs, snapshot, lastB09) {
 
 // ─── ÉTAPE 5 : Générer le fichier PRE_THREAD ─────────────────────────────────
 
-function buildPreThreadDoc(nextThreadName, docs, snapshot, lastB09, divergences) {
+function buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergences) {
+  if (!resolvedThreadName || /TXX|Sujet/.test(resolvedThreadName)) {
+    throw new Error(`buildPreThreadDoc : nom de thread non résolu ("${resolvedThreadName}") — refus d'écrire un placeholder en clair`);
+  }
   const now = new Date().toISOString().slice(0, 10);
-  const threadLabel = nextThreadName || "B09-TXX-Sujet";
+  const threadLabel = resolvedThreadName;
 
   const snapshotSection = snapshot.ok
     ? `- inject_done    : ${snapshot.inject_done}
@@ -315,9 +322,15 @@ async function main() {
   }
 
   const resolvedThreadName = nextThreadName
-    || (lastB09.ok && lastB09.name && lastB09.name !== "aucun" ? autoIncrementThreadName(lastB09.name) : null)
-    || "B09-TXX";
-  if (!nextThreadName && resolvedThreadName !== "B09-TXX") {
+    || (lastB09.ok && lastB09.name && lastB09.name !== "aucun" ? autoIncrementThreadName(lastB09.name) : null);
+  if (!resolvedThreadName) {
+    throw new Error(
+      `Nom du thread cible non résolu : --next absent et auto-incrément impossible ` +
+      `(lastB09.ok=${lastB09.ok}, lastB09.name="${lastB09.name ?? "n/a"}"). ` +
+      `Relance avec --next B09-T<N>-<Sujet>-<NNN>.`
+    );
+  }
+  if (!nextThreadName) {
     log(`  → Nom auto-calculé : ${resolvedThreadName}`);
   }
 
@@ -347,7 +360,7 @@ async function main() {
   const threadLabel = resolvedThreadName;
   const outFilename = `PRE_THREAD_${threadLabel}.md`;
   const outPath = path.join(REPO_ROOT, outFilename);
-  const content = buildPreThreadDoc(nextThreadName, docs, snapshot, lastB09, divergences);
+  const content = buildPreThreadDoc(resolvedThreadName, docs, snapshot, lastB09, divergences);
   await fs.writeFile(outPath, content, "utf8");
   log(`  ✅ Fichier généré : ${outFilename}`);
 
