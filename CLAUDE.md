@@ -98,15 +98,16 @@ Comportements à tenir quand tu écris du code ou édites le repo :
 - **Un point ouvert se tranche** (fait ou `[DROPPED]`) — ne se re-suspend pas indéfiniment.
 - **Points ouverts du CONTEXT traités avant l'objectif principal du thread**, sauf décision explicite contraire documentée.
 - **Décision structurante = commit avant fin de thread.** Aucun `[À COMPLÉTER]` livré. Aucun acronyme inventé. `IDEAS.md` revu en clôture.
+- **Granularité des commits = une photo propre du repo, toujours.** Autant de commits que nécessaire pour qu'un geste cohérent = un commit. Ne jamais noyer plusieurs gestes de nature différente (refactor structurel + mise à jour backlog + fix) sous une seule étiquette qui n'en décrit qu'un. Un message de commit ne doit jamais mentir sur ce que le commit contient. Règle permanente — ne plus demander, appliquer par défaut.
 - **Séparation État (calculé) / Doctrine (versionnée).** Ne pas recopier de la doctrine dans des fichiers d'état (CONTEXT, PRE_THREAD, BACKLOG) — toujours pointer la source.
 
-Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage → Action. Priorité actuelle = avancer le **Pilotage** (migrer `notion-memory-chat.mjs` de GPT-4.1-mini vers Claude — BACKLOG_USER AGENTS P9), pas empiler de la mémoire. Supabase = source d'état unique cible (INFRA P2), APRÈS migration pilotage — pas avant.
+Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage → Action. Priorité actuelle = avancer le **Pilotage** puis l'**Action**, pas empiler de la mémoire. La migration pilotage GPT→Claude est FAITE (chat claude-haiku-4-5, server claude-sonnet-4-6) ; la suite côté pilotage = routing modèle adaptatif (BACKLOG_USER AGENTS P9). Supabase = source d'état unique cible (INFRA P2), APRÈS migration pilotage — pas avant.
 
 ## Sources de vérité (ne pas dupliquer ici)
 
 | Pour quoi | Va lire |
 |-----------|---------|
-| Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques, séquence de clôture) | `docs/prompts transfert thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v15) |
+| Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques, séquence de clôture) | `docs/prompts transfert thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v16) |
 | Doctrine agents (L'Associé, niveaux de confirmation, « DB prime toujours », routing datasource, fiches de différenciation) | `docs/prompts/associe/PROMPT_ASSOCIE_v<N>.md` (latest = v02) |
 | État courant du système (acquis, problèmes actifs, dernier thread traité) | `docs/context/INSIDE_OS_CONTEXT_v<N>.md` (latest = v30) |
 | Priorités, statuts, items ouverts (qui fait quoi, quoi est `[DONE]` / `[TODO]` / `[DROPPED]`) | `BACKLOG_DEV.md` + `BACKLOG_USER.md` |
