@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG DEV
 
-Derniere mise a jour : 2026-05-17 (B09-T38)
-Version : v04
+Derniere mise a jour : 2026-05-25 (B09-T39)
+Version : v05
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
 Regle : ce fichier est mis a jour a chaque thread B09-Dev via Claude Code.
@@ -23,7 +23,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P8 | Boucle infinie auto-pagination sur thread bloque — exclure les threads retry_count >= 2 de la boucle | B09-T33 | [DONE] |
 | P9 | Tokenizer diacritiques + MIN_SCORE=15 pertinence lessons_learnings | B09-T36 | [DONE] |
 | P10 | Desambiguisation tag semantique "associe" humain vs agent IA dans scoring | B09-T36 | [DONE] |
-| P11 | Purge automatique threads_to_process/ apres inject reussi | B09-T34 | [TODO] |
+| P11 | Purge automatique threads_to_process/ apres inject reussi. [B09-T39] Tranché : ne plus re-suspendre. La détection de divergence 3 axes (SYSTEME P19) couvre désormais le risque d'état incohérent qui motivait la purge. Sortie de la boucle de process. | B09-T34 | [DONE] |
 | P12 | Verifier que VERIFY_PASS=always est la config par defaut dans .env.example et documenter explicitement — Passe 1 + Passe 2 deja en place | B09-T37 | [DONE] |
 
 ---
@@ -55,18 +55,21 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P6 | Confronter docs/vision/ avec vision actuelle via LLM inside-os | B09-T34 | [TODO] |
 | P7 | Script de verification integrite systeme — schema Notion, DS_IDs, fichiers critiques, pipeline executable, .gitignore, etat dossiers non versionnés | B09-T34 | [TODO] |
 | P8 | Script os:pre-thread — audit complet avant ouverture thread B09 | B09-T34 | [DONE] |
-| P9 | [PARTIEL B09-T39] Capture interactive echanges post-export (phase 10 os:close --inject) — appende au rapport de cloture. Manque : passage a Claude pour mise a jour CONTEXT (voir P9b) | B09-T34 | [TODO] |
-| P9b | Passer les echanges post-export captures (P9) a Claude pour regenerer les sections Acquis reels + Fichiers produits du CONTEXT, puis re-injecter en B99. Prerequis : P9 partiel implémenté (B09-T39) | B09-T39 | [TODO] |
+| P9 | Capture interactive echanges post-export (phase 10 os:close --inject) — appende au rapport de cloture. [B09-T39] Scope tranché = capture + append uniquement (le bouclage Claude est P9b, ticket séparé). Vérifié dans le code : capturePostExport() (os-thread-close.mjs:382) + fs.appendFileSync(reportPath) (ligne 662) opérationnels (cas 1). Statut [DONE] adossé à vérification code, pas à un souvenir. | B09-T34 | [DONE] |
+| P9b | Passer les echanges post-export captures (P9) a Claude pour regenerer les sections Acquis reels + Fichiers produits du CONTEXT, puis re-injecter en B99. Prerequis : P9 [DONE] (B09-T39, voir P9 ci-dessus). | B09-T39 | [TODO] |
 | P10 | Ameliorer os:pre-thread : audit alignement etendu — verifier BACKLOG_DEV.md, BACKLOG_USER.md, PROMPT_ASSOCIE_vXX.md, thread precedent inject_done en Notion, BACKLOG.md coherent comme index | B09-T36 | [DONE] |
 | P11 | os:pre-thread archive l'ancien PRE_THREAD dans docs/pre-threads/ avant de generer le nouveau — un seul PRE_THREAD actif a la racine, historique complet dans docs/pre-threads/ | B09-T36 | [DONE] |
 | P12 | Script alignement post-cloture — verifier coherence README / CONTEXT / PROMPT / PROMPT_ASSOCIE / BACKLOG_DEV / BACKLOG_USER apres chaque ingest+inject definitif | B09-T37 | [TODO] |
 | P13 | Script tri repo — classement automatique deterministe des fichiers repo dans les bons dossiers cibles (complement de l'agent classifieur documents metier) | B09-T37 | [TODO] |
 | P14 | Politique archivage et versionnage fichiers critiques — automatiser pour : PROMPT_MAITRE, README, CONTEXT, PROMPT_ASSOCIE, BACKLOG_DEV, BACKLOG_USER, PRE_THREAD, ingest-pass1-vXX, ingest-pass2-vXX, .env.example. Regle grave dans PROMPT MAITRE v13, implementation via script | B09-T36 | [TODO] |
 | P15 | IDEAS.md + commande os:idea — pense-bete inter-thread : ajouter une idee horodatee en [RAW], revue en fin de thread (BACKLOG / DROPPED / KEEP) | B09-T36 | [TODO] |
-| P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject. NON PRIORITAIRE — enrichissement DB pour L Associe avant integration, pas avant migration Supabase | B09-T37 | [TODO] |
+| P16 | Sous-pipeline LLM traitement 200 threads bruts — tri importance strategique, classification bucket, synthese, selection ingest/inject. [DROPPED B09-T39] Les 200 threads bruts sont de la data pour la mémoire vivante, sans impact structurel sur le système. N'aligne pas le projet sur son but final (couche Action). Abandonné. | B09-T37 | [DROPPED] |
 | P17 | os:pre-thread — générer le PRE_THREAD avec le nom du thread SUIVANT (+1) et non du thread courant. Accepte déjà --next en argument mais doit incrémenter automatiquement sans argument. [B09-T39] Faux DONE corrigé : l'auto-incrément était calculé dans main() et utilisé pour le NOM DE FICHIER mais jamais injecté dans le titre du template — le PRE_THREAD généré affichait encore « B09-TXX-Sujet » en clair. Fixé en commit 3e81397 (fix(pre-thread)) : buildPreThreadDoc reçoit désormais resolvedThreadName et throw si placeholder. | B09-T39 | [DONE] |
 | P18 | Infrastructure idle agent — scheduler, sandbox/, budget tokens, rapport session, file sujets idle | B09-T38 | [ROADMAP] |
 | P19 | os:pre-thread — détection divergence redéfinie sur 3 axes (commit 1b35ca0, feat(divergence)) : AXE A fraîcheur CONTEXT (numéro fichier == numéro déclaré dans le contenu), AXE B compteurs Notion (inject_pending == 0 && inject_error == 0), AXE C cohérence CONTEXT ↔ Notion live (inject_done / DECISIONS / LESSONS du texte == compteurs live). Verdict ALIGNÉ = preuve positive (3 axes OK), sinon DIVERGENCE ou INDÉTERMINÉ — jamais aligné par défaut. Remplace la purge manuelle P11 comme solution architecturale à la boucle thread. | B09-T38 | [DONE] |
+| P20 | Source d'état unique : séparer ÉTAT (calculé, jamais saisi à la main — compteurs Notion live, git, filesystem) de DOCTRINE (versionnée, peu de fichiers — PROMPT_MAITRE, PROMPT_ASSOCIE, README). Les .md (CONTEXT, PRE_THREAD, BACKLOG) AFFICHENT l'état généré avec timestamp + source, ne le STOCKENT plus à la main. Supprime structurellement la divergence et rend le script d'alignement post-clôture (SYSTEME P12) inutile à terme. Support cible = Supabase (INFRA P2), APRÈS migration pilotage Claude (BACKLOG_USER). | B09-T39 | [TODO] |
+| P21 | Statut [DONE] vérifiable : un item ne passe [DONE] que adossé à une preuve (commit, test qui passe), jamais par saisie humaine seule. Application de la règle anti-hallucination au backlog. Déclenché par le faux [DONE] de P17 découvert en B09-T39. NOTE : déjà appliqué de fait dans ce thread (P17/P19 référencent les hash de commit). À systématiser. | B09-T39 | [TODO] |
+| P22 | Nettoyage CONTEXT : supprimer du filesystem les versions antérieures au latest. Git conserve l'historique complet (= la vraie sécurité, pas la redondance de fichiers à la racine). Un seul CONTEXT vivant. Suppression pure, PAS d'archive redondante. PRÉREQUIS DE SÉCURITÉ : vérifier via `git log` que chaque CONTEXT antérieur est bien commité AVANT suppression. | B09-T39 | [TODO] |
 
 ---
 
@@ -91,3 +94,4 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 [TODO]    = priorite active
 [ROADMAP] = decide, pas encore planifie
 [DONE]    = implemente et valide
+[DROPPED] = abandonné, conservé pour traçabilité de la décision
