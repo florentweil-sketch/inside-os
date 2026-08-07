@@ -1,5 +1,4 @@
 # PROMPT AGENT SYNTHÈSE — v01
-Date : 2026-05-25
 Version : v01
 Produit dans : B09-T40-Notion-Dev-028
 Bucket : transversal (super-agent)
@@ -91,7 +90,7 @@ La synthèse est un document structuré. Structure standard :
 ```
 # SYNTHÈSE — <sujet>
 Produit par : Agent Synthèse v01
-Date : <date>
+Date : <date exacte fournie dans le message utilisateur sous "DATE DU RUN" — jamais une autre date, jamais une date lue ailleurs dans ce prompt système>
 Sources interrogées : <decisions_structural | lessons_learnings | thread_dump>
 Niveau de complétude : <COMPLET | PARTIEL | INDÉTERMINÉ>
 

@@ -89,6 +89,10 @@ async function main() {
   console.error(`Sujet : "${args.sujet}"`);
   console.error(``);
 
+  // Date unique du run — transmise à runSynthese pour que le bloc metadata
+  // ci-dessous et l'en-tête produit par le LLM affichent exactement la même date.
+  const runDate = new Date().toISOString();
+
   let result;
   try {
     result = await runSynthese({
@@ -96,6 +100,7 @@ async function main() {
       limit: args.limit,
       minScore: args.minScore,
       withContent: !args.noContent,
+      runDate,
     });
   } catch (e) {
     console.error(`\n❌ ÉCHEC : ${e.message}`);
@@ -107,7 +112,7 @@ async function main() {
   lines.push(`# SYNTHÈSE — ${result.sujet}`);
   lines.push(``);
   lines.push(`Produit par : Agent Synthèse v01`);
-  lines.push(`Date        : ${new Date().toISOString()}`);
+  lines.push(`Date        : ${result.runDate}`);
   lines.push(`Sources interrogées : ${result.sourcesInterrogees.join(" | ") || "(aucune)"}`);
   lines.push(`Tokens du sujet : ${result.tokens.join(", ")}`);
   lines.push(`Pages lues : ${result.pagesLues} | Items retenus : ${result.itemsCount}`);

@@ -86,9 +86,14 @@ function truncate(text, max) {
 }
 
 // Construit le message utilisateur passé au LLM : prompt système + sujet + items mémoire.
-function buildUserMessage({ sujet, items, completude, sourcesInterrogees }) {
+function buildUserMessage({ sujet, items, completude, sourcesInterrogees, runDate }) {
   const lines = [];
   lines.push(`SUJET DE LA SYNTHÈSE : ${sujet}`);
+  lines.push("");
+  // Date réelle du run, à utiliser telle quelle dans l'en-tête de sortie (champ "Date :").
+  // Ne jamais laisser le LLM déduire ou inventer une date — ni reprendre une date
+  // qui figurerait par ailleurs dans le prompt système.
+  lines.push(`DATE DU RUN (à recopier telle quelle dans le champ "Date :" de ton en-tête — jamais une autre date) : ${runDate}`);
   lines.push("");
   lines.push(`SOURCES INTERROGÉES : ${sourcesInterrogees.join(", ")}`);
   lines.push(`COMPLÉTUDE TECHNIQUE : ${completude}`);
@@ -138,10 +143,16 @@ function computeCompletude(plan, errors) {
   return "COMPLET";
 }
 
-export async function runSynthese({ sujet, limit = 30, minScore = 2, withContent = true }) {
+export async function runSynthese({ sujet, limit = 30, minScore = 2, withContent = true, runDate }) {
   if (!sujet || !sujet.trim()) {
     throw new Error("Sujet vide. Usage : npm run os:synthese -- --sujet \"...\"");
   }
+
+  // Date réelle du run — source unique, transmise par l'appelant (run.mjs) pour que
+  // le bloc metadata (hors LLM) et l'en-tête produit par le LLM affichent exactement
+  // la même date. Fallback si appelé directement (fail-safe, pas de crash sur un usage
+  // programmatique qui omettrait runDate).
+  const effectiveRunDate = runDate || new Date().toISOString();
 
   const systemPrompt = loadSystemPrompt();
   const tokens = tokenize(sujet);
@@ -214,6 +225,7 @@ export async function runSynthese({ sujet, limit = 30, minScore = 2, withContent
     items,
     completude,
     sourcesInterrogees,
+    runDate: effectiveRunDate,
   });
 
   console.error(`[synthese] appel LLM (CLAUDE_MODEL=${env("CLAUDE_MODEL")})…`);
@@ -238,5 +250,6 @@ export async function runSynthese({ sujet, limit = 30, minScore = 2, withContent
     itemsCount: items.length,
     pagesLues: all.length,
     response,
+    runDate: effectiveRunDate,
   };
 }
