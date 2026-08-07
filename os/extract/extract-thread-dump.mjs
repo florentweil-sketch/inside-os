@@ -11,6 +11,7 @@ import {
   rt,
 } from "../lib/notion.mjs";
 import { claudeFetch } from "../lib/claude.mjs";
+import { assertNotBlockedDumpId, BlockedDumpIdError } from "../lib/guard.mjs";
 
 const THREAD_DUMP_DS_ID = process.env.THREAD_DUMP_DS_ID;
 const NOTION_API_KEY    = process.env.NOTION_API_KEY;
@@ -401,7 +402,10 @@ async function markPage(pageId, { status, json, error, model }) {
 
 async function processOne(page) {
   const dumpId = getPropText(page, "id_dump") || "(unknown)";
-  const text   = await getPageText(page);
+
+  assertNotBlockedDumpId(dumpId, `(thread_dump page ${page.id})`);
+
+  const text = await getPageText(page);
 
   if (!text) {
     await markPage(page.id, { status: "error", json: "", error: "Aucun texte source trouve", model: CLAUDE_MODEL });
@@ -528,6 +532,7 @@ async function main() {
       await processOne(page);
       console.log("  OK\n");
     } catch (e) {
+      if (e instanceof BlockedDumpIdError) throw e; // fail-loud : stoppe tout le run, pas de skip silencieux
       console.error("  ERROR:", e.message, "\n");
       await markPage(page.id, { status: "error", json: "", error: e.message, model: CLAUDE_MODEL });
     }

@@ -14,6 +14,7 @@ import {
   getPropText,
 } from "../lib/notion.mjs";
 import { makeUid } from "../lib/uid.mjs";
+import { assertNotBlockedDumpId, BlockedDumpIdError } from "../lib/guard.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -406,6 +407,8 @@ async function processOne(page) {
   const threadPageId = page.id;
   const dumpId       = getPropText(page, "id_dump");
 
+  assertNotBlockedDumpId(dumpId, `(thread_dump page ${threadPageId})`);
+
   // V2 : lire depuis thread_summarized/ en priorité (contient le JSON complet > 2000 chars)
   const summarizedPath = path.join(REPO_ROOT, "data", "thread_summarized", `${dumpId}.json`);
   let extractionJsonText = null;
@@ -575,6 +578,7 @@ async function main() {
         else if (result === "error")  console.log("  ERROR (handled)");
         else console.log(`  ${result}`);
       } catch (e) {
+        if (e instanceof BlockedDumpIdError) throw e; // fail-loud : stoppe tout le run, pas de skip silencieux
         console.error("  ERROR:", e.message);
         const rc = page.properties?.retry_count?.number ?? 0;
         await markThreadDump(page.id, { status: "error", summary: "", error: e.message, retryCount: rc + 1 });
