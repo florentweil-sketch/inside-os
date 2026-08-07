@@ -42,6 +42,20 @@ function normalizeText(value) {
     .trim();
 }
 
+// Méta-mots : vocabulaire structurel d'INSIDE OS, présent dans 8 à 21 % du corpus
+// DECISIONS+LESSONS (mesuré live sur 7449 items, 2026-08-07 : notion 21.4%,
+// inside 21.0%, systeme 16.2%, pipeline 14.9%, inject 14.4%, extract 8.9%,
+// memoire 8.1%, projet 7.7% — vs. un vrai token entité type "clemence" à 0.4%).
+// Un match dessus ne discrimine rien : le corpus entier parle d'INSIDE OS, sa
+// mémoire, son pipeline Notion extract/inject. Exclus du scoring ET du boost
+// (voir phraseBoosts) — sinon toute question qui les emploie, ce qui est quasi
+// systématique dans ce domaine, remonte des items hors-sujet par ce seul partage
+// de vocabulaire générique. "os" est déjà filtré par le stopword grammatical
+// ci-dessous (2 lettres, mot-outil).
+const META_WORDS = new Set([
+  "memoire", "inside", "notion", "pipeline", "inject", "extract", "systeme", "projet",
+]);
+
 function tokenize(value) {
   const stop = new Set([
     "le", "la", "les", "de", "des", "du", "un", "une", "et", "ou", "a", "à",
@@ -58,38 +72,27 @@ function tokenize(value) {
       normalizeText(value)
         .split(" ")
         .map((x) => x.trim())
-        .filter((x) => x.length >= 2 && !stop.has(x))
+        .filter((x) => x.length >= 2 && !stop.has(x) && !META_WORDS.has(x))
     )
   );
 }
 
+// NB : "inside", "memoire", "notion", "pipeline", "extract", "inject" ne sont plus
+// des déclencheurs ici — ce sont des META_WORDS, retirés de `tokens` en amont par
+// tokenize(). Les garder aurait laissé des branches mortes (joined ne peut plus
+// les contenir).
 function phraseBoosts(tokens) {
   const joined = tokens.join(" ");
   const boosts = [];
 
-  if (joined.includes("inside")) {
-    boosts.push("inside");
-  }
-  if (joined.includes("memoire") || joined.includes("conversationnelle")) {
-    boosts.push("memoire", "conversationnelle");
-  }
-  if (joined.includes("notion")) {
-    boosts.push("notion");
+  if (joined.includes("conversationnelle")) {
+    boosts.push("conversationnelle");
   }
   if (joined.includes("v0") || joined.includes("v1") || joined.includes("beta")) {
     boosts.push("v0", "v1", "beta");
   }
-  if (joined.includes("pipeline")) {
-    boosts.push("pipeline");
-  }
   if (joined.includes("durcissement")) {
     boosts.push("durcissement");
-  }
-  if (joined.includes("extract")) {
-    boosts.push("extract");
-  }
-  if (joined.includes("inject")) {
-    boosts.push("inject");
   }
 
   return boosts;
