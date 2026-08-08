@@ -112,21 +112,29 @@ function isStateDump(sourceDumpId) {
   return id.startsWith("B99-T05");
 }
 
-function questionTargetsCurrentSystem(question) {
-  const q = normalizeText(question);
+// Détecte si la question porte sur l'état actuel du système, pour prioriser les
+// items "présent vivant" (B99, cf. isPresentDump/isStateDump). Opère sur les
+// tokens déjà filtrés par tokenize() (comme phraseBoosts) — jamais sur le texte
+// brut de la question. Avant fix : lisait le texte brut, donc un META_WORD comme
+// "mémoire"/"pipeline" — présent dans quasi toute question sur INSIDE OS —
+// déclenchait ce biais indépendamment du contenu réel. Bug constaté B09-T41 :
+// "Que sait la mémoire sur Clémence Porret" faisait remonter des items B99 sans
+// aucun rapport avec Clémence Porret, y compris en lecture complète (7449 items),
+// pas seulement sur un pool restreint. "memoire"/"pipeline"/"extract"/"inject"
+// sont retirés de la liste ci-dessous : ce sont des META_WORDS, absents de
+// `tokens` par construction — les garder serait du code mort. Le check "inside
+// os" (phrase brute à 2 mots) est abandonné pour la même raison : "inside" et
+// "os" sont tous deux déjà neutralisés (META_WORD / stopword grammatical).
+function questionTargetsCurrentSystem(tokens) {
+  const set = new Set(tokens);
   return (
-    q.includes("memoire") ||
-    q.includes("conversationnelle") ||
-    q.includes("v0") ||
-    q.includes("v1") ||
-    q.includes("beta") ||
-    q.includes("durcissement") ||
-    q.includes("pipeline") ||
-    q.includes("extract") ||
-    q.includes("inject") ||
-    q.includes("inside os") ||
-    q.includes("aujourd") ||
-    q.includes("etat")
+    set.has("conversationnelle") ||
+    set.has("v0") ||
+    set.has("v1") ||
+    set.has("beta") ||
+    set.has("durcissement") ||
+    set.has("aujourd") ||
+    set.has("etat")
   );
 }
 
@@ -210,26 +218,30 @@ function scoreItem(item, tokens, boosts, question) {
   if (item.source_dump_id) score += 1;
   if (item.uid) score += 1;
 
-  // BOOST PRÉSENT
-  if (isPresentDump(item.source_dump_id)) {
+  // BOOST PRÉSENT — gaté sur la pertinence de la question (questionTargetsCurrentSystem).
+  // Avant fix : s'appliquait à TOUT item B99, pour N'IMPORTE QUELLE question, sans
+  // aucune condition — un item B99-T05 valait +20+40=60 de base même pour une
+  // question sans aucun rapport (ex. "Clémence Porret", 0 hit de contenu réel,
+  // score 65 quand même). Bug constaté B09-T41.
+  if (questionTargetsCurrentSystem(tokens) && isPresentDump(item.source_dump_id)) {
     score += 20;
     hits.push("present:B99");
   }
 
-  // BOOST ÉTAT OPÉRATOIRE
-  if (isStateDump(item.source_dump_id)) {
+  // BOOST ÉTAT OPÉRATOIRE — même gate, même raison.
+  if (questionTargetsCurrentSystem(tokens) && isStateDump(item.source_dump_id)) {
     score += 40;
     hits.push("state:boost");
   }
 
   // BOOST SUPPLÉMENTAIRE si la question porte sur l'état actuel du système
-  if (questionTargetsCurrentSystem(question) && isPresentDump(item.source_dump_id)) {
+  if (questionTargetsCurrentSystem(tokens) && isPresentDump(item.source_dump_id)) {
     score += 12;
     hits.push("present:system");
   }
 
   // MALUS léger sur vieux historique si question système actuelle
-  if (questionTargetsCurrentSystem(question) && isOldDump(item.source_dump_id)) {
+  if (questionTargetsCurrentSystem(tokens) && isOldDump(item.source_dump_id)) {
     score -= 4;
     hits.push("old-history");
   }
