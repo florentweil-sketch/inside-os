@@ -15,6 +15,15 @@ import { CFG } from "../../lib/config.mjs";
 
 const PAGE_SIZE = 100;
 
+// Formate statut + date de création pour affichage, ex. "[validated | 2026-05-02]".
+// Affichage seul — aucune logique de scoring/sélection ne s'appuie dessus.
+// "n/a" si absent (lesson/thread_dump n'ont pas de decision_status).
+export function formatStatusDate(status, createdTime) {
+  const s = status || "n/a";
+  const d = createdTime ? String(createdTime).slice(0, 10) : "date inconnue";
+  return `[${s} | ${d}]`;
+}
+
 // Tokenize un sujet pour le scoring : minuscule, sans diacritiques, mots >= 4 lettres.
 // Aligné sur le tokenizer du chat (B09-T36 P9 : diacritiques retirés).
 export function tokenize(text) {
@@ -157,11 +166,18 @@ export function selectRelevant(pages, tokens, { limit = 30, minScore = 2 } = {})
 // est explicitement écartée sur THREAD_DUMP, cf. ITEM_FIELDS) : rationale +
 // evidence pour une décision, what_happened + evidence pour une leçon,
 // summary_short + summary_full pour un thread_dump.
+// `status` : decision_status, spécifique à DECISIONS (proposed/validated/
+// superseded/archived/draft/rejected) — "" pour lesson/thread_dump, qui n'ont
+// pas ce champ (cf. CLAUDE.md mapping json.status -> decision_status).
+// `createdTime` : page.created_time (champ Notion top-level, pas une
+// propriété) — jamais de scoring dessus, affichage seul.
 export function describePage(page) {
   return {
     id: page.id,
     title: pageTitle(page),
     content_hint: pageContent(page),
+    status: page._itemType === "decision" ? getPropText(page, "decision_status") : "",
+    createdTime: page.created_time || "",
     source_dump_id: getPropText(page, "source_dump_id"),
     url: page.url,
   };

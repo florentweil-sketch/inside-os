@@ -24,6 +24,7 @@ import {
   selectRelevant,
   readPageContent,
   describePage,
+  formatStatusDate,
 } from "./sources.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -109,7 +110,7 @@ function buildUserMessage({ sujet, items, completude, sourcesInterrogees, runDat
     lines.push("");
     for (const { page, score, content } of items) {
       const d = describePage(page);
-      lines.push(`--- [score ${score}] ${d.title}`);
+      lines.push(`--- [score ${score}] ${formatStatusDate(d.status, d.createdTime)} ${d.title}`);
       lines.push(`Source : ${d.source_dump_id || "(source_dump_id absent)"} | ID page : ${d.id}`);
       lines.push(`URL : ${d.url || "(url absente)"}`);
       lines.push(`Aperçu (champs structurés Notion, pas les blocs) : ${truncate(d.content_hint, 500)}`);

@@ -170,6 +170,18 @@ async function readAllPages(dataSourceId, { limit = 0, sorts } = {}) {
   return all;
 }
 
+// Formate le statut + la date de création d'un item pour affichage uniforme,
+// ex. "[validated | 2026-05-02]". Ni le statut ni la date ne sont lus par
+// aucune logique de scoring — affichage seul (cf. formatStatusDate, consommé
+// par buildMemoryContext/writeLog). "n/a" si absent (LESSONS n'a pas de
+// decision_status — ce champ est spécifique à DECISIONS, cf. CLAUDE.md mapping
+// json.status -> decision_status).
+function formatStatusDate(status, createdTime) {
+  const s = status || "n/a";
+  const d = createdTime ? String(createdTime).slice(0, 10) : "date inconnue";
+  return `[${s} | ${d}]`;
+}
+
 function mapDecisionPage(page) {
   return {
     type: "decision",
@@ -177,6 +189,8 @@ function mapDecisionPage(page) {
     decision: getPropText(page, "decision"),
     rationale: getPropText(page, "rationale"),
     evidence: getPropText(page, "evidence"),
+    status: getPropText(page, "decision_status"),
+    createdTime: page.created_time || "",
     source_thread: getRelationId(page, "source_thread"),
     source_dump_id: getPropText(page, "source_dump_id"),
   };
@@ -189,6 +203,8 @@ function mapLessonPage(page) {
     lesson: getPropText(page, "lesson"),
     what_happened: getPropText(page, "what_happened"),
     evidence: getPropText(page, "evidence"),
+    status: "", // LESSONS n'a pas de decision_status (spécifique à DECISIONS)
+    createdTime: page.created_time || "",
     source_thread: getRelationId(page, "source_thread"),
     source_dump_id: getPropText(page, "source_dump_id"),
   };
@@ -318,6 +334,8 @@ function scoreAndSelect(items, tokens, boosts, question) {
 function buildMemoryContext(items) {
   return items
     .map((item, index) => {
+      const statusDate = formatStatusDate(item.status, item.createdTime);
+
       if (item.type === "decision") {
         return [
           `[MEMORY_ITEM_${index + 1}]`,
@@ -325,7 +343,7 @@ function buildMemoryContext(items) {
           `score: ${item._score}`,
           `hits: ${(item._hits || []).join(", ")}`,
           `uid: ${item.uid || ""}`,
-          `decision: ${item.decision || ""}`,
+          `decision: ${statusDate} ${item.decision || ""}`,
           `rationale: ${item.rationale || ""}`,
           `evidence: ${item.evidence || ""}`,
           `source_thread: ${item.source_thread || ""}`,
@@ -339,7 +357,7 @@ function buildMemoryContext(items) {
         `score: ${item._score}`,
         `hits: ${(item._hits || []).join(", ")}`,
         `uid: ${item.uid || ""}`,
-        `lesson: ${item.lesson || ""}`,
+        `lesson: ${statusDate} ${item.lesson || ""}`,
         `what_happened: ${item.what_happened || ""}`,
         `evidence: ${item.evidence || ""}`,
         `source_thread: ${item.source_thread || ""}`,
@@ -370,8 +388,8 @@ function writeLog({ question, tokens, selectedItems, responseText, decisionsCoun
         `hits: ${(item._hits || []).join(", ")}`,
         `uid: ${item.uid || ""}`,
         item.type === "decision"
-          ? `decision: ${item.decision || ""}`
-          : `lesson: ${item.lesson || ""}`,
+          ? `decision: ${formatStatusDate(item.status, item.createdTime)} ${item.decision || ""}`
+          : `lesson: ${formatStatusDate(item.status, item.createdTime)} ${item.lesson || ""}`,
         `source_thread: ${item.source_thread || ""}`,
         `source_dump_id: ${item.source_dump_id || ""}`,
         ``,
@@ -434,6 +452,12 @@ Contraintes :
 - Tu n’inventes rien
 - Si la mémoire est insuffisante, tu le dis en 1 phrase
 - Tu privilégies toujours B99 (présent)
+
+Lecture du statut et de la date (chaque item porte un tag [statut | date]) :
+- "proposed" = une hypothèse évoquée dans le thread source, jamais actée. Ne la présente jamais comme une décision prise.
+- "validated" = une formulation ferme dans le thread source — PAS une validation par Florent. Ne dis jamais "Florent a validé X" sur la seule foi de ce statut.
+- Un item ancien (date lointaine) sans confirmation plus récente sur le même sujet se présente comme un historique à vérifier, jamais comme l'état courant.
+- En cas de contradiction entre deux items sur un même sujet, l'item le plus récent (date) prime dans ta réponse, et tu signales la contradiction plutôt que de la lisser.
 
 MEMORY_CONTEXT
 ${memoryContext || "[aucune mémoire pertinente]"}
