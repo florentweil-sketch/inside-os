@@ -87,6 +87,87 @@ function isB09Sourced(page) {
   return id.startsWith("B09-");
 }
 
+// Fix anti-monopole (B09-T41). Deux approches essayées :
+//   1. Pré-filtrer les PAGES par source_dump_id avant envoi au LLM (comme
+//      INSIDE_OS_CAP) — ABANDONNÉ : les items d'un même dump business sont
+//      créés en batch, à quelques millisecondes d'écart, donc "les plus
+//      récents" est un tri quasi arbitraire à ce niveau de granularité —
+//      constaté en pratique : a fait disparaître la tâche "transfert Inside
+//      Archi" (item réellement le plus actionnable, éliminé par hasard de
+//      timing) et vidé Commercial (B05) une deuxième fois.
+//   2. RETENUE : le LLM garde la vue complète sur tous les candidats d'une
+//      source (son jugement choisit les meilleurs) — le plafond est
+//      appliqué APRÈS coup, en POST-TRAITANT sa réponse texte. Garantit la
+//      limite en code sans sacrifier la qualité de sélection du LLM.
+const SOURCE_DUMP_CAP = 3;
+
+// Extrait la clé de regroupement d'une ligne de tâche "- [ ] ... — <source>".
+// Privilégie un id_dump (B\d{2}-T\d{2}) s'il apparaît dans la source citée ;
+// sinon utilise la source telle quelle (uid/id de page).
+function extractSourceKey(taskLine) {
+  const dashIdx = taskLine.lastIndexOf("—");
+  if (dashIdx === -1) return null;
+  const tail = taskLine.slice(dashIdx + 1).trim();
+  if (!tail) return null;
+  const m = tail.match(/\bB\d{2}-T\d{2}\b/i);
+  return (m ? m[0] : tail).toUpperCase();
+}
+
+// Plafonne le nombre de tâches par source dans la réponse du LLM (markdown
+// strict : titres "## ...", tâches "- [ ] ..."). Retire les tâches en trop
+// (garde les `cap` premières rencontrées par source, dans l'ordre où le LLM
+// les a écrites), puis supprime les sections de famille devenues vides.
+function enforceSourceDumpCap(markdown, cap) {
+  const lines = String(markdown || "").split("\n");
+  const counts = new Map();
+  const kept = [];
+
+  for (const line of lines) {
+    const isTask = line.trim().startsWith("- [ ]");
+    if (!isTask) {
+      kept.push(line);
+      continue;
+    }
+    const key = extractSourceKey(line);
+    const n = key ? (counts.get(key) || 0) : 0;
+    if (key && n >= cap) continue; // au-delà du plafond pour cette source — retirée
+    if (key) counts.set(key, n + 1);
+    kept.push(line);
+  }
+
+  return removeEmptyFamilySections(kept.join("\n"));
+}
+
+// Retire un titre "## Famille" si aucune ligne "- [ ] " ne le suit avant le
+// prochain titre (ou la fin du document) — sécurité après enforceSourceDumpCap,
+// qui peut vider une famille dont toutes les tâches partageaient une même
+// source déjà représentée ailleurs.
+function removeEmptyFamilySections(text) {
+  const lines = text.split("\n");
+  const preamble = [];
+  const sections = [];
+  let current = null;
+
+  for (const line of lines) {
+    if (line.startsWith("## ")) {
+      if (current) sections.push(current);
+      current = { header: line, body: [] };
+    } else if (current) {
+      current.body.push(line);
+    } else {
+      preamble.push(line);
+    }
+  }
+  if (current) sections.push(current);
+
+  const nonEmpty = sections.filter((s) => s.body.some((l) => l.trim().startsWith("- [ ]")));
+
+  const out = [...preamble];
+  for (const s of nonEmpty) out.push(s.header, ...s.body);
+
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").replace(/\s+$/, "\n");
+}
+
 function truncate(text, max) {
   if (!text) return "";
   const s = String(text);
@@ -128,6 +209,9 @@ function gatherCandidates({ decisions, lessons, threadDump }) {
     .filter(isPresentItem)
     .sort(byCreatedTimeDesc);
 
+  // Pas de plafond anti-monopole ici (cf. commentaire sur SOURCE_DUMP_CAP) —
+  // le LLM garde la vue complète, le plafond est appliqué après coup sur sa
+  // réponse (enforceSourceDumpCap, dans runOuverture).
   const merged = dedupePages([...present, ...recent, ...proposed, ...presentThreadDump])
     .sort(byCreatedTimeDesc)
     .slice(0, MAX_CANDIDATES_TOTAL);
@@ -262,7 +346,7 @@ export async function runOuverture({ runDate } = {}) {
   const userMessage = buildUserMessage({ todayDate, business, insideOs, sourcesInterrogees, counts });
 
   console.error(`[ouverture] appel LLM (CLAUDE_MODEL=${env("CLAUDE_MODEL")})…`);
-  const response = await claudeFetch({
+  const rawResponse = await claudeFetch({
     model: env("CLAUDE_MODEL"),
     max_tokens: 2000, // liste de tâches, plus long que Pilotage mais borné (max 20 lignes)
     messages: [
@@ -272,6 +356,13 @@ export async function runOuverture({ runDate } = {}) {
       },
     ],
   });
+
+  // Anti-monopole appliqué en post-traitement (cf. commentaire SOURCE_DUMP_CAP) :
+  // garantit le plafond en code sans avoir amputé la vue du LLM en amont.
+  const response = enforceSourceDumpCap(rawResponse, SOURCE_DUMP_CAP);
+  if (response !== rawResponse) {
+    console.error(`  [ouverture] anti-monopole : réponse ajustée (plafond ${SOURCE_DUMP_CAP}/source appliqué en post-traitement)`);
+  }
 
   return {
     todayDate,
