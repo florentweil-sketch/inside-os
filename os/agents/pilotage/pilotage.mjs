@@ -26,7 +26,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { claudeFetch } from "../../lib/claude.mjs";
 import { env } from "../../lib/config.mjs";
-import { getPropText } from "../../lib/notion.mjs";
 import {
   tokenize,
   readDecisions,
@@ -36,6 +35,8 @@ import {
   readPageContent,
   describePage,
   formatStatusDate,
+  isPresentItem,
+  isRecentItem,
 } from "../synthese/sources.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -73,27 +74,8 @@ function truncate(text, max) {
   return s.slice(0, max) + `\n[…tronqué — ${s.length - max} caractères omis]`;
 }
 
-function getMultiSelectNames(page, propName) {
-  const p = page.properties?.[propName];
-  if (!p || p.type !== "multi_select") return [];
-  return (p.multi_select || []).map((x) => x.name);
-}
-
-// "Présent" = bucket B99 (architecture actée : "B99 = présent vivant du
-// système", décision gravée citée dans la mémoire B99-T05) OU
-// source_dump_id préfixé B99- (thread_dump direct).
-function isPresentItem(page) {
-  const bucket = getMultiSelectNames(page, "bucket");
-  const dumpId = String(getPropText(page, "source_dump_id") || "").toUpperCase();
-  return bucket.includes("B99") || dumpId.startsWith("B99-");
-}
-
-function isRecentItem(page, days) {
-  if (!page.created_time) return false;
-  const created = new Date(page.created_time).getTime();
-  if (Number.isNaN(created)) return false;
-  return created >= Date.now() - days * 24 * 60 * 60 * 1000;
-}
+// isPresentItem/isRecentItem promus dans synthese/sources.mjs (B09-T41) —
+// socle partagé avec l'Agent Ouverture, plus de définition locale ici.
 
 // Score = pertinence réelle (scoreItem, inchangé, importé de Synthèse) + boost
 // présent/récent. Le boost est volontairement modeste (max +4, contre un

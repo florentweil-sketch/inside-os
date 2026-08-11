@@ -24,6 +24,35 @@ export function formatStatusDate(status, createdTime) {
   return `[${s} | ${d}]`;
 }
 
+// Promu depuis pilotage.mjs (B09-T41) — socle partagé par Pilotage ET Ouverture.
+export function getMultiSelectNames(page, propName) {
+  const p = page.properties?.[propName];
+  if (!p || p.type !== "multi_select") return [];
+  return (p.multi_select || []).map((x) => x.name);
+}
+
+// "Présent" = bucket B99 (architecture actée : "B99 = présent vivant du
+// système", décision gravée citée dans la mémoire B99-T05) OU source_dump_id
+// préfixé B99- (decision/lesson issu d'un thread B99) OU id_dump préfixé B99-
+// (le thread_dump lui-même — il n'a ni bucket ni source_dump_id, seulement
+// id_dump). Le fallback sur id_dump est nécessaire : sans lui, isPresentItem
+// ne détectait jamais une page THREAD_DUMP comme présente (constaté B09-T41,
+// Agent Ouverture).
+export function isPresentItem(page) {
+  const bucket = getMultiSelectNames(page, "bucket");
+  const dumpId = String(
+    getPropText(page, "source_dump_id") || getPropText(page, "id_dump") || ""
+  ).toUpperCase();
+  return bucket.includes("B99") || dumpId.startsWith("B99-");
+}
+
+export function isRecentItem(page, days) {
+  if (!page.created_time) return false;
+  const created = new Date(page.created_time).getTime();
+  if (Number.isNaN(created)) return false;
+  return created >= Date.now() - days * 24 * 60 * 60 * 1000;
+}
+
 // Tokenize un sujet pour le scoring : minuscule, sans diacritiques, mots >= 4
 // lettres — SAUF un acronyme court (2-3 caractères) détecté par sa casse dans
 // le texte ORIGINAL (SAS, ATR, RAF, LOA, B1...). Aligné sur le tokenizer du
