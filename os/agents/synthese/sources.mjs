@@ -24,10 +24,32 @@ export function formatStatusDate(status, createdTime) {
   return `[${s} | ${d}]`;
 }
 
-// Tokenize un sujet pour le scoring : minuscule, sans diacritiques, mots >= 4 lettres.
-// Aligné sur le tokenizer du chat (B09-T36 P9 : diacritiques retirés).
+// Tokenize un sujet pour le scoring : minuscule, sans diacritiques, mots >= 4
+// lettres — SAUF un acronyme court (2-3 caractères) détecté par sa casse dans
+// le texte ORIGINAL (SAS, ATR, RAF, LOA, B1...). Aligné sur le tokenizer du
+// chat (B09-T36 P9 : diacritiques retirés), qui reste distinct (pas de
+// détection d'acronyme côté chat — cf. BACKLOG_DEV, alignement non fait ici).
+//
+// Bug corrigé (constaté B09-T41, Agent Pilotage) : le seuil >= 4 éliminait
+// des sigles business courts et légitimes. Sujet "Inside SAS" -> tokens=[inside]
+// seul, réponse quasi identique à "INSIDE OS" faute du token "sas".
 export function tokenize(text) {
-  const lowered = String(text || "")
+  const raw = String(text || "");
+
+  // Détection sur le texte BRUT, avant minuscule/diacritiques (sinon toute
+  // trace de casse est perdue) : un "mot" de 2-3 caractères, tout en
+  // majuscules dans l'original, est retenu comme acronyme — échappe au seuil
+  // >= 4 ci-dessous, mais reste soumis au filtre STOP (un stopword en
+  // majuscules n'est pas promu acronyme, ex. "ET"). Les nombres purs ("50")
+  // ne qualifient pas : w.toUpperCase() === w.toLowerCase() pour un nombre,
+  // donc pas de casse détectable — "B1" qualifie (lettre + chiffre).
+  const acronyms = new Set(
+    (raw.match(/[\p{L}\p{N}]+/gu) || [])
+      .filter((w) => w.length >= 2 && w.length <= 3 && w === w.toUpperCase() && w !== w.toLowerCase())
+      .map((w) => w.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+  );
+
+  const lowered = raw
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
@@ -39,7 +61,9 @@ export function tokenize(text) {
     "quelles","au","aux","en","mais","donc","or","ni","car","the","and","for","with","that",
     "this","what","where","when","how","who","why","sont","ete","etre",
   ]);
-  return [...new Set(words.filter((w) => w.length >= 4 && !STOP.has(w)))];
+  return [...new Set(
+    words.filter((w) => (w.length >= 4 || acronyms.has(w)) && !STOP.has(w))
+  )];
 }
 
 // Mapping champ titre/contenu par type d'item — le nom de propriété Notion qui
