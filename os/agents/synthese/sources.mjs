@@ -33,19 +33,49 @@ export function tokenize(text) {
   return [...new Set(words.filter((w) => w.length >= 4 && !STOP.has(w)))];
 }
 
+// Mapping champ titre/contenu par type d'item — le nom de propriété Notion qui
+// porte le titre diffère par datasource (le champ title-type s'appelle
+// "decision" sur DECISIONS, "lesson" sur LESSONS, "Name" sur THREAD_DUMP —
+// AUCUNE des trois n'a de propriété littéralement nommée "title"). Vérifié live
+// 2026-08-11. Bug corrigé : scoreItem/describePage lisaient
+// getPropText(page,"title") et getPropText(page,"raw_text"), deux propriétés
+// qui n'existent sur AUCUNE des trois datasources — le score était donc 0 pour
+// tout item, sur toute question, systématiquement. L'Agent Synthèse n'a jamais
+// pu remonter un seul résultat depuis sa mise en service (B09-T40).
+// "raw_text" existe bien sur THREAD_DUMP mais est explicitement écarté (piège
+// connu CLAUDE.md : résumé une ligne, ne pas lire pour le fond) — on lit
+// summary_short/summary_full à la place.
+const ITEM_FIELDS = {
+  decision:    { title: "decision", content: ["rationale", "evidence"] },
+  lesson:      { title: "lesson",   content: ["what_happened", "evidence"] },
+  thread_dump: { title: "Name",     content: ["summary_short", "summary_full"] },
+};
+
+function fieldsFor(page) {
+  return ITEM_FIELDS[page._itemType] || ITEM_FIELDS.decision;
+}
+
+function pageTitle(page) {
+  return getPropText(page, fieldsFor(page).title);
+}
+
+function pageContent(page) {
+  return fieldsFor(page).content.map((k) => getPropText(page, k)).join(" ");
+}
+
 // Score un item Notion contre un set de tokens (sujet de la synthèse).
-// Pondération : title compte double (signal fort), raw_text simple.
+// Pondération : titre compte double (signal fort), contenu simple.
 // Seuil de pertinence remonté côté appelant.
 export function scoreItem(page, tokens) {
   if (!tokens.length) return 0;
-  const titleText = getPropText(page, "title").toLowerCase();
-  const rawText = getPropText(page, "raw_text").toLowerCase();
+  const titleText = pageTitle(page).toLowerCase();
+  const contentText = pageContent(page).toLowerCase();
   const titleNorm = titleText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  const rawNorm = rawText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const contentNorm = contentText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   let score = 0;
   for (const t of tokens) {
     if (titleNorm.includes(t)) score += 2;
-    if (rawNorm.includes(t)) score += 1;
+    if (contentNorm.includes(t)) score += 1;
   }
   return score;
 }
@@ -88,23 +118,28 @@ export async function readPageContent(pageId) {
 }
 
 // Source 1 : DECISIONS_DS_ID
+// _itemType taggé à la lecture : seul moyen pour scoreItem/describePage de
+// savoir quel champ Notion porte le titre/contenu réel (cf. ITEM_FIELDS).
 export async function readDecisions() {
-  return readAllPages(CFG.DECISIONS_DS_ID, "DECISIONS");
+  const pages = await readAllPages(CFG.DECISIONS_DS_ID, "DECISIONS");
+  return pages.map((p) => ({ ...p, _itemType: "decision" }));
 }
 
 // Source 2 : LESSONS_DS_ID
 export async function readLessons() {
-  return readAllPages(CFG.LESSONS_DS_ID, "LESSONS");
+  const pages = await readAllPages(CFG.LESSONS_DS_ID, "LESSONS");
+  return pages.map((p) => ({ ...p, _itemType: "lesson" }));
 }
 
 // Source 3 : THREAD_DUMP_DS_ID — on lit aussi pour permettre la mise en service
 // (premier livrable : état technique réel => besoin de voir les threads).
 export async function readThreadDump() {
-  return readAllPages(CFG.THREAD_DUMP_DS_ID, "THREAD_DUMP");
+  const pages = await readAllPages(CFG.THREAD_DUMP_DS_ID, "THREAD_DUMP");
+  return pages.map((p) => ({ ...p, _itemType: "thread_dump" }));
 }
 
 // Sélectionne les N items les plus pertinents pour un sujet.
-// MIN_SCORE = 2 (au moins un mot dans le titre, ou deux dans le raw_text).
+// MIN_SCORE = 2 (au moins un mot dans le titre, ou deux dans le contenu).
 // Inspiré du seuil B09-T36 P9 (MIN_SCORE=15 sur lessons) mais adapté à un scoring
 // plus simple — à ajuster après usage réel, jamais par défaut.
 export function selectRelevant(pages, tokens, { limit = 30, minScore = 2 } = {}) {
@@ -117,11 +152,16 @@ export function selectRelevant(pages, tokens, { limit = 30, minScore = 2 } = {})
 }
 
 // Helper de présentation : extrait infos clés d'une page pour le LLM.
+// `content_hint` (ex-`raw_text`, renommé pour ne plus laisser croire qu'il lit
+// la propriété Notion "raw_text" — qui n'existe pas sur DECISIONS/LESSONS et
+// est explicitement écartée sur THREAD_DUMP, cf. ITEM_FIELDS) : rationale +
+// evidence pour une décision, what_happened + evidence pour une leçon,
+// summary_short + summary_full pour un thread_dump.
 export function describePage(page) {
   return {
     id: page.id,
-    title: getPropText(page, "title"),
-    raw_text: getPropText(page, "raw_text"),
+    title: pageTitle(page),
+    content_hint: pageContent(page),
     source_dump_id: getPropText(page, "source_dump_id"),
     url: page.url,
   };

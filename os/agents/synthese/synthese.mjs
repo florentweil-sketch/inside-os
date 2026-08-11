@@ -112,7 +112,7 @@ function buildUserMessage({ sujet, items, completude, sourcesInterrogees, runDat
       lines.push(`--- [score ${score}] ${d.title}`);
       lines.push(`Source : ${d.source_dump_id || "(source_dump_id absent)"} | ID page : ${d.id}`);
       lines.push(`URL : ${d.url || "(url absente)"}`);
-      lines.push(`Résumé une ligne (raw_text, ne pas lire pour fond) : ${truncate(d.raw_text, 500)}`);
+      lines.push(`Aperçu (champs structurés Notion, pas les blocs) : ${truncate(d.content_hint, 500)}`);
       if (content && content.trim()) {
         lines.push("Contenu (blocs page, tronqué si long) :");
         lines.push(truncate(content, MAX_CONTENT_CHARS_PER_ITEM));
