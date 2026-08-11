@@ -14,7 +14,13 @@ function getRelationId(page, propName) {
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const FETCH_LIMIT = 80;
+// Plafond de lecture, configurable via .env (CHAT_FETCH_LIMIT). 0 ou absent = tout
+// lire (aucune troncature). Avant fix : hardcodé à 80, une seule page Notion —
+// tronquait silencieusement le corpus (7449 items DECISIONS+LESSONS au 2026-08-07)
+// aux 160 items les plus récents, cause du "0 résultat" sur des questions légitimes
+// type "état du projet" (B09-T41).
+const FETCH_LIMIT = Number(process.env.CHAT_FETCH_LIMIT || 0);
+const NOTION_PAGE_SIZE = 100; // max par requête Notion
 const TOP_K = 6;
 const LOG_DIR = "runtime/logs/chat";
 
@@ -138,13 +144,34 @@ function questionTargetsCurrentSystem(tokens) {
   );
 }
 
-async function getDecisions() {
-  const response = await queryDataSource(process.env.DECISIONS_DS_ID, {
-    page_size: FETCH_LIMIT,
-    sorts: [{ timestamp: "created_time", direction: "descending" }],
-  });
+// Pagine une datasource Notion jusqu'à épuisement (has_more=false), ou jusqu'à
+// `limit` pages si limit > 0. Pas de troncature silencieuse par défaut (limit=0
+// = tout lire) — un plafond n'est appliqué que si explicitement demandé.
+async function readAllPages(dataSourceId, { limit = 0, sorts } = {}) {
+  const all = [];
+  let cursor;
 
-  return (response.results || []).map((page) => ({
+  while (true) {
+    const payload = { page_size: NOTION_PAGE_SIZE };
+    if (sorts) payload.sorts = sorts;
+    if (cursor) payload.start_cursor = cursor;
+
+    const res = await queryDataSource(dataSourceId, payload);
+    if (!Array.isArray(res?.results)) {
+      throw new Error(`Réponse Notion invalide pour ${dataSourceId} : ${JSON.stringify(res).slice(0, 200)}`);
+    }
+    all.push(...res.results);
+
+    if (limit > 0 && all.length >= limit) return all.slice(0, limit);
+    if (!res.has_more) break;
+    cursor = res.next_cursor;
+  }
+
+  return all;
+}
+
+function mapDecisionPage(page) {
+  return {
     type: "decision",
     uid: getPropText(page, "uid"),
     decision: getPropText(page, "decision"),
@@ -152,16 +179,11 @@ async function getDecisions() {
     evidence: getPropText(page, "evidence"),
     source_thread: getRelationId(page, "source_thread"),
     source_dump_id: getPropText(page, "source_dump_id"),
-  }));
+  };
 }
 
-async function getLessons() {
-  const response = await queryDataSource(process.env.LESSONS_DS_ID, {
-    page_size: FETCH_LIMIT,
-    sorts: [{ timestamp: "created_time", direction: "descending" }],
-  });
-
-  return (response.results || []).map((page) => ({
+function mapLessonPage(page) {
+  return {
     type: "lesson",
     uid: getPropText(page, "uid"),
     lesson: getPropText(page, "lesson"),
@@ -169,7 +191,23 @@ async function getLessons() {
     evidence: getPropText(page, "evidence"),
     source_thread: getRelationId(page, "source_thread"),
     source_dump_id: getPropText(page, "source_dump_id"),
-  }));
+  };
+}
+
+async function getDecisions() {
+  const pages = await readAllPages(process.env.DECISIONS_DS_ID, {
+    limit: FETCH_LIMIT,
+    sorts: [{ timestamp: "created_time", direction: "descending" }],
+  });
+  return pages.map(mapDecisionPage);
+}
+
+async function getLessons() {
+  const pages = await readAllPages(process.env.LESSONS_DS_ID, {
+    limit: FETCH_LIMIT,
+    sorts: [{ timestamp: "created_time", direction: "descending" }],
+  });
+  return pages.map(mapLessonPage);
 }
 
 function scoreItem(item, tokens, boosts, question) {
@@ -265,6 +303,18 @@ function scoreItem(item, tokens, boosts, question) {
   };
 }
 
+const MIN_SCORE = 15;
+
+// Score, trie et sélectionne le top-K. Factorisé pour être appelé identiquement
+// sur la passe rapide et sur le fallback complet (main()).
+function scoreAndSelect(items, tokens, boosts, question) {
+  return items
+    .map((item) => scoreItem(item, tokens, boosts, question))
+    .sort((a, b) => b._score - a._score)
+    .filter((i) => i._score >= MIN_SCORE)
+    .slice(0, TOP_K);
+}
+
 function buildMemoryContext(items) {
   return items
     .map((item, index) => {
@@ -299,7 +349,7 @@ function buildMemoryContext(items) {
     .join("\n\n");
 }
 
-function writeLog({ question, tokens, selectedItems, responseText }) {
+function writeLog({ question, tokens, selectedItems, responseText, decisionsCount, lessonsCount, fetchMs }) {
   ensureLogDir();
   const filename = path.join(LOG_DIR, `${nowStamp()}_chat_test1.txt`);
 
@@ -307,6 +357,8 @@ function writeLog({ question, tokens, selectedItems, responseText }) {
     `QUESTION: ${question}`,
     ``,
     `TOKENS: ${tokens.join(", ")}`,
+    ``,
+    `COVERAGE: Decisions: ${decisionsCount} | Lessons: ${lessonsCount} | Temps lecture: ${fetchMs} ms`,
     ``,
     `SELECTED_ITEMS: ${selectedItems.length}`,
     ``,
@@ -339,15 +391,18 @@ async function main() {
   const tokens = tokenize(question);
   const boosts = phraseBoosts(tokens);
 
+  // Lecture complète, paginée (readAllPages), plafonnée uniquement si
+  // CHAT_FETCH_LIMIT est explicitement fixé dans .env (0/absent = tout lire).
+  // Option 3 (passe rapide bucket=B99 + fallback complet) a été essayée puis
+  // abandonnée en cours de route : elle amplifiait le biais present/state de
+  // scoreItem (isPresentDump/isStateDump) en construisant un pool candidat
+  // presque exclusivement composé d'items B99 — ce biais est maintenant gaté
+  // sur questionTargetsCurrentSystem(tokens) (cf. scoreItem), donc réévaluer
+  // une passe rapide redevient possible plus tard, mais non refaite ici.
+  const fetchStart = Date.now();
   const [decisions, lessons] = await Promise.all([getDecisions(), getLessons()]);
-  const allItems = [...decisions, ...lessons];
-
-  const scored = allItems
-    .map((item) => scoreItem(item, tokens, boosts, question))
-    .sort((a, b) => b._score - a._score);
-
-  const MIN_SCORE = 15;
-  const selectedItems = scored.filter(i => i._score >= MIN_SCORE).slice(0, TOP_K);
+  const fetchMs = Date.now() - fetchStart;
+  const selectedItems = scoreAndSelect([...decisions, ...lessons], tokens, boosts, question);
   const memoryContext = buildMemoryContext(selectedItems);
 
   const prompt = `
@@ -396,8 +451,9 @@ ${question}
   console.log("\n--- DEBUG ---\n");
   console.log(`Question: ${question}`);
   console.log(`Tokens: ${tokens.join(", ") || "[aucun]"}`);
-  console.log(`Decisions lues: ${decisions.length}`);
-  console.log(`Lessons lues: ${lessons.length}`);
+  const coverageLabel = FETCH_LIMIT > 0 ? `plafonné à CHAT_FETCH_LIMIT=${FETCH_LIMIT}` : "lecture complète (aucun plafond)";
+  console.log(`Decisions lues: ${decisions.length} | Lessons lues: ${lessons.length} | Total: ${decisions.length + lessons.length} (${coverageLabel})`);
+  console.log(`Temps de lecture Notion : ${fetchMs} ms`);
   console.log(`Items sélectionnés: ${selectedItems.length}`);
 
   console.log("\n--- MEMORY ITEMS ---\n");
@@ -411,6 +467,9 @@ ${question}
     tokens,
     selectedItems,
     responseText: response.content[0].text,
+    decisionsCount: decisions.length,
+    lessonsCount: lessons.length,
+    fetchMs,
   });
 
   console.log(`\n--- LOG ---\n${logFile}`);
