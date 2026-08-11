@@ -65,6 +65,28 @@ const RECENT_LIMIT = 20;  // filet de sécurité, rarement atteint (corpus major
 const MAX_CANDIDATES_TOTAL = 70; // cap final après fusion/dédup, borne le coût/latence de la lecture des blocs
 const MAX_CONTENT_CHARS_PER_ITEM = 1200;
 
+// Fix priorisation (B09-T41) : les items dont le source_dump_id (decision/
+// lesson) ou l'id_dump (thread_dump lui-même) commence par B09- restent dans
+// le pool — visibles, jamais exclus — mais plafonnés à INSIDE_OS_CAP, les
+// plus récents d'abord. Constaté sans ce plafond : 13/20 tâches du brief
+// venaient de vieux items de dev INSIDE OS (B09-T34/36/37/38, curés
+// bucket=B99 historiquement), au détriment des familles business. Le
+// plafond est appliqué en CODE (pas laissé au jugement du LLM) — le LLM ne
+// voit jamais plus de INSIDE_OS_CAP candidats B09, il ne peut donc pas en
+// inclure plus même s'il le voulait.
+const INSIDE_OS_CAP = 3;
+
+// Origine B09 = source_dump_id (ou id_dump pour une page thread_dump)
+// préfixé "B09-". Indépendant du bucket métier de l'item — un item B09
+// peut très bien porter bucket=B99 (curation "présent") sans que ça change
+// son origine.
+function isB09Sourced(page) {
+  const id = String(
+    getPropText(page, "source_dump_id") || getPropText(page, "id_dump") || ""
+  ).toUpperCase();
+  return id.startsWith("B09-");
+}
+
 function truncate(text, max) {
   if (!text) return "";
   const s = String(text);
@@ -110,41 +132,79 @@ function gatherCandidates({ decisions, lessons, threadDump }) {
     .sort(byCreatedTimeDesc)
     .slice(0, MAX_CANDIDATES_TOTAL);
 
-  return { merged, counts: { present: present.length, recent: recent.length, proposed: proposed.length, threadDump: presentThreadDump.length } };
+  // Split business / INSIDE OS — le plafond B09 s'applique ICI, sur le pool
+  // fusionné complet, pas seulement sur ce qui a survécu au cap général
+  // MAX_CANDIDATES_TOTAL (sinon un item B09 très récent pourrait quand même
+  // écraser un item business plus ancien dans le cap général avant même
+  // d'atteindre le split).
+  const insideOs = merged
+    .filter(isB09Sourced)
+    .sort(byCreatedTimeDesc)
+    .slice(0, INSIDE_OS_CAP);
+  const business = merged.filter((p) => !isB09Sourced(p));
+
+  return {
+    business,
+    insideOs,
+    counts: {
+      present: present.length,
+      recent: recent.length,
+      proposed: proposed.length,
+      threadDump: presentThreadDump.length,
+      insideOsTotal: merged.filter(isB09Sourced).length,
+      insideOsKept: insideOs.length,
+    },
+  };
 }
 
-function buildUserMessage({ todayDate, items, sourcesInterrogees, counts }) {
+function renderCandidateBlock(page) {
+  const d = describePage(page);
+  const tag = formatStatusDate(d.status, d.createdTime);
+  const bucket = (page.properties?.bucket?.multi_select || []).map((x) => x.name);
+  const type = page._itemType || "?";
+  return [
+    `--- ${tag} [type: ${type}] [bucket: ${bucket.join(",") || "(absent)"}] ${d.title}`,
+    `uid/id : ${d.id} | source_dump_id : ${d.source_dump_id || "(absent)"}`,
+    `Aperçu : ${truncate(d.content_hint, 500)}`,
+    "",
+  ].join("\n");
+}
+
+function buildUserMessage({ todayDate, business, insideOs, sourcesInterrogees, counts }) {
   const lines = [];
   lines.push(`DATE DU JOUR (à utiliser telle quelle dans le titre "# OUVERTURE — <date>") : ${todayDate}`);
   lines.push("");
   lines.push(`SOURCES INTERROGÉES : ${sourcesInterrogees.join(", ")}`);
   lines.push(
     `CANDIDATS RASSEMBLÉS : présents=${counts.present} | récents(${RECENT_DAYS}j)=${counts.recent} | ` +
-    `proposed=${counts.proposed} | thread_dump présents=${counts.threadDump} | total après fusion=${items.length}`
+    `proposed=${counts.proposed} | thread_dump présents=${counts.threadDump} | ` +
+    `origine B09=${counts.insideOsTotal} (plafonné à ${counts.insideOsKept} ci-dessous)`
   );
   lines.push("");
 
-  if (items.length === 0) {
+  if (business.length === 0 && insideOs.length === 0) {
     lines.push("AUCUN candidat trouvé (aucun item présent/récent/proposed).");
     lines.push("Produis uniquement le titre, sans section — nomme l'absence, ne comble pas.");
   } else {
-    lines.push("CANDIDATS MÉMOIRE (chacun avec son bucket réel — construis les familles dessus, n'invente rien) :");
+    lines.push(
+      `CANDIDATS BUSINESS (${business.length} — Chantiers/Juridique/Holding/Commercial/Autre, PRIORITAIRES ` +
+      `sur le cap de 20 : jusqu'à ${20 - INSIDE_OS_CAP} tâches business avant les ${INSIDE_OS_CAP} INSIDE OS) :`
+    );
     lines.push("");
-    for (const page of items) {
-      const d = describePage(page);
-      const tag = formatStatusDate(d.status, d.createdTime);
-      const bucket = (page.properties?.bucket?.multi_select || []).map((x) => x.name);
-      const type = page._itemType || "?";
-      lines.push(`--- ${tag} [type: ${type}] [bucket: ${bucket.join(",") || "(absent)"}] ${d.title}`);
-      lines.push(`uid/id : ${d.id} | source_dump_id : ${d.source_dump_id || "(absent)"}`);
-      lines.push(`Aperçu : ${truncate(d.content_hint, 500)}`);
-      lines.push("");
-    }
+    for (const page of business) lines.push(renderCandidateBlock(page));
+
+    lines.push(
+      `CANDIDATS INSIDE OS (${insideOs.length} — origine B09, déjà plafonnés en amont, ` +
+      `les plus récents. Maximum ${INSIDE_OS_CAP} tâches issues de ce bloc, jamais plus même si tu en vois moins de ${INSIDE_OS_CAP}) :`
+    );
+    lines.push("");
+    for (const page of insideOs) lines.push(renderCandidateBlock(page));
   }
 
   lines.push("");
   lines.push("Réponds STRICTEMENT au format défini dans ton prompt système (familles par bucket réel,");
-  lines.push("cases à cocher, une ligne par tâche, source citée, max 20 tâches, les plus actionnables d'abord).");
+  lines.push(`cases à cocher, une ligne par tâche, source citée. Cap global 20 tâches : familles business`);
+  lines.push(`d'abord (jusqu'à ${20 - INSIDE_OS_CAP}), section INSIDE OS (B09) en dernier, maximum ${INSIDE_OS_CAP} tâches.`);
 
   const msg = lines.join("\n");
   console.error(`[ouverture] taille message LLM : ${msg.length} caractères (~${Math.round(msg.length * 0.3)} tokens estimés)`);
@@ -185,10 +245,11 @@ export async function runOuverture({ runDate } = {}) {
     errors.push(`THREAD_DUMP : ${e.message}`);
   }
 
-  const { merged, counts } = gatherCandidates({ decisions, lessons, threadDump });
+  const { business, insideOs, counts } = gatherCandidates({ decisions, lessons, threadDump });
   console.error(
     `[ouverture] candidats : présents=${counts.present} récents=${counts.recent} ` +
-    `proposed=${counts.proposed} thread_dump=${counts.threadDump} -> total fusionné=${merged.length}`
+    `proposed=${counts.proposed} thread_dump=${counts.threadDump} -> business=${business.length} ` +
+    `| INSIDE OS=${counts.insideOsKept}/${counts.insideOsTotal} (plafond=${INSIDE_OS_CAP})`
   );
 
   // Pas de lecture des blocs (readPageContent) ici, contrairement à Synthèse/
@@ -198,7 +259,7 @@ export async function runOuverture({ runDate } = {}) {
   // d'une ligne. Compromis assumé, différent de Synthèse/Pilotage à dessein.
   const completude = errors.length ? "INDÉTERMINÉ" : "COMPLET";
 
-  const userMessage = buildUserMessage({ todayDate, items: merged, sourcesInterrogees, counts });
+  const userMessage = buildUserMessage({ todayDate, business, insideOs, sourcesInterrogees, counts });
 
   console.error(`[ouverture] appel LLM (CLAUDE_MODEL=${env("CLAUDE_MODEL")})…`);
   const response = await claudeFetch({
@@ -217,7 +278,7 @@ export async function runOuverture({ runDate } = {}) {
     sourcesInterrogees,
     completude,
     errors,
-    candidatesCount: merged.length,
+    candidatesCount: business.length + insideOs.length,
     counts,
     pagesLues: decisions.length + lessons.length + threadDump.length,
     response,

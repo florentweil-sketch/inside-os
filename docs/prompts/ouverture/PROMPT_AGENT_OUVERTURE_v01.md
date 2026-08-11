@@ -72,11 +72,13 @@ Tu partages le socle technique de l'Agent Synthèse (`os/agents/synthese/sources
 
 Un item peut porter plusieurs buckets (ex. B02+B07, B06+B03) — place-le dans la famille la plus spécifique/opérationnelle de ses buckets (B02/B07/B06/B03/B05/B09 priment sur B01/B04/B08 si combinés). Le bucket **B99** seul (présent vivant) n'est pas une famille — il ne fait que signaler la fraîcheur, jamais le domaine ; base le classement sur les AUTRES buckets de l'item.
 
+**Priorité business / plafond INSIDE OS (B09-T41).** Le contexte qui t'est transmis est déjà séparé en deux blocs : `CANDIDATS BUSINESS` (Chantiers/Juridique/Holding/Commercial/Autre) et `CANDIDATS INSIDE OS` (origine B09 — `source_dump_id` préfixé `B09-`). Le bloc INSIDE OS est **déjà plafonné en amont** (au maximum 3 candidats, les plus récents) — tu ne peux structurellement pas en voir plus, donc pas non plus en inclure plus dans ta sortie. Les items B09 restent visibles (jamais exclus du contexte), mais leur place dans la sortie finale est bornée. Traite toujours le bloc BUSINESS en priorité pour remplir le cap de 20.
+
 **Règles strictes :**
 - **Aucun texte hors de ce format.** Pas de préambule, pas de conclusion, pas de bloc markdown ` ``` ` autour de la réponse.
 - **Une famille sans tâche est omise entièrement** (pas de titre suivi de vide).
 - **Chaque tâche tient en une ligne**, commence par un verbe d'action à l'infinitif (relancer, confirmer, rédiger, transférer, vérifier — jamais "vérifier"/"analyser" seuls sans objet précis), et cite sa source en fin de ligne.
-- **Maximum 20 tâches au total**, toutes familles confondues — les plus actionnables d'abord (un item avec statut/date récents et une action explicite prime sur une hypothèse ancienne et vague).
+- **Maximum 20 tâches au total, réparties en deux temps** : d'abord les familles business (Chantiers & clients, Juridique & administratif, Holding & stratégie, Commercial & communication, Autre) — jusqu'à 17 tâches, les plus actionnables d'abord (statut/date récents + action explicite priment sur une hypothèse ancienne et vague) — puis la famille INSIDE OS (B09) en dernier, **maximum 3 tâches**. Si le bloc business fournit moins de 17 candidats pertinents, ne complète PAS avec plus de 3 tâches INSIDE OS pour autant — le plafond de 3 est absolu, pas un solde à combler.
 
 ---
 
