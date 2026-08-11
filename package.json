@@ -21,7 +21,8 @@
     "os:pre-thread": "node os/scripts/pre-thread.mjs",
     "os:idea": "node os/scripts/idea.mjs",
     "os:synthese": "node os/agents/synthese/run.mjs",
-    "os:statut": "node os/scripts/statut.mjs"
+    "os:statut": "node os/scripts/statut.mjs",
+    "os:pilotage": "node os/agents/pilotage/run.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
