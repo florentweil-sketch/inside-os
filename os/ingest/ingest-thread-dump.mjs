@@ -52,12 +52,19 @@ function argValue(flag, fallback = "") {
 const ONLY_ID = String(argValue("--only", "")).trim().toUpperCase();
 
 const DEFAULT_SKIP_BUCKETS = ["B09"];
-const SKIP_ARG    = argValue("--skip-buckets", "__default__").trim().toUpperCase();
-const SKIP_BUCKETS = SKIP_ARG === "__default__"
+// Bug corrigé (B09-T41) : le sentinel était comparé APRÈS .toUpperCase(),
+// donc "__default__" (fallback, casse originale) devenait "__DEFAULT__" et ne
+// matchait jamais plus le littéral minuscule ci-dessous — SKIP_BUCKETS finissait
+// à ["__DEFAULT__"] (jamais égal à aucun vrai bucket), et l'exclusion B09 ne
+// s'appliquait donc JAMAIS en pratique sur un batch sans --skip-buckets
+// explicite. Fix : comparer le sentinel sur la valeur BRUTE (avant uppercase),
+// uppercaser seulement quand on découpe une vraie liste de buckets.
+const SKIP_ARG_RAW = argValue("--skip-buckets", "__default__").trim();
+const SKIP_BUCKETS = SKIP_ARG_RAW === "__default__"
   ? DEFAULT_SKIP_BUCKETS
-  : SKIP_ARG === ""
+  : SKIP_ARG_RAW === ""
   ? []
-  : SKIP_ARG.split(",").map(b => b.trim());
+  : SKIP_ARG_RAW.toUpperCase().split(",").map(b => b.trim());
 
 // ─── SÉLECTION MODE ──────────────────────────────────────────────────────────
 
