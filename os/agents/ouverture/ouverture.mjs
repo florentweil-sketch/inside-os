@@ -8,7 +8,7 @@
 //
 // Différence structurelle avec Synthèse/Pilotage : PAS de sujet, donc PAS de
 // scoring par tokens (tokenize/scoreItem non utilisés ici). La sélection est
-// entièrement déterministe, sur trois critères indépendants :
+// entièrement déterministe, sur quatre critères indépendants :
 //   1. tous les items "présents" (bucket B99 / source_dump_id ou id_dump
 //      préfixé B99-), triés par récence
 //   2. décisions/leçons créées dans les RECENT_DAYS derniers jours
@@ -16,6 +16,13 @@
 //      plafonnées à PROPOSED_LIMIT — 557 proposed au total mesurées le
 //      2026-08-11, un brief du matin reste actionnable, pas un audit
 //      historique de toute hypothèse jamais posée. Les plus récentes d'abord.
+//   4. canal "essentiel" (B09-T41, réouverture ciblée) : décisions
+//      impact=critical (puis major) des buckets métier B02/B03/B05/B06/B07,
+//      statut validated ou proposed, SANS filtre de récence — seul canal qui
+//      fait remonter des décisions structurantes anciennes jamais revisitées
+//      (ex. organigramme B02-T01). Plafonné à ESSENTIAL_LIMIT, critical
+//      d'abord. Items sans bucket ("bucket=null") exclus et comptés à part
+//      (inclassables, jamais silencieusement ignorés).
 //
 // Garde-fous (identiques à Synthèse/Pilotage) :
 //   - lecture seule absolue (aucune écriture Notion, aucune modif repo)
@@ -36,6 +43,7 @@ import {
   formatStatusDate,
   isPresentItem,
   isRecentItem,
+  getMultiSelectNames,
 } from "../synthese/sources.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,6 +72,83 @@ const PRESENT_LIMIT = 40; // "en priorité les plus récents" — cap sur le poo
 const RECENT_LIMIT = 20;  // filet de sécurité, rarement atteint (corpus majoritairement ancien)
 const MAX_CANDIDATES_TOTAL = 70; // cap final après fusion/dédup, borne le coût/latence de la lecture des blocs
 const MAX_CONTENT_CHARS_PER_ITEM = 1200;
+
+// Canal essentiel (B09-T41, réouverture ciblée) — voir commentaire d'en-tête.
+// Places RÉSERVÉES (pas un remplissage par priorité) : avec 240 décisions
+// critical qualifiantes pour 15 places, un classement fixe (peu importe le
+// critère — récence ou ancienneté) viderait le groupe major en permanence
+// (jamais de place restante) et montrerait CHAQUE MATIN le même palmarès —
+// aucune rotation, aucune valeur de "brief du matin". Les deux groupes sont
+// donc plafonnés indépendamment, et sélectionnés par rotation quotidienne
+// déterministe (cf. rotateByDate) plutôt que par un tri fixe.
+const ESSENTIAL_CRITICAL_SLOTS = 10;
+const ESSENTIAL_MAJOR_SLOTS = 5;
+const ESSENTIAL_BUCKETS = ["B02", "B03", "B05", "B06", "B07"];
+
+// Hash déterministe (FNV-1a, 32 bits) — aucune dépendance externe. Stable
+// pour une paire (date, uid) donnée, change de façon non triviale d'un jour
+// à l'autre : sert de clé de tri pour la rotation, pas pour la sécurité.
+function stableHash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+// Trie un pool par hash(date_du_jour + uid) — l'ordre change chaque jour
+// (todayDate différent) sans dépendre de la date de création de l'item, donc
+// même les décisions les plus anciennes ont une chance de sortir un jour
+// donné. Déterministe : même date + même pool = même ordre (reproductible,
+// pas aléatoire — testable).
+function rotateByDate(pages, todayDate) {
+  return [...pages].sort((a, b) => {
+    const uidA = getPropText(a, "uid") || a.id;
+    const uidB = getPropText(b, "uid") || b.id;
+    return stableHash(`${todayDate}:${uidA}`) - stableHash(`${todayDate}:${uidB}`);
+  });
+}
+
+// Décisions impact=critical/major des buckets métier, statut validated ou
+// proposed, sans filtre de récence — seul canal du fichier qui ignore
+// délibérément l'âge de l'item. Sans lui, une décision structurante ancienne
+// (organigramme, gouvernance...) jamais retouchée depuis n'apparaît dans
+// AUCUN des 3 autres canaux (ni présent B99, ni récente 30j, ni proposed —
+// elle est déjà validated) : elle reste invisible à Ouverture indéfiniment.
+// bucket=null (aucun tag du tout) = inclassable, exclu du canal et compté
+// séparément — jamais silencieusement absorbé ni dans un sens ni dans l'autre.
+//
+// Effet recherché (au-delà d'un simple tirage) : combiné à `npm run
+// os:statut` (superseded/archived), le stock de ~700 décisions qualifiantes
+// se cure progressivement à l'usage — le brief devient lui-même l'outil de
+// curation, plutôt qu'un audit figé qui répète le même palmarès chaque matin.
+function gatherEssential(decisions, todayDate) {
+  let bucketlessIgnored = 0;
+
+  const qualifying = decisions.filter((p) => {
+    const impact = getPropText(p, "impact");
+    if (impact !== "critical" && impact !== "major") return false;
+
+    const status = getPropText(p, "decision_status");
+    if (status !== "validated" && status !== "proposed") return false;
+
+    const bucket = getMultiSelectNames(p, "bucket");
+    if (bucket.length === 0) {
+      bucketlessIgnored++;
+      return false;
+    }
+    return bucket.some((b) => ESSENTIAL_BUCKETS.includes(b));
+  });
+
+  const criticalPool = qualifying.filter((p) => getPropText(p, "impact") === "critical");
+  const majorPool = qualifying.filter((p) => getPropText(p, "impact") === "major");
+
+  const critical = rotateByDate(criticalPool, todayDate).slice(0, ESSENTIAL_CRITICAL_SLOTS);
+  const major = rotateByDate(majorPool, todayDate).slice(0, ESSENTIAL_MAJOR_SLOTS);
+
+  return { essential: [...critical, ...major], bucketlessIgnored };
+}
 
 // Fix priorisation (B09-T41) : les items dont le source_dump_id (decision/
 // lesson) ou l'id_dump (thread_dump lui-même) commence par B09- restent dans
@@ -187,7 +272,7 @@ function dedupePages(pages) {
 
 // Rassemble le pool de candidats selon les 3 critères. Déterministe, aucun
 // appel LLM ici — la synthèse/formatage en tâches est le rôle du LLM ensuite.
-function gatherCandidates({ decisions, lessons, threadDump }) {
+function gatherCandidates({ decisions, lessons, threadDump, todayDate }) {
   const decisionsAndLessons = [...decisions, ...lessons];
 
   const present = decisionsAndLessons
@@ -209,12 +294,22 @@ function gatherCandidates({ decisions, lessons, threadDump }) {
     .filter(isPresentItem)
     .sort(byCreatedTimeDesc);
 
+  const { essential, bucketlessIgnored } = gatherEssential(decisions, todayDate);
+  console.error(`[ouverture] ${bucketlessIgnored} items essentiels ignorés faute de bucket`);
+  for (const p of essential) p._fromEssential = true; // pour le marqueur "(à vérifier — ancien)" au rendu
+
   // Pas de plafond anti-monopole ici (cf. commentaire sur SOURCE_DUMP_CAP) —
   // le LLM garde la vue complète, le plafond est appliqué après coup sur sa
   // réponse (enforceSourceDumpCap, dans runOuverture).
-  const merged = dedupePages([...present, ...recent, ...proposed, ...presentThreadDump])
+  const regular = dedupePages([...present, ...recent, ...proposed, ...presentThreadDump])
     .sort(byCreatedTimeDesc)
     .slice(0, MAX_CANDIDATES_TOTAL);
+
+  // Le canal essentiel s'ajoute APRÈS le cap général MAX_CANDIDATES_TOTAL,
+  // pas avant : ses items visent précisément l'ancien (aucun filtre de
+  // récence) — un tri par récence sur l'ensemble fusionné les éliminerait
+  // avant même d'atteindre le LLM, ce qui viderait le canal de son sens.
+  const merged = dedupePages([...regular, ...essential]);
 
   // Split business / INSIDE OS — le plafond B09 s'applique ICI, sur le pool
   // fusionné complet, pas seulement sur ce qui a survécu au cap général
@@ -235,6 +330,8 @@ function gatherCandidates({ decisions, lessons, threadDump }) {
       recent: recent.length,
       proposed: proposed.length,
       threadDump: presentThreadDump.length,
+      essential: essential.length,
+      essentialBucketlessIgnored: bucketlessIgnored,
       insideOsTotal: merged.filter(isB09Sourced).length,
       insideOsKept: insideOs.length,
     },
@@ -246,8 +343,13 @@ function renderCandidateBlock(page) {
   const tag = formatStatusDate(d.status, d.createdTime);
   const bucket = (page.properties?.bucket?.multi_select || []).map((x) => x.name);
   const type = page._itemType || "?";
+  // Marqueur pré-calculé pour les items du canal essentiel non récents — le
+  // canal ignore délibérément l'âge (impact/statut priment), donc contrairement
+  // aux autres canaux ce n'est pas au LLM de déduire seul l'ancienneté depuis
+  // la date du tag : elle est explicite ici, avant même qu'il ne rédige la tâche.
+  const oldMarker = page._fromEssential && !isRecentItem(page, RECENT_DAYS) ? " (à vérifier — ancien)" : "";
   return [
-    `--- ${tag} [type: ${type}] [bucket: ${bucket.join(",") || "(absent)"}] ${d.title}`,
+    `--- ${tag}${oldMarker} [type: ${type}] [bucket: ${bucket.join(",") || "(absent)"}] ${d.title}`,
     `uid/id : ${d.id} | source_dump_id : ${d.source_dump_id || "(absent)"}`,
     `Aperçu : ${truncate(d.content_hint, 500)}`,
     "",
@@ -262,6 +364,7 @@ function buildUserMessage({ todayDate, business, insideOs, sourcesInterrogees, c
   lines.push(
     `CANDIDATS RASSEMBLÉS : présents=${counts.present} | récents(${RECENT_DAYS}j)=${counts.recent} | ` +
     `proposed=${counts.proposed} | thread_dump présents=${counts.threadDump} | ` +
+    `essentiels(critical/major)=${counts.essential} | ` +
     `origine B09=${counts.insideOsTotal} (plafonné à ${counts.insideOsKept} ci-dessous)`
   );
   lines.push("");
@@ -329,11 +432,11 @@ export async function runOuverture({ runDate } = {}) {
     errors.push(`THREAD_DUMP : ${e.message}`);
   }
 
-  const { business, insideOs, counts } = gatherCandidates({ decisions, lessons, threadDump });
+  const { business, insideOs, counts } = gatherCandidates({ decisions, lessons, threadDump, todayDate });
   console.error(
     `[ouverture] candidats : présents=${counts.present} récents=${counts.recent} ` +
-    `proposed=${counts.proposed} thread_dump=${counts.threadDump} -> business=${business.length} ` +
-    `| INSIDE OS=${counts.insideOsKept}/${counts.insideOsTotal} (plafond=${INSIDE_OS_CAP})`
+    `proposed=${counts.proposed} thread_dump=${counts.threadDump} essentiels=${counts.essential} ` +
+    `-> business=${business.length} | INSIDE OS=${counts.insideOsKept}/${counts.insideOsTotal} (plafond=${INSIDE_OS_CAP})`
   );
 
   // Pas de lecture des blocs (readPageContent) ici, contrairement à Synthèse/
