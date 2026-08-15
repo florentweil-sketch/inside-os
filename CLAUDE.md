@@ -14,21 +14,24 @@ Pipeline mémoire :
 - `npm run os:pipeline` — chaîne ingest + inject
 - `npm run os:extract` — extraction seule (sans inject)
 - `npm run os:repair-extraction` — répare un JSON d'extraction cassé
+- `npm run os:idea -- "texte"` — ajoute une idée horodatée `[RAW]` dans `IDEAS.md` (revue en fin de thread)
 
-Clôture & audit de thread B09 (dev INSIDE OS) :
-- `npm run os:pre-thread` — audit pré-thread : versions docs, snapshot Notion live, détection divergence 3 axes (CONTEXT freshness / Notion counters / CONTEXT↔Notion), génère `PRE_THREAD_<thread>.md`
-- `npm run os:close -- --thread-name "B09-TXX-Sujet"` — draft de clôture (CONTEXT, audit, rapport)
-- `npm run os:close -- --inject --thread-name "B09-TXX-Sujet"` — clôture définitive + injection B99 + capture échanges post-export
-- `npm run os:idea -- "texte"` — ajoute une idée horodatée [RAW] dans `IDEAS.md` (revue en fin de thread)
+Agents — couche Action (lecture seule, aucune écriture Notion) :
+- `npm run os:synthese -- --sujet "..."` — synthèse sourcée sur un sujet donné (croise DECISIONS/LESSONS/THREAD_DUMP)
+- `npm run os:pilotage -- --sujet "..."` — copilote opérationnel, format ÉTAT/BLOCAGE/ACTION, priorité au présent (B99)
+- `npm run os:ouverture` — brief du matin, sans sujet, liste de tâches classées par famille métier
+- `npm run os:ingest-doc -- <fichier.pdf> --bucket B0X [--titre] [--source-url] [--yes]` — verse un PDF dans la mémoire (extraction factuelle via API Claude, confirmation interactive, dépôt dans `data/threads_to_process/`)
+- `npm run os:statut -- <uid> <superseded|archived|rejected>` — seul point d'écriture pour ces statuts de curation sur DECISIONS
 
 Audit Notion / dette :
 - `npm run os:audit` — compteurs THREAD_DUMP / DECISIONS / LESSONS
 - `npm run os:validate-schema` — vérifie le schéma Notion
 - `npm run os:list-inject-errors` / `:list-inject-pending` / `:list-inject-error-details`
 - `npm run os:reset-db` — destructif, demande confirmation
+- `npm run os:docs-sync` — vérifie que les pointeurs de version dans CLAUDE.md (périmètre docs-sync, voir plus bas) correspondent aux fichiers vXX réellement présents sur disque ; alerte si divergence
 
 Pilotage (chat mémoire) :
-- `npm run os:chat` — `notion-memory-chat.mjs` (test, modèle tiers — migration Claude prévue, BACKLOG_USER P9)
+- `npm run os:chat` — `notion-memory-chat.mjs` (test, Claude haiku-4-5)
 - `npm run os:server` — `notion-memory-server.mjs` (HTTP, production)
 
 ## Architecture
@@ -41,10 +44,10 @@ os/
   repair/    → réparation JSON d'extraction
   chat/      → pilotage (chat + serveur HTTP)
   audit/     → introspection Notion (DBs, schémas, pages)
-  scripts/   → utilitaires (audit-system, pre-thread, idea, validate-schema, etc.)
-  lib/       → notion.mjs (queryDataSource), claude.mjs, config.mjs, uid.mjs
+  agents/    → couche Action : synthese/ (+ socle sources.mjs partagé), pilotage/, ouverture/, ingest-doc/
+  scripts/   → utilitaires (audit-system, idea, statut, validate-schema, docs-sync, etc.)
+  lib/       → notion.mjs (queryDataSource), claude.mjs, config.mjs, guard.mjs, uid.mjs
   prompts/   → ingest-pass1-v02.md, ingest-pass2-v01.md (versionner avant modif)
-os-thread-close.mjs   → script clôture (racine, hors os/)
 data/
   threads_to_process/ → dépôt threads bruts (non versionné)
   thread_clean/       → nettoyés (non versionné)
@@ -52,6 +55,9 @@ data/
   thread_summarized/  → JSON résumé/extract vérifié (non versionné)
   thread_chunked/     → chunks temporaires (purgés après inject)
   test_threads/       → 4 fichiers test fixes (versionné)
+archive/   → protocoles/versions abandonnés (context, readme, pre-threads, scripts de
+             clôture) + notes ponctuelles résolues — rien n'en ressort, jamais relu
+             activement (voir périmètre docs-sync : rien de archive/ n'y entre)
 ```
 
 Flux : `threads_to_process/` → CLEAN → `thread_clean/` → ARCHIVE → `data_cemetery/` → PASSE 1 (chunking adaptatif `CHUNK_SIZE`, défaut 20 000) → PASSE 2 (`VERIFY_PASS=always`) → `thread_summarized/` → INJECT NOTION.
@@ -62,30 +68,28 @@ Variables d'env requises (`.env`) : `NOTION_API_KEY`, `ANTHROPIC_API_KEY`, `THRE
 
 | Fichier | Rôle | À lire pour |
 |---------|------|-------------|
-| `docs/readme/README_INSIDE_OS_v<N>.md` | Référence technique permanente | Architecture, pipeline, contrats |
-| `docs/prompts transfert thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` | Règles de travail inter-thread | Protocoles, posture, séquences canoniques |
-| `docs/context/INSIDE_OS_CONTEXT_v<N>.md` | Instantané vivant du système | État courant, problèmes actifs |
+| `README.md` (racine) | Référence technique permanente | Architecture, pipeline, contrats, agents |
+| `docs/prompts-transfert-thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` | Règles de travail inter-thread | Protocoles, posture, doctrine anti-hallucination |
 | `BACKLOG_DEV.md` / `BACKLOG_USER.md` | Sources de vérité backlog | `BACKLOG.md` n'est qu'un index |
 
-Numéros indépendants : README v12 + PROMPT v15 + CONTEXT v30 = valide. Ne jamais bumper par symétrie. Avant rename : `git log -- fichier`, puis `cp` (jamais `mv`), commit des deux versions.
+Le protocole CONTEXT (instantané d'état local versionné) est **abandonné depuis B09-T42** — archivé dans `archive/context/`. L'état courant du système vit désormais dans Notion (page B99), alimentée par le pipeline mémoire standard — pas dans un fichier local.
+
+Numéro indépendant : seul PROMPT_MAITRE reste versionné par nom de fichier (`vXX`) — README suit Git (plus de `vXX` dans le nom, sauf pour les prompts où la convention est conservée). Avant rename d'un fichier versionné : `git log -- fichier`, puis `cp` (jamais `mv`), commit des deux versions.
 
 ## Pièges connus
 
 - **`injection_status=BLOCKED` n'existe pas** dans le schéma Notion. Valeurs réelles : `pending` / `done` / `error`.
 - **`retry_count`** : max 2 retries auto sur `inject_error`. Au-delà (`retry_count >= 2`), thread exclu de la boucle, intervention manuelle requise.
-- **B09 (dev INSIDE OS) exclu du pipeline automatique** — un thread B09 ne passe pas par `os:ingest/os:inject`. Sa mémoire est le `CONTEXT v<N>` injecté en page B99 via `os:close --inject`.
+- **Point ouvert — B09 et `os:ingest`** : `os/ingest/ingest-thread-dump.mjs` exclut encore par défaut le bucket B09 (`DEFAULT_SKIP_BUCKETS=["B09"]`), un reste de l'ancien protocole où B09 passait exclusivement par le script de clôture abandonné. Depuis B09-T42, un thread B09 se clôture par le même flux que tout thread (dump → pipeline) — cette exclusion par défaut n'a pas encore été réconciliée avec la doctrine actuelle. Suivi : `BACKLOG_DEV.md`. Ne pas présumer que B09 est exclu du pipeline par doctrine — seulement par un défaut de code non encore corrigé.
 - `data_cemetery/` = archive permanente, n'en ressort jamais (sauf force majeure documentée).
 - `test_threads/` ne doit jamais être injecté en production.
 - `raw_text` Notion = résumé une ligne, ne pas lire pour extraction — toujours lire les blocs.
 - Script production = `notion-memory-server.mjs` ; `notion-memory-chat.mjs` = test uniquement.
-- **Distinction `os:pipeline` vs `os:close`** :
-  - `os/pipeline.mjs` (`npm run os:pipeline`) = orchestrateur du pipeline mémoire (chaîne ingest → extract → inject, délègue à 3 scripts enfants).
-  - `os-thread-close.mjs` à la racine (`npm run os:close`) = protocole de clôture de thread B09 (retry pending, draft CONTEXT, injection B99, capture post-export). N'injecte PAS dans DECISIONS/LESSONS — cible la page B99 de THREAD_DUMP.
-- **`os:close --inject`** : flow en 2 temps obligatoire — (1) `npm run os:close -- --thread-name X` produit un draft local, (2) `npm run os:close -- --inject --thread-name X` écrit en B99 et renomme le draft en définitif. Le mode `--inject` exit(1) si aucun draft ni version définitive n'existe (phase 7), et **demande une confirmation explicite** affichant thread / version / source / action avant écrasement B99 (garde de sûreté, post B09-T39).
+- **`archive/`** : convention unique d'archivage à la racine (pas de `docs/archive/` parallèle), sous-dossiers par famille (`context/`, `readme/`, `pre-threads/`, `scripts/`, `docs-notes/`). Rien de `archive/` n'entre dans le périmètre docs-sync.
 
 ## Doctrine — règles opérationnelles (à appliquer en codant)
 
-Règle cardinale : **anti-hallucination système**. Aucun verdict positif par défaut. « aligné » / « DONE » / « OK » sont le résultat d'un check qui a tourné ET passé — jamais l'état de repos. Check non exécuté = INDÉTERMINÉ. (Détail complet : voir pointeur PROMPT_MAITRE v15 ci-dessous.)
+Règle cardinale : **anti-hallucination système**. Aucun verdict positif par défaut. « aligné » / « DONE » / « OK » sont le résultat d'un check qui a tourné ET passé — jamais l'état de repos. Check non exécuté = INDÉTERMINÉ. (Détail complet : voir pointeur PROMPT_MAITRE ci-dessous.)
 
 Comportements à tenir quand tu écris du code ou édites le repo :
 
@@ -96,21 +100,21 @@ Comportements à tenir quand tu écris du code ou édites le repo :
 - **Montrer le code fautif AVANT de proposer un fix.** Rapporter ce qui a été vérifié ET ce qui ne l'a pas pu l'être.
 - **Confrontation active.** Signaler les dérives : scope qui gonfle, dette qui s'accumule, hypothèse présentée comme acquise. Ne pas lisser.
 - **Un point ouvert se tranche** (fait ou `[DROPPED]`) — ne se re-suspend pas indéfiniment.
-- **Points ouverts du CONTEXT traités avant l'objectif principal du thread**, sauf décision explicite contraire documentée.
 - **Décision structurante = commit avant fin de thread.** Aucun `[À COMPLÉTER]` livré. Aucun acronyme inventé. `IDEAS.md` revu en clôture.
 - **Granularité des commits = une photo propre du repo, toujours.** Autant de commits que nécessaire pour qu'un geste cohérent = un commit. Ne jamais noyer plusieurs gestes de nature différente (refactor structurel + mise à jour backlog + fix) sous une seule étiquette qui n'en décrit qu'un. Un message de commit ne doit jamais mentir sur ce que le commit contient. Règle permanente — ne plus demander, appliquer par défaut.
-- **Séparation État (calculé) / Doctrine (versionnée).** Ne pas recopier de la doctrine dans des fichiers d'état (CONTEXT, PRE_THREAD, BACKLOG) — toujours pointer la source.
+- **Séparation État (calculé) / Doctrine (versionnée).** Ne pas recopier de la doctrine dans des fichiers d'état (BACKLOG, Notion B99) — toujours pointer la source.
+- **Modification d'un agent = mise à jour de son prompt dans le même commit.** Un agent (`os/agents/<nom>/`) et son prompt système (`docs/prompts/<nom>/PROMPT_..._v<N>.md`) évoluent ensemble — jamais un commit qui change le comportement de l'agent sans refléter le changement dans son prompt, ni l'inverse.
+- **Périmètre docs-sync — vérification après commit.** Fichiers concernés : `CLAUDE.md`, `README.md`, `PROMPT_MAITRE` (dernière version), `BACKLOG_DEV.md`, `BACKLOG_USER.md`, `IDEAS.md`, la dernière version de chaque famille de prompts (SYNTHESE, PILOTAGE, OUVERTURE, INGEST_DOC, INFRA_TECH, ASSOCIE) + `SPEC_AGENT_SYNTHESE`. Rien de `archive/` n'entre dans ce périmètre. Tout commit touchant un de ces fichiers relance `npm run os:docs-sync` (script si présent) — la résolution de « dernière version » se fait automatiquement par le numéro `vXX` le plus élevé de chaque famille.
 
-Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage → Action. Priorité actuelle = avancer le **Pilotage** puis l'**Action**, pas empiler de la mémoire. La migration pilotage GPT→Claude est FAITE (chat claude-haiku-4-5, server claude-sonnet-4-6) ; la suite côté pilotage = routing modèle adaptatif (BACKLOG_USER AGENTS P9). Supabase = source d'état unique cible (INFRA P2), APRÈS migration pilotage — pas avant.
+Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage → Action. Priorité actuelle = avancer le **Pilotage** puis l'**Action**, pas empiler de la mémoire. La migration pilotage GPT→Claude est FAITE (chat claude-haiku-4-5, server claude-sonnet-4-6) ; la couche Action a démarré (Synthèse/Pilotage/Ouverture/Ingestion Docs, B09-T41/T42). Supabase = source d'état unique cible (INFRA P2), après la couche Action — pas avant.
 
 ## Sources de vérité (ne pas dupliquer ici)
 
 | Pour quoi | Va lire |
 |-----------|---------|
-| Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques, séquence de clôture) | `docs/prompts transfert thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v16) |
+| Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques) | `docs/prompts-transfert-thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v16) |
 | Doctrine agents (L'Associé, niveaux de confirmation, « DB prime toujours », routing datasource, fiches de différenciation) | `docs/prompts/associe/PROMPT_ASSOCIE_v<N>.md` (latest = v02) |
-| État courant du système (acquis, problèmes actifs, dernier thread traité) | `docs/context/INSIDE_OS_CONTEXT_v<N>.md` (latest = v32) |
+| État courant du système (chantiers actifs, décisions présentes) | Notion, page B99 — plus de fichier local (protocole CONTEXT abandonné, B09-T42) |
 | Priorités, statuts, items ouverts (qui fait quoi, quoi est `[DONE]` / `[TODO]` / `[DROPPED]`) | `BACKLOG_DEV.md` + `BACKLOG_USER.md` |
-| Pré-thread (PRE_THREAD généré par `os:pre-thread`) | racine du repo, archivés dans `docs/pre-threads/` |
 
 Règle : si une règle ou un statut apparaît dans CLAUDE.md ET ailleurs, **la source ci-dessus prime**. CLAUDE.md ne stocke que ce qui change le comportement immédiat de Claude Code dans ce repo.
