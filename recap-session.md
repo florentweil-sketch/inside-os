@@ -1,15 +1,15 @@
 # Récap de session — B09-T42-Notion-Dev-030
 
-Date : 2026-08-16 (régénéré — version précédente ne couvrait pas les 3 derniers gestes)
+Date : 2026-08-16 (régénéré — clôture de session)
 Thread : B09-T42 (Notion-Dev-030)
-Portée : session longue, 38 commits, plusieurs chantiers enchaînés.
+Portée : session longue, 40 commits, plusieurs chantiers enchaînés.
 
 **Note de statut.** Ce fichier n'est pas une résurrection du protocole CONTEXT
 (abandonné dans cette même session — voir plus bas). C'est le canal de
 transfert de fin de session vers l'architecte-conseil, non versionné, non
-référencé par le périmètre docs-sync. Sa réécriture à chaque fin de session
-est désormais gravée dans CLAUDE.md, au même titre que la relance d'os:docs-sync
-après un commit doc.
+référencé par le périmètre docs-sync. Sa réécriture à chaque fin de session,
+et la relance d'`os:docs-sync`, sont gravées dans CLAUDE.md comme deux
+gestes de fin de session au même titre l'un que l'autre.
 
 ---
 
@@ -31,7 +31,8 @@ après un commit doc.
 14. Bug threads_to_process/ — diagnostic, fix, purge sélective
 15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
 16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
-17. État final — rien en attente de décision
+17. Agent Associé v1 — point d'entrée conversationnel unique
+18. Clôture de session
 
 ---
 
@@ -53,14 +54,10 @@ Premier agent de la couche Action — synthèse sourcée sur un sujet donné, le
 seule, croise DECISIONS/LESSONS/THREAD_DUMP.
 
 **Bug structurel majeur trouvé** : `scoreItem`/`describePage` (`os/agents/synthese/sources.mjs`)
-lisaient des propriétés Notion inexistantes (`title`, `raw_text` — DECISIONS a une
-propriété `decision`, LESSONS a `lesson`, aucune n'a `raw_text`). Conséquence :
-le score était **toujours 0**, l'agent n'avait **jamais** retourné un seul résultat
-depuis sa création. Corrigé par tagging `_itemType` + mapping `ITEM_FIELDS` par type.
+lisaient des propriétés Notion inexistantes (`title`, `raw_text`). Le score
+était **toujours 0**, l'agent n'avait **jamais** retourné un seul résultat
+depuis sa création. Corrigé par tagging `_itemType` + mapping `ITEM_FIELDS`.
 Vérifié en direct : 0 → 10 résultats sourcés sur "Clémence Porret".
-
-**Bug secondaire** : prompt système avec une date d'exemple périmée (2026-05-25) —
-corrigé, date réelle du run injectée dans le contexte transmis au LLM.
 
 Commits : `8411cdb`, `57414cd`, `a0f1df7`
 Prompt : `docs/prompts/synthese/PROMPT_AGENT_SYNTHESE_v01.md` + `SPEC_AGENT_SYNTHESE_v01.md`
@@ -69,19 +66,8 @@ Prompt : `docs/prompts/synthese/PROMPT_AGENT_SYNTHESE_v01.md` + `SPEC_AGENT_SYNT
 
 ## 3. os:chat — trois bugs de scoring
 
-- **Méta-mots** : le mot "mémoire" dans la question de l'utilisateur était compté
-  deux fois dans le scoring (token réel + `phraseBoosts`), gonflant des items
-  hors-sujet au-dessus du seuil. Fix : `META_WORDS` exclus du tokenizer.
-- **Boost B99 inconditionnel** : `isPresentDump`/`isStateDump` (+20/+40) s'appliquaient
-  à *tout* item B99 quelle que soit la question, même après le fix méta-mots.
-  Gaté derrière `questionTargetsCurrentSystem(tokens)`.
-- **Pagination tronquée à 80** : `getDecisions`/`getLessons` ne lisaient que la
-  première page. Corrigé — pagination complète, plafond configurable
-  `CHAT_FETCH_LIMIT` (0/absent = tout lire), total loggé à chaque run.
-
-Vérifié : "Clémence Porret" → résultats réels sourcés (pas de bruit B99) ;
-"état du projet" → résultats présents (pagination) ; "où en est le pipeline
-INSIDE OS" → items B99 pertinents remontent (boost gaté correctement).
+Méta-mots comptés deux fois dans le score ; boost B99 appliqué sans condition
+de pertinence ; pagination tronquée à 80 items. Les trois corrigés et vérifiés.
 
 Commits : `e38efb8`, `54b3cce`, `5409ee2`
 
@@ -89,14 +75,9 @@ Commits : `e38efb8`, `54b3cce`, `5409ee2`
 
 ## 4. os:ingest — SKIP_BUCKETS jamais appliqué (bug historique, avant B09-T42)
 
-`DEFAULT_SKIP_BUCKETS=["B09"]` était comparé après `.toUpperCase()` contre un
-sentinel minuscule `"__default__"` — la comparaison n'était jamais vraie, donc
-l'exclusion par défaut de B09 ne s'appliquait **jamais** en pratique sur un batch
-sans `--skip-buckets` explicite. Corrigé — comparaison sur la valeur brute.
-
-*Note : `DEFAULT_SKIP_BUCKETS` lui-même a depuis été retiré (section 15) — ce
-fix historique du sentinel reste dans le code mais s'applique désormais à un
-tableau vide par défaut.*
+Sentinel comparé après `.toUpperCase()`, ne matchait jamais — l'exclusion B09
+par défaut ne s'appliquait jamais en pratique. Corrigé (fix du sentinel).
+*Note : `DEFAULT_SKIP_BUCKETS` lui-même a depuis été retiré (section 15).*
 
 Commit : `7febefa`
 
@@ -104,17 +85,11 @@ Commit : `7febefa`
 
 ## 5. decision_status + created_time, et os:statut
 
-`decision_status` (proposed/validated/superseded/archived/draft/rejected) était
-rempli à 100% par l'extracteur mais jamais lu ni affiché par le chat ni les
-agents, et rien ne posait jamais superseded/archived/rejected.
-
-- Lecture : chat + Agent Synthèse affichent désormais `[statut | date]` par
-  item, avec consignes de lecture (proposed = hypothèse, validated = formulation
-  ferme dans le thread source PAS validation de Florent, item ancien = marqué
-  "à vérifier").
-- Curation : `os/scripts/statut.mjs` (`npm run os:statut -- <uid> <statut>`) —
-  seul point d'écriture pour superseded/archived/rejected, fail-loud si uid
-  introuvable ou statut invalide.
+Lecture affichée par le chat + Agent Synthèse (`[statut | date]`). Curation :
+`os/scripts/statut.mjs` (`npm run os:statut -- <uid> <statut>`) — seul point
+d'écriture pour superseded/archived/rejected. *Refactoré en section 17 pour
+exporter une fonction réutilisable (`applyStatut`), consommée par l'Agent
+Associé — un bug d'exécution-à-l'import a été trouvé et corrigé au passage.*
 
 Commits : `4ff378e`, `829aada`
 
@@ -122,10 +97,8 @@ Commits : `4ff378e`, `829aada`
 
 ## 6. Agent Pilotage
 
-Le "copilote opérationnel" (thread B99-T07) — format strict ÉTAT/BLOCAGE/ACTION,
-réutilise le socle Synthèse. Boost présent/récent modéré (+3/+1) appliqué
-seulement sur le classement, jamais sur le filtre — pour éviter la classe de
-bug trouvée en #3.
+Copilote opérationnel ÉTAT/BLOCAGE/ACTION, réutilise le socle Synthèse. Boost
+présent/récent modéré (+3/+1) appliqué seulement sur le classement.
 
 Commits : `f8d5b3a`, `f29fc74`
 Prompt : `docs/prompts/pilotage/PROMPT_AGENT_PILOTAGE_v01.md`
@@ -134,11 +107,8 @@ Prompt : `docs/prompts/pilotage/PROMPT_AGENT_PILOTAGE_v01.md`
 
 ## 7. Fix tokenizer — acronymes courts
 
-`tokenize()` dans le socle partagé (`sources.mjs`) filtrait tout mot < 4 lettres,
-éliminant des sigles métier légitimes ("SAS"). Fix : un token de 2-3 caractères
-est retenu s'il apparaît tout en MAJUSCULES dans le sujet original. Vérifié :
-"Inside SAS" → tokens=[inside,sas], réponse spécifique (au lieu de générique) ;
-"Atelier de la Colombe" → inchangé, pas de régression.
+Un token de 2-3 caractères est retenu s'il apparaît tout en MAJUSCULES dans
+le sujet original ("SAS"). Vérifié sans régression.
 
 Commit : `12e5b8d`
 
@@ -146,38 +116,19 @@ Commit : `12e5b8d`
 
 ## 8. Injection de 3 dumps métier réels (B99-T11/T12/T13)
 
-Manoir Septeuil/Raya Salamé (B02/B07), Chantier B1 Bis/Bougival (B02/B07),
-Régularisation sièges sociaux Inside Archi/Inside SAS (B02/B06/B03). Pipeline
-complet, 0 erreur (audit 100/100 extract+inject). Vérifié via
-`os:pilotage --sujet "B1 Bis"` — reflète démarrage 15/09 et acompte reçu.
+Manoir Septeuil, Chantier B1 Bis, Régularisation sièges sociaux. Pipeline
+complet, 0 erreur. Vérifié via `os:pilotage`.
 
 ---
 
 ## 9. Agent Ouverture — le brief du matin
 
-`npm run os:ouverture` (sans sujet — pas de scoring par pertinence textuelle,
-sélection déterministe : présent B99, récent 30j, proposed, + canal essentiel).
-
-Itérations, chacune vérifiée en direct avant la suivante :
-1. **v01** — agent construit, format familles par bucket (Chantiers/Juridique/
-   Holding/Commercial/INSIDE OS/Autre).
-2. **Plafond INSIDE OS** — items B09 cappés à 3 max, familles business
-   remplissent le cap de 20 en premier.
-3. **Diversité/anti-monopole** — deux tentatives : règle en prompt seule (le LLM
-   ne la respectait pas en pratique) puis pré-filtrage par bucket en code (a
-   cassé Commercial et perdu la tâche "transfert Inside Archi" par un tie-break
-   arbitraire) → solution retenue : **post-traiter la sortie texte du LLM**
-   (`enforceSourceDumpCap`), préserve le jugement du LLM tout en garantissant
-   le plafond.
-4. **Canal essentiel manquant** — Commercial/Holding sortaient vides malgré les
-   fix précédents ; cause réelle : le canal "essentiel" (décisions
-   impact=critical/major des buckets métier, sans filtre de récence) manquait
-   de la spec d'origine. Reconstruit avec **rotation quotidienne déterministe**
-   (`hash(date+uid)`, FNV-1a) plutôt qu'un classement fixe — 240 décisions
-   critical pour 15 places exige une rotation, pas un palmarès figé qui
-   montrerait toujours les mêmes items. 10 places critical + 5 places major
-   réservées (pas de priority-fill). Vérifié : deux dates simulées → sélections
-   différentes ; marqueur "(à vérifier — ancien)" présent sur les items anciens.
+`npm run os:ouverture`, sélection déterministe (présent/récent/proposed +
+canal essentiel). Itérations : plafond INSIDE OS, anti-monopole en
+post-traitement (le pré-filtrage avait cassé Commercial et perdu une tâche
+réelle), canal essentiel avec rotation quotidienne déterministe
+(`hash(date+uid)`) pour éviter qu'un classement fixe montre toujours les
+mêmes items parmi 240 décisions critical.
 
 Commits : `9d7932b`, `f1bcfaa`, `b1fe546`, `c745df3`, `7176bbb`, `db70658`, `95a003f`
 Prompt : `docs/prompts/ouverture/PROMPT_AGENT_OUVERTURE_v01.md`
@@ -186,23 +137,11 @@ Prompt : `docs/prompts/ouverture/PROMPT_AGENT_OUVERTURE_v01.md`
 
 ## 10. Agent Ingestion Docs
 
-Verse un document (PDF) dans la mémoire INSIDE OS : lecture via l'API Claude
-(content block `document` base64, pas de beta header requis), extraction
-factuelle stricte (montants, dates, parties, conditions — incertitudes du
-document marquées comme telles, jamais actées), confirmation interactive
-obligatoire avant écriture (`--yes` pour l'automatiser), dépôt dans
-`data/threads_to_process/` avec le prochain id_dump B99-Txx libre calculé en
-lisant Notion live.
-
-Garde-fous : PDF illisible/vide/>20 Mo rejeté explicitement, bucket invalide
-rejeté, id_dump déjà pris rejeté (Notion + fichier local), garde anti-B99-T99
-appliquée.
-
-**Vérifié en production réelle** (pas un test synthétique) : devis signé
-INSIDE SAS / M. & Mme Fernet (252 194,05 € TTC, 15 lots) → extraction validée
-manuellement contre le PDF original par Florent → dump B99-T14 → pipeline
-(9 décisions, 8 lessons, 0 erreur sur 101/101) → `os:pilotage --sujet "Fernet"`
-reflète correctement montant, lots, dates, incertitudes.
+Verse un PDF dans la mémoire — extraction factuelle stricte via l'API Claude,
+confirmation interactive obligatoire, id_dump B99-Txx calculé live. **Vérifié
+en production réelle** : devis Fernet (252 194,05 € TTC, 15 lots), extraction
+validée manuellement par Florent contre le PDF, pipeline complet 0 erreur,
+`os:pilotage --sujet "Fernet"` reflète correctement les chiffres.
 
 Commits : `120c35b`, `d316622`
 Prompt : `docs/prompts/ingest-doc/PROMPT_INGEST_DOC_v01.md`
@@ -211,50 +150,17 @@ Prompt : `docs/prompts/ingest-doc/PROMPT_INGEST_DOC_v01.md`
 
 ## 11. Rationalisation documentaire — abandon du protocole de clôture
 
-Décision structurante du thread : **le protocole de clôture dédié est abandonné
-en entier** (`os-thread-close.mjs`, génération d'un `CONTEXT vXX` local,
-audit `PRE_THREAD`). Remplacé par le flux minimal : dump texte → pipeline
-standard, identique pour tout thread y compris B09. Cause profonde : l'état du
-système vit désormais dans Notion (B99) plutôt que dans des `.md` locaux édités
-à la main et sujets à divergence (l'incident PRE_THREAD de B09-T39 qui avait
-motivé la règle anti-hallucination système).
+Décision structurante : le protocole de clôture dédié (`os-thread-close.mjs`,
+génération CONTEXT vXX local, audit PRE_THREAD) est abandonné en entier,
+remplacé par le flux minimal dump → pipeline. Archivage complet dans
+`archive/` (convention existante réutilisée, sous-dossiers par famille :
+`context/`, `readme/`, `pre-threads/`, `scripts/`, `docs-notes/`). Renommage
+`docs/prompts transfert thread/` → `docs/prompts-transfert-thread/`.
 
-**Archivage** — convention `archive/` existante réutilisée (pas de `docs/archive/`
-parallèle), sous-dossiers par famille :
-- `archive/context/` — 32 versions `INSIDE_OS_CONTEXT_v01..v32.md`
-- `archive/readme/` — 12 versions `README_INSIDE_OS_v01..v12.md`
-- `archive/pre-threads/` — 5 fichiers PRE_THREAD (dont un orphelin resté à la racine)
-- `archive/scripts/` — `os-thread-close.mjs`, `pre-thread.mjs`
-- `archive/docs-notes/` — `PIPELINE_BUG.md`, `PIPELINE_TESTING.md`, et un fichier
-  `.txt` décrivant le même protocole trouvé après coup lors d'un balayage final
-
-Renommage `docs/prompts transfert thread/` → `docs/prompts-transfert-thread/`
-(espace supprimé du nom de dossier).
-
-**Contenus réécrits/créés** :
-- `README.md` stable à la racine (nom stable, git assure le versionnage) —
-  contenu de `README_INSIDE_OS_v12` mis à jour : couche Action documentée
-  (absente de v12, produite avant son existence), protocole de clôture
-  abandonné retiré, roadmap actualisée
-- `CLAUDE.md` — commandes des 5 agents/scripts Action layer ajoutées, tableaux
-  "Documents système"/"Sources de vérité" mis à jour (CONTEXT retiré, chemins
-  renommés), nouvelles règles doctrinales : modification d'un agent = mise à
-  jour du prompt dans le même commit ; périmètre docs-sync documenté +
-  obligation de relancer `os:docs-sync` après tout commit le touchant
-- `PROMPT_MAITRE v17` — retrait du protocole de clôture 4 phases et de la
-  section génération CONTEXT (formats STANDARD/COMPACT, ~180 lignes sans
-  consommateur), remplacés par le protocole minimal ; reste inchangé :
-  posture de confrontation, anti-hallucination, saturation/STOP (reformulée
-  sans présupposer un document CONTEXT formel), contexte permanent, buckets,
-  contrat JSON, sécurité, granularité des commits
-
-**Outil construit (première version — check seul)** : `npm run os:docs-sync`
-(`os/scripts/docs-sync.mjs`) — vérifie que les pointeurs "(latest = vNN)"
-déclarés dans CLAUDE.md correspondent aux fichiers vXX réellement présents
-sur disque pour le périmètre docs-sync (8 familles de prompts + 5 fichiers
-simples). Une famille sans pointeur déclaré est signalée "non déclarée"
-(informationnel), jamais faussement "OK". *Étendu ensuite avec le miroir
-Notion — voir section 13.*
+`README.md` stable créé à la racine, `CLAUDE.md` et `PROMPT_MAITRE v17`
+réécrits en conséquence (retrait ~180 lignes de génération CONTEXT sans
+consommateur). Premier `os:docs-sync` construit (vérification des pointeurs
+de version seule — étendu au miroir Notion en section 13).
 
 Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
 
@@ -262,68 +168,29 @@ Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
 
 ## 12. Réconciliation BACKLOG_DEV + nettoyage repo
 
-**BACKLOG_DEV** — chaque entrée SYSTEME référençant l'ancien protocole tranchée
-(aucune suppression, trace conservée) :
-- `[DROPPED — B09-T42]` : P1, P9b, P23, P24 — n'ont plus d'objet
-- `[DONE]` + note de fin de vie : P9, P10, P11, P17, P19 — capacités livrées et
-  vérifiées en leur temps, hôte désormais archivé
-- `[DONE]` par résolution différente : P12 (volet pointeurs couvert par
-  os:docs-sync), P22 (résolu par archivage complet plutôt que suppression)
-- Reformulées (besoin survivant) : P2 (sync BACKLOG→Notion, découplée de la
-  clôture), P14 (politique d'archivage, CONTEXT/README/PRE_THREAD retirés)
-- P20 (source d'état unique) : périmètre réduit — CONTEXT/PRE_THREAD résolus
-  par suppression, BACKLOG_DEV/USER hors périmètre, reste `[TODO]`
-- P31 : à l'origine noté point ouvert — **tranché depuis, voir section 15**
-- P32 : capacité d'audit 3-axes de l'ancien pre-thread.mjs signalée comme
-  candidate à reconstruction autonome, pas reconstruite — reste `[ROADMAP]`
-
-**Nettoyage repo** (chaque suppression vérifiée avant d'agir) :
-- Supprimés : `inside-os@1.0.0` et `node` (fichiers vides, racine, commande mal
-  tapée en avril, tracés git) ; `os/_ESRGAN_16698.png - copie.pdf` (10 Mo,
-  untracked) ; `inside-os-backup/` (dossier vide)
-- Vérifié, rien à faire : aucune copie du PDF Fernet dans le repo (seuls les
-  dumps texte légitimes le mentionnent, l'original reste hors repo dans
-  `~/Dev/docs-a-ingerer/`) ; `.DS_Store` déjà dans `.gitignore` et déjà non
-  tracké
-- Balayage final racine + `os/` : tout fichier appartient à une catégorie
-  connue, aucun orphelin restant
+Chaque entrée SYSTEME référençant l'ancien protocole tranchée (DROPPED /
+DONE avec note de fin de vie / reformulée) — aucune suppression, trace
+conservée. Nettoyage repo : fichiers vides, PDF jetable, dossier backup vide
+supprimés après vérification ; `.DS_Store` déjà correctement ignoré ; aucune
+copie du PDF Fernet dans le repo.
 
 Commits : `97e90d7`, `32ffd80`, `256c51e`
 
 ---
 
-## 13. Miroir Notion doctrine — fonction d'origine de docs-sync, livrée
+## 13. Miroir Notion doctrine
 
-`os:docs-sync` étendu : après le check des pointeurs (conservé, comportement
-inchangé), pousse chaque fichier du périmètre (13 au total : 5 fichiers
-simples + 8 familles de prompts) vers une page Notion enfant de **"Doctrine —
-miroir"**, créée sous `INSIDE_OS_ROOT`. Chaque page miroir commence par un
-bandeau ("Miroir généré le `<date>` depuis le commit `<hash court>` — source
-de vérité : le repo. Ne pas éditer ici."), suivi du markdown converti en blocs
-Notion (titres, listes, citations, code — langage normalisé vers l'enum Notion
-avec repli sur "plain text" —, tables markdown converties en vraies tables
-Notion). Runs suivants : page retrouvée par titre exact, contenu intégralement
-remplacé (clear + append), jamais de duplication. Fail-loud : fichier manquant
-ou écriture Notion refusée interrompent le run.
-
-Nouveaux helpers bas niveau dans `os/lib/notion.mjs` : `createChildPage`,
-`appendBlockChildren(Batched)`, `deleteBlock`, `clearBlockChildren`,
-`findChildPageByTitle`.
-
-L'ancienne page Notion "INSIDE-OS-BACKLOG" (miroir manuel pré-split DEV/USER,
-dernière maj réelle 2026-05-10/B09-T34, retrouvée obsolète lors du diagnostic
-du point ouvert précédent) a son contenu remplacé par un pointeur vers le
-nouveau miroir.
-
-Option `--check-only` : comportement historique (vérification des pointeurs
-seule, aucune écriture Notion) — utile en CI ou pour un check rapide sans
-toucher Notion.
-
-**Vérifié en direct** : run complet réussi (13/13 pages : 2 mises à jour + 11
-créées), contenu relu et correct (bandeau, tables, code, tous les blocs),
-page INSIDE-OS-BACKLOG repointée avec un lien fonctionnel.
+`os:docs-sync` étendu : après le check des pointeurs, pousse les 13 fichiers
+du périmètre (5 simples + 8 familles de prompts) vers des pages Notion
+enfants de **"Doctrine — miroir"** (créée sous `INSIDE_OS_ROOT`). Bandeau
+"ne pas éditer ici" + markdown converti en blocs Notion (tables, code,
+titres). Idempotent (clear + append par titre, jamais de duplication),
+fail-loud. L'ancienne page "INSIDE-OS-BACKLOG" (obsolète, miroir manuel
+pré-split DEV/USER) repointée vers le nouveau miroir.
 
 **Doctrine — miroir : https://www.notion.so/3be5e503b0ac8102ace7e00e9782552c**
+— relancé et vérifié à jour à la clôture de cette session (13/13 pages,
+commit `df3902d`).
 
 Commit : `f3c57f6`
 
@@ -331,26 +198,11 @@ Commit : `f3c57f6`
 
 ## 14. Bug threads_to_process/ — diagnostic, fix, purge sélective
 
-Trouvé lors du nettoyage repo (section 12) : `ingestOneFile()` ne supprimait
-jamais le fichier source dans `data/threads_to_process/` après clean +
-archivage + injection Notion — contrairement à la doctrine documentée
-(README/CLAUDE.md/PROMPT_MAITRE). Bug réel, présent depuis au moins mai
-(fichiers B09-T38/T39/T40 jamais purgés). Corrigé : `fs.unlink` du fichier
-source à la fin des deux branches de succès (created/updated), après écriture
-Notion réussie.
-
-Purge des 4 fichiers résiduels — vérification individuelle avant suppression,
-pas de purge en bloc :
-- **B99-T14, B09-T38** : vérifiés `extraction_status=done` ET
-  `injection_status=done` dans THREAD_DUMP Notion → **purgés**
-- **B09-T39, B09-T40** : **introuvables dans THREAD_DUMP** — ces deux threads
-  B09 n'ont jamais été traités par le pipeline standard ; leur mémoire (si
-  elle existe) est passée par l'ancien protocole `os-thread-close.mjs`
-  (désormais archivé), pas par `os:ingest`/`os:extract`/`os:inject`. Ne
-  remplissaient pas la condition de purge ("extraction+injection done") —
-  **laissés en l'état**, toujours présents dans `threads_to_process/`. Ce
-  n'est pas une anomalie à corriger : c'est un fait vérifié, pas d'action
-  requise sauf si Florent veut un jour reconstituer leur mémoire autrement.
+Le brut n'était jamais supprimé après clean (doctrine jamais implémentée,
+bug présent depuis mai). Corrigé (`fs.unlink` après écriture Notion réussie).
+Purge : B99-T14 et B09-T38 (vérifiés extraction+injection done) supprimés ;
+B09-T39/T40 laissés en l'état (introuvables dans THREAD_DUMP — jamais
+traités par ce pipeline, mémoire passée par l'ancien protocole archivé).
 
 Commit : `0a61360`
 
@@ -358,27 +210,13 @@ Commit : `0a61360`
 
 ## 15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
 
-Deux gestes liés, un seul commit :
-
-1. **Nouvelle garde d'idempotence** (`assertNoExistingIdDump`) : `os:ingest`
-   refuse fail-loud tout id_dump déjà présent dans THREAD_DUMP Notion —
-   remplace l'ancien `guardCheckExistingDone` (avertissement + confirmation
-   interactive qui laissait passer une mise à jour silencieuse d'un thread
-   déjà traité). Plus aucune mise à jour implicite ; un re-traitement réel
-   exige de traiter la page Notion existante explicitement d'abord.
-2. **Garde en place**, `DEFAULT_SKIP_BUCKETS=["B09"]` retiré (désormais `[]`)
-   — un thread B09 passe par le pipeline standard comme tout autre bucket,
-   conforme à la doctrine post-abandon du protocole de clôture. La garde
-   d'idempotence protège contre les collisions mieux qu'une exclusion de
-   bucket ne l'a jamais fait.
-
-Doctrine corrigée au même endroit factuel dans CLAUDE.md, README.md et
-PROMPT_MAITRE v17 — les trois décrivaient ce point comme "non résolu",
-corrigé pour ne pas laisser une affirmation fausse. BACKLOG_DEV P31 → `[DONE]`.
-
-**Vérifié en direct** : réingestion de B99-T11 (déjà en Notion) échoue
-proprement avec le message d'idempotence. `os:audit` : 0 erreur
-(101/101 extract+inject).
+Nouvelle garde `assertNoExistingIdDump` : `os:ingest` refuse fail-loud tout
+id_dump déjà présent dans THREAD_DUMP Notion (remplace l'ancienne
+confirmation interactive qui laissait passer une mise à jour silencieuse).
+`DEFAULT_SKIP_BUCKETS=["B09"]` retiré (désormais `[]`) — B09 passe par le
+pipeline standard comme tout bucket. Doctrine corrigée aux 3 endroits qui
+affirmaient encore "non résolu". Vérifié en direct : réingestion de B99-T11
+rejetée proprement ; `os:audit` 0 erreur.
 
 Commit : `2bd549d`
 
@@ -386,36 +224,73 @@ Commit : `2bd549d`
 
 ## 16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
 
-CLAUDE.md précise désormais que réécrire `recap-session.md` avec l'état final
-réel de la session et relancer `npm run os:docs-sync` après un commit touchant
-son périmètre sont **deux gestes de fin de session au même titre l'un que
-l'autre** — ni optionnels, ni différables. Les deux remplacent, chacun sur son
-volet, le protocole CONTEXT abandonné : `recap-session.md` comme canal de
-transfert vers l'architecte-conseil, `os:docs-sync` comme garant de
-l'alignement doctrine ↔ disque ↔ miroir Notion.
+CLAUDE.md précise que réécrire `recap-session.md` et relancer `os:docs-sync`
+sont deux gestes de fin de session obligatoires, au même titre l'un que
+l'autre — appliqués tous les deux à cette clôture (sections 13 et 18).
 
-Commit : (ce geste — voir git log après le push)
+Commit : `4df7214`
 
 ---
 
-## 17. État final — rien en attente de décision
+## 17. Agent Associé v1 — point d'entrée conversationnel unique
 
-Les 3 points ouverts laissés par le précédent récap sont tranchés :
+**Geste 1 — PROMPT_ASSOCIE v03** : dépoussiérage de v02. Conservés
+intégralement : posture de confrontation, "la DB prime toujours", niveaux de
+confirmation, routing datasource, règle des fiches de différenciation,
+statut de L'Associé. Mis à jour : nouvelle section "Outils réels" documentant
+les 4 agents réellement construits (Synthèse, Pilotage, Ouverture, Ingestion
+Docs) comme outils invoqués ; les 15 agents métier de v02 (jamais construits)
+déplacés en section "Casquettes futures — vision non implémentée", marqués
+explicitement comme n'existant pas ; ENTITIES marqué "à construire" (v02 le
+décrivait comme déjà enrichi, aucune extraction automatique ni saisie
+manuelle n'existe).
 
-1. ~~Page Notion "INSIDE-OS-BACKLOG" à réutiliser ou remplacer~~ → **tranché**
-   (section 13) : nouveau miroir "Doctrine — miroir" créé, ancienne page
-   repointée vers lui.
-2. ~~`threads_to_process/` ne se vide pas après clean~~ → **corrigé**
-   (section 14) : bug fixé, 2/4 fichiers résiduels purgés après vérification,
-   2/4 laissés en l'état à bon droit (jamais traités par ce pipeline).
-3. ~~BACKLOG_DEV P31 (DEFAULT_SKIP_BUCKETS)~~ → **tranché** (section 15) :
-   retiré, garde d'idempotence en place, P31 `[DONE]`.
+**Geste 2 — Agent Associé** (`os/agents/associe/`, `npm run os:associe --
+"message"`) : un appel LLM léger classifie l'intention (JSON strict,
+fail-loud si inexploitable) et route vers Pilotage/Synthèse/Ouverture
+(outils réels invoqués directement), repêchage mémoire scoré (intention
+"memoire"), ou proposition de curation (intention "curation" — trouve le
+candidat via repêchage restreint à DECISIONS, propose la commande
+`os:statut` sans l'exécuter). La réponse finale est **toujours** formulée
+par un second appel LLM avec le prompt PROMPT_ASSOCIE_v03 complet, à partir
+de la sortie brute de l'outil — jamais un relais direct.
 
-Aucun point ouvert nécessitant une décision de Florent à la clôture de cette
-session. Les 4 agents de la couche Action (Synthèse, Pilotage, Ouverture,
-Ingestion Docs) sont opérationnels et vérifiés ; le miroir Notion et
-`os:docs-sync` maintiennent désormais doctrine ↔ disque ↔ Notion alignés sans
-intervention manuelle à chaque clôture.
+**Bug trouvé et corrigé en vérifiant l'agent de bout en bout** :
+`os/scripts/statut.mjs` exécutait son `main()` CLI (lecture de
+`process.argv`) au moment de l'import de `applyStatut()` par `associe.mjs`,
+faute de garde d'exécution ESM — tuait le process avec les mauvais argv.
+Corrigé (garde standard `import.meta.url === file://...`).
+
+**Vérifié sur 5 messages réels, chaque route couverte** :
+- "où en est le chantier Fernet" → pilotage, chiffres exacts, confrontation
+  (angle mort avril-août signalé)
+- "fais-moi le point sur Clémence Porret" → pilotage, deux décisions
+  validated sourcées, confrontation sur l'absence de preuve d'exécution
+- "je fais quoi ce matin" → ouverture, brief reformulé fidèlement, sources
+  citées
+- "que sait-on des prix Point P" → memoire, items hors-sujet reconnus comme
+  tels et explicitement écartés — **pas d'hallucination**
+- "la décision X est périmée" → curation, candidat trouvé (par coïncidence
+  de scoring, la décision-mère de l'anti-hallucination elle-même) —
+  confrontation forte avant de proposer l'exécution, commande **non
+  exécutée** sans confirmation, vérifié en direct dans Notion :
+  `decision_status` resté `validated`
+
+Commits : `f917a6a` (prompt), `df3902d` (agent)
+
+---
+
+## 18. Clôture de session
+
+Les deux gestes de fin de session (doctrine section 16) appliqués :
+`os:docs-sync` relancé (périmètre touché par PROMPT_ASSOCIE v03 + CLAUDE.md)
+— miroir Notion "Doctrine — miroir" à jour, 13/13 pages ; ce fichier
+régénéré. Tous les commits de la session poussés sur `origin/main`.
+
+**5 agents de la couche Action désormais opérationnels et vérifiés** :
+Synthèse, Pilotage, Ouverture, Ingestion Docs, et — nouveau ce thread —
+**Associé, point d'entrée conversationnel unique qui orchestre les 4
+premiers**. Aucun point ouvert nécessitant une décision à cette clôture.
 
 ---
 
@@ -461,15 +336,17 @@ d6484f4 docs(claude): doctrine post-abandon clôture/CONTEXT
 f3c57f6 feat(docs-sync): miroir doctrine repo → Notion
 0a61360 fix(ingest): purge des bruts après clean
 2bd549d fix(ingest): garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
-        chore(doctrine): recap-session.md ↔ os:docs-sync, fin de session (ce geste)
+4df7214 chore(doctrine): recap-session.md ↔ os:docs-sync, fin de session
+f917a6a docs(prompts): PROMPT_ASSOCIE v03
+df3902d feat(agents): Agent Associé v1
+        chore(doctrine): régénération recap-session.md, clôture (ce geste)
 ```
 
 ---
 
 ## Prochaine étape suggérée
 
-Plus de dette système ouverte à ce point de clôture — le prochain geste
-naturel est de faire tourner les 4 agents Action layer sur de la matière
-réelle plutôt que d'ouvrir un nouveau chantier système, conformément à la
-doctrine PROMPT_MAITRE (produire de la valeur entreprise réelle, pas empiler
-de l'infra).
+Le système a désormais un point d'entrée conversationnel unique orchestrant
+4 agents lecture seule vérifiés + un canal de curation confirmé. Le prochain
+geste naturel est l'usage réel — poser de vraies questions à `os:associe`
+sur de la matière métier — plutôt que d'ouvrir un nouveau chantier système.
