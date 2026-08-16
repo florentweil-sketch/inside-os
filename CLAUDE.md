@@ -114,7 +114,7 @@ Architecture cible (à ne pas contredire) : but final = Mémoire → Pilotage �
 | Pour quoi | Va lire |
 |-----------|---------|
 | Doctrine complète (anti-hallucination détaillée, posture, protocoles canoniques) | `docs/prompts-transfert-thread/PROMPT_MAITRE_v<N>_TRANSFERT_DE_THREAD.md` (latest = v17) |
-| Doctrine agents (L'Associé, niveaux de confirmation, « DB prime toujours », routing datasource, fiches de différenciation) | `docs/prompts/associe/PROMPT_ASSOCIE_v<N>.md` (latest = v02) |
+| Doctrine agents (L'Associé, niveaux de confirmation, « DB prime toujours », routing datasource, fiches de différenciation, outils réels invoqués) | `docs/prompts/associe/PROMPT_ASSOCIE_v<N>.md` (latest = v03) |
 | État courant du système (chantiers actifs, décisions présentes) | Notion, page B99 — plus de fichier local (protocole CONTEXT abandonné, B09-T42) |
 | Priorités, statuts, items ouverts (qui fait quoi, quoi est `[DONE]` / `[TODO]` / `[DROPPED]`) | `BACKLOG_DEV.md` + `BACKLOG_USER.md` |
 
