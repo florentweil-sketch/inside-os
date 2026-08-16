@@ -2,7 +2,7 @@
 
 Date : 2026-08-16 (régénéré — clôture de session)
 Thread : B09-T42 (Notion-Dev-030)
-Portée : session longue, 40 commits, plusieurs chantiers enchaînés.
+Portée : session très longue, 43 commits, plusieurs chantiers enchaînés.
 
 **Note de statut.** Ce fichier n'est pas une résurrection du protocole CONTEXT
 (abandonné dans cette même session — voir plus bas). C'est le canal de
@@ -32,7 +32,9 @@ gestes de fin de session au même titre l'un que l'autre.
 15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
 16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
 17. Agent Associé v1 — point d'entrée conversationnel unique
-18. Clôture de session
+18. Inventaire lecture seule Google Drive (rapports locaux, hors repo versionné)
+19. P33 — script de déduplication Drive gravé au backlog (roadmap, pas construit)
+20. Clôture de session
 
 ---
 
@@ -40,9 +42,8 @@ gestes de fin de session au même titre l'un que l'autre.
 
 `os/lib/guard.mjs` : `assertNotBlockedDumpId()`, motif bloqué `/^B99-T99(-.*)?$/`.
 Câblée fail-loud dans `os/inject/inject-decisions-lessons.mjs` et
-`os/extract/extract-thread-dump.mjs` — throw immédiat, pas de skip silencieux.
-Contexte : 27 items de fausse donnée B99-T99 retirés de Notion le 2026-08-07.
-Vérifié : B99-T07 (id légitime) n'est pas bloqué.
+`os/extract/extract-thread-dump.mjs`. Contexte : 27 items de fausse donnée
+B99-T99 retirés de Notion le 2026-08-07. Vérifié : B99-T07 non bloqué.
 
 Commit : `bd8d1bb`
 
@@ -50,14 +51,11 @@ Commit : `bd8d1bb`
 
 ## 2. Agent Synthèse
 
-Premier agent de la couche Action — synthèse sourcée sur un sujet donné, lecture
-seule, croise DECISIONS/LESSONS/THREAD_DUMP.
-
-**Bug structurel majeur trouvé** : `scoreItem`/`describePage` (`os/agents/synthese/sources.mjs`)
-lisaient des propriétés Notion inexistantes (`title`, `raw_text`). Le score
-était **toujours 0**, l'agent n'avait **jamais** retourné un seul résultat
-depuis sa création. Corrigé par tagging `_itemType` + mapping `ITEM_FIELDS`.
-Vérifié en direct : 0 → 10 résultats sourcés sur "Clémence Porret".
+Premier agent de la couche Action — synthèse sourcée, lecture seule.
+**Bug structurel majeur** : `scoreItem`/`describePage` lisaient des propriétés
+Notion inexistantes (`title`, `raw_text`) — score toujours 0, l'agent n'avait
+jamais retourné un seul résultat depuis sa création. Corrigé. Vérifié :
+0 → 10 résultats sourcés sur "Clémence Porret".
 
 Commits : `8411cdb`, `57414cd`, `a0f1df7`
 Prompt : `docs/prompts/synthese/PROMPT_AGENT_SYNTHESE_v01.md` + `SPEC_AGENT_SYNTHESE_v01.md`
@@ -66,18 +64,17 @@ Prompt : `docs/prompts/synthese/PROMPT_AGENT_SYNTHESE_v01.md` + `SPEC_AGENT_SYNT
 
 ## 3. os:chat — trois bugs de scoring
 
-Méta-mots comptés deux fois dans le score ; boost B99 appliqué sans condition
-de pertinence ; pagination tronquée à 80 items. Les trois corrigés et vérifiés.
+Méta-mots comptés deux fois ; boost B99 sans condition de pertinence ;
+pagination tronquée à 80 items. Corrigés et vérifiés.
 
 Commits : `e38efb8`, `54b3cce`, `5409ee2`
 
 ---
 
-## 4. os:ingest — SKIP_BUCKETS jamais appliqué (bug historique, avant B09-T42)
+## 4. os:ingest — SKIP_BUCKETS jamais appliqué (bug historique)
 
-Sentinel comparé après `.toUpperCase()`, ne matchait jamais — l'exclusion B09
-par défaut ne s'appliquait jamais en pratique. Corrigé (fix du sentinel).
-*Note : `DEFAULT_SKIP_BUCKETS` lui-même a depuis été retiré (section 15).*
+Sentinel comparé après `.toUpperCase()`, ne matchait jamais. Corrigé.
+*`DEFAULT_SKIP_BUCKETS` lui-même retiré depuis (section 15).*
 
 Commit : `7febefa`
 
@@ -85,11 +82,10 @@ Commit : `7febefa`
 
 ## 5. decision_status + created_time, et os:statut
 
-Lecture affichée par le chat + Agent Synthèse (`[statut | date]`). Curation :
-`os/scripts/statut.mjs` (`npm run os:statut -- <uid> <statut>`) — seul point
-d'écriture pour superseded/archived/rejected. *Refactoré en section 17 pour
-exporter une fonction réutilisable (`applyStatut`), consommée par l'Agent
-Associé — un bug d'exécution-à-l'import a été trouvé et corrigé au passage.*
+Lecture affichée par chat + Agent Synthèse. Curation : `os/scripts/statut.mjs`
+(`npm run os:statut -- <uid> <statut>`). *Refactoré en section 17 pour exporter
+`applyStatut`, consommée par l'Agent Associé — bug d'exécution-à-l'import
+trouvé et corrigé au passage.*
 
 Commits : `4ff378e`, `829aada`
 
@@ -97,8 +93,8 @@ Commits : `4ff378e`, `829aada`
 
 ## 6. Agent Pilotage
 
-Copilote opérationnel ÉTAT/BLOCAGE/ACTION, réutilise le socle Synthèse. Boost
-présent/récent modéré (+3/+1) appliqué seulement sur le classement.
+Copilote opérationnel ÉTAT/BLOCAGE/ACTION, socle Synthèse réutilisé, boost
+présent/récent sur le classement seulement.
 
 Commits : `f8d5b3a`, `f29fc74`
 Prompt : `docs/prompts/pilotage/PROMPT_AGENT_PILOTAGE_v01.md`
@@ -107,8 +103,8 @@ Prompt : `docs/prompts/pilotage/PROMPT_AGENT_PILOTAGE_v01.md`
 
 ## 7. Fix tokenizer — acronymes courts
 
-Un token de 2-3 caractères est retenu s'il apparaît tout en MAJUSCULES dans
-le sujet original ("SAS"). Vérifié sans régression.
+Token 2-3 caractères retenu si tout en MAJUSCULES dans le sujet original
+("SAS"). Vérifié sans régression.
 
 Commit : `12e5b8d`
 
@@ -116,19 +112,16 @@ Commit : `12e5b8d`
 
 ## 8. Injection de 3 dumps métier réels (B99-T11/T12/T13)
 
-Manoir Septeuil, Chantier B1 Bis, Régularisation sièges sociaux. Pipeline
-complet, 0 erreur. Vérifié via `os:pilotage`.
+Manoir Septeuil, Chantier B1 Bis, Régularisation sièges sociaux. 0 erreur.
 
 ---
 
 ## 9. Agent Ouverture — le brief du matin
 
-`npm run os:ouverture`, sélection déterministe (présent/récent/proposed +
-canal essentiel). Itérations : plafond INSIDE OS, anti-monopole en
-post-traitement (le pré-filtrage avait cassé Commercial et perdu une tâche
-réelle), canal essentiel avec rotation quotidienne déterministe
-(`hash(date+uid)`) pour éviter qu'un classement fixe montre toujours les
-mêmes items parmi 240 décisions critical.
+Sélection déterministe (présent/récent/proposed + canal essentiel). Itérations :
+plafond INSIDE OS, anti-monopole en post-traitement, canal essentiel avec
+rotation quotidienne déterministe pour éviter qu'un classement fixe montre
+toujours les mêmes items parmi 240 décisions critical.
 
 Commits : `9d7932b`, `f1bcfaa`, `b1fe546`, `c745df3`, `7176bbb`, `db70658`, `95a003f`
 Prompt : `docs/prompts/ouverture/PROMPT_AGENT_OUVERTURE_v01.md`
@@ -137,11 +130,9 @@ Prompt : `docs/prompts/ouverture/PROMPT_AGENT_OUVERTURE_v01.md`
 
 ## 10. Agent Ingestion Docs
 
-Verse un PDF dans la mémoire — extraction factuelle stricte via l'API Claude,
-confirmation interactive obligatoire, id_dump B99-Txx calculé live. **Vérifié
-en production réelle** : devis Fernet (252 194,05 € TTC, 15 lots), extraction
-validée manuellement par Florent contre le PDF, pipeline complet 0 erreur,
-`os:pilotage --sujet "Fernet"` reflète correctement les chiffres.
+Verse un PDF en mémoire, extraction factuelle stricte, confirmation
+interactive obligatoire. **Vérifié en production réelle** : devis Fernet
+(252 194,05 € TTC), extraction validée par Florent, pipeline 0 erreur.
 
 Commits : `120c35b`, `d316622`
 Prompt : `docs/prompts/ingest-doc/PROMPT_INGEST_DOC_v01.md`
@@ -150,17 +141,11 @@ Prompt : `docs/prompts/ingest-doc/PROMPT_INGEST_DOC_v01.md`
 
 ## 11. Rationalisation documentaire — abandon du protocole de clôture
 
-Décision structurante : le protocole de clôture dédié (`os-thread-close.mjs`,
-génération CONTEXT vXX local, audit PRE_THREAD) est abandonné en entier,
-remplacé par le flux minimal dump → pipeline. Archivage complet dans
-`archive/` (convention existante réutilisée, sous-dossiers par famille :
-`context/`, `readme/`, `pre-threads/`, `scripts/`, `docs-notes/`). Renommage
-`docs/prompts transfert thread/` → `docs/prompts-transfert-thread/`.
-
-`README.md` stable créé à la racine, `CLAUDE.md` et `PROMPT_MAITRE v17`
-réécrits en conséquence (retrait ~180 lignes de génération CONTEXT sans
-consommateur). Premier `os:docs-sync` construit (vérification des pointeurs
-de version seule — étendu au miroir Notion en section 13).
+Protocole de clôture dédié (`os-thread-close.mjs`, CONTEXT vXX local,
+PRE_THREAD) abandonné en entier, remplacé par dump → pipeline. Archivage
+complet dans `archive/` (convention réutilisée). `README.md` stable créé,
+`CLAUDE.md`/`PROMPT_MAITRE v17` réécrits. Premier `os:docs-sync` construit
+(check pointeurs).
 
 Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
 
@@ -169,10 +154,8 @@ Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
 ## 12. Réconciliation BACKLOG_DEV + nettoyage repo
 
 Chaque entrée SYSTEME référençant l'ancien protocole tranchée (DROPPED /
-DONE avec note de fin de vie / reformulée) — aucune suppression, trace
-conservée. Nettoyage repo : fichiers vides, PDF jetable, dossier backup vide
-supprimés après vérification ; `.DS_Store` déjà correctement ignoré ; aucune
-copie du PDF Fernet dans le repo.
+DONE avec note / reformulée). Nettoyage repo (fichiers vides, PDF jetable,
+dossier backup vide) après vérification.
 
 Commits : `97e90d7`, `32ffd80`, `256c51e`
 
@@ -180,17 +163,12 @@ Commits : `97e90d7`, `32ffd80`, `256c51e`
 
 ## 13. Miroir Notion doctrine
 
-`os:docs-sync` étendu : après le check des pointeurs, pousse les 13 fichiers
-du périmètre (5 simples + 8 familles de prompts) vers des pages Notion
-enfants de **"Doctrine — miroir"** (créée sous `INSIDE_OS_ROOT`). Bandeau
-"ne pas éditer ici" + markdown converti en blocs Notion (tables, code,
-titres). Idempotent (clear + append par titre, jamais de duplication),
-fail-loud. L'ancienne page "INSIDE-OS-BACKLOG" (obsolète, miroir manuel
-pré-split DEV/USER) repointée vers le nouveau miroir.
+`os:docs-sync` étendu : pousse les 13 fichiers du périmètre vers des pages
+enfants de **"Doctrine — miroir"** (sous `INSIDE_OS_ROOT`), idempotent,
+fail-loud. Ancienne page "INSIDE-OS-BACKLOG" repointée.
 
 **Doctrine — miroir : https://www.notion.so/3be5e503b0ac8102ace7e00e9782552c**
-— relancé et vérifié à jour à la clôture de cette session (13/13 pages,
-commit `df3902d`).
+— relancé et vérifié à jour à la clôture (13/13 pages, commit `29c64ba`).
 
 Commit : `f3c57f6`
 
@@ -198,11 +176,9 @@ Commit : `f3c57f6`
 
 ## 14. Bug threads_to_process/ — diagnostic, fix, purge sélective
 
-Le brut n'était jamais supprimé après clean (doctrine jamais implémentée,
-bug présent depuis mai). Corrigé (`fs.unlink` après écriture Notion réussie).
-Purge : B99-T14 et B09-T38 (vérifiés extraction+injection done) supprimés ;
-B09-T39/T40 laissés en l'état (introuvables dans THREAD_DUMP — jamais
-traités par ce pipeline, mémoire passée par l'ancien protocole archivé).
+Le brut n'était jamais supprimé après clean. Corrigé. Purge sélective :
+B99-T14/B09-T38 (vérifiés done) supprimés ; B09-T39/T40 laissés en l'état
+(jamais traités par ce pipeline).
 
 Commit : `0a61360`
 
@@ -210,23 +186,16 @@ Commit : `0a61360`
 
 ## 15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
 
-Nouvelle garde `assertNoExistingIdDump` : `os:ingest` refuse fail-loud tout
-id_dump déjà présent dans THREAD_DUMP Notion (remplace l'ancienne
-confirmation interactive qui laissait passer une mise à jour silencieuse).
-`DEFAULT_SKIP_BUCKETS=["B09"]` retiré (désormais `[]`) — B09 passe par le
-pipeline standard comme tout bucket. Doctrine corrigée aux 3 endroits qui
-affirmaient encore "non résolu". Vérifié en direct : réingestion de B99-T11
-rejetée proprement ; `os:audit` 0 erreur.
+`assertNoExistingIdDump` : refuse fail-loud tout id_dump déjà présent.
+`DEFAULT_SKIP_BUCKETS` retiré. Doctrine corrigée. Vérifié en direct.
 
 Commit : `2bd549d`
 
 ---
 
-## 16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
+## 16. Doctrine recap-session.md ↔ os:docs-sync
 
-CLAUDE.md précise que réécrire `recap-session.md` et relancer `os:docs-sync`
-sont deux gestes de fin de session obligatoires, au même titre l'un que
-l'autre — appliqués tous les deux à cette clôture (sections 13 et 18).
+CLAUDE.md : deux gestes de fin de session obligatoires au même titre.
 
 Commit : `4df7214`
 
@@ -234,63 +203,73 @@ Commit : `4df7214`
 
 ## 17. Agent Associé v1 — point d'entrée conversationnel unique
 
-**Geste 1 — PROMPT_ASSOCIE v03** : dépoussiérage de v02. Conservés
-intégralement : posture de confrontation, "la DB prime toujours", niveaux de
-confirmation, routing datasource, règle des fiches de différenciation,
-statut de L'Associé. Mis à jour : nouvelle section "Outils réels" documentant
-les 4 agents réellement construits (Synthèse, Pilotage, Ouverture, Ingestion
-Docs) comme outils invoqués ; les 15 agents métier de v02 (jamais construits)
-déplacés en section "Casquettes futures — vision non implémentée", marqués
-explicitement comme n'existant pas ; ENTITIES marqué "à construire" (v02 le
-décrivait comme déjà enrichi, aucune extraction automatique ni saisie
-manuelle n'existe).
+**PROMPT_ASSOCIE v03** : posture/DB-primauté/confirmation/routing/fiches
+conservés ; 4 outils réels documentés ; 15 agents métier déplacés en
+"casquettes futures" ; ENTITIES marqué "à construire".
 
-**Geste 2 — Agent Associé** (`os/agents/associe/`, `npm run os:associe --
-"message"`) : un appel LLM léger classifie l'intention (JSON strict,
-fail-loud si inexploitable) et route vers Pilotage/Synthèse/Ouverture
-(outils réels invoqués directement), repêchage mémoire scoré (intention
-"memoire"), ou proposition de curation (intention "curation" — trouve le
-candidat via repêchage restreint à DECISIONS, propose la commande
-`os:statut` sans l'exécuter). La réponse finale est **toujours** formulée
-par un second appel LLM avec le prompt PROMPT_ASSOCIE_v03 complet, à partir
-de la sortie brute de l'outil — jamais un relais direct.
+**Agent Associé** (`os/agents/associe/`, `npm run os:associe -- "message"`) :
+classification LLM légère → route vers Pilotage/Synthèse/Ouverture/repêchage
+mémoire/proposition de curation (jamais exécutée sans confirmation explicite)
+→ réponse finale toujours formulée par un second appel LLM (persona complet).
 
-**Bug trouvé et corrigé en vérifiant l'agent de bout en bout** :
-`os/scripts/statut.mjs` exécutait son `main()` CLI (lecture de
-`process.argv`) au moment de l'import de `applyStatut()` par `associe.mjs`,
-faute de garde d'exécution ESM — tuait le process avec les mauvais argv.
-Corrigé (garde standard `import.meta.url === file://...`).
+**Bug trouvé et corrigé** : `statut.mjs` exécutait son CLI à l'import
+(absence de garde ESM standard) — corrigé.
 
-**Vérifié sur 5 messages réels, chaque route couverte** :
-- "où en est le chantier Fernet" → pilotage, chiffres exacts, confrontation
-  (angle mort avril-août signalé)
-- "fais-moi le point sur Clémence Porret" → pilotage, deux décisions
-  validated sourcées, confrontation sur l'absence de preuve d'exécution
-- "je fais quoi ce matin" → ouverture, brief reformulé fidèlement, sources
-  citées
-- "que sait-on des prix Point P" → memoire, items hors-sujet reconnus comme
-  tels et explicitement écartés — **pas d'hallucination**
-- "la décision X est périmée" → curation, candidat trouvé (par coïncidence
-  de scoring, la décision-mère de l'anti-hallucination elle-même) —
-  confrontation forte avant de proposer l'exécution, commande **non
-  exécutée** sans confirmation, vérifié en direct dans Notion :
-  `decision_status` resté `validated`
+**5/5 tests réels concluants**, chaque route couverte, dont un cas notable :
+"la décision X est périmée" a fait remonter par coïncidence de scoring la
+décision-mère de l'anti-hallucination elle-même — l'Associé a refusé
+d'exécuter sans clarification, garde de confirmation vérifiée tenue en
+direct dans Notion.
 
 Commits : `f917a6a` (prompt), `df3902d` (agent)
 
 ---
 
-## 18. Clôture de session
+## 18. Inventaire lecture seule Google Drive
+
+Sur demande, hors périmètre repo versionné (fichiers gitignorés, aucun commit
+de contenu) :
+- `drive-inventaire.md` — architecture des dossiers (3 premiers niveaux,
+  fichiers/volume), incohérences détectées : deux arborescences clients
+  parallèles et divergentes (`BACKUP INSIDE` vs `2. DRIVE INSIDE` —
+  probable instantané figé vs arbre vivant), doublon quasi-identique
+  "2. PROJETS TERMINES"/"3. PROJETS_TERMINES", dossiers fourre-tout
+  (`A TRIER`, `TEMP`/`DIVERS`/`OLD` dispersés), convention "corbeille" non
+  uniformisée (4 graphies), mélange pro/perso au même niveau (`FW_CP`
+  contient FAMILLE/VOYAGES/SANTE à côté de l'arbre business), 114 fichiers
+  isolés à la racine.
+- `drive-arbo.txt` — liste complète des 5 269 dossiers (sur 5 508), tous
+  niveaux, corbeilles et dossiers techniques `.tmp*` exclus (239 exclusions,
+  sous-arbres compris), un chemin par ligne, triée.
+
+Les deux fichiers sont dans `.gitignore` (rapports locaux, jamais commités).
+Méthode : métadonnées seules (`du`/`find`), aucun contenu de fichier ouvert,
+aucun déplacement, aucun téléchargement.
+
+---
+
+## 19. P33 — script de déduplication Drive (gravé, pas construit)
+
+BACKLOG_DEV SYSTEME P33 `[ROADMAP]` : script de déduplication par empreinte
+SHA, produit une liste à valider par Florent, ne supprime jamais rien de
+lui-même. À construire sur preuve de douleur réelle (saturation Drive ou
+confusion entre versions constatée), pas préventivement. Décidé B99-T16-bis.
+
+Commit : `29c64ba`
+
+---
+
+## 20. Clôture de session
 
 Les deux gestes de fin de session (doctrine section 16) appliqués :
-`os:docs-sync` relancé (périmètre touché par PROMPT_ASSOCIE v03 + CLAUDE.md)
-— miroir Notion "Doctrine — miroir" à jour, 13/13 pages ; ce fichier
-régénéré. Tous les commits de la session poussés sur `origin/main`.
+`os:docs-sync` relancé (périmètre touché par BACKLOG_DEV P33) — miroir
+Notion à jour, 13/13 pages ; ce fichier régénéré. Tous les commits poussés
+sur `origin/main`.
 
-**5 agents de la couche Action désormais opérationnels et vérifiés** :
-Synthèse, Pilotage, Ouverture, Ingestion Docs, et — nouveau ce thread —
-**Associé, point d'entrée conversationnel unique qui orchestre les 4
-premiers**. Aucun point ouvert nécessitant une décision à cette clôture.
+**5 agents de la couche Action opérationnels et vérifiés** : Synthèse,
+Pilotage, Ouverture, Ingestion Docs, Associé. Un inventaire Drive local
+(hors repo) prépare un futur chantier de nomenclature, pas encore lancé.
+Aucun point ouvert nécessitant une décision à cette clôture.
 
 ---
 
@@ -339,6 +318,8 @@ f3c57f6 feat(docs-sync): miroir doctrine repo → Notion
 4df7214 chore(doctrine): recap-session.md ↔ os:docs-sync, fin de session
 f917a6a docs(prompts): PROMPT_ASSOCIE v03
 df3902d feat(agents): Agent Associé v1
+ed46d4d chore(doctrine): régénération recap-session.md (clôture précédente)
+29c64ba chore(backlog): P33 — script de déduplication Drive par hash SHA
         chore(doctrine): régénération recap-session.md, clôture (ce geste)
 ```
 
@@ -346,7 +327,9 @@ df3902d feat(agents): Agent Associé v1
 
 ## Prochaine étape suggérée
 
-Le système a désormais un point d'entrée conversationnel unique orchestrant
-4 agents lecture seule vérifiés + un canal de curation confirmé. Le prochain
-geste naturel est l'usage réel — poser de vraies questions à `os:associe`
-sur de la matière métier — plutôt que d'ouvrir un nouveau chantier système.
+Le système a 5 agents Action layer opérationnels et un point d'entrée
+conversationnel unique. L'inventaire Drive prépare un futur chantier de
+nomenclature (non lancé — attend une décision explicite sur la portée :
+juste renommer, ou aussi fusionner `BACKUP INSIDE`/`2. DRIVE INSIDE`). Le
+prochain geste naturel reste l'usage réel des agents sur de la matière
+métier plutôt que d'empiler un nouveau chantier système.
