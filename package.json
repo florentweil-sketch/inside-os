@@ -22,7 +22,8 @@
     "os:statut": "node os/scripts/statut.mjs",
     "os:pilotage": "node os/agents/pilotage/run.mjs",
     "os:ouverture": "node os/agents/ouverture/run.mjs",
-    "os:ingest-doc": "node os/agents/ingest-doc/run.mjs"
+    "os:ingest-doc": "node os/agents/ingest-doc/run.mjs",
+    "os:docs-sync": "node os/scripts/docs-sync.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
