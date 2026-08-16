@@ -657,6 +657,12 @@ async function ingestOneFile(filename, ingestDir) {
     };
     const page = await createPage(CFG.THREAD_DUMP_DS_ID, properties);
     await replacePageContent(page.id, cleanedText);
+    // Bug corrigé (B09-T42) : le brut n'était jamais supprimé de threads_to_process/
+    // après clean, contrairement à la doctrine documentée (README/CLAUDE.md/
+    // PROMPT_MAITRE). Le clean + l'archivage (thread_clean/, data_cemetery/) sont
+    // déjà faits aux étapes 2-3 — le brut original n'a plus d'usage une fois
+    // l'extraction Notion écrite avec succès.
+    await fs.unlink(fullPath);
     return {
       status: "created",
       filename,
@@ -678,6 +684,8 @@ async function ingestOneFile(filename, ingestDir) {
   };
   await updatePage(existingPage.id, properties);
   await replacePageContent(existingPage.id, cleanedText);
+  // Bug corrigé (B09-T42) — voir commentaire de la branche "created" ci-dessus.
+  await fs.unlink(fullPath);
   return {
     status: "updated",
     filename,
