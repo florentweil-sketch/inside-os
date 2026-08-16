@@ -22,6 +22,7 @@ Agents — couche Action (lecture seule, aucune écriture Notion) :
 - `npm run os:ouverture` — brief du matin, sans sujet, liste de tâches classées par famille métier
 - `npm run os:ingest-doc -- <fichier.pdf> --bucket B0X [--titre] [--source-url] [--yes]` — verse un PDF dans la mémoire (extraction factuelle via API Claude, confirmation interactive, dépôt dans `data/threads_to_process/`)
 - `npm run os:statut -- <uid> <superseded|archived|rejected>` — seul point d'écriture pour ces statuts de curation sur DECISIONS
+- `npm run os:associe -- "message"` — point d'entrée conversationnel unique : classifie l'intention et route vers Pilotage/Synthèse/Ouverture/repêchage mémoire/proposition de curation (confirmation explicite requise) ; réponse finale toujours formulée par L'Associé
 
 Audit Notion / dette :
 - `npm run os:audit` — compteurs THREAD_DUMP / DECISIONS / LESSONS
