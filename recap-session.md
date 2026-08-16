@@ -1,13 +1,15 @@
 # Récap de session — B09-T42-Notion-Dev-030
 
-Date : 2026-08-16
+Date : 2026-08-16 (régénéré — version précédente ne couvrait pas les 3 derniers gestes)
 Thread : B09-T42 (Notion-Dev-030)
-Portée : session longue, ~35 commits, plusieurs chantiers enchaînés.
+Portée : session longue, 38 commits, plusieurs chantiers enchaînés.
 
 **Note de statut.** Ce fichier n'est pas une résurrection du protocole CONTEXT
-(abandonné dans cette même session — voir plus bas). C'est un récap de travail
-ordinaire, non versionné, non référencé par CLAUDE.md ni par le périmètre
-docs-sync — un instantané écrit à la demande, pas un document système.
+(abandonné dans cette même session — voir plus bas). C'est le canal de
+transfert de fin de session vers l'architecte-conseil, non versionné, non
+référencé par le périmètre docs-sync. Sa réécriture à chaque fin de session
+est désormais gravée dans CLAUDE.md, au même titre que la relance d'os:docs-sync
+après un commit doc.
 
 ---
 
@@ -23,9 +25,13 @@ docs-sync — un instantané écrit à la demande, pas un document système.
 8. Injection de 3 dumps métier réels (B99-T11/T12/T13)
 9. Agent Ouverture — brief du matin, plusieurs itérations (plafond B09, anti-monopole, largeur, canal essentiel + rotation)
 10. Agent Ingestion Docs — verser un PDF dans la mémoire, testé de bout en bout (devis Fernet réel)
-11. Rationalisation documentaire majeure — abandon du protocole de clôture/CONTEXT/PRE_THREAD, archive/, README.md stable, CLAUDE.md/PROMPT_MAITRE v17, os:docs-sync
+11. Rationalisation documentaire majeure — abandon du protocole de clôture/CONTEXT/PRE_THREAD, archive/, README.md stable, CLAUDE.md/PROMPT_MAITRE v17, os:docs-sync (check pointeurs)
 12. Réconciliation BACKLOG_DEV + nettoyage repo
-13. Points ouverts en attente de décision
+13. Miroir Notion doctrine (fonction d'origine de docs-sync, livrée)
+14. Bug threads_to_process/ — diagnostic, fix, purge sélective
+15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
+16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
+17. État final — rien en attente de décision
 
 ---
 
@@ -81,12 +87,16 @@ Commits : `e38efb8`, `54b3cce`, `5409ee2`
 
 ---
 
-## 4. os:ingest — SKIP_BUCKETS jamais appliqué
+## 4. os:ingest — SKIP_BUCKETS jamais appliqué (bug historique, avant B09-T42)
 
 `DEFAULT_SKIP_BUCKETS=["B09"]` était comparé après `.toUpperCase()` contre un
 sentinel minuscule `"__default__"` — la comparaison n'était jamais vraie, donc
 l'exclusion par défaut de B09 ne s'appliquait **jamais** en pratique sur un batch
 sans `--skip-buckets` explicite. Corrigé — comparaison sur la valeur brute.
+
+*Note : `DEFAULT_SKIP_BUCKETS` lui-même a depuis été retiré (section 15) — ce
+fix historique du sentinel reste dans le code mais s'applique désormais à un
+tableau vide par défaut.*
 
 Commit : `7febefa`
 
@@ -238,18 +248,13 @@ Renommage `docs/prompts transfert thread/` → `docs/prompts-transfert-thread/`
   sans présupposer un document CONTEXT formel), contexte permanent, buckets,
   contrat JSON, sécurité, granularité des commits
 
-**Outil construit** : `npm run os:docs-sync` (`os/scripts/docs-sync.mjs`) —
-vérifie que les pointeurs "(latest = vNN)" déclarés dans CLAUDE.md correspondent
-aux fichiers vXX réellement présents sur disque pour le périmètre docs-sync (8
-familles de prompts + 5 fichiers simples). Une famille sans pointeur déclaré est
-signalée "non déclarée" (informationnel), jamais faussement "OK". Vérifié en
-live : verdict ALIGNÉ, exit 0.
-
-**Point ouvert documenté, pas corrigé** : `DEFAULT_SKIP_BUCKETS=["B09"]` dans
-`os/ingest/ingest-thread-dump.mjs` contredit la nouvelle doctrine (B09 devrait
-désormais passer par dump→pipeline comme tout thread) — le code n'a pas été
-changé. Un `os:ingest` batch sans `--only` exclut donc encore silencieusement
-les dumps B09. Suivi : BACKLOG_DEV P31.
+**Outil construit (première version — check seul)** : `npm run os:docs-sync`
+(`os/scripts/docs-sync.mjs`) — vérifie que les pointeurs "(latest = vNN)"
+déclarés dans CLAUDE.md correspondent aux fichiers vXX réellement présents
+sur disque pour le périmètre docs-sync (8 familles de prompts + 5 fichiers
+simples). Une famille sans pointeur déclaré est signalée "non déclarée"
+(informationnel), jamais faussement "OK". *Étendu ensuite avec le miroir
+Notion — voir section 13.*
 
 Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
 
@@ -268,9 +273,9 @@ Commits : `dac40db`, `921512d`, `d6484f4`, `5d3862f`, `188b850`, `1aca679`
   clôture), P14 (politique d'archivage, CONTEXT/README/PRE_THREAD retirés)
 - P20 (source d'état unique) : périmètre réduit — CONTEXT/PRE_THREAD résolus
   par suppression, BACKLOG_DEV/USER hors périmètre, reste `[TODO]`
-- P31 (nouveau) : DEFAULT_SKIP_BUCKETS non réconcilié
-- P32 (nouveau) : capacité d'audit 3-axes de l'ancien pre-thread.mjs signalée
-  comme candidate à reconstruction autonome, pas reconstruite
+- P31 : à l'origine noté point ouvert — **tranché depuis, voir section 15**
+- P32 : capacité d'audit 3-axes de l'ancien pre-thread.mjs signalée comme
+  candidate à reconstruction autonome, pas reconstruite — reste `[ROADMAP]`
 
 **Nettoyage repo** (chaque suppression vérifiée avant d'agir) :
 - Supprimés : `inside-os@1.0.0` et `node` (fichiers vides, racine, commande mal
@@ -287,27 +292,130 @@ Commits : `97e90d7`, `32ffd80`, `256c51e`
 
 ---
 
-## 13. Points ouverts en attente de décision
+## 13. Miroir Notion doctrine — fonction d'origine de docs-sync, livrée
 
-1. **Page Notion "INSIDE-OS-BACKLOG"** (`35b5e503-b0ac-81d8-8c6d-f6bb8a796a4d`,
-   sous `INSIDE_OS_ROOT`) — trouvée obsolète : dernière maj 2026-05-10
-   (B09-T34), reflète l'ancien `BACKLOG.md` monolithique pré-split DEV/USER
-   (s'arrête à SYSTEME P8, le repo est maintenant à P32). Aucune page
-   "Doctrine — miroir" trouvée dans le workspace — ce nom ne correspond à rien
-   d'existant. Décision en attente : réutiliser (mise à jour + restructuration
-   DEV/USER) ou remplacer (nécessite de définir où loger la nouvelle page).
+`os:docs-sync` étendu : après le check des pointeurs (conservé, comportement
+inchangé), pousse chaque fichier du périmètre (13 au total : 5 fichiers
+simples + 8 familles de prompts) vers une page Notion enfant de **"Doctrine —
+miroir"**, créée sous `INSIDE_OS_ROOT`. Chaque page miroir commence par un
+bandeau ("Miroir généré le `<date>` depuis le commit `<hash court>` — source
+de vérité : le repo. Ne pas éditer ici."), suivi du markdown converti en blocs
+Notion (titres, listes, citations, code — langage normalisé vers l'enum Notion
+avec repli sur "plain text" —, tables markdown converties en vraies tables
+Notion). Runs suivants : page retrouvée par titre exact, contenu intégralement
+remplacé (clear + append), jamais de duplication. Fail-loud : fichier manquant
+ou écriture Notion refusée interrompent le run.
 
-2. **`data/threads_to_process/` ne se vide pas après clean** — trouvé lors de
-   la vérification "pas de copie du PDF Fernet" : les bruts B99-T14 (Fernet) et
-   B09-T38/T39/T40 (mai) sont toujours présents dans `threads_to_process/`
-   alors que la doctrine dit que le brut est supprimé après l'étape clean
-   d'`os:ingest`. Semble être un bug pipeline réel, présent depuis mai au
-   moins. Ni corrigé ni nettoyé manuellement — pas dans le périmètre demandé
-   de ce thread. Décision en attente : entrée BACKLOG_DEV, ou diagnostic
-   immédiat.
+Nouveaux helpers bas niveau dans `os/lib/notion.mjs` : `createChildPage`,
+`appendBlockChildren(Batched)`, `deleteBlock`, `clearBlockChildren`,
+`findChildPageByTitle`.
 
-3. **BACKLOG_DEV P31** — `DEFAULT_SKIP_BUCKETS=["B09"]` non réconcilié avec la
-   doctrine post-abandon (voir #11 ci-dessus).
+L'ancienne page Notion "INSIDE-OS-BACKLOG" (miroir manuel pré-split DEV/USER,
+dernière maj réelle 2026-05-10/B09-T34, retrouvée obsolète lors du diagnostic
+du point ouvert précédent) a son contenu remplacé par un pointeur vers le
+nouveau miroir.
+
+Option `--check-only` : comportement historique (vérification des pointeurs
+seule, aucune écriture Notion) — utile en CI ou pour un check rapide sans
+toucher Notion.
+
+**Vérifié en direct** : run complet réussi (13/13 pages : 2 mises à jour + 11
+créées), contenu relu et correct (bandeau, tables, code, tous les blocs),
+page INSIDE-OS-BACKLOG repointée avec un lien fonctionnel.
+
+**Doctrine — miroir : https://www.notion.so/3be5e503b0ac8102ace7e00e9782552c**
+
+Commit : `f3c57f6`
+
+---
+
+## 14. Bug threads_to_process/ — diagnostic, fix, purge sélective
+
+Trouvé lors du nettoyage repo (section 12) : `ingestOneFile()` ne supprimait
+jamais le fichier source dans `data/threads_to_process/` après clean +
+archivage + injection Notion — contrairement à la doctrine documentée
+(README/CLAUDE.md/PROMPT_MAITRE). Bug réel, présent depuis au moins mai
+(fichiers B09-T38/T39/T40 jamais purgés). Corrigé : `fs.unlink` du fichier
+source à la fin des deux branches de succès (created/updated), après écriture
+Notion réussie.
+
+Purge des 4 fichiers résiduels — vérification individuelle avant suppression,
+pas de purge en bloc :
+- **B99-T14, B09-T38** : vérifiés `extraction_status=done` ET
+  `injection_status=done` dans THREAD_DUMP Notion → **purgés**
+- **B09-T39, B09-T40** : **introuvables dans THREAD_DUMP** — ces deux threads
+  B09 n'ont jamais été traités par le pipeline standard ; leur mémoire (si
+  elle existe) est passée par l'ancien protocole `os-thread-close.mjs`
+  (désormais archivé), pas par `os:ingest`/`os:extract`/`os:inject`. Ne
+  remplissaient pas la condition de purge ("extraction+injection done") —
+  **laissés en l'état**, toujours présents dans `threads_to_process/`. Ce
+  n'est pas une anomalie à corriger : c'est un fait vérifié, pas d'action
+  requise sauf si Florent veut un jour reconstituer leur mémoire autrement.
+
+Commit : `0a61360`
+
+---
+
+## 15. P31 — garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
+
+Deux gestes liés, un seul commit :
+
+1. **Nouvelle garde d'idempotence** (`assertNoExistingIdDump`) : `os:ingest`
+   refuse fail-loud tout id_dump déjà présent dans THREAD_DUMP Notion —
+   remplace l'ancien `guardCheckExistingDone` (avertissement + confirmation
+   interactive qui laissait passer une mise à jour silencieuse d'un thread
+   déjà traité). Plus aucune mise à jour implicite ; un re-traitement réel
+   exige de traiter la page Notion existante explicitement d'abord.
+2. **Garde en place**, `DEFAULT_SKIP_BUCKETS=["B09"]` retiré (désormais `[]`)
+   — un thread B09 passe par le pipeline standard comme tout autre bucket,
+   conforme à la doctrine post-abandon du protocole de clôture. La garde
+   d'idempotence protège contre les collisions mieux qu'une exclusion de
+   bucket ne l'a jamais fait.
+
+Doctrine corrigée au même endroit factuel dans CLAUDE.md, README.md et
+PROMPT_MAITRE v17 — les trois décrivaient ce point comme "non résolu",
+corrigé pour ne pas laisser une affirmation fausse. BACKLOG_DEV P31 → `[DONE]`.
+
+**Vérifié en direct** : réingestion de B99-T11 (déjà en Notion) échoue
+proprement avec le message d'idempotence. `os:audit` : 0 erreur
+(101/101 extract+inject).
+
+Commit : `2bd549d`
+
+---
+
+## 16. Doctrine recap-session.md ↔ os:docs-sync, même statut de fin de session
+
+CLAUDE.md précise désormais que réécrire `recap-session.md` avec l'état final
+réel de la session et relancer `npm run os:docs-sync` après un commit touchant
+son périmètre sont **deux gestes de fin de session au même titre l'un que
+l'autre** — ni optionnels, ni différables. Les deux remplacent, chacun sur son
+volet, le protocole CONTEXT abandonné : `recap-session.md` comme canal de
+transfert vers l'architecte-conseil, `os:docs-sync` comme garant de
+l'alignement doctrine ↔ disque ↔ miroir Notion.
+
+Commit : (ce geste — voir git log après le push)
+
+---
+
+## 17. État final — rien en attente de décision
+
+Les 3 points ouverts laissés par le précédent récap sont tranchés :
+
+1. ~~Page Notion "INSIDE-OS-BACKLOG" à réutiliser ou remplacer~~ → **tranché**
+   (section 13) : nouveau miroir "Doctrine — miroir" créé, ancienne page
+   repointée vers lui.
+2. ~~`threads_to_process/` ne se vide pas après clean~~ → **corrigé**
+   (section 14) : bug fixé, 2/4 fichiers résiduels purgés après vérification,
+   2/4 laissés en l'état à bon droit (jamais traités par ce pipeline).
+3. ~~BACKLOG_DEV P31 (DEFAULT_SKIP_BUCKETS)~~ → **tranché** (section 15) :
+   retiré, garde d'idempotence en place, P31 `[DONE]`.
+
+Aucun point ouvert nécessitant une décision de Florent à la clôture de cette
+session. Les 4 agents de la couche Action (Synthèse, Pilotage, Ouverture,
+Ingestion Docs) sont opérationnels et vérifiés ; le miroir Notion et
+`os:docs-sync` maintiennent désormais doctrine ↔ disque ↔ Notion alignés sans
+intervention manuelle à chaque clôture.
 
 ---
 
@@ -345,19 +453,23 @@ dac40db chore(docs): archivage protocole abandonné et notes résolues
 d6484f4 docs(claude): doctrine post-abandon clôture/CONTEXT
 5d3862f docs(prompt-maitre): v17
 97e90d7 chore(backlog): entrées de réconciliation post-abandon clôture
-188b850 feat(docs-sync): os:docs-sync
+188b850 feat(docs-sync): os:docs-sync (check pointeurs)
 1aca679 chore(docs): archive REGLES_DOCS_SYSTEME... .txt
 32ffd80 chore(backlog): réconciliation post-abandon protocole
 256c51e chore(repo): nettoyage scories
+9550053 chore(doctrine): récap de session standardisé
+f3c57f6 feat(docs-sync): miroir doctrine repo → Notion
+0a61360 fix(ingest): purge des bruts après clean
+2bd549d fix(ingest): garde d'idempotence + retrait DEFAULT_SKIP_BUCKETS B09
+        chore(doctrine): recap-session.md ↔ os:docs-sync, fin de session (ce geste)
 ```
 
 ---
 
 ## Prochaine étape suggérée
 
-Trancher les 2 points ouverts (#13.1 Notion, #13.2 threads_to_process/), puis
-revenir à la couche Action (au sens de PROMPT_MAITRE : produire de la valeur
-entreprise réelle, pas empiler de l'infra) — les 4 agents construits ce thread
-et le précédent (Synthèse, Pilotage, Ouverture, Ingestion Docs) sont
-opérationnels et vérifiés ; le prochain geste naturel est de les faire tourner
-sur de la matière réelle plutôt que d'ouvrir un nouveau chantier système.
+Plus de dette système ouverte à ce point de clôture — le prochain geste
+naturel est de faire tourner les 4 agents Action layer sur de la matière
+réelle plutôt que d'ouvrir un nouveau chantier système, conformément à la
+doctrine PROMPT_MAITRE (produire de la valeur entreprise réelle, pas empiler
+de l'infra).
