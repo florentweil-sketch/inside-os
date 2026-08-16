@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG DEV
 
 Derniere mise a jour : 2026-08-16 (B09-T42)
-Version : v09
+Version : v10
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
 Regle : ce fichier est mis a jour a chaque thread B09-Dev via Claude Code.
@@ -80,6 +80,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P30 | Ouverture — Commercial (B05) sortait vide, Holding (B03) aussi. Constaté sur 3 runs malgré la règle de largeur et l'anti-monopole. **[DONE B09-T41]** Cause réelle identifiée : ni le plafonnage ni l'anti-monopole n'étaient en cause — le canal "essentiel" (décisions impact=critical/major, buckets métier, sans filtre de récence) manquait de la spec d'origine, perdu dans les itérations. Les seuls candidats Commercial/Holding disponibles dans les canaux présent/récent/proposed étaient soit inexistants soit accidentellement saturés par un autre `source_dump_id`. Le canal essentiel (`gatherEssential`, rotation quotidienne déterministe sur ~700 décisions critical/major qualifiantes, cf. commit `feat(ouverture) — canal essentiel`) fait remonter des décisions B03/B05 anciennes jamais revisitées. Vérifié en direct : Holding ET Commercial non vides simultanément, 5 tâches marquées "(à vérifier — ancien)" dans le même run. | B09-T41 | [DONE] |
 | P31 | **[DONE B09-T42]** `DEFAULT_SKIP_BUCKETS=["B09"]` retiré de `os/ingest/ingest-thread-dump.mjs` (désormais `[]`) — un thread B09 passe par le pipeline standard comme tout autre bucket, plus d'exclusion. Tranché en même temps qu'une garde d'idempotence (`assertNoExistingIdDump`, remplace l'ancien `guardCheckExistingDone`) : `os:ingest` refuse fail-loud tout id_dump déjà présent dans THREAD_DUMP Notion, ne met plus jamais à jour silencieusement — protège mieux qu'une exclusion de bucket contre les collisions. Vérifié en direct : re-tenter `--only B99-T11` (déjà en Notion) échoue proprement avec le message d'idempotence. | B09-T42 | [DONE] |
 | P32 | Capacité d'audit de divergence 3-axes (`os/scripts/pre-thread.mjs`, archivé en B09-T42 avec le reste du protocole de clôture — comparait versions docs vs contenu déclaré vs compteurs Notion live, cf. P19) : cette détection de divergence documentaire est indépendante de la génération CONTEXT elle-même. Signalé — pas reconstruit dans ce thread — comme candidat à un outil autonome si un besoin de vérification d'alignement doc↔Notion ressurgit, sans reposer sur le protocole de clôture abandonné. | B09-T42 | [ROADMAP] |
+| P33 | Script de déduplication du Drive par empreinte (hash SHA) — détecte les fichiers strictement identiques, produit une LISTE à valider par Florent, ne supprime jamais rien de lui-même. À construire sur preuve de douleur (saturation Drive ou confusion réelle entre versions), pas préventivement. Décidé B99-T16-bis. | B99-T16-bis | [ROADMAP] |
 
 ---
 
