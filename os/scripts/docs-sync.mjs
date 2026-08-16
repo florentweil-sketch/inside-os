@@ -12,7 +12,9 @@
 // Doctrine anti-hallucination : aucun verdict positif par défaut. Une famille
 // non déclarée dans CLAUDE.md (pas de "(latest = vNN)" à son sujet) n'est ni
 // OK ni DIVERGENCE — elle est NON_DECLAREE, signalée pour information, pas
-// comme un échec. Rien de archive/ n'entre dans ce périmètre.
+// comme un échec. Rien de archive/ n'entre dans ce périmètre, ni recap-session.md
+// (canal de transfert de session, pas un document système — ne pas l'ajouter
+// à SIMPLE_FILES).
 //
 // Usage : npm run os:docs-sync
 // Exit non-zéro si au moins une divergence réelle est détectée, ou si un
