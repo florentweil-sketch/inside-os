@@ -80,7 +80,7 @@ Numéro indépendant : seul PROMPT_MAITRE reste versionné par nom de fichier (`
 
 - **`injection_status=BLOCKED` n'existe pas** dans le schéma Notion. Valeurs réelles : `pending` / `done` / `error`.
 - **`retry_count`** : max 2 retries auto sur `inject_error`. Au-delà (`retry_count >= 2`), thread exclu de la boucle, intervention manuelle requise.
-- **Point ouvert — B09 et `os:ingest`** : `os/ingest/ingest-thread-dump.mjs` exclut encore par défaut le bucket B09 (`DEFAULT_SKIP_BUCKETS=["B09"]`), un reste de l'ancien protocole où B09 passait exclusivement par le script de clôture abandonné. Depuis B09-T42, un thread B09 se clôture par le même flux que tout thread (dump → pipeline) — cette exclusion par défaut n'a pas encore été réconciliée avec la doctrine actuelle. Suivi : `BACKLOG_DEV.md`. Ne pas présumer que B09 est exclu du pipeline par doctrine — seulement par un défaut de code non encore corrigé.
+- **B09 et `os:ingest` (résolu B09-T42)** : plus d'exclusion par défaut — `DEFAULT_SKIP_BUCKETS=[]`, un thread B09 passe par le pipeline standard comme tout autre bucket. Protection contre les collisions : garde d'idempotence (`assertNoExistingIdDump`) — `os:ingest` refuse fail-loud tout id_dump déjà présent dans THREAD_DUMP Notion, ne met plus jamais à jour silencieusement un thread déjà traité.
 - `data_cemetery/` = archive permanente, n'en ressort jamais (sauf force majeure documentée).
 - `test_threads/` ne doit jamais être injecté en production.
 - `raw_text` Notion = résumé une ligne, ne pas lire pour extraction — toujours lire les blocs.

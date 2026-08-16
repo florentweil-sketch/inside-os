@@ -51,7 +51,13 @@ function argValue(flag, fallback = "") {
 
 const ONLY_ID = String(argValue("--only", "")).trim().toUpperCase();
 
-const DEFAULT_SKIP_BUCKETS = ["B09"];
+// DEFAULT_SKIP_BUCKETS=["B09"] retiré (B09-T42, BACKLOG_DEV P31) : la doctrine
+// post-abandon du protocole de clôture dit qu'un thread B09 passe désormais
+// par le pipeline standard comme tout autre bucket. Plus aucun bucket exclu
+// par défaut — la garde d'idempotence ci-dessous (assertNoExistingIdDump)
+// protège contre les collisions/écrasements mieux qu'une exclusion de bucket
+// ne l'a jamais fait. --skip-buckets reste disponible pour un besoin ponctuel.
+const DEFAULT_SKIP_BUCKETS = [];
 // Bug corrigé (B09-T41) : le sentinel était comparé APRÈS .toUpperCase(),
 // donc "__default__" (fallback, casse originale) devenait "__DEFAULT__" et ne
 // matchait jamais plus le littéral minuscule ci-dessous — SKIP_BUCKETS finissait
@@ -556,49 +562,36 @@ async function findExistingThreadDumpPage(idDump) {
   return response.results?.[0] ?? null;
 }
 
-// ─── GUARD PRÉ-INGEST ────────────────────────────────────────────────────────
+// ─── GARDE D'IDEMPOTENCE (B09-T42, BACKLOG_DEV P31) ──────────────────────────
+//
+// Remplace l'ancien guardCheckExistingDone (avertissement + confirmation
+// interactive, laissait passer une mise à jour silencieuse d'un thread déjà
+// traité). Nouvelle règle, plus stricte : tout id_dump déjà présent dans
+// THREAD_DUMP Notion fait échouer le run — fail-loud, pas de confirmation,
+// pas de mise à jour implicite. Si un re-traitement est réellement voulu,
+// la page Notion existante doit être traitée explicitement d'abord (jamais
+// en silence via un simple re-run d'os:ingest).
 
-async function guardCheckExistingDone(files) {
-  const warnings = [];
-
+async function assertNoExistingIdDump(files) {
+  const collisions = [];
   for (const filename of files) {
+    let idDump;
     try {
-      const idDump = getIdDumpFromFilename(filename);
-      const page   = await findExistingThreadDumpPage(idDump);
-      if (!page) continue;
-
-      const extractStatus = page.properties?.extraction_status?.select?.name;
-      const injectStatus  = page.properties?.injection_status?.select?.name;
-
-      if (extractStatus === "done" || injectStatus === "done") {
-        warnings.push({ idDump, extractStatus, injectStatus });
-      }
-    } catch { /* skip fichiers invalides */ }
+      idDump = getIdDumpFromFilename(filename);
+    } catch {
+      continue; // fichier au nom invalide — filtré ailleurs, pas de check ici
+    }
+    const page = await findExistingThreadDumpPage(idDump);
+    if (page) collisions.push(idDump);
   }
 
-  if (warnings.length === 0) return true;
-
-  console.log("");
-  console.log(`[os:ingest] WARN — ${warnings.length} thread(s) déjà traité(s) détectés :`);
-  for (const w of warnings) {
-    console.log(`  - ${w.idDump} : extraction=${w.extractStatus} / injection=${w.injectStatus}`);
+  if (collisions.length > 0) {
+    throw new Error(
+      `Garde d'idempotence : id_dump déjà présent(s) dans THREAD_DUMP Notion — ${collisions.join(", ")}. ` +
+      `os:ingest ne met plus jamais à jour un id_dump existant (fail-loud, B09-T42) — ` +
+      `traiter la page Notion existante explicitement avant de relancer, jamais en silence.`
+    );
   }
-  console.log("");
-  console.log("  Le contenu sera mis à jour. Les statuts done seront PRÉSERVÉS (pas de régression).");
-  console.log("");
-
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  return new Promise((resolve) => {
-    rl.question("Continuer ? (o/n) : ", (answer) => {
-      rl.close();
-      if (answer.trim().toLowerCase() === "o") {
-        resolve(true);
-      } else {
-        console.log("[os:ingest] Annulé.");
-        resolve(false);
-      }
-    });
-  });
 }
 
 // ─── INGEST ONE FILE ─────────────────────────────────────────────────────────
@@ -761,8 +754,7 @@ async function main() {
 
   console.log(`[os:ingest] ${files.length} fichier(s) à traiter`);
 
-  const confirmed = await guardCheckExistingDone(files);
-  if (!confirmed) return;
+  await assertNoExistingIdDump(files);
 
   console.log("");
 

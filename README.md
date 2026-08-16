@@ -144,7 +144,7 @@ Le protocole dédié (`os-thread-close.mjs`, génération d'un `CONTEXT vXX` loc
 3. IDEAS.md revu (npm run os:idea a capturé les idées brutes en cours de route)
 ```
 
-**Point ouvert** : `os:ingest` exclut par défaut le bucket B09 (`DEFAULT_SKIP_BUCKETS=["B09"]` dans `os/ingest/ingest-thread-dump.mjs`), un reste de l'ancien protocole où B09 passait exclusivement par `os:close`. Cette exclusion par défaut n'a pas encore été réconciliée avec la doctrine ci-dessus — suivi dans `BACKLOG_DEV.md`.
+**Résolu (B09-T42)** : `os:ingest` n'exclut plus aucun bucket par défaut (`DEFAULT_SKIP_BUCKETS=[]`) — un thread B09 passe par le pipeline standard comme tout autre bucket. Protection contre les collisions/écrasements silencieux : garde d'idempotence — `os:ingest` refuse fail-loud tout id_dump déjà présent dans THREAD_DUMP Notion.
 
 ---
 

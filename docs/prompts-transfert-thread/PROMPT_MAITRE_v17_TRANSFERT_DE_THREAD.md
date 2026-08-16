@@ -246,11 +246,11 @@ exactement comme n'importe quel autre thread :
    règle granularité ci-dessous), jamais un fourre-tout
 ```
 
-**Point ouvert non résolu (suivi BACKLOG_DEV) :** `os/ingest/ingest-thread-dump.mjs`
-exclut encore par défaut le bucket B09 (`DEFAULT_SKIP_BUCKETS=["B09"]`), un reste de
-l'ancien protocole. Tant que ce n'est pas réconcilié, un dump B09 déposé dans
-`threads_to_process/` doit être ingéré avec `--only <id_dump>` explicite (comme tout
-thread ciblé), pas via un batch nu qui l'exclurait silencieusement.
+**Résolu (B09-T42) :** `os/ingest/ingest-thread-dump.mjs` n'exclut plus aucun bucket
+par défaut (`DEFAULT_SKIP_BUCKETS=[]`) — un dump B09 déposé dans `threads_to_process/`
+passe par le pipeline standard, batch nu compris. Protection contre les collisions :
+garde d'idempotence (`assertNoExistingIdDump`) — tout id_dump déjà présent dans
+THREAD_DUMP Notion fait échouer le run (fail-loud), aucune mise à jour silencieuse.
 
 **Granularité des commits (règle permanente, gravée B09-T40).** Autant de commits que nécessaire pour une photo propre du repo : un geste cohérent = un commit. Ne jamais regrouper des gestes de nature différente (refactor structurel + mise à jour backlog + fix + doc) sous une seule étiquette qui n'en décrit qu'un — l'historique git deviendrait un fichier qui ment sur son propre contenu, exactement le défaut que l'anti-hallucination système combat. Le message de commit décrit fidèlement et complètement ce que le commit contient. Un commit unique n'est acceptable que si les changements forment réellement un seul geste indissociable, et alors son message les couvre tous honnêtement. Cette règle s'applique par défaut, à chaque clôture comme en cours de thread — ne plus la mettre en question, l'appliquer.
 
@@ -343,7 +343,7 @@ pointeurs de CLAUDE.md correspondent aux fichiers vXX les plus élevés réellem
 - Script canonique production : `notion-memory-server.mjs` (HTTP) — `notion-memory-chat.mjs` = test uniquement (Claude haiku-4-5)
 - raw_text multi-lignes : réservé V2 (moteur recherche sémantique) — ne pas toucher avant
 - retry_count : max 2 retries auto sur inject_error — au-delà, thread bloqué (injection_status=error + retry_count >= 2) — intervention manuelle requise
-- ingest : choix batch/test interactif, guard pré-ingest, préservation statuts done sur update
+- ingest : choix batch/test interactif, garde d'idempotence fail-loud (id_dump déjà présent = échec, jamais de mise à jour silencieuse — B09-T42)
 - GitHub repo : `https://github.com/florentweil-sketch/inside-os.git`
 - Avant toute création MCP dans une base Notion existante : vérifier l'existant pour éviter les doublons
 - Tout nouvel agent défini dans PROMPT_ASSOCIE dont le périmètre est adjacent à un agent existant doit être accompagné d'une fiche de différenciation (format standard gravé dans PROMPT_ASSOCIE vXX) — la fiche est produite au moment de la définition, pas après
