@@ -87,6 +87,22 @@ export async function updatePage(pageId, properties) {
   });
 }
 
+// Page (non-database) helpers — pages living under a plain parent page, not
+// a data source. Used by os/scripts/docs-sync.mjs for the doctrine mirror.
+
+export async function createChildPage(parentPageId, titleText, children = []) {
+  return notionFetch(`/pages`, {
+    method: "POST",
+    body: {
+      parent: { page_id: parentPageId },
+      properties: {
+        title: { title: [{ text: { content: String(titleText).slice(0, 2000) } }] },
+      },
+      children: children.slice(0, 100),
+    },
+  });
+}
+
 // Blocks helpers
 
 export async function listBlockChildren(blockId, startCursor) {
@@ -111,6 +127,45 @@ export async function listAllBlockChildren(blockId) {
   }
 
   return all;
+}
+
+export async function appendBlockChildren(blockId, children) {
+  return notionFetch(`/blocks/${blockId}/children`, {
+    method: "PATCH",
+    body: { children },
+  });
+}
+
+// Batches children in groups of <=100 (Notion API limit per request).
+export async function appendBlockChildrenBatched(blockId, children) {
+  for (let i = 0; i < children.length; i += 100) {
+    await appendBlockChildren(blockId, children.slice(i, i + 100));
+  }
+}
+
+export async function deleteBlock(blockId) {
+  return notionFetch(`/blocks/${blockId}`, { method: "DELETE" });
+}
+
+// Archive (delete) every direct child block of a page/block — used to clear
+// a mirror page's content before re-writing it fresh (no duplication across
+// runs). Fail-loud: a failed delete throws and stops the run.
+export async function clearBlockChildren(blockId) {
+  const children = await listAllBlockChildren(blockId);
+  for (const child of children) {
+    await deleteBlock(child.id);
+  }
+  return children.length;
+}
+
+// Trouve une sous-page par titre exact parmi les enfants directs de parentPageId.
+// Retourne l'ID de la page (== l'ID du bloc child_page) ou null si absente.
+export async function findChildPageByTitle(parentPageId, titleText) {
+  const children = await listAllBlockChildren(parentPageId);
+  const match = children.find(
+    (b) => b.type === "child_page" && b.child_page?.title === titleText
+  );
+  return match ? match.id : null;
 }
 
 // Property helpers
