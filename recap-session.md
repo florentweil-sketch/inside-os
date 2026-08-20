@@ -1,15 +1,17 @@
 # Récap de session — B09-T42-Notion-Dev-030
 
-Date : 2026-08-16 (régénéré — clôture de session)
+Date : 2026-08-20 (régénéré — clôture de session)
 Thread : B09-T42 (Notion-Dev-030)
-Portée : session très longue, 43 commits, plusieurs chantiers enchaînés.
+Portée : session très longue, 43 commits sur le repo + une migration complète
+du Google Drive réel exécutée hors repo (aucun commit associé, ni requis).
 
 **Note de statut.** Ce fichier n'est pas une résurrection du protocole CONTEXT
-(abandonné dans cette même session — voir plus bas). C'est le canal de
+(abandonné dans cette même session — voir section 11). C'est le canal de
 transfert de fin de session vers l'architecte-conseil, non versionné, non
 référencé par le périmètre docs-sync. Sa réécriture à chaque fin de session,
-et la relance d'`os:docs-sync`, sont gravées dans CLAUDE.md comme deux
-gestes de fin de session au même titre l'un que l'autre.
+et la relance d'`os:docs-sync` quand le périmètre est touché, sont gravées
+dans CLAUDE.md comme deux gestes de fin de session au même titre l'un que
+l'autre.
 
 ---
 
@@ -34,7 +36,8 @@ gestes de fin de session au même titre l'un que l'autre.
 17. Agent Associé v1 — point d'entrée conversationnel unique
 18. Inventaire lecture seule Google Drive (rapports locaux, hors repo versionné)
 19. P33 — script de déduplication Drive gravé au backlog (roadmap, pas construit)
-20. Clôture de session
+20. **Migration Google Drive réelle — nomenclature B99-T16 (exécutée en direct, hors repo)**
+21. Clôture de session
 
 ---
 
@@ -168,7 +171,9 @@ enfants de **"Doctrine — miroir"** (sous `INSIDE_OS_ROOT`), idempotent,
 fail-loud. Ancienne page "INSIDE-OS-BACKLOG" repointée.
 
 **Doctrine — miroir : https://www.notion.so/3be5e503b0ac8102ace7e00e9782552c**
-— relancé et vérifié à jour à la clôture (13/13 pages, commit `29c64ba`).
+— dernière relance vérifiée à jour au commit `29c64ba` (13/13 pages). Non
+relancé depuis : aucun commit de cette session n'a touché le périmètre
+docs-sync après ce point (la migration Drive, section 20, est hors repo).
 
 Commit : `f3c57f6`
 
@@ -244,7 +249,8 @@ de contenu) :
 
 Les deux fichiers sont dans `.gitignore` (rapports locaux, jamais commités).
 Méthode : métadonnées seules (`du`/`find`), aucun contenu de fichier ouvert,
-aucun déplacement, aucun téléchargement.
+aucun déplacement, aucun téléchargement. *Cet inventaire est devenu la carte
+de référence pour la migration exécutée en section 20.*
 
 ---
 
@@ -259,17 +265,105 @@ Commit : `29c64ba`
 
 ---
 
-## 20. Clôture de session
+## 20. Migration Google Drive réelle — nomenclature B99-T16 (hors repo)
 
-Les deux gestes de fin de session (doctrine section 16) appliqués :
-`os:docs-sync` relancé (périmètre touché par BACKLOG_DEV P33) — miroir
-Notion à jour, 13/13 pages ; ce fichier régénéré. Tous les commits poussés
-sur `origin/main`.
+Exécution en direct sur le Drive réel (terrain :
+`~/Library/CloudStorage/GoogleDrive-florent.weil@gmail.com/Mon Drive/`, via
+le point de montage `~/Mon Drive`), en suivant la nomenclature gravée en
+B99-T16 (dump du 2026-08-16, section 18). **Protocole tenu strictement à
+chaque étape** : dry-run exact (source → destination) → OK explicite de
+Florent → exécution → vérification. Aucune suppression à aucun moment —
+uniquement des `mv`. Aucun commit — travail entièrement hors du repo Git.
+
+**10 dossiers de tête créés** : `00_INBOX`, `01_FA-CAPITAL`, `02_INSIDE-SAS`,
+`03_INSIDE-ARCHI`, `04_ATELIER-COLOMBE`, `05_CPSARL`, `06_ELIOR`, `07_TECH`,
+`08_PERSO`, `99_ARCHIVE`.
+
+**Étape 2 (gel)** : `BACKUP INSIDE` (27 Go) → `99_ARCHIVE/SNAPSHOT_BACKUP-INSIDE` ;
+3 TEMP d'INSIDE SAS (COMELIT, MACBOOKPRO2, MCBOOKPRO) → `99_ARCHIVE/` ;
+4 orphelins clients terminés (CARON, THOUMELIN, VEDEL, TERDJMAN, trouvés à la
+racine d'INSIDE CLIENTS hors de l'arbre `1. CLIENTS/`) → `99_ARCHIVE/CLIENTS_TERMINES/`.
+
+**Étape 3 (entités)** : toutes les entités rangées dans leur dossier de tête —
+FA-CAPITAL (VISION/PROJET-ZERO/IMMOBILIER), INSIDE-SAS (10 dossiers métier +
+3 résidus de `2. DRIVE INSIDE`), INSIDE-ARCHI/ATELIER-COLOMBE/CPSARL/ELIOR/PERSO
+(contenu fusionné, dossier source vidé mais pas supprimé), TECH (IT/DEV/OS/
+AUTOMATOR/SCRIPT EDITOR). **4 écarts entre la nomenclature gravée et les noms
+réels du Drive résolus par les noms réels** (nomenclature → réel) :
+`FOURNISSEURS INSIDE`→`FOURNISSEURS`, `1. INSIDE CRR`+`GENERAL INSIDE`→
+`1. INSIDE CRR GENERAL` (un seul dossier, pas deux), `PROJET ZERO`→
+`INSIDE PROJET ZERO`, `IT`→`INSIDE IT`. `INSIDE SAS` intégralement vidé par
+cette étape (17 items répartis), `2. DRIVE INSIDE`/`0. INSIDE UPLIFT` réduits
+à des coquilles vides.
+
+**Étape 4 (vrac)** : 113 fichiers isolés de la racine + 5 dossiers
+(`A TRIER`, `Enregistré depuis Chrome`, `Meet Recordings`, `3D`, `PRIVATE`)
+→ `00_INBOX/`, sans tri fin (doctrine explicite de l'utilisateur). `PARTAGE
+INSIDE` non touché (partages actifs possibles), signalé seulement.
+
+**Étape 5 (résidus clients + complément)** : `LE PRIOL` réintégré dans
+`INSIDE CLIENTS/1. CLIENTS/`. **GUERIN, doublon non fusionné** : les deux
+dossiers listés en détail (arborescence, tailles, dates) pour arbitrage —
+`1. CLIENTS/GUERIN` (111 Mo, actif jusqu'à cette semaine, sous-traitance +
+facturation SCI Coignières) confirmé comme la référence vivante ;
+`INSIDE CLIENTS/GUERIN` (17 Mo, inactif depuis ~9 mois, sous-ensemble
+"Bazoches" recoupant partiellement l'autre) archivé sous
+`99_ARCHIVE/GUERIN_COPIE-PARTIELLE-2025`. Complément demandé après coup :
+15 fichiers marqués "GR" (= chantier Grosrouvre = LE PRIOL, et non Guérin —
+correction explicite de Florent) reclassés depuis `00_INBOX` vers
+`LE PRIOL/`. `DOCS TECHNIQUES` (1 fichier plomberie générique, orphelin de
+la racine d'INSIDE CLIENTS) → `00_INBOX/`.
+
+**Vérification finale** : racine du Drive conforme — exactement les 10
+dossiers numérotés + `PARTAGE INSIDE`, rien d'autre hormis les coquilles
+vides ci-dessous. Racine d'`INSIDE CLIENTS` propre (`1. CLIENTS/` +
+`DESCRIPTIF TRAVAUX/` vide).
+
+**Anomalie non résolue par ce travail** : `Google Earth` (racine) apparaît
+dans les listings de répertoire mais son accès direct échoue
+(`stat`/`ls` dessus → "No such file or directory") depuis le début de cette
+phase — symptôme d'un problème de synchronisation Google Drive sur ce
+dossier précis, pas un effet de la migration. Signalé, non résolu (seul le
+Finder pourra trancher).
+
+**6 coquilles vides restent à supprimer au Finder** (aucune ne contient de
+fichier réel, vérifié) : `2. DRIVE INSIDE/`, `2. DRIVE INSIDE/0. INSIDE
+UPLIFT/`, `IMMOBILIER/`, `0 (1).TRASH/`,
+`02_INSIDE-SAS/INSIDE CLIENTS/DESCRIPTIF TRAVAUX/`, `Google Earth/`
+(anomalie ci-dessus). **Point ouvert à la clôture** — suppression manuelle
+laissée à Florent, hors du périmètre `mv`-seul de cette migration.
+
+Aucun commit associé (hors repo). Aucune donnée supprimée à aucun moment.
+
+---
+
+## 21. Clôture de session
+
+**Repo Git** : dernier commit `29c64ba` (P33). Aucun commit n'a suivi car la
+section 20 (migration Drive) s'est déroulée entièrement hors repo — le
+périmètre docs-sync n'a pas été retouché depuis, `os:docs-sync` n'a donc pas
+été relancé à cette clôture (rien à synchroniser). Seul le second geste de
+fin de session s'appliquait : ce fichier, régénéré.
+
+**État du repo à noter, non traité à cette clôture** (pré-existant, non
+généré par la migration Drive) :
+- `.gitignore` — modification locale non commitée depuis la section 18
+  (ajout des lignes `drive-inventaire.md`/`drive-arbo.txt`). Toujours en
+  attente d'un arbitrage (commit ou abandon).
+- `runtime/` — répertoire non suivi contenant `logs/`, `ouverture/`,
+  `pilotage/`, `synthese/` (sorties d'exécution des agents). Seul
+  `runtime/logs/` est couvert par `.gitignore` ; les trois autres
+  sous-dossiers ne le sont pas — écart de couverture à corriger si ces
+  sorties ne doivent jamais être versionnées.
 
 **5 agents de la couche Action opérationnels et vérifiés** : Synthèse,
-Pilotage, Ouverture, Ingestion Docs, Associé. Un inventaire Drive local
-(hors repo) prépare un futur chantier de nomenclature, pas encore lancé.
-Aucun point ouvert nécessitant une décision à cette clôture.
+Pilotage, Ouverture, Ingestion Docs, Associé.
+
+**Migration Drive (section 20) : close.** Nomenclature B99-T16 appliquée
+intégralement au Drive réel, en 5 étapes vérifiées une à une, sans aucune
+suppression. Reste ouvert : 6 coquilles vides à supprimer au Finder (liste
+en section 20) — geste manuel laissé à Florent, hors périmètre de cette
+session.
 
 ---
 
@@ -321,15 +415,22 @@ df3902d feat(agents): Agent Associé v1
 ed46d4d chore(doctrine): régénération recap-session.md (clôture précédente)
 29c64ba chore(backlog): P33 — script de déduplication Drive par hash SHA
         chore(doctrine): régénération recap-session.md, clôture (ce geste)
+f498511 chore(doctrine): régénération recap-session.md, clôture de session — B09-T42
+
+--- aucun commit après f498511 : la migration Drive (section 20) est hors repo ---
 ```
 
 ---
 
 ## Prochaine étape suggérée
 
-Le système a 5 agents Action layer opérationnels et un point d'entrée
-conversationnel unique. L'inventaire Drive prépare un futur chantier de
-nomenclature (non lancé — attend une décision explicite sur la portée :
-juste renommer, ou aussi fusionner `BACKUP INSIDE`/`2. DRIVE INSIDE`). Le
-prochain geste naturel reste l'usage réel des agents sur de la matière
-métier plutôt que d'empiler un nouveau chantier système.
+La migration Drive (nomenclature B99-T16) est close côté structure : plus
+rien à `mv`. Reste un geste manuel Florent-seul (suppression des 6 coquilles
+vides au Finder, section 20-21) avant de considérer le Drive totalement
+rangé. Côté repo, deux petits arriérés à trancher à la prochaine session
+(`.gitignore` non commité, couverture `runtime/` incomplète) — ni l'un ni
+l'autre urgent. Sur le fond, le système a 5 agents Action layer opérationnels
+et un point d'entrée conversationnel unique : le prochain geste naturel reste
+l'usage réel de ces agents sur de la matière métier plutôt que d'empiler un
+nouveau chantier système ou de fusion (`BACKUP INSIDE`/`2. DRIVE INSIDE`
+n'a jamais été demandé et reste hors périmètre).
