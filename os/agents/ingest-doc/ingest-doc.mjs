@@ -178,7 +178,12 @@ async function extractPdfFacts({ base64, bucket, titre }) {
 
   const response = await claudeFetch({
     model: env("CLAUDE_MODEL"),
-    max_tokens: 8000,
+    // 8000 s'est révélé insuffisant sur un document dense (statuts complets
+    // retranscrits article par article, sans compression) — extraction coupée
+    // en plein milieu d'une clause, constaté B09-T43 sur "Derniers statuts à
+    // jour_INSIDE SAS.pdf". Relevé à 16000, marge large pour les actes les
+    // plus longs du lot corporate (dépôts de greffe multi-pages inclus).
+    max_tokens: 16000,
     messages: [
       {
         role: "user",
