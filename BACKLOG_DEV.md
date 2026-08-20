@@ -1,7 +1,7 @@
 # INSIDE OS — BACKLOG DEV
 
-Derniere mise a jour : 2026-08-16 (B09-T42)
-Version : v10
+Derniere mise a jour : 2026-08-20 (B09-T43)
+Version : v11
 Pilote : Agent Infrastructure & Tech (B08/B09)
 
 Regle : ce fichier est mis a jour a chaque thread B09-Dev via Claude Code.
@@ -25,6 +25,7 @@ Miroir Notion : page INSIDE-OS-BACKLOG-DEV (a creer).
 | P10 | Desambiguisation tag semantique "associe" humain vs agent IA dans scoring | B09-T36 | [DONE] |
 | P11 | Purge automatique threads_to_process/ apres inject reussi. [B09-T39] Tranché : ne plus re-suspendre. La détection de divergence 3 axes (SYSTEME P19) couvre désormais le risque d'état incohérent qui motivait la purge. Sortie de la boucle de process. | B09-T34 | [DONE] |
 | P12 | Verifier que VERIFY_PASS=always est la config par defaut dans .env.example et documenter explicitement — Passe 1 + Passe 2 deja en place | B09-T37 | [DONE] |
+| P13 | `os:ingest` en mode interactif : prompt fermé sans réponse (stdin non-TTY, ex. pipe/CI) = exit 0 silencieux, aucun traitement, aucun signalement. Violation de la règle crash > silence. Constaté en direct B09-T43 (BLOC 1) : `npm run os:pipeline` lancé sans stdin interactif a affiché le prompt de choix de mode puis rendu la main en 0.1s sans ingérer le thread visé ni lever d'erreur — seule une vérification manuelle a posteriori (`os:list-inject-pending`) a révélé que rien n'avait été traité. Cousin de P23 (famille des sorties silencieuses). Fix attendu : échec explicite (exit non-zéro) si le prompt interactif se ferme sans réponse (stdin EOF), ou exiger `--mode batch`/`--mode test` en contexte non-TTY plutôt que de proposer un prompt qui ne peut jamais aboutir. | B09-T43 | [TODO] |
 
 ---
 
