@@ -226,7 +226,7 @@ async function extractPdfFacts({ base64, bucket, titre, filename }) {
   return response.trim();
 }
 
-function buildDumpText({ filename, sourceUrl, ingestedAtIso, bucket, titre, extractedText }) {
+export function buildDumpText({ filename, sourceUrl, ingestedAtIso, bucket, titre, extractedText }) {
   const lines = [];
   // En-tête obligatoire — traçabilité vers l'original, non négociable.
   lines.push(
