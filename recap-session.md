@@ -1,17 +1,21 @@
-# Récap de session — B09-T42-Notion-Dev-030
+# Récap de session — B09-T43
 
 Date : 2026-08-20 (régénéré — clôture de session)
-Thread : B09-T42 (Notion-Dev-030)
-Portée : session très longue, 43 commits sur le repo + une migration complète
-du Google Drive réel exécutée hors repo (aucun commit associé, ni requis).
+Thread : B09-T43 (B09-T42 brûlé — dérive d'étiquetage août 2026, non réutilisé,
+documenté dans le dump B09-T41 et gravé dans CLAUDE.md, commit `fc4e0d5`).
+Portée : session très longue à cheval sur deux étiquettes de thread (T42 puis
+T43 sur la même conversation continue) — migration Drive hors repo, doctrine
+de numérotation, lot documentaire corporate INSIDE SAS (11 actes + synthèse),
+4 bugs pipeline trouvés et gravés, docs-sync clôturé ROUGE et diagnostiqué.
 
 **Note de statut.** Ce fichier n'est pas une résurrection du protocole CONTEXT
-(abandonné dans cette même session — voir section 11). C'est le canal de
-transfert de fin de session vers l'architecte-conseil, non versionné, non
-référencé par le périmètre docs-sync. Sa réécriture à chaque fin de session,
-et la relance d'`os:docs-sync` quand le périmètre est touché, sont gravées
-dans CLAUDE.md comme deux gestes de fin de session au même titre l'un que
-l'autre.
+(abandonné — voir section 11). C'est le canal de transfert de fin de session
+vers l'architecte-conseil, non versionné, non référencé par le périmètre
+docs-sync. Sa réécriture à chaque fin de session, et la relance d'`os:docs-sync`
+quand le périmètre est touché, sont gravées dans CLAUDE.md comme deux gestes
+de fin de session au même titre l'un que l'autre — **y compris quand
+`os:docs-sync` échoue : le geste est de le relancer et de constater, pas de
+supposer un succès** (voir section 26).
 
 ---
 
@@ -36,8 +40,14 @@ l'autre.
 17. Agent Associé v1 — point d'entrée conversationnel unique
 18. Inventaire lecture seule Google Drive (rapports locaux, hors repo versionné)
 19. P33 — script de déduplication Drive gravé au backlog (roadmap, pas construit)
-20. **Migration Google Drive réelle — nomenclature B99-T16 (exécutée en direct, hors repo)**
-21. Clôture de session
+20. Migration Google Drive réelle — nomenclature B99-T16 (exécutée en direct, hors repo)
+21. Clôture précédente (régénération sous l'étiquette B09-T42, avant relabellisation)
+22. **Doctrine — règle de numérotation des threads (B09-T42 brûlé)**
+23. **BLOC 1 — dump B99-T17 (clôture migration Drive) injecté en mémoire**
+24. **BLOC 3 — lot documentaire corporate INSIDE SAS (11 actes + dump de synthèse)**
+25. **4 bugs pipeline trouvés et gravés (P13 → P16, famille sorties silencieuses/indéterminées)**
+26. **docs-sync — état final ROUGE, miroir Notion partiellement stale (détail exact)**
+27. Clôture de session B09-T43
 
 ---
 
@@ -136,6 +146,8 @@ Prompt : `docs/prompts/ouverture/PROMPT_AGENT_OUVERTURE_v01.md`
 Verse un PDF en mémoire, extraction factuelle stricte, confirmation
 interactive obligatoire. **Vérifié en production réelle** : devis Fernet
 (252 194,05 € TTC), extraction validée par Florent, pipeline 0 erreur.
+*Repris et durci en profondeur en section 24-25 de cette même session
+(bugs max_tokens/stop_reason/timeout, +2 exports, +2 fixes).*
 
 Commits : `120c35b`, `d316622`
 Prompt : `docs/prompts/ingest-doc/PROMPT_INGEST_DOC_v01.md`
@@ -167,13 +179,14 @@ Commits : `97e90d7`, `32ffd80`, `256c51e`
 ## 13. Miroir Notion doctrine
 
 `os:docs-sync` étendu : pousse les 13 fichiers du périmètre vers des pages
-enfants de **"Doctrine — miroir"** (sous `INSIDE_OS_ROOT`), idempotent,
-fail-loud. Ancienne page "INSIDE-OS-BACKLOG" repointée.
+enfants de **"Doctrine — miroir"** (sous `INSIDE_OS_ROOT`), idempotent en
+théorie (voir section 26 pour la faille trouvée). Ancienne page
+"INSIDE-OS-BACKLOG" repointée.
 
 **Doctrine — miroir : https://www.notion.so/3be5e503b0ac8102ace7e00e9782552c**
-— dernière relance vérifiée à jour au commit `29c64ba` (13/13 pages). Non
-relancé depuis : aucun commit de cette session n'a touché le périmètre
-docs-sync après ce point (la migration Drive, section 20, est hors repo).
+— **état réel au moment de cette clôture : PARTIELLEMENT STALE, voir section
+26 pour le détail exact (8/13 pages au commit `2f0503b`, 5/13 encore au
+commit `2a60bf0`).**
 
 Commit : `f3c57f6`
 
@@ -330,40 +343,267 @@ Finder pourra trancher).
 fichier réel, vérifié) : `2. DRIVE INSIDE/`, `2. DRIVE INSIDE/0. INSIDE
 UPLIFT/`, `IMMOBILIER/`, `0 (1).TRASH/`,
 `02_INSIDE-SAS/INSIDE CLIENTS/DESCRIPTIF TRAVAUX/`, `Google Earth/`
-(anomalie ci-dessus). **Point ouvert à la clôture** — suppression manuelle
-laissée à Florent, hors du périmètre `mv`-seul de cette migration.
+(anomalie ci-dessus). **Point ouvert, toujours non traité à cette clôture**
+— suppression manuelle laissée à Florent, hors du périmètre `mv`-seul de
+cette migration.
 
 Aucun commit associé (hors repo). Aucune donnée supprimée à aucun moment.
 
+**Clôturé en mémoire Notion en section 23** (dump B99-T17, injecté ce thread).
+
 ---
 
-## 21. Clôture de session
+## 21. Clôture précédente (régénération sous l'étiquette B09-T42, avant relabellisation)
 
-**Repo Git** : dernier commit `29c64ba` (P33). Aucun commit n'a suivi car la
-section 20 (migration Drive) s'est déroulée entièrement hors repo — le
-périmètre docs-sync n'a pas été retouché depuis, `os:docs-sync` n'a donc pas
-été relancé à cette clôture (rien à synchroniser). Seul le second geste de
-fin de session s'appliquait : ce fichier, régénéré.
+Ce fichier avait été régénéré une première fois immédiatement après la
+section 20, sous l'étiquette **B09-T42** — au dernier commit repo `29c64ba`,
+sans commit associé à la migration Drive (hors repo). Cette clôture s'est
+avérée prématurée : la conversation s'est poursuivie sans interruption, et
+Florent a ouvert explicitement **B09-T43** juste après (section 22), en
+précisant que B09-T42 était un id brûlé. Conservé ici comme trace honnête de
+l'enchaînement réel — la présente régénération (section 27) est la clôture
+qui fait foi.
 
-**État du repo à noter, non traité à cette clôture** (pré-existant, non
-généré par la migration Drive) :
-- `.gitignore` — modification locale non commitée depuis la section 18
-  (ajout des lignes `drive-inventaire.md`/`drive-arbo.txt`). Toujours en
-  attente d'un arbitrage (commit ou abandon).
-- `runtime/` — répertoire non suivi contenant `logs/`, `ouverture/`,
-  `pilotage/`, `synthese/` (sorties d'exécution des agents). Seul
-  `runtime/logs/` est couvert par `.gitignore` ; les trois autres
-  sous-dossiers ne le sont pas — écart de couverture à corriger si ces
-  sorties ne doivent jamais être versionnées.
+---
 
-**5 agents de la couche Action opérationnels et vérifiés** : Synthèse,
-Pilotage, Ouverture, Ingestion Docs, Associé.
+## 22. Doctrine — règle de numérotation des threads (B09-T42 brûlé)
 
-**Migration Drive (section 20) : close.** Nomenclature B99-T16 appliquée
-intégralement au Drive réel, en 5 étapes vérifiées une à une, sans aucune
-suppression. Reste ouvert : 6 coquilles vides à supprimer au Finder (liste
-en section 20) — geste manuel laissé à Florent, hors périmètre de cette
-session.
+Gravée dans CLAUDE.md, section doctrine, à côté de la règle recap-session :
+« Un thread B09-Txx = une conversation architecte-conseil complète. Les
+sessions Claude Code héritent de l'id du thread en cours (fourni par Florent
+en début de session), jamais de numéro propre. B09-T42 est un id brûlé
+(dérive d'étiquetage août 2026, documentée dans le dump B09-T41), non
+réutilisé. »
+
+Commit : `fc4e0d5`
+
+---
+
+## 23. BLOC 1 — dump B99-T17 (clôture migration Drive) injecté en mémoire
+
+Fichier `/Users/florentweil/Dev/dump/B99-T17.txt`, rédigé en T41, jamais
+injecté avant ce thread. Convention de nommage vérifiée dans le code
+(`os/ingest/ingest-thread-dump.mjs:450`, regex `^(B\d{2}-T\d{2})`) avant
+tout geste — le préfixe suffisait, slug ajouté par cohérence. Copié dans
+`data/threads_to_process/`, pipeline lancé (`--mode batch`, le mode
+interactif ayant d'abord échoué silencieusement — voir section 25, P13).
+
+**6 décisions créées**, toutes `validated`, vérifiées en direct dans Notion
+(`source_dump_id=B99-T17`) : validation de la migration Drive comme exécutée
+et clôturée, doctrine 00_INBOX = porte d'entrée unique, report de la
+renumérotation 02_INSIDE-SAS, rappel des 6 coquilles à supprimer, relance du
+chantier LE PRIOL (poignées + solde ~3 000 €), arbitrage GUERIN documenté.
+
+---
+
+## 24. BLOC 3 — lot documentaire corporate INSIDE SAS (11 actes + dump de synthèse)
+
+**Bucket cible confirmé, pas supposé** : indice B02 vérifié contre
+`README.md:203` (registre déclaré) et corroboré par 15+ précédents Notion
+live (actes juridiques déjà classés systématiquement `[entité, "B06"]`,
+jamais l'entité seule).
+
+**Document pilote (statuts à jour 10/11/2021, `B99-T18`)** : premier test a
+révélé une **extraction tronquée en plein milieu d'une clause** — voir
+section 25 pour le fix. Une fois corrigé, texte relu intégralement par
+Florent (contrôle croisé avec une lecture indépendante faite ce midi dans
+l'app Claude) AVANT toute écriture — écrit **verbatim** via `writeDump()`
+réutilisant le texte déjà relu, aucune ré-extraction (le non-déterminisme
+LLM rendait un second appel dangereux — texte injecté ≠ texte validé sinon).
+13 décisions / 12 lessons, buckets réels posés `["B02","B06"]` sur l'identité
+société, mais majoritairement `["B06","B03"]` sur les clauses de gouvernance
+génériques (les statuts eux-mêmes donnent à INSIDE SAS une double capacité
+opérationnelle + holding — classement passe 2 plausible, pas une erreur).
+**Politique actée** : le classement passe 2 fait foi sur l'ensemble du lot,
+divergence signalée jamais corrigée manuellement (voir la lesson buckets,
+section 25bis / B99-T30).
+
+**Document 1/9 de la boucle (statuts constitutifs 2011, `B99-T19`) = test
+officiel du code corrigé** (post-fix stop_reason) : extraction unique,
+garde non déclenchée, écriture, pipeline, injection — vérifié bout en bout.
+22 décisions / 15 lessons. Révèle la société d'origine "INSIDE PRODUCTIONS"
+(production audiovisuelle), associés fondateurs Florent Weil (65%),
+Stéphane Rotenberg (30%), Laurent Varlet (5%).
+
+**9 documents restants (`B99-T20` → `B99-T28`)**, alternance stricte
+extraction→écriture→pipeline→injection par document (jamais de batch
+d'extractions à l'avance — vérifié via id_dump séquentiels et
+`threads_to_process/` resté vide entre chaque geste) :
+
+- **B99-T20** — Dépôt d'actes 1 : statuts à jour 01/02/2016, siège Garancières.
+- **B99-T21** — Dépôt d'actes 2 : PV changement objet social 01/02/2016.
+  *(mentionne encore "INSIDE PRODUCTIONS" dans le corps — anomalie #4,
+  manquée dans le compte-rendu de l'époque, rattrapée ensuite — voir la
+  lesson section 25bis.)*
+- **B99-T22** — Dépôt d'actes 3 : certificat de dépôt de fonds HSBC 15/07/2011.
+- **B99-T23** — Dépôt d'actes 4 : bulletin de souscription — **anomalie #1**
+  (7 000 actions × 1 € vs 700 × 10 € dans les statuts constitutifs signés
+  4 jours plus tard, même capital).
+- **B99-T24** — Dépôt d'actes 5 : PV AG mixte 24/11/2012 — **anomalie #2**
+  (feuille de présence "1 000 actions" vs 665+35=700 réels) ; révèle un
+  changement de Président (Weil → Nicolas Boizot) et transfert de siège
+  jusqu'ici inconnu du système.
+- **B99-T25** — Dépôt d'actes 6 : statuts à jour 12/10/2015. **Deux incidents
+  d'exécution distincts, tous deux diagnostiqués avant retry, jamais
+  relancés en aveugle** : (a) timeout silencieux du LLM d'extraction
+  (>2 min, exit 143) — diagnostic PDF externe avant retry (`mdls`/`strings` :
+  12 pages, JBIG2, profil identique au doc 1 qui avait déjà réussi → pas un
+  document dégradé → retry unique autorisé, réussi en ~4 min) ; (b)
+  `ConnectTimeoutError` réseau distinct sur l'ingest passe 1 lui-même, retry
+  immédiat réussi.
+- **B99-T26** — Dépôt d'actes 7 : PV pivot 12/10/2015 — Florent Weil redevient
+  Président, dénomination INSIDE PRODUCTIONS→INSIDE SAS, objet social changé.
+- **B99-T27** — Dépôt d'actes 8 : "Liste des sièges antérieurs" — **anomalie
+  #3** (ne remonte qu'à 2012, omet le vrai premier siège de 2011).
+- **B99-T28** — Dépôt d'actes 9 (sans numéro) : PV transfert de siège
+  10/11/2021 vers Méré (raccorde avec B99-T18).
+
+**Total lot documentaire : 90 décisions + 62 lessons créées**, tous les
+`injection_status` vérifiés `done` en direct dans Notion (aucun document
+écarté sur les 11).
+
+**Dump de synthèse transversale (`B99-T29`)** — fichier pré-rédigé
+`/Users/florentweil/Dev/dump/DUMP_INSIDE_SAS_CORPORATE_2011-2021.md` (analyse
+croisée faite dans l'app Claude le 20/08, thread brut non ingéré séparément
+par choix documenté dans le dump lui-même). Vérifié avant ingestion : l'Agent
+Synthèse (`sources.mjs`) ne lit **aucune** base entities (seulement
+DECISIONS/LESSONS/THREAD_DUMP) → dump ingéré sans risque de doublon. Section
+4 du dump (INDÉTERMINÉ — trou documentaire sur les cessions d'actions
+2011-2015) vérifiée en direct : n'est devenue **aucune décision assertant les
+faits non prouvés** — passée en LESSON prudente ("l'absence d'actes de
+cession ne signifie pas que les cessions n'ont pas eu lieu — conformité
+indéterminée, ne jamais conclure par défaut de preuve contraire"). 7d/7l.
+
+---
+
+## 25. 4 bugs pipeline trouvés et gravés (famille sorties silencieuses/indéterminées)
+
+Tous constatés en direct pendant le BLOC 3, tous gravés au BACKLOG_DEV
+(PIPELINE, table SYSTEME pour P34), commit séparé par item :
+
+- **P13** (`2a60bf0`) — `os:ingest` en mode interactif : prompt fermé sans
+  réponse (stdin non-TTY) = exit 0 silencieux, aucun traitement, aucun
+  signalement. Constaté sur le tout premier geste du BLOC 1.
+- **P14** (`cccd35e`) — Agent Ingestion Docs sans mode non-interactif
+  extract-then-write déterministe. Contournement construit ce thread
+  (script de revue externe + réutilisation manuelle du texte relu via
+  `writeDump()`), fix structurel souhaitable : CLI scindé
+  `--extract-only`/`--write-from`.
+- **P34** (`a50b61f`, table SYSTEME) — `claudeFetch()` jette `stop_reason`
+  par défaut, 7 appelants (passe 1/2, agents Synthèse/Associé/Ouverture/
+  Pilotage) ne détectent pas une réponse tronquée par `max_tokens`. **Fix
+  appliqué pour un seul appelant** (Agent Ingestion Docs, root cause du
+  pilote tronqué) : `claudeFetch({ full: true })` expose désormais
+  `{ text, stopReason }`, rétro-compatible — commits `f799fe2` (mitigation
+  max_tokens 8000→16000), `73aa307` (fix racine, throw si
+  `stopReason !== "end_turn"`), `c7ca7a3` (export `buildDumpText`
+  nécessaire à la réutilisation verbatim).
+- **P15** (`2f0503b`) — timeout API silencieux (exit 143 externe) non
+  distingué en interne d'un échec de contenu. Constaté sur le document 6/9
+  du lot corporate (diagnostic PDF externe requis avant de pouvoir juger
+  s'il fallait retenter — voir section 24).
+- **P16** (`85ec443`) — `clearBlockChildren`/`deleteBlock`
+  (`os/lib/notion.mjs:153`) non idempotent sur un bloc déjà archivé (état
+  résiduel après un 504 ayant interrompu un run `os:docs-sync` antérieur) :
+  `deleteBlock` renvoie `400 "Can't edit block that is archived"`,
+  `os:docs-sync` plante mi-course. Constaté à la clôture — voir section 26.
+
+**Une LESSON distincte gravée en mémoire Notion (pas au BACKLOG)**,
+`B99-T30`, sur demande explicite de Florent :
+1. Le contenu juridique/statutaire fait se chevaucher B02/B03/B06 sans
+   critère de classement stable posé en amont — affluent de la question
+   d'architecture ouverte (docs dans buckets métier vs système documentaire
+   séparé, déjà notée dans INSIDE_OS_VISION, thread T39).
+2. Corollaire opérationnel constaté en direct sur ce thread : l'anomalie #4
+   (PV 2016 "INSIDE PRODUCTIONS") a été manquée dans le compte-rendu
+   pendant la période où les comptes-rendus par document du BLOC 3 avaient
+   été compressés en une ligne (documents 2 à 5), et n'a été rattrapée
+   qu'au retour à des comptes-rendus complets — **la granularité du
+   compte-rendu document par document est un canal de détection des
+   anomalies à part entière, pas un confort de présentation**.
+
+0 décision parasite (vérifié en direct : 0d/2l sur `B99-T30`).
+
+---
+
+## 26. docs-sync — état final ROUGE, miroir Notion partiellement stale
+
+**Verdict explicite, pas supposé** (conforme à la consigne de ce thread :
+« vert constaté ou rouge signalé », jamais « probablement passé »).
+
+Relancé après 3 commits BACKLOG (P13/P14/P15) depuis le dernier vert connu
+(`2a60bf0`) : tourné ~6 minutes, **échoué** :
+```
+❌ Notion 400 : "Can't edit block that is archived. You must unarchive the block before editing."
+```
+sur la page miroir `PROMPT_AGENT_PILOTAGE`, juste après un 504 retried avec
+succès sur `PROMPT_AGENT_SYNTHESE`. Cause diagnostiquée (pas seulement
+constatée) et gravée en P16, section 25 : `clearBlockChildren()` liste les
+blocs enfants puis les archive un par un sans tolérer qu'un bloc soit déjà
+archivé (état résiduel d'un run antérieur interrompu par un 504) —
+`deleteBlock` plante au lieu de traiter le cas comme un succès idempotent.
+
+**État exact du miroir Notion à cette clôture — la session suivante doit
+lire ceci avant de faire confiance au miroir :**
+
+| Page miroir | État |
+|---|---|
+| CLAUDE.md | ✅ à jour au commit `2f0503b` |
+| README.md | ✅ à jour au commit `2f0503b` |
+| BACKLOG_DEV.md | ⚠️ à jour au commit `2f0503b` (P13/P14/P15) — **manque P16** (`85ec443`, postérieur à ce push) |
+| BACKLOG_USER.md | ✅ à jour au commit `2f0503b` |
+| IDEAS.md | ✅ à jour au commit `2f0503b` |
+| PROMPT_MAITRE v17 | ✅ à jour au commit `2f0503b` |
+| PROMPT_ASSOCIE v03 | ✅ à jour au commit `2f0503b` |
+| PROMPT_AGENT_SYNTHESE | ✅ à jour au commit `2f0503b` (poussée juste avant l'échec) |
+| **PROMPT_AGENT_PILOTAGE** | ❌ **STALE — encore au commit `2a60bf0`** (échec sur cette page précisément) |
+| **PROMPT_AGENT_OUVERTURE** | ❌ **STALE — encore au commit `2a60bf0`** (jamais atteinte ce run) |
+| **PROMPT_INGEST_DOC** | ❌ **STALE — encore au commit `2a60bf0`** (jamais atteinte ce run) |
+| **PROMPT_AGENT_INFRA_TECH** | ❌ **STALE — encore au commit `2a60bf0`** (jamais atteinte ce run) |
+| **Repointage ancienne page "INSIDE-OS-BACKLOG"** | ❌ **jamais exécuté ce run** (dernière étape du script, jamais atteinte) |
+
+Contenu réel de PROMPT_AGENT_PILOTAGE/OUVERTURE/INGEST_DOC/INFRA_TECH non
+modifié ce thread (donc pas de divergence de fond sur ces 4 prompts eux-mêmes)
+— le risque concret est que **BACKLOG_DEV.md sur le miroir ne montre pas P16**
+tant que le prochain `os:docs-sync` n'aura pas réussi. **Pas de fix tenté ce
+soir** (décision explicite de Florent) — le fix (traiter "already archived"
+comme un succès dans `deleteBlock`) est gravé en P16, à faire une prochaine
+session avant de relancer `os:docs-sync`, faute de quoi le même échec se
+reproduira probablement au même point.
+
+---
+
+## 27. Clôture de session B09-T43
+
+Les deux gestes de fin de session appliqués, avec un aménagement assumé sur
+le premier : `os:docs-sync` a été relancé et a produit un **verdict ROUGE
+diagnostiqué** (section 26) plutôt qu'un vert — conforme à la consigne
+explicite de ce thread, pas une omission. Aucune nouvelle tentative de fix
+ou de relance ce soir. Ce fichier, régénéré, documente l'état stale exact
+pour que la session suivante ne le suppose jamais aligné sans vérifier.
+
+**Bilan de la session B09-T43** : migration Drive clôturée en mémoire
+(B99-T17), doctrine de numérotation des threads gravée, 11 actes corporate
++ 1 dump de synthèse + 1 lesson buckets ingérés (90 décisions, 62 lessons,
+0 document écarté), 4 bugs pipeline diagnostiqués et gravés (P13-P16, dont
+1 fix appliqué en direct — stop_reason sur l'Agent Ingestion Docs), miroir
+Notion partiellement stale et documenté avec précision plutôt que supposé
+à jour.
+
+**Points ouverts, non traités à cette clôture, portés à la session
+suivante** :
+- P16 à corriger avant la prochaine relance `os:docs-sync` (sinon échec
+  probable au même point).
+- BACKLOG P13, P14, P15 : fixes non appliqués, seulement gravés.
+- Lesson buckets (B99-T30) : gravée en mémoire mais l'arbitrage de fond
+  (taxonomie buckets sur actes de société, question docs-métier vs
+  système-documentaire) reste ouvert — affluent d'INSIDE_OS_VISION T39.
+- 6 coquilles vides du Drive toujours à supprimer au Finder (section 20).
+- `.gitignore` non commité, couverture `runtime/` incomplète (portés depuis
+  la clôture précédente, section 21, toujours non traités).
+- `docs-a-ingerer/` : les 11 PDF sont ingérés, référence désormais dans le
+  Drive — **rappel : le sas peut être vidé** (geste manuel, aucune
+  suppression faite par cette session).
 
 ---
 
@@ -414,23 +654,44 @@ f917a6a docs(prompts): PROMPT_ASSOCIE v03
 df3902d feat(agents): Agent Associé v1
 ed46d4d chore(doctrine): régénération recap-session.md (clôture précédente)
 29c64ba chore(backlog): P33 — script de déduplication Drive par hash SHA
-        chore(doctrine): régénération recap-session.md, clôture (ce geste)
-f498511 chore(doctrine): régénération recap-session.md, clôture de session — B09-T42
+        chore(doctrine): régénération recap-session.md (clôture sous B09-T42)
+f498511 chore(doctrine): régénération recap-session.md, clôture — B09-T42
 
---- aucun commit après f498511 : la migration Drive (section 20) est hors repo ---
+--- migration Drive hors repo (section 20), aucun commit ---
+--- relabellisation du thread : B09-T42 brûlé → B09-T43 ---
+
+ad62898 chore(doctrine): régénération recap-session.md — migration Drive B99-T16 close
+fc4e0d5 chore(doctrine): règle de numérotation des threads — B09-T43
+2a60bf0 chore(backlog): grave P13 — os:ingest exit silencieux si prompt interactif fermé sans réponse
+f799fe2 fix(ingest-doc): max_tokens 8000→16000 — extraction tronquée sur document dense
+73aa307 fix(ingest-doc): stop_reason vérifié — fail-loud sur extraction tronquée
+a50b61f chore(backlog): grave P34 — claudeFetch() jette stop_reason sur 7 appelants
+cccd35e chore(backlog): grave P14 — Agent Ingestion Docs sans mode extract-then-write déterministe
+c7ca7a3 refactor(ingest-doc): exporte buildDumpText — réutilisable sans ré-extraction
+2f0503b chore(backlog): grave P15 — timeout API silencieux non distingué en interne
+85ec443 chore(backlog): grave P16 — clearBlockChildren non idempotent sur bloc archivé, docs-sync plante mi-course
+        chore(doctrine): régénération recap-session.md, clôture — B09-T43 (ce geste)
 ```
 
 ---
 
 ## Prochaine étape suggérée
 
-La migration Drive (nomenclature B99-T16) est close côté structure : plus
-rien à `mv`. Reste un geste manuel Florent-seul (suppression des 6 coquilles
-vides au Finder, section 20-21) avant de considérer le Drive totalement
-rangé. Côté repo, deux petits arriérés à trancher à la prochaine session
-(`.gitignore` non commité, couverture `runtime/` incomplète) — ni l'un ni
-l'autre urgent. Sur le fond, le système a 5 agents Action layer opérationnels
-et un point d'entrée conversationnel unique : le prochain geste naturel reste
-l'usage réel de ces agents sur de la matière métier plutôt que d'empiler un
-nouveau chantier système ou de fusion (`BACKUP INSIDE`/`2. DRIVE INSIDE`
-n'a jamais été demandé et reste hors périmètre).
+**Avant tout autre chantier** : corriger P16 (`deleteBlock` idempotent sur
+bloc déjà archivé) puis relancer `os:docs-sync` une fois — sans ça, le
+miroir Notion reste stale sur 4 pages + le repointage de l'ancienne page
+backlog, et toute session future qui s'y fierait sans relire ce recap serait
+trompée. Ensuite, fixer P13/P14/P15 reste possible mais moins urgent (déjà
+contournés manuellement pendant ce thread, pas bloquants pour l'usage).
+
+Sur le fond métier : le lot corporate INSIDE SAS (12 pièces, chronologie
+2011-2021 complète, 4 anomalies documentées, trou documentaire sur les
+cessions 2011-2015 explicitement marqué INDÉTERMINÉ) est la première
+matière juridique/corporate réelle absorbée par le système — un bon test de
+charge pour l'Agent Synthèse sur une entité, si l'usage réel continue de
+primer sur l'empilement de nouveaux chantiers système. Le Drive reste à
+finir de ranger côté Florent (6 coquilles au Finder). La question
+d'architecture documents (buckets métier vs système documentaire séparé,
+relancée par la lesson B99-T30) reste ouverte — pas à trancher par défaut,
+mais elle a maintenant un deuxième cas d'usage concret pour informer la
+décision le jour où elle sera prise.
