@@ -168,7 +168,7 @@ function readPdfOrThrow(filePath) {
   return { resolved, buf };
 }
 
-async function extractPdfFacts({ base64, bucket, titre }) {
+async function extractPdfFacts({ base64, bucket, titre, filename }) {
   const promptText = loadExtractionPrompt();
   const hints = [];
   hints.push(`BUCKET INDICATIF TRANSMIS PAR L'APPELANT : ${bucket}`);
@@ -176,7 +176,7 @@ async function extractPdfFacts({ base64, bucket, titre }) {
 
   const userText = `${promptText}\n\n---\n\n${hints.join("\n")}\n\nExtrais maintenant les faits du document PDF ci-joint.`;
 
-  const response = await claudeFetch({
+  const { text: response, stopReason } = await claudeFetch({
     model: env("CLAUDE_MODEL"),
     // 8000 s'est révélé insuffisant sur un document dense (statuts complets
     // retranscrits article par article, sans compression) — extraction coupée
@@ -184,6 +184,7 @@ async function extractPdfFacts({ base64, bucket, titre }) {
     // jour_INSIDE SAS.pdf". Relevé à 16000, marge large pour les actes les
     // plus longs du lot corporate (dépôts de greffe multi-pages inclus).
     max_tokens: 16000,
+    full: true,
     messages: [
       {
         role: "user",
@@ -201,6 +202,20 @@ async function extractPdfFacts({ base64, bucket, titre }) {
       },
     ],
   });
+
+  // Fix racine (B09-T43, cousin de P13/P23) : une extraction coupée par
+  // max_tokens revenait auparavant comme si elle était complète — c'est un
+  // regard humain en mode revue qui l'a détectée, pas l'outil. Toute fin de
+  // réponse autre que "end_turn" (max_tokens atteint, refus, etc.) est un
+  // contenu potentiellement partiel : crash > silence, jamais de retour
+  // silencieux d'un texte tronqué.
+  if (stopReason !== "end_turn") {
+    throw new Error(
+      `Extraction PDF incomplète — stop_reason="${stopReason}" (attendu "end_turn") sur ` +
+      `"${filename || "document inconnu"}". Fail-loud : rien n'est écrit sur une extraction ` +
+      `potentiellement tronquée. Augmenter max_tokens ou fractionner le document.`
+    );
+  }
 
   if (!response || !response.trim()) {
     throw new Error(
@@ -246,7 +261,7 @@ export async function prepareIngestDoc({ filePath, bucket, titre, sourceUrl }) {
 
   console.error(`[ingest-doc] appel LLM d'extraction (CLAUDE_MODEL=${env("CLAUDE_MODEL")})…`);
   const base64 = buf.toString("base64");
-  const extractedText = await extractPdfFacts({ base64, bucket: validBucket, titre });
+  const extractedText = await extractPdfFacts({ base64, bucket: validBucket, titre, filename });
 
   const ingestedAtIso = new Date().toISOString();
   const dumpText = buildDumpText({

@@ -13,7 +13,7 @@ export function getApiKey() {
   return key;
 }
 
-export async function claudeFetch({ model, max_tokens, messages, apiKey }) {
+export async function claudeFetch({ model, max_tokens, messages, apiKey, full = false }) {
   const key = apiKey || getApiKey();
   let attempt = 0;
 
@@ -40,6 +40,13 @@ export async function claudeFetch({ model, max_tokens, messages, apiKey }) {
     }
 
     const data = await res.json();
-    return data.content?.[0]?.text?.trim() || "";
+    const text = data.content?.[0]?.text?.trim() || "";
+    // Rétro-compatible par défaut (full=false) : tous les appelants existants
+    // continuent de recevoir une simple string. full=true expose stop_reason —
+    // seul moyen de détecter une sortie tronquée par max_tokens (B09-T43,
+    // Agent Ingestion Docs). Les autres appelants ne le vérifient pas encore
+    // (BACKLOG_DEV SYSTEME, cousin de P13/P23) — pas de bascule massive ici.
+    if (full) return { text, stopReason: data.stop_reason };
+    return text;
   }
 }
